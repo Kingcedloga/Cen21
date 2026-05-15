@@ -1,0 +1,14 @@
+# Déploiement Next.js depuis le dossier web/ (racine Git sans package.json).
+# Sans base + runtime Next.js, Netlify peut servir uniquement la 404 générique du CDN.
+# Réf.: https://opennext.js.org/netlify — https://docs.netlify.com/frameworks/next-js/overview/
+
+[build]
+  base = "web"
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
