@@ -4,11 +4,18 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { HeroCinematic } from "@/components/sections/HeroCinematic";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { StatsBanner } from "@/components/sections/StatsBanner";
+import { SectionWave } from "@/components/layout/SectionWave";
 import { getFeaturedSubsidiaries, getSiteConfig } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
 
 const site = getSiteConfig();
 const featured = getFeaturedSubsidiaries();
+
+const heroSlides =
+  site.heroSlides && site.heroSlides.length > 0
+    ? site.heroSlides
+    : [{ src: site.heroImage, alt: `Visuel ${site.name}` }];
 
 export const metadata = createPageMetadata({
   title: site.name,
@@ -20,7 +27,13 @@ export default function HomePage() {
   return (
     <>
       <OrganizationJsonLd />
-      <HeroCinematic />
+      <HeroCinematic
+        slides={heroSlides}
+        tagline={site.tagline}
+        description={site.description}
+      />
+
+      <SectionWave fill="petrol" />
 
       <section className="py-24 px-4 md:px-6">
         <div className="max-w-7xl mx-auto">
@@ -43,6 +56,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <SectionWave fill="band" flip />
+
       <section className="py-24 px-4 md:px-6 bg-anthracite/50">
         <div className="max-w-7xl mx-auto">
           <AnimateIn>
@@ -61,6 +76,12 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <SectionWave fill="petrol" />
+
+      <StatsBanner />
+
+      <SectionWave fill="petrol" flip />
 
       <CtaBand />
     </>

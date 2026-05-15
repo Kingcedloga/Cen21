@@ -48,6 +48,18 @@ export type GalleryItem = {
   tags: string[];
 };
 
+export type StatIconId = "award" | "users" | "globe" | "trending";
+
+export type StatItem = {
+  icon: StatIconId;
+  value: string;
+  label: string;
+};
+
+export type StatsContent = {
+  items: StatItem[];
+};
+
 export type SiteConfig = {
   name: string;
   tagline: string;
@@ -58,7 +70,9 @@ export type SiteConfig = {
     address: string;
   };
   social: SocialLinks;
+  /** @deprecated préférer heroSlides */
   heroImage: string;
+  heroSlides?: { src: string; alt: string }[];
 };
 
 export type AboutContent = {

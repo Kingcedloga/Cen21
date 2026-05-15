@@ -1,5 +1,6 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 
+import { MapEmbed } from "@/components/maps/MapEmbed";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { SocialLinks } from "@/components/ui/SocialLinks";
 import { PageHero } from "@/components/sections/PageHero";
@@ -61,12 +62,22 @@ export default function ContactPage() {
             />
           </div>
 
-          <div className="glass-panel p-8 rounded-xl">
+          <div className="glass-panel rounded-2xl p-8 md:p-10 ring-1 ring-inset ring-white/[0.06]">
             <h2 className="font-[family-name:var(--font-cormorant)] text-2xl text-ivory mb-6">
               Formulaire
             </h2>
             <ContactForm />
           </div>
+        </div>
+
+        <div className="mt-16">
+          <h2 className="font-[family-name:var(--font-cormorant)] text-2xl text-ivory mb-3">
+            Nous trouver
+          </h2>
+          <p className="text-taupe text-sm mb-6 max-w-2xl">
+            Carte interactive — cliquez sur « Agrandir la carte » pour l&apos;itinéraire dans Google Maps.
+          </p>
+          <MapEmbed query={site.contact.address} title="Carte — Cen21 Hospitality" />
         </div>
       </section>
     </>

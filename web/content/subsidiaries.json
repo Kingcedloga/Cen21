@@ -44,7 +44,7 @@
       "coverImage": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1200&q=80",
       "galleryImages": [
         "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80",
-        "https://images.unsplash.com/photo-1525267479666-1e0003f5ac2e?w=800&q=80"
+        "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80"
       ],
       "featured": true
     },
@@ -65,10 +65,10 @@
         "linkedin": "https://www.linkedin.com/company/azure-lounge-paris"
       },
       "accentColor": "#2C5282",
-      "coverImage": "https://images.unsplash.com/photo-1566417713940-fe7db97ce960?w=1200&q=80",
+      "coverImage": "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=1200&q=80",
       "galleryImages": [
         "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=800&q=80",
-        "https://images.unsplash.com/photo-1541534409609-8df8e5b1d4d4?w=800&q=80"
+        "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80"
       ],
       "featured": true
     },
@@ -89,9 +89,9 @@
         "linkedin": "https://www.linkedin.com/company/nocturne-club"
       },
       "accentColor": "#6B46C1",
-      "coverImage": "https://images.unsplash.com/photo-1571266028243-e4733b0bf77b?w=1200&q=80",
+      "coverImage": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1200&q=80",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1574391884720-bbc3740c59d6?w=800&q=80",
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80",
         "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80"
       ],
       "featured": true
@@ -113,7 +113,7 @@
         "linkedin": "https://www.linkedin.com/company/palais-des-fetes"
       },
       "accentColor": "#9B2C2C",
-      "coverImage": "https://images.unsplash.com/photo-1519167758481-83f29da8c2f2?w=1200&q=80",
+      "coverImage": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1200&q=80",
       "galleryImages": [
         "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80",
         "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80"
@@ -163,8 +163,8 @@
       "accentColor": "#744210",
       "coverImage": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=1200&q=80",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1506377247377-2a5b3e417ebf?w=800&q=80",
-        "https://images.unsplash.com/photo-1510812431401-41d2bd2724f3?w=800&q=80"
+        "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800&q=80",
+        "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&q=80"
       ],
       "featured": false
     },
@@ -187,8 +187,8 @@
       "accentColor": "#553C9A",
       "coverImage": "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=1200&q=80",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1566417713940-fe7db97ce960?w=800&q=80",
-        "https://images.unsplash.com/photo-1525267479666-1e0003f5ac2e?w=800&q=80"
+        "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=800&q=80",
+        "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80"
       ],
       "featured": false
     },
@@ -209,9 +209,9 @@
         "linkedin": "https://www.linkedin.com/company/etoile-rooftop"
       },
       "accentColor": "#B7791F",
-      "coverImage": "https://images.unsplash.com/photo-1551884170-09c70cd0d2ed?w=1200&q=80",
+      "coverImage": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1466978913421-dad2ebd01d9b?w=800&q=80",
+        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80",
         "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&q=80"
       ],
       "featured": false
@@ -235,7 +235,7 @@
       "accentColor": "#2D3748",
       "coverImage": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1505373877841-8d25f39c466f?w=800&q=80",
+        "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
         "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80"
       ],
       "featured": false

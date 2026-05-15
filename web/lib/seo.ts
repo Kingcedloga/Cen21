@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { getSiteConfig } from "./content";
+import { SITE_URL } from "./site-url";
 
 const site = getSiteConfig();
 
@@ -16,7 +17,7 @@ export function createPageMetadata({
   const fullTitle =
     title === site.name ? title : `${title} | ${site.name}`;
   const desc = description ?? site.description;
-  const url = `https://cen21hospitality.com${path}`;
+  const url = `${SITE_URL}${path}`;
 
   return {
     title: fullTitle,

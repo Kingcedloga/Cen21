@@ -2,28 +2,27 @@ import Image from "next/image";
 import Link from "next/link";
 
 type LogoProps = {
-  showWordmark?: boolean;
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "xl";
   className?: string;
+  /** Réduit la hauteur dans le header fixe pour garder une barre compacte tout en gardant un logo net. */
+  variant?: "default" | "header";
 };
 
-const sizes = {
-  sm: { mark: 36, text: "text-lg" },
-  md: { mark: 44, text: "text-xl md:text-2xl" },
-  lg: { mark: 56, text: "text-2xl md:text-3xl" },
+const sizesPx = {
+  sm: 74,
+  md: 92,
+  lg: 94,
+  xl: 120,
 };
 
-export function Logo({
-  showWordmark = true,
-  size = "md",
-  className = "",
-}: LogoProps) {
-  const { mark, text } = sizes[size];
+export function Logo({ size = "md", className = "", variant = "default" }: LogoProps) {
+  const mark = sizesPx[size];
+  const isHeader = variant === "header";
 
   return (
     <Link
       href="/"
-      className={`inline-flex items-center gap-3 group cursor-pointer ${className}`}
+      className={`inline-flex shrink-0 group cursor-pointer ${className}`}
       aria-label="Cen21 Hospitality — accueil"
     >
       <Image
@@ -31,8 +30,11 @@ export function Logo({
         alt=""
         width={mark}
         height={mark}
-        className="h-auto w-auto object-contain transition-opacity duration-200 group-hover:opacity-90"
-        priority={size !== "sm"}
+        className={`object-contain transition-opacity duration-200 group-hover:opacity-90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] ${
+          isHeader ? "h-14 w-auto md:h-[4.25rem]" : ""
+        }`}
+        style={isHeader ? undefined : { width: mark, height: mark }}
+        priority
       />
     </Link>
   );

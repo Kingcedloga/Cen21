@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "icon": "award",
+      "value": "20+",
+      "label": "Années d'expérience"
+    },
+    {
+      "icon": "users",
+      "value": "500+",
+      "label": "Clients satisfaits"
+    },
+    {
+      "icon": "globe",
+      "value": "2+",
+      "label": "Pays couverts"
+    },
+    {
+      "icon": "trending",
+      "value": "25%",
+      "label": "Croissance"
+    }
+  ]
+}

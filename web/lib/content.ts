@@ -1,4 +1,5 @@
 import siteData from "@/content/site.json";
+import statsData from "@/content/stats.json";
 import aboutData from "@/content/about.json";
 import subsidiariesData from "@/content/subsidiaries.json";
 import eventsData from "@/content/events.json";
@@ -9,11 +10,16 @@ import type {
   EventItem,
   GalleryItem,
   SiteConfig,
+  StatsContent,
   Subsidiary,
 } from "./types";
 
 export function getSiteConfig(): SiteConfig {
   return siteData as SiteConfig;
+}
+
+export function getStatsContent(): StatsContent {
+  return statsData as StatsContent;
 }
 
 export function getAboutContent(): AboutContent {

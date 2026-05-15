@@ -57,7 +57,7 @@ export function ContactForm() {
         />
       </div>
 
-      <Field label="Nom" error={errors.name?.message}>
+      <Field label="Nom" inputId="name" error={errors.name?.message}>
         <input
           id="name"
           className={inputClass}
@@ -66,7 +66,7 @@ export function ContactForm() {
         />
       </Field>
 
-      <Field label="Email" error={errors.email?.message}>
+      <Field label="Email" inputId="email" error={errors.email?.message}>
         <input
           id="email"
           type="email"
@@ -76,11 +76,11 @@ export function ContactForm() {
         />
       </Field>
 
-      <Field label="Sujet" error={errors.subject?.message}>
+      <Field label="Sujet" inputId="subject" error={errors.subject?.message}>
         <input id="subject" className={inputClass} {...register("subject")} />
       </Field>
 
-      <Field label="Message" error={errors.message?.message}>
+      <Field label="Message" inputId="message" error={errors.message?.message}>
         <textarea
           id="message"
           rows={5}
@@ -108,20 +108,25 @@ export function ContactForm() {
 }
 
 const inputClass =
-  "w-full bg-anthracite/80 border border-white/15 px-4 py-3 text-ivory placeholder:text-stone focus:border-gold transition-colors duration-200";
+  "w-full rounded-lg bg-anthracite/70 border border-white/12 px-4 py-3 text-ivory text-[15px] placeholder:text-stone/90 outline-none ring-0 transition-all duration-200 focus:border-gold/50 focus:ring-2 focus:ring-gold/20";
 
 function Field({
   label,
+  inputId,
   error,
   children,
 }: {
   label: string;
+  inputId: string;
   error?: string;
   children: React.ReactNode;
 }) {
   return (
     <div>
-      <label htmlFor={label.toLowerCase()} className="block text-sm text-taupe mb-2">
+      <label
+        htmlFor={inputId}
+        className="block text-[11px] font-medium uppercase tracking-[0.14em] text-gold/85 mb-2"
+      >
         {label}
       </label>
       {children}

@@ -12,5 +12,23 @@
     "facebook": "https://www.facebook.com/cen21hospitality",
     "linkedin": "https://www.linkedin.com/company/cen21-hospitality"
   },
-  "heroImage": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&q=85"
+  "heroImage": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&q=85",
+  "heroSlides": [
+    {
+      "src": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&q=85",
+      "alt": "Salle de restaurant gastronomique élégante"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1920&q=85",
+      "alt": "Bar à cocktails, ambiance feutrée"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=1920&q=85",
+      "alt": "Lounge premium, lumière douce"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1920&q=85",
+      "alt": "Scène nightlife, lumières et énergie"
+    }
+  ]
 }

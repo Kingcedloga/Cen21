@@ -15,12 +15,12 @@ export function Header() {
 
   return (
     <header className="fixed top-4 left-4 right-4 z-50">
-      <div className="mx-auto max-w-7xl glass-panel rounded-2xl px-5 md:px-8 shadow-lg shadow-black/20">
-        <div className="flex h-16 md:h-[4.25rem] items-center justify-between">
-          <Logo size="md" />
+      <div className="mx-auto max-w-7xl glass-panel rounded-2xl px-5 md:px-8 shadow-lg shadow-black/30">
+        <div className="flex h-[4.25rem] md:h-[4.75rem] items-center justify-between">
+          <Logo size="xl" variant="header" />
 
           <nav
-            className="hidden lg:flex items-center gap-8"
+            className="hidden lg:flex items-center gap-9"
             aria-label="Navigation principale"
           >
             {NAV_LINKS.map(({ href, label }) => {
@@ -29,8 +29,10 @@ export function Header() {
                 <Link
                   key={href}
                   href={href}
-                  className={`text-sm tracking-wide transition-colors duration-200 cursor-pointer ${
-                    active ? "text-gold" : "text-ivory/80 hover:text-gold"
+                  className={`text-[13px] font-medium tracking-wide transition-colors duration-300 ease-out cursor-pointer ${
+                    active
+                      ? "text-gold"
+                      : "text-ivory/75 hover:text-ivory hover:text-gold/95"
                   }`}
                 >
                   {label}
@@ -59,7 +61,7 @@ export function Header() {
               <Link
                 key={href}
                 href={href}
-                className="text-ivory hover:text-gold py-2 px-2 rounded-lg transition-colors cursor-pointer"
+                className="text-ivory/85 hover:text-gold py-2.5 px-2 rounded-lg text-sm font-medium transition-colors duration-200 cursor-pointer"
                 onClick={() => setOpen(false)}
               >
                 {label}

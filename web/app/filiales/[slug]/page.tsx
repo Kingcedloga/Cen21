@@ -5,9 +5,11 @@ import { Clock, MapPin, Phone } from "lucide-react";
 
 import { EventCard } from "@/components/cards/EventCard";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
+import { MapEmbed } from "@/components/maps/MapEmbed";
+import { SectionWave } from "@/components/layout/SectionWave";
+import { SubsidiaryHero } from "@/components/sections/SubsidiaryHero";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Button } from "@/components/ui/Button";
-import { SocialLinks } from "@/components/ui/SocialLinks";
 import {
   SECTOR_LABELS,
   getAllSubsidiarySlugs,
@@ -51,34 +53,30 @@ export default async function SubsidiaryPage({ params }: Props) {
     ...getGalleryBySubsidiary(slug),
   ];
 
+  const heroSlides = dedupeSlides([
+    { src: subsidiary.coverImage, alt: subsidiary.name },
+    ...subsidiary.galleryImages.slice(0, 5).map((src, i) => ({
+      src,
+      alt: `${subsidiary.name} — ambiance ${i + 1}`,
+    })),
+  ]);
+
+  const mapQuery =
+    subsidiary.practicalInfo.address?.trim() ||
+    subsidiary.practicalInfo.phone?.trim() ||
+    subsidiary.name;
+
   return (
     <>
-      <section className="relative min-h-[60vh] flex items-end">
-        <Image
-          src={subsidiary.coverImage}
-          alt={subsidiary.name}
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `linear-gradient(to top, #0B2429 0%, transparent 60%), linear-gradient(90deg, ${subsidiary.accentColor}33 0%, transparent 30%)`,
-          }}
-        />
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 pb-16 md:pb-20 pt-32 md:pt-36">
-          <p className="text-gold text-sm tracking-[0.2em] uppercase mb-3">
-            {SECTOR_LABELS[subsidiary.sector]}
-          </p>
-          <h1 className="font-[family-name:var(--font-cormorant)] text-5xl md:text-6xl text-ivory mb-4">
-            {subsidiary.name}
-          </h1>
-          <p className="text-xl text-taupe max-w-2xl mb-6">{subsidiary.tagline}</p>
-          <SocialLinks social={subsidiary.social} label="Suivez-nous" />
-        </div>
-      </section>
+      <SubsidiaryHero
+        slides={heroSlides}
+        sectorLabel={SECTOR_LABELS[subsidiary.sector]}
+        name={subsidiary.name}
+        tagline={subsidiary.tagline}
+        social={subsidiary.social}
+      />
+
+      <SectionWave fill="petrol" />
 
       <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto">
         <AnimateIn>
@@ -87,6 +85,8 @@ export default async function SubsidiaryPage({ params }: Props) {
           </p>
         </AnimateIn>
       </section>
+
+      <SectionWave fill="band" />
 
       <section className="py-12 px-4 md:px-6 bg-anthracite/40">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -121,13 +121,34 @@ export default async function SubsidiaryPage({ params }: Props) {
         </div>
       </section>
 
-      {galleryItems.length > 0 && (
-        <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto">
-          <h2 className="font-[family-name:var(--font-cormorant)] text-3xl text-ivory mb-8">
-            Galerie
-          </h2>
-          <GalleryGrid items={galleryItems} showFilters={false} />
-        </section>
+      <SectionWave fill="petrol" flip />
+
+      <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto">
+        <h2 className="font-[family-name:var(--font-cormorant)] text-3xl text-ivory mb-4">
+          Plan d&apos;accès
+        </h2>
+        <p className="text-taupe text-sm mb-6 max-w-2xl">
+          Localisez l&apos;établissement sur la carte. L&apos;itinéraire s&apos;ouvre dans Google Maps.
+        </p>
+        <MapEmbed
+          query={mapQuery}
+          title={`Carte — ${subsidiary.name}`}
+        />
+      </section>
+
+      {galleryItems.length > 0 ? (
+        <>
+          <SectionWave fill="petrol" />
+          <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto">
+            <h2 className="font-[family-name:var(--font-cormorant)] text-3xl text-ivory mb-8">
+              Galerie
+            </h2>
+            <GalleryGrid items={galleryItems} showFilters={false} />
+          </section>
+          <SectionWave fill="petrol" flip />
+        </>
+      ) : (
+        <SectionWave fill="petrol" flip />
       )}
 
       <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto">
@@ -153,12 +174,21 @@ export default async function SubsidiaryPage({ params }: Props) {
   );
 }
 
+function dedupeSlides(slides: { src: string; alt: string }[]) {
+  const seen = new Set<string>();
+  return slides.filter((s) => {
+    if (seen.has(s.src)) return false;
+    seen.add(s.src);
+    return true;
+  });
+}
+
 function InfoItem({
   icon,
   label,
   value,
 }: {
-  icon: React.ReactNode;
+  icon: ReactNode;
   label: string;
   value: ReactNode;
 }) {

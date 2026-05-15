@@ -33,6 +33,10 @@ CONTACT_WEBHOOK_URL=https://your-webhook-endpoint
 
 Le formulaire inclut un champ honeypot anti-spam et un rate limit (5 req/min/IP).
 
+## URL du site (SEO)
+
+Définir `NEXT_PUBLIC_SITE_URL` dans `.env.local` (voir `.env.example`) pour que `metadataBase`, le `sitemap.xml` et `robots.txt` utilisent votre domaine réel. Les pages **Mentions légales**, **Confidentialité** et **Cookies** sont des modèles à compléter avec votre conseil / infos hébergeur.
+
 ## Charte
 
 Voir [`../design-system/MASTER.md`](../design-system/MASTER.md) et le MCP `cen21-spec` du repo.

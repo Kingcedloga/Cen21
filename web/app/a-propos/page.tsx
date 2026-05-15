@@ -1,4 +1,5 @@
 import { PageHero } from "@/components/sections/PageHero";
+import { SectionWave } from "@/components/layout/SectionWave";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { getAboutContent } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
@@ -30,6 +31,8 @@ export default function AboutPage() {
         </AnimateIn>
       </section>
 
+      <SectionWave fill="band" />
+
       <section className="py-16 px-4 md:px-6 bg-anthracite/40">
         <div className="max-w-7xl mx-auto">
           <AnimateIn>
@@ -40,6 +43,8 @@ export default function AboutPage() {
           </AnimateIn>
         </div>
       </section>
+
+      <SectionWave fill="petrol" flip />
 
       <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto">
         <AnimateIn>
@@ -61,7 +66,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-16 px-4 md:px-6 border-t border-white/10">
+      <SectionWave fill="petrol" />
+
+      <section className="py-16 px-4 md:px-6">
         <div className="max-w-7xl mx-auto">
           <AnimateIn>
             <h2 className="font-[family-name:var(--font-cormorant)] text-3xl text-ivory mb-6">

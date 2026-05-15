@@ -5,14 +5,14 @@ export function CtaBand() {
   return (
     <section className="py-24 px-4 md:px-6">
       <AnimateIn>
-        <div className="max-w-7xl mx-auto glass-panel rounded-2xl p-10 md:p-16 text-center">
-          <p className="text-gold text-sm tracking-[0.2em] uppercase mb-4">
+        <div className="max-w-7xl mx-auto glass-panel rounded-2xl p-10 md:p-14 lg:p-16 text-center ring-1 ring-inset ring-white/[0.06]">
+          <p className="text-gold text-[11px] font-medium tracking-[0.28em] uppercase mb-4">
             Expériences sur mesure
           </p>
-          <h2 className="font-[family-name:var(--font-cormorant)] text-3xl md:text-5xl text-ivory mb-6">
+          <h2 className="font-[family-name:var(--font-cormorant)] text-3xl md:text-5xl text-ivory mb-5 tracking-[-0.02em] leading-tight">
             Prêt à vivre l&apos;exception ?
           </h2>
-          <p className="text-taupe max-w-xl mx-auto mb-8">
+          <p className="text-taupe text-base md:text-lg max-w-xl mx-auto mb-10 leading-[1.65]">
             Explorez nos adresses, nos événements à venir ou contactez-nous pour
             une expérience privée.
           </p>
