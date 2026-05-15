@@ -1,0 +1,29 @@
+{
+  "expectedCountNote": "Le cahier des charges indique 8 filiales (sections 1.2 et 4) et 10 établissements sur la page Filiales (section 8.1). Compléter ou ajuster cette liste avec l'équipe métier.",
+  "documentedCounts": { "architecture": 8, "filialesPage": 10 },
+  "subsidiaryPageTemplate": {
+    "sections": [
+      "Hero et identité visuelle propre à la filiale",
+      "Présentation descriptive détaillée",
+      "Galerie média",
+      "Informations pratiques (horaires, adresse, contact)",
+      "Événements associés (si applicable)"
+    ],
+    "requirements": [
+      "Page dédiée avec URL propre",
+      "Identité visuelle personnalisée dans le cadre du groupe",
+      "Cohérence UX avec la plateforme holding"
+    ]
+  },
+  "sectors": ["restaurant", "bar", "lounge", "nightclub", "evenementiel"],
+  "subsidiaries": [
+    { "slug": "filiale-01", "name": "À compléter", "sector": "restaurant", "status": "placeholder" },
+    { "slug": "filiale-02", "name": "À compléter", "sector": "bar", "status": "placeholder" },
+    { "slug": "filiale-03", "name": "À compléter", "sector": "lounge", "status": "placeholder" },
+    { "slug": "filiale-04", "name": "À compléter", "sector": "nightclub", "status": "placeholder" },
+    { "slug": "filiale-05", "name": "À compléter", "sector": "evenementiel", "status": "placeholder" },
+    { "slug": "filiale-06", "name": "À compléter", "sector": "restaurant", "status": "placeholder" },
+    { "slug": "filiale-07", "name": "À compléter", "sector": "bar", "status": "placeholder" },
+    { "slug": "filiale-08", "name": "À compléter", "sector": "lounge", "status": "placeholder" }
+  ]
+}

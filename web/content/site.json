@@ -1,0 +1,16 @@
+{
+  "name": "Cen21 Hospitality",
+  "tagline": "L'art de vivre l'exception",
+  "description": "Holding premium dédiée à l'hospitalité, au divertissement et aux expériences lifestyle haut de gamme.",
+  "contact": {
+    "email": "contact@cen21hospitality.com",
+    "phone": "+33 1 00 00 00 00",
+    "address": "Paris, France"
+  },
+  "social": {
+    "instagram": "https://www.instagram.com/cen21hospitality",
+    "facebook": "https://www.facebook.com/cen21hospitality",
+    "linkedin": "https://www.linkedin.com/company/cen21-hospitality"
+  },
+  "heroImage": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&q=85"
+}

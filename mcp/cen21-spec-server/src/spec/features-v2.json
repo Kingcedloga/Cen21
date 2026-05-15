@@ -1,0 +1,32 @@
+{
+  "version": "v2",
+  "status": "planned",
+  "reservation": {
+    "userFeatures": [
+      "Réserver une table",
+      "Réserver un espace VIP",
+      "Choisir un établissement",
+      "Choisir une date et un horaire",
+      "Recevoir une confirmation",
+      "Consulter ses réservations"
+    ],
+    "adminFeatures": [
+      "Gérer les réservations",
+      "Gérer les disponibilités",
+      "Gérer les capacités",
+      "Configurer les horaires",
+      "Visualiser les statistiques"
+    ]
+  },
+  "futureEvolutions": [
+    "Réservations avancées",
+    "Paiements en ligne",
+    "Programme de fidélité",
+    "Comptes utilisateurs",
+    "Notifications",
+    "Application mobile",
+    "CRM client",
+    "Statistiques avancées"
+  ],
+  "implementationNote": "Ne pas implémenter en V1 sans demande explicite. L'architecture V1 doit rester compatible."
+}

@@ -1,0 +1,31 @@
+{
+  "projectName": "Cen21 Hospitality — Plateforme Digitale Premium",
+  "specVersion": "1.0.0",
+  "language": "fr",
+  "lastUpdated": "2026-05-15",
+  "subsidiaryCountConflict": true,
+  "subsidiaryCounts": {
+    "holdingSection": 8,
+    "filialesPageSection": 10
+  },
+  "sections": [
+    "presentation",
+    "contexte",
+    "objectifs",
+    "architecture",
+    "direction-artistique",
+    "charte-graphique",
+    "ux",
+    "fonctionnalites-v1",
+    "fonctionnalites-v2",
+    "medias",
+    "contraintes-techniques",
+    "performance-securite",
+    "seo",
+    "administration",
+    "evolutions-futures"
+  ],
+  "notes": [
+    "Le cahier mentionne 8 filiales (sections 1.2 et 4) et 10 établissements (section 8.1). Aligner le nombre réel avant développement des pages filiales."
+  ]
+}

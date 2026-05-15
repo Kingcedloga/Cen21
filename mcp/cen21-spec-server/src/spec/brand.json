@@ -1,0 +1,36 @@
+{
+  "positioning": [
+    "Luxe moderne",
+    "Élégance minimaliste",
+    "Atmosphère immersive",
+    "Profondeur cinématographique",
+    "Expérience éditoriale premium"
+  ],
+  "inspirations": [
+    "Hôtels de luxe",
+    "Magazines de mode premium",
+    "Architecture contemporaine",
+    "Expériences nightlife haut de gamme"
+  ],
+  "colors": [
+    { "usage": "Base principale", "name": "Bleu pétrole profond", "hex": "#0B2429" },
+    { "usage": "Accent premium", "name": "Or champagne", "hex": "#C5A059" },
+    { "usage": "Structure", "name": "Noir anthracite", "hex": "#121212" },
+    { "usage": "Texte principal", "name": "Ivoire chaud", "hex": "#F5F2E8" },
+    { "usage": "Interface secondaire", "name": "Taupe discret", "hex": "#7D746D" },
+    { "usage": "Interface subtile", "name": "Gris pierre doux", "hex": "#8E8E8E" }
+  ],
+  "typography": {
+    "headings": {
+      "family": "Cormorant Garamond",
+      "levels": ["H1", "H2", "H3"]
+    },
+    "body": {
+      "family": "Inter",
+      "usage": ["Paragraphes", "Menus", "Boutons", "Interface utilisateur"]
+    }
+  },
+  "iconography": {
+    "style": "Minimaliste, élégante, discrète, traits fins"
+  }
+}

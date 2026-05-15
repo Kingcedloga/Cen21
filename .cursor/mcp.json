@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "cen21-spec": {
+      "command": "node",
+      "args": ["mcp/cen21-spec-server/dist/index.js"]
+    }
+  }
+}

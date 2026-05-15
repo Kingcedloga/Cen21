@@ -1,0 +1,74 @@
+{
+  "events": [
+    {
+      "id": "evt-1",
+      "slug": "soiree-degustation-maison-eclat",
+      "title": "Soirée dégustation — Menu printemps",
+      "date": "2026-06-15T19:30:00",
+      "location": "Maison Éclat, Paris",
+      "subsidiarySlug": "filiale-01",
+      "image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80",
+      "excerpt": "Une immersion gastronomique autour des produits de saison, en cinq temps."
+    },
+    {
+      "id": "evt-2",
+      "slug": "masterclass-mixologie",
+      "title": "Masterclass mixologie signature",
+      "date": "2026-06-22T18:00:00",
+      "location": "Le Verre Noir, Paris",
+      "subsidiarySlug": "filiale-02",
+      "image": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80",
+      "excerpt": "Apprenez les techniques des créations maison avec notre head bartender."
+    },
+    {
+      "id": "evt-3",
+      "slug": "live-sessions-azure",
+      "title": "Live Sessions — Jazz contemporain",
+      "date": "2026-07-05T21:00:00",
+      "location": "Azure Lounge, Paris",
+      "subsidiarySlug": "filiale-03",
+      "image": "https://images.unsplash.com/photo-1415201364774-f6f0ff3f28f0?w=800&q=80",
+      "excerpt": "Une soirée acoustique intimiste au cœur du lounge."
+    },
+    {
+      "id": "evt-4",
+      "slug": "nocturne-summer-opening",
+      "title": "Summer Opening — DJ international",
+      "date": "2026-07-12T23:00:00",
+      "location": "Nocturne Club, Paris",
+      "subsidiarySlug": "filiale-04",
+      "image": "https://images.unsplash.com/photo-1571266028243-e4733b0bf77b?w=800&q=80",
+      "excerpt": "Lancement de la saison estivale avec une programmation exclusive."
+    },
+    {
+      "id": "evt-5",
+      "slug": "gala-prive-palais",
+      "title": "Gala privé — Collection automne",
+      "date": "2026-09-20T20:00:00",
+      "location": "Palais des Fêtes, Paris",
+      "subsidiarySlug": "filiale-05",
+      "image": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80",
+      "excerpt": "Soirée sur invitation dans notre espace événementiel premium."
+    },
+    {
+      "id": "evt-6",
+      "slug": "sunset-terrasse",
+      "title": "Sunset Dinner — Rooftop",
+      "date": "2026-08-08T19:00:00",
+      "location": "Terrasse du Sud, Paris",
+      "subsidiarySlug": "filiale-06",
+      "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80",
+      "excerpt": "Dîner au coucher du soleil avec menu méditerranéen dédié."
+    },
+    {
+      "id": "evt-7",
+      "slug": "archives-winter-ball",
+      "title": "Winter Ball — Édition 2025",
+      "date": "2025-12-15T21:00:00",
+      "location": "Palais des Fêtes, Paris",
+      "subsidiarySlug": "filiale-05",
+      "image": "https://images.unsplash.com/photo-1519167758481-83f29da8c2f2?w=800&q=80",
+      "excerpt": "Retour sur le gala hivernal de la collection passée."
+    }
+  ]
+}

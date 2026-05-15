@@ -1,0 +1,48 @@
+{
+  "version": "v1",
+  "inScope": {
+    "institutionalSite": {
+      "pages": ["home", "about", "subsidiaries", "events", "gallery", "contact"]
+    },
+    "subsidiaryManagement": [
+      "Page personnalisée par filiale",
+      "Galerie par filiale",
+      "Informations pratiques",
+      "Identité propre",
+      "Section descriptive"
+    ],
+    "contentManagement": [
+      "Modification des contenus",
+      "Gestion des images",
+      "Publication d'actualités",
+      "Gestion des événements",
+      "Mise à jour des informations établissements"
+    ],
+    "adminDashboard": [
+      "Gestion des pages",
+      "Gestion des médias",
+      "Gestion des filiales",
+      "Gestion des événements",
+      "Gestion des contenus"
+    ],
+    "quality": ["SEO", "Responsive", "Performance", "Accessibilité"]
+  },
+  "outOfScope": [
+    "Système de réservation (V2)",
+    "Paiements en ligne",
+    "Programme de fidélité",
+    "Comptes utilisateurs finaux",
+    "Application mobile native"
+  ],
+  "v2Preparation": [
+    "Architecture multi-filiales extensible",
+    "Base de données évolutive",
+    "Intégration future des réservations sans refonte majeure"
+  ],
+  "security": [
+    "Protection anti-spam sur formulaires",
+    "Sécurisation des formulaires",
+    "SSL/HTTPS",
+    "Sauvegardes régulières (infrastructure)"
+  ]
+}

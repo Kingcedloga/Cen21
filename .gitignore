@@ -1,0 +1,11 @@
+node_modules/
+dist/
+web/.next/
+web/out/
+.DS_Store
+*.log
+.env
+.env.*
+
+# Cursor agent skills (install locally via uipro-cli)
+.cursor/skills/

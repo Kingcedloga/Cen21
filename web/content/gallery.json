@@ -1,0 +1,86 @@
+{
+  "items": [
+    {
+      "id": "gal-1",
+      "src": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80",
+      "alt": "Salle de restaurant élégante",
+      "subsidiarySlug": "filiale-01",
+      "tags": ["gastronomie", "interieur"]
+    },
+    {
+      "id": "gal-2",
+      "src": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=900&q=80",
+      "alt": "Cocktail signature au bar",
+      "subsidiarySlug": "filiale-02",
+      "tags": ["mixologie", "bar"]
+    },
+    {
+      "id": "gal-3",
+      "src": "https://images.unsplash.com/photo-1566417713940-fe7db97ce960?w=900&q=80",
+      "alt": "Ambiance lounge feutrée",
+      "subsidiarySlug": "filiale-03",
+      "tags": ["lounge", "ambiance"]
+    },
+    {
+      "id": "gal-4",
+      "src": "https://images.unsplash.com/photo-1571266028243-e4733b0bf77b?w=900&q=80",
+      "alt": "Piste de danse et lumières",
+      "subsidiarySlug": "filiale-04",
+      "tags": ["nightlife", "club"]
+    },
+    {
+      "id": "gal-5",
+      "src": "https://images.unsplash.com/photo-1519167758481-83f29da8c2f2?w=900&q=80",
+      "alt": "Salle de réception décorée",
+      "subsidiarySlug": "filiale-05",
+      "tags": ["evenementiel", "gala"]
+    },
+    {
+      "id": "gal-6",
+      "src": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&q=80",
+      "alt": "Terrasse rooftop au coucher du soleil",
+      "subsidiarySlug": "filiale-06",
+      "tags": ["rooftop", "exterieur"]
+    },
+    {
+      "id": "gal-7",
+      "src": "https://images.unsplash.com/photo-1506377247377-2a5b3e417ebf?w=900&q=80",
+      "alt": "Sélection de vins",
+      "subsidiarySlug": "filiale-07",
+      "tags": ["vin", "degustation"]
+    },
+    {
+      "id": "gal-8",
+      "src": "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=900&q=80",
+      "alt": "Coin salon lounge",
+      "subsidiarySlug": "filiale-08",
+      "tags": ["lounge", "design"]
+    },
+    {
+      "id": "gal-9",
+      "src": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=900&q=80",
+      "alt": "Dressage de plat gastronomique",
+      "subsidiarySlug": "filiale-01",
+      "tags": ["gastronomie", "plat"]
+    },
+    {
+      "id": "gal-10",
+      "src": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=900&q=80",
+      "alt": "Bar à cocktails éclairé",
+      "subsidiarySlug": "filiale-02",
+      "tags": ["bar", "ambiance"]
+    },
+    {
+      "id": "gal-11",
+      "src": "https://images.unsplash.com/photo-1415201364774-f6f0ff3f28f0?w=900&q=80",
+      "alt": "Scène live music",
+      "tags": ["musique", "live"]
+    },
+    {
+      "id": "gal-12",
+      "src": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&q=80",
+      "alt": "Vue d'ensemble restaurant premium",
+      "tags": ["holding", "premium"]
+    }
+  ]
+}

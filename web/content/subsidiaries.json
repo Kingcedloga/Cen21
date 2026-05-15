@@ -1,0 +1,244 @@
+{
+  "subsidiaries": [
+    {
+      "slug": "filiale-01",
+      "name": "Maison Éclat",
+      "sector": "restaurant",
+      "tagline": "Haute gastronomie contemporaine",
+      "description": "Une table d'exception où les produits de saison dialoguent avec une cuisine audacieuse. L'expérience se déploie en plusieurs temps, dans un décor feutré aux accents dorés.",
+      "practicalInfo": {
+        "address": "8 Rue de la Paix, Paris",
+        "hours": "Mar–Sam 19h–23h",
+        "phone": "+33 1 40 00 00 01"
+      },
+      "social": {
+        "instagram": "https://www.instagram.com/maison.eclat.paris",
+        "facebook": "https://www.facebook.com/maison.eclat.paris",
+        "linkedin": "https://www.linkedin.com/company/maison-eclat-paris"
+      },
+      "accentColor": "#8B6914",
+      "coverImage": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80",
+        "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80"
+      ],
+      "featured": true
+    },
+    {
+      "slug": "filiale-02",
+      "name": "Le Verre Noir",
+      "sector": "bar",
+      "tagline": "Mixologie signature & spiritueux rares",
+      "description": "Un bar à cocktails d'auteur dans une atmosphère feutrée. Carte évolutive, spiritueux d'exception et créations maison servies avec précision.",
+      "practicalInfo": {
+        "address": "22 Boulevard Haussmann, Paris",
+        "hours": "Mer–Dim 18h–02h",
+        "phone": "+33 1 40 00 00 02"
+      },
+      "social": {
+        "instagram": "https://www.instagram.com/leverrenoir.paris",
+        "facebook": "https://www.facebook.com/leverrenoir.paris",
+        "linkedin": "https://www.linkedin.com/company/le-verre-noir"
+      },
+      "accentColor": "#4A5568",
+      "coverImage": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1200&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80",
+        "https://images.unsplash.com/photo-1525267479666-1e0003f5ac2e?w=800&q=80"
+      ],
+      "featured": true
+    },
+    {
+      "slug": "filiale-03",
+      "name": "Azure Lounge",
+      "sector": "lounge",
+      "tagline": "Détente premium & musique live",
+      "description": "Un lounge où l'élégance rencontre la détente. Fauteuils profonds, programmation musicale soignée et service discret pour des soirées prolongées.",
+      "practicalInfo": {
+        "address": "5 Quai de Seine, Paris",
+        "hours": "Jeu–Dim 20h–03h",
+        "phone": "+33 1 40 00 00 03"
+      },
+      "social": {
+        "instagram": "https://www.instagram.com/azurelounge.paris",
+        "facebook": "https://www.facebook.com/azurelounge.paris",
+        "linkedin": "https://www.linkedin.com/company/azure-lounge-paris"
+      },
+      "accentColor": "#2C5282",
+      "coverImage": "https://images.unsplash.com/photo-1566417713940-fe7db97ce960?w=1200&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=800&q=80",
+        "https://images.unsplash.com/photo-1541534409609-8df8e5b1d4d4?w=800&q=80"
+      ],
+      "featured": true
+    },
+    {
+      "slug": "filiale-04",
+      "name": "Nocturne Club",
+      "sector": "nightclub",
+      "tagline": "Nuits électrisantes & scénographie immersive",
+      "description": "Le temple de la nuit parisienne. Sound design de référence, lumières architecturales et programmation internationale pour des expériences inoubliables.",
+      "practicalInfo": {
+        "address": "12 Rue de Lappe, Paris",
+        "hours": "Ven–Sam 23h–06h",
+        "phone": "+33 1 40 00 00 04"
+      },
+      "social": {
+        "instagram": "https://www.instagram.com/nocturneclub.paris",
+        "facebook": "https://www.facebook.com/nocturneclub.paris",
+        "linkedin": "https://www.linkedin.com/company/nocturne-club"
+      },
+      "accentColor": "#6B46C1",
+      "coverImage": "https://images.unsplash.com/photo-1571266028243-e4733b0bf77b?w=1200&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1574391884720-bbc3740c59d6?w=800&q=80",
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80"
+      ],
+      "featured": true
+    },
+    {
+      "slug": "filiale-05",
+      "name": "Palais des Fêtes",
+      "sector": "evenementiel",
+      "tagline": "Événements privés & corporates d'exception",
+      "description": "Un espace modulable dédié aux célébrations premium. Mariages, lancements et soirées privées orchestrés par une équipe événementielle experte.",
+      "practicalInfo": {
+        "address": "45 Avenue Montaigne, Paris",
+        "hours": "Sur réservation",
+        "phone": "+33 1 40 00 00 05"
+      },
+      "social": {
+        "instagram": "https://www.instagram.com/palaisdesfetes",
+        "facebook": "https://www.facebook.com/palaisdesfetes",
+        "linkedin": "https://www.linkedin.com/company/palais-des-fetes"
+      },
+      "accentColor": "#9B2C2C",
+      "coverImage": "https://images.unsplash.com/photo-1519167758481-83f29da8c2f2?w=1200&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80",
+        "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80"
+      ],
+      "featured": false
+    },
+    {
+      "slug": "filiale-06",
+      "name": "Terrasse du Sud",
+      "sector": "restaurant",
+      "tagline": "Cuisine méditerranéenne & rooftop",
+      "description": "Saveurs ensoleillées servies sur une terrasse panoramique. Une cuisine généreuse, des vins sélectionnés et des couchers de soleil spectaculaires.",
+      "practicalInfo": {
+        "address": "3 Place du Trocadéro, Paris",
+        "hours": "Tous les jours 12h–00h",
+        "phone": "+33 1 40 00 00 06"
+      },
+      "social": {
+        "instagram": "https://www.instagram.com/terrassedusud.paris",
+        "facebook": "https://www.facebook.com/terrassedusud.paris",
+        "linkedin": "https://www.linkedin.com/company/terrasse-du-sud"
+      },
+      "accentColor": "#C05621",
+      "coverImage": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800&q=80",
+        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80"
+      ],
+      "featured": false
+    },
+    {
+      "slug": "filiale-07",
+      "name": "Cave & Cie",
+      "sector": "bar",
+      "tagline": "Vins naturels & tapas raffinés",
+      "description": "Une cave à vins contemporaine où dégustation et convivialité s'unissent. Sélection pointue, accords mets-vins et ambiance chaleureuse.",
+      "practicalInfo": {
+        "address": "18 Rue des Martyrs, Paris",
+        "hours": "Mar–Dim 17h–01h",
+        "phone": "+33 1 40 00 00 07"
+      },
+      "social": {
+        "instagram": "https://www.instagram.com/caveetcie.paris",
+        "facebook": "https://www.facebook.com/caveetcie.paris",
+        "linkedin": "https://www.linkedin.com/company/cave-et-cie"
+      },
+      "accentColor": "#744210",
+      "coverImage": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=1200&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1506377247377-2a5b3e417ebf?w=800&q=80",
+        "https://images.unsplash.com/photo-1510812431401-41d2bd2724f3?w=800&q=80"
+      ],
+      "featured": false
+    },
+    {
+      "slug": "filiale-08",
+      "name": "Velours Lounge",
+      "sector": "lounge",
+      "tagline": "After-work chic & cocktails fumés",
+      "description": "Le rendez-vous des fins de journée parisiennes. Ambiance feutrée, playlist curated et carte de cocktails signature dans un décor velours et laiton.",
+      "practicalInfo": {
+        "address": "7 Rue de Rivoli, Paris",
+        "hours": "Lun–Sam 17h–02h",
+        "phone": "+33 1 40 00 00 08"
+      },
+      "social": {
+        "instagram": "https://www.instagram.com/velourslounge.paris",
+        "facebook": "https://www.facebook.com/velourslounge.paris",
+        "linkedin": "https://www.linkedin.com/company/velours-lounge"
+      },
+      "accentColor": "#553C9A",
+      "coverImage": "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=1200&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1566417713940-fe7db97ce960?w=800&q=80",
+        "https://images.unsplash.com/photo-1525267479666-1e0003f5ac2e?w=800&q=80"
+      ],
+      "featured": false
+    },
+    {
+      "slug": "filiale-09",
+      "name": "Étoile Rooftop",
+      "sector": "restaurant",
+      "tagline": "Dîners sous les étoiles & skyline parisien",
+      "description": "Un rooftop gastronomique offrant une vue panoramique sur la capitale. Cuisine créative, champagne sélectionné et ambiance feutrée jusqu'au petit matin.",
+      "practicalInfo": {
+        "address": "33 Avenue George V, Paris",
+        "hours": "Mer–Dim 19h–02h",
+        "phone": "+33 1 40 00 00 09"
+      },
+      "social": {
+        "instagram": "https://www.instagram.com/etoilerooftop.paris",
+        "facebook": "https://www.facebook.com/etoilerooftop.paris",
+        "linkedin": "https://www.linkedin.com/company/etoile-rooftop"
+      },
+      "accentColor": "#B7791F",
+      "coverImage": "https://images.unsplash.com/photo-1551884170-09c70cd0d2ed?w=1200&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1466978913421-dad2ebd01d9b?w=800&q=80",
+        "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&q=80"
+      ],
+      "featured": false
+    },
+    {
+      "slug": "filiale-10",
+      "name": "Studio Opale",
+      "sector": "evenementiel",
+      "tagline": "Lancements, showcases & expériences immersives",
+      "description": "Un studio événementiel modulable dédié aux marques et artistes. Scénographie sur mesure, captation live et hospitality premium pour chaque invité.",
+      "practicalInfo": {
+        "address": "14 Rue Oberkampf, Paris",
+        "hours": "Sur réservation",
+        "phone": "+33 1 40 00 00 10"
+      },
+      "social": {
+        "instagram": "https://www.instagram.com/studioopale.paris",
+        "facebook": "https://www.facebook.com/studioopale.paris",
+        "linkedin": "https://www.linkedin.com/company/studio-opale"
+      },
+      "accentColor": "#2D3748",
+      "coverImage": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1505373877841-8d25f39c466f?w=800&q=80",
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80"
+      ],
+      "featured": false
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "version": "v1",
+  "pages": [
+    {
+      "id": "home",
+      "slug": "/",
+      "title": "Accueil",
+      "objectives": [
+        "Présentation immersive du groupe",
+        "Mise en avant de Cen21 Hospitality",
+        "Highlights des filiales",
+        "Incitation à l'action (CTA)"
+      ],
+      "blocks": [
+        "Hero immersif cinématographique",
+        "Présentation du holding",
+        "Grille ou carousel des filiales en vedette",
+        "Call-to-action (contact, filiales, événements)"
+      ]
+    },
+    {
+      "id": "about",
+      "slug": "/a-propos",
+      "title": "À propos",
+      "objectives": [
+        "Présenter l'histoire du groupe",
+        "Communiquer vision et valeurs",
+        "Affirmer le positionnement premium"
+      ],
+      "blocks": [
+        "Histoire de Cen21 Hospitality",
+        "Vision",
+        "Valeurs",
+        "Positionnement lifestyle haut de gamme"
+      ]
+    },
+    {
+      "id": "subsidiaries",
+      "slug": "/filiales",
+      "title": "Filiales",
+      "objectives": [
+        "Lister l'ensemble des établissements",
+        "Permettre la navigation vers chaque espace dédié"
+      ],
+      "blocks": [
+        "Liste des établissements (8 à 10 selon alignement métier)",
+        "Carte ou grille avec identité visuelle par filiale",
+        "Liens vers pages filiales"
+      ]
+    },
+    {
+      "id": "events",
+      "slug": "/evenements",
+      "title": "Événements",
+      "objectives": [
+        "Promouvoir les soirées et activités",
+        "Mettre en avant les expériences du groupe"
+      ],
+      "blocks": [
+        "Liste ou calendrier des événements",
+        "Mise en avant des soirées phares",
+        "Association éventuelle à une filiale"
+      ]
+    },
+    {
+      "id": "gallery",
+      "slug": "/galerie",
+      "title": "Galerie",
+      "objectives": [
+        "Valoriser les médias haute résolution",
+        "Renforcer l'immersion visuelle"
+      ],
+      "blocks": [
+        "Photos haute résolution",
+        "Vidéos immersives",
+        "Navigation fluide type éditorial premium"
+      ]
+    },
+    {
+      "id": "contact",
+      "slug": "/contact",
+      "title": "Contact",
+      "objectives": [
+        "Faciliter la prise de contact",
+        "Centraliser les coordonnées et réseaux sociaux"
+      ],
+      "blocks": [
+        "Formulaire de contact (anti-spam requis)",
+        "Coordonnées du groupe",
+        "Liens réseaux sociaux"
+      ]
+    }
+  ]
+}

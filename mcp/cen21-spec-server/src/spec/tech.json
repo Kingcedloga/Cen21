@@ -1,0 +1,22 @@
+{
+  "stack": {
+    "languages": ["TypeScript", "JavaScript"],
+    "framework": "React"
+  },
+  "optimizations": ["SEO", "Responsive", "Performance", "Accessibilité"],
+  "browsers": ["Google Chrome", "Safari", "Firefox", "Microsoft Edge"],
+  "devices": ["Desktop", "Tablette", "Mobile"],
+  "mediaRequirements": {
+    "quality": "Haute résolution, professionnels, cohérents luxe",
+    "optimization": "Optimisés pour le web",
+    "types": ["Photos", "Vidéos", "Animations", "Visuels promotionnels"]
+  },
+  "seo": [
+    "Référencement naturel",
+    "Performances Google",
+    "Métadonnées",
+    "Réseaux sociaux (Open Graph, etc.)"
+  ],
+  "performance": ["Rapide", "Optimisé", "Compressé", "Responsive"],
+  "security": ["Anti-spam", "Formulaires sécurisés", "SSL/HTTPS", "Sauvegardes régulières"]
+}
