@@ -95,22 +95,6 @@ export function HeroCinematic({
 
       {len > 1 && (
         <>
-          <div className="absolute bottom-28 left-4 right-4 z-20 flex justify-center gap-2 md:bottom-36">
-            {list.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                aria-label={`Slide ${i + 1} sur ${len}`}
-                aria-current={i === safeIndex}
-                onClick={() => setIndex(i)}
-                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                  i === safeIndex
-                    ? "w-8 bg-gold"
-                    : "w-2 bg-ivory/40 hover:bg-ivory/70"
-                }`}
-              />
-            ))}
-          </div>
           <button
             type="button"
             onClick={prev}
