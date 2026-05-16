@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { SubsidiaryCoverFlowCard } from "@/components/filiales/SubsidiaryCoverFlowCard";
 import type { Subsidiary } from "@/lib/types";
@@ -9,65 +9,95 @@ import type { Subsidiary } from "@/lib/types";
 const AUTO_MS = 5500;
 const VISIBLE_RANGE = 3;
 
+type Breakpoint = "mobile" | "tablet" | "desktop";
+
 type StageMetrics = {
   spread: number;
   cardW: number;
   cardH: number;
-  /** Échelle de la carte active. Conservatrice sur mobile pour rester contenue. */
+  /** Échelle de la carte active. 1.0 sur mobile pour rester strictement contenue. */
   activeScale: number;
-  /** Hauteur réservée du wrapper, basée sur cardH × activeScale + breathing. */
+  /** Hauteur réservée du wrapper, alignée sur le min-h Tailwind correspondant. */
   wrapperH: number;
+  /** Rotations Y des cartes adjacentes — moins agressives sur mobile pour réduire l'empreinte horizontale. */
+  rotateY1: number;
+  rotateY2: number;
+  rotateY3: number;
 };
 
-// Valeurs déterministes utilisées en SSR + 1er render client (mobile-first).
-// SSR HTML ≡ premier render client → zéro mismatch d'hydratation.
+// SSR + 1er render client (mobile-first) — déterministe, pas de mismatch d'hydratation.
 const SSR_METRICS: StageMetrics = {
-  spread: 54,
-  cardW: 156,
-  cardH: 234,
+  spread: 50,
+  cardW: 144,
+  cardH: 216,
   activeScale: 1.0,
-  wrapperH: 320,
+  wrapperH: 280,
+  rotateY1: 32,
+  rotateY2: 42,
+  rotateY3: 48,
 };
 
-/**
- * Calcule les metrics 3D à partir de la LARGEUR RÉELLE rendue du wrapper
- * (mesurée via ResizeObserver), pas window.innerWidth.
- *
- * Pourquoi : window.innerWidth peut diverger du viewport CSS (DevTools
- * mobile simulator, iframes, certains émulateurs), causant un mismatch
- * entre les metrics 3D (mobile attendues) et le min-h Tailwind appliqué
- * (mobile correct via media query). Mesurer l'élément lui-même garantit
- * un alignement parfait avec le layout CSS quel que soit le contexte.
- */
-function getStageMetrics(width: number): StageMetrics {
-  if (width < 640) {
-    // Mobile : carte active scale 1.0 (pas d'agrandissement) →
-    // hauteur visible = cardH = 234, contenue dans wrapper 320px
-    // (43px de respiration haute + basse).
-    return {
-      spread: 54,
-      cardW: 156,
-      cardH: 234,
-      activeScale: 1.0,
-      wrapperH: 320,
-    };
-  }
-  if (width < 1024) {
-    return {
-      spread: 118,
-      cardW: 220,
-      cardH: 330,
-      activeScale: 1.06,
-      wrapperH: 420,
-    };
-  }
-  return {
+const METRICS: Record<Breakpoint, StageMetrics> = {
+  mobile: SSR_METRICS,
+  tablet: {
+    spread: 110,
+    cardW: 200,
+    cardH: 300,
+    activeScale: 1.05,
+    wrapperH: 360,
+    rotateY1: 36,
+    rotateY2: 46,
+    rotateY3: 52,
+  },
+  desktop: {
     spread: 178,
     cardW: 296,
     cardH: 444,
     activeScale: 1.1,
-    wrapperH: 540,
-  };
+    wrapperH: 520,
+    rotateY1: 38,
+    rotateY2: 48,
+    rotateY3: 52,
+  },
+};
+
+/**
+ * Détection de breakpoint synchrone avec les media queries Tailwind.
+ *
+ * matchMedia partage EXACTEMENT la même grammaire CSS que Tailwind :
+ *   - `(min-width: 640px)` ↔ Tailwind `sm:`
+ *   - `(min-width: 1024px)` ↔ Tailwind `lg:`
+ *
+ * Cela rend impossible toute désynchronisation entre les metrics 3D
+ * (JS) et le min-h Tailwind (CSS) — quel que soit le contexte d'exécution
+ * (DevTools simulator, iframe, mockup frame, container sans contrainte).
+ */
+function useBreakpoint(): { bp: Breakpoint; mounted: boolean } {
+  const [bp, setBp] = useState<Breakpoint>("mobile");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const mqDesktop = window.matchMedia("(min-width: 1024px)");
+    const mqTablet = window.matchMedia("(min-width: 640px)");
+
+    const update = () => {
+      if (mqDesktop.matches) setBp("desktop");
+      else if (mqTablet.matches) setBp("tablet");
+      else setBp("mobile");
+    };
+
+    update();
+    setMounted(true);
+
+    mqDesktop.addEventListener("change", update);
+    mqTablet.addEventListener("change", update);
+    return () => {
+      mqDesktop.removeEventListener("change", update);
+      mqTablet.removeEventListener("change", update);
+    };
+  }, []);
+
+  return { bp, mounted };
 }
 
 function wrapOffset(index: number, active: number, len: number) {
@@ -107,7 +137,8 @@ function cardMotion(offset: number, reduced: boolean, m: StageMetrics) {
             ? 0.58
             : 0.5;
 
-  const rotateY = sign * (abs === 1 ? 38 : abs === 2 ? 48 : abs === 3 ? 52 : 0);
+  const rotateY =
+    sign * (abs === 1 ? m.rotateY1 : abs === 2 ? m.rotateY2 : abs === 3 ? m.rotateY3 : 0);
 
   return {
     x: offset * m.spread - halfW,
@@ -127,38 +158,11 @@ export function SubsidiariesCoverFlow({
 }) {
   const len = subsidiaries.length;
   const [active, setActive] = useState(0);
-  const [metrics, setMetrics] = useState<StageMetrics>(SSR_METRICS);
-  const [mounted, setMounted] = useState(false);
+  const { bp, mounted } = useBreakpoint();
   const reduced = useReducedMotion();
-  const wrapperRef = useRef<HTMLDivElement | null>(null);
 
+  const metrics = METRICS[bp];
   const safeActive = len ? ((active % len) + len) % len : 0;
-
-  useEffect(() => {
-    if (!wrapperRef.current) return;
-
-    // ResizeObserver mesure la LARGEUR RENDUE du wrapper, qui correspond
-    // toujours au viewport CSS. Robuste contre les divergences de
-    // window.innerWidth (DevTools, iframes, simulateurs).
-    const ro = new ResizeObserver((entries) => {
-      const entry = entries[0];
-      if (!entry) return;
-      const width = entry.contentRect.width;
-      if (width > 0) {
-        setMetrics(getStageMetrics(width));
-      }
-    });
-
-    ro.observe(wrapperRef.current);
-    // Mesure initiale synchrone (au cas où ResizeObserver tarde au mount).
-    const initialWidth = wrapperRef.current.getBoundingClientRect().width;
-    if (initialWidth > 0) {
-      setMetrics(getStageMetrics(initialWidth));
-    }
-    setMounted(true);
-
-    return () => ro.disconnect();
-  }, []);
 
   const go = useCallback(
     (delta: number) => {
@@ -178,20 +182,22 @@ export function SubsidiariesCoverFlow({
 
   return (
     <motion.div
-      ref={wrapperRef}
-      // Hauteurs Tailwind responsives (CSS-only) cohérentes avec wrapperH par breakpoint :
-      // mobile 320px (wrapperH SSR), sm 420px, lg 540px. Réservées AVANT JS → zéro CLS.
-      className="relative mx-auto w-full max-w-[min(100%,1400px)] min-h-[320px] sm:min-h-[420px] lg:min-h-[540px]"
+      // Hauteurs Tailwind responsives (CSS-only) STRICTEMENT alignées sur METRICS.wrapperH :
+      //   mobile  280px  ↔ METRICS.mobile.wrapperH = 280
+      //   tablet  360px  ↔ METRICS.tablet.wrapperH = 360 (sm:min-h-[360px])
+      //   desktop 520px  ↔ METRICS.desktop.wrapperH = 520 (lg:min-h-[520px])
+      // Tailwind et matchMedia utilisent les mêmes seuils → CSS et JS toujours synchrones.
+      className="relative mx-auto w-full max-w-[min(100%,1400px)] min-h-[280px] sm:min-h-[360px] lg:min-h-[520px]"
       initial={false}
       animate={mounted ? { minHeight: metrics.wrapperH } : undefined}
     >
-      {/* Scène (fond sombre + halo) — bleed graduel : doux mobile, plein desktop */}
+      {/* Scène cinématique — bleed graduel : doux mobile, plein desktop */}
       <div
-        className="absolute inset-x-[-4vw] inset-y-0 z-0 rounded-3xl bg-[#060a0c] shadow-[inset_0_0_120px_rgba(0,0,0,0.85)] ring-1 ring-white/[0.06] sm:inset-x-[-8vw] lg:inset-x-[-12vw]"
+        className="absolute inset-x-[-3vw] inset-y-0 z-0 rounded-3xl bg-[#060a0c] shadow-[inset_0_0_120px_rgba(0,0,0,0.85)] ring-1 ring-white/[0.06] sm:inset-x-[-8vw] lg:inset-x-[-12vw]"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute inset-y-0 z-[1] inset-x-[-4vw] sm:inset-x-[-8vw] lg:inset-x-[-12vw]"
+        className="pointer-events-none absolute inset-y-0 z-[1] inset-x-[-3vw] sm:inset-x-[-8vw] lg:inset-x-[-12vw]"
         aria-hidden
       >
         <motion.div
@@ -200,17 +206,17 @@ export function SubsidiariesCoverFlow({
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         />
         <div
-          className="absolute inset-y-0 left-0 w-[min(22%,120px)] rounded-l-3xl bg-gradient-to-r from-[#060a0c] via-[#060a0c]/90 to-transparent"
+          className="absolute inset-y-0 left-0 w-[min(20%,110px)] rounded-l-3xl bg-gradient-to-r from-[#060a0c] via-[#060a0c]/90 to-transparent"
           aria-hidden
         />
         <div
-          className="absolute inset-y-0 right-0 w-[min(22%,120px)] rounded-r-3xl bg-gradient-to-l from-[#060a0c] via-[#060a0c]/90 to-transparent"
+          className="absolute inset-y-0 right-0 w-[min(20%,110px)] rounded-r-3xl bg-gradient-to-l from-[#060a0c] via-[#060a0c]/90 to-transparent"
           aria-hidden
         />
       </div>
 
       <div
-        className="relative z-10 mx-auto h-full w-full min-h-[320px] [perspective:1800px] [perspective-origin:50%_45%] sm:min-h-[420px] lg:min-h-[540px]"
+        className="relative z-10 mx-auto h-full w-full min-h-[280px] [perspective:1800px] [perspective-origin:50%_45%] sm:min-h-[360px] lg:min-h-[520px]"
         style={mounted ? { minHeight: metrics.wrapperH } : undefined}
       >
         {!mounted ? (
@@ -218,7 +224,7 @@ export function SubsidiariesCoverFlow({
           // responsive Tailwind, identique côté SSR et premier render client.
           <div
             aria-hidden
-            className="absolute left-1/2 top-1/2 h-[234px] w-[156px] -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-white/5 bg-white/[0.02] sm:h-[330px] sm:w-[220px] lg:h-[444px] lg:w-[296px]"
+            className="absolute left-1/2 top-1/2 h-[216px] w-[144px] -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-white/5 bg-white/[0.02] sm:h-[300px] sm:w-[200px] lg:h-[444px] lg:w-[296px]"
           />
         ) : (
           <div className="relative h-full w-full [transform-style:preserve-3d]">

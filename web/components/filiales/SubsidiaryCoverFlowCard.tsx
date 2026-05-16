@@ -94,16 +94,17 @@ export function SubsidiaryCoverFlowCard({
         </span>
       </div>
 
-      {/* Bloc texte centré, padding et typo responsives pour lisibilité optimale
-          sur cartes étroites mobile (160px) sans déborder. */}
-      <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-4 pt-12 text-center sm:px-5 sm:pb-5 sm:pt-20">
-        <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-gold line-clamp-1 [text-shadow:0_1px_4px_rgba(0,0,0,0.6)] sm:text-[11px] sm:tracking-[0.2em]">
+      {/* Bloc texte centré — padding/typo responsives calibrés pour cartes
+          mobile très étroites (144 px) sans débordement, montée progressive
+          jusqu'à 296 px desktop. */}
+      <div className="absolute inset-x-0 bottom-0 z-10 px-3 pb-3 pt-10 text-center sm:px-4 sm:pb-4 sm:pt-14 md:px-5 md:pb-5 md:pt-20">
+        <p className="text-[9px] font-semibold uppercase tracking-[0.16em] text-gold line-clamp-1 [text-shadow:0_1px_4px_rgba(0,0,0,0.6)] sm:text-[10px] sm:tracking-[0.18em] md:text-[11px] md:tracking-[0.2em]">
           {SECTOR_LABELS[subsidiary.sector]}
         </p>
-        <h3 className="mt-1.5 font-[family-name:var(--font-cormorant)] text-[1.35rem] font-medium leading-tight text-ivory line-clamp-2 [text-shadow:0_2px_10px_rgba(0,0,0,0.7)] sm:text-2xl md:text-[1.65rem]">
+        <h3 className="mt-1 font-[family-name:var(--font-cormorant)] text-[1.15rem] font-medium leading-[1.15] text-ivory line-clamp-2 [text-shadow:0_2px_10px_rgba(0,0,0,0.7)] sm:mt-1.5 sm:text-[1.35rem] md:text-2xl lg:text-[1.65rem]">
           {subsidiary.name}
         </h3>
-        <p className="mt-1.5 text-[12px] text-ivory/80 line-clamp-1 [text-shadow:0_1px_3px_rgba(0,0,0,0.6)] sm:mt-2 sm:text-sm">
+        <p className="mt-1 text-[11px] text-ivory/80 line-clamp-1 [text-shadow:0_1px_3px_rgba(0,0,0,0.6)] sm:mt-1.5 sm:text-[12px] md:mt-2 md:text-sm">
           {meta}
         </p>
       </div>

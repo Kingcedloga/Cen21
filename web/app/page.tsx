@@ -76,7 +76,7 @@ export default function HomePage() {
             className="mb-0 max-w-2xl"
           />
         </AnimateIn>
-        <div className="relative z-10 mt-20 sm:mt-24 md:mt-28 lg:mt-32">
+        <div className="relative z-10 mt-24 sm:mt-28 md:mt-28 lg:mt-32">
           <FeaturedSubsidiariesSlider subsidiaries={subsidiaries} />
         </div>
       </PageSection>

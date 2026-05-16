@@ -75,9 +75,19 @@ export type SiteConfig = {
   heroSlides?: { src: string; alt: string }[];
 };
 
+export type TeamMember = {
+  name: string;
+  role: string;
+  bio?: string;
+  photo: string;
+  linkedin?: string;
+};
+
 export type AboutContent = {
   history: string;
   vision: string;
   values: { title: string; description: string }[];
   positioning: string;
+  heroImage?: string;
+  team?: TeamMember[];
 };

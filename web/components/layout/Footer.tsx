@@ -100,18 +100,14 @@ export function Footer() {
               </div>
             </div>
 
-            <div className="flex flex-col items-stretch justify-start gap-4 md:col-span-4 md:items-center md:pt-2">
-              <Button href="/evenements" className="w-full !rounded-full justify-center md:w-auto md:min-w-[220px]">
+            <div className="flex flex-col items-start justify-start gap-3 md:col-span-4 md:items-center md:pt-2">
+              <Button href="/evenements">
                 Événements
-                <span className="ml-1">→</span>
+                <ArrowUpRight className="h-4 w-4" strokeWidth={2} aria-hidden />
               </Button>
-              <Button
-                href="/contact"
-                variant="secondary"
-                className="w-full !rounded-full border-gold/50 justify-center text-gold hover:bg-gold/10 md:w-auto md:min-w-[220px]"
-              >
+              <Button href="/contact" variant="secondary">
                 Contact rapide
-                <span className="ml-1">→</span>
+                <ArrowUpRight className="h-4 w-4" strokeWidth={2} aria-hidden />
               </Button>
             </div>
 

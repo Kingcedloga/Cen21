@@ -35,6 +35,10 @@ export function SubsidiariesExplorer({
     }
   }, []);
 
+  useEffect(() => {
+    if (view === "coverflow" && sector !== "all") setSector("all");
+  }, [view, sector]);
+
   const filtered = useMemo(() => {
     if (sector === "all") return subsidiaries;
     return subsidiaries.filter((s) => s.sector === sector);
@@ -53,46 +57,54 @@ export function SubsidiariesExplorer({
     return out;
   }, [subsidiaries]);
 
+  const showFilters = view === "grid";
+
   return (
     <div className="space-y-10">
-      <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-        <div
-          role="tablist"
-          aria-label="Filtrer par secteur"
-          className="flex flex-wrap gap-2"
-        >
-          {SECTOR_OPTIONS.map((opt) => {
-            const isActive = sector === opt.value;
-            const count = counts[opt.value];
-            return (
-              <button
-                key={opt.value}
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                onClick={() => setSector(opt.value)}
-                disabled={count === 0}
-                className={`group inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-40 ${
-                  isActive
-                    ? "border-gold bg-gold text-petrol shadow-md shadow-black/30"
-                    : "border-white/15 bg-petrol/40 text-ivory/80 hover:border-gold/50 hover:text-gold"
-                }`}
-              >
-                <span>{opt.label}</span>
-                <span
-                  aria-hidden
-                  className={`inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded-full px-1.5 text-[10px] font-semibold tabular-nums ${
+      <div
+        className={`flex flex-col gap-5 md:flex-row md:items-center ${
+          showFilters ? "md:justify-between" : "md:justify-end"
+        }`}
+      >
+        {showFilters && (
+          <div
+            role="tablist"
+            aria-label="Filtrer par secteur"
+            className="flex flex-wrap gap-2"
+          >
+            {SECTOR_OPTIONS.map((opt) => {
+              const isActive = sector === opt.value;
+              const count = counts[opt.value];
+              return (
+                <button
+                  key={opt.value}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => setSector(opt.value)}
+                  disabled={count === 0}
+                  className={`group inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-40 ${
                     isActive
-                      ? "bg-petrol/20 text-petrol"
-                      : "bg-white/10 text-ivory/70 group-hover:bg-gold/20 group-hover:text-gold"
+                      ? "border-gold bg-gold text-petrol shadow-md shadow-black/30"
+                      : "border-white/15 bg-petrol/40 text-ivory/80 hover:border-gold/50 hover:text-gold"
                   }`}
                 >
-                  {count}
-                </span>
-              </button>
-            );
-          })}
-        </div>
+                  <span>{opt.label}</span>
+                  <span
+                    aria-hidden
+                    className={`inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded-full px-1.5 text-[10px] font-semibold tabular-nums ${
+                      isActive
+                        ? "bg-petrol/20 text-petrol"
+                        : "bg-white/10 text-ivory/70 group-hover:bg-gold/20 group-hover:text-gold"
+                    }`}
+                  >
+                    {count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        )}
 
         <div
           role="group"

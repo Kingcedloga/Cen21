@@ -5,7 +5,6 @@ import { useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 
-import { ShareButton } from "@/components/ui/ShareButton";
 import { SocialLinks } from "@/components/ui/SocialLinks";
 import { BLUR_PETROL } from "@/lib/image-blur";
 
@@ -114,15 +113,7 @@ export function SubsidiaryHero({
           {name}
         </h1>
         <p className="text-xl text-ivory/80 max-w-2xl mb-6">{tagline}</p>
-        <div className="flex flex-wrap items-center gap-4">
-          <SocialLinks social={social} label="Suivez-nous" />
-          <ShareButton
-            data={{
-              title: `${name} — Cen21 Hospitality`,
-              text: tagline,
-            }}
-          />
-        </div>
+        <SocialLinks social={social} label="Suivez-nous" />
       </div>
     </section>
   );

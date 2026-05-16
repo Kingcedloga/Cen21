@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { RouteTransition } from "@/components/layout/RouteTransition";
-import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import { cormorant, inter } from "@/lib/fonts";
 import { defaultMetadata } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site-url";
@@ -38,7 +37,6 @@ export default function RootLayout({
           <RouteTransition>{children}</RouteTransition>
         </main>
         <Footer />
-        <ScrollToTop />
       </body>
     </html>
   );
