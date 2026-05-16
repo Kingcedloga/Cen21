@@ -1,16 +1,17 @@
-import { SubsidiaryCard } from "@/components/cards/SubsidiaryCard";
 import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
+import { FeaturedSubsidiariesSlider } from "@/components/sections/FeaturedSubsidiariesSlider";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { HeroCinematic } from "@/components/sections/HeroCinematic";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StatsBanner } from "@/components/sections/StatsBanner";
+import { PageSection } from "@/components/layout/PageSection";
 import { SectionWave } from "@/components/layout/SectionWave";
-import { getFeaturedSubsidiaries, getSiteConfig } from "@/lib/content";
+import { getSubsidiaries, getSiteConfig } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
 
 const site = getSiteConfig();
-const featured = getFeaturedSubsidiaries();
+const subsidiaries = getSubsidiaries();
 
 const heroSlides =
   site.heroSlides && site.heroSlides.length > 0
@@ -35,47 +36,50 @@ export default function HomePage() {
 
       <SectionWave fill="petrol" />
 
-      <section className="py-24 px-4 md:px-6">
-        <div className="max-w-7xl mx-auto">
-          <AnimateIn>
-            <SectionHeading
-              eyebrow="Le groupe"
-              title="Cen21 Hospitality"
-              description="Une holding dédiée à l'hospitalité, au divertissement et aux expériences lifestyle haut de gamme. Dix adresses distinctes, une même exigence d'excellence."
-              align="left"
-            />
-          </AnimateIn>
-          <AnimateIn delay={0.1}>
-            <p className="text-taupe text-lg leading-relaxed max-w-3xl">
-              Restaurants d&apos;exception, bars à cocktails, lounges feutrés,
-              clubs nocturnes et espaces événementiels premium : chaque filiale
-              cultive son univers tout en partageant une vision commune — créer
-              des moments mémorables, élégants et authentiques.
-            </p>
-          </AnimateIn>
-        </div>
-      </section>
+      <PageSection variant="default">
+        <AnimateIn>
+          <SectionHeading
+            eyebrow="Le groupe"
+            title="Cen21 Hospitality"
+            description="Une holding dédiée à l'hospitalité, au divertissement et aux expériences lifestyle haut de gamme. Dix adresses distinctes, une même exigence d'excellence."
+            align="left"
+          />
+        </AnimateIn>
+        <AnimateIn delay={0.1}>
+          <p className="max-w-3xl text-lg leading-relaxed text-taupe">
+            Restaurants d&apos;exception, bars à cocktails, lounges feutrés,
+            clubs nocturnes et espaces événementiels premium : chaque filiale
+            cultive son univers tout en partageant une vision commune — créer
+            des moments mémorables, élégants et authentiques.
+          </p>
+        </AnimateIn>
+      </PageSection>
 
       <SectionWave fill="band" flip />
 
-      <section className="py-24 px-4 md:px-6 bg-anthracite/50">
-        <div className="max-w-7xl mx-auto">
-          <AnimateIn>
-            <SectionHeading
-              eyebrow="Nos adresses"
-              title="Filiales en vedette"
-              description="Découvrez une sélection de nos établissements. L'ensemble du portefeuille est accessible sur la page Filiales."
-            />
-          </AnimateIn>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featured.map((sub, i) => (
-              <AnimateIn key={sub.slug} delay={i * 0.05}>
-                <SubsidiaryCard subsidiary={sub} />
-              </AnimateIn>
-            ))}
-          </div>
+      <PageSection
+        variant="alt"
+        spacing="loose"
+        id="nos-filiales"
+        ariaLabelledby="nos-filiales-title"
+        containerClassName="mx-auto max-w-[min(100%,1400px)]"
+      >
+        <AnimateIn>
+          <SectionHeading
+            eyebrow="Nos adresses"
+            title="Nos filiales"
+            subtitle="Filiales en vedette"
+            titleAs="h2"
+            subtitleAs="h3"
+            titleId="nos-filiales-title"
+            align="left"
+            className="mb-0 max-w-2xl"
+          />
+        </AnimateIn>
+        <div className="relative z-10 mt-20 md:mt-28 lg:mt-32">
+          <FeaturedSubsidiariesSlider subsidiaries={subsidiaries} />
         </div>
-      </section>
+      </PageSection>
 
       <SectionWave fill="petrol" />
 

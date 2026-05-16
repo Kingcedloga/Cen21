@@ -33,7 +33,20 @@ export function createPageMetadata({
       siteName: site.name,
       locale: "fr_FR",
       type: "website",
-      images: [{ url: "/logo.png", width: 512, height: 512, alt: site.name }],
+      images: [
+        {
+          url: "/og-image.png",
+          width: 300,
+          height: 169,
+          alt: `${site.name} — logo`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: fullTitle,
+      description: desc,
+      images: ["/og-image.png"],
     },
   };
 }

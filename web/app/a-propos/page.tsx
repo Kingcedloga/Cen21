@@ -1,5 +1,7 @@
 import { PageHero } from "@/components/sections/PageHero";
+import { PageSection } from "@/components/layout/PageSection";
 import { SectionWave } from "@/components/layout/SectionWave";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { getAboutContent } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
@@ -15,71 +17,89 @@ export const metadata = createPageMetadata({
 
 export default function AboutPage() {
   return (
-  <>
+    <>
       <PageHero
         eyebrow="À propos"
         title="Notre histoire & notre vision"
         description="Une holding née de la passion pour l'art de recevoir et l'exigence du détail."
       />
 
-      <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto">
+      <PageSection variant="default">
         <AnimateIn>
-          <h2 className="font-[family-name:var(--font-cormorant)] text-3xl text-ivory mb-6">
-            Histoire
-          </h2>
-          <p className="text-taupe text-lg leading-relaxed max-w-3xl">{about.history}</p>
+          <SectionHeading
+            eyebrow="Origines"
+            title="Histoire"
+            titleAs="h2"
+            align="left"
+            className="mb-10 max-w-2xl"
+          />
         </AnimateIn>
-      </section>
+        <AnimateIn delay={0.1}>
+          <p className="max-w-3xl text-lg leading-relaxed text-taupe">{about.history}</p>
+        </AnimateIn>
+      </PageSection>
 
-      <SectionWave fill="band" />
+      <SectionWave fill="band" flip />
 
-      <section className="py-16 px-4 md:px-6 bg-anthracite/40">
-        <div className="max-w-7xl mx-auto">
-          <AnimateIn>
-            <h2 className="font-[family-name:var(--font-cormorant)] text-3xl text-ivory mb-6">
-              Vision
-            </h2>
-            <p className="text-taupe text-lg leading-relaxed max-w-3xl">{about.vision}</p>
-          </AnimateIn>
-        </div>
-      </section>
-
-      <SectionWave fill="petrol" flip />
-
-      <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto">
+      <PageSection variant="alt">
         <AnimateIn>
-          <h2 className="font-[family-name:var(--font-cormorant)] text-3xl text-ivory mb-10">
-            Valeurs
-          </h2>
+          <SectionHeading
+            eyebrow="Cap"
+            title="Vision"
+            titleAs="h2"
+            align="left"
+            className="mb-10 max-w-2xl"
+          />
         </AnimateIn>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <AnimateIn delay={0.1}>
+          <p className="max-w-3xl text-lg leading-relaxed text-taupe">{about.vision}</p>
+        </AnimateIn>
+      </PageSection>
+
+      <SectionWave fill="petrol" />
+
+      <PageSection variant="default">
+        <AnimateIn>
+          <SectionHeading
+            eyebrow="ADN"
+            title="Valeurs"
+            titleAs="h2"
+            align="left"
+            className="mb-10 max-w-2xl"
+          />
+        </AnimateIn>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {about.values.map((v, i) => (
             <AnimateIn key={v.title} delay={i * 0.05}>
-              <article className="glass-panel p-8 rounded-xl">
-                <h3 className="font-[family-name:var(--font-cormorant)] text-xl text-gold mb-3">
+              <article className="glass-panel rounded-xl p-8">
+                <h3 className="mb-3 font-[family-name:var(--font-cormorant)] text-xl text-gold">
                   {v.title}
                 </h3>
-                <p className="text-taupe leading-relaxed">{v.description}</p>
+                <p className="leading-relaxed text-taupe">{v.description}</p>
               </article>
             </AnimateIn>
           ))}
         </div>
-      </section>
+      </PageSection>
+
+      <SectionWave fill="band" flip />
+
+      <PageSection variant="alt">
+        <AnimateIn>
+          <SectionHeading
+            eyebrow="Marché"
+            title="Positionnement"
+            titleAs="h2"
+            align="left"
+            className="mb-10 max-w-2xl"
+          />
+        </AnimateIn>
+        <AnimateIn delay={0.1}>
+          <p className="max-w-3xl text-lg leading-relaxed text-taupe">{about.positioning}</p>
+        </AnimateIn>
+      </PageSection>
 
       <SectionWave fill="petrol" />
-
-      <section className="py-16 px-4 md:px-6">
-        <div className="max-w-7xl mx-auto">
-          <AnimateIn>
-            <h2 className="font-[family-name:var(--font-cormorant)] text-3xl text-ivory mb-6">
-              Positionnement
-            </h2>
-            <p className="text-taupe text-lg leading-relaxed max-w-3xl">
-              {about.positioning}
-            </p>
-          </AnimateIn>
-        </div>
-      </section>
     </>
   );
 }

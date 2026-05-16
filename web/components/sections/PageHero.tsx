@@ -11,8 +11,8 @@ export function PageHero({
 }) {
   return (
     <>
-      <section className="px-4 pb-14 pt-36 md:pb-16 md:px-6 md:pt-40 bg-petrol">
-        <div className="max-w-7xl mx-auto">
+      <section className="bg-petrol px-4 pb-16 pt-36 md:px-6 md:pb-20 md:pt-40 lg:px-8">
+        <div className="mx-auto max-w-7xl">
           {eyebrow && (
             <div className="mb-5 flex flex-col gap-3 items-start">
               <p className="text-gold text-[11px] font-medium tracking-[0.28em] uppercase">

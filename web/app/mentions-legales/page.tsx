@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { LegalArticle, LegalH2, LegalP, LegalUl } from "@/components/legal/LegalArticle";
 import { PageHero } from "@/components/sections/PageHero";
+import { SectionWave } from "@/components/layout/SectionWave";
 import { getSiteConfig } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
 
@@ -69,6 +70,8 @@ export default function MentionsLegalesPage() {
           </LegalP>
         </section>
       </LegalArticle>
+
+      <SectionWave fill="petrol" />
     </>
   );
 }

@@ -1,14 +1,13 @@
 import { PageHero } from "@/components/sections/PageHero";
+import { PageSection } from "@/components/layout/PageSection";
+import { SectionWave } from "@/components/layout/SectionWave";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AnimateIn } from "@/components/ui/AnimateIn";
-import {
-  SubsidiaryShowcaseBlock,
-  chunkSubsidiaries,
-} from "@/components/filiales/SubsidiaryShowcase";
+import { SubsidiariesCoverFlow } from "@/components/filiales/SubsidiariesCoverFlow";
 import { getSubsidiaries } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
 
 const subsidiaries = getSubsidiaries();
-const blocks = chunkSubsidiaries(subsidiaries);
 
 export const metadata = createPageMetadata({
   title: "Filiales",
@@ -23,18 +22,35 @@ export default function SubsidiariesPage() {
       <PageHero
         eyebrow="Portfolio"
         title="Nos filiales"
-        description="Des univers distincts, une même exigence — chaque adresse cultive son identité au sein du groupe Cen21 Hospitality."
+        description="Des univers distincts, une même exigence — parcourez nos dix adresses dans un flux immersif."
       />
 
-      <section className="py-16 px-4 md:px-6">
-        <div className="mx-auto flex max-w-7xl flex-col gap-14 md:gap-16 lg:gap-20">
-          {blocks.map(({ hero, side }, blockIndex) => (
-            <AnimateIn key={hero.slug} delay={blockIndex * 0.05}>
-              <SubsidiaryShowcaseBlock hero={hero} side={side} />
-            </AnimateIn>
-          ))}
+      <PageSection
+        variant="alt"
+        spacing="loose"
+        id="filiales-coverflow"
+        ariaLabelledby="filiales-coverflow-title"
+        containerClassName="mx-auto max-w-[min(100%,1400px)]"
+      >
+        <AnimateIn>
+          <SectionHeading
+            eyebrow="Découverte"
+            title="Dix adresses, dix univers"
+            subtitle="Sélection en vedette"
+            titleAs="h2"
+            subtitleAs="h3"
+            titleId="filiales-coverflow-title"
+            description="Cliquez sur une carte latérale pour la centrer, ou laissez-vous porter par le défilement automatique."
+            align="left"
+            className="mb-0 max-w-2xl"
+          />
+        </AnimateIn>
+        <div className="relative z-10 mt-20 md:mt-28 lg:mt-32">
+          <SubsidiariesCoverFlow subsidiaries={subsidiaries} />
         </div>
-      </section>
+      </PageSection>
+
+      <SectionWave fill="petrol" />
     </>
   );
 }

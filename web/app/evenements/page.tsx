@@ -1,5 +1,7 @@
 import { EventsList } from "@/components/events/EventsList";
 import { PageHero } from "@/components/sections/PageHero";
+import { PageSection } from "@/components/layout/PageSection";
+import { SectionWave } from "@/components/layout/SectionWave";
 import { getEvents, getPastEvents } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
 
@@ -21,9 +23,11 @@ export default function EventsPage() {
         title="Événements"
         description="Découvrez les prochaines soirées et expériences de nos filiales."
       />
-      <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto">
+      <PageSection variant="default">
         <EventsList events={upcoming} pastEvents={past} />
-      </section>
+      </PageSection>
+
+      <SectionWave fill="petrol" />
     </>
   );
 }

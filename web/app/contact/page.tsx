@@ -4,6 +4,10 @@ import { MapEmbed } from "@/components/maps/MapEmbed";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { SocialLinks } from "@/components/ui/SocialLinks";
 import { PageHero } from "@/components/sections/PageHero";
+import { PageSection } from "@/components/layout/PageSection";
+import { SectionWave } from "@/components/layout/SectionWave";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { AnimateIn } from "@/components/ui/AnimateIn";
 import { getSiteConfig } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
 
@@ -24,31 +28,35 @@ export default function ContactPage() {
         description="Une question, une collaboration ou une demande privée — notre équipe vous répond sous 48h."
       />
 
-      <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          <div>
-            <h2 className="font-[family-name:var(--font-cormorant)] text-2xl text-ivory mb-8">
-              Coordonnées
-            </h2>
+      <PageSection variant="default">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+          <AnimateIn>
+            <SectionHeading
+              eyebrow="Coordonnées"
+              title="Nous joindre"
+              titleAs="h2"
+              align="left"
+              className="mb-8 max-w-md"
+            />
             <ul className="space-y-6 text-taupe">
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-gold shrink-0 mt-0.5" aria-hidden />
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-gold" aria-hidden />
                 {site.contact.address}
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-gold shrink-0" aria-hidden />
+                <Phone className="h-5 w-5 shrink-0 text-gold" aria-hidden />
                 <a
                   href={`tel:${site.contact.phone.replace(/\s/g, "")}`}
-                  className="hover:text-gold transition-colors cursor-pointer"
+                  className="cursor-pointer transition-colors hover:text-gold"
                 >
                   {site.contact.phone}
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-gold shrink-0" aria-hidden />
+                <Mail className="h-5 w-5 shrink-0 text-gold" aria-hidden />
                 <a
                   href={`mailto:${site.contact.email}`}
-                  className="hover:text-gold transition-colors cursor-pointer"
+                  className="cursor-pointer transition-colors hover:text-gold"
                 >
                   {site.contact.email}
                 </a>
@@ -60,26 +68,38 @@ export default function ContactPage() {
               label="Réseaux sociaux"
               className="mt-10"
             />
-          </div>
+          </AnimateIn>
 
-          <div className="glass-panel rounded-2xl p-8 md:p-10 ring-1 ring-inset ring-white/[0.06]">
-            <h2 className="font-[family-name:var(--font-cormorant)] text-2xl text-ivory mb-6">
-              Formulaire
-            </h2>
-            <ContactForm />
-          </div>
+          <AnimateIn delay={0.1}>
+            <div className="glass-panel rounded-2xl p-8 ring-1 ring-inset ring-white/[0.06] md:p-10">
+              <h2 className="mb-6 font-[family-name:var(--font-cormorant)] text-2xl text-ivory">
+                Formulaire
+              </h2>
+              <ContactForm />
+            </div>
+          </AnimateIn>
         </div>
+      </PageSection>
 
-        <div className="mt-16">
-          <h2 className="font-[family-name:var(--font-cormorant)] text-2xl text-ivory mb-3">
-            Nous trouver
-          </h2>
-          <p className="text-taupe text-sm mb-6 max-w-2xl">
-            Carte interactive — cliquez sur « Agrandir la carte » pour l&apos;itinéraire dans Google Maps.
-          </p>
+      <SectionWave fill="band" flip />
+
+      <PageSection variant="alt">
+        <AnimateIn>
+          <SectionHeading
+            eyebrow="Localisation"
+            title="Nous trouver"
+            titleAs="h2"
+            description="Carte interactive — cliquez sur « Agrandir la carte » pour l'itinéraire dans Google Maps."
+            align="left"
+            className="mb-10 max-w-2xl"
+          />
+        </AnimateIn>
+        <AnimateIn delay={0.1}>
           <MapEmbed query={site.contact.address} title="Carte — Cen21 Hospitality" />
-        </div>
-      </section>
+        </AnimateIn>
+      </PageSection>
+
+      <SectionWave fill="petrol" />
     </>
   );
 }
