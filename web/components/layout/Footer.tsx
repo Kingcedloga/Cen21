@@ -103,11 +103,11 @@ export function Footer() {
             <div className="flex flex-col items-start justify-start gap-3 md:col-span-4 md:items-center md:pt-2">
               <Button href="/evenements">
                 Événements
-                <ArrowUpRight className="h-4 w-4" strokeWidth={2} aria-hidden />
+                <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} aria-hidden />
               </Button>
               <Button href="/contact" variant="secondary">
                 Contact rapide
-                <ArrowUpRight className="h-4 w-4" strokeWidth={2} aria-hidden />
+                <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} aria-hidden />
               </Button>
             </div>
 

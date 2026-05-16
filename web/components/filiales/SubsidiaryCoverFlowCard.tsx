@@ -77,7 +77,7 @@ export function SubsidiaryCoverFlowCard({
       />
 
       <div className="absolute left-2.5 top-2.5 z-10 flex h-9 w-9 items-center justify-center rounded-xl border border-white/25 bg-petrol/80 shadow-lg backdrop-blur-md sm:left-3 sm:top-3 sm:h-10 sm:w-10">
-        <Icon className="h-4 w-4 text-ivory sm:h-5 sm:w-5" strokeWidth={1.75} aria-hidden />
+        <Icon className="h-4 w-4 text-ivory sm:h-5 sm:w-5" strokeWidth={1.5} aria-hidden />
       </div>
 
       <div

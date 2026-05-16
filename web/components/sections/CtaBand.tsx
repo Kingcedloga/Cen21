@@ -34,7 +34,7 @@ export function CtaBand() {
 
             <div className="relative z-10 flex flex-col items-center">
               <span className="inline-flex items-center gap-2 rounded-full border border-gold/35 bg-petrol/60 px-4 py-1.5 text-[10.5px] font-semibold uppercase tracking-[0.28em] text-gold backdrop-blur-sm">
-                <Sparkles className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
+                <Sparkles className="h-3.5 w-3.5" strokeWidth={1.5} aria-hidden />
                 Expériences sur mesure
               </span>
 
@@ -56,7 +56,7 @@ export function CtaBand() {
               <div className="mt-9 flex flex-wrap items-center justify-center gap-3 md:gap-4">
                 <Button href="/evenements">
                   Voir les événements
-                  <ArrowUpRight className="h-4 w-4" strokeWidth={2} aria-hidden />
+                  <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} aria-hidden />
                 </Button>
                 <Button href="/contact" variant="secondary">
                   Prendre contact

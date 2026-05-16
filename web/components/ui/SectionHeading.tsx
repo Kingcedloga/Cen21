@@ -45,7 +45,7 @@ export function SectionHeading({
             aria-hidden
             className="inline-flex h-1.5 w-1.5 shrink-0 rotate-45 bg-gold/85 shadow-[0_0_10px_rgba(197,160,89,0.55)]"
           />
-          <p className="text-gold text-[11px] font-semibold tracking-[0.28em] uppercase sm:tracking-[0.32em]">
+          <p className="eyebrow text-gold text-[10.5px] font-medium uppercase sm:text-[11px]">
             {eyebrow}
           </p>
           {isCenter && (
@@ -64,13 +64,13 @@ export function SectionHeading({
       )}
       <Title
         id={titleId}
-        className="font-[family-name:var(--font-cormorant)] text-4xl md:text-5xl lg:text-[3.4rem] font-light tracking-[-0.02em] text-ivory leading-[1.08] [text-shadow:0_2px_28px_rgba(0,0,0,0.5)]"
+        className="font-[family-name:var(--font-cormorant)] text-4xl md:text-5xl lg:text-[3.4rem] font-light tracking-[-0.028em] text-ivory leading-[1.05] [text-shadow:0_2px_28px_rgba(0,0,0,0.5)]"
       >
         {title}
       </Title>
       {subtitle && (
         <Subtitle
-          className={`mt-3 font-[family-name:var(--font-cormorant)] text-2xl md:text-[1.85rem] italic font-light tracking-[-0.005em] leading-snug text-gradient-gold opacity-95 [text-shadow:0_1px_18px_rgba(0,0,0,0.35)] ${
+          className={`mt-3 font-[family-name:var(--font-cormorant)] text-2xl md:text-[1.85rem] italic font-light tracking-[-0.012em] leading-[1.15] text-gradient-gold opacity-95 [text-shadow:0_1px_18px_rgba(0,0,0,0.35)] ${
             isCenter ? "mx-auto" : ""
           }`}
         >
@@ -79,7 +79,7 @@ export function SectionHeading({
       )}
       {description && (
         <p
-          className={`mt-5 text-ivory/80 text-base md:text-lg leading-[1.7] max-w-2xl ${
+          className={`mt-5 text-ivory/80 text-[15px] md:text-base lg:text-lg leading-[1.75] tracking-[-0.005em] max-w-2xl ${
             isCenter ? "mx-auto" : ""
           }`}
         >

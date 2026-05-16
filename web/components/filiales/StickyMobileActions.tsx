@@ -54,7 +54,7 @@ export function StickyMobileActions({
                 href={`tel:${cleanedPhone}`}
                 className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gold px-3 py-3 text-sm font-semibold text-petrol transition-colors duration-200 hover:bg-gold/90 active:bg-gold/85 focus-visible:outline-2 focus-visible:outline-ivory cursor-pointer"
               >
-                <Phone className="h-4 w-4" strokeWidth={2} aria-hidden />
+                <Phone className="h-4 w-4" strokeWidth={1.5} aria-hidden />
                 <span>Appeler</span>
               </a>
             )}
@@ -65,7 +65,7 @@ export function StickyMobileActions({
                 rel="noopener noreferrer"
                 className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/15 bg-anthracite/80 px-3 py-3 text-sm font-semibold text-ivory transition-colors duration-200 hover:border-gold/50 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold cursor-pointer"
               >
-                <MapPin className="h-4 w-4" strokeWidth={1.75} aria-hidden />
+                <MapPin className="h-4 w-4" strokeWidth={1.5} aria-hidden />
                 <span>Itinéraire</span>
               </a>
             )}

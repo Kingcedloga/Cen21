@@ -41,7 +41,7 @@ export function SubsidiaryShowcaseFeatured({ subsidiary }: { subsidiary: Subsidi
           className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg shadow-lg"
           style={{ backgroundColor: subsidiary.accentColor }}
         >
-          <Icon className="h-5 w-5 text-white" strokeWidth={1.75} aria-hidden />
+          <Icon className="h-5 w-5 text-white" strokeWidth={1.5} aria-hidden />
         </div>
         <p className="mb-1 text-xs font-medium uppercase tracking-[0.12em] text-gold/90">
           {SECTOR_LABELS[subsidiary.sector]}
@@ -75,7 +75,7 @@ export function SubsidiaryShowcaseCompact({ subsidiary }: { subsidiary: Subsidia
           className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg md:h-11 md:w-11"
           style={{ backgroundColor: subsidiary.accentColor }}
         >
-          <Icon className="h-5 w-5 text-white" strokeWidth={1.75} aria-hidden />
+          <Icon className="h-5 w-5 text-white" strokeWidth={1.5} aria-hidden />
         </div>
         <div className="min-w-0 flex-1 pr-12 md:pr-0">
           <h3 className="font-[family-name:var(--font-cormorant)] text-lg font-medium text-ivory md:text-xl">

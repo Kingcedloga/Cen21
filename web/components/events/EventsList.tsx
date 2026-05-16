@@ -101,7 +101,7 @@ function EventsEmptyState({
           aria-hidden
           className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-anthracite ring-2 ring-petrol"
         >
-          <Clock3 className="h-3 w-3 text-ivory/85" strokeWidth={2} aria-hidden />
+          <Clock3 className="h-3 w-3 text-ivory/85" strokeWidth={1.5} aria-hidden />
         </span>
       </div>
 
@@ -134,7 +134,7 @@ function EventsEmptyState({
           href="/contact"
           className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-5 py-2 text-sm font-medium text-gold transition-colors duration-200 hover:bg-gold/15 focus-visible:outline-2 focus-visible:outline-gold cursor-pointer"
         >
-          <Mail className="h-4 w-4" strokeWidth={1.85} aria-hidden />
+          <Mail className="h-4 w-4" strokeWidth={1.5} aria-hidden />
           Être averti
         </Link>
       </div>

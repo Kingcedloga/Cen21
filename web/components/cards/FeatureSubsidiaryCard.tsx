@@ -98,7 +98,7 @@ export function FeatureSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }
 
         {/* Chip secteur (top-left) */}
         <div className="absolute left-5 top-5 z-10 flex items-center gap-2.5 rounded-full border border-white/20 bg-petrol/80 px-3.5 py-2 backdrop-blur-md md:left-7 md:top-7">
-          <Icon className="h-4 w-4 text-gold" strokeWidth={1.85} aria-hidden />
+          <Icon className="h-4 w-4 text-gold" strokeWidth={1.5} aria-hidden />
           <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-ivory">
             {SECTOR_LABELS[subsidiary.sector]}
           </span>
