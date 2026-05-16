@@ -40,10 +40,10 @@ export function Lightbox({
         ref={closeRef}
         type="button"
         onClick={onClose}
-        className="absolute top-6 right-6 p-2 text-ivory hover:text-gold transition-colors cursor-pointer z-10"
-        aria-label="Fermer"
+        className="absolute top-4 right-4 flex h-12 w-12 items-center justify-center rounded-full bg-petrol/60 text-ivory transition-colors cursor-pointer z-10 hover:bg-petrol/80 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold md:top-6 md:right-6"
+        aria-label="Fermer la visionneuse"
       >
-        <X className="w-8 h-8" />
+        <X className="w-7 h-7" />
       </button>
 
       <button
@@ -51,10 +51,10 @@ export function Lightbox({
         onClick={() =>
           onNavigate((index - 1 + items.length) % items.length)
         }
-        className="absolute left-4 p-2 text-ivory hover:text-gold transition-colors cursor-pointer"
+        className="absolute left-3 flex h-12 w-12 items-center justify-center rounded-full bg-petrol/40 text-ivory transition-colors cursor-pointer hover:bg-petrol/70 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold md:left-6"
         aria-label="Image précédente"
       >
-        <ChevronLeft className="w-10 h-10" />
+        <ChevronLeft className="w-8 h-8" />
       </button>
 
       <div className="relative max-w-5xl max-h-[85vh] w-full aspect-[4/3]">
@@ -74,10 +74,10 @@ export function Lightbox({
       <button
         type="button"
         onClick={() => onNavigate((index + 1) % items.length)}
-        className="absolute right-4 p-2 text-ivory hover:text-gold transition-colors cursor-pointer"
+        className="absolute right-3 flex h-12 w-12 items-center justify-center rounded-full bg-petrol/40 text-ivory transition-colors cursor-pointer hover:bg-petrol/70 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold md:right-6"
         aria-label="Image suivante"
       >
-        <ChevronRight className="w-10 h-10" />
+        <ChevronRight className="w-8 h-8" />
       </button>
     </div>
   );

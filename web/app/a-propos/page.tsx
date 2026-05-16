@@ -3,6 +3,7 @@ import { PageSection } from "@/components/layout/PageSection";
 import { SectionWave } from "@/components/layout/SectionWave";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AnimateIn } from "@/components/ui/AnimateIn";
+import { ReadingProgress } from "@/components/ui/ReadingProgress";
 import { getAboutContent } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
 
@@ -18,6 +19,7 @@ export const metadata = createPageMetadata({
 export default function AboutPage() {
   return (
     <>
+      <ReadingProgress />
       <PageHero
         eyebrow="À propos"
         title="Notre histoire & notre vision"

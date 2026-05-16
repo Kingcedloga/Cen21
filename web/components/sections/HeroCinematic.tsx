@@ -1,10 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import { useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/Button";
+import { BLUR_PETROL } from "@/lib/image-blur";
 
 export type HeroSlide = {
   src: string;
@@ -29,15 +31,7 @@ export function HeroCinematic({
   const list = slides;
 
   const [index, setIndex] = useState(0);
-  const [reducedMotion, setReducedMotion] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReducedMotion(mq.matches);
-    const fn = () => setReducedMotion(mq.matches);
-    mq.addEventListener("change", fn);
-    return () => mq.removeEventListener("change", fn);
-  }, []);
+  const reducedMotion = useReducedMotion() ?? false;
 
   const len = list.length;
   const safeIndex = len ? index % len : 0;
@@ -85,13 +79,26 @@ export function HeroCinematic({
             alt={slide.alt}
             fill
             priority={i === 0}
+            placeholder="blur"
+            blurDataURL={BLUR_PETROL}
             className="object-cover"
             sizes="100vw"
           />
         </div>
       ))}
 
-      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-petrol via-petrol/70 to-petrol/30" />
+      <div
+        className="absolute inset-0 z-[1]"
+        aria-hidden
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(11,36,41,0.55) 0%, rgba(11,36,41,0.25) 35%, rgba(11,36,41,0.65) 70%, rgba(11,36,41,0.95) 100%)",
+        }}
+      />
+      <div
+        className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_20%_80%,rgba(197,160,89,0.18)_0%,transparent_55%)]"
+        aria-hidden
+      />
 
       {len > 1 && (
         <>
@@ -116,13 +123,16 @@ export function HeroCinematic({
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 pb-28 md:pb-32 pt-36 md:pt-40">
         <div className="max-w-4xl space-y-5 md:space-y-7">
-          <p className="text-gold text-[11px] font-medium tracking-[0.28em] uppercase drop-shadow-sm">
-            {eyebrow}
-          </p>
-          <h1 className="font-[family-name:var(--font-cormorant)] text-5xl md:text-7xl lg:text-8xl font-light text-ivory leading-[1.04] tracking-[-0.02em] [text-shadow:_0_2px_36px_rgb(0_0_0_/_0.38)]">
+          <div className="inline-flex items-center gap-3">
+            <span aria-hidden className="h-px w-10 bg-gradient-to-r from-transparent to-gold/85" />
+            <p className="text-gold text-[11px] font-semibold tracking-[0.32em] uppercase">
+              {eyebrow}
+            </p>
+          </div>
+          <h1 className="font-[family-name:var(--font-cormorant)] text-5xl md:text-7xl lg:text-8xl font-light text-ivory leading-[1.04] tracking-[-0.02em] [text-shadow:_0_2px_36px_rgb(0_0_0_/_0.45)]">
             {tagline}
           </h1>
-          <p className="text-taupe/95 text-lg md:text-xl max-w-2xl leading-[1.65] pt-1 [text-shadow:_0_1px_14px_rgb(0_0_0_/_0.35)]">
+          <p className="text-ivory/85 text-lg md:text-xl max-w-2xl leading-[1.65] pt-1 [text-shadow:_0_1px_14px_rgb(0_0_0_/_0.4)]">
             {description}
           </p>
           <div className="flex flex-wrap gap-3 md:gap-4 pt-3 md:pt-5">
@@ -133,6 +143,28 @@ export function HeroCinematic({
           </div>
         </div>
       </div>
+
+      <button
+        type="button"
+        onClick={() =>
+          window.scrollTo({
+            top: window.innerHeight - 60,
+            behavior: reducedMotion ? "auto" : "smooth",
+          })
+        }
+        aria-label="Faire défiler vers la section suivante"
+        className="absolute bottom-6 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center gap-2 text-ivory/70 transition-colors duration-200 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-4 cursor-pointer md:flex md:bottom-10"
+      >
+        <span className="text-[10px] font-medium tracking-[0.24em] uppercase">
+          Découvrir
+        </span>
+        <span
+          aria-hidden
+          className="relative flex h-10 w-6 items-center justify-center rounded-full border border-ivory/30"
+        >
+          <span className="animate-scroll-cue absolute top-1.5 h-2 w-1 rounded-full bg-gold" />
+        </span>
+      </button>
     </section>
   );
 }

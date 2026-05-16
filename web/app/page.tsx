@@ -64,7 +64,7 @@ export default function HomePage() {
         ariaLabelledby="nos-filiales-title"
         containerClassName="mx-auto max-w-[min(100%,1400px)]"
       >
-        <AnimateIn>
+        <AnimateIn className="relative z-20">
           <SectionHeading
             eyebrow="Nos adresses"
             title="Nos filiales"
@@ -76,7 +76,7 @@ export default function HomePage() {
             className="mb-0 max-w-2xl"
           />
         </AnimateIn>
-        <div className="relative z-10 mt-20 md:mt-28 lg:mt-32">
+        <div className="relative z-10 mt-20 sm:mt-24 md:mt-28 lg:mt-32">
           <FeaturedSubsidiariesSlider subsidiaries={subsidiaries} />
         </div>
       </PageSection>

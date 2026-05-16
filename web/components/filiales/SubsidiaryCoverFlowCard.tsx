@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import type { LucideIcon } from "lucide-react";
 import {
   Armchair,
@@ -10,6 +13,7 @@ import {
 } from "lucide-react";
 
 import { SECTOR_LABELS } from "@/lib/content";
+import { BLUR_PETROL } from "@/lib/image-blur";
 import type { Sector, Subsidiary } from "@/lib/types";
 
 const SECTOR_ICON: Record<Sector, LucideIcon> = {
@@ -39,6 +43,16 @@ export function SubsidiaryCoverFlowCard({
 }) {
   const Icon = SECTOR_ICON[subsidiary.sector];
   const meta = `${SECTOR_LABELS[subsidiary.sector]} · ${locationLine(subsidiary)}`;
+  const router = useRouter();
+  const href = `/filiales/${subsidiary.slug}`;
+
+  const onPrefetch = () => {
+    try {
+      router.prefetch(href);
+    } catch {
+      // best effort
+    }
+  };
 
   const inner = (
     <>
@@ -46,36 +60,52 @@ export function SubsidiaryCoverFlowCard({
         src={subsidiary.coverImage}
         alt=""
         fill
+        placeholder="blur"
+        blurDataURL={BLUR_PETROL}
         className="object-cover transition-transform duration-500 group-hover:scale-105"
         sizes={`${width}px`}
         priority={isActive}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-petrol via-petrol/50 to-petrol/5" aria-hidden />
+      {/* Voile dégradé renforcé en bas pour assurer la lisibilité du bloc texte */}
+      <div
+        className="absolute inset-0 bg-gradient-to-t from-petrol via-petrol/55 to-petrol/0"
+        aria-hidden
+      />
+      <div
+        className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/25 to-transparent"
+        aria-hidden
+      />
 
-      <div className="absolute left-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-xl border border-white/25 bg-petrol/80 shadow-xl backdrop-blur-md">
-        <Icon className="h-5 w-5 text-ivory" strokeWidth={1.75} aria-hidden />
+      <div className="absolute left-2.5 top-2.5 z-10 flex h-9 w-9 items-center justify-center rounded-xl border border-white/25 bg-petrol/80 shadow-lg backdrop-blur-md sm:left-3 sm:top-3 sm:h-10 sm:w-10">
+        <Icon className="h-4 w-4 text-ivory sm:h-5 sm:w-5" strokeWidth={1.75} aria-hidden />
       </div>
 
       <div
-        className="absolute right-3 top-3 z-10 flex items-center gap-1.5 rounded-lg border border-white/20 bg-black/50 px-2.5 py-1.5 backdrop-blur-md"
+        className="absolute right-2.5 top-2.5 z-10 flex items-center gap-1.5 rounded-lg border border-white/20 bg-black/50 px-2 py-1 backdrop-blur-md sm:right-3 sm:top-3 sm:px-2.5 sm:py-1.5"
         style={{ borderColor: `${subsidiary.accentColor}66` }}
       >
         <span
-          className="h-2 w-2 rounded-full shadow-[0_0_8px_currentColor]"
+          className="h-1.5 w-1.5 rounded-full shadow-[0_0_8px_currentColor] sm:h-2 sm:w-2"
           style={{ backgroundColor: subsidiary.accentColor, color: subsidiary.accentColor }}
           aria-hidden
         />
-        <span className="text-[11px] font-semibold tracking-wide text-ivory">Premium</span>
+        <span className="text-[10px] font-semibold tracking-wide text-ivory sm:text-[11px]">
+          Premium
+        </span>
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 z-10 p-5 pt-20">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold line-clamp-1">
+      {/* Bloc texte centré, padding et typo responsives pour lisibilité optimale
+          sur cartes étroites mobile (160px) sans déborder. */}
+      <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-4 pt-12 text-center sm:px-5 sm:pb-5 sm:pt-20">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-gold line-clamp-1 [text-shadow:0_1px_4px_rgba(0,0,0,0.6)] sm:text-[11px] sm:tracking-[0.2em]">
           {SECTOR_LABELS[subsidiary.sector]}
         </p>
-        <h3 className="mt-1.5 font-[family-name:var(--font-cormorant)] text-2xl font-medium leading-tight text-ivory line-clamp-2 md:text-[1.65rem]">
+        <h3 className="mt-1.5 font-[family-name:var(--font-cormorant)] text-[1.35rem] font-medium leading-tight text-ivory line-clamp-2 [text-shadow:0_2px_10px_rgba(0,0,0,0.7)] sm:text-2xl md:text-[1.65rem]">
           {subsidiary.name}
         </h3>
-        <p className="mt-2 text-sm text-ivory/75 line-clamp-1">{meta}</p>
+        <p className="mt-1.5 text-[12px] text-ivory/80 line-clamp-1 [text-shadow:0_1px_3px_rgba(0,0,0,0.6)] sm:mt-2 sm:text-sm">
+          {meta}
+        </p>
       </div>
     </>
   );
@@ -89,7 +119,10 @@ export function SubsidiaryCoverFlowCard({
   if (isActive) {
     return (
       <Link
-        href={`/filiales/${subsidiary.slug}`}
+        href={href}
+        prefetch
+        onMouseEnter={onPrefetch}
+        onFocus={onPrefetch}
         className={`${shellClass} block cursor-pointer`}
         aria-label={`Découvrir ${subsidiary.name}`}
       >
@@ -102,6 +135,8 @@ export function SubsidiaryCoverFlowCard({
     <button
       type="button"
       onClick={onFocus}
+      onMouseEnter={onPrefetch}
+      onFocus={onPrefetch}
       className={`${shellClass} cursor-pointer text-left`}
       aria-label={`Afficher ${subsidiary.name}`}
     >

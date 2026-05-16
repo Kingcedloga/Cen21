@@ -39,7 +39,7 @@ export function SocialLinks({
 }: Props) {
   const iconClass = size === "sm" ? "w-4 h-4" : "w-5 h-5";
   const btnClass =
-    "inline-flex items-center justify-center rounded-full p-2 text-ivory/70 hover:text-gold hover:bg-white/5 transition-colors duration-200 cursor-pointer";
+    "inline-flex h-11 w-11 items-center justify-center rounded-full text-ivory/85 hover:text-gold hover:bg-white/5 transition-colors duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2";
 
   const links = [
     { key: "instagram" as const, href: social.instagram, Icon: IconInstagram, name: "Instagram" },

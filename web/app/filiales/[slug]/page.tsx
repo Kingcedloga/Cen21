@@ -4,12 +4,15 @@ import type { ReactNode } from "react";
 import { Clock, MapPin, Phone } from "lucide-react";
 
 import { EventCard } from "@/components/cards/EventCard";
+import { StickyMobileActions } from "@/components/filiales/StickyMobileActions";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
 import { MapEmbed } from "@/components/maps/MapEmbed";
 import { SectionWave } from "@/components/layout/SectionWave";
 import { SubsidiaryHero } from "@/components/sections/SubsidiaryHero";
 import { AnimateIn } from "@/components/ui/AnimateIn";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Button } from "@/components/ui/Button";
+import { ReadingProgress } from "@/components/ui/ReadingProgress";
 import {
   SECTOR_LABELS,
   getAllSubsidiarySlugs,
@@ -66,8 +69,11 @@ export default async function SubsidiaryPage({ params }: Props) {
     subsidiary.practicalInfo.phone?.trim() ||
     subsidiary.name;
 
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
+
   return (
     <>
+      <ReadingProgress />
       <SubsidiaryHero
         slides={heroSlides}
         sectorLabel={SECTOR_LABELS[subsidiary.sector]}
@@ -78,12 +84,26 @@ export default async function SubsidiaryPage({ params }: Props) {
 
       <SectionWave fill="petrol" />
 
-      <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto">
-        <AnimateIn>
-          <p className="text-taupe text-lg leading-relaxed max-w-3xl">
-            {subsidiary.description}
-          </p>
-        </AnimateIn>
+      <section className="px-4 pt-8 md:px-6 md:pt-10 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <Breadcrumb
+            items={[
+              { label: "Accueil", href: "/" },
+              { label: "Filiales", href: "/filiales" },
+              { label: subsidiary.name },
+            ]}
+          />
+        </div>
+      </section>
+
+      <section className="px-4 py-12 md:px-6 md:py-16 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <AnimateIn>
+            <p className="max-w-3xl text-lg leading-relaxed text-taupe">
+              {subsidiary.description}
+            </p>
+          </AnimateIn>
+        </div>
       </section>
 
       <SectionWave fill="band" />
@@ -170,6 +190,14 @@ export default async function SubsidiaryPage({ params }: Props) {
           Tous les événements
         </Button>
       </section>
+
+      <div className="lg:hidden h-20" aria-hidden />
+
+      <StickyMobileActions
+        phone={subsidiary.practicalInfo.phone}
+        mapsUrl={subsidiary.practicalInfo.address ? mapsUrl : undefined}
+        subsidiaryName={subsidiary.name}
+      />
     </>
   );
 }

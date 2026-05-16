@@ -1,10 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import { useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 
+import { ShareButton } from "@/components/ui/ShareButton";
 import { SocialLinks } from "@/components/ui/SocialLinks";
+import { BLUR_PETROL } from "@/lib/image-blur";
 
 import type { SocialLinks as SocialLinksData } from "@/lib/types";
 
@@ -26,15 +29,7 @@ export function SubsidiaryHero({
   const list = slides.filter((s) => s.src);
   const len = list.length;
   const [index, setIndex] = useState(0);
-  const [reduced, setReduced] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduced(mq.matches);
-    const fn = () => setReduced(mq.matches);
-    mq.addEventListener("change", fn);
-    return () => mq.removeEventListener("change", fn);
-  }, []);
+  const reduced = useReducedMotion() ?? false;
 
   const safeIndex = len ? index % len : 0;
   const next = useCallback(() => setIndex((i) => (len ? (i + 1) % len : 0)), [len]);
@@ -63,6 +58,8 @@ export function SubsidiaryHero({
             alt={slide.alt}
             fill
             priority={i === 0}
+            placeholder="blur"
+            blurDataURL={BLUR_PETROL}
             className="object-cover"
             sizes="100vw"
           />
@@ -116,8 +113,16 @@ export function SubsidiaryHero({
         <h1 className="font-[family-name:var(--font-cormorant)] text-5xl md:text-6xl text-ivory mb-4">
           {name}
         </h1>
-        <p className="text-xl text-taupe max-w-2xl mb-6">{tagline}</p>
-        <SocialLinks social={social} label="Suivez-nous" />
+        <p className="text-xl text-ivory/80 max-w-2xl mb-6">{tagline}</p>
+        <div className="flex flex-wrap items-center gap-4">
+          <SocialLinks social={social} label="Suivez-nous" />
+          <ShareButton
+            data={{
+              title: `${name} — Cen21 Hospitality`,
+              text: tagline,
+            }}
+          />
+        </div>
       </div>
     </section>
   );

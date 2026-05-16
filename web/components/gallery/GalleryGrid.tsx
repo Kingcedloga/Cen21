@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
+import { BLUR_PETROL } from "@/lib/image-blur";
 import type { GalleryItem } from "@/lib/types";
 
 import { Lightbox } from "./Lightbox";
@@ -86,6 +87,9 @@ export function GalleryGrid({
               alt={item.alt}
               width={900}
               height={600}
+              placeholder="blur"
+              blurDataURL={BLUR_PETROL}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]"
             />
           </button>
@@ -119,10 +123,10 @@ function FilterPill({
       role="tab"
       aria-selected={active}
       onClick={onClick}
-      className={`px-4 py-2 text-sm rounded-full border transition-colors duration-200 cursor-pointer ${
+      className={`min-h-[44px] rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2 ${
         active
-          ? "bg-gold text-petrol border-gold"
-          : "border-white/20 text-ivory/80 hover:border-gold hover:text-gold"
+          ? "border-gold bg-gold text-petrol"
+          : "border-white/20 text-ivory/85 hover:border-gold hover:text-gold"
       }`}
     >
       {label}

@@ -3,7 +3,7 @@ import { PageSection } from "@/components/layout/PageSection";
 import { SectionWave } from "@/components/layout/SectionWave";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AnimateIn } from "@/components/ui/AnimateIn";
-import { SubsidiariesCoverFlow } from "@/components/filiales/SubsidiariesCoverFlow";
+import { SubsidiariesExplorer } from "@/components/filiales/SubsidiariesExplorer";
 import { getSubsidiaries } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
 
@@ -28,26 +28,24 @@ export default function SubsidiariesPage() {
       <PageSection
         variant="alt"
         spacing="loose"
-        id="filiales-coverflow"
-        ariaLabelledby="filiales-coverflow-title"
+        id="filiales-explorer"
+        ariaLabelledby="filiales-explorer-title"
         containerClassName="mx-auto max-w-[min(100%,1400px)]"
       >
         <AnimateIn>
           <SectionHeading
             eyebrow="Découverte"
             title="Dix adresses, dix univers"
-            subtitle="Sélection en vedette"
+            subtitle="Filtrez par secteur, choisissez votre vue"
             titleAs="h2"
             subtitleAs="h3"
-            titleId="filiales-coverflow-title"
-            description="Cliquez sur une carte latérale pour la centrer, ou laissez-vous porter par le défilement automatique."
+            titleId="filiales-explorer-title"
+            description="Filtres, toggle d'affichage et défilement immersif — la sélection s'adapte à votre rythme."
             align="left"
-            className="mb-0 max-w-2xl"
+            className="mb-12 max-w-2xl md:mb-16"
           />
         </AnimateIn>
-        <div className="relative z-10 mt-20 md:mt-28 lg:mt-32">
-          <SubsidiariesCoverFlow subsidiaries={subsidiaries} />
-        </div>
+        <SubsidiariesExplorer subsidiaries={subsidiaries} />
       </PageSection>
 
       <SectionWave fill="petrol" />

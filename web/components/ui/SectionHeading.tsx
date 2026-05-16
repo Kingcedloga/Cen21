@@ -21,35 +21,57 @@ export function SectionHeading({
   titleId?: string;
   className?: string;
 }) {
-  const alignClass = align === "center" ? "text-center mx-auto" : "text-left";
+  const isCenter = align === "center";
   const Title = TitleTag as ElementType;
   const Subtitle = SubtitleTag as ElementType;
 
   return (
-    <header className={`max-w-3xl mb-10 md:mb-12 ${alignClass} ${className}`}>
+    <header
+      className={`max-w-3xl mb-10 md:mb-12 ${
+        isCenter ? "mx-auto text-center" : "text-left"
+      } ${className}`}
+    >
       {eyebrow && (
         <div
-          className={`mb-4 flex flex-col gap-3 ${align === "center" ? "items-center" : "items-start"}`}
+          className={`mb-5 flex max-w-full flex-wrap items-center gap-x-3 gap-y-2 ${
+            isCenter ? "justify-center" : "justify-start"
+          }`}
         >
-          <p className="text-gold text-[11px] font-semibold tracking-[0.28em] uppercase">
+          <span
+            aria-hidden
+            className="h-px w-7 shrink-0 bg-gradient-to-r from-transparent to-gold/85 sm:w-9"
+          />
+          <span
+            aria-hidden
+            className="inline-flex h-1.5 w-1.5 shrink-0 rotate-45 bg-gold/85 shadow-[0_0_10px_rgba(197,160,89,0.55)]"
+          />
+          <p className="text-gold text-[11px] font-semibold tracking-[0.28em] uppercase sm:tracking-[0.32em]">
             {eyebrow}
           </p>
-          <span
-            className="h-px w-12 bg-gradient-to-r from-gold/90 to-gold/30"
-            aria-hidden
-          />
+          {isCenter && (
+            <>
+              <span
+                aria-hidden
+                className="inline-flex h-1.5 w-1.5 shrink-0 rotate-45 bg-gold/85 shadow-[0_0_10px_rgba(197,160,89,0.55)]"
+              />
+              <span
+                aria-hidden
+                className="h-px w-7 shrink-0 bg-gradient-to-l from-transparent to-gold/85 sm:w-9"
+              />
+            </>
+          )}
         </div>
       )}
       <Title
         id={titleId}
-        className="font-[family-name:var(--font-cormorant)] text-4xl md:text-5xl lg:text-[3.35rem] font-light tracking-[-0.02em] text-ivory leading-[1.1] [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]"
+        className="font-[family-name:var(--font-cormorant)] text-4xl md:text-5xl lg:text-[3.4rem] font-light tracking-[-0.02em] text-ivory leading-[1.08] [text-shadow:0_2px_28px_rgba(0,0,0,0.5)]"
       >
         {title}
       </Title>
       {subtitle && (
         <Subtitle
-          className={`mt-3 font-[family-name:var(--font-cormorant)] text-2xl md:text-3xl font-light tracking-[-0.01em] text-ivory/90 leading-snug [text-shadow:0_1px_16px_rgba(0,0,0,0.35)] ${
-            align === "center" ? "mx-auto" : ""
+          className={`mt-3 font-[family-name:var(--font-cormorant)] text-2xl md:text-[1.85rem] italic font-light tracking-[-0.005em] leading-snug text-gradient-gold opacity-95 [text-shadow:0_1px_18px_rgba(0,0,0,0.35)] ${
+            isCenter ? "mx-auto" : ""
           }`}
         >
           {subtitle}
@@ -57,8 +79,8 @@ export function SectionHeading({
       )}
       {description && (
         <p
-          className={`mt-4 text-ivory/75 text-base md:text-lg leading-[1.65] max-w-2xl ${
-            align === "center" ? "mx-auto" : ""
+          className={`mt-5 text-ivory/80 text-base md:text-lg leading-[1.7] max-w-2xl ${
+            isCenter ? "mx-auto" : ""
           }`}
         >
           {description}

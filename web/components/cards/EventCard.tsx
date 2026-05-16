@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Calendar, MapPin } from "lucide-react";
 
 import { getSubsidiaryBySlug } from "@/lib/content";
+import { BLUR_PETROL } from "@/lib/image-blur";
 import type { EventItem } from "@/lib/types";
 
 function formatDate(iso: string) {
@@ -26,6 +27,8 @@ export function EventCard({ event }: { event: EventItem }) {
           src={event.image}
           alt={event.title}
           fill
+          placeholder="blur"
+          blurDataURL={BLUR_PETROL}
           className="object-cover"
           sizes="(max-width: 768px) 100vw, 50vw"
         />
