@@ -1,9 +1,9 @@
-import { PageHero } from "@/components/sections/PageHero";
 import { PageSection } from "@/components/layout/PageSection";
 import { SectionWave } from "@/components/layout/SectionWave";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { PageHero } from "@/components/sections/PageHero";
+import { SubsidiariesBento } from "@/components/filiales/SubsidiariesBento";
 import { AnimateIn } from "@/components/ui/AnimateIn";
-import { SubsidiariesExplorer } from "@/components/filiales/SubsidiariesExplorer";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { getSubsidiaries } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
 
@@ -22,30 +22,31 @@ export default function SubsidiariesPage() {
       <PageHero
         eyebrow="Portfolio"
         title="Nos filiales"
-        description="Des univers distincts, une même exigence — parcourez nos dix adresses dans un flux immersif."
+        description="Des univers distincts, une même exigence — une vue éditoriale curatée de nos dix adresses."
       />
 
       <PageSection
         variant="alt"
         spacing="loose"
-        id="filiales-explorer"
-        ariaLabelledby="filiales-explorer-title"
+        id="filiales-bento"
+        ariaLabelledby="filiales-bento-title"
         containerClassName="mx-auto max-w-[min(100%,1400px)]"
       >
         <AnimateIn>
           <SectionHeading
-            eyebrow="Découverte"
+            eyebrow="Sélection"
             title="Dix adresses, dix univers"
-            subtitle="Filtrez par secteur, choisissez votre vue"
+            subtitle="Une composition magazine"
             titleAs="h2"
             subtitleAs="h3"
-            titleId="filiales-explorer-title"
-            description="Filtres, toggle d'affichage et défilement immersif — la sélection s'adapte à votre rythme."
+            titleId="filiales-bento-title"
+            description="Chaque bloc met en vedette une adresse iconique, accompagnée d'une sélection complémentaire — une lecture immédiate, sans filtre, comme un cahier d'adresses signé."
             align="left"
             className="mb-12 max-w-2xl md:mb-16"
           />
         </AnimateIn>
-        <SubsidiariesExplorer subsidiaries={subsidiaries} />
+
+        <SubsidiariesBento subsidiaries={subsidiaries} />
       </PageSection>
 
       <SectionWave fill="petrol" />

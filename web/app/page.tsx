@@ -1,8 +1,11 @@
+import { ArrowRight } from "lucide-react";
+
 import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
 import { FeaturedSubsidiariesSlider } from "@/components/sections/FeaturedSubsidiariesSlider";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { HeroCinematic } from "@/components/sections/HeroCinematic";
 import { AnimateIn } from "@/components/ui/AnimateIn";
+import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StatsBanner } from "@/components/sections/StatsBanner";
 import { PageSection } from "@/components/layout/PageSection";
@@ -68,7 +71,6 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Nos adresses"
             title="Nos filiales"
-            subtitle="Filiales en vedette"
             titleAs="h2"
             subtitleAs="h3"
             titleId="nos-filiales-title"
@@ -79,6 +81,23 @@ export default function HomePage() {
         <div className="relative z-10 mt-24 sm:mt-28 md:mt-28 lg:mt-32">
           <FeaturedSubsidiariesSlider subsidiaries={subsidiaries} />
         </div>
+
+        <AnimateIn delay={0.15}>
+          <div className="mt-16 flex justify-center md:mt-20 lg:mt-24">
+            <Button
+              href="/filiales"
+              variant="secondary"
+              size="md"
+              ariaLabel="Voir l'ensemble de nos filiales"
+            >
+              Voir plus
+              <ArrowRight
+                className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1"
+                aria-hidden
+              />
+            </Button>
+          </div>
+        </AnimateIn>
       </PageSection>
 
       <SectionWave fill="petrol" />
