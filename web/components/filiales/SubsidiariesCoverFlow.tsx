@@ -19,6 +19,8 @@ type StageMetrics = {
   activeScale: number;
   /** Hauteur réservée du wrapper, alignée sur le min-h Tailwind correspondant. */
   wrapperH: number;
+  /** Mobile : descend le deck (px) sous le titre de section sans rogner le bas. */
+  deckYOffset?: number;
   /** Rotations Y des cartes adjacentes — moins agressives sur mobile pour réduire l'empreinte horizontale. */
   rotateY1: number;
   rotateY2: number;
@@ -32,7 +34,8 @@ const SSR_METRICS: StageMetrics = {
   cardW: 290,
   cardH: 435,
   activeScale: 1.0,
-  wrapperH: 455,
+  wrapperH: 520,
+  deckYOffset: 96,
   rotateY1: 36,
   rotateY2: 46,
   rotateY3: 52,
@@ -115,7 +118,7 @@ function cardMotion(offset: number, reduced: boolean, m: StageMetrics) {
   if (reduced) {
     return {
       x: -halfW,
-      y: -halfH,
+      y: -halfH + (m.deckYOffset ?? 0),
       scale: offset === 0 ? 1 : 0.92,
       rotateY: 0,
       z: 0,
@@ -143,7 +146,7 @@ function cardMotion(offset: number, reduced: boolean, m: StageMetrics) {
 
   return {
     x: offset * m.spread - halfW,
-    y: -halfH,
+    y: -halfH + (m.deckYOffset ?? 0),
     scale,
     rotateY,
     z: -abs * 140,
@@ -184,11 +187,11 @@ export function SubsidiariesCoverFlow({
   return (
     <motion.div
       // Hauteurs Tailwind responsives (CSS-only) STRICTEMENT alignées sur METRICS.wrapperH :
-      //   mobile  455px  ↔ METRICS.mobile.wrapperH = 455 (card 435px + 20px buffer)
+      // mobile  520px  ↔ METRICS.mobile.wrapperH + deckYOffset (deck abaissé sous le titre)
       //   tablet  398px  ↔ METRICS.tablet.wrapperH = 398 (card 378px + 20px buffer)
       //   desktop 508px  ↔ METRICS.desktop.wrapperH = 508 (card 488px + 20px buffer)
       // Tailwind et matchMedia utilisent les mêmes seuils → CSS et JS toujours synchrones.
-      className="relative mx-auto w-full max-w-[min(100%,1400px)] min-h-[455px] sm:min-h-[398px] lg:min-h-[508px]"
+      className="relative mx-auto w-full max-w-[min(100%,1400px)] min-h-[520px] sm:min-h-[398px] lg:min-h-[508px]"
       initial={false}
       animate={mounted ? { minHeight: metrics.wrapperH } : undefined}
     >
@@ -198,14 +201,14 @@ export function SubsidiariesCoverFlow({
         aria-hidden
       >
         <motion.div
-          className="absolute left-1/2 top-1/2 h-[min(420px,60vw)] w-[min(560px,82vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(197,160,89,0.22)_0%,rgba(197,160,89,0.06)_45%,transparent_72%)]"
+          className="absolute left-1/2 top-1/2 h-[min(420px,60vw)] w-[min(560px,82vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(197,160,89,0.22)_0%,rgba(197,160,89,0.06)_45%,transparent_72%)] max-sm:h-[min(240px,45vw)] max-sm:w-[min(300px,78vw)] max-sm:opacity-60"
           animate={mounted && !reduced ? { opacity: [0.8, 1, 0.8] } : { opacity: 0.8 }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
 
       <div
-        className="relative z-10 mx-auto h-full w-full min-h-[455px] [perspective:1800px] [perspective-origin:50%_45%] sm:min-h-[398px] lg:min-h-[508px]"
+        className="relative z-10 mx-auto h-full w-full min-h-[520px] [perspective:1800px] [perspective-origin:50%_58%] max-sm:[perspective-origin:50%_72%] sm:min-h-[398px] sm:[perspective-origin:50%_45%] lg:min-h-[508px]"
         style={mounted ? { minHeight: metrics.wrapperH } : undefined}
       >
         {!mounted ? (
@@ -213,7 +216,7 @@ export function SubsidiariesCoverFlow({
           // responsive Tailwind, identique côté SSR et premier render client.
           <div
             aria-hidden
-            className="absolute left-1/2 top-1/2 h-[435px] w-[290px] -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-petrol/10 bg-white/30 sm:h-[360px] sm:w-[240px] lg:h-[444px] lg:w-[296px]"
+            className="absolute left-1/2 top-1/2 h-[435px] w-[290px] -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-petrol/10 bg-white/30 max-sm:top-[calc(50%+96px)] sm:h-[360px] sm:w-[240px] lg:h-[444px] lg:w-[296px]"
           />
         ) : (
           <div className="relative h-full w-full [transform-style:preserve-3d]">

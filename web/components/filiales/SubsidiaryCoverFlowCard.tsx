@@ -66,13 +66,17 @@ export function SubsidiaryCoverFlowCard({
         sizes={`${width}px`}
         priority={isActive}
       />
-      {/* Voile dégradé renforcé en bas pour assurer la lisibilité du bloc texte */}
+      {/* Mobile : voile très léger (évite la bande sombre pleine largeur) — desktop inchangé. */}
       <div
-        className="absolute inset-0 bg-gradient-to-t from-petrol via-petrol/55 to-petrol/0"
+        className="absolute inset-0 bg-gradient-to-t from-black/[0.45] via-black/10 to-transparent sm:hidden"
         aria-hidden
       />
       <div
-        className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/25 to-transparent"
+        className="absolute inset-0 hidden bg-gradient-to-t from-petrol via-petrol/55 to-petrol/0 sm:block"
+        aria-hidden
+      />
+      <div
+        className="absolute inset-x-0 bottom-0 hidden h-2/3 bg-gradient-to-t from-black/70 via-black/25 to-transparent sm:block"
         aria-hidden
       />
 
