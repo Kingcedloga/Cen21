@@ -34,13 +34,12 @@ export function CtaBand() {
 
             <div className="relative z-10 flex flex-col items-center">
               <span className="inline-flex items-center gap-2 rounded-full border border-gold/35 bg-petrol/60 px-4 py-1.5 text-[10.5px] font-semibold uppercase tracking-[0.28em] text-gold backdrop-blur-sm">
-                <Sparkles className="h-3.5 w-3.5" strokeWidth={1.5} aria-hidden />
                 Expériences sur mesure
               </span>
 
               <h2 className="mt-6 font-[family-name:var(--font-cormorant)] text-[2.25rem] md:text-5xl lg:text-[3.4rem] font-light leading-[1.08] tracking-[-0.02em] text-ivory [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
                 Prêt à vivre{" "}
-                <span className="text-gradient-gold italic font-light">
+                <span className="text-gradient-gold  font-light">
                   l&apos;exception
                 </span>{" "}
                 ?

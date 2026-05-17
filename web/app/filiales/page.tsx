@@ -36,7 +36,6 @@ export default function SubsidiariesPage() {
           <SectionHeading
             eyebrow="Sélection"
             title="Dix adresses, dix univers"
-            subtitle="Une composition magazine"
             titleAs="h2"
             subtitleAs="h3"
             titleId="filiales-bento-title"
