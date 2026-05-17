@@ -26,25 +26,26 @@ type StageMetrics = {
 };
 
 // SSR + 1er render client (mobile-first) — déterministe, pas de mismatch d'hydratation.
+// Buffer wrapper réduit à ~20 px pour compacter la bande sans rogner les cartes.
 const SSR_METRICS: StageMetrics = {
-  spread: 50,
-  cardW: 144,
-  cardH: 216,
+  spread: 115,
+  cardW: 290,
+  cardH: 435,
   activeScale: 1.0,
-  wrapperH: 280,
-  rotateY1: 32,
-  rotateY2: 42,
-  rotateY3: 48,
+  wrapperH: 455,
+  rotateY1: 36,
+  rotateY2: 46,
+  rotateY3: 52,
 };
 
 const METRICS: Record<Breakpoint, StageMetrics> = {
   mobile: SSR_METRICS,
   tablet: {
-    spread: 110,
-    cardW: 200,
-    cardH: 300,
+    spread: 130,
+    cardW: 240,
+    cardH: 360,
     activeScale: 1.05,
-    wrapperH: 360,
+    wrapperH: 398,
     rotateY1: 36,
     rotateY2: 46,
     rotateY3: 52,
@@ -54,7 +55,7 @@ const METRICS: Record<Breakpoint, StageMetrics> = {
     cardW: 296,
     cardH: 444,
     activeScale: 1.1,
-    wrapperH: 520,
+    wrapperH: 508,
     rotateY1: 38,
     rotateY2: 48,
     rotateY3: 52,
@@ -183,40 +184,28 @@ export function SubsidiariesCoverFlow({
   return (
     <motion.div
       // Hauteurs Tailwind responsives (CSS-only) STRICTEMENT alignées sur METRICS.wrapperH :
-      //   mobile  280px  ↔ METRICS.mobile.wrapperH = 280
-      //   tablet  360px  ↔ METRICS.tablet.wrapperH = 360 (sm:min-h-[360px])
-      //   desktop 520px  ↔ METRICS.desktop.wrapperH = 520 (lg:min-h-[520px])
+      //   mobile  455px  ↔ METRICS.mobile.wrapperH = 455 (card 435px + 20px buffer)
+      //   tablet  398px  ↔ METRICS.tablet.wrapperH = 398 (card 378px + 20px buffer)
+      //   desktop 508px  ↔ METRICS.desktop.wrapperH = 508 (card 488px + 20px buffer)
       // Tailwind et matchMedia utilisent les mêmes seuils → CSS et JS toujours synchrones.
-      className="relative mx-auto w-full max-w-[min(100%,1400px)] min-h-[280px] sm:min-h-[360px] lg:min-h-[520px]"
+      className="relative mx-auto w-full max-w-[min(100%,1400px)] min-h-[455px] sm:min-h-[398px] lg:min-h-[508px]"
       initial={false}
       animate={mounted ? { minHeight: metrics.wrapperH } : undefined}
     >
-      {/* Scène cinématique — bleed graduel : doux mobile, plein desktop */}
+      {/* Halo doré central — accent lumineux sur le marbre, sans fond opaque */}
       <div
-        className="absolute inset-x-[-3vw] inset-y-0 z-0 rounded-3xl bg-[#060a0c] shadow-[inset_0_0_120px_rgba(0,0,0,0.85)] ring-1 ring-white/[0.06] sm:inset-x-[-8vw] lg:inset-x-[-12vw]"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-y-0 z-[1] inset-x-[-3vw] sm:inset-x-[-8vw] lg:inset-x-[-12vw]"
+        className="pointer-events-none absolute inset-0 z-0"
         aria-hidden
       >
         <motion.div
-          className="absolute left-1/2 top-1/2 h-[min(520px,70vw)] w-[min(640px,95vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(197,160,89,0.28)_0%,rgba(197,160,89,0.08)_42%,transparent_68%)]"
-          animate={mounted && !reduced ? { opacity: [0.85, 1, 0.85] } : { opacity: 0.85 }}
+          className="absolute left-1/2 top-1/2 h-[min(420px,60vw)] w-[min(560px,82vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(197,160,89,0.22)_0%,rgba(197,160,89,0.06)_45%,transparent_72%)]"
+          animate={mounted && !reduced ? { opacity: [0.8, 1, 0.8] } : { opacity: 0.8 }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <div
-          className="absolute inset-y-0 left-0 w-[min(20%,110px)] rounded-l-3xl bg-gradient-to-r from-[#060a0c] via-[#060a0c]/90 to-transparent"
-          aria-hidden
-        />
-        <div
-          className="absolute inset-y-0 right-0 w-[min(20%,110px)] rounded-r-3xl bg-gradient-to-l from-[#060a0c] via-[#060a0c]/90 to-transparent"
-          aria-hidden
         />
       </div>
 
       <div
-        className="relative z-10 mx-auto h-full w-full min-h-[280px] [perspective:1800px] [perspective-origin:50%_45%] sm:min-h-[360px] lg:min-h-[520px]"
+        className="relative z-10 mx-auto h-full w-full min-h-[455px] [perspective:1800px] [perspective-origin:50%_45%] sm:min-h-[398px] lg:min-h-[508px]"
         style={mounted ? { minHeight: metrics.wrapperH } : undefined}
       >
         {!mounted ? (
@@ -224,7 +213,7 @@ export function SubsidiariesCoverFlow({
           // responsive Tailwind, identique côté SSR et premier render client.
           <div
             aria-hidden
-            className="absolute left-1/2 top-1/2 h-[216px] w-[144px] -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-white/5 bg-white/[0.02] sm:h-[300px] sm:w-[200px] lg:h-[444px] lg:w-[296px]"
+            className="absolute left-1/2 top-1/2 h-[435px] w-[290px] -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-petrol/10 bg-white/30 sm:h-[360px] sm:w-[240px] lg:h-[444px] lg:w-[296px]"
           />
         ) : (
           <div className="relative h-full w-full [transform-style:preserve-3d]">
