@@ -52,7 +52,7 @@ export function StickyMobileActions({
             {cleanedPhone && (
               <a
                 href={`tel:${cleanedPhone}`}
-                className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-ivory px-3 py-3 text-sm font-semibold text-petrol transition-colors duration-200 hover:brightness-[1.03] active:brightness-[0.98] focus-visible:outline-2 focus-visible:outline-ivory cursor-pointer"
+                className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gold px-3 py-3 text-sm font-semibold text-petrol transition-colors duration-200 hover:brightness-[1.04] active:brightness-[0.98] focus-visible:outline-2 focus-visible:outline-gold cursor-pointer"
               >
                 <Phone className="h-4 w-4" strokeWidth={1.5} aria-hidden />
                 <span>Appeler</span>

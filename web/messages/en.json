@@ -65,9 +65,14 @@
     "subsidiaries": "Our subsidiaries",
     "contact": "Contact us",
     "playVideoAria": "Play the Cen21 Hospitality experience video",
+    "playVideoAriaSlide": "Play video {current} of {total}",
     "closeVideoAria": "Close video",
     "videoTitle": "Video — Cen21 Hospitality",
-    "videoUnavailable": "Our showcase video will be available soon."
+    "videoUnavailable": "Our showcase video will be available soon.",
+    "carouselLabel": "Experience videos",
+    "prevSlide": "Previous video",
+    "nextSlide": "Next video",
+    "goToSlide": "Go to video {index}"
   },
   "stats": {},
   "about": {

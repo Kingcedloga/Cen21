@@ -13,6 +13,23 @@
     "linkedin": "https://www.linkedin.com/company/cen21-hospitality"
   },
   "experienceYoutubeId": "https://youtu.be/cCRgd85KfxY?si=zedut7Be3uGfXziF",
+  "experienceVideos": [
+    {
+      "youtubeId": "https://youtu.be/cCRgd85KfxY",
+      "title": "Prêt pour une",
+      "titleAccent": "soirée d'exception ?"
+    },
+    {
+      "youtubeId": "https://youtu.be/cCRgd85KfxY",
+      "title": "Dix adresses,",
+      "titleAccent": "un même standard d'excellence"
+    },
+    {
+      "youtubeId": "https://youtu.be/cCRgd85KfxY",
+      "title": "L'art de",
+      "titleAccent": "l'exception"
+    }
+  ],
   "heroImage": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&q=85",
   "heroSlides": [
     {

@@ -15,6 +15,7 @@ import type { Locale } from "@/i18n/routing";
 import type {
   AboutContent,
   EventItem,
+  ExperienceVideo,
   GalleryItem,
   SiteConfig,
   StatsContent,
@@ -47,12 +48,44 @@ export function getSiteConfig(locale: Locale): SiteConfig {
 
 /** ID YouTube pour la section Expérience (contenu JSON ou variable d'environnement). */
 export function getExperienceVideoId(locale: Locale): string | undefined {
+  const videos = getExperienceVideos(locale);
+  return videos[0]?.id;
+}
+
+/** Vidéos parsées pour le slider Expérience (CTA). */
+export function getExperienceVideos(
+  locale: Locale,
+): { id: string; title?: string; titleAccent?: string }[] {
   const site = getSiteConfig(locale);
-  const raw =
+  const fromConfig = (site.experienceVideos ?? [])
+    .map((entry) => parseExperienceVideo(entry))
+    .filter((v): v is { id: string; title?: string; titleAccent?: string } => v != null);
+
+  if (fromConfig.length > 0) return fromConfig;
+
+  const legacy =
     site.experienceYoutubeId?.trim() ||
     process.env.NEXT_PUBLIC_EXPERIENCE_YOUTUBE_ID?.trim() ||
     "";
-  return parseYoutubeId(raw);
+  const id = parseYoutubeId(legacy);
+  return id ? [{ id }] : [];
+}
+
+function parseExperienceVideo(
+  entry: ExperienceVideo,
+): { id: string; title?: string; titleAccent?: string } | undefined {
+  const id = parseYoutubeId(entry.youtubeId?.trim() ?? "");
+  if (!id) return undefined;
+  return {
+    id,
+    title: entry.title?.trim() || undefined,
+    titleAccent: titleAccentOrUndefined(entry.titleAccent),
+  };
+}
+
+function titleAccentOrUndefined(value: string | undefined): string | undefined {
+  const trimmed = value?.trim();
+  return trimmed || undefined;
 }
 
 export function getStatsContent(locale: Locale): StatsContent {

@@ -1,143 +1,306 @@
 "use client";
 
-import { Play, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { useCallback, useEffect, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type KeyboardEvent as ReactKeyboardEvent,
+} from "react";
 
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { youtubeEmbedUrl, youtubeThumbnailUrl } from "@/lib/youtube";
 
-type CtaBandProps = {
-  videoId?: string;
+export type CtaBandVideo = {
+  id: string;
+  title?: string;
+  titleAccent?: string;
 };
 
-export function CtaBand({ videoId }: CtaBandProps) {
+type CtaBandProps = {
+  videos: CtaBandVideo[];
+};
+
+const navButtonClass =
+  "absolute top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-petrol/25 bg-gold text-petrol shadow-sm transition-colors duration-200 hover:border-petrol/45 hover:brightness-[1.04] focus-visible:outline-2 focus-visible:outline-petrol focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-35 md:flex";
+
+type VideoSlideProps = {
+  video: CtaBandVideo;
+  slideIndex: number;
+  slideCount: number;
+  isPlaying: boolean;
+  defaultTitle: string;
+  defaultTitleAccent: string;
+  onPlay: () => void;
+  onClose: () => void;
+};
+
+function VideoSlide({
+  video,
+  slideIndex,
+  slideCount,
+  isPlaying,
+  defaultTitle,
+  defaultTitleAccent,
+  onPlay,
+  onClose,
+}: VideoSlideProps) {
   const t = useTranslations("cta");
-  const [playing, setPlaying] = useState(false);
   const [thumbQuality, setThumbQuality] = useState<"max" | "hq">("max");
 
-  const handlePlay = useCallback(() => {
-    if (!videoId) return;
-    setPlaying(true);
-  }, [videoId]);
+  const title = video.title ?? defaultTitle;
+  const titleAccent = video.titleAccent ?? defaultTitleAccent;
+  const thumbnailSrc = youtubeThumbnailUrl(video.id, thumbQuality);
+  const playAria =
+    slideCount > 1
+      ? t("playVideoAriaSlide", {
+          current: slideIndex + 1,
+          total: slideCount,
+        })
+      : t("playVideoAria");
+
+  return (
+    <div className="relative aspect-video w-full">
+      {isPlaying ? (
+        <>
+          <iframe
+            src={youtubeEmbedUrl(video.id)}
+            title={t("videoTitle")}
+            className="absolute inset-0 h-full w-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label={t("closeVideoAria")}
+            className="absolute right-3 top-3 z-20 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-petrol/80 text-ivory transition-colors duration-200 hover:border-gold/45 hover:bg-petrol hover:text-gold focus-visible:outline-2 focus-visible:outline-petrol focus-visible:outline-offset-2"
+          >
+            <X className="h-4 w-4" strokeWidth={1.5} aria-hidden />
+          </button>
+        </>
+      ) : (
+        <button
+          type="button"
+          onClick={onPlay}
+          aria-label={playAria}
+          className="group/video absolute inset-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-petrol focus-visible:outline-offset-2"
+        >
+          <Image
+            src={thumbnailSrc}
+            alt=""
+            fill
+            sizes="(max-width: 896px) 100vw, 896px"
+            className="object-cover transition-transform duration-500 ease-out group-hover/video:scale-[1.02]"
+            onError={() => {
+              if (thumbQuality === "max") setThumbQuality("hq");
+            }}
+          />
+          <span
+            aria-hidden
+            className="absolute inset-0 bg-gradient-to-t from-petrol-panel-4/85 via-petrol/40 to-petrol/20 transition-opacity duration-300 group-hover/video:via-petrol/30"
+          />
+          <span
+            aria-hidden
+            className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,173,101,0.16)_0%,transparent_55%)] opacity-80 transition-opacity duration-300 group-hover/video:opacity-100"
+          />
+
+          <span className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6">
+            <span className="flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border border-gold/50 bg-petrol/55 text-gold shadow-[0_0_40px_-8px_rgb(var(--color-gold-rgb)/0.55),inset_0_1px_0_0_rgb(255_255_255/0.12)] transition-all duration-300 group-hover/video:border-gold/70 group-hover/video:bg-petrol/70 group-hover/video:shadow-[0_0_52px_-6px_rgb(var(--color-gold-rgb)/0.7),inset_0_1px_0_0_rgb(255_255_255/0.16)] md:h-20 md:w-20">
+              <Play
+                className="ml-1 h-7 w-7 fill-current md:h-8 md:w-8"
+                strokeWidth={0}
+                aria-hidden
+              />
+            </span>
+            <span className="max-w-md text-center font-[family-name:var(--font-dm-sans)] text-lg font-bold leading-snug tracking-[-0.02em] text-gradient-gold-vertical md:text-xl">
+              {title} {titleAccent}
+            </span>
+          </span>
+        </button>
+      )}
+    </div>
+  );
+}
+
+export function CtaBand({ videos }: CtaBandProps) {
+  const t = useTranslations("cta");
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [playingIndex, setPlayingIndex] = useState<number | null>(null);
+
+  const slideCount = videos.length;
+  const hasMultiple = slideCount > 1;
+  const defaultTitle = t("title");
+  const defaultTitleAccent = t("titleAccent");
+
+  const scrollToIndex = useCallback((index: number) => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const clamped = Math.max(0, Math.min(index, slideCount - 1));
+    const slide = container.children[clamped] as HTMLElement | undefined;
+    slide?.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest",
+    });
+    setActiveIndex(clamped);
+    setPlayingIndex(null);
+  }, [slideCount]);
 
   const handleClose = useCallback(() => {
-    setPlaying(false);
+    setPlayingIndex(null);
   }, []);
 
   useEffect(() => {
-    if (!playing) return;
-    const onKeyDown = (event: KeyboardEvent) => {
+    if (playingIndex == null) return;
+    const onKeyDown = (event: globalThis.KeyboardEvent) => {
       if (event.key === "Escape") handleClose();
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [playing, handleClose]);
+  }, [playingIndex, handleClose]);
 
-  const thumbnailSrc = videoId
-    ? youtubeThumbnailUrl(videoId, thumbQuality)
-    : undefined;
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container || !hasMultiple) return;
+
+    const onScroll = () => {
+      const width = container.clientWidth;
+      if (width <= 0) return;
+      const index = Math.round(container.scrollLeft / width);
+      setActiveIndex(index);
+      setPlayingIndex(null);
+    };
+
+    container.addEventListener("scroll", onScroll, { passive: true });
+    return () => container.removeEventListener("scroll", onScroll);
+  }, [hasMultiple]);
+
+  const onCarouselKeyDown = useCallback(
+    (event: ReactKeyboardEvent<HTMLDivElement>) => {
+      if (!hasMultiple || playingIndex != null) return;
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        scrollToIndex(activeIndex - 1);
+      } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        scrollToIndex(activeIndex + 1);
+      }
+    },
+    [activeIndex, hasMultiple, playingIndex, scrollToIndex],
+  );
 
   return (
-    <section className="relative bg-petrol px-4 py-24 md:px-6 md:py-28 lg:px-8">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-1/2 mx-auto h-[520px] max-w-4xl -translate-y-1/2 bg-[radial-gradient(ellipse_at_center,rgba(212,173,101,0.2)_0%,rgba(212,173,101,0.05)_42%,transparent_68%)]"
-      />
-
+    <section className="relative bg-ivory px-4 py-24 text-petrol md:px-6 md:py-28 lg:px-8">
       <AnimateIn>
         <div className="relative mx-auto max-w-4xl">
-          <div className="luxury-grain cta-card relative overflow-hidden rounded-[2rem] border border-white/[0.08] p-6 md:p-8 lg:p-10">
-            <div className="relative z-10 flex flex-col items-center">
-              <span className="inline-flex items-center rounded-full border border-gold/45 px-5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.32em] text-gold">
-                {t("eyebrow")}
-              </span>
+          <div className="flex flex-col items-center">
+            <span className="inline-flex items-center rounded-full border border-petrol/30 px-5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.32em] text-petrol">
+              {t("eyebrow")}
+            </span>
 
-              <div className="mt-7 w-full md:mt-8">
-                {videoId ? (
-                  <div className="relative overflow-hidden rounded-2xl border border-white/[0.1] bg-petrol-panel-4 shadow-[inset_0_1px_0_0_rgb(255_255_255/0.05),0_24px_60px_-24px_rgb(0_0_0/0.65)]">
-                    <div className="relative aspect-video w-full">
-                      {playing ? (
-                        <>
-                          <iframe
-                            src={youtubeEmbedUrl(videoId)}
-                            title={t("videoTitle")}
-                            className="absolute inset-0 h-full w-full"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowFullScreen
+            <div className="mt-7 w-full md:mt-8">
+              {slideCount > 0 ? (
+                <div
+                  className="relative"
+                  role="region"
+                  aria-roledescription="carousel"
+                  aria-label={t("carouselLabel")}
+                  onKeyDown={onCarouselKeyDown}
+                  tabIndex={hasMultiple ? 0 : undefined}
+                >
+                  <div
+                    ref={scrollRef}
+                    className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                  >
+                    {videos.map((video, index) => (
+                      <div
+                        key={`${video.id}-${index}`}
+                        className="w-full shrink-0 snap-center snap-always"
+                        aria-hidden={index !== activeIndex}
+                      >
+                        <div className="overflow-hidden rounded-2xl">
+                          <VideoSlide
+                            video={video}
+                            slideIndex={index}
+                            slideCount={slideCount}
+                            isPlaying={playingIndex === index}
+                            defaultTitle={defaultTitle}
+                            defaultTitleAccent={defaultTitleAccent}
+                            onPlay={() => setPlayingIndex(index)}
+                            onClose={handleClose}
                           />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {hasMultiple && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => scrollToIndex(activeIndex - 1)}
+                        disabled={activeIndex === 0}
+                        aria-label={t("prevSlide")}
+                        className={`${navButtonClass} -left-4 lg:-left-14`}
+                      >
+                        <ChevronLeft className="h-5 w-5" strokeWidth={1.5} aria-hidden />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => scrollToIndex(activeIndex + 1)}
+                        disabled={activeIndex === slideCount - 1}
+                        aria-label={t("nextSlide")}
+                        className={`${navButtonClass} -right-4 lg:-right-14`}
+                      >
+                        <ChevronRight className="h-5 w-5" strokeWidth={1.5} aria-hidden />
+                      </button>
+
+                      <div
+                        className="mt-5 flex justify-center gap-2"
+                        role="tablist"
+                        aria-label={t("carouselLabel")}
+                      >
+                        {videos.map((video, index) => (
                           <button
+                            key={`dot-${video.id}-${index}`}
                             type="button"
-                            onClick={handleClose}
-                            aria-label={t("closeVideoAria")}
-                            className="absolute right-3 top-3 z-20 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-petrol/80 text-ivory backdrop-blur-sm transition-colors duration-200 hover:border-gold/45 hover:bg-petrol hover:text-gold focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2"
-                          >
-                            <X className="h-4 w-4" strokeWidth={1.5} aria-hidden />
-                          </button>
-                        </>
-                      ) : (
-                        <button
-                          type="button"
-                          onClick={handlePlay}
-                          aria-label={t("playVideoAria")}
-                          className="group/video absolute inset-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-[-2px]"
-                        >
-                          {thumbnailSrc && (
-                            <Image
-                              src={thumbnailSrc}
-                              alt=""
-                              fill
-                              sizes="(max-width: 896px) 100vw, 896px"
-                              className="object-cover transition-transform duration-500 ease-out group-hover/video:scale-[1.02]"
-                              onError={() => {
-                                if (thumbQuality === "max") setThumbQuality("hq");
-                              }}
-                            />
-                          )}
-                          <span
-                            aria-hidden
-                            className="absolute inset-0 bg-gradient-to-t from-petrol-panel-4/90 via-petrol/45 to-petrol/25 transition-opacity duration-300 group-hover/video:via-petrol/35"
+                            role="tab"
+                            aria-selected={index === activeIndex}
+                            aria-label={t("goToSlide", { index: index + 1 })}
+                            onClick={() => scrollToIndex(index)}
+                            className={`h-2 w-2 cursor-pointer rounded-full transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-petrol focus-visible:outline-offset-2 ${
+                              index === activeIndex
+                                ? "bg-petrol"
+                                : "bg-petrol/25 hover:bg-petrol/45"
+                            }`}
                           />
-                          <span
-                            aria-hidden
-                            className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,173,101,0.18)_0%,transparent_55%)] opacity-80 transition-opacity duration-300 group-hover/video:opacity-100"
-                          />
-
-                          <span className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6">
-                            <span className="flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border border-gold/50 bg-petrol/55 text-gold shadow-[0_0_40px_-8px_rgb(var(--color-gold-rgb)/0.55),inset_0_1px_0_0_rgb(255_255_255/0.12)] backdrop-blur-sm transition-all duration-300 group-hover/video:border-gold/70 group-hover/video:bg-petrol/70 group-hover/video:shadow-[0_0_52px_-6px_rgb(var(--color-gold-rgb)/0.7),inset_0_1px_0_0_rgb(255_255_255/0.16)] md:h-20 md:w-20">
-                              <Play
-                                className="ml-1 h-7 w-7 fill-current md:h-8 md:w-8"
-                                strokeWidth={0}
-                                aria-hidden
-                              />
-                            </span>
-                            <span className="max-w-md text-center font-[family-name:var(--font-dm-sans)] text-lg font-bold leading-snug tracking-[-0.02em] text-gradient-gold-vertical md:text-xl">
-                              {t("title")} {t("titleAccent")}
-                            </span>
-                          </span>
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                ) : (
-                  <div className="flex aspect-video w-full flex-col items-center justify-center rounded-2xl border border-dashed border-white/15 bg-petrol-panel-4/80 px-6 text-center">
-                    <p className="font-[family-name:var(--font-dm-sans)] text-lg font-bold text-gradient-gold-vertical">
-                      {t("title")} {t("titleAccent")}
-                    </p>
-                    <p className="mt-3 max-w-md text-sm leading-relaxed text-ivory/70">
-                      {t("videoUnavailable")}
-                    </p>
-                  </div>
-                )}
-              </div>
-
-              <span aria-hidden className="my-7 cta-card-divider md:my-8" />
-
-              <p className="max-w-md text-center text-[15px] leading-[1.75] text-ivory/75 md:text-base">
-                {t("description")}
-              </p>
+                        ))}
+                      </div>
+                    </>
+                  )}
+                </div>
+              ) : (
+                <div className="flex aspect-video w-full flex-col items-center justify-center rounded-2xl border border-dashed border-petrol/15 bg-petrol/[0.04] px-6 text-center">
+                  <p className="font-[family-name:var(--font-dm-sans)] text-lg font-bold text-petrol">
+                    {defaultTitle} {defaultTitleAccent}
+                  </p>
+                  <p className="mt-3 max-w-md text-sm leading-relaxed text-petrol/80">
+                    {t("videoUnavailable")}
+                  </p>
+                </div>
+              )}
             </div>
+
+            <span aria-hidden className="my-7 cta-divider-petrol md:my-8" />
+
+            <p className="max-w-md text-center text-[15px] leading-[1.75] text-petrol md:text-base">
+              {t("description")}
+            </p>
           </div>
         </div>
       </AnimateIn>

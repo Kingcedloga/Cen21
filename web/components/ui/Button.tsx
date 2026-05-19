@@ -8,11 +8,11 @@ type Size = "sm" | "md" | "lg";
  * Boutons ultra-premium — design system Cen21 Hospitality.
  *
  * Variants :
- *  - primary  : surface neutre #E7D1BF, texte pétrole #004258, relief
- *               intérieur + halo chaud diffus. Effet matière ivoire chaud.
- *  - secondary: hairline neutre + voile sombre + glassmorphism léger.
- *               Au survol : bord et lueur #E7D1BF.
- *  - ghost    : minimaliste, hover neutre clair uniquement.
+ *  - primary  : surface or #D4AD65, texte pétrole #004258, relief
+ *               intérieur + halo doré diffus.
+ *  - secondary: hairline or + voile sombre + glassmorphism léger.
+ *               Au survol : bord et lueur #D4AD65.
+ *  - ghost    : minimaliste, hover ivoire clair uniquement.
  *
  * Sizes : sm (40px), md (44px — défaut, conforme tap-target Apple), lg (52px).
  */

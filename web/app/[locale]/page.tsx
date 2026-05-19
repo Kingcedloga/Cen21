@@ -8,7 +8,7 @@ import { AnimateIn } from "@/components/ui/AnimateIn";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StatsBanner } from "@/components/sections/StatsBanner";
 import { PageSection } from "@/components/layout/PageSection";
-import { getSubsidiaries, getSiteConfig, getExperienceVideoId } from "@/lib/content";
+import { getSubsidiaries, getSiteConfig, getExperienceVideos } from "@/lib/content";
 import type { Locale } from "@/i18n/routing";
 import { createPageMetadata } from "@/lib/seo";
 
@@ -99,7 +99,7 @@ export default async function HomePage({ params }: Props) {
 
       <StatsBanner />
 
-      <CtaBand videoId={getExperienceVideoId(l)} />
+      <CtaBand videos={getExperienceVideos(l)} />
     </>
   );
 }

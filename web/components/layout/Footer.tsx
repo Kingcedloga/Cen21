@@ -2,7 +2,6 @@ import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
 import { Logo } from "@/components/brand/Logo";
-import { FooterWave } from "@/components/layout/FooterWave";
 import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import { getSiteConfig } from "@/lib/content";
@@ -46,7 +45,6 @@ export async function Footer() {
 
   return (
     <>
-      <FooterWave />
       <footer className="relative bg-anthracite text-ivory">
         <div
           aria-hidden
