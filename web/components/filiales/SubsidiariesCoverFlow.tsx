@@ -201,7 +201,7 @@ export function SubsidiariesCoverFlow({
         aria-hidden
       >
         <motion.div
-          className="absolute left-1/2 top-1/2 h-[min(420px,60vw)] w-[min(560px,82vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(197,160,89,0.22)_0%,rgba(197,160,89,0.06)_45%,transparent_72%)] max-sm:h-[min(240px,45vw)] max-sm:w-[min(300px,78vw)] max-sm:opacity-60"
+          className="absolute left-1/2 top-1/2 h-[min(420px,60vw)] w-[min(560px,82vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(212,173,101,0.22)_0%,rgba(212,173,101,0.06)_45%,transparent_72%)] max-sm:h-[min(240px,45vw)] max-sm:w-[min(300px,78vw)] max-sm:opacity-60"
           animate={mounted && !reduced ? { opacity: [0.8, 1, 0.8] } : { opacity: 0.8 }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         />

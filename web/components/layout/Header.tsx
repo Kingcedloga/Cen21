@@ -48,7 +48,7 @@ export function Header() {
       <div
         className={`relative mx-auto flex max-w-7xl flex-col overflow-hidden rounded-2xl border transition-all duration-300 ease-out ${
           dense
-            ? "border-white/12 bg-petrol/85 shadow-[0_18px_40px_-18px_rgba(0,0,0,0.55),0_8px_18px_-10px_rgba(197,160,89,0.18)] backdrop-blur-xl backdrop-saturate-150"
+            ? "border-white/12 bg-petrol/85 shadow-[0_18px_40px_-18px_rgba(0,0,0,0.55),0_8px_18px_-10px_rgba(212,173,101,0.18)] backdrop-blur-xl backdrop-saturate-150"
             : "border-white/10 bg-petrol/45 shadow-lg shadow-black/30 backdrop-blur-md backdrop-saturate-125"
         }`}
       >
@@ -59,7 +59,7 @@ export function Header() {
           }`}
           style={{
             background:
-              "linear-gradient(90deg, transparent 0%, rgba(197,160,89,0.55) 50%, transparent 100%)",
+              "linear-gradient(90deg, transparent 0%, rgba(212,173,101,0.55) 50%, transparent 100%)",
           }}
         />
 

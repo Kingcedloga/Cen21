@@ -52,7 +52,7 @@ export function StickyMobileActions({
             {cleanedPhone && (
               <a
                 href={`tel:${cleanedPhone}`}
-                className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gold px-3 py-3 text-sm font-semibold text-petrol transition-colors duration-200 hover:bg-gold/90 active:bg-gold/85 focus-visible:outline-2 focus-visible:outline-ivory cursor-pointer"
+                className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-ivory px-3 py-3 text-sm font-semibold text-petrol transition-colors duration-200 hover:brightness-[1.03] active:brightness-[0.98] focus-visible:outline-2 focus-visible:outline-ivory cursor-pointer"
               >
                 <Phone className="h-4 w-4" strokeWidth={1.5} aria-hidden />
                 <span>Appeler</span>
@@ -63,7 +63,7 @@ export function StickyMobileActions({
                 href={mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/15 bg-anthracite/80 px-3 py-3 text-sm font-semibold text-ivory transition-colors duration-200 hover:border-gold/50 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold cursor-pointer"
+                className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-ivory/20 bg-anthracite/80 px-3 py-3 text-sm font-semibold text-ivory transition-colors duration-200 hover:border-ivory/50 hover:bg-ivory/[0.06] focus-visible:outline-2 focus-visible:outline-ivory cursor-pointer"
               >
                 <MapPin className="h-4 w-4" strokeWidth={1.5} aria-hidden />
                 <span>Itinéraire</span>

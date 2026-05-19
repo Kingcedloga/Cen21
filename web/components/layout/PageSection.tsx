@@ -5,8 +5,8 @@ type Spacing = "default" | "compact" | "loose";
 
 const variantBg: Record<Variant, string> = {
   default: "bg-petrol",
-  alt: "bg-anthracite/40",
-  dark: "bg-anthracite",
+  alt: "bg-petrol-panel-2/40",
+  dark: "bg-petrol-panel-4",
 };
 
 const spacingClass: Record<Spacing, string> = {

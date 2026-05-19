@@ -52,7 +52,7 @@ export async function Footer() {
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-[0.12]"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L35 25 L55 30 L35 35 L30 55 L25 35 L5 30 L25 25 Z' fill='none' stroke='%23C5A059' stroke-width='0.35' opacity='0.5'/%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L35 25 L55 30 L35 35 L30 55 L25 35 L5 30 L25 25 Z' fill='none' stroke='%23D4AD65' stroke-width='0.35' opacity='0.5'/%3E%3C/svg%3E")`,
           }}
         />
 

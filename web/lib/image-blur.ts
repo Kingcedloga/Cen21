@@ -6,8 +6,8 @@
 const blurSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
   <defs>
     <radialGradient id='g' cx='50%' cy='38%' r='75%'>
-      <stop offset='0%' stop-color='#173138'/>
-      <stop offset='100%' stop-color='#0B2429'/>
+      <stop offset='0%' stop-color='#0C272E'/>
+      <stop offset='100%' stop-color='#004258'/>
     </radialGradient>
   </defs>
   <rect width='16' height='16' fill='url(#g)'/>

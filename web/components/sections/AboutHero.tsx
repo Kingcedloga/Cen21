@@ -46,7 +46,7 @@ export function AboutHero({
         {/* Halo doré radial subtil pour profondeur premium */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_75%,rgba(197,160,89,0.18)_0%,transparent_55%)]"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_75%,rgba(212,173,101,0.18)_0%,transparent_55%)]"
         />
         {/* Voile noir bas pour contraste maximal sous le bloc texte */}
         <div
@@ -63,7 +63,7 @@ export function AboutHero({
               />
               <span
                 aria-hidden
-                className="inline-flex h-1.5 w-1.5 rotate-45 bg-gold/85 shadow-[0_0_10px_rgba(197,160,89,0.55)]"
+                className="inline-flex h-1.5 w-1.5 rotate-45 bg-gold/85 shadow-[0_0_10px_rgba(212,173,101,0.55)]"
               />
               <p className="text-gold text-[11px] font-semibold tracking-[0.32em] uppercase">
                 {eyebrow}

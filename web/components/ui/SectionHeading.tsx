@@ -43,7 +43,7 @@ export function SectionHeading({
           />
           <span
             aria-hidden
-            className="inline-flex h-1.5 w-1.5 shrink-0 rotate-45 bg-gold/85 shadow-[0_0_10px_rgba(197,160,89,0.55)]"
+            className="inline-flex h-1.5 w-1.5 shrink-0 rotate-45 bg-gold/85 shadow-[0_0_10px_rgba(212,173,101,0.55)]"
           />
           <p className="eyebrow text-gold text-[10.5px] font-medium uppercase sm:text-[11px]">
             {eyebrow}
@@ -52,7 +52,7 @@ export function SectionHeading({
             <>
               <span
                 aria-hidden
-                className="inline-flex h-1.5 w-1.5 shrink-0 rotate-45 bg-gold/85 shadow-[0_0_10px_rgba(197,160,89,0.55)]"
+                className="inline-flex h-1.5 w-1.5 shrink-0 rotate-45 bg-gold/85 shadow-[0_0_10px_rgba(212,173,101,0.55)]"
               />
               <span
                 aria-hidden

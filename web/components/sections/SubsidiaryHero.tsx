@@ -68,7 +68,7 @@ export function SubsidiaryHero({
       <div
         className="absolute inset-0 z-[1]"
         style={{
-          background: `linear-gradient(to top, #0B2429 0%, transparent 55%), linear-gradient(90deg, rgba(11,36,41,0.5) 0%, transparent 40%)`,
+          background: `linear-gradient(to top, #004258 0%, transparent 55%), linear-gradient(90deg, rgba(0,66,88,0.5) 0%, transparent 40%)`,
         }}
       />
 

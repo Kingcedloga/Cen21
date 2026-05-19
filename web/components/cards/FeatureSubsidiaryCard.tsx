@@ -52,7 +52,7 @@ export function FeatureSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }
       onMouseEnter={onPrefetch}
       onFocus={onPrefetch}
       onTouchStart={onPrefetch}
-      className="group relative h-full overflow-hidden rounded-3xl border border-white/12 bg-anthracite/55 shadow-[0_22px_50px_-22px_rgba(0,0,0,0.6)] transition-[transform,box-shadow,border-color] duration-500 ease-out hover:-translate-y-1.5 hover:border-gold/55 hover:shadow-[0_32px_80px_-22px_rgba(197,160,89,0.35),0_22px_50px_-18px_rgba(0,0,0,0.7)]"
+      className="group relative h-full overflow-hidden rounded-3xl border border-white/12 bg-anthracite/55 shadow-[0_22px_50px_-22px_rgba(0,0,0,0.6)] transition-[transform,box-shadow,border-color] duration-500 ease-out hover:-translate-y-1.5 hover:border-gold/55 hover:shadow-[0_32px_80px_-22px_rgba(212,173,101,0.35),0_22px_50px_-18px_rgba(0,0,0,0.7)]"
     >
       <Link
         href={href}

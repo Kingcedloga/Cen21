@@ -27,7 +27,7 @@ export function SubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }) {
       onMouseEnter={onPrefetch}
       onFocus={onPrefetch}
       onTouchStart={onPrefetch}
-      className="group relative overflow-hidden rounded-2xl border border-white/12 bg-anthracite/45 shadow-[0_18px_40px_-22px_rgba(0,0,0,0.55)] transition-[transform,box-shadow,border-color] duration-500 ease-out hover:-translate-y-1 hover:border-gold/45 hover:shadow-[0_26px_60px_-22px_rgba(197,160,89,0.32),0_18px_40px_-18px_rgba(0,0,0,0.65)]"
+      className="group relative overflow-hidden rounded-2xl border border-white/12 bg-anthracite/45 shadow-[0_18px_40px_-22px_rgba(0,0,0,0.55)] transition-[transform,box-shadow,border-color] duration-500 ease-out hover:-translate-y-1 hover:border-gold/45 hover:shadow-[0_26px_60px_-22px_rgba(212,173,101,0.32),0_18px_40px_-18px_rgba(0,0,0,0.65)]"
     >
       <Link
         href={href}

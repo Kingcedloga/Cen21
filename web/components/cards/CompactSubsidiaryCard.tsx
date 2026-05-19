@@ -52,7 +52,7 @@ export function CompactSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }
       onMouseEnter={onPrefetch}
       onFocus={onPrefetch}
       onTouchStart={onPrefetch}
-      className="group relative overflow-hidden rounded-2xl border border-white/12 bg-anthracite/45 shadow-[0_14px_32px_-18px_rgba(0,0,0,0.5)] transition-[transform,box-shadow,border-color,background-color] duration-400 ease-out hover:translate-x-1 hover:border-gold/45 hover:bg-anthracite/65 hover:shadow-[0_18px_44px_-18px_rgba(197,160,89,0.3),0_14px_32px_-16px_rgba(0,0,0,0.6)]"
+      className="group relative overflow-hidden rounded-2xl border border-white/12 bg-anthracite/45 shadow-[0_14px_32px_-18px_rgba(0,0,0,0.5)] transition-[transform,box-shadow,border-color,background-color] duration-400 ease-out hover:translate-x-1 hover:border-gold/45 hover:bg-anthracite/65 hover:shadow-[0_18px_44px_-18px_rgba(212,173,101,0.3),0_14px_32px_-16px_rgba(0,0,0,0.6)]"
     >
       <Link
         href={href}

@@ -96,11 +96,11 @@ export function HeroCinematic({
         aria-hidden
         style={{
           background:
-            "linear-gradient(180deg, rgba(11,36,41,0.55) 0%, rgba(11,36,41,0.25) 35%, rgba(11,36,41,0.65) 70%, rgba(11,36,41,0.95) 100%)",
+            "linear-gradient(180deg, rgba(0,66,88,0.55) 0%, rgba(0,66,88,0.25) 35%, rgba(0,66,88,0.65) 70%, rgba(0,66,88,0.95) 100%)",
         }}
       />
       <div
-        className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_20%_80%,rgba(197,160,89,0.18)_0%,transparent_55%)]"
+        className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_20%_80%,rgba(212,173,101,0.18)_0%,transparent_55%)]"
         aria-hidden
       />
 
