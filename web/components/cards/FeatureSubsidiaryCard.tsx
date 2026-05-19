@@ -125,7 +125,7 @@ export function FeatureSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }
 
       {/* Bloc éditorial absolu (overlay sur l'image, en bas) */}
       <div className="absolute bottom-0 left-0 right-0 z-10 flex flex-col gap-3 p-6 md:p-8 lg:p-10">
-        <h3 className="font-[family-name:var(--font-dm-sans)] text-3xl font-medium leading-[1.05] tracking-[-0.015em] text-ivory [text-shadow:0_2px_24px_rgba(0,0,0,0.55)] md:text-4xl lg:text-[2.85rem]">
+        <h3 className="font-[family-name:var(--font-dm-sans)] text-3xl font-bold leading-[1.05] tracking-[-0.015em] text-ivory [text-shadow:0_2px_24px_rgba(0,0,0,0.55)] md:text-4xl lg:text-[2.85rem]">
           <span className="inline-flex flex-wrap items-baseline gap-x-3 gap-y-1">
             <span>{subsidiary.name}</span>
             <ArrowUpRight
@@ -134,7 +134,7 @@ export function FeatureSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }
             />
           </span>
         </h3>
-        <p className="font-[family-name:var(--font-dm-sans)] text-lg italic text-ivory/85 md:text-xl">
+        <p className="font-[family-name:var(--font-dm-sans)] text-lg font-bold italic text-ivory/85 md:text-xl">
           {subsidiary.tagline}
         </p>
         <p className="line-clamp-2 max-w-[52ch] text-sm leading-[1.65] text-ivory/70 md:text-[15px]">

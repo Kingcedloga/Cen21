@@ -64,13 +64,13 @@ export function SectionHeading({
       )}
       <Title
         id={titleId}
-        className="font-[family-name:var(--font-dm-sans)] text-4xl md:text-5xl lg:text-[3.4rem] font-light tracking-[-0.028em] text-ivory leading-[1.05] [text-shadow:0_2px_28px_rgba(0,0,0,0.5)]"
+        className="font-[family-name:var(--font-dm-sans)] text-4xl md:text-5xl lg:text-[3.4rem] font-bold tracking-[-0.028em] text-ivory leading-[1.05] [text-shadow:0_2px_28px_rgba(0,0,0,0.5)]"
       >
         {title}
       </Title>
       {subtitle && (
         <Subtitle
-          className={`mt-3 font-[family-name:var(--font-dm-sans)] text-2xl md:text-[1.85rem] italic font-light tracking-[-0.012em] leading-[1.15] text-gradient-gold opacity-95 [text-shadow:0_1px_18px_rgba(0,0,0,0.35)] ${
+          className={`mt-3 font-[family-name:var(--font-dm-sans)] text-2xl md:text-[1.85rem] italic font-bold tracking-[-0.012em] leading-[1.15] text-gradient-gold opacity-95 [text-shadow:0_1px_18px_rgba(0,0,0,0.35)] ${
             isCenter ? "mx-auto" : ""
           }`}
         >

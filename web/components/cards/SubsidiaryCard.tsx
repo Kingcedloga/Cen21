@@ -74,7 +74,7 @@ export function SubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }) {
         <p className="text-[10.5px] font-semibold tracking-[0.24em] uppercase text-gold">
           {sectorLabel}
         </p>
-        <h3 className="font-[family-name:var(--font-dm-sans)] text-[1.55rem] md:text-2xl font-medium leading-[1.15] tracking-[-0.01em] text-ivory">
+        <h3 className="font-[family-name:var(--font-dm-sans)] text-[1.55rem] md:text-2xl font-bold leading-[1.15] tracking-[-0.01em] text-ivory">
           <span className="inline-flex items-center gap-2">
             <span>{subsidiary.name}</span>
             <ArrowUpRight

@@ -26,7 +26,7 @@ export async function StatsBanner() {
                 strokeWidth={1.25}
                 aria-hidden
               />
-              <p className="font-[family-name:var(--font-dm-sans)] text-3xl text-ivory md:text-4xl">
+            <p className="font-[family-name:var(--font-dm-sans)] text-3xl font-bold text-ivory md:text-4xl">
                 {item.value}
               </p>
               <p className="mt-1 text-xs uppercase tracking-[0.2em] text-taupe">

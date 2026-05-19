@@ -24,7 +24,7 @@ export function PageHero({
               />
             </div>
           )}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl text-ivory font-light mb-5 tracking-[-0.02em] leading-[1.08] max-w-4xl">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl text-ivory font-bold mb-5 tracking-[-0.02em] leading-[1.08] max-w-4xl">
             {title}
           </h1>
           {description && (
