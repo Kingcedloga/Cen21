@@ -1,0 +1,74 @@
+{
+  "events": [
+    {
+      "id": "evt-1",
+      "slug": "soiree-degustation-maison-eclat",
+      "title": "Tasting Evening — Spring Menu",
+      "date": "2026-06-15T19:30:00",
+      "location": "Maison Éclat, Gombe — Kinshasa",
+      "subsidiarySlug": "filiale-01",
+      "image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80",
+      "excerpt": "A gastronomic immersion around seasonal produce, in five courses."
+    },
+    {
+      "id": "evt-2",
+      "slug": "masterclass-mixologie",
+      "title": "Signature Mixology Masterclass",
+      "date": "2026-06-22T18:00:00",
+      "location": "Le Verre Noir, Gombe — Kinshasa",
+      "subsidiarySlug": "filiale-02",
+      "image": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80",
+      "excerpt": "Learn the techniques behind our house creations with our head bartender."
+    },
+    {
+      "id": "evt-3",
+      "slug": "live-sessions-azure",
+      "title": "Live Sessions — Contemporary Jazz",
+      "date": "2026-07-05T21:00:00",
+      "location": "Azure Lounge, Gombe — Kinshasa",
+      "subsidiarySlug": "filiale-03",
+      "image": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80",
+      "excerpt": "An intimate acoustic evening at the heart of the lounge."
+    },
+    {
+      "id": "evt-4",
+      "slug": "nocturne-summer-opening",
+      "title": "Summer Opening — International DJ",
+      "date": "2026-07-12T23:00:00",
+      "location": "Nocturne Club, Gombe — Kinshasa",
+      "subsidiarySlug": "filiale-04",
+      "image": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&q=80",
+      "excerpt": "Launch of the summer season with an exclusive lineup."
+    },
+    {
+      "id": "evt-5",
+      "slug": "gala-prive-palais",
+      "title": "Private Gala — Autumn Collection",
+      "date": "2026-09-20T20:00:00",
+      "location": "Palais des Fêtes, Gombe — Kinshasa",
+      "subsidiarySlug": "filiale-05",
+      "image": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80",
+      "excerpt": "Invitation-only evening in our premium event space."
+    },
+    {
+      "id": "evt-6",
+      "slug": "sunset-terrasse",
+      "title": "Sunset Dinner — Rooftop",
+      "date": "2026-08-08T19:00:00",
+      "location": "Terrasse du Sud, Gombe — Kinshasa",
+      "subsidiarySlug": "filiale-06",
+      "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80",
+      "excerpt": "Sunset dinner with a dedicated Mediterranean menu."
+    },
+    {
+      "id": "evt-7",
+      "slug": "archives-winter-ball",
+      "title": "Winter Ball — 2025 Edition",
+      "date": "2025-12-15T21:00:00",
+      "location": "Palais des Fêtes, Gombe — Kinshasa",
+      "subsidiarySlug": "filiale-05",
+      "image": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80",
+      "excerpt": "A look back at last season's winter gala."
+    }
+  ]
+}

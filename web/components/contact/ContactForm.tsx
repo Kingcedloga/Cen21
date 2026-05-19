@@ -1,12 +1,13 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { Toast, ToastViewport } from "@/components/ui/Toast";
 import { Button } from "@/components/ui/Button";
-import { contactSchema, type ContactFormData } from "@/lib/contact-schema";
+import { getContactSchema, type ContactFormData } from "@/lib/contact-schema";
 
 type ToastState =
   | { variant: "success"; title: string; message?: string }
@@ -14,6 +15,18 @@ type ToastState =
   | null;
 
 export function ContactForm() {
+  const t = useTranslations("form");
+  const schema = useMemo(
+    () =>
+      getContactSchema({
+        name: t("errors.name"),
+        email: t("errors.email"),
+        subject: t("errors.subject"),
+        message: t("errors.message"),
+      }),
+    [t],
+  );
+
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
     "idle",
   );
@@ -25,7 +38,7 @@ export function ContactForm() {
     reset,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormData>({
-    resolver: zodResolver(contactSchema),
+    resolver: zodResolver(schema),
     defaultValues: { website: "" },
   });
 
@@ -45,17 +58,16 @@ export function ContactForm() {
       setStatus("success");
       setToast({
         variant: "success",
-        title: "Message envoyé",
-        message: "Merci, notre équipe vous répond sous 48h.",
+        title: t("successTitle"),
+        message: t("successBody"),
       });
       reset();
     } catch (e) {
       setStatus("error");
       setToast({
         variant: "error",
-        title: "Envoi impossible",
-        message:
-          e instanceof Error ? e.message : "Une erreur inattendue est survenue.",
+        title: t("errorTitle"),
+        message: e instanceof Error ? e.message : t("errorBody"),
       });
     }
   };
@@ -64,7 +76,7 @@ export function ContactForm() {
     <>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
         <div className="hidden" aria-hidden="true">
-          <label htmlFor="website">Ne pas remplir</label>
+          <label htmlFor="website">{t("honeypot")}</label>
           <input
             id="website"
             type="text"
@@ -74,7 +86,7 @@ export function ContactForm() {
           />
         </div>
 
-        <Field label="Nom" inputId="name" error={errors.name?.message}>
+        <Field label={t("name")} inputId="name" error={errors.name?.message}>
           <input
             id="name"
             className={inputClass}
@@ -85,7 +97,7 @@ export function ContactForm() {
           />
         </Field>
 
-        <Field label="Email" inputId="email" error={errors.email?.message}>
+        <Field label={t("email")} inputId="email" error={errors.email?.message}>
           <input
             id="email"
             type="email"
@@ -97,7 +109,7 @@ export function ContactForm() {
           />
         </Field>
 
-        <Field label="Sujet" inputId="subject" error={errors.subject?.message}>
+        <Field label={t("subject")} inputId="subject" error={errors.subject?.message}>
           <input
             id="subject"
             className={inputClass}
@@ -107,7 +119,7 @@ export function ContactForm() {
           />
         </Field>
 
-        <Field label="Message" inputId="message" error={errors.message?.message}>
+        <Field label={t("message")} inputId="message" error={errors.message?.message}>
           <textarea
             id="message"
             rows={5}
@@ -119,7 +131,7 @@ export function ContactForm() {
         </Field>
 
         <Button type="submit" disabled={isSubmitting || status === "loading"}>
-          {status === "loading" ? "Envoi…" : "Envoyer"}
+          {status === "loading" ? t("submitting") : t("submit")}
         </Button>
       </form>
 

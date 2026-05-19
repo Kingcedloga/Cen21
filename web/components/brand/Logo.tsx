@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+
+import { Link } from "@/i18n/navigation";
 
 type LogoProps = {
   size?: "sm" | "md" | "lg" | "xl";
@@ -16,6 +20,7 @@ const sizesPx = {
 };
 
 export function Logo({ size = "md", className = "", variant = "default" }: LogoProps) {
+  const t = useTranslations("nav");
   const mark = sizesPx[size];
   const isHeader = variant === "header";
 
@@ -23,7 +28,7 @@ export function Logo({ size = "md", className = "", variant = "default" }: LogoP
     <Link
       href="/"
       className={`inline-flex shrink-0 group cursor-pointer ${className}`}
-      aria-label="Cen21 Hospitality — accueil"
+      aria-label={`Cen21 Hospitality — ${t("home")}`}
     >
       <Image
         src="/logo.png"

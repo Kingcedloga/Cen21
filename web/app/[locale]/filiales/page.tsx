@@ -1,28 +1,41 @@
+import { getTranslations, setRequestLocale } from "next-intl/server";
+
 import { PageSection } from "@/components/layout/PageSection";
 import { SectionWave } from "@/components/layout/SectionWave";
 import { PageHero } from "@/components/sections/PageHero";
 import { SubsidiariesBento } from "@/components/filiales/SubsidiariesBento";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import type { Locale } from "@/i18n/routing";
 import { getSubsidiaries } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
 
-const subsidiaries = getSubsidiaries();
+type Props = { params: Promise<{ locale: string }> };
 
-export const metadata = createPageMetadata({
-  title: "Filiales",
-  description:
-    "Découvrez les établissements du groupe Cen21 Hospitality — restaurants, bars, lounges, clubs et espaces événementiels.",
-  path: "/filiales",
-});
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "subsidiaries" });
+  return createPageMetadata({
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    path: "/filiales",
+    locale: locale as Locale,
+  });
+}
 
-export default function SubsidiariesPage() {
+export default async function SubsidiariesPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const l = locale as Locale;
+  const subsidiaries = getSubsidiaries(l);
+  const t = await getTranslations("subsidiaries");
+
   return (
     <>
       <PageHero
-        eyebrow="Portfolio"
-        title="Nos filiales"
-        description="Des univers distincts, une même exigence — une vue éditoriale curatée de nos dix adresses."
+        eyebrow={t("eyebrow")}
+        title={t("title")}
+        description={t("description")}
       />
 
       <PageSection
@@ -34,12 +47,12 @@ export default function SubsidiariesPage() {
       >
         <AnimateIn>
           <SectionHeading
-            eyebrow="Sélection"
-            title="Dix adresses, dix univers"
+            eyebrow={t("selectionEyebrow")}
+            title={t("selectionTitle")}
             titleAs="h2"
             subtitleAs="h3"
             titleId="filiales-bento-title"
-            description="Chaque bloc met en vedette une adresse iconique, accompagnée d'une sélection complémentaire — une lecture immédiate, sans filtre, comme un cahier d'adresses signé."
+            description={t("selectionDescription")}
             align="left"
             className="mb-12 max-w-2xl md:mb-16"
           />

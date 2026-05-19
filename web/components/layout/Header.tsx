@@ -1,23 +1,24 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 import { Logo } from "@/components/brand/Logo";
+import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
+import { Link, usePathname } from "@/i18n/navigation";
 
-import { NAV_LINKS } from "./nav-links";
+import { NAV_PATHS } from "./nav-links";
 
 const SCROLL_THRESHOLD = 24;
 
 export function Header() {
   const pathname = usePathname();
+  const t = useTranslations("nav");
+  const tCommon = useTranslations("common");
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Détection scrollée — basée sur scrollY > seuil, throttle via rAF.
-  // Évite les flickers en gardant un seul état booléen.
   useEffect(() => {
     let frame = 0;
     const update = () => {
@@ -36,7 +37,6 @@ export function Header() {
     };
   }, []);
 
-  // Si menu mobile ouvert → on traite comme scrolled pour visibilité maximale
   const dense = scrolled || open;
 
   return (
@@ -52,7 +52,6 @@ export function Header() {
             : "border-white/10 bg-petrol/45 shadow-lg shadow-black/30 backdrop-blur-md backdrop-saturate-125"
         }`}
       >
-        {/* Liseré supérieur doré qui apparaît une fois scrollé */}
         <span
           aria-hidden
           className={`pointer-events-none absolute inset-x-0 top-0 h-px transition-opacity duration-300 ${
@@ -65,7 +64,7 @@ export function Header() {
         />
 
         <div
-          className={`flex items-center justify-between px-5 transition-[height,padding] duration-300 ease-out md:px-8 ${
+          className={`flex items-center justify-between gap-3 px-5 transition-[height,padding] duration-300 ease-out md:px-8 ${
             dense
               ? "h-[3.85rem] md:h-[4.25rem]"
               : "h-[4.25rem] md:h-[4.75rem]"
@@ -74,10 +73,10 @@ export function Header() {
           <Logo size="xl" variant="header" />
 
           <nav
-            className="hidden lg:flex items-center gap-9"
-            aria-label="Navigation principale"
+            className="hidden lg:flex items-center gap-7 xl:gap-9"
+            aria-label={tCommon("mainNav")}
           >
-            {NAV_LINKS.map(({ href, label }) => {
+            {NAV_PATHS.map(({ href, key }) => {
               const active =
                 pathname === href ||
                 (href !== "/" && pathname?.startsWith(`${href}/`));
@@ -92,29 +91,33 @@ export function Header() {
                       : `${dense ? "text-ivory/90" : "text-ivory/85"} hover:text-gold after:scale-x-0 hover:after:scale-x-100`
                   }`}
                 >
-                  {label}
+                  {t(key)}
                 </Link>
               );
             })}
           </nav>
 
-          <button
-            type="button"
-            className="flex h-11 w-11 items-center justify-center rounded-xl text-ivory transition-colors duration-200 hover:bg-white/5 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold cursor-pointer lg:hidden"
-            aria-expanded={open}
-            aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
-            onClick={() => setOpen(!open)}
-          >
-            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <LanguageSwitcher className="hidden sm:inline-flex" />
+            <button
+              type="button"
+              className="flex h-11 w-11 items-center justify-center rounded-xl text-ivory transition-colors duration-200 hover:bg-white/5 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold cursor-pointer lg:hidden"
+              aria-expanded={open}
+              aria-label={open ? tCommon("closeMenu") : tCommon("openMenu")}
+              onClick={() => setOpen(!open)}
+            >
+              {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
 
         {open && (
           <nav
             className="flex flex-col gap-1 border-t border-white/10 px-3 py-3 lg:hidden"
-            aria-label="Navigation mobile"
+            aria-label={tCommon("mobileNav")}
           >
-            {NAV_LINKS.map(({ href, label }) => {
+            <LanguageSwitcher className="mb-2 w-full justify-center sm:hidden" />
+            {NAV_PATHS.map(({ href, key }) => {
               const active =
                 pathname === href ||
                 (href !== "/" && pathname?.startsWith(`${href}/`));
@@ -136,7 +139,7 @@ export function Header() {
                       active ? "bg-gold" : "bg-transparent"
                     }`}
                   />
-                  {label}
+                  {t(key)}
                 </Link>
               );
             })}

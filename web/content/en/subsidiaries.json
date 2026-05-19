@@ -1,0 +1,244 @@
+{
+  "subsidiaries": [
+    {
+      "slug": "filiale-01",
+      "name": "Maison Éclat",
+      "sector": "restaurant",
+      "tagline": "Contemporary haute gastronomy",
+      "description": "An exceptional table where seasonal produce meets bold cuisine. The experience unfolds in several courses within a refined setting with golden accents.",
+      "practicalInfo": {
+        "address": "Gombe, Kinshasa",
+        "hours": "Tue–Sat 7pm–11pm",
+        "phone": "+243 81 00 00 001"
+      },
+      "social": {
+        "instagram": "https://www.instagram.com/maison.eclat.kin",
+        "facebook": "https://www.facebook.com/maison.eclat.kin",
+        "linkedin": "https://www.linkedin.com/company/maison-eclat-kin"
+      },
+      "accentColor": "#8B6914",
+      "coverImage": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80",
+        "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80"
+      ],
+      "featured": true
+    },
+    {
+      "slug": "filiale-02",
+      "name": "Le Verre Noir",
+      "sector": "bar",
+      "tagline": "Signature mixology & rare spirits",
+      "description": "An author cocktail bar in an intimate atmosphere. Evolving menu, exceptional spirits, and house creations served with precision.",
+      "practicalInfo": {
+        "address": "Gombe, Kinshasa",
+        "hours": "Wed–Sun 6pm–2am",
+        "phone": "+243 81 00 00 002"
+      },
+      "social": {
+        "instagram": "https://www.instagram.com/leverrenoir.kin",
+        "facebook": "https://www.facebook.com/leverrenoir.kin",
+        "linkedin": "https://www.linkedin.com/company/le-verre-noir"
+      },
+      "accentColor": "#4A5568",
+      "coverImage": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1200&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80",
+        "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80"
+      ],
+      "featured": true
+    },
+    {
+      "slug": "filiale-03",
+      "name": "Azure Lounge",
+      "sector": "lounge",
+      "tagline": "Premium relaxation & live music",
+      "description": "A lounge where elegance meets relaxation. Deep armchairs, curated music programming, and discreet service for long evenings.",
+      "practicalInfo": {
+        "address": "Gombe, Kinshasa",
+        "hours": "Thu–Sun 8pm–3am",
+        "phone": "+243 81 00 00 003"
+      },
+      "social": {
+        "instagram": "https://www.instagram.com/azurelounge.kin",
+        "facebook": "https://www.facebook.com/azurelounge.kin",
+        "linkedin": "https://www.linkedin.com/company/azure-lounge-kin"
+      },
+      "accentColor": "#2C5282",
+      "coverImage": "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=1200&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=800&q=80",
+        "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80"
+      ],
+      "featured": true
+    },
+    {
+      "slug": "filiale-04",
+      "name": "Nocturne Club",
+      "sector": "nightclub",
+      "tagline": "Electric nights & immersive scenography",
+      "description": "The temple of Kinshasa nightlife. Reference sound design, architectural lighting, and international programming for unforgettable experiences.",
+      "practicalInfo": {
+        "address": "Gombe, Kinshasa",
+        "hours": "Fri–Sat 11pm–6am",
+        "phone": "+243 81 00 00 004"
+      },
+      "social": {
+        "instagram": "https://www.instagram.com/nocturneclub.kin",
+        "facebook": "https://www.facebook.com/nocturneclub.kin",
+        "linkedin": "https://www.linkedin.com/company/nocturne-club"
+      },
+      "accentColor": "#6B46C1",
+      "coverImage": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1200&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80",
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80"
+      ],
+      "featured": true
+    },
+    {
+      "slug": "filiale-05",
+      "name": "Palais des Fêtes",
+      "sector": "evenementiel",
+      "tagline": "Exceptional private & corporate events",
+      "description": "A modular space dedicated to premium celebrations. Weddings, launches, and private evenings orchestrated by an expert events team.",
+      "practicalInfo": {
+        "address": "Gombe, Kinshasa",
+        "hours": "By appointment",
+        "phone": "+243 81 00 00 005"
+      },
+      "social": {
+        "instagram": "https://www.instagram.com/palaisdesfetes",
+        "facebook": "https://www.facebook.com/palaisdesfetes",
+        "linkedin": "https://www.linkedin.com/company/palais-des-fetes"
+      },
+      "accentColor": "#9B2C2C",
+      "coverImage": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1200&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80",
+        "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80"
+      ],
+      "featured": false
+    },
+    {
+      "slug": "filiale-06",
+      "name": "Terrasse du Sud",
+      "sector": "restaurant",
+      "tagline": "Mediterranean cuisine & rooftop",
+      "description": "Sun-kissed flavors served on a panoramic terrace. Generous cuisine, selected wines, and spectacular sunsets.",
+      "practicalInfo": {
+        "address": "Gombe, Kinshasa",
+        "hours": "Daily 12pm–12am",
+        "phone": "+243 81 00 00 006"
+      },
+      "social": {
+        "instagram": "https://www.instagram.com/terrassedusud.kin",
+        "facebook": "https://www.facebook.com/terrassedusud.kin",
+        "linkedin": "https://www.linkedin.com/company/terrasse-du-sud"
+      },
+      "accentColor": "#C05621",
+      "coverImage": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800&q=80",
+        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80"
+      ],
+      "featured": false
+    },
+    {
+      "slug": "filiale-07",
+      "name": "Cave & Cie",
+      "sector": "bar",
+      "tagline": "Natural wines & refined tapas",
+      "description": "A contemporary wine cellar where tasting and conviviality meet. Curated selection, food and wine pairings, and a warm atmosphere.",
+      "practicalInfo": {
+        "address": "Gombe, Kinshasa",
+        "hours": "Tue–Sun 5pm–1am",
+        "phone": "+243 81 00 00 007"
+      },
+      "social": {
+        "instagram": "https://www.instagram.com/caveetcie.kin",
+        "facebook": "https://www.facebook.com/caveetcie.kin",
+        "linkedin": "https://www.linkedin.com/company/cave-et-cie"
+      },
+      "accentColor": "#744210",
+      "coverImage": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=1200&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800&q=80",
+        "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&q=80"
+      ],
+      "featured": false
+    },
+    {
+      "slug": "filiale-08",
+      "name": "Velours Lounge",
+      "sector": "lounge",
+      "tagline": "Chic after-work & smoked cocktails",
+      "description": "The go-to for Kinshasa evenings. Intimate atmosphere, curated playlist, and signature cocktail menu in a velvet and brass setting.",
+      "practicalInfo": {
+        "address": "Gombe, Kinshasa",
+        "hours": "Mon–Sat 5pm–2am",
+        "phone": "+243 81 00 00 008"
+      },
+      "social": {
+        "instagram": "https://www.instagram.com/velourslounge.kin",
+        "facebook": "https://www.facebook.com/velourslounge.kin",
+        "linkedin": "https://www.linkedin.com/company/velours-lounge"
+      },
+      "accentColor": "#553C9A",
+      "coverImage": "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=1200&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=800&q=80",
+        "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80"
+      ],
+      "featured": false
+    },
+    {
+      "slug": "filiale-09",
+      "name": "Étoile Rooftop",
+      "sector": "restaurant",
+      "tagline": "Dinners under the stars & Kinshasa skyline",
+      "description": "A gastronomic rooftop offering a panoramic view of the capital. Creative cuisine, selected champagne, and an intimate atmosphere until late.",
+      "practicalInfo": {
+        "address": "Gombe, Kinshasa",
+        "hours": "Wed–Sun 7pm–2am",
+        "phone": "+243 81 00 00 009"
+      },
+      "social": {
+        "instagram": "https://www.instagram.com/etoilerooftop.kin",
+        "facebook": "https://www.facebook.com/etoilerooftop.kin",
+        "linkedin": "https://www.linkedin.com/company/etoile-rooftop"
+      },
+      "accentColor": "#B7791F",
+      "coverImage": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80",
+        "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&q=80"
+      ],
+      "featured": false
+    },
+    {
+      "slug": "filiale-10",
+      "name": "Studio Opale",
+      "sector": "evenementiel",
+      "tagline": "Launches, showcases & immersive experiences",
+      "description": "A modular event studio for brands and artists. Custom scenography, live capture, and premium hospitality for every guest.",
+      "practicalInfo": {
+        "address": "Gombe, Kinshasa",
+        "hours": "By appointment",
+        "phone": "+243 81 00 00 010"
+      },
+      "social": {
+        "instagram": "https://www.instagram.com/studioopale.kin",
+        "facebook": "https://www.facebook.com/studioopale.kin",
+        "linkedin": "https://www.linkedin.com/company/studio-opale"
+      },
+      "accentColor": "#2D3748",
+      "coverImage": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80"
+      ],
+      "featured": false
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+import { getTranslations, setRequestLocale } from "next-intl/server";
+
 import { PageSection } from "@/components/layout/PageSection";
 import { SectionWave } from "@/components/layout/SectionWave";
 import { AboutHero } from "@/components/sections/AboutHero";
@@ -5,39 +7,49 @@ import { TeamGrid } from "@/components/sections/TeamGrid";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { ReadingProgress } from "@/components/ui/ReadingProgress";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import type { Locale } from "@/i18n/routing";
 import { getAboutContent } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
-
-const about = getAboutContent();
 
 const FALLBACK_HERO =
   "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=2400&q=85";
 
-export const metadata = createPageMetadata({
-  title: "À propos",
-  description:
-    "Histoire, vision et valeurs de Cen21 Hospitality — holding premium de l'hospitalité et du lifestyle.",
-  path: "/a-propos",
-});
+type Props = { params: Promise<{ locale: string }> };
 
-export default function AboutPage() {
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "about" });
+  return createPageMetadata({
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    path: "/a-propos",
+    locale: locale as Locale,
+  });
+}
+
+export default async function AboutPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const about = getAboutContent(locale as Locale);
+  const t = await getTranslations("about");
+
   return (
     <>
       <ReadingProgress />
 
       <AboutHero
-        eyebrow="À propos"
-        title="Notre histoire & notre vision"
-        description="Une holding née de la passion pour l'art de recevoir et l'exigence du détail."
+        eyebrow={t("eyebrow")}
+        title={t("title")}
+        description={t("description")}
         image={about.heroImage ?? FALLBACK_HERO}
-        imageAlt="Architecture intérieure d'un établissement Cen21 Hospitality"
+        imageAlt={t("heroImageAlt")}
       />
 
       <PageSection variant="default">
         <AnimateIn>
           <SectionHeading
-            eyebrow="Origines"
-            title="Histoire"
+            eyebrow={t("originsEyebrow")}
+            title={t("originsTitle")}
             titleAs="h2"
             align="left"
             className="mb-10 max-w-2xl"
@@ -53,8 +65,8 @@ export default function AboutPage() {
       <PageSection variant="alt">
         <AnimateIn>
           <SectionHeading
-            eyebrow="Cap"
-            title="Vision"
+            eyebrow={t("visionEyebrow")}
+            title={t("visionTitle")}
             titleAs="h2"
             align="left"
             className="mb-10 max-w-2xl"
@@ -77,20 +89,19 @@ export default function AboutPage() {
           >
             <AnimateIn>
               <SectionHeading
-                eyebrow="Direction"
-                title="Notre équipe dirigeante"
-                subtitle="Les architectes de notre vision"
+                eyebrow={t("teamEyebrow")}
+                title={t("teamTitle")}
+                subtitle={t("teamSubtitle")}
                 titleAs="h2"
                 subtitleAs="h3"
                 titleId="equipe-dirigeante-title"
-                description="Trois leaders complémentaires qui orchestrent la stratégie, l'expansion et l'excellence opérationnelle du groupe."
+                description={t("teamDescription")}
                 align="left"
                 className="mb-12 max-w-2xl md:mb-16"
               />
             </AnimateIn>
             <TeamGrid members={about.team} />
           </PageSection>
-
           <SectionWave fill="band" flip />
         </>
       )}
@@ -98,8 +109,8 @@ export default function AboutPage() {
       <PageSection variant={about.team && about.team.length > 0 ? "alt" : "default"}>
         <AnimateIn>
           <SectionHeading
-            eyebrow="ADN"
-            title="Valeurs"
+            eyebrow={t("dnaEyebrow")}
+            title={t("dnaTitle")}
             titleAs="h2"
             align="left"
             className="mb-10 max-w-2xl"
@@ -124,8 +135,8 @@ export default function AboutPage() {
       <PageSection variant={about.team && about.team.length > 0 ? "default" : "alt"}>
         <AnimateIn>
           <SectionHeading
-            eyebrow="Marché"
-            title="Positionnement"
+            eyebrow={t("marketEyebrow")}
+            title={t("marketTitle")}
             titleAs="h2"
             align="left"
             className="mb-10 max-w-2xl"

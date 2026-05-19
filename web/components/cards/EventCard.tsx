@@ -1,13 +1,17 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Calendar, MapPin } from "lucide-react";
+"use client";
 
+import Image from "next/image";
+import { Calendar, MapPin } from "lucide-react";
+import { useLocale } from "next-intl";
+
+import { Link } from "@/i18n/navigation";
+import type { Locale } from "@/i18n/routing";
 import { getSubsidiaryBySlug } from "@/lib/content";
 import { BLUR_PETROL } from "@/lib/image-blur";
 import type { EventItem } from "@/lib/types";
 
-function formatDate(iso: string) {
-  return new Intl.DateTimeFormat("fr-FR", {
+function formatDate(iso: string, locale: Locale) {
+  return new Intl.DateTimeFormat(locale === "fr" ? "fr-FR" : "en-GB", {
     weekday: "long",
     day: "numeric",
     month: "long",
@@ -18,7 +22,8 @@ function formatDate(iso: string) {
 }
 
 export function EventCard({ event }: { event: EventItem }) {
-  const subsidiary = getSubsidiaryBySlug(event.subsidiarySlug);
+  const locale = useLocale() as Locale;
+  const subsidiary = getSubsidiaryBySlug(locale, event.subsidiarySlug);
 
   return (
     <article className="glass-panel rounded-sm overflow-hidden flex flex-col h-full">
@@ -49,7 +54,7 @@ export function EventCard({ event }: { event: EventItem }) {
         <ul className="space-y-2 text-sm text-stone">
           <li className="flex items-center gap-2">
             <Calendar className="w-4 h-4 text-gold shrink-0" aria-hidden />
-            <time dateTime={event.date}>{formatDate(event.date)}</time>
+            <time dateTime={event.date}>{formatDate(event.date, locale)}</time>
           </li>
           <li className="flex items-center gap-2">
             <MapPin className="w-4 h-4 text-gold shrink-0" aria-hidden />

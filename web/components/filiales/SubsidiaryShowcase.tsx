@@ -1,5 +1,7 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import {
   Armchair,
   ArrowUpRight,
@@ -9,7 +11,7 @@ import {
   Wine,
 } from "lucide-react";
 
-import { SECTOR_LABELS } from "@/lib/content";
+import { useSectorLabel } from "@/lib/use-sector-label";
 import type { Sector, Subsidiary } from "@/lib/types";
 
 const SECTOR_ICON: Record<Sector, typeof UtensilsCrossed> = {
@@ -22,6 +24,7 @@ const SECTOR_ICON: Record<Sector, typeof UtensilsCrossed> = {
 
 /** Grande carte pleine hauteur — colonne gauche */
 export function SubsidiaryShowcaseFeatured({ subsidiary }: { subsidiary: Subsidiary }) {
+  const sectorLabel = useSectorLabel(subsidiary.sector);
   const Icon = SECTOR_ICON[subsidiary.sector];
 
   return (
@@ -44,7 +47,7 @@ export function SubsidiaryShowcaseFeatured({ subsidiary }: { subsidiary: Subsidi
           <Icon className="h-5 w-5 text-white" strokeWidth={1.5} aria-hidden />
         </div>
         <p className="mb-1 text-xs font-medium uppercase tracking-[0.12em] text-gold/90">
-          {SECTOR_LABELS[subsidiary.sector]}
+          {sectorLabel}
         </p>
         <h2 className="font-[family-name:var(--font-cormorant)] text-3xl font-light text-ivory md:text-4xl">
           {subsidiary.name}

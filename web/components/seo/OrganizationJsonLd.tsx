@@ -1,7 +1,8 @@
+import type { Locale } from "@/i18n/routing";
 import { getSiteConfig } from "@/lib/content";
 
-export function OrganizationJsonLd() {
-  const site = getSiteConfig();
+export function OrganizationJsonLd({ locale }: { locale: Locale }) {
+  const site = getSiteConfig(locale);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",

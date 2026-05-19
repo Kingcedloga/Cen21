@@ -1,0 +1,34 @@
+{
+  "name": "Cen21 Hospitality",
+  "tagline": "The art of exceptional living",
+  "description": "A premium holding company dedicated to hospitality, entertainment, and high-end lifestyle experiences.",
+  "contact": {
+    "email": "contact@cen21hospitality.com",
+    "phone": "+243 81 96 04 561",
+    "address": "Gombe, Kinshasa"
+  },
+  "social": {
+    "instagram": "https://www.instagram.com/cen21hospitality",
+    "facebook": "https://www.facebook.com/cen21hospitality",
+    "linkedin": "https://www.linkedin.com/company/cen21-hospitality"
+  },
+  "heroImage": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&q=85",
+  "heroSlides": [
+    {
+      "src": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&q=85",
+      "alt": "Elegant fine-dining restaurant interior"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1920&q=85",
+      "alt": "Cocktail bar with intimate lighting"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=1920&q=85",
+      "alt": "Premium lounge with soft ambient light"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1920&q=85",
+      "alt": "Nightlife scene with dramatic lighting"
+    }
+  ]
+}

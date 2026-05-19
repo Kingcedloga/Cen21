@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-import { SECTOR_LABELS } from "@/lib/content";
+import { useSectorLabel } from "@/lib/use-sector-label";
 import { BLUR_PETROL } from "@/lib/image-blur";
 import type { Sector, Subsidiary } from "@/lib/types";
 
@@ -34,6 +34,7 @@ const SECTOR_ICON: Record<Sector, LucideIcon> = {
  * un bloc bento équilibré.
  */
 export function CompactSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }) {
+  const sectorLabel = useSectorLabel(subsidiary.sector);
   const router = useRouter();
   const href = `/filiales/${subsidiary.slug}`;
   const Icon = SECTOR_ICON[subsidiary.sector];
@@ -97,7 +98,7 @@ export function CompactSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }
           <div className="flex items-center gap-2">
             <Icon className="h-3.5 w-3.5 text-gold" strokeWidth={1.5} aria-hidden />
             <p className="text-[10.5px] font-semibold uppercase tracking-[0.22em] text-gold">
-              {SECTOR_LABELS[subsidiary.sector]}
+              {sectorLabel}
             </p>
           </div>
           <h3 className="font-[family-name:var(--font-cormorant)] text-xl font-medium leading-tight tracking-[-0.005em] text-ivory line-clamp-1 md:text-[1.4rem]">

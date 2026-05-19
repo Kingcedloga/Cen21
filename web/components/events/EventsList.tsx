@@ -1,11 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { CalendarClock, Clock3, Mail } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 
 import { EventCard } from "@/components/cards/EventCard";
 import { Button } from "@/components/ui/Button";
+import { Link } from "@/i18n/navigation";
+import type { Locale } from "@/i18n/routing";
 import { getSubsidiaries } from "@/lib/content";
 import type { EventItem } from "@/lib/types";
 
@@ -18,7 +20,9 @@ export function EventsList({
   showArchive?: boolean;
   pastEvents?: EventItem[];
 }) {
-  const subsidiaries = getSubsidiaries();
+  const locale = useLocale() as Locale;
+  const t = useTranslations("events");
+  const subsidiaries = getSubsidiaries(locale);
   const [filter, setFilter] = useState<string>("all");
 
   const filtered = useMemo(() => {
@@ -34,12 +38,12 @@ export function EventsList({
       <div
         className="flex flex-wrap gap-2 mb-10"
         role="tablist"
-        aria-label="Filtrer par établissement"
+        aria-label={t("filterLabel")}
       >
         <FilterBtn
           active={filter === "all"}
           onClick={() => setFilter("all")}
-          label="Tous"
+          label={t("all")}
         />
         {subsidiaries.map((s) => (
           <FilterBtn
@@ -71,7 +75,7 @@ export function EventsList({
             id="archives-events"
             className="font-[family-name:var(--font-cormorant)] text-3xl text-ivory mb-8"
           >
-            Archives
+            {t("archives")}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 opacity-80">
             {pastEvents.map((event) => (
@@ -93,6 +97,7 @@ function EventsEmptyState({
   onReset: () => void;
   hasPast: boolean;
 }) {
+  const t = useTranslations("events");
   return (
     <div className="mx-auto flex max-w-xl flex-col items-center gap-5 rounded-2xl border border-dashed border-white/15 bg-petrol/30 px-6 py-14 text-center">
       <div className="relative flex h-16 w-16 items-center justify-center rounded-full border border-gold/30 bg-petrol/70 shadow-lg shadow-black/30">
@@ -107,19 +112,17 @@ function EventsEmptyState({
 
       <div className="space-y-2">
         <p className="font-[family-name:var(--font-cormorant)] text-2xl text-ivory md:text-3xl">
-          {isFiltered ? "Pas d'événement programmé" : "L'agenda se prépare"}
+          {isFiltered ? t("emptyFilteredTitle") : t("emptyAgendaTitle")}
         </p>
         <p className="text-sm leading-relaxed text-ivory/70 md:text-base">
-          {isFiltered
-            ? "Cet établissement n'a pas encore publié son prochain rendez-vous."
-            : "Nos prochaines soirées arrivent — restez à l'écoute, ou parcourez les éditions passées."}
+          {isFiltered ? t("emptyFilteredBody") : t("emptyAgendaBody")}
         </p>
       </div>
 
       <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
         {isFiltered && (
           <Button onClick={onReset} variant="secondary" type="button">
-            Voir tous les événements
+            {t("viewAll")}
           </Button>
         )}
         {hasPast && (
@@ -127,7 +130,7 @@ function EventsEmptyState({
             href="#archives-events"
             className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-white/15 bg-petrol/50 px-5 py-2 text-sm font-medium text-ivory/85 transition-colors duration-200 hover:border-gold/50 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold cursor-pointer"
           >
-            Voir les archives
+            {t("viewArchives")}
           </Link>
         )}
         <Link
@@ -135,7 +138,7 @@ function EventsEmptyState({
           className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-5 py-2 text-sm font-medium text-gold transition-colors duration-200 hover:bg-gold/15 focus-visible:outline-2 focus-visible:outline-gold cursor-pointer"
         >
           <Mail className="h-4 w-4" strokeWidth={1.5} aria-hidden />
-          Être averti
+          {t("notify")}
         </Link>
       </div>
     </div>

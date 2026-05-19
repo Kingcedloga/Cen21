@@ -1,0 +1,47 @@
+{
+  "heroImage": "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=2400&q=85",
+  "history": "Founded on a bold vision of contemporary hospitality, Cen21 Hospitality brings together iconic addresses where gastronomy, mixology, and scenography meet. Each venue cultivates its own identity while sharing a common standard: delivering memorable moments.",
+  "vision": "To become the European benchmark for premium lifestyle experiences, creating worlds where detail, service, and emotion redefine industry standards.",
+  "values": [
+    {
+      "title": "Excellence",
+      "description": "An uncompromising standard in every detail, from service to atmosphere."
+    },
+    {
+      "title": "Creativity",
+      "description": "Living concepts in constant evolution, driven by passionate talent."
+    },
+    {
+      "title": "Authenticity",
+      "description": "Places with soul, rooted in their territory and community."
+    },
+    {
+      "title": "Discretion",
+      "description": "Contemporary luxury that is elegant and understated."
+    }
+  ],
+  "positioning": "Cen21 Hospitality embodies modern luxury: editorial minimalism, cinematic depth, and exceptional nightlife experiences inspired by palace hotels and the international lifestyle scene.",
+  "team": [
+    {
+      "name": "Alexandre Dubois",
+      "role": "Chairman & Chief Executive Officer",
+      "bio": "Twenty years in luxury hospitality, formerly leading Parisian palace hotels. Long-term vision and operational excellence.",
+      "photo": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=85",
+      "linkedin": "https://www.linkedin.com/in/example-ceo"
+    },
+    {
+      "name": "Camille Laurent",
+      "role": "Deputy Chief Executive Officer",
+      "bio": "Brand strategy and international expansion. Previously at LVMH Hospitality Excellence, she leads the rollout of our addresses.",
+      "photo": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=85",
+      "linkedin": "https://www.linkedin.com/in/example-coo"
+    },
+    {
+      "name": "Thomas Moreau",
+      "role": "Chief Financial & Development Officer",
+      "bio": "Architect of the group's economic model, he orchestrates capital allocation and strategic partnerships with leading investors.",
+      "photo": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=800&q=85",
+      "linkedin": "https://www.linkedin.com/in/example-cfo"
+    }
+  ]
+}

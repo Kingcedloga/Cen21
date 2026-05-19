@@ -1,9 +1,14 @@
-import { ArrowUpRight, Sparkles } from "lucide-react";
+"use client";
+
+import { ArrowUpRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/Button";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 
 export function CtaBand() {
+  const t = useTranslations("cta");
+
   return (
     <section className="relative px-4 py-24 md:px-6 md:py-28 lg:px-8">
       <div
@@ -23,42 +28,29 @@ export function CtaBand() {
               }}
             />
 
-            <span
-              aria-hidden
-              className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-gold/[0.06] blur-3xl"
-            />
-            <span
-              aria-hidden
-              className="pointer-events-none absolute -right-24 -bottom-24 h-72 w-72 rounded-full bg-gold/[0.05] blur-3xl"
-            />
-
             <div className="relative z-10 flex flex-col items-center">
               <span className="inline-flex items-center gap-2 rounded-full border border-gold/35 bg-petrol/60 px-4 py-1.5 text-[10.5px] font-semibold uppercase tracking-[0.28em] text-gold backdrop-blur-sm">
-                Expériences sur mesure
+                {t("eyebrow")}
               </span>
 
               <h2 className="mt-6 font-[family-name:var(--font-cormorant)] text-[2.25rem] md:text-5xl lg:text-[3.4rem] font-light leading-[1.08] tracking-[-0.02em] text-ivory [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
-                Prêt à vivre{" "}
-                <span className="text-gradient-gold  font-light">
-                  l&apos;exception
-                </span>{" "}
-                ?
+                {t("title")}{" "}
+                <span className="text-gradient-gold font-light">{t("titleAccent")}</span>
               </h2>
 
               <span aria-hidden className="my-7 divider-gold max-w-[180px]" />
 
               <p className="max-w-xl text-base md:text-lg leading-[1.7] text-ivory/80">
-                Explorez nos adresses, nos événements à venir, ou contactez-nous
-                pour une expérience privée à votre image.
+                {t("description")}
               </p>
 
               <div className="mt-9 flex flex-wrap items-center justify-center gap-3 md:gap-4">
-                <Button href="/evenements">
-                  Voir les événements
+                <Button href="/filiales">
+                  {t("subsidiaries")}
                   <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} aria-hidden />
                 </Button>
                 <Button href="/contact" variant="secondary">
-                  Prendre contact
+                  {t("contact")}
                 </Button>
               </div>
             </div>

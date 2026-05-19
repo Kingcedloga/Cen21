@@ -1,15 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useRouter } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 
-import { SECTOR_LABELS } from "@/lib/content";
+import { useSectorLabel } from "@/lib/use-sector-label";
 import { BLUR_PETROL } from "@/lib/image-blur";
 import type { Subsidiary } from "@/lib/types";
 
 export function SubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }) {
+  const sectorLabel = useSectorLabel(subsidiary.sector);
   const router = useRouter();
   const href = `/filiales/${subsidiary.slug}`;
 
@@ -71,7 +72,7 @@ export function SubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }) {
 
       <div className="absolute bottom-0 left-0 right-0 z-10 flex flex-col gap-1.5 p-6">
         <p className="text-[10.5px] font-semibold tracking-[0.24em] uppercase text-gold">
-          {SECTOR_LABELS[subsidiary.sector]}
+          {sectorLabel}
         </p>
         <h3 className="font-[family-name:var(--font-cormorant)] text-[1.55rem] md:text-2xl font-medium leading-[1.15] tracking-[-0.01em] text-ivory">
           <span className="inline-flex items-center gap-2">

@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-import { SECTOR_LABELS } from "@/lib/content";
+import { useSectorLabel } from "@/lib/use-sector-label";
 import { BLUR_PETROL } from "@/lib/image-blur";
 import type { Sector, Subsidiary } from "@/lib/types";
 
@@ -34,6 +34,7 @@ const SECTOR_ICON: Record<Sector, LucideIcon> = {
  * - Hover : translate-y -1.5 + shadow doré, shimmer subtil sur l'image
  */
 export function FeatureSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }) {
+  const sectorLabel = useSectorLabel(subsidiary.sector);
   const router = useRouter();
   const href = `/filiales/${subsidiary.slug}`;
   const Icon = SECTOR_ICON[subsidiary.sector];
@@ -100,7 +101,7 @@ export function FeatureSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }
         <div className="absolute left-5 top-5 z-10 flex items-center gap-2.5 rounded-full border border-white/20 bg-petrol/80 px-3.5 py-2 backdrop-blur-md md:left-7 md:top-7">
           <Icon className="h-4 w-4 text-gold" strokeWidth={1.5} aria-hidden />
           <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-ivory">
-            {SECTOR_LABELS[subsidiary.sector]}
+            {sectorLabel}
           </span>
         </div>
 
