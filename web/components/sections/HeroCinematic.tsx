@@ -45,7 +45,7 @@ export function HeroCinematic({
       <section className="relative flex min-h-[50vh] items-end bg-petrol px-6 pb-24 pt-36 md:pt-40">
         <div className="max-w-4xl">
           <p className="text-gold text-sm tracking-[0.25em] uppercase">{resolvedEyebrow}</p>
-          <h1 className="font-[family-name:var(--font-cormorant)] text-5xl md:text-7xl font-light text-ivory mt-4">
+          <h1 className="text-5xl md:text-7xl font-light text-ivory mt-4">
             {tagline}
           </h1>
           <p className="text-taupe text-lg max-w-2xl mt-4">{description}</p>
@@ -133,7 +133,7 @@ export function HeroCinematic({
               {resolvedEyebrow}
             </p>
           </div>
-          <h1 className="font-[family-name:var(--font-cormorant)] text-5xl md:text-7xl lg:text-8xl font-light text-ivory leading-[1.04] tracking-[-0.02em] [text-shadow:_0_2px_36px_rgb(0_0_0_/_0.45)]">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light text-ivory leading-[1.04] tracking-[-0.02em] [text-shadow:_0_2px_36px_rgb(0_0_0_/_0.45)]">
             {tagline}
           </h1>
           <p className="text-ivory/85 text-lg md:text-xl max-w-2xl leading-[1.65] pt-1 [text-shadow:_0_1px_14px_rgb(0_0_0_/_0.4)]">

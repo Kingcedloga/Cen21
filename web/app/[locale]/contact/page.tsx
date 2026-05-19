@@ -76,7 +76,7 @@ export default async function ContactPage({ params }: Props) {
 
           <AnimateIn delay={0.1}>
             <div className="glass-panel rounded-2xl p-8 ring-1 ring-inset ring-white/[0.06] md:p-10">
-              <h2 className="mb-6 font-[family-name:var(--font-cormorant)] text-2xl text-ivory">
+              <h2 className="mb-6 font-[family-name:var(--font-dm-sans)] text-2xl text-ivory">
                 {t("formTitle")}
               </h2>
               <ContactForm />

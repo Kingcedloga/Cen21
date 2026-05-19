@@ -101,7 +101,7 @@ export function CompactSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }
               {sectorLabel}
             </p>
           </div>
-          <h3 className="font-[family-name:var(--font-cormorant)] text-xl font-medium leading-tight tracking-[-0.005em] text-ivory line-clamp-1 md:text-[1.4rem]">
+          <h3 className="font-[family-name:var(--font-dm-sans)] text-xl font-medium leading-tight tracking-[-0.005em] text-ivory line-clamp-1 md:text-[1.4rem]">
             {subsidiary.name}
           </h3>
           <p className="line-clamp-1 text-[13px] leading-relaxed text-ivory/65 md:text-sm">

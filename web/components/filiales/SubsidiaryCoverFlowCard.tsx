@@ -108,7 +108,7 @@ export function SubsidiaryCoverFlowCard({
         <p className="text-[9px] font-semibold uppercase tracking-[0.16em] text-gold line-clamp-1 [text-shadow:0_1px_4px_rgba(0,0,0,0.6)] sm:text-[10px] sm:tracking-[0.18em] md:text-[11px] md:tracking-[0.2em]">
           {sectorLabel}
         </p>
-        <h3 className="mt-1 font-[family-name:var(--font-cormorant)] text-[1.15rem] font-medium leading-[1.15] text-ivory line-clamp-2 [text-shadow:0_2px_10px_rgba(0,0,0,0.7)] sm:mt-1.5 sm:text-[1.35rem] md:text-2xl lg:text-[1.65rem]">
+        <h3 className="mt-1 font-[family-name:var(--font-dm-sans)] text-[1.15rem] font-medium leading-[1.15] text-ivory line-clamp-2 [text-shadow:0_2px_10px_rgba(0,0,0,0.7)] sm:mt-1.5 sm:text-[1.35rem] md:text-2xl lg:text-[1.65rem]">
           {subsidiary.name}
         </h3>
         <p className="mt-1 text-[11px] text-ivory/80 line-clamp-1 [text-shadow:0_1px_3px_rgba(0,0,0,0.6)] sm:mt-1.5 sm:text-[12px] md:mt-2 md:text-sm">

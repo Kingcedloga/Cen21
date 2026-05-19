@@ -47,7 +47,7 @@ export function EventCard({ event }: { event: EventItem }) {
             {subsidiary.name}
           </Link>
         )}
-        <h3 className="font-[family-name:var(--font-cormorant)] text-xl text-ivory mb-3">
+        <h3 className="font-[family-name:var(--font-dm-sans)] text-xl text-ivory mb-3">
           {event.title}
         </h3>
         <p className="text-taupe text-sm mb-4 flex-1">{event.excerpt}</p>

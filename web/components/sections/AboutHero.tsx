@@ -72,7 +72,7 @@ export function AboutHero({
           )}
           <h1
             id="about-hero-title"
-            className="mb-5 max-w-4xl font-[family-name:var(--font-cormorant)] text-4xl font-light leading-[1.08] tracking-[-0.02em] text-ivory [text-shadow:0_2px_28px_rgba(0,0,0,0.5)] md:text-5xl lg:text-6xl"
+            className="mb-5 max-w-4xl text-4xl font-light leading-[1.08] tracking-[-0.02em] text-ivory [text-shadow:0_2px_28px_rgba(0,0,0,0.5)] md:text-5xl lg:text-6xl"
           >
             {title}
           </h1>

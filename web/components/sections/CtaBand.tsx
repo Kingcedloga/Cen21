@@ -33,7 +33,7 @@ export function CtaBand() {
                 {t("eyebrow")}
               </span>
 
-              <h2 className="mt-6 font-[family-name:var(--font-cormorant)] text-[2.25rem] md:text-5xl lg:text-[3.4rem] font-light leading-[1.08] tracking-[-0.02em] text-ivory [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
+              <h2 className="mt-6 font-[family-name:var(--font-dm-sans)] text-[2.25rem] md:text-5xl lg:text-[3.4rem] font-light leading-[1.08] tracking-[-0.02em] text-ivory [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
                 {t("title")}{" "}
                 <span className="text-gradient-gold font-light">{t("titleAccent")}</span>
               </h2>

@@ -10,7 +10,7 @@ export default async function NotFound() {
     <PageSection variant="default" className="min-h-[60vh] flex items-center">
       <div className="mx-auto max-w-lg text-center">
         <p className="text-gold text-sm tracking-[0.3em] uppercase mb-4">{t("code")}</p>
-        <h1 className="font-[family-name:var(--font-cormorant)] text-4xl md:text-5xl text-ivory mb-4">
+        <h1 className="text-4xl md:text-5xl text-ivory mb-4">
           {t("title")}
         </h1>
         <p className="text-taupe mb-8">{t("description")}</p>

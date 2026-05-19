@@ -120,7 +120,7 @@ export default async function AboutPage({ params }: Props) {
           {about.values.map((v, i) => (
             <AnimateIn key={v.title} delay={i * 0.05}>
               <article className="glass-panel rounded-xl p-8">
-                <h3 className="mb-3 font-[family-name:var(--font-cormorant)] text-xl text-gold">
+                <h3 className="mb-3 font-[family-name:var(--font-dm-sans)] text-xl text-gold">
                   {v.title}
                 </h3>
                 <p className="leading-relaxed text-taupe">{v.description}</p>

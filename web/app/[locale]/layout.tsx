@@ -8,7 +8,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { RouteTransition } from "@/components/layout/RouteTransition";
 import { routing } from "@/i18n/routing";
-import { cormorant, inter } from "@/lib/fonts";
+import { inter } from "@/lib/fonts";
 import type { Locale } from "@/i18n/routing";
 import { createDefaultMetadata } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site-url";
@@ -51,7 +51,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${cormorant.variable} ${inter.variable} h-full`}
+      className={`${inter.variable} h-full`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col antialiased leading-relaxed">

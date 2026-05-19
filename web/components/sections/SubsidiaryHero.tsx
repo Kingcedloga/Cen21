@@ -109,7 +109,7 @@ export function SubsidiaryHero({
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 pb-14 md:pb-20 pt-28 md:pt-36">
         <p className="text-gold text-sm tracking-[0.2em] uppercase mb-3">{sectorLabel}</p>
-        <h1 className="font-[family-name:var(--font-cormorant)] text-5xl md:text-6xl text-ivory mb-4">
+        <h1 className="text-5xl md:text-6xl text-ivory mb-4">
           {name}
         </h1>
         <p className="text-xl text-ivory/80 max-w-2xl mb-6">{tagline}</p>

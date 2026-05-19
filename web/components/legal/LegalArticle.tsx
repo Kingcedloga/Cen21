@@ -10,7 +10,7 @@ export function LegalArticle({ children }: { children: ReactNode }) {
 
 export function LegalH2({ children }: { children: ReactNode }) {
   return (
-    <h2 className="font-[family-name:var(--font-cormorant)] text-xl font-light text-ivory md:text-2xl">
+    <h2 className="font-[family-name:var(--font-dm-sans)] text-xl font-light text-ivory md:text-2xl">
       {children}
     </h2>
   );

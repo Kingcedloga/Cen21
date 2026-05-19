@@ -157,7 +157,7 @@ export default async function SubsidiaryPage({ params }: Props) {
       <SectionWave fill="petrol" flip />
 
       <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto">
-        <h2 className="font-[family-name:var(--font-cormorant)] text-3xl text-ivory mb-4">
+        <h2 className="font-[family-name:var(--font-dm-sans)] text-3xl text-ivory mb-4">
           {t("mapAccess")}
         </h2>
         <p className="text-taupe text-sm mb-6 max-w-2xl">{t("mapDescription")}</p>
@@ -168,7 +168,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         <>
           <SectionWave fill="petrol" />
           <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto">
-            <h2 className="font-[family-name:var(--font-cormorant)] text-3xl text-ivory mb-8">
+            <h2 className="font-[family-name:var(--font-dm-sans)] text-3xl text-ivory mb-8">
               {t("gallery")}
             </h2>
             <GalleryGrid items={galleryItems} showFilters={false} />
@@ -180,7 +180,7 @@ export default async function SubsidiaryPage({ params }: Props) {
       )}
 
       <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto">
-        <h2 className="font-[family-name:var(--font-cormorant)] text-3xl text-ivory mb-8">
+        <h2 className="font-[family-name:var(--font-dm-sans)] text-3xl text-ivory mb-8">
           {t("upcomingEvents")}
         </h2>
         {events.length === 0 ? (

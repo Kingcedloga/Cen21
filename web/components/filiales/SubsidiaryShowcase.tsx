@@ -49,7 +49,7 @@ export function SubsidiaryShowcaseFeatured({ subsidiary }: { subsidiary: Subsidi
         <p className="mb-1 text-xs font-medium uppercase tracking-[0.12em] text-gold/90">
           {sectorLabel}
         </p>
-        <h2 className="font-[family-name:var(--font-cormorant)] text-3xl font-light text-ivory md:text-4xl">
+        <h2 className="font-[family-name:var(--font-dm-sans)] text-3xl font-light text-ivory md:text-4xl">
           {subsidiary.name}
         </h2>
         <p className="mt-2 max-w-md text-sm leading-relaxed text-ivory/85 md:text-base">
@@ -81,7 +81,7 @@ export function SubsidiaryShowcaseCompact({ subsidiary }: { subsidiary: Subsidia
           <Icon className="h-5 w-5 text-white" strokeWidth={1.5} aria-hidden />
         </div>
         <div className="min-w-0 flex-1 pr-12 md:pr-0">
-          <h3 className="font-[family-name:var(--font-cormorant)] text-lg font-medium text-ivory md:text-xl">
+          <h3 className="font-[family-name:var(--font-dm-sans)] text-lg font-medium text-ivory md:text-xl">
             {subsidiary.name}
           </h3>
           <p className="mt-0.5 line-clamp-2 text-xs leading-snug text-taupe md:text-sm">

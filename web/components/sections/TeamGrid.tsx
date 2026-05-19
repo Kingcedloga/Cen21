@@ -76,7 +76,7 @@ function TeamCard({ member }: { member: TeamMember }) {
         <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-gold">
           {member.role}
         </p>
-        <h3 className="mt-2 font-[family-name:var(--font-cormorant)] text-2xl font-medium leading-tight text-ivory md:text-[1.7rem]">
+        <h3 className="mt-2 font-[family-name:var(--font-dm-sans)] text-2xl font-medium leading-tight text-ivory md:text-[1.7rem]">
           {member.name}
         </h3>
         {member.bio && (

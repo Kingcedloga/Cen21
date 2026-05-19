@@ -1,6 +1,15 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "DM Sans";
+  src: url("/fonts/DMSans-VariableFont_opsz_wght.ttf") format("truetype");
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
+  --font-dm-sans: "DM Sans", var(--font-inter), system-ui, sans-serif;
   --color-petrol: #0b2429;
   --color-gold: #c5a059;
   --color-anthracite: #121212;
@@ -55,7 +64,7 @@
   --color-ivory: #f5f2e8;
   --color-taupe: #b3aa9e;
   --color-stone: #a8a8a8;
-  --font-heading: var(--font-cormorant);
+  --font-heading: var(--font-dm-sans);
   --font-sans: var(--font-inter);
 }
 
@@ -109,9 +118,9 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-cormorant), Georgia, serif;
-  font-feature-settings: "kern" 1, "liga" 1, "dlig" 1;
-  font-variant-numeric: oldstyle-nums proportional-nums;
+  font-family: var(--font-dm-sans);
+  font-feature-settings: "kern" 1, "liga" 1;
+  font-variant-numeric: lining-nums proportional-nums;
 }
 
 h1 {

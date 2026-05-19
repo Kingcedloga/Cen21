@@ -61,7 +61,7 @@ export async function Footer() {
             <div className="relative -mt-14 mb-5 flex h-20 w-20 items-center justify-center rounded-full border border-gold/40 bg-petrol shadow-lg shadow-black/40 md:-mt-16 md:h-24 md:w-24">
               <Logo size="lg" />
             </div>
-            <p className="font-[family-name:var(--font-cormorant)] text-2xl tracking-wide md:text-3xl">
+            <p className="font-[family-name:var(--font-dm-sans)] text-2xl tracking-wide md:text-3xl">
               {site.name}
             </p>
             <p className="mt-2 max-w-md text-sm italic text-taupe">{site.tagline}</p>

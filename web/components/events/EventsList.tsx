@@ -73,7 +73,7 @@ export function EventsList({
         <section className="mt-20 pt-12 border-t border-white/10">
           <h2
             id="archives-events"
-            className="font-[family-name:var(--font-cormorant)] text-3xl text-ivory mb-8"
+            className="font-[family-name:var(--font-dm-sans)] text-3xl text-ivory mb-8"
           >
             {t("archives")}
           </h2>
@@ -111,7 +111,7 @@ function EventsEmptyState({
       </div>
 
       <div className="space-y-2">
-        <p className="font-[family-name:var(--font-cormorant)] text-2xl text-ivory md:text-3xl">
+        <p className="font-[family-name:var(--font-dm-sans)] text-2xl text-ivory md:text-3xl">
           {isFiltered ? t("emptyFilteredTitle") : t("emptyAgendaTitle")}
         </p>
         <p className="text-sm leading-relaxed text-ivory/70 md:text-base">
