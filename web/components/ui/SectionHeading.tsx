@@ -1,11 +1,45 @@
 import type { ElementType, ReactNode } from "react";
 
+type Tone = "dark" | "light";
+
+const toneStyles: Record<
+  Tone,
+  {
+    line: string;
+    diamond: string;
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    description: string;
+  }
+> = {
+  dark: {
+    line: "bg-gradient-to-r from-transparent to-gold/85",
+    diamond: "bg-gold/85 shadow-[0_0_10px_rgba(212,173,101,0.55)]",
+    eyebrow: "text-gold",
+    title:
+      "text-ivory [text-shadow:0_2px_28px_rgba(0,0,0,0.5)]",
+    subtitle:
+      "text-gradient-gold opacity-95 [text-shadow:0_1px_18px_rgba(0,0,0,0.35)]",
+    description: "text-ivory/80",
+  },
+  light: {
+    line: "bg-gradient-to-r from-transparent to-gold-deep/75",
+    diamond: "bg-gold-deep/90 shadow-[0_0_8px_rgba(161,123,53,0.35)]",
+    eyebrow: "text-gold-deep",
+    title: "text-petrol",
+    subtitle: "text-gradient-petrol-gold",
+    description: "text-taupe",
+  },
+};
+
 export function SectionHeading({
   eyebrow,
   title,
   subtitle,
   description,
   align = "center",
+  tone = "dark",
   titleAs: TitleTag = "h2",
   subtitleAs: SubtitleTag = "h3",
   titleId,
@@ -16,6 +50,7 @@ export function SectionHeading({
   subtitle?: string;
   description?: string | ReactNode;
   align?: "left" | "center";
+  tone?: Tone;
   titleAs?: "h1" | "h2" | "h3";
   subtitleAs?: "h2" | "h3" | "p";
   titleId?: string;
@@ -24,6 +59,7 @@ export function SectionHeading({
   const isCenter = align === "center";
   const Title = TitleTag as ElementType;
   const Subtitle = SubtitleTag as ElementType;
+  const styles = toneStyles[tone];
 
   return (
     <header
@@ -39,24 +75,28 @@ export function SectionHeading({
         >
           <span
             aria-hidden
-            className="h-px w-7 shrink-0 bg-gradient-to-r from-transparent to-gold/85 sm:w-9"
+            className={`h-px w-7 shrink-0 sm:w-9 ${styles.line}`}
           />
           <span
             aria-hidden
-            className="inline-flex h-1.5 w-1.5 shrink-0 rotate-45 bg-gold/85 shadow-[0_0_10px_rgba(212,173,101,0.55)]"
+            className={`inline-flex h-1.5 w-1.5 shrink-0 rotate-45 ${styles.diamond}`}
           />
-          <p className="eyebrow text-gold text-[10.5px] font-medium uppercase sm:text-[11px]">
+          <p
+            className={`eyebrow text-[10.5px] font-medium uppercase sm:text-[11px] ${styles.eyebrow}`}
+          >
             {eyebrow}
           </p>
           {isCenter && (
             <>
               <span
                 aria-hidden
-                className="inline-flex h-1.5 w-1.5 shrink-0 rotate-45 bg-gold/85 shadow-[0_0_10px_rgba(212,173,101,0.55)]"
+                className={`inline-flex h-1.5 w-1.5 shrink-0 rotate-45 ${styles.diamond}`}
               />
               <span
                 aria-hidden
-                className="h-px w-7 shrink-0 bg-gradient-to-l from-transparent to-gold/85 sm:w-9"
+                className={`h-px w-7 shrink-0 bg-gradient-to-l from-transparent sm:w-9 ${
+                  tone === "light" ? "to-gold-deep/75" : "to-gold/85"
+                }`}
               />
             </>
           )}
@@ -64,24 +104,24 @@ export function SectionHeading({
       )}
       <Title
         id={titleId}
-        className="font-[family-name:var(--font-dm-sans)] text-4xl md:text-5xl lg:text-[3.4rem] font-bold tracking-[-0.028em] text-ivory leading-[1.05] [text-shadow:0_2px_28px_rgba(0,0,0,0.5)]"
+        className={`font-[family-name:var(--font-dm-sans)] text-4xl md:text-5xl lg:text-[3.4rem] font-bold tracking-[-0.028em] leading-[1.05] ${styles.title}`}
       >
         {title}
       </Title>
       {subtitle && (
         <Subtitle
-          className={`mt-3 font-[family-name:var(--font-dm-sans)] text-2xl md:text-[1.85rem] italic font-bold tracking-[-0.012em] leading-[1.15] text-gradient-gold opacity-95 [text-shadow:0_1px_18px_rgba(0,0,0,0.35)] ${
+          className={`mt-3 font-[family-name:var(--font-dm-sans)] text-2xl md:text-[1.85rem] italic font-bold tracking-[-0.012em] leading-[1.15] ${
             isCenter ? "mx-auto" : ""
-          }`}
+          } ${styles.subtitle}`}
         >
           {subtitle}
         </Subtitle>
       )}
       {description && (
         <p
-          className={`mt-5 text-ivory/80 text-[15px] md:text-base lg:text-lg leading-[1.75] tracking-[-0.005em] max-w-2xl ${
+          className={`mt-5 text-[15px] md:text-base lg:text-lg leading-[1.75] tracking-[-0.005em] max-w-2xl ${
             isCenter ? "mx-auto" : ""
-          }`}
+          } ${styles.description}`}
         >
           {description}
         </p>

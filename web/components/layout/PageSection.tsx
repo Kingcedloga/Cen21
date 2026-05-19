@@ -1,12 +1,13 @@
 import type { ReactNode } from "react";
 
-type Variant = "default" | "alt" | "dark";
+type Variant = "default" | "alt" | "dark" | "light";
 type Spacing = "default" | "compact" | "loose";
 
 const variantBg: Record<Variant, string> = {
   default: "bg-petrol",
   alt: "bg-petrol-panel-2/40",
   dark: "bg-petrol-panel-4",
+  light: "bg-ivory text-petrol",
 };
 
 const spacingClass: Record<Spacing, string> = {

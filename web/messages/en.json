@@ -52,7 +52,6 @@
     "viewMoreAria": "View all our subsidiaries"
   },
   "hero": {
-    "eyebrow": "Premium lifestyle holding",
     "ctaSubsidiaries": "Discover our subsidiaries",
     "ctaContact": "Contact us",
     "scroll": "Discover",
@@ -64,7 +63,11 @@
     "titleAccent": "exceptional evening?",
     "description": "Explore our addresses or contact our team for a private request.",
     "subsidiaries": "Our subsidiaries",
-    "contact": "Contact us"
+    "contact": "Contact us",
+    "playVideoAria": "Play the Cen21 Hospitality experience video",
+    "closeVideoAria": "Close video",
+    "videoTitle": "Video — Cen21 Hospitality",
+    "videoUnavailable": "Our showcase video will be available soon."
   },
   "stats": {},
   "about": {
@@ -83,10 +86,7 @@
     "marketTitle": "Positioning",
     "teamEyebrow": "Leadership",
     "teamTitle": "The team",
-    "teamDescription": "Profiles that embody our standards of excellence and operational rigor.",
-    "teamSubtitle": "The architects of our vision",
-    "teamTitle": "Our leadership team",
-    "heroImageAlt": "Interior architecture of a Cen21 Hospitality venue"
+    "teamDescription": "Profiles that embody our standards of excellence and operational rigor."
   },
   "contact": {
     "metaTitle": "Contact",
@@ -134,11 +134,7 @@
     "viewAll": "View all events",
     "archives": "Archives",
     "viewArchives": "View archives",
-    "notify": "Get notified",
-    "emptyFilteredTitle": "No scheduled event",
-    "emptyAgendaTitle": "The agenda is coming together",
-    "emptyFilteredBody": "This venue has not published its next date yet.",
-    "emptyAgendaBody": "Our upcoming evenings are on the way — stay tuned, or browse past editions."
+    "notify": "Get notified"
   },
   "gallery": {
     "metaTitle": "Gallery",
@@ -166,11 +162,7 @@
     "noEvents": "No upcoming events at this venue.",
     "allEvents": "All events",
     "breadcrumbHome": "Home",
-    "breadcrumbSubsidiaries": "Subsidiaries",
-    "mapTitle": "Map — {name}",
-    "mapDescription": "Locate the venue on the map. Directions open in Google Maps.",
-    "noEventsScheduled": "No events scheduled at the moment.",
-    "discover": "Discover"
+    "breadcrumbSubsidiaries": "Subsidiaries"
   },
   "notFound": {
     "code": "404",
@@ -182,61 +174,28 @@
   "legal": {
     "mentions": {
       "metaTitle": "Legal notice",
-      "metaDescription": "Legal information about the {name} website.",
-      "eyebrow": "Information",
       "title": "Legal notice",
-      "description": "Transparency about the site publisher, hosting, and related rights.",
       "editor": "Site publisher",
-      "editorBody": "The {name} website is published by {name}, a company or entity to be specified (legal form, share capital, trade register, registered office).",
       "publication": "Publication director",
-      "publicationBody": "To be completed (legal representative or designated person).",
       "hosting": "Hosting",
-      "hostingBody": "To be completed: hosting provider name, address, and contact details.",
       "ip": "Intellectual property",
-      "ipBody": "Site elements (text, images, structure, trademarks, logos) are owned by {name} or used under licence. Any unauthorised use is prohibited.",
-      "contact": "Contact us",
-      "contactForm": "Contact form",
-      "address": "Address",
-      "phone": "Phone",
-      "email": "Email"
+      "contact": "Contact form"
     },
     "privacy": {
       "metaTitle": "Privacy policy",
-      "metaDescription": "Personal data and your privacy — {name}.",
-      "eyebrow": "Personal data",
       "title": "Privacy policy",
-      "description": "How we handle your information when you use our site or contact us.",
       "controller": "Data controller",
-      "controllerBody": "The processing described below is carried out by {name}. To exercise your rights:",
-      "collected": "Data collected via the contact form",
-      "collectedBody": "When you send a message (name, email, subject, content), we use this information only to respond to your request and maintain legitimate relationship follow-up.",
-      "analytics": "Browsing and audience measurement",
-      "analyticsBody": "Depending on the final site configuration, cookies or trackers may be used (see cookie policy). Adapt with your analytics solution or its absence.",
-      "cookieLink": "cookie policy",
+      "collected": "Data collected via the form",
       "rights": "Your rights (GDPR)",
-      "rightsBody": "Under applicable regulations, you may request access, rectification, erasure, restriction, portability, or object to certain processing. You may lodge a complaint with your supervisory authority.",
-      "retention": "Retention",
-      "retentionBody": "Contact messages are kept for as long as necessary to handle exchanges, then archived or deleted according to your legal and operational obligations."
+      "retention": "Retention"
     },
     "cookies": {
-      "metaTitle": "Cookie policy",
-      "metaDescription": "Information about cookies and trackers — {name}.",
-      "eyebrow": "Cookies",
+      "metaTitle": "Cookies",
       "title": "Cookie policy",
-      "description": "What you should know about trackers that may be placed during your visit.",
       "what": "What is a cookie?",
-      "whatBody": "A cookie is a small file stored on your device when you visit a site. It may serve technical purposes (security, preferences) or audience measurement depending on implementation.",
-      "used": "Cookies that may be used",
-      "usedBody": "The current showcase site mainly uses cookies necessary for technical operation. Update if you add third-party social embeds, Google Maps, advertising, Matomo / GA4, etc.",
       "necessary": "Essential",
-      "necessaryBody": "Proper site operation (e.g. load balancing, language preferences).",
-      "analytics": "Audience measurement",
-      "analyticsBody": "Only after configuration and, unless exempt, consent (document precisely).",
-      "choices": "Your choices",
-      "choicesBody": "You can configure your browser to refuse all or part of cookies. For a compliant consent banner (Tarteaucitron, Axeptio, etc.), plan a dedicated integration.",
-      "contact": "Contact",
-      "contactBody": "Questions about this policy:",
-      "contactUs": "contact us"
+      "analytics": "Analytics",
+      "choices": "Your choices"
     }
   }
 }

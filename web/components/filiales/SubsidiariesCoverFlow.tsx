@@ -157,10 +157,13 @@ function cardMotion(offset: number, reduced: boolean, m: StageMetrics) {
 
 export function SubsidiariesCoverFlow({
   subsidiaries,
+  surface = "dark",
 }: {
   subsidiaries: Subsidiary[];
+  surface?: "dark" | "light";
 }) {
   const len = subsidiaries.length;
+  const isLight = surface === "light";
   const [active, setActive] = useState(0);
   const { bp, mounted } = useBreakpoint();
   const reduced = useReducedMotion();
@@ -201,7 +204,11 @@ export function SubsidiariesCoverFlow({
         aria-hidden
       >
         <motion.div
-          className="absolute left-1/2 top-1/2 h-[min(420px,60vw)] w-[min(560px,82vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(212,173,101,0.22)_0%,rgba(212,173,101,0.06)_45%,transparent_72%)] max-sm:h-[min(240px,45vw)] max-sm:w-[min(300px,78vw)] max-sm:opacity-60"
+          className={`absolute left-1/2 top-1/2 h-[min(420px,60vw)] w-[min(560px,82vw)] -translate-x-1/2 -translate-y-1/2 rounded-full max-sm:h-[min(240px,45vw)] max-sm:w-[min(300px,78vw)] ${
+            isLight
+              ? "bg-[radial-gradient(ellipse_at_center,rgba(212,173,101,0.12)_0%,rgba(0,66,88,0.04)_45%,transparent_72%)] max-sm:opacity-50"
+              : "bg-[radial-gradient(ellipse_at_center,rgba(212,173,101,0.22)_0%,rgba(212,173,101,0.06)_45%,transparent_72%)] max-sm:opacity-60"
+          }`}
           animate={mounted && !reduced ? { opacity: [0.8, 1, 0.8] } : { opacity: 0.8 }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -216,7 +223,11 @@ export function SubsidiariesCoverFlow({
           // responsive Tailwind, identique côté SSR et premier render client.
           <div
             aria-hidden
-            className="absolute left-1/2 top-1/2 h-[435px] w-[290px] -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-petrol/10 bg-white/30 max-sm:top-[calc(50%+96px)] sm:h-[360px] sm:w-[240px] lg:h-[444px] lg:w-[296px]"
+            className={`absolute left-1/2 top-1/2 h-[435px] w-[290px] -translate-x-1/2 -translate-y-1/2 rounded-2xl border max-sm:top-[calc(50%+96px)] sm:h-[360px] sm:w-[240px] lg:h-[444px] lg:w-[296px] ${
+              isLight
+                ? "border-petrol/12 bg-petrol/[0.05]"
+                : "border-petrol/10 bg-white/30"
+            }`}
           />
         ) : (
           <div className="relative h-full w-full [transform-style:preserve-3d]">

@@ -1,10 +1,11 @@
 /** Transition visuelle entre sections (même principe que le footer). */
-export type SectionWaveFill = "petrol" | "anthracite" | "band";
+export type SectionWaveFill = "petrol" | "anthracite" | "band" | "ivory";
 
 const fillClasses: Record<SectionWaveFill, string> = {
   petrol: "text-petrol",
   anthracite: "text-anthracite",
   band: "text-[color:var(--wave-band)]",
+  ivory: "text-ivory",
 };
 
 type Props = {

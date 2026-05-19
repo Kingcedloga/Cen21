@@ -2,7 +2,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { LegalArticle, LegalH2, LegalP, LegalUl } from "@/components/legal/LegalArticle";
 import { PageHero } from "@/components/sections/PageHero";
-import { SectionWave } from "@/components/layout/SectionWave";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { getSiteConfig } from "@/lib/content";
@@ -75,7 +74,6 @@ export default async function MentionsLegalesPage({ params }: Props) {
           </LegalP>
         </section>
       </LegalArticle>
-      <SectionWave fill="petrol" />
     </>
   );
 }

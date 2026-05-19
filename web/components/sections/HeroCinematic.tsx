@@ -17,21 +17,14 @@ export type HeroSlide = {
 
 type HeroCinematicProps = {
   slides: HeroSlide[];
-  tagline: string;
-  description: string;
-  eyebrow?: string;
+  siteName: string;
+  className?: string;
 };
 
 const AUTO_MS = 7000;
 
-export function HeroCinematic({
-  slides,
-  tagline,
-  description,
-  eyebrow,
-}: HeroCinematicProps) {
+export function HeroCinematic({ slides, siteName, className = "" }: HeroCinematicProps) {
   const t = useTranslations("hero");
-  const resolvedEyebrow = eyebrow ?? t("eyebrow");
   const list = slides;
 
   const [index, setIndex] = useState(0);
@@ -39,20 +32,6 @@ export function HeroCinematic({
 
   const len = list.length;
   const safeIndex = len ? index % len : 0;
-
-  if (len === 0) {
-    return (
-      <section className="relative flex min-h-[50vh] items-end bg-petrol px-6 pb-24 pt-36 md:pt-40">
-        <div className="max-w-4xl">
-          <p className="text-gold text-sm tracking-[0.25em] uppercase">{resolvedEyebrow}</p>
-          <h1 className="text-5xl md:text-7xl font-bold text-ivory mt-4">
-            {tagline}
-          </h1>
-          <p className="text-taupe text-lg max-w-2xl mt-4">{description}</p>
-        </div>
-      </section>
-    );
-  }
 
   const next = useCallback(() => {
     setIndex((i) => (len ? (i + 1) % len : 0));
@@ -64,12 +43,28 @@ export function HeroCinematic({
 
   useEffect(() => {
     if (reducedMotion || len <= 1) return;
-    const t = window.setInterval(next, AUTO_MS);
-    return () => window.clearInterval(t);
+    const timer = window.setInterval(next, AUTO_MS);
+    return () => window.clearInterval(timer);
   }, [reducedMotion, len, next]);
 
+  if (len === 0) {
+    return (
+      <section className="relative flex min-h-[50vh] items-end bg-petrol px-6 pb-24 pt-36 md:pt-40">
+        <h1 className="sr-only">{siteName}</h1>
+        <div className="flex flex-wrap gap-3 md:gap-4">
+          <Button href="/filiales">{t("ctaSubsidiaries")}</Button>
+          <Button href="/contact" variant="secondary">
+            {t("ctaContact")}
+          </Button>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <section className="relative flex min-h-screen items-end overflow-hidden">
+    <section
+      className={`relative flex h-[clamp(220px,60dvh,520px)] shrink-0 items-end overflow-hidden ${className}`}
+    >
       {list.map((slide, i) => (
         <div
           key={`${slide.src}-${i}`}
@@ -90,19 +85,6 @@ export function HeroCinematic({
           />
         </div>
       ))}
-
-      <div
-        className="absolute inset-0 z-[1]"
-        aria-hidden
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(0,66,88,0.55) 0%, rgba(0,66,88,0.25) 35%, rgba(0,66,88,0.65) 70%, rgba(0,66,88,0.95) 100%)",
-        }}
-      />
-      <div
-        className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_20%_80%,rgba(212,173,101,0.18)_0%,transparent_55%)]"
-        aria-hidden
-      />
 
       {len > 1 && (
         <>
@@ -125,39 +107,27 @@ export function HeroCinematic({
         </>
       )}
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 pb-28 md:pb-32 pt-36 md:pt-40">
-        <div className="max-w-4xl space-y-5 md:space-y-7">
-          <div className="inline-flex items-center gap-3">
-            <span aria-hidden className="h-px w-10 bg-gradient-to-r from-transparent to-gold/85" />
-            <p className="text-gold text-[11px] font-semibold tracking-[0.32em] uppercase">
-              {resolvedEyebrow}
-            </p>
-          </div>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-ivory leading-[1.04] tracking-[-0.02em] [text-shadow:_0_2px_36px_rgb(0_0_0_/_0.45)]">
-            {tagline}
-          </h1>
-          <p className="text-ivory/85 text-lg md:text-xl max-w-2xl leading-[1.65] pt-1 [text-shadow:_0_1px_14px_rgb(0_0_0_/_0.4)]">
-            {description}
-          </p>
-          <div className="flex flex-wrap gap-3 md:gap-4 pt-3 md:pt-5">
-            <Button href="/filiales">{t("ctaSubsidiaries")}</Button>
-            <Button href="/contact" variant="secondary">
-              {t("ctaContact")}
-            </Button>
-          </div>
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 pb-12 md:pb-14 pt-28 md:pt-32">
+        <h1 className="sr-only">{siteName}</h1>
+        <div className="flex flex-wrap gap-3 md:gap-4">
+          <Button href="/filiales">{t("ctaSubsidiaries")}</Button>
+          <Button href="/contact" variant="secondary">
+            {t("ctaContact")}
+          </Button>
         </div>
       </div>
 
       <button
         type="button"
-        onClick={() =>
-          window.scrollTo({
-            top: window.innerHeight - 60,
+        onClick={() => {
+          const target = document.getElementById("nos-filiales");
+          target?.scrollIntoView({
             behavior: reducedMotion ? "auto" : "smooth",
-          })
-        }
+            block: "start",
+          });
+        }}
         aria-label={t("scrollAria")}
-        className="absolute bottom-6 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center gap-2 text-ivory/70 transition-colors duration-200 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-4 cursor-pointer md:flex md:bottom-10"
+        className="absolute bottom-4 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center gap-2 text-ivory/70 transition-colors duration-200 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-4 cursor-pointer md:flex md:bottom-5"
       >
         <span className="text-[10px] font-medium tracking-[0.24em] uppercase">
           {t("scroll")}

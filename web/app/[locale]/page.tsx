@@ -8,8 +8,7 @@ import { AnimateIn } from "@/components/ui/AnimateIn";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StatsBanner } from "@/components/sections/StatsBanner";
 import { PageSection } from "@/components/layout/PageSection";
-import { SectionWave } from "@/components/layout/SectionWave";
-import { getSubsidiaries, getSiteConfig } from "@/lib/content";
+import { getSubsidiaries, getSiteConfig, getExperienceVideoId } from "@/lib/content";
 import type { Locale } from "@/i18n/routing";
 import { createPageMetadata } from "@/lib/seo";
 
@@ -44,34 +43,33 @@ export default async function HomePage({ params }: Props) {
   return (
     <>
       <OrganizationJsonLd locale={l} />
-      <HeroCinematic
-        slides={heroSlides}
-        tagline={site.tagline}
-        description={site.description}
-      />
 
-      <SectionWave fill="petrol" />
+      <HeroCinematic slides={heroSlides} siteName={site.name} />
 
-      <PageSection variant="default">
+      <PageSection
+        id="home-group"
+        variant="default"
+        spacing="default"
+        containerClassName="mx-auto max-w-[min(100%,1400px)]"
+      >
         <AnimateIn>
           <SectionHeading
             eyebrow={t("groupEyebrow")}
             title={t("groupTitle")}
             description={t("groupDescription")}
             align="left"
+            className="mb-6 md:mb-8 max-w-2xl"
           />
         </AnimateIn>
         <AnimateIn delay={0.1}>
-          <p className="max-w-3xl text-lg leading-relaxed text-taupe">
+          <p className="max-w-2xl text-left text-base leading-relaxed text-taupe md:text-lg">
             {t("groupBody")}
           </p>
         </AnimateIn>
       </PageSection>
 
-      <SectionWave fill="band" flip />
-
       <PageSection
-        variant="alt"
+        variant="light"
         spacing="default"
         id="nos-filiales"
         ariaLabelledby="nos-filiales-title"
@@ -87,6 +85,7 @@ export default async function HomePage({ params }: Props) {
                 subtitleAs="h3"
                 titleId="nos-filiales-title"
                 align="left"
+                tone="light"
                 className="mb-0 max-w-2xl"
               />
             </AnimateIn>
@@ -98,13 +97,9 @@ export default async function HomePage({ params }: Props) {
         </div>
       </PageSection>
 
-      <SectionWave fill="anthracite" />
-
       <StatsBanner />
 
-      <SectionWave fill="petrol" flip />
-
-      <CtaBand />
+      <CtaBand videoId={getExperienceVideoId(l)} />
     </>
   );
 }

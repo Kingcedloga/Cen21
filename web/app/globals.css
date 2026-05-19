@@ -253,6 +253,17 @@ h4 {
   background-clip: text;
 }
 
+.text-gradient-petrol-gold {
+  background: linear-gradient(
+    135deg,
+    var(--color-petrol) 0%,
+    var(--color-gold-deep) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .cta-card {
   background:
     radial-gradient(

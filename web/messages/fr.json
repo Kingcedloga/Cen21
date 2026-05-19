@@ -52,7 +52,6 @@
     "viewMoreAria": "Voir l'ensemble de nos filiales"
   },
   "hero": {
-    "eyebrow": "Holding lifestyle premium",
     "ctaSubsidiaries": "Découvrir nos filiales",
     "ctaContact": "Nous contacter",
     "scroll": "Découvrir",
@@ -64,7 +63,11 @@
     "titleAccent": "soirée d'exception ?",
     "description": "Explorez nos adresses ou contactez notre équipe pour une demande privée.",
     "subsidiaries": "Nos filiales",
-    "contact": "Nous contacter"
+    "contact": "Nous contacter",
+    "playVideoAria": "Lire la vidéo d'expérience Cen21 Hospitality",
+    "closeVideoAria": "Fermer la vidéo",
+    "videoTitle": "Vidéo — Cen21 Hospitality",
+    "videoUnavailable": "La vidéo de présentation sera bientôt en ligne."
   },
   "stats": {},
   "about": {

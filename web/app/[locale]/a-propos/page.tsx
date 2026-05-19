@@ -1,7 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { PageSection } from "@/components/layout/PageSection";
-import { SectionWave } from "@/components/layout/SectionWave";
 import { AboutHero } from "@/components/sections/AboutHero";
 import { TeamGrid } from "@/components/sections/TeamGrid";
 import { AnimateIn } from "@/components/ui/AnimateIn";
@@ -60,8 +59,6 @@ export default async function AboutPage({ params }: Props) {
         </AnimateIn>
       </PageSection>
 
-      <SectionWave fill="band" flip />
-
       <PageSection variant="alt">
         <AnimateIn>
           <SectionHeading
@@ -76,8 +73,6 @@ export default async function AboutPage({ params }: Props) {
           <p className="max-w-3xl text-lg leading-relaxed text-taupe">{about.vision}</p>
         </AnimateIn>
       </PageSection>
-
-      <SectionWave fill="petrol" />
 
       {about.team && about.team.length > 0 && (
         <>
@@ -102,7 +97,6 @@ export default async function AboutPage({ params }: Props) {
             </AnimateIn>
             <TeamGrid members={about.team} />
           </PageSection>
-          <SectionWave fill="band" flip />
         </>
       )}
 
@@ -130,8 +124,6 @@ export default async function AboutPage({ params }: Props) {
         </div>
       </PageSection>
 
-      <SectionWave fill="band" flip />
-
       <PageSection variant={about.team && about.team.length > 0 ? "default" : "alt"}>
         <AnimateIn>
           <SectionHeading
@@ -146,8 +138,6 @@ export default async function AboutPage({ params }: Props) {
           <p className="max-w-3xl text-lg leading-relaxed text-taupe">{about.positioning}</p>
         </AnimateIn>
       </PageSection>
-
-      <SectionWave fill="petrol" />
     </>
   );
 }

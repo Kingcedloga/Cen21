@@ -73,6 +73,8 @@ export type SiteConfig = {
   /** @deprecated préférer heroSlides */
   heroImage: string;
   heroSlides?: { src: string; alt: string }[];
+  /** ID ou URL YouTube pour la section Expérience (CTA vidéo). */
+  experienceYoutubeId?: string;
 };
 
 export type TeamMember = {

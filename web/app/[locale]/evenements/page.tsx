@@ -3,7 +3,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { EventsList } from "@/components/events/EventsList";
 import { PageHero } from "@/components/sections/PageHero";
 import { PageSection } from "@/components/layout/PageSection";
-import { SectionWave } from "@/components/layout/SectionWave";
 import type { Locale } from "@/i18n/routing";
 import { getEvents, getPastEvents } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
@@ -35,7 +34,6 @@ export default async function EventsPage({ params }: Props) {
       <PageSection variant="default">
         <EventsList events={upcoming} pastEvents={past} />
       </PageSection>
-      <SectionWave fill="petrol" />
     </>
   );
 }

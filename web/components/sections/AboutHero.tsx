@@ -1,6 +1,5 @@
 import Image from "next/image";
 
-import { SectionWave } from "@/components/layout/SectionWave";
 import { BLUR_PETROL } from "@/lib/image-blur";
 
 /**
@@ -83,7 +82,6 @@ export function AboutHero({
           )}
         </div>
       </section>
-      <SectionWave fill="petrol" />
     </>
   );
 }

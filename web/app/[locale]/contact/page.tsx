@@ -6,7 +6,6 @@ import { ContactForm } from "@/components/contact/ContactForm";
 import { SocialLinks } from "@/components/ui/SocialLinks";
 import { PageHero } from "@/components/sections/PageHero";
 import { PageSection } from "@/components/layout/PageSection";
-import { SectionWave } from "@/components/layout/SectionWave";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import type { Locale } from "@/i18n/routing";
@@ -85,8 +84,6 @@ export default async function ContactPage({ params }: Props) {
         </div>
       </PageSection>
 
-      <SectionWave fill="band" flip />
-
       <PageSection variant="alt">
         <AnimateIn>
           <SectionHeading
@@ -102,8 +99,6 @@ export default async function ContactPage({ params }: Props) {
           <MapEmbed query={site.contact.address} title={`${site.name}`} />
         </AnimateIn>
       </PageSection>
-
-      <SectionWave fill="petrol" />
     </>
   );
 }

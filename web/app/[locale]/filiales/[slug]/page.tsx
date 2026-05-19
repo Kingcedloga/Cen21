@@ -8,7 +8,6 @@ import { EventCard } from "@/components/cards/EventCard";
 import { StickyMobileActions } from "@/components/filiales/StickyMobileActions";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
 import { MapEmbed } from "@/components/maps/MapEmbed";
-import { SectionWave } from "@/components/layout/SectionWave";
 import { SubsidiaryHero } from "@/components/sections/SubsidiaryHero";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
@@ -95,8 +94,6 @@ export default async function SubsidiaryPage({ params }: Props) {
         social={subsidiary.social}
       />
 
-      <SectionWave fill="petrol" />
-
       <section className="px-4 pt-8 md:px-6 md:pt-10 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <Breadcrumb
@@ -118,8 +115,6 @@ export default async function SubsidiaryPage({ params }: Props) {
           </AnimateIn>
         </div>
       </section>
-
-      <SectionWave fill="band" />
 
       <section className="py-12 px-4 md:px-6 bg-anthracite/40">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -154,8 +149,6 @@ export default async function SubsidiaryPage({ params }: Props) {
         </div>
       </section>
 
-      <SectionWave fill="petrol" flip />
-
       <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto">
         <h2 className="font-[family-name:var(--font-dm-sans)] text-3xl text-ivory mb-4">
           {t("mapAccess")}
@@ -164,19 +157,13 @@ export default async function SubsidiaryPage({ params }: Props) {
         <MapEmbed query={mapQuery} title={t("mapTitle", { name: subsidiary.name })} />
       </section>
 
-      {galleryItems.length > 0 ? (
-        <>
-          <SectionWave fill="petrol" />
-          <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto">
-            <h2 className="font-[family-name:var(--font-dm-sans)] text-3xl text-ivory mb-8">
-              {t("gallery")}
-            </h2>
-            <GalleryGrid items={galleryItems} showFilters={false} />
-          </section>
-          <SectionWave fill="petrol" flip />
-        </>
-      ) : (
-        <SectionWave fill="petrol" flip />
+      {galleryItems.length > 0 && (
+        <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto">
+          <h2 className="font-[family-name:var(--font-dm-sans)] text-3xl text-ivory mb-8">
+            {t("gallery")}
+          </h2>
+          <GalleryGrid items={galleryItems} showFilters={false} />
+        </section>
       )}
 
       <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto">

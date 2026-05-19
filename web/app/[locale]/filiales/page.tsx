@@ -1,7 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { PageSection } from "@/components/layout/PageSection";
-import { SectionWave } from "@/components/layout/SectionWave";
 import { PageHero } from "@/components/sections/PageHero";
 import { SubsidiariesBento } from "@/components/filiales/SubsidiariesBento";
 import { AnimateIn } from "@/components/ui/AnimateIn";
@@ -60,8 +59,6 @@ export default async function SubsidiariesPage({ params }: Props) {
 
         <SubsidiariesBento subsidiaries={subsidiaries} />
       </PageSection>
-
-      <SectionWave fill="petrol" />
     </>
   );
 }

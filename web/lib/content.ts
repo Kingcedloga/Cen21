@@ -20,6 +20,7 @@ import type {
   StatsContent,
   Subsidiary,
 } from "./types";
+import { parseYoutubeId } from "./youtube";
 
 const SITE: Record<Locale, SiteConfig> = { en: siteEn, fr: siteFr };
 const STATS: Record<Locale, StatsContent> = {
@@ -42,6 +43,16 @@ const GALLERY: Record<Locale, GalleryItem[]> = {
 
 export function getSiteConfig(locale: Locale): SiteConfig {
   return SITE[locale];
+}
+
+/** ID YouTube pour la section Expérience (contenu JSON ou variable d'environnement). */
+export function getExperienceVideoId(locale: Locale): string | undefined {
+  const site = getSiteConfig(locale);
+  const raw =
+    site.experienceYoutubeId?.trim() ||
+    process.env.NEXT_PUBLIC_EXPERIENCE_YOUTUBE_ID?.trim() ||
+    "";
+  return parseYoutubeId(raw);
 }
 
 export function getStatsContent(locale: Locale): StatsContent {

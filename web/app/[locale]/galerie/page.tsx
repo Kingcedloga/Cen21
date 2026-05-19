@@ -3,7 +3,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
 import { PageHero } from "@/components/sections/PageHero";
 import { PageSection } from "@/components/layout/PageSection";
-import { SectionWave } from "@/components/layout/SectionWave";
 import type { Locale } from "@/i18n/routing";
 import { getGalleryItems } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
@@ -33,7 +32,6 @@ export default async function GalleryPage({ params }: Props) {
       <PageSection variant="default">
         <GalleryGrid items={items} />
       </PageSection>
-      <SectionWave fill="petrol" />
     </>
   );
 }
