@@ -9,7 +9,7 @@ type LogoProps = {
   size?: "sm" | "md" | "lg" | "xl";
   className?: string;
   /** Réduit la hauteur dans le header fixe pour garder une barre compacte tout en gardant un logo net. */
-  variant?: "default" | "header";
+  variant?: "default" | "header" | "footer";
 };
 
 const sizesPx = {
@@ -24,14 +24,19 @@ const LOGO_ASPECT = 1024 / 984;
 
 export function Logo({ size = "md", className = "", variant = "default" }: LogoProps) {
   const t = useTranslations("nav");
-  const height = sizesPx[size];
-  const width = Math.round(height * LOGO_ASPECT);
   const isHeader = variant === "header";
+  const isFooter = variant === "footer";
+  const height = isFooter ? 56 : sizesPx[size];
+  const width = Math.round(height * LOGO_ASPECT);
 
   return (
     <Link
       href="/"
-      className={`inline-flex shrink-0 group cursor-pointer ${className}`}
+      className={`group cursor-pointer ${
+        isFooter
+          ? "flex h-full w-full items-center justify-center"
+          : "inline-flex shrink-0"
+      } ${className}`}
       aria-label={`Cen21 Hospitality — ${t("home")}`}
     >
       <Image
@@ -40,9 +45,13 @@ export function Logo({ size = "md", className = "", variant = "default" }: LogoP
         width={width}
         height={height}
         className={`object-contain transition-opacity duration-200 group-hover:opacity-90 ${
-          isHeader ? "h-14 w-auto md:h-[4.25rem]" : ""
+          isHeader
+            ? "h-14 w-auto md:h-[4.25rem]"
+            : isFooter
+              ? "h-11 w-auto md:h-[3.25rem]"
+              : ""
         }`}
-        style={isHeader ? undefined : { width, height }}
+        style={isHeader || isFooter ? undefined : { width, height }}
         priority
       />
     </Link>

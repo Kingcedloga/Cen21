@@ -56,8 +56,8 @@ export async function Footer() {
 
         <div className="relative mx-auto max-w-7xl px-6 pb-12 pt-4 md:px-10 md:pb-16">
           <div className="mb-12 flex flex-col items-center text-center md:mb-14">
-            <div className="relative -mt-14 mb-5 flex h-20 w-20 items-center justify-center rounded-full border border-gold/40 bg-petrol shadow-lg shadow-black/40 md:-mt-16 md:h-24 md:w-24">
-              <Logo size="lg" />
+            <div className="relative -mt-14 mb-5 flex h-20 w-20 items-center justify-center overflow-hidden rounded-full border border-gold/40 bg-petrol p-2 shadow-lg shadow-black/40 md:-mt-16 md:h-24 md:w-24 md:p-2.5">
+              <Logo variant="footer" />
             </div>
             <p className="font-[family-name:var(--font-dm-sans)] text-2xl font-bold tracking-wide md:text-3xl">
               {site.name}
