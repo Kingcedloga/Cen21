@@ -19,9 +19,13 @@ const sizesPx = {
   xl: 150,
 };
 
+/** Dimensions source du fichier `/public/logo.png` (Cen21_Logo-Final). */
+const LOGO_ASPECT = 1024 / 984;
+
 export function Logo({ size = "md", className = "", variant = "default" }: LogoProps) {
   const t = useTranslations("nav");
-  const mark = sizesPx[size];
+  const height = sizesPx[size];
+  const width = Math.round(height * LOGO_ASPECT);
   const isHeader = variant === "header";
 
   return (
@@ -33,12 +37,12 @@ export function Logo({ size = "md", className = "", variant = "default" }: LogoP
       <Image
         src="/logo.png"
         alt=""
-        width={mark}
-        height={mark}
-        className={`object-contain transition-opacity duration-200 group-hover:opacity-90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] ${
+        width={width}
+        height={height}
+        className={`object-contain transition-opacity duration-200 group-hover:opacity-90 ${
           isHeader ? "h-14 w-auto md:h-[4.25rem]" : ""
         }`}
-        style={isHeader ? undefined : { width: mark, height: mark }}
+        style={isHeader ? undefined : { width, height }}
         priority
       />
     </Link>
