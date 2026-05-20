@@ -17,10 +17,8 @@ const toneStyles: Record<
     line: "bg-gradient-to-r from-transparent to-gold/85",
     diamond: "bg-gold/85 shadow-[0_0_10px_rgba(212,173,101,0.55)]",
     eyebrow: "text-gold",
-    title:
-      "text-ivory [text-shadow:0_2px_28px_rgba(0,0,0,0.5)]",
-    subtitle:
-      "text-gradient-gold opacity-95 [text-shadow:0_1px_18px_rgba(0,0,0,0.35)]",
+    title: "text-ivory",
+    subtitle: "text-gradient-gold opacity-95",
     description: "text-ivory/80",
   },
   light: {
