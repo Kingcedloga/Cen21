@@ -16,7 +16,7 @@ export function FeaturedSubsidiariesSlider({
 }) {
   return (
     <div className="w-full max-sm:overflow-x-clip px-1 sm:px-2">
-      <SubsidiariesCoverFlow subsidiaries={subsidiaries} surface="light" />
+      <SubsidiariesCoverFlow subsidiaries={subsidiaries} surface="light" compactLayout />
     </div>
   );
 }

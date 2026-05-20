@@ -1,5 +1,6 @@
 import { Award, Globe, TrendingUp, Users } from "lucide-react";
 
+import { StatCountUp } from "@/components/sections/StatCountUp";
 import { getStatsContent } from "@/lib/content";
 import { getContentLocale } from "@/lib/locale-server";
 
@@ -27,7 +28,7 @@ export async function StatsBanner() {
                 aria-hidden
               />
               <p className="font-[family-name:var(--font-dm-sans)] text-3xl font-bold text-petrol md:text-4xl">
-                {item.value}
+                <StatCountUp value={item.value} />
               </p>
               <p className="mt-1 text-xs uppercase tracking-[0.2em] text-petrol">
                 {item.label}

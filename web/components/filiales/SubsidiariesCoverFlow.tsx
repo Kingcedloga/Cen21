@@ -41,6 +41,12 @@ const SSR_METRICS: StageMetrics = {
   rotateY3: 52,
 };
 
+const COMPACT_WRAPPER: Record<Breakpoint, number> = {
+  mobile: 360,
+  tablet: 280,
+  desktop: 300,
+};
+
 const METRICS: Record<Breakpoint, StageMetrics> = {
   mobile: SSR_METRICS,
   tablet: {
@@ -158,9 +164,11 @@ function cardMotion(offset: number, reduced: boolean, m: StageMetrics) {
 export function SubsidiariesCoverFlow({
   subsidiaries,
   surface = "dark",
+  compactLayout = false,
 }: {
   subsidiaries: Subsidiary[];
   surface?: "dark" | "light";
+  compactLayout?: boolean;
 }) {
   const len = subsidiaries.length;
   const isLight = surface === "light";
@@ -169,6 +177,7 @@ export function SubsidiariesCoverFlow({
   const reduced = useReducedMotion();
 
   const metrics = METRICS[bp];
+  const wrapperH = compactLayout ? COMPACT_WRAPPER[bp] : metrics.wrapperH;
   const safeActive = len ? ((active % len) + len) % len : 0;
 
   const go = useCallback(
@@ -194,9 +203,12 @@ export function SubsidiariesCoverFlow({
       //   tablet  398px  ↔ METRICS.tablet.wrapperH = 398 (card 378px + 20px buffer)
       //   desktop 508px  ↔ METRICS.desktop.wrapperH = 508 (card 488px + 20px buffer)
       // Tailwind et matchMedia utilisent les mêmes seuils → CSS et JS toujours synchrones.
-      className="relative mx-auto w-full max-w-[min(100%,1400px)] min-h-[520px] sm:min-h-[398px] lg:min-h-[508px]"
+      className={`relative mx-auto w-full max-w-[min(100%,1400px)] ${
+        compactLayout ? "" : "min-h-[520px] sm:min-h-[398px] lg:min-h-[508px]"
+      }`}
       initial={false}
-      animate={mounted ? { minHeight: metrics.wrapperH } : undefined}
+      animate={mounted || compactLayout ? { minHeight: wrapperH } : undefined}
+      style={compactLayout && !mounted ? { minHeight: wrapperH } : undefined}
     >
       {/* Halo doré central — accent lumineux sur le marbre, sans fond opaque */}
       <div
@@ -215,8 +227,10 @@ export function SubsidiariesCoverFlow({
       </div>
 
       <div
-        className="relative z-10 mx-auto h-full w-full min-h-[520px] [perspective:1800px] [perspective-origin:50%_58%] max-sm:[perspective-origin:50%_72%] sm:min-h-[398px] sm:[perspective-origin:50%_45%] lg:min-h-[508px]"
-        style={mounted ? { minHeight: metrics.wrapperH } : undefined}
+        className={`relative z-10 mx-auto h-full w-full [perspective:1800px] [perspective-origin:50%_58%] max-sm:[perspective-origin:50%_72%] sm:[perspective-origin:50%_45%] ${
+          compactLayout ? "" : "min-h-[520px] sm:min-h-[398px] lg:min-h-[508px]"
+        }`}
+        style={mounted || compactLayout ? { minHeight: wrapperH } : undefined}
       >
         {!mounted ? (
           // Placeholder SSR-safe : silhouette de carte centrale aux dimensions

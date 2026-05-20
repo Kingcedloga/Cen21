@@ -13,10 +13,10 @@ type LogoProps = {
 };
 
 const sizesPx = {
-  sm: 74,
-  md: 92,
-  lg: 94,
-  xl: 120,
+  sm: 90,
+  md: 115,
+  lg: 120,
+  xl: 150,
 };
 
 export function Logo({ size = "md", className = "", variant = "default" }: LogoProps) {

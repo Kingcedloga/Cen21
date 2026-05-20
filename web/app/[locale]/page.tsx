@@ -74,6 +74,7 @@ export default async function HomePage({ params }: Props) {
         id="nos-filiales"
         ariaLabelledby="nos-filiales-title"
         containerClassName="mx-auto max-w-[min(100%,1400px)]"
+        className="!pb-0"
       >
         <div className="relative isolate flex flex-col items-stretch gap-0">
           <div className="relative z-[60] shrink-0 max-w-2xl pr-6 md:pr-8">
