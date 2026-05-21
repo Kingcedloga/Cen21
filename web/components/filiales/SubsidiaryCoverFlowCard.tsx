@@ -54,15 +54,15 @@ export function SubsidiaryCoverFlowCard({
       />
       {/* Mobile : voile très léger (évite la bande sombre pleine largeur) — desktop inchangé. */}
       <div
-        className="absolute inset-0 bg-gradient-to-t from-black/[0.45] via-black/10 to-transparent sm:hidden"
+        className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent sm:hidden"
         aria-hidden
       />
       <div
-        className="absolute inset-0 hidden bg-gradient-to-t from-black via-black/55 to-black/0 sm:block"
+        className="absolute inset-0 hidden bg-gradient-to-t from-black/90 via-black/55 to-transparent sm:block"
         aria-hidden
       />
       <div
-        className="absolute inset-x-0 bottom-0 hidden h-2/3 bg-gradient-to-t from-black/70 via-black/25 to-transparent sm:block"
+        className="absolute inset-x-0 bottom-0 hidden h-3/4 bg-gradient-to-t from-black/[0.85] via-black/45 to-transparent sm:block"
         aria-hidden
       />
 

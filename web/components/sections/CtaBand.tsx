@@ -101,7 +101,7 @@ function VideoSlide({
           />
           <span
             aria-hidden
-            className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/20 transition-opacity duration-300 group-hover/video:via-black/30"
+            className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent transition-opacity duration-300 group-hover/video:via-black/40"
           />
           <span
             aria-hidden
