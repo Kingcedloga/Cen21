@@ -8,7 +8,7 @@ import { ReadingProgress } from "@/components/ui/ReadingProgress";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { Locale } from "@/i18n/routing";
 import { getAboutContent } from "@/lib/content";
-import { createPageMetadata } from "@/lib/seo";
+import { resolvePageMetadata } from "@/lib/seo";
 
 const FALLBACK_HERO =
   "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=2400&q=85";
@@ -18,7 +18,7 @@ type Props = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "about" });
-  return createPageMetadata({
+  return resolvePageMetadata({
     title: t("metaTitle"),
     description: t("metaDescription"),
     path: "/a-propos",

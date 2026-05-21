@@ -10,7 +10,7 @@ import { StatsBanner } from "@/components/sections/StatsBanner";
 import { PageSection } from "@/components/layout/PageSection";
 import { getSubsidiaries, getSiteConfig, getExperienceVideos } from "@/lib/content";
 import type { Locale } from "@/i18n/routing";
-import { createPageMetadata } from "@/lib/seo";
+import { resolvePageMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   const site = getSiteConfig(locale as Locale);
   const t = await getTranslations({ locale, namespace: "home" });
-  return createPageMetadata({
+  return resolvePageMetadata({
     title: t("metaTitle"),
     description: t("metaDescription"),
     path: "/",

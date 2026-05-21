@@ -5,14 +5,14 @@ import { PageHero } from "@/components/sections/PageHero";
 import { PageSection } from "@/components/layout/PageSection";
 import type { Locale } from "@/i18n/routing";
 import { getGalleryItems } from "@/lib/content";
-import { createPageMetadata } from "@/lib/seo";
+import { resolvePageMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "gallery" });
-  return createPageMetadata({
+  return resolvePageMetadata({
     title: t("metaTitle"),
     description: t("metaDescription"),
     path: "/galerie",

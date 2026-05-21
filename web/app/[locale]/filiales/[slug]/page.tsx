@@ -22,7 +22,7 @@ import {
   getSubsidiaryBySlug,
   getUpcomingEventsBySubsidiary,
 } from "@/lib/content";
-import { createPageMetadata } from "@/lib/seo";
+import { resolvePageMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props) {
   const l = locale as Locale;
   const sub = getSubsidiaryBySlug(l, slug);
   if (!sub) return {};
-  return createPageMetadata({
+  return resolvePageMetadata({
     title: sub.name,
     description: sub.tagline,
     path: `/filiales/${slug}`,

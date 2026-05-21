@@ -12,7 +12,6 @@ import { routing } from "@/i18n/routing";
 import { inter } from "@/lib/fonts";
 import type { Locale } from "@/i18n/routing";
 import { createDefaultMetadata } from "@/lib/seo";
-import { SITE_URL } from "@/lib/site-url";
 
 import "../globals.css";
 
@@ -22,10 +21,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  return {
-    metadataBase: new URL(SITE_URL),
-    ...createDefaultMetadata(locale as Locale),
-  };
+  return createDefaultMetadata(locale as Locale);
 }
 
 export function generateStaticParams() {

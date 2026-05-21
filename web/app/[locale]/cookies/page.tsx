@@ -5,7 +5,7 @@ import { PageHero } from "@/components/sections/PageHero";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { getSiteConfig } from "@/lib/content";
-import { createPageMetadata } from "@/lib/seo";
+import { resolvePageMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   const site = getSiteConfig(locale as Locale);
   const t = await getTranslations({ locale, namespace: "legal.cookies" });
-  return createPageMetadata({
+  return resolvePageMetadata({
     title: t("metaTitle"),
     description: t("metaDescription", { name: site.name }),
     path: "/cookies",

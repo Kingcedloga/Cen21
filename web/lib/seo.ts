@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import type { Locale } from "@/i18n/routing";
 
 import { getSiteConfig } from "./content";
-import { SITE_URL } from "./site-url";
+import { getSiteOrigin } from "./site-url";
 
 /** Open Graph / Twitter — `/public/og-image.png` (1200×630). */
 export const OG_IMAGE = {
@@ -11,6 +11,18 @@ export const OG_IMAGE = {
   width: 1200,
   height: 630,
 } as const;
+
+function toLocalizedPath(locale: Locale, path: string): string {
+  if (locale === "en") return path || "/";
+  return path ? `/fr${path}` : "/fr";
+}
+
+function languageAlternates(path: string) {
+  return {
+    en: path || "/",
+    fr: path ? `/fr${path}` : "/fr",
+  };
+}
 
 export function createPageMetadata({
   title,
@@ -27,9 +39,7 @@ export function createPageMetadata({
   const fullTitle =
     title === site.name ? title : `${title} | ${site.name}`;
   const desc = description ?? site.description;
-  const localizedPath =
-    locale === "en" ? path || "/" : path ? `/fr${path}` : "/fr";
-  const url = `${SITE_URL}${localizedPath === "/" ? "" : localizedPath}`;
+  const pagePath = toLocalizedPath(locale, path);
   const ogLocale = locale === "fr" ? "fr_FR" : "en_US";
   const ogImageAlt = `${site.name} — CEN21 Hospitality & Lifestyle`;
 
@@ -41,16 +51,13 @@ export function createPageMetadata({
       apple: "/logo.png",
     },
     alternates: {
-      canonical: url,
-      languages: {
-        en: `${SITE_URL}${path || "/"}`,
-        fr: `${SITE_URL}/fr${path || ""}`,
-      },
+      canonical: pagePath,
+      languages: languageAlternates(path),
     },
     openGraph: {
       title: fullTitle,
       description: desc,
-      url,
+      url: pagePath,
       siteName: site.name,
       locale: ogLocale,
       type: "website",
@@ -80,9 +87,19 @@ export function createPageMetadata({
   };
 }
 
-export function createDefaultMetadata(locale: Locale): Metadata {
+/** Metadata de page + `metadataBase` résolu sur le domaine courant. */
+export async function resolvePageMetadata(
+  input: Parameters<typeof createPageMetadata>[0],
+): Promise<Metadata> {
+  return {
+    metadataBase: new URL(await getSiteOrigin()),
+    ...createPageMetadata(input),
+  };
+}
+
+export async function createDefaultMetadata(locale: Locale): Promise<Metadata> {
   const site = getSiteConfig(locale);
-  return createPageMetadata({
+  return resolvePageMetadata({
     title: site.name,
     description: site.description,
     locale,

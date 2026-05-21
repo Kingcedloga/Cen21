@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { routing } from "@/i18n/routing";
 import { getAllSubsidiarySlugs } from "@/lib/content";
-import { SITE_URL } from "@/lib/site-url";
+import { getSiteOrigin } from "@/lib/site-url";
 
 const STATIC_PATHS = [
   "",
@@ -21,14 +21,15 @@ function localePath(locale: (typeof routing.locales)[number], path: string) {
   return path ? `/fr${path}` : "/fr";
 }
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const origin = await getSiteOrigin();
   const entries: MetadataRoute.Sitemap = [];
 
   for (const locale of routing.locales) {
     for (const path of STATIC_PATHS) {
       const localized = localePath(locale, path);
       entries.push({
-        url: `${SITE_URL}${localized === "/" ? "" : localized}`,
+        url: `${origin}${localized === "/" ? "" : localized}`,
         lastModified: new Date(),
         changeFrequency: "weekly",
         priority:
@@ -45,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const slug of getAllSubsidiarySlugs(locale)) {
       const localized = localePath(locale, `/filiales/${slug}`);
       entries.push({
-        url: `${SITE_URL}${localized}`,
+        url: `${origin}${localized}`,
         lastModified: new Date(),
         changeFrequency: "weekly",
         priority: 0.7,

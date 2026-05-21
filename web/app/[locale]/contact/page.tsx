@@ -10,14 +10,14 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SocialLinks } from "@/components/ui/SocialLinks";
 import type { Locale } from "@/i18n/routing";
 import { getSiteConfig } from "@/lib/content";
-import { createPageMetadata } from "@/lib/seo";
+import { resolvePageMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "contact" });
-  return createPageMetadata({
+  return resolvePageMetadata({
     title: t("metaTitle"),
     description: t("metaDescription"),
     path: "/contact",

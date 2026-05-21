@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { ChevronRight, Home } from "@/lib/icons";
 
-import { SITE_URL } from "@/lib/site-url";
+import { getSiteOrigin } from "@/lib/site-url";
 
 export type BreadcrumbItem = {
   label: string;
   href?: string;
 };
 
-export function Breadcrumb({
+export async function Breadcrumb({
   items,
   className = "",
 }: {
@@ -17,6 +17,7 @@ export function Breadcrumb({
 }) {
   if (!items.length) return null;
 
+  const origin = await getSiteOrigin();
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -24,7 +25,7 @@ export function Breadcrumb({
       "@type": "ListItem",
       position: i + 1,
       name: item.label,
-      ...(item.href ? { item: `${SITE_URL}${item.href}` } : {}),
+      ...(item.href ? { item: `${origin}${item.href}` } : {}),
     })),
   };
 

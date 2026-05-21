@@ -1,13 +1,14 @@
 import type { MetadataRoute } from "next";
 
-import { SITE_URL } from "@/lib/site-url";
+import { getSiteOrigin } from "@/lib/site-url";
 
-export default function robots(): MetadataRoute.Robots {
+export default async function robots(): Promise<MetadataRoute.Robots> {
+  const origin = await getSiteOrigin();
   return {
     rules: {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: `${SITE_URL}/sitemap.xml`,
+    sitemap: `${origin}/sitemap.xml`,
   };
 }
