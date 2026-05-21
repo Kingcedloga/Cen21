@@ -141,10 +141,10 @@
       },
       "accentColor": "#744210",
       "brandLogo": "/filiales/logos/filiale-06.png",
-      "coverImage": "https://images.unsplash.com/photo-1554118811-1e0d58220f8d?w=1200&q=80",
+      "coverImage": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200&q=80",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&q=80",
-        "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800&q=80"
+        "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800&q=80",
+        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80"
       ],
       "featured": false
     },
@@ -165,10 +165,10 @@
         "linkedin": "https://www.linkedin.com/company/gourmet-mexicana-kin"
       },
       "accentColor": "#C05621",
-      "coverImage": "https://images.unsplash.com/photo-1565299585323-38174c0b5c73?w=1200&q=80",
+      "coverImage": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1513451032972-6c47fc45a15a?w=800&q=80",
-        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80"
+        "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80",
+        "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800&q=80"
       ],
       "featured": false
     },
