@@ -5,6 +5,13 @@ import type { Locale } from "@/i18n/routing";
 import { getSiteConfig } from "./content";
 import { SITE_URL } from "./site-url";
 
+/** Open Graph / Twitter — `/public/og-image.png` (1200×630). */
+export const OG_IMAGE = {
+  path: "/og-image.png",
+  width: 1200,
+  height: 630,
+} as const;
+
 export function createPageMetadata({
   title,
   description,
@@ -24,6 +31,7 @@ export function createPageMetadata({
     locale === "en" ? path || "/" : path ? `/fr${path}` : "/fr";
   const url = `${SITE_URL}${localizedPath === "/" ? "" : localizedPath}`;
   const ogLocale = locale === "fr" ? "fr_FR" : "en_US";
+  const ogImageAlt = `${site.name} — CEN21 Hospitality & Lifestyle`;
 
   return {
     title: fullTitle,
@@ -48,10 +56,11 @@ export function createPageMetadata({
       type: "website",
       images: [
         {
-          url: "/og-image.png",
-          width: 300,
-          height: 169,
-          alt: `${site.name} — logo`,
+          url: OG_IMAGE.path,
+          width: OG_IMAGE.width,
+          height: OG_IMAGE.height,
+          alt: ogImageAlt,
+          type: "image/png",
         },
       ],
     },
@@ -59,7 +68,14 @@ export function createPageMetadata({
       card: "summary_large_image",
       title: fullTitle,
       description: desc,
-      images: ["/og-image.png"],
+      images: [
+        {
+          url: OG_IMAGE.path,
+          width: OG_IMAGE.width,
+          height: OG_IMAGE.height,
+          alt: ogImageAlt,
+        },
+      ],
     },
   };
 }
