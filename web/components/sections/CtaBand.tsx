@@ -109,7 +109,7 @@ function VideoSlide({
           />
 
           <span className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6">
-            <span className="flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border border-gold/50 bg-petrol/55 text-gold shadow-[0_0_40px_-8px_rgb(var(--color-gold-rgb)/0.55),inset_0_1px_0_0_rgb(255_255_255/0.12)] transition-all duration-300 group-hover/video:border-gold/70 group-hover/video:bg-petrol/70 group-hover/video:shadow-[0_0_52px_-6px_rgb(var(--color-gold-rgb)/0.7),inset_0_1px_0_0_rgb(255_255_255/0.16)] md:h-20 md:w-20">
+            <span className="flex items-center justify-center text-gold">
               <Play
                 className="ml-1 h-7 w-7 fill-current md:h-8 md:w-8"
                 strokeWidth={0}
