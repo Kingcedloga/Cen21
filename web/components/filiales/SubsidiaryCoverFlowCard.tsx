@@ -58,7 +58,7 @@ export function SubsidiaryCoverFlowCard({
         aria-hidden
       />
       <div
-        className="absolute inset-0 hidden bg-gradient-to-t from-petrol via-petrol/55 to-petrol/0 sm:block"
+        className="absolute inset-0 hidden bg-gradient-to-t from-black via-black/55 to-black/0 sm:block"
         aria-hidden
       />
       <div

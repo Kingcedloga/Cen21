@@ -101,7 +101,7 @@ function VideoSlide({
           />
           <span
             aria-hidden
-            className="absolute inset-0 bg-gradient-to-t from-petrol-panel-4/85 via-petrol/40 to-petrol/20 transition-opacity duration-300 group-hover/video:via-petrol/30"
+            className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/20 transition-opacity duration-300 group-hover/video:via-black/30"
           />
           <span
             aria-hidden
