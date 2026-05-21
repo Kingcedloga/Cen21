@@ -3,27 +3,11 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-import type { LucideIcon } from "lucide-react";
-import {
-  Armchair,
-  Building2,
-  Sparkles,
-  UtensilsCrossed,
-  Wine,
-} from "lucide-react";
 
 import { Link } from "@/i18n/navigation";
 import { useSectorLabel } from "@/lib/use-sector-label";
 import { BLUR_PETROL } from "@/lib/image-blur";
-import type { Sector, Subsidiary } from "@/lib/types";
-
-const SECTOR_ICON: Record<Sector, LucideIcon> = {
-  restaurant: UtensilsCrossed,
-  bar: Wine,
-  lounge: Armchair,
-  nightclub: Sparkles,
-  evenementiel: Building2,
-};
+import type { Subsidiary } from "@/lib/types";
 
 function locationLine(subsidiary: Subsidiary, sectorLabel: string) {
   const city = subsidiary.practicalInfo.address?.split(",").pop()?.trim();
@@ -44,7 +28,6 @@ export function SubsidiaryCoverFlowCard({
 }) {
   const t = useTranslations("common");
   const sectorLabel = useSectorLabel(subsidiary.sector);
-  const Icon = SECTOR_ICON[subsidiary.sector];
   const meta = `${sectorLabel} · ${locationLine(subsidiary, sectorLabel)}`;
   const router = useRouter();
   const href = `/filiales/${subsidiary.slug}`;
@@ -83,10 +66,6 @@ export function SubsidiaryCoverFlowCard({
         aria-hidden
       />
 
-      <div className="absolute left-2.5 top-2.5 z-10 flex h-9 w-9 items-center justify-center rounded-xl border border-white/25 bg-petrol/80 shadow-lg backdrop-blur-md sm:left-3 sm:top-3 sm:h-10 sm:w-10">
-        <Icon className="h-4 w-4 text-ivory sm:h-5 sm:w-5" strokeWidth={1.5} aria-hidden />
-      </div>
-
       <div
         className="absolute right-2.5 top-2.5 z-10 flex items-center gap-1.5 rounded-lg border border-white/20 bg-black/50 px-2 py-1 backdrop-blur-md sm:right-3 sm:top-3 sm:px-2.5 sm:py-1.5"
         style={{ borderColor: `${subsidiary.accentColor}66` }}
@@ -105,9 +84,22 @@ export function SubsidiaryCoverFlowCard({
           mobile très étroites (144 px) sans débordement, montée progressive
           jusqu'à 296 px desktop. */}
       <div className="absolute inset-x-0 bottom-0 z-10 px-3 pb-3 pt-10 text-center sm:px-4 sm:pb-4 sm:pt-14 md:px-5 md:pb-5 md:pt-20">
-        <p className="text-[9px] font-semibold uppercase tracking-[0.16em] text-gold line-clamp-1 [text-shadow:0_1px_4px_rgba(0,0,0,0.6)] sm:text-[10px] sm:tracking-[0.18em] md:text-[11px] md:tracking-[0.2em]">
-          {sectorLabel}
-        </p>
+        {subsidiary.brandLogo ? (
+          <div className="mx-auto flex h-5 max-w-[88%] items-center justify-center sm:h-6 md:h-7">
+            <Image
+              src={subsidiary.brandLogo}
+              alt={subsidiary.name}
+              width={136}
+              height={28}
+              className="h-full w-auto max-w-full object-contain object-center"
+              sizes={`${Math.round(width * 0.88)}px`}
+            />
+          </div>
+        ) : (
+          <p className="text-[9px] font-semibold uppercase tracking-[0.16em] text-gold line-clamp-1 [text-shadow:0_1px_4px_rgba(0,0,0,0.6)] sm:text-[10px] sm:tracking-[0.18em] md:text-[11px] md:tracking-[0.2em]">
+            {sectorLabel}
+          </p>
+        )}
         <h3 className="mt-1 font-[family-name:var(--font-dm-sans)] text-[1.15rem] font-bold leading-[1.15] text-ivory line-clamp-2 sm:mt-1.5 sm:text-[1.35rem] md:text-2xl lg:text-[1.65rem]">
           {subsidiary.name}
         </h3>

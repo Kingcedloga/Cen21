@@ -25,6 +25,8 @@ export type Subsidiary = {
   social: SocialLinks;
   accentColor: string;
   coverImage: string;
+  /** Logo wordmark de l'enseigne (chemin `/public/...`) — carrousel home. */
+  brandLogo?: string;
   galleryImages: string[];
   featured?: boolean;
 };
