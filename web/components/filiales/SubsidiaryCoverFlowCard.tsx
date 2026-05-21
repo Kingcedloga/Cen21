@@ -85,12 +85,12 @@ export function SubsidiaryCoverFlowCard({
           jusqu'à 296 px desktop. */}
       <div className="absolute inset-x-0 bottom-0 z-10 px-3 pb-3 pt-10 text-center sm:px-4 sm:pb-4 sm:pt-14 md:px-5 md:pb-5 md:pt-20">
         {subsidiary.brandLogo ? (
-          <div className="mx-auto flex h-5 max-w-[88%] items-center justify-center sm:h-6 md:h-7">
+          <div className="mx-auto flex h-7 max-w-[88%] items-center justify-center sm:h-8 md:h-10">
             <Image
               src={subsidiary.brandLogo}
               alt={subsidiary.name}
-              width={136}
-              height={28}
+              width={174}
+              height={36}
               className="h-full w-auto max-w-full object-contain object-center"
               sizes={`${Math.round(width * 0.88)}px`}
             />
