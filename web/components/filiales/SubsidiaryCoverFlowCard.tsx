@@ -89,9 +89,9 @@ export function SubsidiaryCoverFlowCard({
             <Image
               src={subsidiary.brandLogo}
               alt={subsidiary.name}
-              width={174}
-              height={36}
-              className="h-full w-auto max-w-full object-contain object-center"
+              width={210}
+              height={44}
+              className="h-full w-auto max-w-full origin-bottom scale-[1.5] object-contain object-center sm:scale-[1.55] md:scale-[1.6]"
               sizes={`${Math.round(width * 0.88)}px`}
             />
           </div>
