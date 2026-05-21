@@ -109,14 +109,14 @@ function VideoSlide({
           />
 
           <span className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6">
-            <span className="flex items-center justify-center text-gold">
+            <span className="flex items-center justify-center rounded-xl bg-[#FF0000] px-5 py-3 text-white">
               <Play
                 className="ml-1 h-7 w-7 fill-current md:h-8 md:w-8"
                 strokeWidth={0}
                 aria-hidden
               />
             </span>
-            <span className="max-w-md text-center font-[family-name:var(--font-dm-sans)] text-lg font-bold leading-snug tracking-[-0.02em] text-gold md:text-xl">
+            <span className="max-w-md text-center font-[family-name:var(--font-dm-sans)] text-lg font-bold leading-snug tracking-[-0.02em] text-white md:text-xl">
               {title} {titleAccent}
             </span>
           </span>
