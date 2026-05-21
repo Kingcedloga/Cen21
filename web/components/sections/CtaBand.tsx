@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play, X } from "@/lib/icons";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import {
@@ -116,7 +116,7 @@ function VideoSlide({
                 aria-hidden
               />
             </span>
-            <span className="max-w-md text-center font-[family-name:var(--font-dm-sans)] text-lg font-bold leading-snug tracking-[-0.02em] text-gradient-gold-vertical md:text-xl">
+            <span className="max-w-md text-center font-[family-name:var(--font-dm-sans)] text-lg font-bold leading-snug tracking-[-0.02em] text-gold md:text-xl">
               {title} {titleAccent}
             </span>
           </span>

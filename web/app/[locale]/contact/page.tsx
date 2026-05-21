@@ -1,13 +1,13 @@
-import { Mail, MapPin, Phone } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-import { MapEmbed } from "@/components/maps/MapEmbed";
 import { ContactForm } from "@/components/contact/ContactForm";
-import { SocialLinks } from "@/components/ui/SocialLinks";
-import { PageHero } from "@/components/sections/PageHero";
 import { PageSection } from "@/components/layout/PageSection";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { PageHero } from "@/components/sections/PageHero";
 import { AnimateIn } from "@/components/ui/AnimateIn";
+import { Icon } from "@/components/ui/Icon";
+import { MapEmbed } from "@/components/maps/MapEmbed";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { SocialLinks } from "@/components/ui/SocialLinks";
 import type { Locale } from "@/i18n/routing";
 import { getSiteConfig } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
@@ -47,11 +47,11 @@ export default async function ContactPage({ params }: Props) {
             />
             <ul className="space-y-6 text-taupe">
               <li className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-gold" aria-hidden />
+                <Icon name="location" size="md" className="mt-0.5 text-gold" />
                 {site.contact.address}
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="h-5 w-5 shrink-0 text-gold" aria-hidden />
+                <Icon name="phone" size="md" />
                 <a
                   href={`tel:${site.contact.phone.replace(/\s/g, "")}`}
                   className="cursor-pointer transition-colors hover:text-gold"
@@ -60,7 +60,7 @@ export default async function ContactPage({ params }: Props) {
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="h-5 w-5 shrink-0 text-gold" aria-hidden />
+                <Icon name="mail" size="md" />
                 <a
                   href={`mailto:${site.contact.email}`}
                   className="cursor-pointer transition-colors hover:text-gold"

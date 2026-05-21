@@ -3,27 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import {
-  Armchair,
-  ArrowUpRight,
-  Building2,
-  Sparkles,
-  UtensilsCrossed,
-  Wine,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-
+import { ArrowUpRight, ICON_STROKE, sectorIcons } from "@/lib/icons";
 import { useSectorLabel } from "@/lib/use-sector-label";
 import { BLUR_PETROL } from "@/lib/image-blur";
-import type { Sector, Subsidiary } from "@/lib/types";
-
-const SECTOR_ICON: Record<Sector, LucideIcon> = {
-  restaurant: UtensilsCrossed,
-  bar: Wine,
-  lounge: Armchair,
-  nightclub: Sparkles,
-  evenementiel: Building2,
-};
+import type { Subsidiary } from "@/lib/types";
 
 /**
  * Carte « Compact » du bento — second niveau de hiérarchie.
@@ -37,7 +20,7 @@ export function CompactSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }
   const sectorLabel = useSectorLabel(subsidiary.sector);
   const router = useRouter();
   const href = `/filiales/${subsidiary.slug}`;
-  const Icon = SECTOR_ICON[subsidiary.sector];
+  const Icon = sectorIcons[subsidiary.sector];
 
   const onPrefetch = () => {
     try {
@@ -96,7 +79,7 @@ export function CompactSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }
         {/* Bloc éditorial central */}
         <div className="flex min-w-0 flex-1 flex-col justify-center gap-1.5 py-1">
           <div className="flex items-center gap-2">
-            <Icon className="h-3.5 w-3.5 text-gold" strokeWidth={1.5} aria-hidden />
+            <Icon className="h-3.5 w-3.5 text-gold" strokeWidth={ICON_STROKE} aria-hidden />
             <p className="text-[10.5px] font-semibold uppercase tracking-[0.22em] text-gold">
               {sectorLabel}
             </p>

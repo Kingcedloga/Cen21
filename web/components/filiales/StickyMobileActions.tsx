@@ -1,7 +1,8 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { MapPin, Phone } from "lucide-react";
+import { Icon } from "@/components/ui/Icon";
+import { ICON_STROKE } from "@/lib/icons";
 import { useEffect, useState } from "react";
 
 const SHOW_AFTER_PX = 480;
@@ -54,7 +55,7 @@ export function StickyMobileActions({
                 href={`tel:${cleanedPhone}`}
                 className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gold px-3 py-3 text-sm font-semibold text-petrol transition-colors duration-200 hover:brightness-[1.04] active:brightness-[0.98] focus-visible:outline-2 focus-visible:outline-gold cursor-pointer"
               >
-                <Phone className="h-4 w-4" strokeWidth={1.5} aria-hidden />
+                <Icon name="phone" size="sm" className="text-petrol" strokeWidth={ICON_STROKE} />
                 <span>Appeler</span>
               </a>
             )}
@@ -65,7 +66,7 @@ export function StickyMobileActions({
                 rel="noopener noreferrer"
                 className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-ivory/20 bg-anthracite/80 px-3 py-3 text-sm font-semibold text-ivory transition-colors duration-200 hover:border-ivory/50 hover:bg-ivory/[0.06] focus-visible:outline-2 focus-visible:outline-ivory cursor-pointer"
               >
-                <MapPin className="h-4 w-4" strokeWidth={1.5} aria-hidden />
+                <Icon name="location" size="sm" className="text-ivory" strokeWidth={ICON_STROKE} />
                 <span>Itinéraire</span>
               </a>
             )}

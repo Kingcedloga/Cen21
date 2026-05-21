@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarClock, Clock3, Mail } from "lucide-react";
+import { CalendarClock, Clock3, ICON_STROKE, Mail } from "@/lib/icons";
 import { useLocale, useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 
@@ -101,12 +101,12 @@ function EventsEmptyState({
   return (
     <div className="mx-auto flex max-w-xl flex-col items-center gap-5 rounded-2xl border border-dashed border-white/15 bg-petrol/30 px-6 py-14 text-center">
       <div className="relative flex h-16 w-16 items-center justify-center rounded-full border border-gold/30 bg-petrol/70 shadow-lg shadow-black/30">
-        <CalendarClock className="h-7 w-7 text-gold" strokeWidth={1.5} aria-hidden />
+        <CalendarClock className="h-7 w-7 text-gold" strokeWidth={ICON_STROKE} aria-hidden />
         <span
           aria-hidden
           className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-anthracite ring-2 ring-petrol"
         >
-          <Clock3 className="h-3 w-3 text-ivory/85" strokeWidth={1.5} aria-hidden />
+          <Clock3 className="h-3 w-3 text-ivory/85" strokeWidth={ICON_STROKE} aria-hidden />
         </span>
       </div>
 
@@ -137,7 +137,7 @@ function EventsEmptyState({
           href="/contact"
           className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-5 py-2 text-sm font-medium text-gold transition-colors duration-200 hover:bg-gold/15 focus-visible:outline-2 focus-visible:outline-gold cursor-pointer"
         >
-          <Mail className="h-4 w-4" strokeWidth={1.5} aria-hidden />
+          <Mail className="h-4 w-4" strokeWidth={ICON_STROKE} aria-hidden />
           {t("notify")}
         </Link>
       </div>

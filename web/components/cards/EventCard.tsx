@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Calendar, MapPin } from "lucide-react";
+import { Icon } from "@/components/ui/Icon";
 import { useLocale } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
@@ -53,11 +53,11 @@ export function EventCard({ event }: { event: EventItem }) {
         <p className="text-taupe text-sm mb-4 flex-1">{event.excerpt}</p>
         <ul className="space-y-2 text-sm text-stone">
           <li className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-gold shrink-0" aria-hidden />
+            <Icon name="calendar" size="sm" />
             <time dateTime={event.date}>{formatDate(event.date, locale)}</time>
           </li>
           <li className="flex items-center gap-2">
-            <MapPin className="w-4 h-4 text-gold shrink-0" aria-hidden />
+            <Icon name="location" size="sm" />
             {event.location}
           </li>
         </ul>

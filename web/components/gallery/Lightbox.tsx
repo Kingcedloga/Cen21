@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight } from "@/lib/icons";
 import { useEffect, useRef } from "react";
 
 import type { GalleryItem } from "@/lib/types";

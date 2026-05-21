@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useReducedMotion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "@/lib/icons";
 import { useCallback, useEffect, useState } from "react";
 
 import { SocialLinks } from "@/components/ui/SocialLinks";

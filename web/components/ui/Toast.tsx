@@ -1,23 +1,23 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { AlertCircle, CheckCircle2, X } from "lucide-react";
+import { toastIcons, X } from "@/lib/icons";
 import { useEffect } from "react";
 
 export type ToastVariant = "success" | "error";
 
 const VARIANT_STYLES: Record<
   ToastVariant,
-  { ring: string; icon: typeof CheckCircle2; iconClass: string }
+  { ring: string; icon: (typeof toastIcons)["success"]; iconClass: string }
 > = {
   success: {
     ring: "ring-gold/40",
-    icon: CheckCircle2,
+    icon: toastIcons.success,
     iconClass: "text-gold",
   },
   error: {
     ring: "ring-red-400/45",
-    icon: AlertCircle,
+    icon: toastIcons.error,
     iconClass: "text-red-400",
   },
 };

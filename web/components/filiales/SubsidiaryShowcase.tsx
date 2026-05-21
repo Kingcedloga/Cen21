@@ -2,30 +2,14 @@
 
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import {
-  Armchair,
-  ArrowUpRight,
-  Building2,
-  Sparkles,
-  UtensilsCrossed,
-  Wine,
-} from "lucide-react";
-
+import { ArrowUpRight, ICON_STROKE, sectorIcons } from "@/lib/icons";
 import { useSectorLabel } from "@/lib/use-sector-label";
-import type { Sector, Subsidiary } from "@/lib/types";
-
-const SECTOR_ICON: Record<Sector, typeof UtensilsCrossed> = {
-  restaurant: UtensilsCrossed,
-  bar: Wine,
-  lounge: Armchair,
-  nightclub: Sparkles,
-  evenementiel: Building2,
-};
+import type { Subsidiary } from "@/lib/types";
 
 /** Grande carte pleine hauteur — colonne gauche */
 export function SubsidiaryShowcaseFeatured({ subsidiary }: { subsidiary: Subsidiary }) {
   const sectorLabel = useSectorLabel(subsidiary.sector);
-  const Icon = SECTOR_ICON[subsidiary.sector];
+  const Icon = sectorIcons[subsidiary.sector];
 
   return (
     <article className="group relative h-full min-h-[min(88vw,26rem)] overflow-hidden rounded-2xl border border-white/10 bg-anthracite shadow-xl shadow-black/30 lg:min-h-[32rem]">
@@ -44,7 +28,7 @@ export function SubsidiaryShowcaseFeatured({ subsidiary }: { subsidiary: Subsidi
           className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg shadow-lg"
           style={{ backgroundColor: subsidiary.accentColor }}
         >
-          <Icon className="h-5 w-5 text-white" strokeWidth={1.5} aria-hidden />
+          <Icon className="h-5 w-5 text-white" strokeWidth={ICON_STROKE} aria-hidden />
         </div>
         <p className="mb-1 text-xs font-semibold uppercase tracking-[0.12em] text-gold/90">
           {sectorLabel}
@@ -69,7 +53,7 @@ export function SubsidiaryShowcaseFeatured({ subsidiary }: { subsidiary: Subsidi
 
 /** Carte compacte — colonne droite */
 export function SubsidiaryShowcaseCompact({ subsidiary }: { subsidiary: Subsidiary }) {
-  const Icon = SECTOR_ICON[subsidiary.sector];
+  const Icon = sectorIcons[subsidiary.sector];
 
   return (
     <article className="group relative flex min-h-[8.5rem] overflow-hidden rounded-2xl border border-white/12 bg-ivory/[0.07] shadow-lg shadow-black/25 transition-colors duration-200 hover:border-gold/35 md:min-h-0 md:h-full md:min-h-[8.25rem]">
@@ -78,7 +62,7 @@ export function SubsidiaryShowcaseCompact({ subsidiary }: { subsidiary: Subsidia
           className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg md:h-11 md:w-11"
           style={{ backgroundColor: subsidiary.accentColor }}
         >
-          <Icon className="h-5 w-5 text-white" strokeWidth={1.5} aria-hidden />
+          <Icon className="h-5 w-5 text-white" strokeWidth={ICON_STROKE} aria-hidden />
         </div>
         <div className="min-w-0 flex-1 pr-12 md:pr-0">
           <h3 className="font-[family-name:var(--font-dm-sans)] text-lg font-bold text-ivory md:text-xl">

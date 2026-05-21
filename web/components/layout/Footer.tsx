@@ -1,4 +1,4 @@
-import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Phone } from "@/lib/icons";
 import { getTranslations } from "next-intl/server";
 
 import { Logo } from "@/components/brand/Logo";

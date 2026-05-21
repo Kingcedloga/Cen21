@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
+import { Menu, X } from "@/lib/icons";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 

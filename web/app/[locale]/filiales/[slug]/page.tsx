@@ -2,7 +2,6 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { ReactNode } from "react";
-import { Clock, MapPin, Phone } from "lucide-react";
 
 import { EventCard } from "@/components/cards/EventCard";
 import { StickyMobileActions } from "@/components/filiales/StickyMobileActions";
@@ -12,6 +11,7 @@ import { SubsidiaryHero } from "@/components/sections/SubsidiaryHero";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Button } from "@/components/ui/Button";
+import { Icon } from "@/components/ui/Icon";
 import { ReadingProgress } from "@/components/ui/ReadingProgress";
 import { routing } from "@/i18n/routing";
 import type { Locale } from "@/i18n/routing";
@@ -120,21 +120,21 @@ export default async function SubsidiaryPage({ params }: Props) {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           {subsidiary.practicalInfo.address && (
             <InfoItem
-              icon={<MapPin className="w-5 h-5 text-gold" />}
+              icon={<Icon name="location" size="md" />}
               label={t("address")}
               value={subsidiary.practicalInfo.address}
             />
           )}
           {subsidiary.practicalInfo.hours && (
             <InfoItem
-              icon={<Clock className="w-5 h-5 text-gold" />}
+              icon={<Icon name="hours" size="md" />}
               label={t("hours")}
               value={subsidiary.practicalInfo.hours}
             />
           )}
           {subsidiary.practicalInfo.phone && (
             <InfoItem
-              icon={<Phone className="w-5 h-5 text-gold" />}
+              icon={<Icon name="phone" size="md" />}
               label={t("phone")}
               value={
                 <a
