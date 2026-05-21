@@ -1,5 +1,5 @@
 {
-  "expectedCountNote": "Le cahier des charges indique 8 filiales (sections 1.2 et 4) et 10 établissements sur la page Filiales (section 8.1). Compléter ou ajuster cette liste avec l'équipe métier.",
+  "expectedCountNote": "Le cahier des charges indique 8 filiales (sections 1.2 et 4) et 10 établissements sur la page Filiales (section 8.1). Liste complétée avec les 10 établissements réels.",
   "documentedCounts": { "architecture": 8, "filialesPage": 10 },
   "subsidiaryPageTemplate": {
     "sections": [
@@ -17,13 +17,15 @@
   },
   "sectors": ["restaurant", "bar", "lounge", "nightclub", "evenementiel"],
   "subsidiaries": [
-    { "slug": "filiale-01", "name": "À compléter", "sector": "restaurant", "status": "placeholder" },
-    { "slug": "filiale-02", "name": "À compléter", "sector": "bar", "status": "placeholder" },
-    { "slug": "filiale-03", "name": "À compléter", "sector": "lounge", "status": "placeholder" },
-    { "slug": "filiale-04", "name": "À compléter", "sector": "nightclub", "status": "placeholder" },
-    { "slug": "filiale-05", "name": "À compléter", "sector": "evenementiel", "status": "placeholder" },
-    { "slug": "filiale-06", "name": "À compléter", "sector": "restaurant", "status": "placeholder" },
-    { "slug": "filiale-07", "name": "À compléter", "sector": "bar", "status": "placeholder" },
-    { "slug": "filiale-08", "name": "À compléter", "sector": "lounge", "status": "placeholder" }
+    { "slug": "filiale-01", "name": "L'Olive Verte", "sector": "lounge", "address": "Boulevard du 30 Juin, Kinshasa", "status": "active" },
+    { "slug": "filiale-02", "name": "Wabi Sabi", "sector": "restaurant", "address": "Gombe, Kinshasa", "status": "active" },
+    { "slug": "filiale-03", "name": "K Lounge", "sector": "lounge", "address": "RR House, Boulevard du 30 Juin, Kinshasa", "status": "active" },
+    { "slug": "filiale-04", "name": "Millionaire Club", "sector": "nightclub", "address": "72B/95 Boulevard du 30 Juin, Gombe, Kinshasa", "status": "active" },
+    { "slug": "filiale-05", "name": "Muzik Café", "sector": "lounge", "address": "Boulevard du 30 Juin, Kinshasa", "status": "active" },
+    { "slug": "filiale-06", "name": "Moka & More", "sector": "restaurant", "address": "Le Premier Mai, Gombe, Kinshasa", "status": "active" },
+    { "slug": "filiale-07", "name": "Gourmet Mexicana", "sector": "restaurant", "address": "Kinshasa", "status": "active" },
+    { "slug": "filiale-08", "name": "Papa John's", "sector": "restaurant", "address": "Avenue de la Gombe, Kinshasa", "status": "active" },
+    { "slug": "filiale-09", "name": "Pinkberry", "sector": "restaurant", "address": "Kinshasa", "status": "active" },
+    { "slug": "filiale-10", "name": "Pain Quotidien", "sector": "restaurant", "address": "Kinshasa", "status": "active" }
   ]
 }

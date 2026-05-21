@@ -2,84 +2,85 @@
   "items": [
     {
       "id": "gal-1",
-      "src": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80",
-      "alt": "Salle de restaurant élégante",
+      "src": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=900&q=80",
+      "alt": "Bar sportif en plein air — L'Olive Verte",
       "subsidiarySlug": "filiale-01",
-      "tags": ["gastronomie", "interieur"]
+      "tags": ["sport", "exterieur"]
     },
     {
       "id": "gal-2",
-      "src": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=900&q=80",
-      "alt": "Cocktail signature au bar",
+      "src": "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=900&q=80",
+      "alt": "Rooftop asiatique — Wabi Sabi",
       "subsidiarySlug": "filiale-02",
-      "tags": ["mixologie", "bar"]
+      "tags": ["sushi", "rooftop"]
     },
     {
       "id": "gal-3",
       "src": "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=900&q=80",
-      "alt": "Ambiance lounge feutrée",
+      "alt": "Rooftop lounge — K Lounge",
       "subsidiarySlug": "filiale-03",
-      "tags": ["lounge", "ambiance"]
+      "tags": ["lounge", "rooftop"]
     },
     {
       "id": "gal-4",
       "src": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=900&q=80",
-      "alt": "Piste de danse et lumières",
+      "alt": "Piste de danse — Millionaire Club",
       "subsidiarySlug": "filiale-04",
       "tags": ["nightlife", "club"]
     },
     {
       "id": "gal-5",
-      "src": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=900&q=80",
-      "alt": "Salle de réception décorée",
+      "src": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=900&q=80",
+      "alt": "Scène live music — Muzik Café",
       "subsidiarySlug": "filiale-05",
-      "tags": ["evenementiel", "gala"]
+      "tags": ["musique", "live"]
     },
     {
       "id": "gal-6",
-      "src": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&q=80",
-      "alt": "Terrasse rooftop au coucher du soleil",
+      "src": "https://images.unsplash.com/photo-1554118811-1e0d58220f8d?w=900&q=80",
+      "alt": "Terrasse café — Moka & More",
       "subsidiarySlug": "filiale-06",
-      "tags": ["rooftop", "exterieur"]
+      "tags": ["cafe", "terrasse"]
     },
     {
       "id": "gal-7",
-      "src": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=900&q=80",
-      "alt": "Sélection de vins",
+      "src": "https://images.unsplash.com/photo-1565299585323-38174c0b5c73?w=900&q=80",
+      "alt": "Cuisine mexicaine — Gourmet Mexicana",
       "subsidiarySlug": "filiale-07",
-      "tags": ["vin", "degustation"]
+      "tags": ["mexicain", "gastronomie"]
     },
     {
       "id": "gal-8",
-      "src": "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=900&q=80",
-      "alt": "Coin salon lounge",
+      "src": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=900&q=80",
+      "alt": "Pizza fraîche — Papa John's",
       "subsidiarySlug": "filiale-08",
-      "tags": ["lounge", "design"]
+      "tags": ["pizza", "restaurant"]
     },
     {
       "id": "gal-9",
-      "src": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=900&q=80",
-      "alt": "Dressage de plat gastronomique",
-      "subsidiarySlug": "filiale-01",
-      "tags": ["gastronomie", "plat"]
+      "src": "https://images.unsplash.com/photo-1488900128323-21503983a07e?w=900&q=80",
+      "alt": "Yaourt glacé — Pinkberry",
+      "subsidiarySlug": "filiale-09",
+      "tags": ["dessert", "yaourt"]
     },
     {
       "id": "gal-10",
-      "src": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=900&q=80",
-      "alt": "Bar à cocktails éclairé",
-      "subsidiarySlug": "filiale-02",
-      "tags": ["bar", "ambiance"]
+      "src": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=900&q=80",
+      "alt": "Boulangerie artisanale — Pain Quotidien",
+      "subsidiarySlug": "filiale-10",
+      "tags": ["boulangerie", "artisanal"]
     },
     {
       "id": "gal-11",
       "src": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=900&q=80",
-      "alt": "Scène live music",
+      "alt": "Scène live music — Muzik Café",
+      "subsidiarySlug": "filiale-05",
       "tags": ["musique", "live"]
     },
     {
       "id": "gal-12",
       "src": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&q=80",
-      "alt": "Vue d'ensemble restaurant premium",
+      "alt": "Vue d'ensemble — Cen21 Hospitality",
       "tags": ["holding", "premium"]
     }
   ]

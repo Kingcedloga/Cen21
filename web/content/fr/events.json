@@ -2,73 +2,73 @@
   "events": [
     {
       "id": "evt-1",
-      "slug": "soiree-degustation-maison-eclat",
-      "title": "Soirée dégustation — Menu printemps",
+      "slug": "soiree-foot-l-olive-verte",
+      "title": "Soirée foot — Grands écrans & cocktails",
       "date": "2026-06-15T19:30:00",
-      "location": "Maison Éclat, Gombe — Kinshasa",
+      "location": "L'Olive Verte, Boulevard du 30 Juin — Kinshasa",
       "subsidiarySlug": "filiale-01",
-      "image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80",
-      "excerpt": "Une immersion gastronomique autour des produits de saison, en cinq temps."
+      "image": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80",
+      "excerpt": "Match en direct sur grands écrans, cuisine européenne et ambiance lounge en plein air."
     },
     {
       "id": "evt-2",
-      "slug": "masterclass-mixologie",
-      "title": "Masterclass mixologie signature",
+      "slug": "soiree-sushi-wabi-sabi",
+      "title": "Soirée sushi & Robatayaki — Rooftop",
       "date": "2026-06-22T18:00:00",
-      "location": "Le Verre Noir, Gombe — Kinshasa",
+      "location": "Wabi Sabi, Gombe — Kinshasa",
       "subsidiarySlug": "filiale-02",
-      "image": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80",
-      "excerpt": "Apprenez les techniques des créations maison avec notre head bartender."
+      "image": "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=800&q=80",
+      "excerpt": "Menu dégustation asiatique avec vue panoramique sur la ville."
     },
     {
       "id": "evt-3",
-      "slug": "live-sessions-azure",
-      "title": "Live Sessions — Jazz contemporain",
+      "slug": "rooftop-sunset-k-lounge",
+      "title": "Sunset Rooftop — K Lounge",
       "date": "2026-07-05T21:00:00",
-      "location": "Azure Lounge, Gombe — Kinshasa",
+      "location": "K Lounge, RR House — Kinshasa",
       "subsidiarySlug": "filiale-03",
-      "image": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80",
-      "excerpt": "Une soirée acoustique intimiste au cœur du lounge."
+      "image": "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=800&q=80",
+      "excerpt": "Cocktails signature, cuisine internationale et vues panoramiques au coucher du soleil."
     },
     {
       "id": "evt-4",
-      "slug": "nocturne-summer-opening",
-      "title": "Summer Opening — DJ international",
+      "slug": "african-tribal-millionaire-club",
+      "title": "African Tribal Night — Millionaire Club",
       "date": "2026-07-12T23:00:00",
-      "location": "Nocturne Club, Gombe — Kinshasa",
+      "location": "Millionaire Club, Gombe — Kinshasa",
       "subsidiarySlug": "filiale-04",
       "image": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&q=80",
-      "excerpt": "Lancement de la saison estivale avec une programmation exclusive."
+      "excerpt": "Soirée à thème African tribal avec DJ international et programmation premium."
     },
     {
       "id": "evt-5",
-      "slug": "gala-prive-palais",
-      "title": "Gala privé — Collection automne",
+      "slug": "live-music-muzik-cafe",
+      "title": "Live Music & Karaoké — Muzik Café",
       "date": "2026-09-20T20:00:00",
-      "location": "Palais des Fêtes, Gombe — Kinshasa",
+      "location": "Muzik Café, Boulevard du 30 Juin — Kinshasa",
       "subsidiarySlug": "filiale-05",
-      "image": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80",
-      "excerpt": "Soirée sur invitation dans notre espace événementiel premium."
+      "image": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80",
+      "excerpt": "Musique live, karaoké et DJ sets sur le patio extérieur."
     },
     {
       "id": "evt-6",
-      "slug": "sunset-terrasse",
-      "title": "Sunset Dinner — Rooftop",
-      "date": "2026-08-08T19:00:00",
-      "location": "Terrasse du Sud, Gombe — Kinshasa",
+      "slug": "brunch-terrasse-moka-more",
+      "title": "Brunch terrasse — Moka & More",
+      "date": "2026-08-08T09:00:00",
+      "location": "Moka & More, Le Premier Mai — Kinshasa",
       "subsidiarySlug": "filiale-06",
-      "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80",
-      "excerpt": "Dîner au coucher du soleil avec menu méditerranéen dédié."
+      "image": "https://images.unsplash.com/photo-1554118811-1e0d58220f8d?w=800&q=80",
+      "excerpt": "Petits-déjeuners, pâtisseries et café sur la terrasse extérieure."
     },
     {
       "id": "evt-7",
-      "slug": "archives-winter-ball",
-      "title": "Winter Ball — Édition 2025",
-      "date": "2025-12-15T21:00:00",
-      "location": "Palais des Fêtes, Gombe — Kinshasa",
-      "subsidiarySlug": "filiale-05",
-      "image": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80",
-      "excerpt": "Retour sur le gala hivernal de la collection passée."
+      "slug": "french-touch-millionaire-club",
+      "title": "French Touch Night — Édition 2025",
+      "date": "2025-12-15T23:00:00",
+      "location": "Millionaire Club, Gombe — Kinshasa",
+      "subsidiarySlug": "filiale-04",
+      "image": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80",
+      "excerpt": "Retour sur la soirée French Touch au Millionaire Club."
     }
   ]
 }

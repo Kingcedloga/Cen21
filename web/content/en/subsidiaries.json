@@ -2,91 +2,91 @@
   "subsidiaries": [
     {
       "slug": "filiale-01",
-      "name": "Maison Éclat",
-      "sector": "restaurant",
-      "tagline": "Contemporary haute gastronomy",
-      "description": "An exceptional table where seasonal produce meets bold cuisine. The experience unfolds in several courses within a refined setting with golden accents.",
+      "name": "L'Olive Verte",
+      "sector": "lounge",
+      "tagline": "Restaurant & lounge — premium open-air sports bar",
+      "description": "Premium open-air sports bar on Boulevard du 30 Juin. European cuisine, cocktails, swimming pool, large football screens, karaoke, and lounge in a lively, festive atmosphere.",
       "practicalInfo": {
-        "address": "Gombe, Kinshasa",
-        "hours": "Tue–Sat 7pm–11pm",
+        "address": "Boulevard du 30 Juin, Kinshasa",
+        "hours": "Daily 11am–2am",
         "phone": "+243 81 00 00 001"
       },
       "social": {
-        "instagram": "https://www.instagram.com/maison.eclat.kin",
-        "facebook": "https://www.facebook.com/maison.eclat.kin",
-        "linkedin": "https://www.linkedin.com/company/maison-eclat-kin"
+        "instagram": "https://www.instagram.com/loliveverte.kin",
+        "facebook": "https://www.facebook.com/loliveverte.kin",
+        "linkedin": "https://www.linkedin.com/company/l-olive-verte-kin"
       },
-      "accentColor": "#8B6914",
-      "coverImage": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80",
+      "accentColor": "#4A7C59",
+      "coverImage": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80",
-        "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80"
-      ],
-      "featured": true
-    },
-    {
-      "slug": "filiale-02",
-      "name": "Le Verre Noir",
-      "sector": "bar",
-      "tagline": "Signature mixology & rare spirits",
-      "description": "An author cocktail bar in an intimate atmosphere. Evolving menu, exceptional spirits, and house creations served with precision.",
-      "practicalInfo": {
-        "address": "Gombe, Kinshasa",
-        "hours": "Wed–Sun 6pm–2am",
-        "phone": "+243 81 00 00 002"
-      },
-      "social": {
-        "instagram": "https://www.instagram.com/leverrenoir.kin",
-        "facebook": "https://www.facebook.com/leverrenoir.kin",
-        "linkedin": "https://www.linkedin.com/company/le-verre-noir"
-      },
-      "accentColor": "#4A5568",
-      "coverImage": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1200&q=80",
-      "galleryImages": [
-        "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80",
+        "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80",
         "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80"
       ],
       "featured": true
     },
     {
-      "slug": "filiale-03",
-      "name": "Azure Lounge",
-      "sector": "lounge",
-      "tagline": "Premium relaxation & live music",
-      "description": "A lounge where elegance meets relaxation. Deep armchairs, curated music programming, and discreet service for long evenings.",
+      "slug": "filiale-02",
+      "name": "Wabi Sabi",
+      "sector": "restaurant",
+      "tagline": "Contemporary Asian restaurant & lounge bar",
+      "description": "Rooftop with views over Kinshasa in the heart of Gombe. Sushi, Robatayaki, Thai curry, Szechuan cuisine, and signature cocktails in a contemporary, refined setting.",
       "practicalInfo": {
         "address": "Gombe, Kinshasa",
-        "hours": "Thu–Sun 8pm–3am",
+        "hours": "Tue–Sun 12pm–12am",
+        "phone": "+243 81 00 00 002"
+      },
+      "social": {
+        "instagram": "https://www.instagram.com/wabisabi.kin",
+        "facebook": "https://www.facebook.com/wabisabi.kin",
+        "linkedin": "https://www.linkedin.com/company/wabi-sabi-kin"
+      },
+      "accentColor": "#2D3748",
+      "coverImage": "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=1200&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1553621042-f6e147245754?w=800&q=80",
+        "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80"
+      ],
+      "featured": true
+    },
+    {
+      "slug": "filiale-03",
+      "name": "K Lounge",
+      "sector": "lounge",
+      "tagline": "Premium restaurant & lounge bar — rooftop",
+      "description": "Premium address at RR House, Boulevard du 30 Juin. Rooftop, international cuisine, creative cocktails, festive atmosphere, and panoramic views over the capital.",
+      "practicalInfo": {
+        "address": "RR House, Boulevard du 30 Juin, Kinshasa",
+        "hours": "Wed–Sun 6pm–3am",
         "phone": "+243 81 00 00 003"
       },
       "social": {
-        "instagram": "https://www.instagram.com/azurelounge.kin",
-        "facebook": "https://www.facebook.com/azurelounge.kin",
-        "linkedin": "https://www.linkedin.com/company/azure-lounge-kin"
+        "instagram": "https://www.instagram.com/klounge.kin",
+        "facebook": "https://www.facebook.com/klounge.kin",
+        "linkedin": "https://www.linkedin.com/company/k-lounge-kin"
       },
-      "accentColor": "#2C5282",
+      "accentColor": "#C5A059",
       "coverImage": "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=1200&q=80",
       "galleryImages": [
         "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=800&q=80",
-        "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80"
+        "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&q=80"
       ],
       "featured": true
     },
     {
       "slug": "filiale-04",
-      "name": "Nocturne Club",
+      "name": "Millionaire Club",
       "sector": "nightclub",
-      "tagline": "Electric nights & immersive scenography",
-      "description": "The temple of Kinshasa nightlife. Reference sound design, architectural lighting, and international programming for unforgettable experiences.",
+      "tagline": "Nightclub — themed nights & electric evenings",
+      "description": "Kinshasa nightlife landmark at 72B/95 Boulevard du 30 Juin, Gombe. African tribal and French Touch themed nights, premium DJ programming, open daily from 6pm to 6am.",
       "practicalInfo": {
-        "address": "Gombe, Kinshasa",
-        "hours": "Fri–Sat 11pm–6am",
+        "address": "72B/95 Boulevard du 30 Juin, Gombe, Kinshasa",
+        "hours": "Daily 6pm–6am",
         "phone": "+243 81 00 00 004"
       },
       "social": {
-        "instagram": "https://www.instagram.com/nocturneclub.kin",
-        "facebook": "https://www.facebook.com/nocturneclub.kin",
-        "linkedin": "https://www.linkedin.com/company/nocturne-club"
+        "instagram": "https://www.instagram.com/millionaireclub.kin",
+        "facebook": "https://www.facebook.com/millionaireclub.kin",
+        "linkedin": "https://www.linkedin.com/company/millionaire-club-kin"
       },
       "accentColor": "#6B46C1",
       "coverImage": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1200&q=80",
@@ -98,145 +98,145 @@
     },
     {
       "slug": "filiale-05",
-      "name": "Palais des Fêtes",
-      "sector": "evenementiel",
-      "tagline": "Exceptional private & corporate events",
-      "description": "A modular space dedicated to premium celebrations. Weddings, launches, and private evenings orchestrated by an expert events team.",
+      "name": "Muzik Café",
+      "sector": "lounge",
+      "tagline": "Restaurant, lounge & bar — patio & live music",
+      "description": "Lively address on Boulevard du 30 Juin. Outdoor patio, varied cuisine (pizza, Indian, Moroccan), live music, karaoke, and DJ sets for animated evenings.",
       "practicalInfo": {
-        "address": "Gombe, Kinshasa",
-        "hours": "By appointment",
+        "address": "Boulevard du 30 Juin, Kinshasa",
+        "hours": "Daily 12pm–2am",
         "phone": "+243 81 00 00 005"
       },
       "social": {
-        "instagram": "https://www.instagram.com/palaisdesfetes",
-        "facebook": "https://www.facebook.com/palaisdesfetes",
-        "linkedin": "https://www.linkedin.com/company/palais-des-fetes"
+        "instagram": "https://www.instagram.com/muzikcafe.kin",
+        "facebook": "https://www.facebook.com/muzikcafe.kin",
+        "linkedin": "https://www.linkedin.com/company/muzik-cafe-kin"
       },
       "accentColor": "#9B2C2C",
-      "coverImage": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1200&q=80",
+      "coverImage": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80",
-        "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80"
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80",
+        "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80"
       ],
       "featured": false
     },
     {
       "slug": "filiale-06",
-      "name": "Terrasse du Sud",
+      "name": "Moka & More",
       "sector": "restaurant",
-      "tagline": "Mediterranean cuisine & rooftop",
-      "description": "Sun-kissed flavors served on a panoramic terrace. Generous cuisine, selected wines, and spectacular sunsets.",
+      "tagline": "Café, lounge & restaurant — Le Premier Mai",
+      "description": "Café and restaurant at Le Premier Mai, Gombe. Pastries, breakfasts, burgers, full bar, and outdoor terrace for gourmet moments at any time of day.",
       "practicalInfo": {
-        "address": "Gombe, Kinshasa",
-        "hours": "Daily 12pm–12am",
+        "address": "Le Premier Mai, Gombe, Kinshasa",
+        "hours": "Daily 7am–11pm",
         "phone": "+243 81 00 00 006"
       },
       "social": {
-        "instagram": "https://www.instagram.com/terrassedusud.kin",
-        "facebook": "https://www.facebook.com/terrassedusud.kin",
-        "linkedin": "https://www.linkedin.com/company/terrasse-du-sud"
+        "instagram": "https://www.instagram.com/mokaandmore.kin",
+        "facebook": "https://www.facebook.com/mokaandmore.kin",
+        "linkedin": "https://www.linkedin.com/company/moka-and-more-kin"
       },
-      "accentColor": "#C05621",
-      "coverImage": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
+      "accentColor": "#744210",
+      "coverImage": "https://images.unsplash.com/photo-1554118811-1e0d58220f8d?w=1200&q=80",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800&q=80",
-        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80"
+        "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&q=80",
+        "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800&q=80"
       ],
       "featured": false
     },
     {
       "slug": "filiale-07",
-      "name": "Cave & Cie",
-      "sector": "bar",
-      "tagline": "Natural wines & refined tapas",
-      "description": "A contemporary wine cellar where tasting and conviviality meet. Curated selection, food and wine pairings, and a warm atmosphere.",
+      "name": "Gourmet Mexicana",
+      "sector": "restaurant",
+      "tagline": "Authentic premium Mexican restaurant",
+      "description": "Authentic, refined Mexican cuisine in Kinshasa. Spicy and mild dishes, fresh and colourful atmosphere, ideal for a convivial dinner with friends or family.",
       "practicalInfo": {
-        "address": "Gombe, Kinshasa",
-        "hours": "Tue–Sun 5pm–1am",
+        "address": "Kinshasa",
+        "hours": "Tue–Sun 12pm–11pm",
         "phone": "+243 81 00 00 007"
       },
       "social": {
-        "instagram": "https://www.instagram.com/caveetcie.kin",
-        "facebook": "https://www.facebook.com/caveetcie.kin",
-        "linkedin": "https://www.linkedin.com/company/cave-et-cie"
+        "instagram": "https://www.instagram.com/gourmetmexicana.kin",
+        "facebook": "https://www.facebook.com/gourmetmexicana.kin",
+        "linkedin": "https://www.linkedin.com/company/gourmet-mexicana-kin"
       },
-      "accentColor": "#744210",
-      "coverImage": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=1200&q=80",
+      "accentColor": "#C05621",
+      "coverImage": "https://images.unsplash.com/photo-1565299585323-38174c0b5c73?w=1200&q=80",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800&q=80",
-        "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&q=80"
+        "https://images.unsplash.com/photo-1513451032972-6c47fc45a15a?w=800&q=80",
+        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80"
       ],
       "featured": false
     },
     {
       "slug": "filiale-08",
-      "name": "Velours Lounge",
-      "sector": "lounge",
-      "tagline": "Chic after-work & smoked cocktails",
-      "description": "The go-to for Kinshasa evenings. Intimate atmosphere, curated playlist, and signature cocktail menu in a velvet and brass setting.",
+      "name": "Papa John's",
+      "sector": "restaurant",
+      "tagline": "Pizzeria — Central Africa's first outlet",
+      "description": "First Papa John's in Central Africa, launched in 2025 on Avenue de la Gombe. Fresh dough, house-made sauces, delivery and dine-in for an authentic pizza experience.",
       "practicalInfo": {
-        "address": "Gombe, Kinshasa",
-        "hours": "Mon–Sat 5pm–2am",
+        "address": "Avenue de la Gombe, Kinshasa",
+        "hours": "Daily 11am–11pm",
         "phone": "+243 81 00 00 008"
       },
       "social": {
-        "instagram": "https://www.instagram.com/velourslounge.kin",
-        "facebook": "https://www.facebook.com/velourslounge.kin",
-        "linkedin": "https://www.linkedin.com/company/velours-lounge"
+        "instagram": "https://www.instagram.com/papajohns.kin",
+        "facebook": "https://www.facebook.com/papajohns.kin",
+        "linkedin": "https://www.linkedin.com/company/papa-johns-kin"
       },
-      "accentColor": "#553C9A",
-      "coverImage": "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=1200&q=80",
+      "accentColor": "#9B2C2C",
+      "coverImage": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=1200&q=80",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=800&q=80",
-        "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80"
+        "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80",
+        "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&q=80"
       ],
       "featured": false
     },
     {
       "slug": "filiale-09",
-      "name": "Étoile Rooftop",
+      "name": "Pinkberry",
       "sector": "restaurant",
-      "tagline": "Dinners under the stars & Kinshasa skyline",
-      "description": "A gastronomic rooftop offering a panoramic view of the capital. Creative cuisine, selected champagne, and an intimate atmosphere until late.",
+      "tagline": "Frozen yogurt & fresh flavours",
+      "description": "Reference brand for frozen yogurt in Kinshasa. Fresh flavours, gourmet toppings, and a refreshing experience for a sweet break at any time.",
       "practicalInfo": {
-        "address": "Gombe, Kinshasa",
-        "hours": "Wed–Sun 7pm–2am",
+        "address": "Kinshasa",
+        "hours": "Daily 10am–10pm",
         "phone": "+243 81 00 00 009"
       },
       "social": {
-        "instagram": "https://www.instagram.com/etoilerooftop.kin",
-        "facebook": "https://www.facebook.com/etoilerooftop.kin",
-        "linkedin": "https://www.linkedin.com/company/etoile-rooftop"
+        "instagram": "https://www.instagram.com/pinkberry.kin",
+        "facebook": "https://www.facebook.com/pinkberry.kin",
+        "linkedin": "https://www.linkedin.com/company/pinkberry-kin"
       },
-      "accentColor": "#B7791F",
-      "coverImage": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
+      "accentColor": "#D53F8C",
+      "coverImage": "https://images.unsplash.com/photo-1488900128323-21503983a07e?w=1200&q=80",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80",
-        "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&q=80"
+        "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800&q=80",
+        "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800&q=80"
       ],
       "featured": false
     },
     {
       "slug": "filiale-10",
-      "name": "Studio Opale",
-      "sector": "evenementiel",
-      "tagline": "Launches, showcases & immersive experiences",
-      "description": "A modular event studio for brands and artists. Custom scenography, live capture, and premium hospitality for every guest.",
+      "name": "Pain Quotidien",
+      "sector": "restaurant",
+      "tagline": "Artisan bakery & restaurant",
+      "description": "Bakery and restaurant in Kinshasa. Artisan breads, pastries, brunches, and simple dishes prepared with quality ingredients in a warm, authentic atmosphere.",
       "practicalInfo": {
-        "address": "Gombe, Kinshasa",
-        "hours": "By appointment",
+        "address": "Kinshasa",
+        "hours": "Daily 7am–9pm",
         "phone": "+243 81 00 00 010"
       },
       "social": {
-        "instagram": "https://www.instagram.com/studioopale.kin",
-        "facebook": "https://www.facebook.com/studioopale.kin",
-        "linkedin": "https://www.linkedin.com/company/studio-opale"
+        "instagram": "https://www.instagram.com/painquotidien.kin",
+        "facebook": "https://www.facebook.com/painquotidien.kin",
+        "linkedin": "https://www.linkedin.com/company/pain-quotidien-kin"
       },
-      "accentColor": "#2D3748",
-      "coverImage": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80",
+      "accentColor": "#8B6914",
+      "coverImage": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1200&q=80",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80"
+        "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=800&q=80",
+        "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&q=80"
       ],
       "featured": false
     }
