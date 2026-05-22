@@ -4,6 +4,7 @@ import type { SubsidiaryPageTheme } from "@/lib/subsidiary-themes";
 
 import "@/styles/subsidiary-themes/millionaire-club.css";
 import "@/styles/subsidiary-themes/k-lounge.css";
+import "@/styles/subsidiary-themes/moka-more.css";
 
 type Props = {
   theme: SubsidiaryPageTheme;

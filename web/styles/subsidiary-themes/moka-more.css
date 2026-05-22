@@ -1,0 +1,205 @@
+/* Moka & More — thème page filiale (filiale-06) : rouge, noir, blanc — café-lounge */
+
+[data-subsidiary-theme="moka-more"] {
+  background-color: var(--sub-bg);
+  color: var(--sub-text);
+}
+
+/* Typographie & accents rouges */
+[data-subsidiary-theme="moka-more"] .text-gold {
+  color: var(--sub-gold);
+}
+
+[data-subsidiary-theme="moka-more"] .text-ivory,
+[data-subsidiary-theme="moka-more"] .text-ivory\/80,
+[data-subsidiary-theme="moka-more"] .text-ivory\/75,
+[data-subsidiary-theme="moka-more"] .text-ivory\/85 {
+  color: var(--sub-text);
+}
+
+[data-subsidiary-theme="moka-more"] .text-taupe {
+  color: var(--sub-text-muted);
+}
+
+[data-subsidiary-theme="moka-more"] .text-stone {
+  color: var(--sub-text-subtle);
+}
+
+[data-subsidiary-theme="moka-more"] .hover\:text-gold:hover,
+[data-subsidiary-theme="moka-more"] a.hover\:text-gold:hover {
+  color: var(--sub-gold);
+}
+
+[data-subsidiary-theme="moka-more"] .hover\:text-ivory:hover {
+  color: var(--sub-text);
+}
+
+/* Titres — trait rouge dynamique */
+[data-subsidiary-theme="moka-more"] .sub-themed-heading {
+  color: var(--sub-text);
+  letter-spacing: -0.02em;
+}
+
+[data-subsidiary-theme="moka-more"] .sub-themed-heading::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 3px;
+  margin-top: 0.875rem;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--sub-gold) 0%,
+    rgb(var(--sub-gold-rgb) / 0.45) 100%
+  );
+}
+
+/* Surfaces chaleureuses */
+[data-subsidiary-theme="moka-more"] .bg-anthracite\/40 {
+  background-color: rgb(var(--sub-gold-rgb) / 0.05);
+}
+
+[data-subsidiary-theme="moka-more"] .sub-themed-info-band {
+  border-block: 1px solid var(--sub-border);
+  background: linear-gradient(
+    180deg,
+    rgb(var(--sub-gold-rgb) / 0.1) 0%,
+    transparent 45%,
+    rgb(var(--sub-gold-rgb) / 0.06) 100%
+  );
+}
+
+/* Glass panels — lounge café, lueur rouge */
+[data-subsidiary-theme="moka-more"] .glass-panel {
+  background: linear-gradient(
+    165deg,
+    rgb(var(--sub-gold-rgb) / 0.09) 0%,
+    var(--sub-surface) 38%,
+    rgb(0 0 0 / 0.58) 100%
+  );
+  border: 1px solid var(--sub-border);
+  box-shadow:
+    inset 0 1px 0 0 rgb(var(--sub-gold-rgb) / 0.12),
+    inset 0 -1px 0 0 rgb(0 0 0 / 0.42),
+    0 14px 38px -16px rgb(var(--sub-gold-rgb) / 0.18),
+    0 16px 40px -18px rgb(0 0 0 / 0.72);
+}
+
+[data-subsidiary-theme="moka-more"] .glass-panel:hover {
+  border-color: rgb(var(--sub-gold-rgb) / 0.48);
+  box-shadow:
+    inset 0 1px 0 0 rgb(var(--sub-gold-rgb) / 0.16),
+    inset 0 -1px 0 0 rgb(0 0 0 / 0.42),
+    0 20px 46px -14px rgb(var(--sub-gold-rgb) / 0.28),
+    0 0 0 1px rgb(var(--sub-gold-rgb) / 0.14);
+}
+
+/* Boutons — rouge énergique sur fond noir */
+[data-subsidiary-theme="moka-more"] .btn-primary {
+  background: var(--sub-gold);
+  color: var(--sub-text);
+  border: 1px solid rgb(var(--sub-gold-rgb) / 0.75);
+  box-shadow:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.18),
+    0 10px 28px -10px rgb(var(--sub-gold-rgb) / 0.55);
+}
+
+[data-subsidiary-theme="moka-more"] .btn-primary:hover {
+  background: rgb(var(--sub-gold-rgb) / 0.88);
+  box-shadow:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.22),
+    0 14px 36px -10px rgb(var(--sub-gold-rgb) / 0.65);
+}
+
+[data-subsidiary-theme="moka-more"] .btn-secondary {
+  background: rgb(0 0 0 / 0.4);
+  color: var(--sub-text);
+  border: 1px solid var(--sub-border);
+  backdrop-filter: blur(10px);
+}
+
+[data-subsidiary-theme="moka-more"] .btn-secondary:hover {
+  border-color: rgb(var(--sub-gold-rgb) / 0.55);
+  color: var(--sub-gold);
+  background: rgb(var(--sub-gold-rgb) / 0.08);
+}
+
+/* Galerie */
+[data-subsidiary-theme="moka-more"] .group.rounded-sm {
+  border: 1px solid rgb(var(--sub-gold-rgb) / 0.16);
+  border-radius: 0.625rem;
+}
+
+[data-subsidiary-theme="moka-more"] .group.rounded-sm:focus-visible {
+  outline-color: var(--sub-gold);
+}
+
+/* Icônes */
+[data-subsidiary-theme="moka-more"] .glass-panel svg {
+  color: var(--sub-gold);
+}
+
+/* Fil d'Ariane */
+[data-subsidiary-theme="moka-more"] nav[aria-label="Fil d'Ariane"] a {
+  color: var(--sub-text-muted);
+}
+
+[data-subsidiary-theme="moka-more"] nav[aria-label="Fil d'Ariane"] a:hover {
+  color: var(--sub-gold);
+}
+
+[data-subsidiary-theme="moka-more"] nav[aria-label="Fil d'Ariane"] span[aria-current="page"] {
+  color: var(--sub-gold);
+}
+
+/* Barre de progression */
+[data-subsidiary-theme="moka-more"] .sub-reading-progress {
+  background: linear-gradient(
+    90deg,
+    var(--sub-gold) 0%,
+    rgb(var(--sub-gold-rgb) / 0.78) 55%,
+    rgb(var(--sub-gold-rgb) / 0.35) 100%
+  );
+}
+
+/* Actions mobiles sticky */
+[data-subsidiary-theme="moka-more"] .sub-sticky-bar {
+  border-color: rgb(var(--sub-gold-rgb) / 0.32);
+  background: rgb(0 0 0 / 0.95);
+  box-shadow:
+    0 18px 48px -12px rgb(0 0 0 / 0.88),
+    0 0 0 1px rgb(var(--sub-gold-rgb) / 0.1);
+}
+
+[data-subsidiary-theme="moka-more"] .sub-sticky-call {
+  background: var(--sub-gold);
+  color: var(--sub-text);
+}
+
+[data-subsidiary-theme="moka-more"] .sub-sticky-call:hover {
+  filter: brightness(1.06);
+}
+
+[data-subsidiary-theme="moka-more"] .sub-sticky-maps {
+  border-color: rgb(var(--sub-gold-rgb) / 0.26);
+  background: var(--sub-surface-elevated);
+  color: var(--sub-text);
+}
+
+[data-subsidiary-theme="moka-more"] .sub-sticky-maps:hover {
+  border-color: rgb(var(--sub-gold-rgb) / 0.48);
+  color: var(--sub-gold);
+}
+
+/* Carte */
+[data-subsidiary-theme="moka-more"] .glass-panel .border-t {
+  border-color: var(--sub-border);
+}
+
+[data-subsidiary-theme="moka-more"] .glass-panel a.text-gold:hover {
+  color: var(--sub-text);
+}
+
+[data-subsidiary-theme="moka-more"] article.glass-panel a.text-gold:hover {
+  color: rgb(var(--sub-gold-rgb) / 0.78);
+}

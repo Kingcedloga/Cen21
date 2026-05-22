@@ -62,9 +62,32 @@ export const K_LOUNGE_THEME: SubsidiaryPageTheme = {
   },
 };
 
+/** Moka & More — café-lounge rouge, noir & blanc (accent = rouge via --sub-gold). */
+export const MOKA_MORE_THEME: SubsidiaryPageTheme = {
+  id: "moka-more",
+  slug: "filiale-06",
+  colors: {
+    bg: "#000000",
+    gold: "#CC0000",
+    goldRgb: "204 0 0",
+    text: "#FFFFFF",
+    textMuted: "rgba(255, 255, 255, 0.7)",
+    textSubtle: "rgba(255, 255, 255, 0.48)",
+    surface: "rgba(255, 255, 255, 0.04)",
+    surfaceElevated: "rgba(255, 255, 255, 0.07)",
+    border: "rgba(204, 0, 0, 0.24)",
+  },
+  hero: {
+    overlayGradient:
+      "linear-gradient(to top, #000000 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.28) 68%, transparent 100%), linear-gradient(90deg, rgba(0,0,0,0.8) 0%, transparent 46%), radial-gradient(ellipse 85% 62% at 50% 100%, rgba(204,0,0,0.16) 0%, transparent 58%)",
+    blurTint: "#0a0a0a",
+  },
+};
+
 const THEMES_BY_SLUG: Record<string, SubsidiaryPageTheme> = {
   [K_LOUNGE_THEME.slug]: K_LOUNGE_THEME,
   [MILLIONAIRE_CLUB_THEME.slug]: MILLIONAIRE_CLUB_THEME,
+  [MOKA_MORE_THEME.slug]: MOKA_MORE_THEME,
 };
 
 export function getSubsidiaryPageTheme(slug: string): SubsidiaryPageTheme | null {

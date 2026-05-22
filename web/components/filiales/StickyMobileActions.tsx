@@ -70,7 +70,7 @@ export function StickyMobileActions({
                 <Icon
                   name="phone"
                   size="sm"
-                  className={themed ? "text-black" : "text-petrol"}
+                  className={themed ? "text-current" : "text-petrol"}
                   strokeWidth={ICON_STROKE}
                 />
                 <span>Appeler</span>
