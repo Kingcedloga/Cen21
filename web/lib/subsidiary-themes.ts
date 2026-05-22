@@ -215,6 +215,29 @@ export const OLIVE_VERTE_THEME: SubsidiaryPageTheme = {
   },
 };
 
+/** Wabi Sabi — restaurant asiatique contemporain pétrole & doré (zen & raffiné). */
+export const WABI_SABI_THEME: SubsidiaryPageTheme = {
+  id: "wabi-sabi",
+  slug: "filiale-02",
+  colors: {
+    bg: "#004258",
+    gold: "#B58E48",
+    goldRgb: "181 142 72",
+    text: "rgba(255, 255, 255, 0.92)",
+    textMuted: "rgba(255, 255, 255, 0.68)",
+    textSubtle: "rgba(255, 255, 255, 0.48)",
+    surface: "rgba(255, 255, 255, 0.04)",
+    surfaceElevated: "rgba(255, 255, 255, 0.07)",
+    border: "rgba(181, 142, 72, 0.22)",
+    btn: "#B58E48",
+  },
+  hero: {
+    overlayGradient:
+      "linear-gradient(to top, #004258 0%, rgba(0,66,88,0.88) 44%, rgba(0,66,88,0.32) 68%, transparent 100%), linear-gradient(90deg, rgba(0,50,68,0.78) 0%, transparent 46%), radial-gradient(ellipse 76% 54% at 50% 100%, rgba(181,142,72,0.12) 0%, transparent 58%)",
+    blurTint: "#004258",
+  },
+};
+
 const THEMES_BY_SLUG: Record<string, SubsidiaryPageTheme> = {
   [GOURMET_MEXICANA_THEME.slug]: GOURMET_MEXICANA_THEME,
   [K_LOUNGE_THEME.slug]: K_LOUNGE_THEME,
@@ -224,6 +247,7 @@ const THEMES_BY_SLUG: Record<string, SubsidiaryPageTheme> = {
   [OLIVE_VERTE_THEME.slug]: OLIVE_VERTE_THEME,
   [PAIN_QUOTIDIEN_THEME.slug]: PAIN_QUOTIDIEN_THEME,
   [PAPA_JOHNS_THEME.slug]: PAPA_JOHNS_THEME,
+  [WABI_SABI_THEME.slug]: WABI_SABI_THEME,
 };
 
 export function getSubsidiaryPageTheme(slug: string): SubsidiaryPageTheme | null {

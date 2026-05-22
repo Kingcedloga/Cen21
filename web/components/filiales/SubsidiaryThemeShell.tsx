@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 import type { SubsidiaryPageTheme } from "@/lib/subsidiary-themes";
 
+import "@/styles/subsidiary-themes/wabi-sabi.css";
 import "@/styles/subsidiary-themes/millionaire-club.css";
 import "@/styles/subsidiary-themes/olive-verte.css";
 import "@/styles/subsidiary-themes/k-lounge.css";
