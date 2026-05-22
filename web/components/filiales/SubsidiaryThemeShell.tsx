@@ -8,6 +8,7 @@ import "@/styles/subsidiary-themes/moka-more.css";
 import "@/styles/subsidiary-themes/pain-quotidien.css";
 import "@/styles/subsidiary-themes/papa-johns.css";
 import "@/styles/subsidiary-themes/gourmet-mexicana.css";
+import "@/styles/subsidiary-themes/muzik-cafe.css";
 
 type Props = {
   theme: SubsidiaryPageTheme;

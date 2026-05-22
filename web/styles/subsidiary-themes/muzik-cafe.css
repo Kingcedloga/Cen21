@@ -1,0 +1,245 @@
+/* Muzik Café — thème page filiale (filiale-05) : bleu, rouge & blanc — café musical */
+
+[data-subsidiary-theme="muzik-cafe"] {
+  background-color: var(--sub-bg);
+  color: var(--sub-text);
+}
+
+/* Typographie blanche, labels rouges vibrants */
+[data-subsidiary-theme="muzik-cafe"] .text-gold {
+  color: var(--sub-gold);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .text-ivory,
+[data-subsidiary-theme="muzik-cafe"] .text-ivory\/80,
+[data-subsidiary-theme="muzik-cafe"] .text-ivory\/75,
+[data-subsidiary-theme="muzik-cafe"] .text-ivory\/85 {
+  color: var(--sub-text);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .text-taupe {
+  color: var(--sub-text-muted);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .text-stone {
+  color: var(--sub-text-subtle);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .hover\:text-gold:hover,
+[data-subsidiary-theme="muzik-cafe"] a.hover\:text-gold:hover {
+  color: var(--sub-text);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .hover\:text-ivory:hover {
+  color: var(--sub-text);
+}
+
+/* Titres — séparateur bleu → blanc → rouge */
+[data-subsidiary-theme="muzik-cafe"] .sub-themed-heading {
+  color: var(--sub-text);
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+[data-subsidiary-theme="muzik-cafe"] .sub-themed-heading::after {
+  content: "";
+  display: block;
+  width: 4.5rem;
+  height: 4px;
+  margin-top: 0.875rem;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--sub-bg) 0%,
+    var(--sub-bg) 32%,
+    var(--sub-text) 32%,
+    var(--sub-text) 64%,
+    var(--sub-red) 64%,
+    var(--sub-red) 100%
+  );
+  box-shadow: 0 0 12px rgb(var(--sub-red-rgb) / 0.35);
+}
+
+/* Surfaces */
+[data-subsidiary-theme="muzik-cafe"] .bg-anthracite\/40 {
+  background-color: rgb(0 0 0 / 0.16);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .sub-themed-info-band {
+  border-block: 1px solid var(--sub-border);
+  background: linear-gradient(
+    180deg,
+    rgb(var(--sub-red-rgb) / 0.14) 0%,
+    transparent 44%,
+    rgb(0 0 0 / 0.12) 100%
+  );
+  box-shadow: inset 0 3px 0 0 rgb(var(--sub-red-rgb) / 0.45);
+}
+
+/* Glass panels — scène live, lueur rouge */
+[data-subsidiary-theme="muzik-cafe"] .glass-panel {
+  background: linear-gradient(
+    165deg,
+    rgb(var(--sub-red-rgb) / 0.08) 0%,
+    var(--sub-surface) 36%,
+    rgb(0 0 0 / 0.22) 100%
+  );
+  border: 1px solid rgb(var(--sub-red-rgb) / 0.22);
+  border-radius: 0.875rem;
+  box-shadow:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.1),
+    inset 0 -1px 0 0 rgb(0 0 0 / 0.14),
+    0 12px 32px -14px rgb(var(--sub-red-rgb) / 0.18);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .glass-panel:hover {
+  border-color: rgb(var(--sub-red-rgb) / 0.52);
+  box-shadow:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.14),
+    inset 0 -1px 0 0 rgb(0 0 0 / 0.14),
+    0 18px 44px -12px rgb(var(--sub-red-rgb) / 0.32),
+    0 0 0 1px rgb(var(--sub-red-rgb) / 0.16);
+}
+
+/* Boutons — rouge festif */
+[data-subsidiary-theme="muzik-cafe"] .btn-primary {
+  background: var(--sub-btn);
+  color: var(--sub-text);
+  border: 1px solid rgb(var(--sub-red-rgb) / 0.75);
+  box-shadow:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.18),
+    0 8px 26px -10px rgb(var(--sub-red-rgb) / 0.58);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .btn-primary:hover {
+  background: rgb(var(--sub-red-rgb) / 0.9);
+  filter: brightness(1.05);
+  box-shadow:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.22),
+    0 14px 34px -10px rgb(var(--sub-red-rgb) / 0.65);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .btn-secondary {
+  background: rgb(255 255 255 / 0.08);
+  color: var(--sub-text);
+  border: 1px solid var(--sub-border);
+  backdrop-filter: blur(8px);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .btn-secondary:hover {
+  border-color: var(--sub-red);
+  color: var(--sub-red);
+  background: rgb(var(--sub-red-rgb) / 0.1);
+}
+
+/* Galerie */
+[data-subsidiary-theme="muzik-cafe"] .group.rounded-sm {
+  border: 1px solid rgb(var(--sub-red-rgb) / 0.22);
+  border-radius: 0.625rem;
+}
+
+[data-subsidiary-theme="muzik-cafe"] .group.rounded-sm:focus-visible {
+  outline-color: var(--sub-red);
+}
+
+/* Icônes */
+[data-subsidiary-theme="muzik-cafe"] .glass-panel svg {
+  color: var(--sub-gold);
+}
+
+/* Fil d'Ariane */
+[data-subsidiary-theme="muzik-cafe"] nav[aria-label="Fil d'Ariane"] a {
+  color: var(--sub-text-muted);
+}
+
+[data-subsidiary-theme="muzik-cafe"] nav[aria-label="Fil d'Ariane"] a:hover {
+  color: var(--sub-red);
+}
+
+[data-subsidiary-theme="muzik-cafe"] nav[aria-label="Fil d'Ariane"] span[aria-current="page"] {
+  color: var(--sub-red);
+}
+
+/* Barre de progression — bleu → blanc → rouge */
+[data-subsidiary-theme="muzik-cafe"] .sub-reading-progress {
+  background: linear-gradient(
+    90deg,
+    var(--sub-bg) 0%,
+    var(--sub-text) 42%,
+    var(--sub-red) 100%
+  );
+}
+
+/* Actions mobiles sticky */
+[data-subsidiary-theme="muzik-cafe"] .sub-sticky-bar {
+  border-color: rgb(var(--sub-red-rgb) / 0.32);
+  background: rgb(0 0 0 / 0.42);
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 16px 40px -12px rgb(0 0 0 / 0.5),
+    0 0 0 1px rgb(var(--sub-red-rgb) / 0.14);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .sub-sticky-call {
+  background: var(--sub-btn);
+  color: var(--sub-text);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .sub-sticky-call:hover {
+  filter: brightness(1.06);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .sub-sticky-maps {
+  border-color: rgb(255 255 255 / 0.22);
+  background: var(--sub-surface-elevated);
+  color: var(--sub-text);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .sub-sticky-maps:hover {
+  border-color: rgb(var(--sub-red-rgb) / 0.48);
+  color: var(--sub-red);
+}
+
+/* Carte */
+[data-subsidiary-theme="muzik-cafe"] .glass-panel .border-t {
+  border-color: rgb(255 255 255 / 0.18);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .glass-panel a.text-gold {
+  color: var(--sub-gold);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .glass-panel a.text-gold:hover {
+  color: var(--sub-text);
+}
+
+[data-subsidiary-theme="muzik-cafe"] article.glass-panel a.text-gold:hover {
+  color: rgb(var(--sub-red-rgb) / 0.82);
+}
+
+/* Hero — contrôles carousel */
+[data-subsidiary-theme="muzik-cafe"] section.relative.min-h-\[60vh\] button.rounded-full {
+  background: rgb(0 0 0 / 0.3);
+  border-color: rgb(var(--sub-red-rgb) / 0.32);
+}
+
+[data-subsidiary-theme="muzik-cafe"] section.relative.min-h-\[60vh\] button.rounded-full:hover {
+  background: rgb(var(--sub-red-rgb) / 0.38);
+  color: var(--sub-text);
+}
+
+/* Filet hero bleu / blanc / rouge */
+[data-subsidiary-theme="muzik-cafe"] section.relative.min-h-\[60vh\] > div.pointer-events-none.h-px {
+  height: 3px;
+  opacity: 1;
+  background: linear-gradient(
+    90deg,
+    var(--sub-bg) 0%,
+    var(--sub-bg) 33%,
+    var(--sub-text) 33%,
+    var(--sub-text) 66%,
+    var(--sub-red) 66%,
+    var(--sub-red) 100%
+  ) !important;
+  box-shadow: 0 0 14px rgb(var(--sub-red-rgb) / 0.4);
+}

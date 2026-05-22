@@ -167,11 +167,37 @@ export const GOURMET_MEXICANA_THEME: SubsidiaryPageTheme = {
   },
 };
 
+/** Muzik Café — café musical bleu, rouge & blanc (festif & vibrant). */
+export const MUZIK_CAFE_THEME: SubsidiaryPageTheme = {
+  id: "muzik-cafe",
+  slug: "filiale-05",
+  colors: {
+    bg: "#0033A0",
+    gold: "#EF3340",
+    goldRgb: "239 51 64",
+    text: "#FFFFFF",
+    textMuted: "rgba(255, 255, 255, 0.78)",
+    textSubtle: "rgba(255, 255, 255, 0.55)",
+    surface: "rgba(255, 255, 255, 0.08)",
+    surfaceElevated: "rgba(255, 255, 255, 0.12)",
+    border: "rgba(255, 255, 255, 0.22)",
+    btn: "#EF3340",
+    red: "#EF3340",
+    redRgb: "239 51 64",
+  },
+  hero: {
+    overlayGradient:
+      "linear-gradient(to top, #0033A0 0%, rgba(0,51,160,0.92) 40%, rgba(0,51,160,0.4) 68%, transparent 100%), linear-gradient(90deg, rgba(0,38,120,0.88) 0%, transparent 48%), radial-gradient(ellipse 88% 64% at 50% 100%, rgba(239,51,64,0.24) 0%, transparent 58%), radial-gradient(ellipse 48% 38% at 12% 22%, rgba(255,255,255,0.08) 0%, transparent 52%)",
+    blurTint: "#0033A0",
+  },
+};
+
 const THEMES_BY_SLUG: Record<string, SubsidiaryPageTheme> = {
   [GOURMET_MEXICANA_THEME.slug]: GOURMET_MEXICANA_THEME,
   [K_LOUNGE_THEME.slug]: K_LOUNGE_THEME,
   [MILLIONAIRE_CLUB_THEME.slug]: MILLIONAIRE_CLUB_THEME,
   [MOKA_MORE_THEME.slug]: MOKA_MORE_THEME,
+  [MUZIK_CAFE_THEME.slug]: MUZIK_CAFE_THEME,
   [PAIN_QUOTIDIEN_THEME.slug]: PAIN_QUOTIDIEN_THEME,
   [PAPA_JOHNS_THEME.slug]: PAPA_JOHNS_THEME,
 };
