@@ -12,6 +12,8 @@ export type SubsidiaryPageTheme = {
     surface: string;
     surfaceElevated: string;
     border: string;
+    /** Couleur boutons (optionnel — sinon `gold` ou `bg`). */
+    btn?: string;
   };
   hero: {
     overlayGradient: string;
@@ -106,11 +108,35 @@ export const PAIN_QUOTIDIEN_THEME: SubsidiaryPageTheme = {
   },
 };
 
+/** Papa John's — pizzeria moderne vert naturel & blanc (accent = blanc via --sub-gold). */
+export const PAPA_JOHNS_THEME: SubsidiaryPageTheme = {
+  id: "papa-johns",
+  slug: "filiale-08",
+  colors: {
+    bg: "#006B3F",
+    gold: "#FFFFFF",
+    goldRgb: "255 255 255",
+    text: "#FFFFFF",
+    textMuted: "rgba(255, 255, 255, 0.78)",
+    textSubtle: "rgba(255, 255, 255, 0.55)",
+    surface: "rgba(255, 255, 255, 0.08)",
+    surfaceElevated: "rgba(255, 255, 255, 0.12)",
+    border: "rgba(255, 255, 255, 0.24)",
+    btn: "#005A35",
+  },
+  hero: {
+    overlayGradient:
+      "linear-gradient(to top, #006B3F 0%, rgba(0,107,63,0.9) 42%, rgba(0,107,63,0.4) 68%, transparent 100%), linear-gradient(90deg, rgba(0,80,47,0.85) 0%, transparent 50%), radial-gradient(ellipse 80% 58% at 50% 100%, rgba(255,255,255,0.1) 0%, transparent 58%)",
+    blurTint: "#006B3F",
+  },
+};
+
 const THEMES_BY_SLUG: Record<string, SubsidiaryPageTheme> = {
   [K_LOUNGE_THEME.slug]: K_LOUNGE_THEME,
   [MILLIONAIRE_CLUB_THEME.slug]: MILLIONAIRE_CLUB_THEME,
   [MOKA_MORE_THEME.slug]: MOKA_MORE_THEME,
   [PAIN_QUOTIDIEN_THEME.slug]: PAIN_QUOTIDIEN_THEME,
+  [PAPA_JOHNS_THEME.slug]: PAPA_JOHNS_THEME,
 };
 
 export function getSubsidiaryPageTheme(slug: string): SubsidiaryPageTheme | null {

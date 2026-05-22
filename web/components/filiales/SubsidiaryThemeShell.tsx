@@ -6,6 +6,7 @@ import "@/styles/subsidiary-themes/millionaire-club.css";
 import "@/styles/subsidiary-themes/k-lounge.css";
 import "@/styles/subsidiary-themes/moka-more.css";
 import "@/styles/subsidiary-themes/pain-quotidien.css";
+import "@/styles/subsidiary-themes/papa-johns.css";
 
 type Props = {
   theme: SubsidiaryPageTheme;
@@ -30,6 +31,7 @@ export function SubsidiaryThemeShell({ theme, children }: Props) {
           "--sub-surface": colors.surface,
           "--sub-surface-elevated": colors.surfaceElevated,
           "--sub-border": colors.border,
+          "--sub-btn": colors.btn ?? colors.gold,
         } as React.CSSProperties
       }
     >

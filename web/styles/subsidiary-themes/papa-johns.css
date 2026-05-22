@@ -1,0 +1,218 @@
+/* Papa John's — thème page filiale (filiale-08) : vert naturel & blanc */
+
+[data-subsidiary-theme="papa-johns"] {
+  background-color: var(--sub-bg);
+  color: var(--sub-text);
+}
+
+/* Typographie blanche */
+[data-subsidiary-theme="papa-johns"] .text-gold {
+  color: var(--sub-gold);
+}
+
+[data-subsidiary-theme="papa-johns"] .text-ivory,
+[data-subsidiary-theme="papa-johns"] .text-ivory\/80,
+[data-subsidiary-theme="papa-johns"] .text-ivory\/75,
+[data-subsidiary-theme="papa-johns"] .text-ivory\/85 {
+  color: var(--sub-text);
+}
+
+[data-subsidiary-theme="papa-johns"] .text-taupe {
+  color: var(--sub-text-muted);
+}
+
+[data-subsidiary-theme="papa-johns"] .text-stone {
+  color: var(--sub-text-subtle);
+}
+
+[data-subsidiary-theme="papa-johns"] .hover\:text-gold:hover,
+[data-subsidiary-theme="papa-johns"] a.hover\:text-gold:hover {
+  color: var(--sub-gold);
+}
+
+[data-subsidiary-theme="papa-johns"] .hover\:text-ivory:hover {
+  color: var(--sub-text);
+}
+
+/* Titres — séparateur blanc frais */
+[data-subsidiary-theme="papa-johns"] .sub-themed-heading {
+  color: var(--sub-text);
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+[data-subsidiary-theme="papa-johns"] .sub-themed-heading::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 3px;
+  margin-top: 0.875rem;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--sub-gold) 0%,
+    rgb(var(--sub-gold-rgb) / 0.45) 100%
+  );
+}
+
+/* Surfaces */
+[data-subsidiary-theme="papa-johns"] .bg-anthracite\/40 {
+  background-color: rgb(0 0 0 / 0.12);
+}
+
+[data-subsidiary-theme="papa-johns"] .sub-themed-info-band {
+  border-block: 1px solid var(--sub-border);
+  background: linear-gradient(
+    180deg,
+    rgb(0 0 0 / 0.14) 0%,
+    transparent 46%,
+    rgb(0 0 0 / 0.1) 100%
+  );
+}
+
+/* Glass panels — surfaces claires sur vert */
+[data-subsidiary-theme="papa-johns"] .glass-panel {
+  background: linear-gradient(
+    165deg,
+    rgb(var(--sub-gold-rgb) / 0.12) 0%,
+    var(--sub-surface) 38%,
+    rgb(0 0 0 / 0.18) 100%
+  );
+  border: 1px solid var(--sub-border);
+  border-radius: 0.875rem;
+  box-shadow:
+    inset 0 1px 0 0 rgb(var(--sub-gold-rgb) / 0.14),
+    inset 0 -1px 0 0 rgb(0 0 0 / 0.12),
+    0 12px 32px -14px rgb(0 0 0 / 0.22);
+}
+
+[data-subsidiary-theme="papa-johns"] .glass-panel:hover {
+  border-color: rgb(var(--sub-gold-rgb) / 0.45);
+  box-shadow:
+    inset 0 1px 0 0 rgb(var(--sub-gold-rgb) / 0.18),
+    inset 0 -1px 0 0 rgb(0 0 0 / 0.12),
+    0 16px 40px -12px rgb(0 0 0 / 0.28),
+    0 0 0 1px rgb(var(--sub-gold-rgb) / 0.12);
+}
+
+/* Boutons — vert profond + texte blanc */
+[data-subsidiary-theme="papa-johns"] .btn-primary {
+  background: var(--sub-btn);
+  color: var(--sub-text);
+  border: 1px solid rgb(var(--sub-gold-rgb) / 0.35);
+  box-shadow:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.12),
+    0 8px 22px -10px rgb(0 0 0 / 0.32);
+}
+
+[data-subsidiary-theme="papa-johns"] .btn-primary:hover {
+  background: rgb(0 90 53 / 1);
+  box-shadow:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.16),
+    0 12px 28px -10px rgb(0 0 0 / 0.38);
+}
+
+[data-subsidiary-theme="papa-johns"] .btn-secondary {
+  background: rgb(var(--sub-gold-rgb) / 0.1);
+  color: var(--sub-text);
+  border: 1px solid var(--sub-border);
+  backdrop-filter: blur(8px);
+}
+
+[data-subsidiary-theme="papa-johns"] .btn-secondary:hover {
+  border-color: rgb(var(--sub-gold-rgb) / 0.55);
+  color: var(--sub-gold);
+  background: rgb(var(--sub-gold-rgb) / 0.14);
+}
+
+/* Galerie */
+[data-subsidiary-theme="papa-johns"] .group.rounded-sm {
+  border: 1px solid rgb(var(--sub-gold-rgb) / 0.2);
+  border-radius: 0.625rem;
+}
+
+[data-subsidiary-theme="papa-johns"] .group.rounded-sm:focus-visible {
+  outline-color: var(--sub-gold);
+}
+
+/* Icônes */
+[data-subsidiary-theme="papa-johns"] .glass-panel svg {
+  color: var(--sub-gold);
+}
+
+/* Fil d'Ariane */
+[data-subsidiary-theme="papa-johns"] nav[aria-label="Fil d'Ariane"] a {
+  color: var(--sub-text-muted);
+}
+
+[data-subsidiary-theme="papa-johns"] nav[aria-label="Fil d'Ariane"] a:hover {
+  color: var(--sub-gold);
+}
+
+[data-subsidiary-theme="papa-johns"] nav[aria-label="Fil d'Ariane"] span[aria-current="page"] {
+  color: var(--sub-gold);
+}
+
+/* Barre de progression */
+[data-subsidiary-theme="papa-johns"] .sub-reading-progress {
+  background: linear-gradient(
+    90deg,
+    var(--sub-gold) 0%,
+    rgb(var(--sub-gold-rgb) / 0.75) 55%,
+    rgb(var(--sub-gold-rgb) / 0.3) 100%
+  );
+}
+
+/* Actions mobiles sticky */
+[data-subsidiary-theme="papa-johns"] .sub-sticky-bar {
+  border-color: rgb(var(--sub-gold-rgb) / 0.28);
+  background: rgb(0 0 0 / 0.32);
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 16px 40px -12px rgb(0 0 0 / 0.4),
+    0 0 0 1px rgb(var(--sub-gold-rgb) / 0.08);
+}
+
+[data-subsidiary-theme="papa-johns"] .sub-sticky-call {
+  background: var(--sub-btn);
+  color: var(--sub-text);
+}
+
+[data-subsidiary-theme="papa-johns"] .sub-sticky-call:hover {
+  filter: brightness(1.06);
+}
+
+[data-subsidiary-theme="papa-johns"] .sub-sticky-maps {
+  border-color: rgb(var(--sub-gold-rgb) / 0.26);
+  background: var(--sub-surface-elevated);
+  color: var(--sub-text);
+}
+
+[data-subsidiary-theme="papa-johns"] .sub-sticky-maps:hover {
+  border-color: rgb(var(--sub-gold-rgb) / 0.48);
+  color: var(--sub-gold);
+}
+
+/* Carte */
+[data-subsidiary-theme="papa-johns"] .glass-panel .border-t {
+  border-color: var(--sub-border);
+}
+
+[data-subsidiary-theme="papa-johns"] .glass-panel a.text-gold:hover {
+  color: rgb(var(--sub-gold-rgb) / 0.85);
+}
+
+[data-subsidiary-theme="papa-johns"] article.glass-panel a.text-gold:hover {
+  color: rgb(var(--sub-gold-rgb) / 0.78);
+}
+
+/* Hero — contrôles carousel */
+[data-subsidiary-theme="papa-johns"] section.relative.min-h-\[60vh\] button.rounded-full {
+  background: rgb(0 0 0 / 0.26);
+  border-color: var(--sub-border);
+}
+
+[data-subsidiary-theme="papa-johns"] section.relative.min-h-\[60vh\] button.rounded-full:hover {
+  background: rgb(0 0 0 / 0.38);
+  color: var(--sub-gold);
+}
