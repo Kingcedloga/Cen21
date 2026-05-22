@@ -1,8 +1,13 @@
 "use client";
 
 import { Menu, X } from "@/lib/icons";
+import {
+  getSubsidiaryNavbarTheme,
+  navbarThemeVars,
+  type SubsidiaryNavbarTheme,
+} from "@/lib/navbar-theme";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 
 import { Logo } from "@/components/brand/Logo";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
@@ -14,6 +19,7 @@ const SCROLL_THRESHOLD = 24;
 
 export function Header() {
   const pathname = usePathname();
+  const subsidiaryTheme = getSubsidiaryNavbarTheme(pathname);
   const t = useTranslations("nav");
   const tCommon = useTranslations("common");
   const [open, setOpen] = useState(false);
@@ -37,7 +43,12 @@ export function Header() {
     };
   }, []);
 
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
   const dense = scrolled || open;
+  const isBrand = subsidiaryTheme !== null;
 
   return (
     <header
@@ -47,10 +58,23 @@ export function Header() {
     >
       <div
         className={`relative mx-auto flex max-w-7xl flex-col overflow-hidden rounded-2xl border transition-all duration-300 ease-out ${
-          dense
-            ? "border-white/12 bg-petrol/85 shadow-[0_18px_40px_-18px_rgba(0,0,0,0.55),0_8px_18px_-10px_rgba(212,173,101,0.18)] backdrop-blur-xl backdrop-saturate-150"
-            : "border-white/10 bg-petrol/45 shadow-lg shadow-black/30 backdrop-blur-md backdrop-saturate-125"
+          isBrand
+            ? dense
+              ? "shadow-[0_18px_40px_-18px_rgba(0,0,0,0.5)]"
+              : "shadow-lg shadow-black/25"
+            : dense
+              ? "border-white/12 bg-petrol/85 shadow-[0_18px_40px_-18px_rgba(0,0,0,0.55),0_8px_18px_-10px_rgba(212,173,101,0.18)] backdrop-blur-xl backdrop-saturate-150"
+              : "border-white/10 bg-petrol/45 shadow-lg shadow-black/30 backdrop-blur-md backdrop-saturate-125"
         }`}
+        style={
+          isBrand
+            ? {
+                ...navbarThemeVars(subsidiaryTheme),
+                backgroundColor: subsidiaryTheme.background,
+                borderColor: `${subsidiaryTheme.foreground}22`,
+              }
+            : undefined
+        }
       >
         <span
           aria-hidden
@@ -58,8 +82,9 @@ export function Header() {
             dense ? "opacity-100" : "opacity-0"
           }`}
           style={{
-            background:
-              "linear-gradient(90deg, transparent 0%, rgba(212,173,101,0.55) 50%, transparent 100%)",
+            background: isBrand
+              ? `linear-gradient(90deg, transparent 0%, ${subsidiaryTheme.accent}99 50%, transparent 100%)`
+              : "linear-gradient(90deg, transparent 0%, rgba(212,173,101,0.55) 50%, transparent 100%)",
           }}
         />
 
@@ -85,11 +110,7 @@ export function Header() {
                   key={href}
                   href={href}
                   aria-current={active ? "page" : undefined}
-                  className={`relative inline-flex items-center text-[13px] font-medium tracking-wide transition-colors duration-300 ease-out cursor-pointer focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-4 focus-visible:rounded-sm after:pointer-events-none after:absolute after:inset-x-0 after:-bottom-1.5 after:h-px after:origin-center after:bg-gold after:transition-transform after:duration-300 ${
-                    active
-                      ? "text-gold after:scale-x-100"
-                      : `${dense ? "text-ivory/90" : "text-ivory/85"} hover:text-gold after:scale-x-0 hover:after:scale-x-100`
-                  }`}
+                  className={desktopNavLinkClass(active, dense, isBrand)}
                 >
                   {t(key)}
                 </Link>
@@ -98,25 +119,37 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
-            <LanguageSwitcher className="hidden sm:inline-flex" />
+            <LanguageSwitcher
+              className="hidden sm:inline-flex"
+              navbarTheme={subsidiaryTheme}
+            />
             <button
               type="button"
-              className="flex h-11 w-11 items-center justify-center rounded-xl text-ivory transition-colors duration-200 hover:bg-white/5 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold cursor-pointer lg:hidden"
+              className={menuButtonClass(isBrand)}
               aria-expanded={open}
               aria-label={open ? tCommon("closeMenu") : tCommon("openMenu")}
               onClick={() => setOpen(!open)}
             >
-              {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {open ? (
+                <X className="h-6 w-6" style={isBrand ? iconStyle(subsidiaryTheme) : undefined} />
+              ) : (
+                <Menu className="h-6 w-6" style={isBrand ? iconStyle(subsidiaryTheme) : undefined} />
+              )}
             </button>
           </div>
         </div>
 
         {open && (
           <nav
-            className="flex flex-col gap-1 border-t border-white/10 px-3 py-3 lg:hidden"
+            className={`flex flex-col gap-1 border-t px-3 py-3 lg:hidden ${
+              isBrand ? "border-[color:var(--nav-fg)]/15" : "border-white/10"
+            }`}
             aria-label={tCommon("mobileNav")}
           >
-            <LanguageSwitcher className="mb-2 w-full justify-center sm:hidden" />
+            <LanguageSwitcher
+              className="mb-2 w-full justify-center sm:hidden"
+              navbarTheme={subsidiaryTheme}
+            />
             {NAV_PATHS.map(({ href, key }) => {
               const active =
                 pathname === href ||
@@ -126,18 +159,24 @@ export function Header() {
                   key={href}
                   href={href}
                   aria-current={active ? "page" : undefined}
-                  className={`flex min-h-[44px] items-center gap-3 rounded-lg px-3 text-sm font-medium transition-colors duration-200 cursor-pointer ${
-                    active
-                      ? "bg-gold/10 text-gold"
-                      : "text-ivory/85 hover:bg-white/5 hover:text-gold"
-                  }`}
+                  className={mobileNavLinkClass(active, isBrand)}
+                  style={isBrand ? mobileNavLinkStyle(active, subsidiaryTheme) : undefined}
                   onClick={() => setOpen(false)}
                 >
                   <span
                     aria-hidden
                     className={`h-1.5 w-1.5 rounded-full transition-all duration-200 ${
-                      active ? "bg-gold" : "bg-transparent"
+                      isBrand ? "" : active ? "bg-gold" : "bg-transparent"
                     }`}
+                    style={
+                      isBrand
+                        ? {
+                            backgroundColor: active
+                              ? subsidiaryTheme.accent
+                              : "transparent",
+                          }
+                        : undefined
+                    }
                   />
                   {t(key)}
                 </Link>
@@ -148,4 +187,71 @@ export function Header() {
       </div>
     </header>
   );
+}
+
+function desktopNavLinkClass(
+  active: boolean,
+  dense: boolean,
+  isBrand: boolean,
+): string {
+  const base =
+    "relative inline-flex items-center text-[13px] font-medium tracking-wide transition-colors duration-300 ease-out cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:rounded-sm after:pointer-events-none after:absolute after:inset-x-0 after:-bottom-1.5 after:h-px after:origin-center after:transition-transform after:duration-300";
+
+  if (isBrand) {
+    return `${base} focus-visible:outline-[color:var(--nav-accent)] after:bg-[color:var(--nav-accent)] ${
+      active
+        ? "text-[color:var(--nav-accent)] after:scale-x-100"
+        : "text-[color:var(--nav-fg)]/85 hover:text-[color:var(--nav-accent)] after:scale-x-0 hover:after:scale-x-100"
+    }`;
+  }
+
+  return `${base} focus-visible:outline-gold after:bg-gold ${
+    active
+      ? "text-gold after:scale-x-100"
+      : `${dense ? "text-ivory/90" : "text-ivory/85"} hover:text-gold after:scale-x-0 hover:after:scale-x-100`
+  }`;
+}
+
+function mobileNavLinkClass(active: boolean, isBrand: boolean): string {
+  const base =
+    "flex min-h-[44px] items-center gap-3 rounded-lg px-3 text-sm font-medium transition-colors duration-200 cursor-pointer";
+
+  if (isBrand) {
+    return `${base} hover:bg-white/8`;
+  }
+
+  return `${base} ${
+    active
+      ? "bg-gold/10 text-gold"
+      : "text-ivory/85 hover:bg-white/5 hover:text-gold"
+  }`;
+}
+
+function mobileNavLinkStyle(
+  active: boolean,
+  theme: SubsidiaryNavbarTheme,
+): CSSProperties {
+  return active
+    ? {
+        color: theme.accent,
+        backgroundColor: `${theme.accent}18`,
+      }
+    : {
+        color: `${theme.foreground}d9`,
+      };
+}
+
+function menuButtonClass(isBrand: boolean): string {
+  const base =
+    "flex h-11 w-11 items-center justify-center rounded-xl transition-colors duration-200 cursor-pointer lg:hidden focus-visible:outline-2 focus-visible:outline-offset-2";
+
+  if (isBrand) {
+    return `${base} text-[color:var(--nav-fg)] hover:bg-white/10 hover:text-[color:var(--nav-accent)] focus-visible:outline-[color:var(--nav-accent)]`;
+  }
+
+  return `${base} text-ivory hover:bg-white/5 hover:text-gold focus-visible:outline-gold`;
+}
+
+function iconStyle(theme: SubsidiaryNavbarTheme): CSSProperties {
+  return { color: theme.foreground };
 }
