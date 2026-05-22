@@ -192,12 +192,36 @@ export const MUZIK_CAFE_THEME: SubsidiaryPageTheme = {
   },
 };
 
+/** L'Olive Verte — méditerranéen vert olive & blanc (frais & élégant). */
+export const OLIVE_VERTE_THEME: SubsidiaryPageTheme = {
+  id: "olive-verte",
+  slug: "filiale-01",
+  colors: {
+    bg: "#8FAF5A",
+    gold: "#FFFFFF",
+    goldRgb: "255 255 255",
+    text: "#FFFFFF",
+    textMuted: "rgba(255, 255, 255, 0.82)",
+    textSubtle: "rgba(255, 255, 255, 0.58)",
+    surface: "rgba(0, 0, 0, 0.08)",
+    surfaceElevated: "rgba(0, 0, 0, 0.12)",
+    border: "rgba(255, 255, 255, 0.28)",
+    btn: "#FFFFFF",
+  },
+  hero: {
+    overlayGradient:
+      "linear-gradient(to top, #8FAF5A 0%, rgba(143,175,90,0.92) 42%, rgba(143,175,90,0.45) 68%, transparent 100%), linear-gradient(90deg, rgba(107,135,68,0.82) 0%, transparent 50%), radial-gradient(ellipse 78% 56% at 50% 100%, rgba(255,255,255,0.12) 0%, transparent 58%)",
+    blurTint: "#8FAF5A",
+  },
+};
+
 const THEMES_BY_SLUG: Record<string, SubsidiaryPageTheme> = {
   [GOURMET_MEXICANA_THEME.slug]: GOURMET_MEXICANA_THEME,
   [K_LOUNGE_THEME.slug]: K_LOUNGE_THEME,
   [MILLIONAIRE_CLUB_THEME.slug]: MILLIONAIRE_CLUB_THEME,
   [MOKA_MORE_THEME.slug]: MOKA_MORE_THEME,
   [MUZIK_CAFE_THEME.slug]: MUZIK_CAFE_THEME,
+  [OLIVE_VERTE_THEME.slug]: OLIVE_VERTE_THEME,
   [PAIN_QUOTIDIEN_THEME.slug]: PAIN_QUOTIDIEN_THEME,
   [PAPA_JOHNS_THEME.slug]: PAPA_JOHNS_THEME,
 };

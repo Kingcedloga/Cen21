@@ -1,0 +1,226 @@
+/* L'Olive Verte — thème page filiale (filiale-01) : vert olive & blanc — méditerranéen */
+
+[data-subsidiary-theme="olive-verte"] {
+  background-color: var(--sub-bg);
+  color: var(--sub-text);
+}
+
+/* Typographie blanche — légère ombre pour lisibilité sur olive clair */
+[data-subsidiary-theme="olive-verte"] .text-gold {
+  color: var(--sub-gold);
+}
+
+[data-subsidiary-theme="olive-verte"] .text-ivory,
+[data-subsidiary-theme="olive-verte"] .text-ivory\/80,
+[data-subsidiary-theme="olive-verte"] .text-ivory\/75,
+[data-subsidiary-theme="olive-verte"] .text-ivory\/85 {
+  color: var(--sub-text);
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.12);
+}
+
+[data-subsidiary-theme="olive-verte"] .text-taupe {
+  color: var(--sub-text-muted);
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.1);
+}
+
+[data-subsidiary-theme="olive-verte"] .text-stone {
+  color: var(--sub-text-subtle);
+}
+
+[data-subsidiary-theme="olive-verte"] .hover\:text-gold:hover,
+[data-subsidiary-theme="olive-verte"] a.hover\:text-gold:hover {
+  color: var(--sub-gold);
+}
+
+[data-subsidiary-theme="olive-verte"] .hover\:text-ivory:hover {
+  color: var(--sub-text);
+}
+
+/* Titres — séparateur blanc élégant */
+[data-subsidiary-theme="olive-verte"] .sub-themed-heading {
+  color: var(--sub-text);
+  letter-spacing: -0.015em;
+  font-weight: 500;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 0.14);
+}
+
+[data-subsidiary-theme="olive-verte"] .sub-themed-heading::after {
+  content: "";
+  display: block;
+  width: 2.75rem;
+  height: 2px;
+  margin-top: 0.9375rem;
+  border-radius: 1px;
+  background: rgb(var(--sub-gold-rgb) / 0.9);
+  box-shadow: 0 1px 0 rgb(0 0 0 / 0.08);
+}
+
+/* Surfaces méditerranéennes */
+[data-subsidiary-theme="olive-verte"] .bg-anthracite\/40 {
+  background-color: rgb(0 0 0 / 0.1);
+}
+
+[data-subsidiary-theme="olive-verte"] .sub-themed-info-band {
+  border-block: 1px solid var(--sub-border);
+  background: linear-gradient(
+    180deg,
+    rgb(0 0 0 / 0.1) 0%,
+    transparent 48%,
+    rgb(255 255 255 / 0.06) 100%
+  );
+}
+
+/* Glass panels — fraîcheur élégante */
+[data-subsidiary-theme="olive-verte"] .glass-panel {
+  background: linear-gradient(
+    165deg,
+    rgb(var(--sub-gold-rgb) / 0.12) 0%,
+    var(--sub-surface) 40%,
+    rgb(0 0 0 / 0.14) 100%
+  );
+  border: 1px solid var(--sub-border);
+  border-radius: 0.875rem;
+  box-shadow:
+    inset 0 1px 0 0 rgb(var(--sub-gold-rgb) / 0.14),
+    inset 0 -1px 0 0 rgb(0 0 0 / 0.1),
+    0 10px 28px -14px rgb(0 0 0 / 0.2);
+}
+
+[data-subsidiary-theme="olive-verte"] .glass-panel:hover {
+  border-color: rgb(var(--sub-gold-rgb) / 0.48);
+  box-shadow:
+    inset 0 1px 0 0 rgb(var(--sub-gold-rgb) / 0.18),
+    inset 0 -1px 0 0 rgb(0 0 0 / 0.1),
+    0 14px 36px -12px rgb(0 0 0 / 0.24),
+    0 0 0 1px rgb(var(--sub-gold-rgb) / 0.12);
+}
+
+/* Boutons — blanc sur olive */
+[data-subsidiary-theme="olive-verte"] .btn-primary {
+  background: var(--sub-btn);
+  color: var(--sub-bg);
+  border: 1px solid rgb(var(--sub-gold-rgb) / 0.88);
+  box-shadow:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.4),
+    0 6px 20px -10px rgb(0 0 0 / 0.28);
+}
+
+[data-subsidiary-theme="olive-verte"] .btn-primary:hover {
+  background: rgb(var(--sub-gold-rgb) / 0.94);
+  box-shadow:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.45),
+    0 10px 26px -10px rgb(0 0 0 / 0.32);
+}
+
+[data-subsidiary-theme="olive-verte"] .btn-secondary {
+  background: rgb(0 0 0 / 0.1);
+  color: var(--sub-text);
+  border: 1px solid var(--sub-border);
+  backdrop-filter: blur(8px);
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.12);
+}
+
+[data-subsidiary-theme="olive-verte"] .btn-secondary:hover {
+  border-color: rgb(var(--sub-gold-rgb) / 0.55);
+  color: var(--sub-gold);
+  background: rgb(var(--sub-gold-rgb) / 0.1);
+}
+
+/* Galerie */
+[data-subsidiary-theme="olive-verte"] .group.rounded-sm {
+  border: 1px solid rgb(var(--sub-gold-rgb) / 0.22);
+  border-radius: 0.625rem;
+}
+
+[data-subsidiary-theme="olive-verte"] .group.rounded-sm:focus-visible {
+  outline-color: var(--sub-gold);
+}
+
+/* Icônes */
+[data-subsidiary-theme="olive-verte"] .glass-panel svg {
+  color: var(--sub-gold);
+}
+
+/* Fil d'Ariane */
+[data-subsidiary-theme="olive-verte"] nav[aria-label="Fil d'Ariane"] a {
+  color: var(--sub-text-muted);
+}
+
+[data-subsidiary-theme="olive-verte"] nav[aria-label="Fil d'Ariane"] a:hover {
+  color: var(--sub-gold);
+}
+
+[data-subsidiary-theme="olive-verte"] nav[aria-label="Fil d'Ariane"] span[aria-current="page"] {
+  color: var(--sub-gold);
+}
+
+/* Barre de progression */
+[data-subsidiary-theme="olive-verte"] .sub-reading-progress {
+  background: linear-gradient(
+    90deg,
+    rgb(0 0 0 / 0.15) 0%,
+    var(--sub-gold) 55%,
+    rgb(var(--sub-gold-rgb) / 0.35) 100%
+  );
+}
+
+/* Actions mobiles sticky */
+[data-subsidiary-theme="olive-verte"] .sub-sticky-bar {
+  border-color: rgb(var(--sub-gold-rgb) / 0.3);
+  background: rgb(0 0 0 / 0.32);
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 14px 36px -12px rgb(0 0 0 / 0.35),
+    0 0 0 1px rgb(var(--sub-gold-rgb) / 0.1);
+}
+
+[data-subsidiary-theme="olive-verte"] .sub-sticky-call {
+  background: var(--sub-btn);
+  color: var(--sub-bg);
+}
+
+[data-subsidiary-theme="olive-verte"] .sub-sticky-call:hover {
+  filter: brightness(0.98);
+}
+
+[data-subsidiary-theme="olive-verte"] .sub-sticky-maps {
+  border-color: rgb(var(--sub-gold-rgb) / 0.26);
+  background: var(--sub-surface-elevated);
+  color: var(--sub-text);
+}
+
+[data-subsidiary-theme="olive-verte"] .sub-sticky-maps:hover {
+  border-color: rgb(var(--sub-gold-rgb) / 0.45);
+  color: var(--sub-gold);
+}
+
+/* Carte */
+[data-subsidiary-theme="olive-verte"] .glass-panel .border-t {
+  border-color: var(--sub-border);
+}
+
+[data-subsidiary-theme="olive-verte"] .glass-panel a.text-gold:hover {
+  color: rgb(var(--sub-gold-rgb) / 0.82);
+}
+
+[data-subsidiary-theme="olive-verte"] article.glass-panel a.text-gold:hover {
+  color: rgb(var(--sub-gold-rgb) / 0.75);
+}
+
+/* Hero — contrôles carousel */
+[data-subsidiary-theme="olive-verte"] section.relative.min-h-\[60vh\] button.rounded-full {
+  background: rgb(0 0 0 / 0.22);
+  border-color: var(--sub-border);
+}
+
+[data-subsidiary-theme="olive-verte"] section.relative.min-h-\[60vh\] button.rounded-full:hover {
+  background: rgb(0 0 0 / 0.34);
+  color: var(--sub-gold);
+}
+
+/* Filet hero blanc discret */
+[data-subsidiary-theme="olive-verte"] section.relative.min-h-\[60vh\] > div.pointer-events-none.h-px {
+  height: 2px;
+  opacity: 0.85;
+  background: rgb(var(--sub-gold-rgb) / 0.75) !important;
+}
