@@ -238,6 +238,29 @@ export const WABI_SABI_THEME: SubsidiaryPageTheme = {
   },
 };
 
+/** Pinkberry — yaourt glacé rose & blanc (frais, gourmand & joyeux). */
+export const PINKBERRY_THEME: SubsidiaryPageTheme = {
+  id: "pinkberry",
+  slug: "filiale-09",
+  colors: {
+    bg: "#E8427C",
+    gold: "#FFFFFF",
+    goldRgb: "255 255 255",
+    text: "#FFFFFF",
+    textMuted: "rgba(255, 255, 255, 0.84)",
+    textSubtle: "rgba(255, 255, 255, 0.62)",
+    surface: "rgba(255, 255, 255, 0.14)",
+    surfaceElevated: "rgba(255, 255, 255, 0.2)",
+    border: "rgba(255, 255, 255, 0.34)",
+    btn: "#FFFFFF",
+  },
+  hero: {
+    overlayGradient:
+      "linear-gradient(to top, #E8427C 0%, rgba(232,66,124,0.92) 42%, rgba(232,66,124,0.48) 68%, transparent 100%), linear-gradient(90deg, rgba(210,50,105,0.82) 0%, transparent 50%), radial-gradient(ellipse 82% 58% at 50% 100%, rgba(255,255,255,0.16) 0%, transparent 58%), radial-gradient(ellipse 44% 36% at 88% 14%, rgba(255,255,255,0.12) 0%, transparent 52%)",
+    blurTint: "#E8427C",
+  },
+};
+
 const THEMES_BY_SLUG: Record<string, SubsidiaryPageTheme> = {
   [GOURMET_MEXICANA_THEME.slug]: GOURMET_MEXICANA_THEME,
   [K_LOUNGE_THEME.slug]: K_LOUNGE_THEME,
@@ -247,6 +270,7 @@ const THEMES_BY_SLUG: Record<string, SubsidiaryPageTheme> = {
   [OLIVE_VERTE_THEME.slug]: OLIVE_VERTE_THEME,
   [PAIN_QUOTIDIEN_THEME.slug]: PAIN_QUOTIDIEN_THEME,
   [PAPA_JOHNS_THEME.slug]: PAPA_JOHNS_THEME,
+  [PINKBERRY_THEME.slug]: PINKBERRY_THEME,
   [WABI_SABI_THEME.slug]: WABI_SABI_THEME,
 };
 
