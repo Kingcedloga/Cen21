@@ -7,6 +7,7 @@ import "@/styles/subsidiary-themes/k-lounge.css";
 import "@/styles/subsidiary-themes/moka-more.css";
 import "@/styles/subsidiary-themes/pain-quotidien.css";
 import "@/styles/subsidiary-themes/papa-johns.css";
+import "@/styles/subsidiary-themes/gourmet-mexicana.css";
 
 type Props = {
   theme: SubsidiaryPageTheme;
@@ -16,24 +17,32 @@ type Props = {
 export function SubsidiaryThemeShell({ theme, children }: Props) {
   const { colors } = theme;
 
+  const style = {
+    "--sub-bg": colors.bg,
+    "--sub-gold": colors.gold,
+    "--sub-gold-rgb": colors.goldRgb,
+    "--sub-text": colors.text,
+    "--sub-text-muted": colors.textMuted,
+    "--sub-text-subtle": colors.textSubtle,
+    "--sub-surface": colors.surface,
+    "--sub-surface-elevated": colors.surfaceElevated,
+    "--sub-border": colors.border,
+    "--sub-btn": colors.btn ?? colors.gold,
+    ...(colors.red && { "--sub-red": colors.red }),
+    ...(colors.redRgb && { "--sub-red-rgb": colors.redRgb }),
+    ...(colors.ochre && { "--sub-ochre": colors.ochre }),
+    ...(colors.ochreRgb && { "--sub-ochre-rgb": colors.ochreRgb }),
+    ...(colors.terracotta && { "--sub-terracotta": colors.terracotta }),
+    ...(colors.terracottaRgb && {
+      "--sub-terracotta-rgb": colors.terracottaRgb,
+    }),
+  } as React.CSSProperties;
+
   return (
     <div
       data-subsidiary-theme={theme.id}
       className="subsidiary-themed-page min-h-full text-white"
-      style={
-        {
-          "--sub-bg": colors.bg,
-          "--sub-gold": colors.gold,
-          "--sub-gold-rgb": colors.goldRgb,
-          "--sub-text": colors.text,
-          "--sub-text-muted": colors.textMuted,
-          "--sub-text-subtle": colors.textSubtle,
-          "--sub-surface": colors.surface,
-          "--sub-surface-elevated": colors.surfaceElevated,
-          "--sub-border": colors.border,
-          "--sub-btn": colors.btn ?? colors.gold,
-        } as React.CSSProperties
-      }
+      style={style}
     >
       {children}
     </div>

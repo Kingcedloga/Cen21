@@ -14,6 +14,13 @@ export type SubsidiaryPageTheme = {
     border: string;
     /** Couleur boutons (optionnel — sinon `gold` ou `bg`). */
     btn?: string;
+    /** Palette étendue (ex. drapeau mexicain). */
+    red?: string;
+    redRgb?: string;
+    ochre?: string;
+    ochreRgb?: string;
+    terracotta?: string;
+    terracottaRgb?: string;
   };
   hero: {
     overlayGradient: string;
@@ -131,7 +138,37 @@ export const PAPA_JOHNS_THEME: SubsidiaryPageTheme = {
   },
 };
 
+/** Gourmet Mexicana — restaurant mexicain tricolore (vert, blanc, rouge + ocre/terre cuite). */
+export const GOURMET_MEXICANA_THEME: SubsidiaryPageTheme = {
+  id: "gourmet-mexicana",
+  slug: "filiale-07",
+  colors: {
+    bg: "#006847",
+    gold: "#D4A017",
+    goldRgb: "212 160 23",
+    text: "#FFFFFF",
+    textMuted: "rgba(255, 255, 255, 0.78)",
+    textSubtle: "rgba(255, 255, 255, 0.55)",
+    surface: "rgba(255, 255, 255, 0.08)",
+    surfaceElevated: "rgba(255, 255, 255, 0.12)",
+    border: "rgba(255, 255, 255, 0.22)",
+    btn: "#CE1126",
+    red: "#CE1126",
+    redRgb: "206 17 38",
+    ochre: "#D4A017",
+    ochreRgb: "212 160 23",
+    terracotta: "#C1440E",
+    terracottaRgb: "193 68 14",
+  },
+  hero: {
+    overlayGradient:
+      "linear-gradient(to top, #006847 0%, rgba(0,104,71,0.9) 40%, rgba(0,104,71,0.38) 68%, transparent 100%), linear-gradient(90deg, rgba(0,72,49,0.85) 0%, transparent 48%), radial-gradient(ellipse 85% 62% at 50% 100%, rgba(206,17,38,0.2) 0%, transparent 58%), radial-gradient(ellipse 55% 42% at 88% 18%, rgba(212,160,23,0.14) 0%, transparent 52%)",
+    blurTint: "#006847",
+  },
+};
+
 const THEMES_BY_SLUG: Record<string, SubsidiaryPageTheme> = {
+  [GOURMET_MEXICANA_THEME.slug]: GOURMET_MEXICANA_THEME,
   [K_LOUNGE_THEME.slug]: K_LOUNGE_THEME,
   [MILLIONAIRE_CLUB_THEME.slug]: MILLIONAIRE_CLUB_THEME,
   [MOKA_MORE_THEME.slug]: MOKA_MORE_THEME,
