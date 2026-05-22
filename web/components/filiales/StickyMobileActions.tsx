@@ -11,10 +11,12 @@ export function StickyMobileActions({
   phone,
   mapsUrl,
   subsidiaryName,
+  themed = false,
 }: {
   phone?: string;
   mapsUrl?: string;
   subsidiaryName: string;
+  themed?: boolean;
 }) {
   const [visible, setVisible] = useState(false);
   const reduced = useReducedMotion();
@@ -49,13 +51,28 @@ export function StickyMobileActions({
           aria-label={`Actions rapides ${subsidiaryName}`}
           className="pointer-events-auto fixed inset-x-3 bottom-3 z-40 lg:hidden"
         >
-          <div className="flex items-stretch gap-2 rounded-2xl border border-gold/30 bg-petrol/95 p-2 shadow-xl shadow-black/55 backdrop-blur-md">
+          <div
+            className={
+              themed
+                ? "sub-sticky-bar flex items-stretch gap-2 rounded-2xl border p-2 shadow-xl backdrop-blur-md"
+                : "flex items-stretch gap-2 rounded-2xl border border-gold/30 bg-petrol/95 p-2 shadow-xl shadow-black/55 backdrop-blur-md"
+            }
+          >
             {cleanedPhone && (
               <a
                 href={`tel:${cleanedPhone}`}
-                className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gold px-3 py-3 text-sm font-semibold text-petrol transition-colors duration-200 hover:brightness-[1.04] active:brightness-[0.98] focus-visible:outline-2 focus-visible:outline-gold cursor-pointer"
+                className={
+                  themed
+                    ? "sub-sticky-call flex flex-1 items-center justify-center gap-2 rounded-xl px-3 py-3 text-sm font-semibold transition-colors duration-200 active:brightness-[0.98] focus-visible:outline-2 focus-visible:outline-[var(--sub-gold)] cursor-pointer"
+                    : "flex flex-1 items-center justify-center gap-2 rounded-xl bg-gold px-3 py-3 text-sm font-semibold text-petrol transition-colors duration-200 hover:brightness-[1.04] active:brightness-[0.98] focus-visible:outline-2 focus-visible:outline-gold cursor-pointer"
+                }
               >
-                <Icon name="phone" size="sm" className="text-petrol" strokeWidth={ICON_STROKE} />
+                <Icon
+                  name="phone"
+                  size="sm"
+                  className={themed ? "text-black" : "text-petrol"}
+                  strokeWidth={ICON_STROKE}
+                />
                 <span>Appeler</span>
               </a>
             )}
@@ -64,9 +81,18 @@ export function StickyMobileActions({
                 href={mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-ivory/20 bg-anthracite/80 px-3 py-3 text-sm font-semibold text-ivory transition-colors duration-200 hover:border-ivory/50 hover:bg-ivory/[0.06] focus-visible:outline-2 focus-visible:outline-ivory cursor-pointer"
+                className={
+                  themed
+                    ? "sub-sticky-maps flex flex-1 items-center justify-center gap-2 rounded-xl border px-3 py-3 text-sm font-semibold transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-[var(--sub-gold)] cursor-pointer"
+                    : "flex flex-1 items-center justify-center gap-2 rounded-xl border border-ivory/20 bg-anthracite/80 px-3 py-3 text-sm font-semibold text-ivory transition-colors duration-200 hover:border-ivory/50 hover:bg-ivory/[0.06] focus-visible:outline-2 focus-visible:outline-ivory cursor-pointer"
+                }
               >
-                <Icon name="location" size="sm" className="text-ivory" strokeWidth={ICON_STROKE} />
+                <Icon
+                  name="location"
+                  size="sm"
+                  className={themed ? "text-current" : "text-ivory"}
+                  strokeWidth={ICON_STROKE}
+                />
                 <span>Itinéraire</span>
               </a>
             )}

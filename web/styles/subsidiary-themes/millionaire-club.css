@@ -1,0 +1,195 @@
+/* Millionaire Club — thème page filiale (filiale-04) uniquement */
+
+[data-subsidiary-theme="millionaire-club"] {
+  background-color: var(--sub-bg);
+  color: var(--sub-text);
+}
+
+/* Typographie & accents */
+[data-subsidiary-theme="millionaire-club"] .text-gold {
+  color: var(--sub-gold);
+}
+
+[data-subsidiary-theme="millionaire-club"] .text-ivory,
+[data-subsidiary-theme="millionaire-club"] .text-ivory\/80,
+[data-subsidiary-theme="millionaire-club"] .text-ivory\/75,
+[data-subsidiary-theme="millionaire-club"] .text-ivory\/85 {
+  color: var(--sub-text);
+}
+
+[data-subsidiary-theme="millionaire-club"] .text-taupe {
+  color: var(--sub-text-muted);
+}
+
+[data-subsidiary-theme="millionaire-club"] .text-stone {
+  color: var(--sub-text-subtle);
+}
+
+[data-subsidiary-theme="millionaire-club"] .hover\:text-gold:hover,
+[data-subsidiary-theme="millionaire-club"] a.hover\:text-gold:hover {
+  color: var(--sub-gold);
+}
+
+[data-subsidiary-theme="millionaire-club"] .hover\:text-ivory:hover {
+  color: var(--sub-text);
+}
+
+/* Titres de section — séparateur doré */
+[data-subsidiary-theme="millionaire-club"] .sub-themed-heading {
+  color: var(--sub-text);
+  letter-spacing: -0.02em;
+}
+
+[data-subsidiary-theme="millionaire-club"] .sub-themed-heading::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 2px;
+  margin-top: 0.875rem;
+  background: linear-gradient(
+    90deg,
+    var(--sub-gold) 0%,
+    rgb(var(--sub-gold-rgb) / 0.35) 100%
+  );
+}
+
+/* Surfaces */
+[data-subsidiary-theme="millionaire-club"] .bg-anthracite\/40 {
+  background-color: rgb(var(--sub-gold-rgb) / 0.04);
+}
+
+[data-subsidiary-theme="millionaire-club"] .sub-themed-info-band {
+  border-block: 1px solid var(--sub-border);
+  background: linear-gradient(
+    180deg,
+    rgb(var(--sub-gold-rgb) / 0.06) 0%,
+    transparent 48%,
+    rgb(var(--sub-gold-rgb) / 0.04) 100%
+  );
+}
+
+/* Glass panels — nightclub premium */
+[data-subsidiary-theme="millionaire-club"] .glass-panel {
+  background: linear-gradient(
+    165deg,
+    rgb(var(--sub-gold-rgb) / 0.07) 0%,
+    var(--sub-surface) 42%,
+    rgb(0 0 0 / 0.55) 100%
+  );
+  border: 1px solid var(--sub-border);
+  box-shadow:
+    inset 0 1px 0 0 rgb(var(--sub-gold-rgb) / 0.1),
+    inset 0 -1px 0 0 rgb(0 0 0 / 0.45),
+    0 16px 40px -18px rgb(0 0 0 / 0.75);
+}
+
+[data-subsidiary-theme="millionaire-club"] .glass-panel:hover {
+  border-color: rgb(var(--sub-gold-rgb) / 0.42);
+  box-shadow:
+    inset 0 1px 0 0 rgb(var(--sub-gold-rgb) / 0.14),
+    inset 0 -1px 0 0 rgb(0 0 0 / 0.45),
+    0 22px 48px -16px rgb(0 0 0 / 0.85),
+    0 0 0 1px rgb(var(--sub-gold-rgb) / 0.16);
+}
+
+/* Boutons */
+[data-subsidiary-theme="millionaire-club"] .btn-primary {
+  background: var(--sub-gold);
+  color: var(--sub-bg);
+  border: 1px solid rgb(var(--sub-gold-rgb) / 0.55);
+  box-shadow:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.22),
+    0 10px 28px -10px rgb(var(--sub-gold-rgb) / 0.55);
+}
+
+[data-subsidiary-theme="millionaire-club"] .btn-primary:hover {
+  background: rgb(var(--sub-gold-rgb) / 0.92);
+  box-shadow:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.28),
+    0 14px 36px -10px rgb(var(--sub-gold-rgb) / 0.65);
+}
+
+[data-subsidiary-theme="millionaire-club"] .btn-secondary {
+  background: rgb(0 0 0 / 0.35);
+  color: var(--sub-text);
+  border: 1px solid var(--sub-border);
+  backdrop-filter: blur(12px);
+}
+
+[data-subsidiary-theme="millionaire-club"] .btn-secondary:hover {
+  border-color: rgb(var(--sub-gold-rgb) / 0.55);
+  color: var(--sub-gold);
+  box-shadow: 0 0 0 1px rgb(var(--sub-gold-rgb) / 0.12);
+}
+
+/* Galerie — cadre doré discret */
+[data-subsidiary-theme="millionaire-club"] .group.rounded-sm {
+  border: 1px solid rgb(var(--sub-gold-rgb) / 0.14);
+  border-radius: 0.75rem;
+}
+
+[data-subsidiary-theme="millionaire-club"] .group.rounded-sm:focus-visible {
+  outline-color: var(--sub-gold);
+}
+
+/* Icônes pratiques */
+[data-subsidiary-theme="millionaire-club"] .glass-panel svg {
+  color: var(--sub-gold);
+}
+
+/* Fil d'Ariane */
+[data-subsidiary-theme="millionaire-club"] nav[aria-label="Fil d'Ariane"] a {
+  color: var(--sub-text-muted);
+}
+
+[data-subsidiary-theme="millionaire-club"] nav[aria-label="Fil d'Ariane"] a:hover {
+  color: var(--sub-gold);
+}
+
+[data-subsidiary-theme="millionaire-club"] nav[aria-label="Fil d'Ariane"] span[aria-current="page"] {
+  color: var(--sub-gold);
+}
+
+/* Barre de progression lecture */
+[data-subsidiary-theme="millionaire-club"] .sub-reading-progress {
+  background: linear-gradient(
+    90deg,
+    var(--sub-gold) 0%,
+    rgb(var(--sub-gold-rgb) / 0.75) 55%,
+    rgb(var(--sub-gold-rgb) / 0.4) 100%
+  );
+}
+
+/* Actions mobiles sticky */
+[data-subsidiary-theme="millionaire-club"] .sub-sticky-bar {
+  border-color: rgb(var(--sub-gold-rgb) / 0.35);
+  background: rgb(0 0 0 / 0.94);
+  box-shadow:
+    0 18px 48px -12px rgb(0 0 0 / 0.85),
+    0 0 0 1px rgb(var(--sub-gold-rgb) / 0.08);
+}
+
+[data-subsidiary-theme="millionaire-club"] .sub-sticky-call {
+  background: var(--sub-gold);
+  color: var(--sub-bg);
+}
+
+[data-subsidiary-theme="millionaire-club"] .sub-sticky-call:hover {
+  filter: brightness(1.05);
+}
+
+[data-subsidiary-theme="millionaire-club"] .sub-sticky-maps {
+  border-color: rgb(var(--sub-gold-rgb) / 0.28);
+  background: var(--sub-surface-elevated);
+  color: var(--sub-text);
+}
+
+[data-subsidiary-theme="millionaire-club"] .sub-sticky-maps:hover {
+  border-color: rgb(var(--sub-gold-rgb) / 0.5);
+  color: var(--sub-gold);
+}
+
+/* Carte — lien externe */
+[data-subsidiary-theme="millionaire-club"] .glass-panel .border-t {
+  border-color: var(--sub-border);
+}

@@ -1,10 +1,10 @@
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { ReactNode } from "react";
 
 import { EventCard } from "@/components/cards/EventCard";
 import { StickyMobileActions } from "@/components/filiales/StickyMobileActions";
+import { SubsidiaryThemeShell } from "@/components/filiales/SubsidiaryThemeShell";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
 import { MapEmbed } from "@/components/maps/MapEmbed";
 import { SubsidiaryHero } from "@/components/sections/SubsidiaryHero";
@@ -23,6 +23,7 @@ import {
   getUpcomingEventsBySubsidiary,
 } from "@/lib/content";
 import { resolvePageMetadata } from "@/lib/seo";
+import { getSubsidiaryPageTheme } from "@/lib/subsidiary-themes";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -53,8 +54,10 @@ export default async function SubsidiaryPage({ params }: Props) {
   const subsidiary = getSubsidiaryBySlug(l, slug);
   if (!subsidiary) notFound();
 
+  const pageTheme = getSubsidiaryPageTheme(slug);
+  const isThemed = Boolean(pageTheme);
+
   const t = await getTranslations("subsidiaries");
-  const tCommon = await getTranslations("common");
 
   const events = getUpcomingEventsBySubsidiary(l, slug);
   const galleryItems = [
@@ -83,15 +86,35 @@ export default async function SubsidiaryPage({ params }: Props) {
 
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
 
-  return (
+  const headingClass = isThemed
+    ? "sub-themed-heading font-[family-name:var(--font-dm-sans)] text-3xl mb-4"
+    : "font-[family-name:var(--font-dm-sans)] text-3xl text-ivory mb-4";
+
+  const sectionHeadingClass = isThemed
+    ? "sub-themed-heading font-[family-name:var(--font-dm-sans)] text-3xl mb-8"
+    : "font-[family-name:var(--font-dm-sans)] text-3xl text-ivory mb-8";
+
+  const infoBandClass = isThemed
+    ? "sub-themed-info-band py-12 px-4 md:px-6"
+    : "py-12 px-4 md:px-6 bg-anthracite/40";
+
+  const content = (
     <>
-      <ReadingProgress />
+      <ReadingProgress
+        barClassName={
+          isThemed
+            ? "sub-reading-progress fixed left-0 right-0 top-0 z-[55] h-[3px] origin-left"
+            : undefined
+        }
+      />
       <SubsidiaryHero
         slides={heroSlides}
         sectorLabel={getSectorLabel(l, subsidiary.sector)}
         name={subsidiary.name}
         tagline={subsidiary.tagline}
         social={subsidiary.social}
+        brandLogo={isThemed ? subsidiary.brandLogo : undefined}
+        theme={pageTheme ?? undefined}
       />
 
       <section className="px-4 pt-8 md:px-6 md:pt-10 lg:px-8">
@@ -116,13 +139,14 @@ export default async function SubsidiaryPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="py-12 px-4 md:px-6 bg-anthracite/40">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className={infoBandClass}>
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-3">
           {subsidiary.practicalInfo.address && (
             <InfoItem
               icon={<Icon name="location" size="md" />}
               label={t("address")}
               value={subsidiary.practicalInfo.address}
+              themed={isThemed}
             />
           )}
           {subsidiary.practicalInfo.hours && (
@@ -130,6 +154,7 @@ export default async function SubsidiaryPage({ params }: Props) {
               icon={<Icon name="hours" size="md" />}
               label={t("hours")}
               value={subsidiary.practicalInfo.hours}
+              themed={isThemed}
             />
           )}
           {subsidiary.practicalInfo.phone && (
@@ -139,41 +164,36 @@ export default async function SubsidiaryPage({ params }: Props) {
               value={
                 <a
                   href={`tel:${subsidiary.practicalInfo.phone?.replace(/\s/g, "")}`}
-                  className="hover:text-gold transition-colors cursor-pointer"
+                  className="transition-colors hover:text-gold cursor-pointer"
                 >
                   {subsidiary.practicalInfo.phone}
                 </a>
               }
+              themed={isThemed}
             />
           )}
         </div>
       </section>
 
-      <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto">
-        <h2 className="font-[family-name:var(--font-dm-sans)] text-3xl text-ivory mb-4">
-          {t("mapAccess")}
-        </h2>
-        <p className="text-taupe text-sm mb-6 max-w-2xl">{t("mapDescription")}</p>
+      <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
+        <h2 className={headingClass}>{t("mapAccess")}</h2>
+        <p className="mb-6 max-w-2xl text-sm text-taupe">{t("mapDescription")}</p>
         <MapEmbed query={mapQuery} title={t("mapTitle", { name: subsidiary.name })} />
       </section>
 
       {galleryItems.length > 0 && (
-        <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto">
-          <h2 className="font-[family-name:var(--font-dm-sans)] text-3xl text-ivory mb-8">
-            {t("gallery")}
-          </h2>
+        <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
+          <h2 className={sectionHeadingClass}>{t("gallery")}</h2>
           <GalleryGrid items={galleryItems} showFilters={false} />
         </section>
       )}
 
-      <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto">
-        <h2 className="font-[family-name:var(--font-dm-sans)] text-3xl text-ivory mb-8">
-          {t("upcomingEvents")}
-        </h2>
+      <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
+        <h2 className={sectionHeadingClass}>{t("upcomingEvents")}</h2>
         {events.length === 0 ? (
-          <p className="text-taupe mb-8">{t("noEventsScheduled")}</p>
+          <p className="mb-8 text-taupe">{t("noEventsScheduled")}</p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {events.map((event) => (
               <EventCard key={event.id} event={event} />
             ))}
@@ -184,15 +204,22 @@ export default async function SubsidiaryPage({ params }: Props) {
         </Button>
       </section>
 
-      <div className="lg:hidden h-20" aria-hidden />
+      <div className="h-20 lg:hidden" aria-hidden />
 
       <StickyMobileActions
         phone={subsidiary.practicalInfo.phone}
         mapsUrl={subsidiary.practicalInfo.address ? mapsUrl : undefined}
         subsidiaryName={subsidiary.name}
+        themed={isThemed}
       />
     </>
   );
+
+  if (pageTheme) {
+    return <SubsidiaryThemeShell theme={pageTheme}>{content}</SubsidiaryThemeShell>;
+  }
+
+  return content;
 }
 
 function dedupeSlides(slides: { src: string; alt: string }[]) {
@@ -208,18 +235,20 @@ function InfoItem({
   icon,
   label,
   value,
+  themed = false,
 }: {
   icon: ReactNode;
   label: string;
   value: ReactNode;
+  themed?: boolean;
 }) {
   return (
-    <div className="glass-panel p-6 rounded-xl">
-      <div className="flex items-center gap-2 mb-2">
-        {icon}
-        <span className="text-gold text-xs tracking-[0.15em] uppercase">{label}</span>
+    <div className="glass-panel rounded-xl p-6">
+      <div className="mb-2 flex items-center gap-2">
+        <span className={themed ? "text-[var(--sub-gold)]" : undefined}>{icon}</span>
+        <span className="text-xs uppercase tracking-[0.15em] text-gold">{label}</span>
       </div>
-      <p className="text-ivory text-sm">{value}</p>
+      <p className="text-sm text-ivory">{value}</p>
     </div>
   );
 }
