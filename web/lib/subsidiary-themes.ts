@@ -40,7 +40,30 @@ export const MILLIONAIRE_CLUB_THEME: SubsidiaryPageTheme = {
   },
 };
 
+/** K Lounge — lounge premium noir & blanc (accent = blanc via --sub-gold). */
+export const K_LOUNGE_THEME: SubsidiaryPageTheme = {
+  id: "k-lounge",
+  slug: "filiale-03",
+  colors: {
+    bg: "#000000",
+    gold: "#FFFFFF",
+    goldRgb: "255 255 255",
+    text: "#FFFFFF",
+    textMuted: "rgba(255, 255, 255, 0.72)",
+    textSubtle: "rgba(255, 255, 255, 0.5)",
+    surface: "rgba(255, 255, 255, 0.04)",
+    surfaceElevated: "rgba(255, 255, 255, 0.08)",
+    border: "rgba(255, 255, 255, 0.18)",
+  },
+  hero: {
+    overlayGradient:
+      "linear-gradient(to top, #000000 0%, rgba(0,0,0,0.68) 44%, rgba(0,0,0,0.22) 72%, transparent 100%), linear-gradient(90deg, rgba(0,0,0,0.78) 0%, transparent 52%), radial-gradient(ellipse 72% 52% at 50% 100%, rgba(255,255,255,0.07) 0%, transparent 58%)",
+    blurTint: "#000000",
+  },
+};
+
 const THEMES_BY_SLUG: Record<string, SubsidiaryPageTheme> = {
+  [K_LOUNGE_THEME.slug]: K_LOUNGE_THEME,
   [MILLIONAIRE_CLUB_THEME.slug]: MILLIONAIRE_CLUB_THEME,
 };
 
