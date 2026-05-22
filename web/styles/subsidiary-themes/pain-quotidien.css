@@ -1,0 +1,214 @@
+/* Le Pain Quotidien — thème page filiale (filiale-10) : chocolat au lait & blanc */
+
+[data-subsidiary-theme="pain-quotidien"] {
+  background-color: var(--sub-bg);
+  color: var(--sub-text);
+}
+
+/* Typographie blanche & accents clairs */
+[data-subsidiary-theme="pain-quotidien"] .text-gold {
+  color: var(--sub-gold);
+}
+
+[data-subsidiary-theme="pain-quotidien"] .text-ivory,
+[data-subsidiary-theme="pain-quotidien"] .text-ivory\/80,
+[data-subsidiary-theme="pain-quotidien"] .text-ivory\/75,
+[data-subsidiary-theme="pain-quotidien"] .text-ivory\/85 {
+  color: var(--sub-text);
+}
+
+[data-subsidiary-theme="pain-quotidien"] .text-taupe {
+  color: var(--sub-text-muted);
+}
+
+[data-subsidiary-theme="pain-quotidien"] .text-stone {
+  color: var(--sub-text-subtle);
+}
+
+[data-subsidiary-theme="pain-quotidien"] .hover\:text-gold:hover,
+[data-subsidiary-theme="pain-quotidien"] a.hover\:text-gold:hover {
+  color: var(--sub-gold);
+}
+
+[data-subsidiary-theme="pain-quotidien"] .hover\:text-ivory:hover {
+  color: var(--sub-text);
+}
+
+/* Titres — séparateur blanc artisanal */
+[data-subsidiary-theme="pain-quotidien"] .sub-themed-heading {
+  color: var(--sub-text);
+  letter-spacing: -0.015em;
+  font-weight: 500;
+}
+
+[data-subsidiary-theme="pain-quotidien"] .sub-themed-heading::after {
+  content: "";
+  display: block;
+  width: 2.75rem;
+  height: 2px;
+  margin-top: 0.9375rem;
+  border-radius: 1px;
+  background: rgb(var(--sub-gold-rgb) / 0.88);
+}
+
+/* Surfaces chaudes */
+[data-subsidiary-theme="pain-quotidien"] .bg-anthracite\/40 {
+  background-color: rgb(0 0 0 / 0.1);
+}
+
+[data-subsidiary-theme="pain-quotidien"] .sub-themed-info-band {
+  border-block: 1px solid var(--sub-border);
+  background: linear-gradient(
+    180deg,
+    rgb(0 0 0 / 0.14) 0%,
+    transparent 48%,
+    rgb(0 0 0 / 0.1) 100%
+  );
+}
+
+/* Glass panels — boulangerie artisanale */
+[data-subsidiary-theme="pain-quotidien"] .glass-panel {
+  background: linear-gradient(
+    165deg,
+    rgb(var(--sub-gold-rgb) / 0.1) 0%,
+    var(--sub-surface) 40%,
+    rgb(0 0 0 / 0.22) 100%
+  );
+  border: 1px solid var(--sub-border);
+  border-radius: 0.875rem;
+  box-shadow:
+    inset 0 1px 0 0 rgb(var(--sub-gold-rgb) / 0.12),
+    inset 0 -1px 0 0 rgb(0 0 0 / 0.15),
+    0 12px 32px -14px rgb(0 0 0 / 0.28);
+}
+
+[data-subsidiary-theme="pain-quotidien"] .glass-panel:hover {
+  border-color: rgb(var(--sub-gold-rgb) / 0.42);
+  box-shadow:
+    inset 0 1px 0 0 rgb(var(--sub-gold-rgb) / 0.16),
+    inset 0 -1px 0 0 rgb(0 0 0 / 0.15),
+    0 16px 40px -12px rgb(0 0 0 / 0.32),
+    0 0 0 1px rgb(var(--sub-gold-rgb) / 0.1);
+}
+
+/* Boutons — blanc sur chocolat */
+[data-subsidiary-theme="pain-quotidien"] .btn-primary {
+  background: var(--sub-gold);
+  color: var(--sub-bg);
+  border: 1px solid rgb(var(--sub-gold-rgb) / 0.85);
+  box-shadow:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.35),
+    0 8px 22px -10px rgb(0 0 0 / 0.35);
+}
+
+[data-subsidiary-theme="pain-quotidien"] .btn-primary:hover {
+  background: rgb(var(--sub-gold-rgb) / 0.94);
+  box-shadow:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.4),
+    0 12px 28px -10px rgb(0 0 0 / 0.4);
+}
+
+[data-subsidiary-theme="pain-quotidien"] .btn-secondary {
+  background: rgb(0 0 0 / 0.12);
+  color: var(--sub-text);
+  border: 1px solid var(--sub-border);
+  backdrop-filter: blur(8px);
+}
+
+[data-subsidiary-theme="pain-quotidien"] .btn-secondary:hover {
+  border-color: rgb(var(--sub-gold-rgb) / 0.55);
+  color: var(--sub-gold);
+  background: rgb(var(--sub-gold-rgb) / 0.08);
+}
+
+/* Galerie */
+[data-subsidiary-theme="pain-quotidien"] .group.rounded-sm {
+  border: 1px solid rgb(var(--sub-gold-rgb) / 0.18);
+  border-radius: 0.625rem;
+}
+
+[data-subsidiary-theme="pain-quotidien"] .group.rounded-sm:focus-visible {
+  outline-color: var(--sub-gold);
+}
+
+/* Icônes */
+[data-subsidiary-theme="pain-quotidien"] .glass-panel svg {
+  color: var(--sub-gold);
+}
+
+/* Fil d'Ariane */
+[data-subsidiary-theme="pain-quotidien"] nav[aria-label="Fil d'Ariane"] a {
+  color: var(--sub-text-muted);
+}
+
+[data-subsidiary-theme="pain-quotidien"] nav[aria-label="Fil d'Ariane"] a:hover {
+  color: var(--sub-gold);
+}
+
+[data-subsidiary-theme="pain-quotidien"] nav[aria-label="Fil d'Ariane"] span[aria-current="page"] {
+  color: var(--sub-gold);
+}
+
+/* Barre de progression */
+[data-subsidiary-theme="pain-quotidien"] .sub-reading-progress {
+  background: linear-gradient(
+    90deg,
+    var(--sub-gold) 0%,
+    rgb(var(--sub-gold-rgb) / 0.72) 58%,
+    rgb(var(--sub-gold-rgb) / 0.28) 100%
+  );
+}
+
+/* Actions mobiles sticky */
+[data-subsidiary-theme="pain-quotidien"] .sub-sticky-bar {
+  border-color: rgb(var(--sub-gold-rgb) / 0.28);
+  background: rgb(0 0 0 / 0.35);
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 16px 40px -12px rgb(0 0 0 / 0.45),
+    0 0 0 1px rgb(var(--sub-gold-rgb) / 0.08);
+}
+
+[data-subsidiary-theme="pain-quotidien"] .sub-sticky-call {
+  background: var(--sub-gold);
+  color: var(--sub-bg);
+}
+
+[data-subsidiary-theme="pain-quotidien"] .sub-sticky-call:hover {
+  filter: brightness(0.98);
+}
+
+[data-subsidiary-theme="pain-quotidien"] .sub-sticky-maps {
+  border-color: rgb(var(--sub-gold-rgb) / 0.24);
+  background: var(--sub-surface-elevated);
+  color: var(--sub-text);
+}
+
+[data-subsidiary-theme="pain-quotidien"] .sub-sticky-maps:hover {
+  border-color: rgb(var(--sub-gold-rgb) / 0.45);
+  color: var(--sub-gold);
+}
+
+/* Carte */
+[data-subsidiary-theme="pain-quotidien"] .glass-panel .border-t {
+  border-color: var(--sub-border);
+}
+
+[data-subsidiary-theme="pain-quotidien"] .glass-panel a.text-gold:hover {
+  color: rgb(var(--sub-gold-rgb) / 0.82);
+}
+
+[data-subsidiary-theme="pain-quotidien"] article.glass-panel a.text-gold:hover {
+  color: rgb(var(--sub-gold-rgb) / 0.75);
+}
+
+/* Hero — contrôles carousel sur fond chocolat */
+[data-subsidiary-theme="pain-quotidien"] section.relative.min-h-\[60vh\] button.rounded-full {
+  background: rgb(0 0 0 / 0.28);
+  border-color: var(--sub-border);
+}
+
+[data-subsidiary-theme="pain-quotidien"] section.relative.min-h-\[60vh\] button.rounded-full:hover {
+  background: rgb(0 0 0 / 0.42);
+  color: var(--sub-gold);
+}

@@ -84,10 +84,33 @@ export const MOKA_MORE_THEME: SubsidiaryPageTheme = {
   },
 };
 
+/** Le Pain Quotidien — boulangerie artisanale chocolat & blanc (accent = blanc via --sub-gold). */
+export const PAIN_QUOTIDIEN_THEME: SubsidiaryPageTheme = {
+  id: "pain-quotidien",
+  slug: "filiale-10",
+  colors: {
+    bg: "#8B5E3C",
+    gold: "#FFFFFF",
+    goldRgb: "255 255 255",
+    text: "#FFFFFF",
+    textMuted: "rgba(255, 255, 255, 0.78)",
+    textSubtle: "rgba(255, 255, 255, 0.55)",
+    surface: "rgba(0, 0, 0, 0.12)",
+    surfaceElevated: "rgba(0, 0, 0, 0.18)",
+    border: "rgba(255, 255, 255, 0.22)",
+  },
+  hero: {
+    overlayGradient:
+      "linear-gradient(to top, #8B5E3C 0%, rgba(139,94,60,0.88) 42%, rgba(139,94,60,0.42) 68%, transparent 100%), linear-gradient(90deg, rgba(107,72,46,0.82) 0%, transparent 50%), radial-gradient(ellipse 78% 56% at 50% 100%, rgba(255,255,255,0.1) 0%, transparent 58%)",
+    blurTint: "#8B5E3C",
+  },
+};
+
 const THEMES_BY_SLUG: Record<string, SubsidiaryPageTheme> = {
   [K_LOUNGE_THEME.slug]: K_LOUNGE_THEME,
   [MILLIONAIRE_CLUB_THEME.slug]: MILLIONAIRE_CLUB_THEME,
   [MOKA_MORE_THEME.slug]: MOKA_MORE_THEME,
+  [PAIN_QUOTIDIEN_THEME.slug]: PAIN_QUOTIDIEN_THEME,
 };
 
 export function getSubsidiaryPageTheme(slug: string): SubsidiaryPageTheme | null {

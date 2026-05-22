@@ -5,6 +5,7 @@ import type { SubsidiaryPageTheme } from "@/lib/subsidiary-themes";
 import "@/styles/subsidiary-themes/millionaire-club.css";
 import "@/styles/subsidiary-themes/k-lounge.css";
 import "@/styles/subsidiary-themes/moka-more.css";
+import "@/styles/subsidiary-themes/pain-quotidien.css";
 
 type Props = {
   theme: SubsidiaryPageTheme;
@@ -17,7 +18,7 @@ export function SubsidiaryThemeShell({ theme, children }: Props) {
   return (
     <div
       data-subsidiary-theme={theme.id}
-      className="subsidiary-themed-page min-h-full bg-black text-white"
+      className="subsidiary-themed-page min-h-full text-white"
       style={
         {
           "--sub-bg": colors.bg,
