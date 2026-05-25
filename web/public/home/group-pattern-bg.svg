@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <pattern id="cen21-group-pattern" width="128" height="128" patternUnits="userSpaceOnUse">
+      <rect width="128" height="128" fill="#004258"/>
+      <g
+        fill="none"
+        stroke="#B58E48"
+        stroke-width="0.55"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        opacity="0.9"
+      >
+        <!-- Courbes entrelacées  tuile seamless 128×128 -->
+        <path d="M0 64 C32 64 32 32 64 32 C96 32 96 64 128 64" />
+        <path d="M0 96 C32 96 32 64 64 64" />
+        <path d="M128 32 C96 32 96 64 64 64" />
+        <path d="M64 0 C64 32 96 32 96 64 C96 96 64 96 64 128" />
+        <path d="M32 0 C32 32 64 32 64 64 C64 96 32 96 32 128" />
+        <path d="M96 0 C96 32 64 32 64 64" />
+        <path d="M0 32 C32 32 32 64 64 64" />
+        <!-- Chevrons aux points cardinaux -->
+        <path d="M64 4 L68 12 L64 10 L60 12 Z" fill="#B58E48" stroke="none" />
+        <path d="M124 64 L116 68 L118 64 L116 60 Z" fill="#B58E48" stroke="none" />
+        <path d="M64 124 L60 116 L64 118 L68 116 Z" fill="#B58E48" stroke="none" />
+        <path d="M4 64 L12 60 L10 64 L12 68 Z" fill="#B58E48" stroke="none" />
+      </g>
+    </pattern>
+  </defs>
+  <rect width="128" height="128" fill="url(#cen21-group-pattern)"/>
+</svg>
