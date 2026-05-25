@@ -496,18 +496,3 @@ h4 {
   outline-offset: 3px;
   border-radius: 4px;
 }
-
-/* === Accueil — section « Le groupe » ================================== */
-#home-group {
-  background-color: var(--color-petrol);
-  background-image: url("/home/group-pattern-bg.png");
-  background-repeat: repeat;
-  background-size: 1024px auto;
-  background-position: left top;
-}
-
-@supports (background-image: url("/home/group-pattern-bg.webp")) {
-  #home-group {
-    background-image: url("/home/group-pattern-bg.webp");
-  }
-}
