@@ -501,7 +501,13 @@ h4 {
 #home-group {
   background-color: var(--color-petrol);
   background-image: url("/home/group-pattern-bg.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  background-repeat: repeat;
+  background-size: 1024px auto;
+  background-position: left top;
+}
+
+@supports (background-image: url("/home/group-pattern-bg.webp")) {
+  #home-group {
+    background-image: url("/home/group-pattern-bg.webp");
+  }
 }
