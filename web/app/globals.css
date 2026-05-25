@@ -500,8 +500,8 @@ h4 {
 /* === Accueil — section « Le groupe » ================================== */
 #home-group {
   background-color: var(--color-petrol);
-  background-image: url("/home/group-pattern-bg.svg");
-  background-repeat: repeat;
-  background-size: 512px auto;
-  background-position: center top;
+  background-image: url("/home/group-pattern-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
