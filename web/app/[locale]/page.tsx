@@ -50,7 +50,8 @@ export default async function HomePage({ params }: Props) {
         id="home-group"
         variant="default"
         spacing="default"
-        containerClassName="mx-auto max-w-[min(100%,1400px)]"
+        containerClassName="mx-auto max-w-[min(100%,1400px)] relative z-10"
+        className="overflow-hidden"
       >
         <AnimateIn>
           <SectionHeading
@@ -60,11 +61,6 @@ export default async function HomePage({ params }: Props) {
             align="left"
             className="mb-6 md:mb-8 max-w-2xl"
           />
-        </AnimateIn>
-        <AnimateIn delay={0.1}>
-          <p className="max-w-2xl text-left text-base leading-relaxed text-taupe md:text-lg">
-            {t("groupBody")}
-          </p>
         </AnimateIn>
       </PageSection>
 
