@@ -5,7 +5,6 @@ import type { ReactNode } from "react";
 import { EventCard } from "@/components/cards/EventCard";
 import { StickyMobileActions } from "@/components/filiales/StickyMobileActions";
 import { SubsidiaryThemeShell } from "@/components/filiales/SubsidiaryThemeShell";
-import { WabiSabiHero } from "@/components/filiales/WabiSabiHero";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
 import { MapEmbed } from "@/components/maps/MapEmbed";
 import { SubsidiaryHero } from "@/components/sections/SubsidiaryHero";
@@ -108,24 +107,15 @@ export default async function SubsidiaryPage({ params }: Props) {
             : undefined
         }
       />
-      {pageTheme?.id === "wabi-sabi" ? (
-        <WabiSabiHero
-          slides={heroSlides}
-          name={subsidiary.name}
-          tagline={subsidiary.tagline}
-          brandLogo={subsidiary.brandLogo!}
-        />
-      ) : (
-        <SubsidiaryHero
-          slides={heroSlides}
-          sectorLabel={getSectorLabel(l, subsidiary.sector)}
-          name={subsidiary.name}
-          tagline={subsidiary.tagline}
-          social={subsidiary.social}
-          brandLogo={isThemed ? subsidiary.brandLogo : undefined}
-          theme={pageTheme ?? undefined}
-        />
-      )}
+      <SubsidiaryHero
+        slides={heroSlides}
+        sectorLabel={getSectorLabel(l, subsidiary.sector)}
+        name={subsidiary.name}
+        tagline={subsidiary.tagline}
+        social={subsidiary.social}
+        brandLogo={isThemed ? subsidiary.brandLogo : undefined}
+        theme={pageTheme ?? undefined}
+      />
 
       <section className="px-4 pt-8 md:px-6 md:pt-10 lg:px-8">
         <div className="mx-auto max-w-7xl">

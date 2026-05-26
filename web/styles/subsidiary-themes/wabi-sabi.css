@@ -204,83 +204,25 @@
   color: rgb(var(--sub-gold-rgb) / 0.78);
 }
 
-/* Hero split — layout deux colonnes */
-[data-subsidiary-theme="wabi-sabi"] .wabi-sabi-hero-panel {
-  background-color: var(--sub-bg);
-  background-image: radial-gradient(
-    ellipse 80% 70% at 72% 50%,
-    rgb(var(--sub-gold-rgb) / 0.07) 0%,
-    transparent 62%
-  );
-}
-
-[data-subsidiary-theme="wabi-sabi"] .wabi-sabi-hero-divider {
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgb(var(--sub-gold-rgb) / 0.35) 18%,
-    rgb(var(--sub-gold-rgb) / 0.55) 50%,
-    rgb(var(--sub-gold-rgb) / 0.35) 82%,
-    transparent 100%
-  );
-}
-
-[data-subsidiary-theme="wabi-sabi"] .wabi-sabi-hero-content {
-  max-width: 28rem;
-}
-
-@media (min-width: 1024px) {
-  [data-subsidiary-theme="wabi-sabi"] .wabi-sabi-hero-content {
-    max-width: 24rem;
-  }
-}
-
-@media (min-width: 1280px) {
-  [data-subsidiary-theme="wabi-sabi"] .wabi-sabi-hero-content {
-    max-width: 26rem;
-  }
-}
-
-[data-subsidiary-theme="wabi-sabi"] .wabi-sabi-hero-title {
-  text-wrap: balance;
-}
-
-[data-subsidiary-theme="wabi-sabi"] .wabi-sabi-hero-title::after {
-  content: "";
-  display: block;
-  width: 2.75rem;
-  height: 1px;
-  margin-top: 1.25rem;
-  background: linear-gradient(
-    90deg,
-    var(--sub-gold) 0%,
-    rgb(var(--sub-gold-rgb) / 0.15) 100%
-  );
-}
-
-[data-subsidiary-theme="wabi-sabi"] .wabi-sabi-hero-nav {
-  align-items: center;
-  justify-content: center;
-  border-radius: 9999px;
-  border: 1px solid var(--sub-border);
+/* Hero — contrôles carousel */
+[data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] button.rounded-full {
   background: rgb(0 0 0 / 0.32);
-  padding: 0.625rem;
-  color: var(--sub-text);
-  backdrop-filter: blur(6px);
-  transition:
-    color var(--duration-base) var(--ease-luxury),
-    background-color var(--duration-base) var(--ease-luxury),
-    border-color var(--duration-base) var(--ease-luxury);
-  cursor: pointer;
+  border-color: var(--sub-border);
 }
 
-[data-subsidiary-theme="wabi-sabi"] .wabi-sabi-hero-nav:hover {
+[data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] button.rounded-full:hover {
   background: rgb(var(--sub-gold-rgb) / 0.22);
-  border-color: rgb(var(--sub-gold-rgb) / 0.48);
   color: var(--sub-gold);
 }
 
-[data-subsidiary-theme="wabi-sabi"] .wabi-sabi-hero-nav:focus-visible {
-  outline: 1px solid var(--sub-gold);
-  outline-offset: 3px;
+/* Filet hero doré discret */
+[data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] > div.pointer-events-none.h-px {
+  height: 1px;
+  opacity: 0.7;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--sub-gold) 50%,
+    transparent 100%
+  ) !important;
 }
