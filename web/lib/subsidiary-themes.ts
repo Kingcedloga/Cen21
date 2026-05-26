@@ -232,8 +232,7 @@ export const WABI_SABI_THEME: SubsidiaryPageTheme = {
     btn: "#B58E48",
   },
   hero: {
-    overlayGradient:
-      "linear-gradient(to top, #004258 0%, rgba(0,66,88,0.88) 44%, rgba(0,66,88,0.32) 68%, transparent 100%), linear-gradient(90deg, rgba(0,50,68,0.78) 0%, transparent 46%), radial-gradient(ellipse 76% 54% at 50% 100%, rgba(181,142,72,0.12) 0%, transparent 58%)",
+    overlayGradient: "transparent",
     blurTint: "#004258",
   },
 };
