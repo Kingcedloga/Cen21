@@ -204,6 +204,11 @@
   color: rgb(var(--sub-gold-rgb) / 0.78);
 }
 
+/* Hero — visuel unique sushi, cadrage gauche */
+[data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] img {
+  object-position: 22% center;
+}
+
 /* Hero — contrôles carousel */
 [data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] button.rounded-full {
   background: rgb(0 0 0 / 0.32);

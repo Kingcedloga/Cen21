@@ -71,13 +71,16 @@ export default async function SubsidiaryPage({ params }: Props) {
     ...getGalleryBySubsidiary(l, slug),
   ];
 
-  const heroSlides = dedupeSlides([
-    { src: subsidiary.coverImage, alt: subsidiary.name },
-    ...subsidiary.galleryImages.slice(0, 5).map((src, i) => ({
-      src,
-      alt: `${subsidiary.name} — ${i + 1}`,
-    })),
-  ]);
+  const heroSlides =
+    slug === "filiale-02"
+      ? [{ src: subsidiary.coverImage, alt: subsidiary.name }]
+      : dedupeSlides([
+          { src: subsidiary.coverImage, alt: subsidiary.name },
+          ...subsidiary.galleryImages.slice(0, 5).map((src, i) => ({
+            src,
+            alt: `${subsidiary.name} — ${i + 1}`,
+          })),
+        ]);
 
   const mapQuery =
     subsidiary.practicalInfo.address?.trim() ||
