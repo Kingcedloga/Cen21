@@ -9,10 +9,10 @@
     },
     {
       "id": "gal-2",
-      "src": "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=900&q=80",
-      "alt": "Asian rooftop — Wabi Sabi",
+      "src": "/filiales/photos/filiale-02/cover.webp",
+      "alt": "Restaurant dining room — Wabi Sabi",
       "subsidiarySlug": "filiale-02",
-      "tags": ["sushi", "rooftop"]
+      "tags": ["restaurant", "interior"]
     },
     {
       "id": "gal-3",

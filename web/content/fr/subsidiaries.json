@@ -43,10 +43,23 @@
       },
       "accentColor": "#B58E48",
       "brandLogo": "/filiales/logos/filiale-02.png",
-      "coverImage": "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=1200&q=80",
+      "coverImage": "/filiales/photos/filiale-02/cover.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1553621042-f6e147245754?w=800&q=80",
-        "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80"
+        "/filiales/photos/filiale-02/gallery/01-ao8a4357.webp",
+        "/filiales/photos/filiale-02/gallery/02-ao8a4372.webp",
+        "/filiales/photos/filiale-02/gallery/03-ao8a4405.webp",
+        "/filiales/photos/filiale-02/gallery/04-ao8a4408.webp",
+        "/filiales/photos/filiale-02/gallery/05-ao8a4494.webp",
+        "/filiales/photos/filiale-02/gallery/06-ao8a4510.webp",
+        "/filiales/photos/filiale-02/gallery/07-ao8a4522.webp",
+        "/filiales/photos/filiale-02/gallery/08-ao8a4545.webp",
+        "/filiales/photos/filiale-02/gallery/09-ao8a4546.webp",
+        "/filiales/photos/filiale-02/gallery/10-ao8a4549.webp",
+        "/filiales/photos/filiale-02/gallery/11-ao8a4550.webp",
+        "/filiales/photos/filiale-02/gallery/12-ao8a4565.webp",
+        "/filiales/photos/filiale-02/gallery/13-ao8a4567.webp",
+        "/filiales/photos/filiale-02/gallery/14-ao8a4577.webp",
+        "/filiales/photos/filiale-02/gallery/15-ao8a4584.webp"
       ],
       "featured": true
     },
