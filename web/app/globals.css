@@ -564,3 +564,19 @@ h4 {
   outline-offset: 3px;
   border-radius: 4px;
 }
+
+/* === Accueil — section « Le groupe » : photo de fond ================== */
+#home-group {
+  background-color: var(--color-petrol);
+  background-image:
+    linear-gradient(
+      105deg,
+      rgb(0 66 88 / 0.9) 0%,
+      rgb(0 66 88 / 0.72) 42%,
+      rgb(0 66 88 / 0.55) 100%
+    ),
+    url("/home/group-bg.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
