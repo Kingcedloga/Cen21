@@ -204,34 +204,42 @@
   color: rgb(var(--sub-gold-rgb) / 0.78);
 }
 
-/* Hero — contenu à droite, marges hero standard (max-w-7xl px-6 md:px-10) */
+/* Hero — plein écran + contenu centré */
 [data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] {
+  min-height: 100svh;
+  height: 100svh;
   align-items: center;
+  justify-content: center;
 }
 
 [data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] img {
-  object-position: 30% center;
+  object-position: center center;
 }
 
 [data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] > .relative.z-10 {
-  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 [data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] > .relative.z-10 .flex.justify-start {
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 [data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] > .relative.z-10 h1,
 [data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] > .relative.z-10 > p {
-  text-align: right;
+  text-align: center;
 }
 
 [data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] > .relative.z-10 p.max-w-2xl {
-  margin-inline-start: auto;
+  margin-inline: auto;
 }
 
 [data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] > .relative.z-10 .flex.flex-wrap {
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 /* Hero — contrôles carousel */
