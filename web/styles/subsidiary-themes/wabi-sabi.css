@@ -205,8 +205,57 @@
 }
 
 /* Hero split — layout deux colonnes */
+[data-subsidiary-theme="wabi-sabi"] .wabi-sabi-hero-panel {
+  background-color: var(--sub-bg);
+  background-image: radial-gradient(
+    ellipse 80% 70% at 72% 50%,
+    rgb(var(--sub-gold-rgb) / 0.07) 0%,
+    transparent 62%
+  );
+}
+
+[data-subsidiary-theme="wabi-sabi"] .wabi-sabi-hero-divider {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgb(var(--sub-gold-rgb) / 0.35) 18%,
+    rgb(var(--sub-gold-rgb) / 0.55) 50%,
+    rgb(var(--sub-gold-rgb) / 0.35) 82%,
+    transparent 100%
+  );
+}
+
+[data-subsidiary-theme="wabi-sabi"] .wabi-sabi-hero-content {
+  max-width: 28rem;
+}
+
+@media (min-width: 1024px) {
+  [data-subsidiary-theme="wabi-sabi"] .wabi-sabi-hero-content {
+    max-width: 24rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  [data-subsidiary-theme="wabi-sabi"] .wabi-sabi-hero-content {
+    max-width: 26rem;
+  }
+}
+
 [data-subsidiary-theme="wabi-sabi"] .wabi-sabi-hero-title {
   text-wrap: balance;
+}
+
+[data-subsidiary-theme="wabi-sabi"] .wabi-sabi-hero-title::after {
+  content: "";
+  display: block;
+  width: 2.75rem;
+  height: 1px;
+  margin-top: 1.25rem;
+  background: linear-gradient(
+    90deg,
+    var(--sub-gold) 0%,
+    rgb(var(--sub-gold-rgb) / 0.15) 100%
+  );
 }
 
 [data-subsidiary-theme="wabi-sabi"] .wabi-sabi-hero-nav {

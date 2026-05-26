@@ -37,17 +37,19 @@ export function WabiSabiHero({
 
   if (!len) return null;
 
+  const fadeClass = reduced ? "" : "transition-opacity duration-1000 ease-out";
+
   return (
     <section
-      className="wabi-sabi-hero relative grid min-h-[100svh] grid-cols-1 lg:grid-cols-[3fr_2fr]"
-      aria-label={name}
+      className="wabi-sabi-hero relative grid min-h-[100svh] grid-cols-1 lg:grid-cols-2"
+      aria-labelledby="wabi-sabi-hero-title"
     >
-      {/* Colonne gauche — visuel pleine hauteur, bord gauche */}
-      <div className="relative min-h-[46svh] lg:min-h-[100svh]">
+      {/* Gauche — visuel bord à bord, sans padding */}
+      <div className="relative min-h-[48svh] lg:min-h-[100svh]">
         {list.map((slide, i) => (
           <div
             key={`${slide.src}-${i}`}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-out ${
+            className={`absolute inset-0 ${fadeClass} ${
               i === safeIndex ? "opacity-100" : "pointer-events-none opacity-0"
             }`}
             aria-hidden={i !== safeIndex}
@@ -60,14 +62,14 @@ export function WabiSabiHero({
               placeholder="blur"
               blurDataURL={BLUR_PETROL}
               className="object-cover object-center"
-              sizes="(max-width: 1024px) 100vw, 60vw"
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
         ))}
 
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[var(--sub-bg)]/35 lg:to-[var(--sub-bg)]/55"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/10 via-transparent to-[var(--sub-bg)]/25 lg:to-[var(--sub-bg)]/40"
         />
 
         {len > 1 && (
@@ -80,7 +82,7 @@ export function WabiSabiHero({
                   aria-label={`Visuel ${i + 1} sur ${len}`}
                   aria-current={i === safeIndex}
                   onClick={() => setIndex(i)}
-                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                  className={`h-1.5 rounded-full transition-all duration-200 cursor-pointer ${
                     i === safeIndex
                       ? "w-7 bg-[var(--sub-gold)]"
                       : "w-1.5 bg-white/35 hover:bg-white/60"
@@ -94,7 +96,7 @@ export function WabiSabiHero({
               className="wabi-sabi-hero-nav absolute left-4 top-1/2 z-20 hidden -translate-y-1/2 sm:flex lg:left-6"
               aria-label="Image précédente"
             >
-              <ChevronLeft className="h-6 w-6" />
+              <ChevronLeft className="h-6 w-6" strokeWidth={1.5} />
             </button>
             <button
               type="button"
@@ -102,31 +104,40 @@ export function WabiSabiHero({
               className="wabi-sabi-hero-nav absolute right-4 top-1/2 z-20 hidden -translate-y-1/2 sm:flex lg:right-6"
               aria-label="Image suivante"
             >
-              <ChevronRight className="h-6 w-6" />
+              <ChevronRight className="h-6 w-6" strokeWidth={1.5} />
             </button>
           </>
         )}
       </div>
 
-      {/* Colonne droite — logo, titre, sous-titre */}
-      <div className="flex min-h-[54svh] items-center bg-[var(--sub-bg)] px-8 py-16 sm:px-12 lg:min-h-[100svh] lg:px-14 xl:px-20">
-        <div className="mx-auto w-full max-w-[22rem] sm:max-w-md lg:max-w-lg">
-          <div className="mb-8 lg:mb-10">
+      {/* Séparateur vertical doré */}
+      <div
+        aria-hidden
+        className="wabi-sabi-hero-divider pointer-events-none absolute bottom-0 left-1/2 top-0 z-10 hidden w-px -translate-x-1/2 lg:block"
+      />
+
+      {/* Droite — logo, titre, sous-titre */}
+      <div className="wabi-sabi-hero-panel relative flex min-h-[52svh] items-center lg:min-h-[100svh]">
+        <div className="wabi-sabi-hero-content mx-auto w-full px-8 py-16 sm:px-12 lg:px-14 xl:px-20">
+          <div className="mb-9 lg:mb-11">
             <Image
               src={brandLogo}
               alt=""
-              width={240}
-              height={88}
-              className="h-14 w-auto object-contain sm:h-16 md:h-[4.5rem]"
+              width={260}
+              height={96}
+              className="h-[3.25rem] w-auto object-contain sm:h-16 lg:h-[4.75rem]"
               priority
             />
           </div>
 
-          <h1 className="wabi-sabi-hero-title mb-5 font-[family-name:var(--font-dm-sans)] text-[clamp(2rem,4.5vw,3.25rem)] font-medium leading-[1.12] tracking-[-0.02em] text-[var(--sub-gold)]">
+          <h1
+            id="wabi-sabi-hero-title"
+            className="wabi-sabi-hero-title mb-6 font-[family-name:var(--font-dm-sans)] text-[clamp(2.125rem,4.8vw,3.5rem)] font-medium leading-[1.1] tracking-[-0.025em] text-[var(--sub-gold)]"
+          >
             {name}
           </h1>
 
-          <p className="font-[family-name:var(--font-inter)] text-[clamp(1.05rem,2vw,1.35rem)] font-light leading-[1.65] tracking-[0.01em] text-[var(--sub-text-muted)]">
+          <p className="font-[family-name:var(--font-inter)] text-[clamp(1.0625rem,2.1vw,1.375rem)] font-light leading-[1.7] tracking-[0.015em] text-[var(--sub-text-muted)]">
             {tagline}
           </p>
         </div>
