@@ -204,16 +204,18 @@
   color: rgb(var(--sub-gold-rgb) / 0.78);
 }
 
-/* Hero — plein écran, bloc centré, contenu aligné à gauche dans le bloc */
+/* Hero — plein écran, bloc centré verticalement, décalé à droite */
 [data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] {
   min-height: 100svh;
   height: 100svh;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  padding-right: clamp(1.5rem, 7vw, 6rem);
+  padding-left: clamp(1rem, 4vw, 2rem);
 }
 
 [data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] img {
-  object-position: center center;
+  object-position: 32% center;
 }
 
 [data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] > .relative.z-10 {
@@ -222,7 +224,7 @@
   align-items: flex-start;
   width: 100%;
   max-width: min(100%, 36rem);
-  margin-inline: auto;
+  margin-inline: 0;
   text-align: left;
   padding-top: 0;
   padding-bottom: 0;
