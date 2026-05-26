@@ -204,25 +204,34 @@
   color: rgb(var(--sub-gold-rgb) / 0.78);
 }
 
-/* Hero — contrôles carousel */
-[data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] button.rounded-full {
-  background: rgb(0 0 0 / 0.32);
-  border-color: var(--sub-border);
+/* Hero split — layout deux colonnes */
+[data-subsidiary-theme="wabi-sabi"] .wabi-sabi-hero-title {
+  text-wrap: balance;
 }
 
-[data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] button.rounded-full:hover {
+[data-subsidiary-theme="wabi-sabi"] .wabi-sabi-hero-nav {
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid var(--sub-border);
+  background: rgb(0 0 0 / 0.32);
+  padding: 0.625rem;
+  color: var(--sub-text);
+  backdrop-filter: blur(6px);
+  transition:
+    color var(--duration-base) var(--ease-luxury),
+    background-color var(--duration-base) var(--ease-luxury),
+    border-color var(--duration-base) var(--ease-luxury);
+  cursor: pointer;
+}
+
+[data-subsidiary-theme="wabi-sabi"] .wabi-sabi-hero-nav:hover {
   background: rgb(var(--sub-gold-rgb) / 0.22);
+  border-color: rgb(var(--sub-gold-rgb) / 0.48);
   color: var(--sub-gold);
 }
 
-/* Filet hero doré discret */
-[data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] > div.pointer-events-none.h-px {
-  height: 1px;
-  opacity: 0.7;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--sub-gold) 50%,
-    transparent 100%
-  ) !important;
+[data-subsidiary-theme="wabi-sabi"] .wabi-sabi-hero-nav:focus-visible {
+  outline: 1px solid var(--sub-gold);
+  outline-offset: 3px;
 }
