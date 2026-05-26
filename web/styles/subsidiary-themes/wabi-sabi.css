@@ -205,8 +205,29 @@
 }
 
 /* Hero — visuel unique sushi, cadrage gauche */
+[data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] {
+  align-items: center;
+  justify-content: flex-start;
+}
+
 [data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] img {
   object-position: 22% center;
+}
+
+[data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] > .relative.z-10 {
+  margin-inline: 0 auto;
+  max-width: min(100%, 32rem);
+  padding-bottom: 2.5rem;
+  text-align: left;
+}
+
+[data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] > .relative.z-10 h1,
+[data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] > .relative.z-10 p {
+  text-align: left;
+}
+
+[data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] > .relative.z-10 .flex.flex-wrap {
+  justify-content: flex-start;
 }
 
 /* Hero — contrôles carousel */

@@ -1,47 +1,47 @@
 "use client";
 
-import Image from "next/image";
 import { useReducedMotion } from "framer-motion";
-
-/** Wordmark loader — `/public/brand/cen21-loader.png` (1024×576). */
-const LOGO_ASPECT = 1024 / 576;
 
 type LoaderGraphicProps = {
   className?: string;
-  /** Largeur max du visuel (px). */
-  maxWidth?: number;
+  /** Taille du visuel (px). */
+  size?: number;
 };
 
-export function LoaderGraphic({ className = "", maxWidth = 320 }: LoaderGraphicProps) {
+const FILTER_ID = "cen21-loader-goo";
+
+export function LoaderGraphic({ className = "", size = 88 }: LoaderGraphicProps) {
   const reduced = useReducedMotion();
-  const width = maxWidth;
-  const height = Math.round(width / LOGO_ASPECT);
 
   return (
-    <div className={`relative inline-flex items-center justify-center ${className}`}>
-      {!reduced && (
-        <>
-          <span
-            className="pointer-events-none absolute -inset-4 rounded-xl border-2 border-gold/20 md:-inset-5"
-            aria-hidden
-          />
-          <span
-            className="pointer-events-none absolute -inset-4 rounded-xl border-2 border-transparent border-t-gold border-r-gold/45 animate-site-loader-spin md:-inset-5"
-            aria-hidden
-          />
-        </>
-      )}
-      <Image
-        src="/brand/cen21-loader.png"
-        alt=""
-        width={width}
-        height={height}
-        priority
-        className={`relative z-10 h-auto w-full max-w-[min(72vw,20rem)] object-contain md:max-w-[20rem] ${
-          reduced ? "" : "animate-site-loader-pulse"
-        }`}
-        style={{ maxWidth }}
-      />
+    <div
+      className={`relative inline-flex items-center justify-center ${className}`}
+      style={{ width: size, height: size }}
+      aria-hidden
+    >
+      <svg className="absolute h-0 w-0" aria-hidden>
+        <defs>
+          <filter id={FILTER_ID}>
+            <feGaussianBlur in="SourceGraphic" stdDeviation="9" result="blur" />
+            <feColorMatrix
+              in="blur"
+              type="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10"
+              result="goo"
+            />
+            <feBlend in="SourceGraphic" in2="goo" />
+          </filter>
+        </defs>
+      </svg>
+
+      <div
+        className={`loader-blobs relative h-full w-full ${reduced ? "loader-blobs--static" : ""}`}
+        style={{ filter: `url(#${FILTER_ID})` }}
+      >
+        <span className="loader-blob loader-blob--gold" />
+        <span className="loader-blob loader-blob--cyan" />
+        <span className="loader-blob loader-blob--magenta" />
+      </div>
     </div>
   );
 }
