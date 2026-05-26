@@ -204,7 +204,7 @@
   color: rgb(var(--sub-gold-rgb) / 0.78);
 }
 
-/* Hero — plein écran + contenu centré */
+/* Hero — plein écran, bloc centré, contenu aligné à gauche dans le bloc */
 [data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] {
   min-height: 100svh;
   height: 100svh;
@@ -219,27 +219,26 @@
 [data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] > .relative.z-10 {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  width: 100%;
+  max-width: min(100%, 36rem);
+  margin-inline: auto;
+  text-align: left;
   padding-top: 0;
   padding-bottom: 0;
 }
 
-[data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] > .relative.z-10 .flex.justify-start {
-  justify-content: center;
-}
-
 [data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] > .relative.z-10 h1,
 [data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] > .relative.z-10 > p {
-  text-align: center;
+  text-align: left;
 }
 
 [data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] > .relative.z-10 p.max-w-2xl {
-  margin-inline: auto;
+  margin-inline-start: 0;
 }
 
 [data-subsidiary-theme="wabi-sabi"] section.relative.min-h-\[60vh\] > .relative.z-10 .flex.flex-wrap {
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 /* Hero — contrôles carousel */
