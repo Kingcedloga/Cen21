@@ -569,7 +569,7 @@ h4 {
 #home-group {
   background-color: var(--color-petrol);
   background-image: url("/home/group-bg.webp");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-size: 1024px auto;
+  background-position: left top;
+  background-repeat: repeat;
 }
