@@ -3,13 +3,13 @@
 import Image from "next/image";
 import { useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "@/lib/icons";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { SocialLinks } from "@/components/ui/SocialLinks";
 import { BLUR_PETROL } from "@/lib/image-blur";
 import type { SubsidiaryPageTheme } from "@/lib/subsidiary-themes";
 
-import type { SocialLinks as SocialLinksData } from "@/lib/types";
+import type { HeroVideo, SocialLinks as SocialLinksData } from "@/lib/types";
 
 type Slide = { src: string; alt: string };
 
@@ -23,6 +23,7 @@ export function SubsidiaryHero({
   social,
   brandLogo,
   theme,
+  backgroundVideo,
 }: {
   slides: Slide[];
   sectorLabel: string;
@@ -31,12 +32,17 @@ export function SubsidiaryHero({
   social: SocialLinksData;
   brandLogo?: string;
   theme?: SubsidiaryHeroTheme;
+  backgroundVideo?: HeroVideo;
 }) {
   const list = slides.filter((s) => s.src);
   const len = list.length;
   const [index, setIndex] = useState(0);
   const reduced = useReducedMotion() ?? false;
   const isThemed = Boolean(theme);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const useVideoBackground = Boolean(backgroundVideo?.src) && !reduced;
+  const posterSrc =
+    backgroundVideo?.poster ?? list[0]?.src ?? backgroundVideo?.src ?? "";
 
   const safeIndex = len ? index % len : 0;
   const next = useCallback(() => setIndex((i) => (len ? (i + 1) % len : 0)), [len]);
@@ -48,7 +54,14 @@ export function SubsidiaryHero({
     return () => window.clearInterval(t);
   }, [reduced, len, next]);
 
-  if (!len) return null;
+  useEffect(() => {
+    if (!useVideoBackground) return;
+    const video = videoRef.current;
+    if (!video) return;
+    video.play().catch(() => {});
+  }, [useVideoBackground, backgroundVideo?.src]);
+
+  if (!len && !backgroundVideo?.src) return null;
 
   const defaultOverlay =
     "linear-gradient(to top, #004258 0%, transparent 55%), linear-gradient(90deg, rgba(0,66,88,0.5) 0%, transparent 40%)";
@@ -64,26 +77,60 @@ export function SubsidiaryHero({
 
   return (
     <section className="subsidiary-hero relative flex min-h-svh h-svh items-end overflow-hidden">
-      {list.map((slide, i) => (
-        <div
-          key={`${slide.src}-${i}`}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-out ${
-            i === safeIndex ? "opacity-100" : "pointer-events-none opacity-0"
-          }`}
-          aria-hidden={i !== safeIndex}
+      {useVideoBackground ? (
+        <video
+          ref={videoRef}
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster={posterSrc || undefined}
+          aria-hidden
         >
+          {backgroundVideo?.webm && (
+            <source src={backgroundVideo.webm} type="video/webm" />
+          )}
+          <source src={backgroundVideo!.src} type="video/mp4" />
+        </video>
+      ) : (
+        list.map((slide, i) => (
+          <div
+            key={`${slide.src}-${i}`}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-out ${
+              i === safeIndex ? "opacity-100" : "pointer-events-none opacity-0"
+            }`}
+            aria-hidden={i !== safeIndex}
+          >
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              fill
+              priority={i === 0}
+              placeholder="blur"
+              blurDataURL={theme?.hero.blurTint ?? BLUR_PETROL}
+              className="object-cover"
+              sizes="100vw"
+            />
+          </div>
+        ))
+      )}
+
+      {backgroundVideo?.src && reduced && posterSrc && (
+        <div className="absolute inset-0" aria-hidden>
           <Image
-            src={slide.src}
-            alt={slide.alt}
+            src={posterSrc}
+            alt=""
             fill
-            priority={i === 0}
+            priority
             placeholder="blur"
             blurDataURL={theme?.hero.blurTint ?? BLUR_PETROL}
             className="object-cover"
             sizes="100vw"
           />
         </div>
-      ))}
+      )}
 
       <div
         className="absolute inset-0 z-[1]"
@@ -99,7 +146,7 @@ export function SubsidiaryHero({
         />
       )}
 
-      {len > 1 && (
+      {len > 1 && !useVideoBackground && (
         <>
           <div className="absolute bottom-24 left-0 right-0 z-20 flex justify-center gap-2 md:bottom-28">
             {list.map((_, i) => (

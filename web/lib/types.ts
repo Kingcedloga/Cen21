@@ -11,6 +11,12 @@ export type SocialLinks = {
   linkedin?: string;
 };
 
+export type HeroVideo = {
+  src: string;
+  webm?: string;
+  poster?: string;
+};
+
 export type Subsidiary = {
   slug: string;
   name: string;
@@ -29,6 +35,8 @@ export type Subsidiary = {
   brandLogo?: string;
   galleryImages: string[];
   featured?: boolean;
+  /** Vidéo locale en fond du hero (autoplay muet). */
+  heroVideo?: HeroVideo;
 };
 
 export type EventItem = {

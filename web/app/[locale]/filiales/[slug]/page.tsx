@@ -72,8 +72,13 @@ export default async function SubsidiaryPage({ params }: Props) {
   ];
 
   const heroSlides =
-    slug === "filiale-02"
-      ? [{ src: subsidiary.coverImage, alt: subsidiary.name }]
+    slug === "filiale-02" || subsidiary.heroVideo
+      ? [
+          {
+            src: subsidiary.heroVideo?.poster ?? subsidiary.coverImage,
+            alt: subsidiary.name,
+          },
+        ]
       : dedupeSlides([
           { src: subsidiary.coverImage, alt: subsidiary.name },
           ...subsidiary.galleryImages.slice(0, 5).map((src, i) => ({
@@ -118,6 +123,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         social={subsidiary.social}
         brandLogo={isThemed ? subsidiary.brandLogo : undefined}
         theme={pageTheme ?? undefined}
+        backgroundVideo={subsidiary.heroVideo}
       />
 
       <section className="px-4 pt-8 md:px-6 md:pt-10 lg:px-8">
