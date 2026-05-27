@@ -218,18 +218,18 @@
 }
 
 /* Hero — contrôles carousel */
-[data-subsidiary-theme="muzik-cafe"] section.relative.min-h-\[60vh\] button.rounded-full {
+[data-subsidiary-theme="muzik-cafe"] .subsidiary-hero button.rounded-full {
   background: rgb(0 0 0 / 0.3);
   border-color: rgb(var(--sub-red-rgb) / 0.32);
 }
 
-[data-subsidiary-theme="muzik-cafe"] section.relative.min-h-\[60vh\] button.rounded-full:hover {
+[data-subsidiary-theme="muzik-cafe"] .subsidiary-hero button.rounded-full:hover {
   background: rgb(var(--sub-red-rgb) / 0.38);
   color: var(--sub-text);
 }
 
 /* Filet hero bleu / blanc / rouge */
-[data-subsidiary-theme="muzik-cafe"] section.relative.min-h-\[60vh\] > div.pointer-events-none.h-px {
+[data-subsidiary-theme="muzik-cafe"] .subsidiary-hero > div.pointer-events-none.h-px {
   height: 3px;
   opacity: 1;
   background: linear-gradient(

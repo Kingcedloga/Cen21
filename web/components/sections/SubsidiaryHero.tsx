@@ -63,7 +63,7 @@ export function SubsidiaryHero({
   const navButtonRightClass = navButtonClass.replace("left-2", "right-2");
 
   return (
-    <section className="relative flex min-h-[60vh] items-end overflow-hidden">
+    <section className="subsidiary-hero relative flex min-h-svh h-svh items-end overflow-hidden">
       {list.map((slide, i) => (
         <div
           key={`${slide.src}-${i}`}

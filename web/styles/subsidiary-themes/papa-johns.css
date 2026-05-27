@@ -207,12 +207,12 @@
 }
 
 /* Hero — contrôles carousel */
-[data-subsidiary-theme="papa-johns"] section.relative.min-h-\[60vh\] button.rounded-full {
+[data-subsidiary-theme="papa-johns"] .subsidiary-hero button.rounded-full {
   background: rgb(0 0 0 / 0.26);
   border-color: var(--sub-border);
 }
 
-[data-subsidiary-theme="papa-johns"] section.relative.min-h-\[60vh\] button.rounded-full:hover {
+[data-subsidiary-theme="papa-johns"] .subsidiary-hero button.rounded-full:hover {
   background: rgb(0 0 0 / 0.38);
   color: var(--sub-gold);
 }

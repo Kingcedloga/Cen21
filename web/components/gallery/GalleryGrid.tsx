@@ -78,7 +78,7 @@ export function GalleryGrid({
           <button
             key={item.id}
             type="button"
-            className="relative block w-full break-inside-avoid overflow-hidden rounded-sm cursor-pointer group focus-visible:outline-2 focus-visible:outline-gold"
+            className="relative block w-full break-inside-avoid overflow-hidden rounded-sm border border-gold/35 cursor-pointer group transition-colors duration-300 hover:border-gold/55 focus-visible:outline-2 focus-visible:outline-gold"
             onClick={() => openLightbox(index)}
             aria-label={`Ouvrir : ${item.alt}`}
           >

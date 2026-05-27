@@ -218,18 +218,18 @@
 }
 
 /* Hero — contrôles carousel */
-[data-subsidiary-theme="gourmet-mexicana"] section.relative.min-h-\[60vh\] button.rounded-full {
+[data-subsidiary-theme="gourmet-mexicana"] .subsidiary-hero button.rounded-full {
   background: rgb(0 0 0 / 0.28);
   border-color: rgb(var(--sub-ochre-rgb) / 0.35);
 }
 
-[data-subsidiary-theme="gourmet-mexicana"] section.relative.min-h-\[60vh\] button.rounded-full:hover {
+[data-subsidiary-theme="gourmet-mexicana"] .subsidiary-hero button.rounded-full:hover {
   background: rgb(var(--sub-red-rgb) / 0.35);
   color: var(--sub-gold);
 }
 
 /* Filet hero tricolore */
-[data-subsidiary-theme="gourmet-mexicana"] section.relative.min-h-\[60vh\] > div.pointer-events-none.h-px {
+[data-subsidiary-theme="gourmet-mexicana"] .subsidiary-hero > div.pointer-events-none.h-px {
   height: 3px;
   opacity: 1;
   background: linear-gradient(

@@ -57,7 +57,7 @@ export function Lightbox({
         <ChevronLeft className="w-8 h-8" />
       </button>
 
-      <div className="relative max-w-5xl max-h-[85vh] w-full aspect-[4/3]">
+      <div className="relative max-w-5xl max-h-[85vh] w-full aspect-[4/3] border border-gold/35">
         <Image
           src={item.src}
           alt={item.alt}

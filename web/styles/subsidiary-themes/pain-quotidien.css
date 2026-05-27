@@ -203,12 +203,12 @@
 }
 
 /* Hero — contrôles carousel sur fond chocolat */
-[data-subsidiary-theme="pain-quotidien"] section.relative.min-h-\[60vh\] button.rounded-full {
+[data-subsidiary-theme="pain-quotidien"] .subsidiary-hero button.rounded-full {
   background: rgb(0 0 0 / 0.28);
   border-color: var(--sub-border);
 }
 
-[data-subsidiary-theme="pain-quotidien"] section.relative.min-h-\[60vh\] button.rounded-full:hover {
+[data-subsidiary-theme="pain-quotidien"] .subsidiary-hero button.rounded-full:hover {
   background: rgb(0 0 0 / 0.42);
   color: var(--sub-gold);
 }
