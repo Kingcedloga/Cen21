@@ -568,8 +568,21 @@ h4 {
 /* === Accueil — section « Le groupe » : motif pétrole tone-on-tone ===== */
 #home-group {
   background-color: var(--color-petrol);
+}
+
+#home-group::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   background-image: url("/home/group-pattern.svg");
-  background-size: 512px auto;
+  background-size: 256px auto;
   background-position: left top;
   background-repeat: repeat;
+  pointer-events: none;
+}
+
+#home-group > div {
+  position: relative;
+  z-index: 1;
 }
