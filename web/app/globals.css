@@ -564,3 +564,12 @@ h4 {
   outline-offset: 3px;
   border-radius: 4px;
 }
+
+/* === Accueil — section « Le groupe » : motif pétrole tone-on-tone ===== */
+#home-group {
+  background-color: var(--color-petrol);
+  background-image: url("/home/group-pattern.svg");
+  background-size: 512px auto;
+  background-position: left top;
+  background-repeat: repeat;
+}

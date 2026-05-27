@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" aria-hidden="true">
+  <defs>
+    <pattern id="cen21-group" width="128" height="128" patternUnits="userSpaceOnUse">
+      <g
+        fill="none"
+        stroke="#ffffff"
+        stroke-width="0.55"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-opacity="0.11"
+      >
+        <!-- Courbes entrelaces  tuile seamless 128128 -->
+        <path d="M0 64 C32 64 32 32 64 32 C96 32 96 64 128 64" />
+        <path d="M0 96 C32 96 32 64 64 64" />
+        <path d="M128 32 C96 32 96 64 64 64" />
+        <path d="M64 0 C64 32 96 32 96 64 C96 96 64 96 64 128" />
+        <path d="M32 0 C32 32 64 32 64 64 C64 96 32 96 32 128" />
+        <path d="M96 0 C96 32 64 32 64 64" />
+        <path d="M0 32 C32 32 32 64 64 64" />
+      </g>
+      <g
+        fill="none"
+        stroke="#ffffff"
+        stroke-width="0.45"
+        stroke-linecap="round"
+        stroke-opacity="0.08"
+      >
+        <!-- Connecteurs aux jonctions -->
+        <path d="M58 64 H70 M64 58 V70" />
+        <path d="M122 64 H126 M124 60 V68" />
+        <path d="M58 0 H70 M64 0 V8" />
+        <path d="M58 120 H70 M64 120 V128" />
+        <path d="M0 64 H6 M2 60 V68" />
+      </g>
+    </pattern>
+  </defs>
+  <rect width="128" height="128" fill="url(#cen21-group)" />
+</svg>
