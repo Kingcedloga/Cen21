@@ -564,12 +564,3 @@ h4 {
   outline-offset: 3px;
   border-radius: 4px;
 }
-
-/* === Accueil — section « Le groupe » : motif doré sur pétrole ======= */
-#home-group {
-  background-color: var(--color-petrol);
-  background-image: url("/home/group-bg.webp");
-  background-size: 1024px auto;
-  background-position: left top;
-  background-repeat: repeat;
-}
