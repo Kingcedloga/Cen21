@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "@/lib/icons";
 import { useCallback, useEffect, useState } from "react";
 
@@ -9,6 +9,7 @@ import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/Button";
 import { BLUR_PETROL } from "@/lib/image-blur";
+import { fadeUpTransition, fadeUpVariants, heroStaggerVariants } from "@/lib/motion";
 
 export type HeroSlide = {
   src: string;
@@ -109,12 +110,27 @@ export function HeroCinematic({ slides, siteName, className = "" }: HeroCinemati
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 pb-12 md:pb-14 pt-28 md:pt-32">
         <h1 className="sr-only">{siteName}</h1>
-        <div className="flex flex-wrap gap-3 md:gap-4">
-          <Button href="/filiales">{t("ctaSubsidiaries")}</Button>
-          <Button href="/contact" variant="secondary">
-            {t("ctaContact")}
-          </Button>
-        </div>
+        <motion.div
+          className="flex flex-wrap gap-3 md:gap-4"
+          initial={reducedMotion ? false : "hidden"}
+          animate={reducedMotion ? undefined : "visible"}
+          variants={reducedMotion ? undefined : heroStaggerVariants}
+        >
+          <motion.div
+            variants={reducedMotion ? undefined : fadeUpVariants}
+            transition={fadeUpTransition}
+          >
+            <Button href="/filiales">{t("ctaSubsidiaries")}</Button>
+          </motion.div>
+          <motion.div
+            variants={reducedMotion ? undefined : fadeUpVariants}
+            transition={fadeUpTransition}
+          >
+            <Button href="/contact" variant="secondary">
+              {t("ctaContact")}
+            </Button>
+          </motion.div>
+        </motion.div>
       </div>
 
       <button

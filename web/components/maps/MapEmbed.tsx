@@ -1,5 +1,13 @@
-import { ExternalLink } from "@/lib/icons";
+"use client";
 
+import { ExternalLink } from "@/lib/icons";
+import { motion, useReducedMotion } from "framer-motion";
+
+import {
+  defaultScrollViewport,
+  fadeInTransition,
+  fadeInVariants,
+} from "@/lib/motion";
 import {
   googleMapsEmbedUrl,
   googleMapsExternalUrl,
@@ -13,16 +21,25 @@ type MapEmbedProps = {
 };
 
 /**
- * Carte responsive avec lien d’ouverture externe (accessibilité : titre iframe).
+ * Carte responsive avec lien d'ouverture externe (accessibilité : titre iframe).
  */
 export function MapEmbed({ query, title = "Carte", className = "" }: MapEmbedProps) {
+  const reduced = useReducedMotion();
+
   if (!query.trim()) return null;
 
   const src = googleMapsEmbedUrl(query);
   const external = googleMapsExternalUrl(query);
 
   return (
-    <div className={`glass-panel overflow-hidden rounded-2xl ${className}`}>
+    <motion.div
+      className={`glass-panel overflow-hidden rounded-2xl ${className}`}
+      initial={reduced ? false : "hidden"}
+      whileInView={reduced ? undefined : "visible"}
+      viewport={defaultScrollViewport}
+      variants={reduced ? undefined : fadeInVariants}
+      transition={fadeInTransition}
+    >
       <div className="relative aspect-[4/3] w-full min-h-[220px] md:min-h-[280px]">
         <iframe
           title={title}
@@ -45,6 +62,6 @@ export function MapEmbed({ query, title = "Carte", className = "" }: MapEmbedPro
           <ExternalLink className="h-4 w-4" aria-hidden />
         </a>
       </div>
-    </div>
+    </motion.div>
   );
 }

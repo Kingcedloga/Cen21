@@ -6,12 +6,14 @@ import {
   navbarThemeVars,
   type SubsidiaryNavbarTheme,
 } from "@/lib/navbar-theme";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useEffect, useState, type CSSProperties } from "react";
 
 import { Logo } from "@/components/brand/Logo";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import { Link, usePathname } from "@/i18n/navigation";
+import { mobileNavItemVariants, mobileNavPanelVariants } from "@/lib/motion";
 
 import { NAV_PATHS } from "./nav-links";
 
@@ -24,6 +26,7 @@ export function Header() {
   const tCommon = useTranslations("common");
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const reduced = useReducedMotion();
 
   useEffect(() => {
     let frame = 0;
@@ -139,51 +142,64 @@ export function Header() {
           </div>
         </div>
 
-        {open && (
-          <nav
-            className={`flex flex-col gap-1 border-t px-3 py-3 lg:hidden ${
-              isBrand ? "border-[color:var(--nav-fg)]/15" : "border-white/10"
-            }`}
-            aria-label={tCommon("mobileNav")}
-          >
-            <LanguageSwitcher
-              className="mb-2 w-full justify-center sm:hidden"
-              navbarTheme={subsidiaryTheme}
-            />
-            {NAV_PATHS.map(({ href, key }) => {
-              const active =
-                pathname === href ||
-                (href !== "/" && pathname?.startsWith(`${href}/`));
-              return (
-                <Link
-                  key={href}
-                  href={href}
-                  aria-current={active ? "page" : undefined}
-                  className={mobileNavLinkClass(active, isBrand)}
-                  style={isBrand ? mobileNavLinkStyle(active, subsidiaryTheme) : undefined}
-                  onClick={() => setOpen(false)}
-                >
-                  <span
-                    aria-hidden
-                    className={`h-1.5 w-1.5 rounded-full transition-all duration-fine ${
-                      isBrand ? "" : active ? "bg-gold" : "bg-transparent"
-                    }`}
-                    style={
-                      isBrand
-                        ? {
-                            backgroundColor: active
-                              ? subsidiaryTheme.accent
-                              : "transparent",
-                          }
-                        : undefined
-                    }
-                  />
-                  {t(key)}
-                </Link>
-              );
-            })}
-          </nav>
-        )}
+        <AnimatePresence initial={false}>
+          {open && (
+            <motion.nav
+              key="mobile-nav"
+              className={`flex flex-col gap-1 border-t px-3 py-3 lg:hidden ${
+                isBrand ? "border-[color:var(--nav-fg)]/15" : "border-white/10"
+              }`}
+              aria-label={tCommon("mobileNav")}
+              initial={reduced ? false : "hidden"}
+              animate={reduced ? undefined : "visible"}
+              exit={reduced ? undefined : "exit"}
+              variants={reduced ? undefined : mobileNavPanelVariants}
+            >
+              <motion.div variants={reduced ? undefined : mobileNavItemVariants}>
+                <LanguageSwitcher
+                  className="mb-2 w-full justify-center sm:hidden"
+                  navbarTheme={subsidiaryTheme}
+                />
+              </motion.div>
+              {NAV_PATHS.map(({ href, key }) => {
+                const active =
+                  pathname === href ||
+                  (href !== "/" && pathname?.startsWith(`${href}/`));
+                return (
+                  <motion.div
+                    key={href}
+                    variants={reduced ? undefined : mobileNavItemVariants}
+                  >
+                    <Link
+                      href={href}
+                      aria-current={active ? "page" : undefined}
+                      className={mobileNavLinkClass(active, isBrand)}
+                      style={isBrand ? mobileNavLinkStyle(active, subsidiaryTheme) : undefined}
+                      onClick={() => setOpen(false)}
+                    >
+                    <span
+                      aria-hidden
+                      className={`h-1.5 w-1.5 rounded-full transition-all duration-fine ${
+                        isBrand ? "" : active ? "bg-gold" : "bg-transparent"
+                      }`}
+                      style={
+                        isBrand
+                          ? {
+                              backgroundColor: active
+                                ? subsidiaryTheme.accent
+                                : "transparent",
+                            }
+                          : undefined
+                      }
+                    />
+                    {t(key)}
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );

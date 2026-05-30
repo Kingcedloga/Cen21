@@ -26,15 +26,15 @@ export function EventCard({ event }: { event: EventItem }) {
   const subsidiary = getSubsidiaryBySlug(locale, event.subsidiarySlug);
 
   return (
-    <article className="glass-panel rounded-sm overflow-hidden flex flex-col h-full">
-      <div className="relative aspect-[16/10]">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-sm border border-white/12 glass-panel shadow-[0_18px_40px_-22px_rgba(0,0,0,0.55)] transition-[transform,box-shadow,border-color] duration-luxe ease-out hover:-translate-y-1 hover:border-gold/45 hover:shadow-[0_26px_60px_-22px_rgba(212,173,101,0.32),0_18px_40px_-18px_rgba(0,0,0,0.65)]">
+      <div className="relative aspect-[16/10] overflow-hidden">
         <Image
           src={event.image}
           alt={event.title}
           fill
           placeholder="blur"
           blurDataURL={BLUR_PETROL}
-          className="object-cover"
+          className="object-cover transition-transform duration-grand ease-out group-hover:scale-[1.06]"
           sizes="(max-width: 768px) 100vw, 50vw"
         />
       </div>

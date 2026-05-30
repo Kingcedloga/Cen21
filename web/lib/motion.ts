@@ -84,23 +84,15 @@ export const staggerContainerVariants: Variants = {
   },
 };
 
-/* ── Lightbox (AnimatePresence) ──────────────────────────────────────── */
-
-export const lightboxBackdropVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
-  exit: { opacity: 0 },
-};
-
-export const lightboxImageVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.96 },
-  visible: { opacity: 1, scale: 1 },
-  exit: { opacity: 0, scale: 0.96 },
-};
-
-export const lightboxTransition: Transition = {
-  duration: DURATION_S.luxe,
-  ease: EASE.luxury,
+/** Hero / PageHero — eyebrow → titre → description (40 ms entre chaque) */
+export const heroStaggerVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: STAGGER.min,
+      delayChildren: 0.06,
+    },
+  },
 };
 
 /** Entrée panneau mobile / toast — sortie plus rapide (Emil: asymmetric) */
@@ -112,6 +104,108 @@ export const panelEnterTransition: Transition = {
 export const panelExitTransition: Transition = {
   duration: DURATION_S.fine,
   ease: EASE.outSoft,
+};
+
+/** Panneau menu mobile — sortie plus rapide que l'entrée + stagger enfants */
+export const mobileNavPanelVariants: Variants = {
+  hidden: { opacity: 0, y: -8 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      ...panelEnterTransition,
+      staggerChildren: STAGGER.min,
+      delayChildren: 0.03,
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -4,
+    transition: panelExitTransition,
+  },
+};
+
+/* ── Lightbox (AnimatePresence) ──────────────────────────────────────── */
+
+export const lightboxTransition: Transition = {
+  duration: DURATION_S.luxe,
+  ease: EASE.luxury,
+};
+
+export const lightboxImageVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.96 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: lightboxTransition,
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.96,
+    transition: panelExitTransition,
+  },
+};
+
+export const lightboxBackdropVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: lightboxTransition,
+  },
+  exit: {
+    opacity: 0,
+    transition: panelExitTransition,
+  },
+};
+
+/** Lignes décoratives SectionHeading — scaleX 0→1 au scroll */
+export const ornamentLineVariants: Variants = {
+  hidden: { scaleX: 0, opacity: 0 },
+  visible: { scaleX: 1, opacity: 1 },
+};
+
+export const ornamentLineTransition: Transition = {
+  duration: DURATION_S.base,
+  ease: EASE.luxury,
+};
+
+/** Losange SectionHeading */
+export const ornamentDiamondVariants: Variants = {
+  hidden: { scale: 0.8, opacity: 0 },
+  visible: { scale: 1, opacity: 1 },
+};
+
+export const ornamentDiamondTransition: Transition = {
+  duration: DURATION_S.base,
+  ease: EASE.luxury,
+};
+
+/** Fil d'Ariane — fade slide depuis le haut */
+export const breadcrumbVariants: Variants = {
+  hidden: { opacity: 0, y: -12 },
+  visible: { opacity: 1, y: 0 },
+};
+
+export const breadcrumbTransition: Transition = {
+  duration: DURATION_S.base,
+  ease: EASE.outSoft,
+};
+
+/** MapEmbed — fade-in discret au scroll */
+export const fadeInVariants: Variants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: { opacity: 1, y: 0 },
+};
+
+export const fadeInTransition: Transition = {
+  duration: DURATION_S.base,
+  ease: EASE.outSoft,
+};
+
+/** Items menu mobile — stagger à l'ouverture */
+export const mobileNavItemVariants: Variants = {
+  hidden: { opacity: 0, y: -6 },
+  visible: { opacity: 1, y: 0 },
 };
 
 /** Toast — entrée scale 0.96, sortie plus rapide */

@@ -129,6 +129,7 @@ export default async function SubsidiaryPage({ params }: Props) {
       <section className="px-4 pt-8 md:px-6 md:pt-10 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <Breadcrumb
+            animate
             items={[
               { label: t("breadcrumbHome"), href: "/" },
               { label: t("breadcrumbSubsidiaries"), href: "/filiales" },
@@ -150,61 +151,84 @@ export default async function SubsidiaryPage({ params }: Props) {
 
       <section className={infoBandClass}>
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-3">
-          {subsidiary.practicalInfo.address && (
-            <InfoItem
-              icon={<Icon name="location" size="md" />}
-              label={t("address")}
-              value={subsidiary.practicalInfo.address}
-              themed={isThemed}
-            />
-          )}
-          {subsidiary.practicalInfo.hours && (
-            <InfoItem
-              icon={<Icon name="hours" size="md" />}
-              label={t("hours")}
-              value={subsidiary.practicalInfo.hours}
-              themed={isThemed}
-            />
-          )}
-          {subsidiary.practicalInfo.phone && (
-            <InfoItem
-              icon={<Icon name="phone" size="md" />}
-              label={t("phone")}
-              value={
-                <a
-                  href={`tel:${subsidiary.practicalInfo.phone?.replace(/\s/g, "")}`}
-                  className="transition-colors hover:text-gold cursor-pointer"
-                >
-                  {subsidiary.practicalInfo.phone}
-                </a>
-              }
-              themed={isThemed}
-            />
-          )}
+          {(() => {
+            let infoIndex = 0;
+            return (
+              <>
+                {subsidiary.practicalInfo.address && (
+                  <AnimateIn delay={infoIndex++ * 0.05}>
+                    <InfoItem
+                      icon={<Icon name="location" size="md" />}
+                      label={t("address")}
+                      value={subsidiary.practicalInfo.address}
+                      themed={isThemed}
+                    />
+                  </AnimateIn>
+                )}
+                {subsidiary.practicalInfo.hours && (
+                  <AnimateIn delay={infoIndex++ * 0.05}>
+                    <InfoItem
+                      icon={<Icon name="hours" size="md" />}
+                      label={t("hours")}
+                      value={subsidiary.practicalInfo.hours}
+                      themed={isThemed}
+                    />
+                  </AnimateIn>
+                )}
+                {subsidiary.practicalInfo.phone && (
+                  <AnimateIn delay={infoIndex++ * 0.05}>
+                    <InfoItem
+                      icon={<Icon name="phone" size="md" />}
+                      label={t("phone")}
+                      value={
+                        <a
+                          href={`tel:${subsidiary.practicalInfo.phone?.replace(/\s/g, "")}`}
+                          className="transition-colors hover:text-gold cursor-pointer"
+                        >
+                          {subsidiary.practicalInfo.phone}
+                        </a>
+                      }
+                      themed={isThemed}
+                    />
+                  </AnimateIn>
+                )}
+              </>
+            );
+          })()}
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
-        <h2 className={headingClass}>{t("mapAccess")}</h2>
-        <p className="mb-6 max-w-2xl text-sm text-taupe">{t("mapDescription")}</p>
+        <AnimateIn>
+          <h2 className={headingClass}>{t("mapAccess")}</h2>
+          <p className="mb-6 max-w-2xl text-sm text-taupe">{t("mapDescription")}</p>
+        </AnimateIn>
         <MapEmbed query={mapQuery} title={t("mapTitle", { name: subsidiary.name })} />
       </section>
 
       {galleryItems.length > 0 && (
         <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
-          <h2 className={sectionHeadingClass}>{t("gallery")}</h2>
+          <AnimateIn>
+            <h2 className={sectionHeadingClass}>{t("gallery")}</h2>
+          </AnimateIn>
           <GalleryGrid items={galleryItems} showFilters={false} />
         </section>
       )}
 
       <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
-        <h2 className={sectionHeadingClass}>{t("upcomingEvents")}</h2>
+        <AnimateIn>
+          <h2 className={sectionHeadingClass}>{t("upcomingEvents")}</h2>
+        </AnimateIn>
         {events.length === 0 ? (
-          <p className="mb-8 text-taupe">{t("noEventsScheduled")}</p>
+          <AnimateIn delay={0.05}>
+            <p className="mb-8 text-taupe">{t("noEventsScheduled")}</p>
+          </AnimateIn>
         ) : (
           <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {events.map((event) => (
-              <EventCard key={event.id} event={event} />
+            {events.map((event, index) => (
+              <AnimateIn key={event.id} delay={index * 0.05}>
+                <EventCard event={event} />
+              </AnimateIn>
             ))}
           </div>
         )}

@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "@/lib/icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { SocialLinks } from "@/components/ui/SocialLinks";
 import { BLUR_PETROL } from "@/lib/image-blur";
+import { fadeUpTransition, fadeUpVariants, heroStaggerVariants } from "@/lib/motion";
 import type { SubsidiaryPageTheme } from "@/lib/subsidiary-themes";
 
 import type { HeroVideo, SocialLinks as SocialLinksData } from "@/lib/types";
@@ -181,9 +182,18 @@ export function SubsidiaryHero({
         </>
       )}
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-14 pt-28 md:px-10 md:pb-20 md:pt-36">
+      <motion.div
+        className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-14 pt-28 md:px-10 md:pb-20 md:pt-36"
+        initial={reduced ? false : "hidden"}
+        animate={reduced ? undefined : "visible"}
+        variants={reduced ? undefined : heroStaggerVariants}
+      >
         {brandLogo && (
-          <div className="mb-6 flex justify-start md:mb-8">
+          <motion.div
+            className="mb-6 flex justify-start md:mb-8"
+            variants={reduced ? undefined : fadeUpVariants}
+            transition={fadeUpTransition}
+          >
             <Image
               src={brandLogo}
               alt=""
@@ -192,31 +202,42 @@ export function SubsidiaryHero({
               className="h-12 w-auto object-contain md:h-14"
               priority
             />
-          </div>
+          </motion.div>
         )}
-        <p
+        <motion.p
           className={`mb-3 text-sm uppercase tracking-[0.2em] ${
             isThemed ? "text-[var(--sub-gold)]" : "text-gold"
           }`}
+          variants={reduced ? undefined : fadeUpVariants}
+          transition={fadeUpTransition}
         >
           {sectorLabel}
-        </p>
-        <h1
+        </motion.p>
+        <motion.h1
           className={`mb-4 text-5xl md:text-6xl ${
             isThemed ? "text-white" : "text-ivory"
           }`}
+          variants={reduced ? undefined : fadeUpVariants}
+          transition={fadeUpTransition}
         >
           {name}
-        </h1>
-        <p
+        </motion.h1>
+        <motion.p
           className={`mb-6 max-w-2xl text-xl ${
             isThemed ? "text-white/80" : "text-ivory/80"
           }`}
+          variants={reduced ? undefined : fadeUpVariants}
+          transition={fadeUpTransition}
         >
           {tagline}
-        </p>
-        <SocialLinks social={social} label="Suivez-nous" />
-      </div>
+        </motion.p>
+        <motion.div
+          variants={reduced ? undefined : fadeUpVariants}
+          transition={fadeUpTransition}
+        >
+          <SocialLinks social={social} label="Suivez-nous" />
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

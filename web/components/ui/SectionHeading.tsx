@@ -1,4 +1,15 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
 import type { ElementType, ReactNode } from "react";
+
+import {
+  defaultScrollViewport,
+  ornamentDiamondTransition,
+  ornamentDiamondVariants,
+  ornamentLineTransition,
+  ornamentLineVariants,
+} from "@/lib/motion";
 
 type Tone = "dark" | "light";
 
@@ -54,10 +65,31 @@ export function SectionHeading({
   titleId?: string;
   className?: string;
 }) {
+  const reduced = useReducedMotion();
   const isCenter = align === "center";
   const Title = TitleTag as ElementType;
   const Subtitle = SubtitleTag as ElementType;
   const styles = toneStyles[tone];
+
+  const lineMotion = reduced
+    ? {}
+    : {
+        initial: "hidden" as const,
+        whileInView: "visible" as const,
+        viewport: defaultScrollViewport,
+        variants: ornamentLineVariants,
+        transition: ornamentLineTransition,
+      };
+
+  const diamondMotion = reduced
+    ? {}
+    : {
+        initial: "hidden" as const,
+        whileInView: "visible" as const,
+        viewport: defaultScrollViewport,
+        variants: ornamentDiamondVariants,
+        transition: { ...ornamentDiamondTransition, delay: 0.06 },
+      };
 
   return (
     <header
@@ -71,13 +103,16 @@ export function SectionHeading({
             isCenter ? "justify-center" : "justify-start"
           }`}
         >
-          <span
+          <motion.span
             aria-hidden
-            className={`h-px w-7 shrink-0 sm:w-9 ${styles.line}`}
+            className={`block h-px w-7 shrink-0 sm:w-9 ${styles.line}`}
+            style={{ transformOrigin: isCenter ? "right center" : "left center" }}
+            {...lineMotion}
           />
-          <span
+          <motion.span
             aria-hidden
             className={`inline-flex h-1.5 w-1.5 shrink-0 rotate-45 ${styles.diamond}`}
+            {...diamondMotion}
           />
           <p
             className={`eyebrow text-[10.5px] font-medium uppercase sm:text-[11px] ${styles.eyebrow}`}
@@ -86,15 +121,22 @@ export function SectionHeading({
           </p>
           {isCenter && (
             <>
-              <span
+              <motion.span
                 aria-hidden
                 className={`inline-flex h-1.5 w-1.5 shrink-0 rotate-45 ${styles.diamond}`}
+                {...diamondMotion}
               />
-              <span
+              <motion.span
                 aria-hidden
-                className={`h-px w-7 shrink-0 bg-gradient-to-l from-transparent sm:w-9 ${
+                className={`block h-px w-7 shrink-0 bg-gradient-to-l from-transparent sm:w-9 ${
                   tone === "light" ? "to-gold-deep/75" : "to-gold/85"
                 }`}
+                style={{ transformOrigin: "left center" }}
+                initial={reduced ? false : "hidden"}
+                whileInView={reduced ? undefined : "visible"}
+                viewport={defaultScrollViewport}
+                variants={ornamentLineVariants}
+                transition={{ ...ornamentLineTransition, delay: 0.04 }}
               />
             </>
           )}

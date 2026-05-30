@@ -8,13 +8,7 @@ export function LegalArticle({ children }: { children: ReactNode }) {
   );
 }
 
-export function LegalH2({ children }: { children: ReactNode }) {
-  return (
-    <h2 className="font-[family-name:var(--font-dm-sans)] text-xl font-bold text-ivory md:text-2xl">
-      {children}
-    </h2>
-  );
-}
+export { LegalH2 } from "./LegalH2";
 
 export function LegalP({ children }: { children: ReactNode }) {
   return <p>{children}</p>;

@@ -1,10 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { BLUR_PETROL } from "@/lib/image-blur";
+import {
+  defaultScrollViewport,
+  fadeUpTransition,
+  fadeUpVariants,
+} from "@/lib/motion";
 import type { GalleryItem } from "@/lib/types";
 
 import { Lightbox } from "./Lightbox";
@@ -18,6 +23,7 @@ export function GalleryGrid({
 }) {
   const [filter, setFilter] = useState<string>("all");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const reduced = useReducedMotion();
 
   const tags = useMemo(() => {
     const set = new Set<string>();
@@ -74,11 +80,16 @@ export function GalleryGrid({
         </div>
       )}
 
-      <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+      <div key={filter} className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
         {filtered.map((item, index) => (
-          <button
+          <motion.button
             key={item.id}
             type="button"
+            initial={reduced ? false : "hidden"}
+            whileInView={reduced ? undefined : "visible"}
+            viewport={defaultScrollViewport}
+            variants={reduced ? undefined : fadeUpVariants}
+            transition={{ ...fadeUpTransition, delay: index * 0.05 }}
             className="relative block w-full break-inside-avoid overflow-hidden rounded-sm border border-gold/35 cursor-pointer group transition-colors duration-base hover:border-gold/55 focus-visible:outline-2 focus-visible:outline-gold"
             onClick={() => openLightbox(index)}
             aria-label={`Ouvrir : ${item.alt}`}
@@ -93,11 +104,11 @@ export function GalleryGrid({
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className="w-full h-auto object-cover transition-transform duration-base group-hover:scale-[1.02]"
             />
-          </button>
+          </motion.button>
         ))}
       </div>
 
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {lightboxIndex !== null && (
           <Lightbox
             key="gallery-lightbox"
