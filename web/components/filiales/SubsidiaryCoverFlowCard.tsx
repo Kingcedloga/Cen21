@@ -48,7 +48,7 @@ export function SubsidiaryCoverFlowCard({
         fill
         placeholder="blur"
         blurDataURL={BLUR_PETROL}
-        className="object-cover transition-transform duration-500 group-hover:scale-105"
+        className="object-cover transition-transform duration-luxe group-hover:scale-105"
         sizes={`${width}px`}
         priority={isActive}
       />
@@ -110,7 +110,7 @@ export function SubsidiaryCoverFlowCard({
     </>
   );
 
-  const shellClass = `group relative aspect-[2/3] w-full shrink-0 overflow-hidden rounded-2xl border-2 bg-anthracite shadow-[0_24px_60px_rgba(0,0,0,0.55)] transition-[box-shadow,border-color,filter] duration-300 ${
+  const shellClass = `group relative aspect-[2/3] w-full shrink-0 overflow-hidden rounded-2xl border-2 bg-anthracite shadow-[0_24px_60px_rgba(0,0,0,0.55)] transition-[box-shadow,border-color,filter] duration-base ${
     isActive
       ? "border-gold/60 shadow-[0_32px_80px_rgba(212,173,101,0.25)] ring-2 ring-gold/30 brightness-100"
       : "border-white/15 brightness-[0.72] saturate-[0.85]"

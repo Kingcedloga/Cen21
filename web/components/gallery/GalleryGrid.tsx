@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { AnimatePresence } from "framer-motion";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { BLUR_PETROL } from "@/lib/image-blur";
@@ -78,7 +79,7 @@ export function GalleryGrid({
           <button
             key={item.id}
             type="button"
-            className="relative block w-full break-inside-avoid overflow-hidden rounded-sm border border-gold/35 cursor-pointer group transition-colors duration-300 hover:border-gold/55 focus-visible:outline-2 focus-visible:outline-gold"
+            className="relative block w-full break-inside-avoid overflow-hidden rounded-sm border border-gold/35 cursor-pointer group transition-colors duration-base hover:border-gold/55 focus-visible:outline-2 focus-visible:outline-gold"
             onClick={() => openLightbox(index)}
             aria-label={`Ouvrir : ${item.alt}`}
           >
@@ -90,20 +91,23 @@ export function GalleryGrid({
               placeholder="blur"
               blurDataURL={BLUR_PETROL}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+              className="w-full h-auto object-cover transition-transform duration-base group-hover:scale-[1.02]"
             />
           </button>
         ))}
       </div>
 
-      {lightboxIndex !== null && (
-        <Lightbox
-          items={filtered}
-          index={lightboxIndex}
-          onClose={closeLightbox}
-          onNavigate={setLightboxIndex}
-        />
-      )}
+      <AnimatePresence mode="wait">
+        {lightboxIndex !== null && (
+          <Lightbox
+            key="gallery-lightbox"
+            items={filtered}
+            index={lightboxIndex}
+            onClose={closeLightbox}
+            onNavigate={setLightboxIndex}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 }
@@ -123,7 +127,7 @@ function FilterPill({
       role="tab"
       aria-selected={active}
       onClick={onClick}
-      className={`min-h-[44px] rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2 ${
+      className={`min-h-[44px] rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-fine cursor-pointer focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2 ${
         active
           ? "border-gold bg-gold text-petrol"
           : "border-white/20 text-ivory/85 hover:border-gold hover:text-gold"

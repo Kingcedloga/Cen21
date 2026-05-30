@@ -25,7 +25,7 @@ type CtaBandProps = {
 };
 
 const navButtonClass =
-  "absolute top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-petrol/25 bg-gold text-petrol shadow-sm transition-colors duration-200 hover:border-petrol/45 hover:brightness-[1.04] focus-visible:outline-2 focus-visible:outline-petrol focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-35 md:flex";
+  "absolute top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-petrol/25 bg-gold text-petrol shadow-sm transition-colors duration-fine hover:border-petrol/45 hover:brightness-[1.04] focus-visible:outline-2 focus-visible:outline-petrol focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-35 md:flex";
 
 type VideoSlideProps = {
   video: CtaBandVideo;
@@ -77,7 +77,7 @@ function VideoSlide({
             type="button"
             onClick={onClose}
             aria-label={t("closeVideoAria")}
-            className="absolute right-3 top-3 z-20 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-petrol/80 text-ivory transition-colors duration-200 hover:border-gold/45 hover:bg-petrol hover:text-gold focus-visible:outline-2 focus-visible:outline-petrol focus-visible:outline-offset-2"
+            className="absolute right-3 top-3 z-20 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-petrol/80 text-ivory transition-colors duration-fine hover:border-gold/45 hover:bg-petrol hover:text-gold focus-visible:outline-2 focus-visible:outline-petrol focus-visible:outline-offset-2"
           >
             <X className="h-4 w-4" strokeWidth={1.5} aria-hidden />
           </button>
@@ -94,18 +94,18 @@ function VideoSlide({
             alt=""
             fill
             sizes="(max-width: 896px) 100vw, 896px"
-            className="object-cover transition-transform duration-500 ease-out group-hover/video:scale-[1.02]"
+            className="object-cover transition-transform duration-luxe ease-out group-hover/video:scale-[1.02]"
             onError={() => {
               if (thumbQuality === "max") setThumbQuality("hq");
             }}
           />
           <span
             aria-hidden
-            className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent transition-opacity duration-300 group-hover/video:via-black/40"
+            className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent transition-opacity duration-base group-hover/video:via-black/40"
           />
           <span
             aria-hidden
-            className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,173,101,0.16)_0%,transparent_55%)] opacity-80 transition-opacity duration-300 group-hover/video:opacity-100"
+            className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,173,101,0.16)_0%,transparent_55%)] opacity-80 transition-opacity duration-base group-hover/video:opacity-100"
           />
 
           <span className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6">
@@ -273,7 +273,7 @@ export function CtaBand({ videos }: CtaBandProps) {
                             aria-selected={index === activeIndex}
                             aria-label={t("goToSlide", { index: index + 1 })}
                             onClick={() => scrollToIndex(index)}
-                            className={`h-2 w-2 cursor-pointer rounded-full transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-petrol focus-visible:outline-offset-2 ${
+                            className={`h-2 w-2 cursor-pointer rounded-full transition-colors duration-fine focus-visible:outline-2 focus-visible:outline-petrol focus-visible:outline-offset-2 ${
                               index === activeIndex
                                 ? "bg-petrol"
                                 : "bg-petrol/25 hover:bg-petrol/45"

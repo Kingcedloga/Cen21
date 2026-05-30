@@ -68,7 +68,7 @@ export function HeroCinematic({ slides, siteName, className = "" }: HeroCinemati
       {list.map((slide, i) => (
         <div
           key={`${slide.src}-${i}`}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-out ${
+          className={`absolute inset-0 transition-opacity duration-hero-crossfade ease-out ${
             i === safeIndex ? "opacity-100 z-0" : "opacity-0 z-0 pointer-events-none"
           }`}
           aria-hidden={i !== safeIndex}
@@ -127,7 +127,7 @@ export function HeroCinematic({ slides, siteName, className = "" }: HeroCinemati
           });
         }}
         aria-label={t("scrollAria")}
-        className="absolute bottom-4 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center gap-2 text-ivory/70 transition-colors duration-200 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-4 cursor-pointer md:flex md:bottom-5"
+        className="absolute bottom-4 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center gap-2 text-ivory/70 transition-colors duration-fine hover:text-gold focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-4 cursor-pointer md:flex md:bottom-5"
       >
         <span className="text-[10px] font-medium tracking-[0.24em] uppercase">
           {t("scroll")}

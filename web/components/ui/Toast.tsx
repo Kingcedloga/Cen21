@@ -4,6 +4,11 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { toastIcons, X } from "@/lib/icons";
 import { useEffect } from "react";
 
+import {
+  toastEnterTransition,
+  toastVariants,
+} from "@/lib/motion";
+
 export type ToastVariant = "success" | "error";
 
 const VARIANT_STYLES: Record<
@@ -48,10 +53,11 @@ export function Toast({
     <motion.div
       role={variant === "error" ? "alert" : "status"}
       aria-live={variant === "error" ? "assertive" : "polite"}
-      initial={reduced ? { opacity: 0 } : { opacity: 0, y: 24, scale: 0.96 }}
-      animate={reduced ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
-      exit={reduced ? { opacity: 0 } : { opacity: 0, y: 12, scale: 0.98 }}
-      transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+      initial={reduced ? false : "hidden"}
+      animate={reduced ? undefined : "visible"}
+      exit={reduced ? undefined : "exit"}
+      variants={reduced ? undefined : toastVariants}
+      transition={toastEnterTransition}
       className={`pointer-events-auto flex w-full max-w-sm items-start gap-3 rounded-xl border border-white/10 bg-anthracite/95 p-4 shadow-2xl shadow-black/55 ring-1 ring-inset ${ring} backdrop-blur-md`}
     >
       <Icon className={`mt-0.5 h-5 w-5 shrink-0 ${iconClass}`} aria-hidden />

@@ -35,7 +35,7 @@ export function CompactSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }
       onMouseEnter={onPrefetch}
       onFocus={onPrefetch}
       onTouchStart={onPrefetch}
-      className="group relative overflow-hidden rounded-2xl border border-white/12 bg-anthracite/45 shadow-[0_14px_32px_-18px_rgba(0,0,0,0.5)] transition-[transform,box-shadow,border-color,background-color] duration-400 ease-out hover:translate-x-1 hover:border-gold/45 hover:bg-anthracite/65 hover:shadow-[0_18px_44px_-18px_rgba(212,173,101,0.3),0_14px_32px_-16px_rgba(0,0,0,0.6)]"
+      className="group relative overflow-hidden rounded-2xl border border-white/12 bg-anthracite/45 shadow-[0_14px_32px_-18px_rgba(0,0,0,0.5)] transition-[transform,box-shadow,border-color,background-color] duration-luxe ease-out hover:translate-x-1 hover:border-gold/45 hover:bg-anthracite/65 hover:shadow-[0_18px_44px_-18px_rgba(212,173,101,0.3),0_14px_32px_-16px_rgba(0,0,0,0.6)]"
     >
       <Link
         href={href}
@@ -54,7 +54,7 @@ export function CompactSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }
             placeholder="blur"
             blurDataURL={BLUR_PETROL}
             sizes="120px"
-            className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+            className="object-cover transition-transform duration-luxe ease-out group-hover:scale-110"
           />
           {/* Voile sombre + accent radial au survol */}
           <div
@@ -63,7 +63,7 @@ export function CompactSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }
           />
           <div
             aria-hidden
-            className="absolute inset-0 opacity-0 transition-opacity duration-400 group-hover:opacity-100"
+            className="absolute inset-0 opacity-0 transition-opacity duration-luxe group-hover:opacity-100"
             style={{
               background: `radial-gradient(circle at 50% 50%, ${subsidiary.accentColor}33 0%, transparent 70%)`,
             }}
@@ -97,9 +97,9 @@ export function CompactSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }
           className="flex shrink-0 items-center justify-center self-center pr-2 md:pr-3"
           aria-hidden
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-ivory/60 transition-all duration-300 group-hover:border-gold/55 group-hover:bg-gold/10 group-hover:text-gold">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-ivory/60 transition-all duration-base group-hover:border-gold/55 group-hover:bg-gold/10 group-hover:text-gold">
             <ArrowUpRight
-              className="h-4 w-4 -translate-x-px transition-transform duration-300 group-hover:translate-x-0 group-hover:-translate-y-px"
+              className="h-4 w-4 -translate-x-px transition-transform duration-base group-hover:translate-x-0 group-hover:-translate-y-px"
               strokeWidth={1.5}
             />
           </span>

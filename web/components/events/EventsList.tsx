@@ -128,14 +128,14 @@ function EventsEmptyState({
         {hasPast && (
           <Link
             href="#archives-events"
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-white/15 bg-petrol/50 px-5 py-2 text-sm font-medium text-ivory/85 transition-colors duration-200 hover:border-gold/50 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold cursor-pointer"
+            className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-white/15 bg-petrol/50 px-5 py-2 text-sm font-medium text-ivory/85 transition-colors duration-fine hover:border-gold/50 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold cursor-pointer"
           >
             {t("viewArchives")}
           </Link>
         )}
         <Link
           href="/contact"
-          className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-5 py-2 text-sm font-medium text-gold transition-colors duration-200 hover:bg-gold/15 focus-visible:outline-2 focus-visible:outline-gold cursor-pointer"
+          className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-5 py-2 text-sm font-medium text-gold transition-colors duration-fine hover:bg-gold/15 focus-visible:outline-2 focus-visible:outline-gold cursor-pointer"
         >
           <Mail className="h-4 w-4" strokeWidth={ICON_STROKE} aria-hidden />
           {t("notify")}
@@ -160,7 +160,7 @@ function FilterBtn({
       role="tab"
       aria-selected={active}
       onClick={onClick}
-      className={`min-h-[44px] rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2 ${
+      className={`min-h-[44px] rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-fine cursor-pointer focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2 ${
         active
           ? "border-gold bg-gold text-petrol"
           : "border-white/20 text-ivory/80 hover:border-gold hover:text-gold"

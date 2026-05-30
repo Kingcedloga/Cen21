@@ -54,7 +54,7 @@ export async function Breadcrumb({
                 {item.href && !isLast ? (
                   <Link
                     href={item.href}
-                    className="inline-flex items-center gap-1.5 rounded-md px-1.5 py-0.5 text-ivory/75 transition-colors duration-200 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold cursor-pointer"
+                    className="inline-flex items-center gap-1.5 rounded-md px-1.5 py-0.5 text-ivory/75 transition-colors duration-fine hover:text-gold focus-visible:outline-2 focus-visible:outline-gold cursor-pointer"
                   >
                     {isFirst && <Home className="h-3.5 w-3.5" aria-hidden />}
                     <span>{item.label}</span>

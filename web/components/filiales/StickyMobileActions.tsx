@@ -3,6 +3,7 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Icon } from "@/components/ui/Icon";
 import { ICON_STROKE } from "@/lib/icons";
+import { panelEnterTransition, fadeUpVariants } from "@/lib/motion";
 import { useEffect, useState } from "react";
 
 const SHOW_AFTER_PX = 480;
@@ -44,10 +45,11 @@ export function StickyMobileActions({
     <AnimatePresence>
       {visible && (
         <motion.div
-          initial={reduced ? { opacity: 0 } : { opacity: 0, y: 24 }}
-          animate={reduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
-          exit={reduced ? { opacity: 0 } : { opacity: 0, y: 16 }}
-          transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+          initial={reduced ? false : "hidden"}
+          animate={reduced ? undefined : "visible"}
+          exit={reduced ? undefined : "exit"}
+          variants={reduced ? undefined : fadeUpVariants}
+          transition={panelEnterTransition}
           aria-label={`Actions rapides ${subsidiaryName}`}
           className="pointer-events-auto fixed inset-x-3 bottom-3 z-40 lg:hidden"
         >
@@ -63,8 +65,8 @@ export function StickyMobileActions({
                 href={`tel:${cleanedPhone}`}
                 className={
                   themed
-                    ? "sub-sticky-call flex flex-1 items-center justify-center gap-2 rounded-xl px-3 py-3 text-sm font-semibold transition-colors duration-200 active:brightness-[0.98] focus-visible:outline-2 focus-visible:outline-[var(--sub-gold)] cursor-pointer"
-                    : "flex flex-1 items-center justify-center gap-2 rounded-xl bg-gold px-3 py-3 text-sm font-semibold text-petrol transition-colors duration-200 hover:brightness-[1.04] active:brightness-[0.98] focus-visible:outline-2 focus-visible:outline-gold cursor-pointer"
+                    ? "sub-sticky-call flex flex-1 items-center justify-center gap-2 rounded-xl px-3 py-3 text-sm font-semibold transition-colors duration-fine active:brightness-[0.98] focus-visible:outline-2 focus-visible:outline-[var(--sub-gold)] cursor-pointer"
+                    : "flex flex-1 items-center justify-center gap-2 rounded-xl bg-gold px-3 py-3 text-sm font-semibold text-petrol transition-colors duration-fine hover:brightness-[1.04] active:brightness-[0.98] focus-visible:outline-2 focus-visible:outline-gold cursor-pointer"
                 }
               >
                 <Icon
@@ -83,8 +85,8 @@ export function StickyMobileActions({
                 rel="noopener noreferrer"
                 className={
                   themed
-                    ? "sub-sticky-maps flex flex-1 items-center justify-center gap-2 rounded-xl border px-3 py-3 text-sm font-semibold transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-[var(--sub-gold)] cursor-pointer"
-                    : "flex flex-1 items-center justify-center gap-2 rounded-xl border border-ivory/20 bg-anthracite/80 px-3 py-3 text-sm font-semibold text-ivory transition-colors duration-200 hover:border-ivory/50 hover:bg-ivory/[0.06] focus-visible:outline-2 focus-visible:outline-ivory cursor-pointer"
+                    ? "sub-sticky-maps flex flex-1 items-center justify-center gap-2 rounded-xl border px-3 py-3 text-sm font-semibold transition-colors duration-fine focus-visible:outline-2 focus-visible:outline-[var(--sub-gold)] cursor-pointer"
+                    : "flex flex-1 items-center justify-center gap-2 rounded-xl border border-ivory/20 bg-anthracite/80 px-3 py-3 text-sm font-semibold text-ivory transition-colors duration-fine hover:border-ivory/50 hover:bg-ivory/[0.06] focus-visible:outline-2 focus-visible:outline-ivory cursor-pointer"
                 }
               >
                 <Icon

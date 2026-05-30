@@ -10,7 +10,7 @@ import type { SubsidiaryNavbarTheme } from "@/lib/navbar-theme";
 const LOCALE_ORDER: Locale[] = ["en", "fr"];
 
 const BTN_BASE =
-  "min-h-[36px] min-w-[40px] rounded-full px-3 text-xs font-semibold uppercase tracking-wider transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60";
+  "min-h-[36px] min-w-[40px] rounded-full px-3 text-xs font-semibold uppercase tracking-wider transition-all duration-fine cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60";
 
 export function LanguageSwitcher({
   className = "",

@@ -98,7 +98,7 @@ export function SubsidiaryHero({
         list.map((slide, i) => (
           <div
             key={`${slide.src}-${i}`}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-out ${
+            className={`absolute inset-0 transition-opacity duration-hero-crossfade ease-out ${
               i === safeIndex ? "opacity-100" : "pointer-events-none opacity-0"
             }`}
             aria-hidden={i !== safeIndex}
@@ -156,7 +156,7 @@ export function SubsidiaryHero({
                 aria-label={`Visuel ${i + 1} sur ${len}`}
                 aria-current={i === safeIndex}
                 onClick={() => setIndex(i)}
-                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                className={`h-1.5 rounded-full transition-all duration-base cursor-pointer ${
                   i === safeIndex ? dotActiveClass : dotIdleClass
                 }`}
               />

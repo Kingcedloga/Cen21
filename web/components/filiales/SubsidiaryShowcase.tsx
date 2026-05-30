@@ -18,7 +18,7 @@ export function SubsidiaryShowcaseFeatured({ subsidiary }: { subsidiary: Subsidi
           src={subsidiary.coverImage}
           alt=""
           fill
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+          className="object-cover transition-transform duration-grand ease-out group-hover:scale-[1.03]"
           sizes="(max-width: 1024px) 100vw, 50vw"
         />
       </div>
@@ -56,7 +56,7 @@ export function SubsidiaryShowcaseCompact({ subsidiary }: { subsidiary: Subsidia
   const Icon = sectorIcons[subsidiary.sector];
 
   return (
-    <article className="group relative flex min-h-[8.5rem] overflow-hidden rounded-2xl border border-white/12 bg-ivory/[0.07] shadow-lg shadow-black/25 transition-colors duration-200 hover:border-gold/35 md:min-h-0 md:h-full md:min-h-[8.25rem]">
+    <article className="group relative flex min-h-[8.5rem] overflow-hidden rounded-2xl border border-white/12 bg-ivory/[0.07] shadow-lg shadow-black/25 transition-colors duration-fine hover:border-gold/35 md:min-h-0 md:h-full md:min-h-[8.25rem]">
       <div className="flex min-w-0 flex-1 flex-col justify-center gap-3 p-4 pl-5 md:flex-row md:items-center md:gap-4 md:py-4 md:pl-5 md:pr-3">
         <div
           className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg md:h-11 md:w-11"
@@ -86,7 +86,7 @@ export function SubsidiaryShowcaseCompact({ subsidiary }: { subsidiary: Subsidia
           src={subsidiary.coverImage}
           alt=""
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-luxe group-hover:scale-105"
           sizes="200px"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-ivory/[0.12] to-transparent" />

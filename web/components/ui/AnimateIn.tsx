@@ -3,7 +3,11 @@
 import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
-import { fadeUpTransition, fadeUpVariants } from "@/lib/motion";
+import {
+  defaultScrollViewport,
+  fadeUpTransition,
+  fadeUpVariants,
+} from "@/lib/motion";
 
 export function AnimateIn({
   children,
@@ -25,7 +29,7 @@ export function AnimateIn({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={defaultScrollViewport}
       variants={fadeUpVariants}
       transition={{ ...fadeUpTransition, delay }}
     >

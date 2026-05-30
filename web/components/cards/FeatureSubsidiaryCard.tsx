@@ -35,7 +35,7 @@ export function FeatureSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }
       onMouseEnter={onPrefetch}
       onFocus={onPrefetch}
       onTouchStart={onPrefetch}
-      className="group relative h-full overflow-hidden rounded-3xl border border-white/12 bg-anthracite/55 shadow-[0_22px_50px_-22px_rgba(0,0,0,0.6)] transition-[transform,box-shadow,border-color] duration-500 ease-out hover:-translate-y-1.5 hover:border-gold/55 hover:shadow-[0_32px_80px_-22px_rgba(212,173,101,0.35),0_22px_50px_-18px_rgba(0,0,0,0.7)]"
+      className="group relative h-full overflow-hidden rounded-3xl border border-white/12 bg-anthracite/55 shadow-[0_22px_50px_-22px_rgba(0,0,0,0.6)] transition-[transform,box-shadow,border-color] duration-luxe ease-out hover:-translate-y-1.5 hover:border-gold/55 hover:shadow-[0_32px_80px_-22px_rgba(212,173,101,0.35),0_22px_50px_-18px_rgba(0,0,0,0.7)]"
     >
       <Link
         href={href}
@@ -51,7 +51,7 @@ export function FeatureSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }
           fill
           placeholder="blur"
           blurDataURL={BLUR_PETROL}
-          className="object-cover transition-transform duration-[800ms] ease-out group-hover:scale-[1.05]"
+          className="object-cover transition-transform duration-grand ease-out group-hover:scale-[1.05]"
           sizes="(max-width: 1024px) 100vw, 60vw"
           priority
         />
@@ -64,7 +64,7 @@ export function FeatureSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }
         {/* Halo accentColor activé au survol */}
         <div
           aria-hidden
-          className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          className="absolute inset-0 opacity-0 transition-opacity duration-luxe group-hover:opacity-100"
           style={{
             background: `radial-gradient(ellipse at 50% 90%, ${subsidiary.accentColor}40 0%, transparent 65%)`,
           }}
@@ -77,7 +77,7 @@ export function FeatureSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }
         />
         <span
           aria-hidden
-          className="absolute left-0 top-0 h-full w-[3px] origin-top scale-y-0 bg-gold opacity-0 transition-all duration-700 group-hover:scale-y-100 group-hover:opacity-90"
+          className="absolute left-0 top-0 h-full w-[3px] origin-top scale-y-0 bg-gold opacity-0 transition-all duration-grand group-hover:scale-y-100 group-hover:opacity-90"
         />
 
         {/* Chip secteur (top-left) */}
@@ -112,7 +112,7 @@ export function FeatureSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }
           <span className="inline-flex flex-wrap items-baseline gap-x-3 gap-y-1">
             <span>{subsidiary.name}</span>
             <ArrowUpRight
-              className="h-6 w-6 -translate-x-1 text-gold opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 md:h-7 md:w-7"
+              className="h-6 w-6 -translate-x-1 text-gold opacity-0 transition-all duration-base group-hover:translate-x-0 group-hover:opacity-100 md:h-7 md:w-7"
               aria-hidden
             />
           </span>

@@ -48,7 +48,7 @@ export function TeamGrid({ members }: { members: TeamMember[] }) {
 
 function TeamCard({ member }: { member: TeamMember }) {
   return (
-    <article className="group relative overflow-hidden rounded-2xl border border-white/10 bg-petrol/40 backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-1 hover:border-gold/40 hover:bg-petrol/55 hover:shadow-[0_24px_60px_-20px_rgba(212,173,101,0.35),0_12px_32px_-12px_rgba(0,0,0,0.55)]">
+    <article className="group relative overflow-hidden rounded-2xl border border-white/10 bg-petrol/40 backdrop-blur-sm transition-all duration-luxe ease-out hover:-translate-y-1 hover:border-gold/40 hover:bg-petrol/55 hover:shadow-[0_24px_60px_-20px_rgba(212,173,101,0.35),0_12px_32px_-12px_rgba(0,0,0,0.55)]">
       {/* Portrait — ratio éditorial 4/5 */}
       <div className="relative aspect-[4/5] w-full overflow-hidden">
         <Image
@@ -58,7 +58,7 @@ function TeamCard({ member }: { member: TeamMember }) {
           placeholder="blur"
           blurDataURL={BLUR_PETROL}
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+          className="object-cover object-center transition-transform duration-grand ease-out group-hover:scale-[1.04]"
         />
         {/* Voile bas pour transition élégante vers le bloc texte */}
         <div
@@ -68,7 +68,7 @@ function TeamCard({ member }: { member: TeamMember }) {
         {/* Liseré doré activé au survol */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-px origin-center scale-x-0 bg-gradient-to-r from-transparent via-gold/80 to-transparent transition-transform duration-500 group-hover:scale-x-100"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-px origin-center scale-x-0 bg-gradient-to-r from-transparent via-gold/80 to-transparent transition-transform duration-luxe group-hover:scale-x-100"
         />
       </div>
 
@@ -88,7 +88,7 @@ function TeamCard({ member }: { member: TeamMember }) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Profil LinkedIn de ${member.name}`}
-            className="mt-5 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-ivory/80 transition-all duration-200 hover:border-gold/60 hover:bg-gold/10 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2 cursor-pointer"
+            className="mt-5 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-ivory/80 transition-all duration-fine hover:border-gold/60 hover:bg-gold/10 hover:text-gold focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2 cursor-pointer"
           >
             <LinkedInIcon className="h-4 w-4" />
           </a>

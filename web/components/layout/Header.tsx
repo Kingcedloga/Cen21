@@ -52,12 +52,12 @@ export function Header() {
 
   return (
     <header
-      className={`fixed left-3 right-3 z-50 transition-[top] duration-300 ease-out md:left-4 md:right-4 ${
+      className={`fixed left-3 right-3 z-50 transition-[top] duration-base ease-out md:left-4 md:right-4 ${
         dense ? "top-2 md:top-3" : "top-4"
       }`}
     >
       <div
-        className={`relative mx-auto flex max-w-7xl flex-col overflow-hidden rounded-2xl border transition-all duration-300 ease-out ${
+        className={`relative mx-auto flex max-w-7xl flex-col overflow-hidden rounded-2xl border transition-all duration-base ease-out ${
           isBrand
             ? dense
               ? "shadow-[0_18px_40px_-18px_rgba(0,0,0,0.5)]"
@@ -78,7 +78,7 @@ export function Header() {
       >
         <span
           aria-hidden
-          className={`pointer-events-none absolute inset-x-0 top-0 h-px transition-opacity duration-300 ${
+          className={`pointer-events-none absolute inset-x-0 top-0 h-px transition-opacity duration-base ${
             dense ? "opacity-100" : "opacity-0"
           }`}
           style={{
@@ -89,7 +89,7 @@ export function Header() {
         />
 
         <div
-          className={`flex items-center justify-between gap-3 px-5 transition-[height,padding] duration-300 ease-out md:px-8 ${
+          className={`flex items-center justify-between gap-3 px-5 transition-[height,padding] duration-base ease-out md:px-8 ${
             dense
               ? "h-[3.85rem] md:h-[4.25rem]"
               : "h-[4.25rem] md:h-[4.75rem]"
@@ -165,7 +165,7 @@ export function Header() {
                 >
                   <span
                     aria-hidden
-                    className={`h-1.5 w-1.5 rounded-full transition-all duration-200 ${
+                    className={`h-1.5 w-1.5 rounded-full transition-all duration-fine ${
                       isBrand ? "" : active ? "bg-gold" : "bg-transparent"
                     }`}
                     style={
@@ -195,7 +195,7 @@ function desktopNavLinkClass(
   isBrand: boolean,
 ): string {
   const base =
-    "relative inline-flex items-center text-[13px] font-medium tracking-wide transition-colors duration-300 ease-out cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:rounded-sm after:pointer-events-none after:absolute after:inset-x-0 after:-bottom-1.5 after:h-px after:origin-center after:transition-transform after:duration-300";
+    "relative inline-flex items-center text-[13px] font-medium tracking-wide transition-colors duration-base ease-out cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:rounded-sm after:pointer-events-none after:absolute after:inset-x-0 after:-bottom-1.5 after:h-px after:origin-center after:transition-transform after:duration-base";
 
   if (isBrand) {
     return `${base} focus-visible:outline-[color:var(--nav-accent)] after:bg-[color:var(--nav-accent)] ${
@@ -214,7 +214,7 @@ function desktopNavLinkClass(
 
 function mobileNavLinkClass(active: boolean, isBrand: boolean): string {
   const base =
-    "flex min-h-[44px] items-center gap-3 rounded-lg px-3 text-sm font-medium transition-colors duration-200 cursor-pointer";
+    "flex min-h-[44px] items-center gap-3 rounded-lg px-3 text-sm font-medium transition-colors duration-fine cursor-pointer";
 
   if (isBrand) {
     return `${base} hover:bg-white/8`;
@@ -243,7 +243,7 @@ function mobileNavLinkStyle(
 
 function menuButtonClass(isBrand: boolean): string {
   const base =
-    "flex h-11 w-11 items-center justify-center rounded-xl transition-colors duration-200 cursor-pointer lg:hidden focus-visible:outline-2 focus-visible:outline-offset-2";
+    "flex h-11 w-11 items-center justify-center rounded-xl transition-colors duration-fine cursor-pointer lg:hidden focus-visible:outline-2 focus-visible:outline-offset-2";
 
   if (isBrand) {
     return `${base} text-[color:var(--nav-fg)] hover:bg-white/10 hover:text-[color:var(--nav-accent)] focus-visible:outline-[color:var(--nav-accent)]`;

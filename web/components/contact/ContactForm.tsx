@@ -151,7 +151,7 @@ export function ContactForm() {
 }
 
 const inputClass =
-  "w-full rounded-lg bg-anthracite/70 border border-white/12 px-4 py-3 text-ivory text-[15px] placeholder:text-stone/90 outline-none ring-0 transition-all duration-200 focus:border-gold/50 focus:ring-2 focus:ring-gold/20 aria-[invalid=true]:border-red-400/50 aria-[invalid=true]:focus:ring-red-400/20";
+  "w-full rounded-lg bg-anthracite/70 border border-white/12 px-4 py-3 text-ivory text-[15px] placeholder:text-stone/90 outline-none ring-0 transition-all duration-fine focus:border-gold/50 focus:ring-2 focus:ring-gold/20 aria-[invalid=true]:border-red-400/50 aria-[invalid=true]:focus:ring-red-400/20";
 
 function Field({
   label,

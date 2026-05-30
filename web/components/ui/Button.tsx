@@ -20,7 +20,7 @@ const variants: Record<Variant, string> = {
   primary: "btn-primary",
   secondary: "btn-secondary",
   ghost:
-    "border border-transparent bg-transparent text-ivory/90 hover:text-ivory transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+    "border border-transparent bg-transparent text-ivory/90 hover:text-ivory transition-colors duration-luxe ease-luxury",
 };
 
 const sizes: Record<Size, string> = {
@@ -53,7 +53,7 @@ export function Button({
   ariaLabel?: string;
 }) {
   const base =
-    "group/btn relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl font-medium tracking-[0.005em] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer focus-visible:outline-1 focus-visible:outline-ivory focus-visible:outline-offset-[3px] disabled:pointer-events-none disabled:opacity-45 disabled:cursor-not-allowed";
+    "group/btn relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl font-medium tracking-[0.005em] transition-all duration-luxe ease-luxury cursor-pointer focus-visible:outline-1 focus-visible:outline-ivory focus-visible:outline-offset-[3px] disabled:pointer-events-none disabled:opacity-45 disabled:cursor-not-allowed";
 
   const classes = `${base} ${sizes[size]} ${variants[variant]} ${className}`;
 
@@ -62,7 +62,7 @@ export function Button({
       {variant === "primary" && (
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.22] to-transparent transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:translate-x-full"
+          className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.22] to-transparent transition-transform duration-shimmer ease-luxury group-hover/btn:translate-x-full"
         />
       )}
       <span className="relative inline-flex items-center gap-2">{children}</span>

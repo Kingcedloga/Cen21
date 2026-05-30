@@ -56,6 +56,9 @@
   --duration-base: 320ms;
   --duration-luxe: 480ms;
   --duration-grand: 700ms;
+  /* Sémantiques — miroir lib/motion.ts DURATION_S */
+  --duration-shimmer: 900ms;
+  --duration-hero-crossfade: 1000ms;
 
   /* Ombres en couches — chaque ombre superpose une "près" (1-2px crédibilité)
      et une "loin" (24-48px diffusion). Inspiré direction artistique Cartier. */
@@ -411,6 +414,32 @@ h4 {
 
 .btn-secondary:active {
   background: rgb(var(--color-gold-rgb) / 0.06);
+}
+
+/* === Utilitaires durée / easing (miroir lib/motion.ts) ================ */
+.duration-fine {
+  transition-duration: var(--duration-fine);
+}
+.duration-base {
+  transition-duration: var(--duration-base);
+}
+.duration-luxe {
+  transition-duration: var(--duration-luxe);
+}
+.duration-grand {
+  transition-duration: var(--duration-grand);
+}
+.duration-shimmer {
+  transition-duration: var(--duration-shimmer);
+}
+.duration-hero-crossfade {
+  transition-duration: var(--duration-hero-crossfade);
+}
+.ease-luxury {
+  transition-timing-function: var(--ease-luxury);
+}
+.ease-out-soft {
+  transition-timing-function: var(--ease-out-soft);
 }
 
 /* === Animations signatures ============================================ */

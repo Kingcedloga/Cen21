@@ -44,7 +44,7 @@ export function Logo({ size = "md", className = "", variant = "default" }: LogoP
         alt=""
         width={width}
         height={height}
-        className={`object-contain transition-opacity duration-200 group-hover:opacity-90 ${
+        className={`object-contain transition-opacity duration-fine group-hover:opacity-90 ${
           isHeader
             ? "h-14 w-auto md:h-[4.25rem]"
             : isFooter
