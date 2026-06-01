@@ -187,13 +187,7 @@ function HoursRevealColumn({
   const locale = useLocale();
   const t = useTranslations("subsidiaries.contactBand");
   const reduced = useReducedMotion() ?? false;
-  const hoverVisitsRef = useRef(0);
   const [expanded, setExpanded] = useState(false);
-
-  const handleIconMouseEnter = () => {
-    hoverVisitsRef.current += 1;
-    setExpanded(hoverVisitsRef.current % 2 === 1);
-  };
 
   const { preview, schedule } = useMemo(
     () => buildHoursSchedule(hours, locale),
@@ -216,7 +210,8 @@ function HoursRevealColumn({
       aria-label={`${label} — ${preview}`}
     >
       <span
-        onMouseEnter={handleIconMouseEnter}
+        onMouseEnter={() => setExpanded(true)}
+        onMouseLeave={() => setExpanded(false)}
         className="mx-auto mb-4 flex h-14 w-14 cursor-default items-center justify-center rounded-full border border-white/15 bg-white/5 backdrop-blur-sm transition-colors duration-fine group-hover:border-white/25"
       >
         <Icon name="hours" size="xl" className={iconClass} strokeWidth={1.25} />
