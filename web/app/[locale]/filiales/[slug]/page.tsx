@@ -128,6 +128,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         tagline={subsidiary.tagline}
         social={subsidiary.social}
         brandLogo={subsidiary.brandLogo}
+        accentColor={subsidiary.accentColor}
         theme={pageTheme ?? undefined}
         backgroundVideo={subsidiary.heroVideo}
       />

@@ -4,8 +4,10 @@ import { Menu, X } from "@/lib/icons";
 import {
   getSubsidiaryNavbarTheme,
   navbarThemeVars,
+  subsidiaryNavbarSurfaceStyle,
   type SubsidiaryNavbarTheme,
 } from "@/lib/navbar-theme";
+import { useFilialeScrollReveal } from "@/lib/use-filiale-scroll-reveal";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useEffect, useState, type CSSProperties } from "react";
@@ -27,6 +29,9 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const reduced = useReducedMotion();
+  const isBrand = subsidiaryTheme !== null;
+  const scrollReveal = useFilialeScrollReveal(isBrand);
+  const reveal = open ? 1 : scrollReveal;
 
   useEffect(() => {
     let frame = 0;
@@ -50,8 +55,7 @@ export function Header() {
     setOpen(false);
   }, [pathname]);
 
-  const dense = scrolled || open;
-  const isBrand = subsidiaryTheme !== null;
+  const dense = isBrand ? reveal > 0.35 || open : scrolled || open;
 
   return (
     <header
@@ -60,31 +64,30 @@ export function Header() {
       }`}
     >
       <div
-        className={`relative mx-auto flex max-w-7xl flex-col overflow-hidden rounded-2xl border transition-all duration-base ease-out ${
+        className={`relative mx-auto flex max-w-7xl flex-col overflow-hidden rounded-2xl border ${
           isBrand
-            ? dense
-              ? "shadow-[0_18px_40px_-18px_rgba(0,0,0,0.5)]"
-              : "shadow-lg shadow-black/25"
+            ? reveal > 0.08
+              ? "border-solid"
+              : "border-transparent"
             : dense
-              ? "border-white/12 bg-petrol/85 shadow-[0_18px_40px_-18px_rgba(0,0,0,0.55),0_8px_18px_-10px_rgba(212,173,101,0.18)] backdrop-blur-xl backdrop-saturate-150"
-              : "border-white/10 bg-petrol/45 shadow-lg shadow-black/30 backdrop-blur-md backdrop-saturate-125"
+              ? "border-white/12 bg-petrol/85 shadow-[0_18px_40px_-18px_rgba(0,0,0,0.55),0_8px_18px_-10px_rgba(212,173,101,0.18)] backdrop-blur-xl backdrop-saturate-150 transition-all duration-base ease-out"
+              : "border-white/10 bg-petrol/45 shadow-lg shadow-black/30 backdrop-blur-md backdrop-saturate-125 transition-all duration-base ease-out"
         }`}
         style={
           isBrand
             ? {
                 ...navbarThemeVars(subsidiaryTheme),
-                backgroundColor: subsidiaryTheme.background,
-                borderColor: `${subsidiaryTheme.foreground}22`,
+                ...subsidiaryNavbarSurfaceStyle(subsidiaryTheme, reveal),
               }
             : undefined
         }
       >
         <span
           aria-hidden
-          className={`pointer-events-none absolute inset-x-0 top-0 h-px transition-opacity duration-base ${
-            dense ? "opacity-100" : "opacity-0"
-          }`}
+          className="pointer-events-none absolute inset-x-0 top-0 h-px"
           style={{
+            opacity: isBrand ? reveal : dense ? 1 : 0,
+            transition: isBrand ? "none" : "opacity 200ms ease-out",
             background: isBrand
               ? `linear-gradient(90deg, transparent 0%, ${subsidiaryTheme.accent}99 50%, transparent 100%)`
               : "linear-gradient(90deg, transparent 0%, rgba(212,173,101,0.55) 50%, transparent 100%)",

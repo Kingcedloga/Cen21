@@ -8,7 +8,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { SocialLinks } from "@/components/ui/SocialLinks";
 import { BLUR_PETROL } from "@/lib/image-blur";
 import { fadeUpTransition, fadeUpVariants, heroStaggerVariants } from "@/lib/motion";
+import { useHeroScrollProgress } from "@/lib/use-hero-scroll-progress";
 import type { SubsidiaryPageTheme } from "@/lib/subsidiary-themes";
+
+import { SubsidiaryHeroLogo } from "./SubsidiaryHeroLogo";
 
 import type { HeroVideo, SocialLinks as SocialLinksData } from "@/lib/types";
 
@@ -23,6 +26,7 @@ export function SubsidiaryHero({
   tagline,
   social,
   brandLogo,
+  accentColor,
   theme,
   backgroundVideo,
 }: {
@@ -32,6 +36,7 @@ export function SubsidiaryHero({
   tagline: string;
   social: SocialLinksData;
   brandLogo?: string;
+  accentColor?: string;
   theme?: SubsidiaryHeroTheme;
   backgroundVideo?: HeroVideo;
 }) {
@@ -39,6 +44,8 @@ export function SubsidiaryHero({
   const len = list.length;
   const [index, setIndex] = useState(0);
   const reduced = useReducedMotion() ?? false;
+  const heroRef = useRef<HTMLElement>(null);
+  const logoReveal = useHeroScrollProgress(heroRef);
   const isThemed = Boolean(theme);
   const videoRef = useRef<HTMLVideoElement>(null);
   const useVideoBackground = Boolean(backgroundVideo?.src) && !reduced;
@@ -79,7 +86,10 @@ export function SubsidiaryHero({
   const navButtonRightClass = navButtonClass.replace("left-2", "right-2");
 
   return (
-    <section className="subsidiary-hero relative flex min-h-svh h-svh items-end overflow-hidden">
+    <section
+      ref={heroRef}
+      className="subsidiary-hero relative flex min-h-svh h-svh items-end overflow-hidden"
+    >
       {useVideoBackground ? (
         <video
           ref={videoRef}
@@ -197,13 +207,11 @@ export function SubsidiaryHero({
             variants={reduced ? undefined : fadeUpVariants}
             transition={fadeUpTransition}
           >
-            <Image
+            <SubsidiaryHeroLogo
               src={brandLogo}
               alt={name}
-              width={400}
-              height={140}
-              className="h-20 w-auto max-w-[min(100%,20rem)] object-contain object-left drop-shadow-[0_2px_24px_rgba(0,0,0,0.4)] md:h-24 md:max-w-[min(100%,24rem)] lg:h-28 lg:max-w-[min(100%,26rem)]"
-              priority
+              reveal={logoReveal}
+              accentColor={accentColor}
             />
           </motion.div>
         )}

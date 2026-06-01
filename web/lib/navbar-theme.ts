@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 /** Charte navbar par filiale (fond, textes/icônes, accent). */
 export type SubsidiaryNavbarTheme = {
   background: string;
@@ -85,5 +87,36 @@ export function navbarThemeVars(
     "--nav-bg": theme.background,
     "--nav-fg": theme.foreground,
     "--nav-accent": theme.accent,
+  };
+}
+
+/** Couleur hex → rgba pour fond navbar progressif au scroll */
+export function colorWithAlpha(color: string, alpha: number): string {
+  const hex = color.replace("#", "");
+  if (hex.length !== 6) return color;
+  const r = Number.parseInt(hex.slice(0, 2), 16);
+  const g = Number.parseInt(hex.slice(2, 4), 16);
+  const b = Number.parseInt(hex.slice(4, 6), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+export function subsidiaryNavbarSurfaceStyle(
+  theme: SubsidiaryNavbarTheme,
+  reveal: number,
+): CSSProperties {
+  const p = Math.min(1, Math.max(0, reveal));
+  const blur = p * 18;
+  const saturate = 100 + p * 45;
+
+  return {
+    backgroundColor: colorWithAlpha(theme.background, p * 0.94),
+    borderColor: colorWithAlpha(theme.foreground, p * 0.14),
+    backdropFilter: p > 0.04 ? `blur(${blur}px) saturate(${saturate}%)` : "none",
+    WebkitBackdropFilter:
+      p > 0.04 ? `blur(${blur}px) saturate(${saturate}%)` : "none",
+    boxShadow:
+      p > 0.12
+        ? `0 ${6 + p * 12}px ${20 + p * 20}px -${10 + p * 8}px rgba(0,0,0,${p * 0.52})`
+        : "none",
   };
 }
