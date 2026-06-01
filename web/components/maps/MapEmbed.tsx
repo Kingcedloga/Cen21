@@ -44,7 +44,7 @@ export function MapEmbed({
   return (
     <motion.div
       className={`glass-panel overflow-hidden rounded-2xl border border-white/10 ${
-        compact ? "mx-auto max-w-3xl" : ""
+        compact ? "max-w-3xl" : ""
       } ${className}`}
       initial={reduced ? false : "hidden"}
       whileInView={reduced ? undefined : "visible"}

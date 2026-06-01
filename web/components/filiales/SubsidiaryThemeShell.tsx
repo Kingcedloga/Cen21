@@ -2,6 +2,8 @@ import type { ReactNode } from "react";
 
 import type { SubsidiaryPageTheme } from "@/lib/subsidiary-themes";
 
+import { MexicanaMotifLayer } from "@/components/filiales/MexicanaMotifLayer";
+
 import "@/styles/subsidiary-themes/pinkberry.css";
 import "@/styles/subsidiary-themes/wabi-sabi.css";
 import "@/styles/subsidiary-themes/millionaire-club.css";
@@ -12,6 +14,7 @@ import "@/styles/subsidiary-themes/pain-quotidien.css";
 import "@/styles/subsidiary-themes/papa-johns.css";
 import "@/styles/subsidiary-themes/gourmet-mexicana.css";
 import "@/styles/subsidiary-themes/muzik-cafe.css";
+import "@/styles/subsidiary-contact-band.css";
 
 type Props = {
   theme: SubsidiaryPageTheme;
@@ -20,6 +23,7 @@ type Props = {
 
 export function SubsidiaryThemeShell({ theme, children }: Props) {
   const { colors } = theme;
+  const hasMotifs = theme.id === "gourmet-mexicana";
 
   const style = {
     "--sub-bg": colors.bg,
@@ -45,10 +49,11 @@ export function SubsidiaryThemeShell({ theme, children }: Props) {
   return (
     <div
       data-subsidiary-theme={theme.id}
-      className="subsidiary-themed-page min-h-full text-white"
+      className={`subsidiary-themed-page min-h-full text-white${hasMotifs ? " subsidiary-themed-page--motifs" : ""}`}
       style={style}
     >
-      {children}
+      {hasMotifs && <MexicanaMotifLayer />}
+      <div className={hasMotifs ? "relative z-[1]" : undefined}>{children}</div>
     </div>
   );
 }

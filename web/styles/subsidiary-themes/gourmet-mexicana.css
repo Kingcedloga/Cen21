@@ -1,8 +1,55 @@
-/* Gourmet Mexicana — thème page filiale (filiale-07) : drapeau mexicain & chaleur */
+/* Gourmet Mexicana — thème page filiale (filiale-07) : drapeau mexicain, motifs aztèques premium */
 
 [data-subsidiary-theme="gourmet-mexicana"] {
   background-color: var(--sub-bg);
   color: var(--sub-text);
+}
+
+/* Couche motifs — masquée si mouvement réduit (décoratif uniquement) */
+@media (prefers-reduced-motion: reduce) {
+  [data-subsidiary-theme="gourmet-mexicana"] .mexicana-motif-layer {
+    display: none;
+  }
+}
+
+[data-subsidiary-theme="gourmet-mexicana"].subsidiary-themed-page--motifs {
+  isolation: isolate;
+}
+
+/* Couche motifs — couleurs charte filiale */
+[data-subsidiary-theme="gourmet-mexicana"] .mexicana-motif-layer__grid {
+  color: rgb(var(--sub-ochre-rgb));
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mexicana-motif-layer__corner-tr {
+  color: rgb(var(--sub-ochre-rgb));
+  opacity: 0.14;
+}
+
+@media (min-width: 1024px) {
+  [data-subsidiary-theme="gourmet-mexicana"] .mexicana-motif-layer__corner-tr {
+    opacity: 0.16;
+  }
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mexicana-motif-layer__corner-bl {
+  color: rgb(var(--sub-red-rgb));
+  opacity: 0.11;
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mexicana-motif-layer__side {
+  color: rgb(var(--sub-ochre-rgb));
+  opacity: 0.09;
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mexicana-motif-layer__accent-red {
+  color: rgb(var(--sub-red-rgb));
+  opacity: 0.6;
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mexicana-motif-layer__accent-ochre {
+  color: rgb(var(--sub-ochre-rgb));
+  opacity: 0.65;
 }
 
 /* Typographie blanche, labels ocre */
@@ -34,30 +81,11 @@
   color: var(--sub-text);
 }
 
-/* Titres — bande tricolore mexicaine */
+/* Titres */
 [data-subsidiary-theme="gourmet-mexicana"] .sub-themed-heading {
   color: var(--sub-text);
   letter-spacing: -0.02em;
   font-weight: 600;
-}
-
-[data-subsidiary-theme="gourmet-mexicana"] .sub-themed-heading::after {
-  content: "";
-  display: block;
-  width: 4.5rem;
-  height: 4px;
-  margin-top: 0.875rem;
-  border-radius: 2px;
-  background: linear-gradient(
-    90deg,
-    var(--sub-bg) 0%,
-    var(--sub-bg) 32%,
-    var(--sub-text) 32%,
-    var(--sub-text) 64%,
-    var(--sub-red) 64%,
-    var(--sub-red) 100%
-  );
-  box-shadow: 0 1px 0 rgb(var(--sub-ochre-rgb) / 0.35);
 }
 
 /* Surfaces */
@@ -66,6 +94,7 @@
 }
 
 [data-subsidiary-theme="gourmet-mexicana"] .sub-themed-info-band {
+  position: relative;
   border-block: 1px solid var(--sub-border);
   background: linear-gradient(
     180deg,
@@ -76,14 +105,55 @@
   box-shadow: inset 0 3px 0 0 rgb(var(--sub-ochre-rgb) / 0.35);
 }
 
-/* Glass panels — chaleur terre cuite & ocre */
-[data-subsidiary-theme="gourmet-mexicana"] .glass-panel {
-  background: linear-gradient(
-    165deg,
-    rgb(var(--sub-ochre-rgb) / 0.1) 0%,
-    var(--sub-surface) 36%,
-    rgb(0 0 0 / 0.2) 100%
+/* Frise géométrique — inspiration papel picado stylisée */
+[data-subsidiary-theme="gourmet-mexicana"] .sub-themed-info-band::before,
+[data-subsidiary-theme="gourmet-mexicana"] .sub-themed-info-band::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 6px;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgb(var(--sub-red-rgb) / 0.45) 0,
+    rgb(var(--sub-red-rgb) / 0.45) 6px,
+    transparent 6px,
+    transparent 10px,
+    rgb(var(--sub-ochre-rgb) / 0.5) 10px,
+    rgb(var(--sub-ochre-rgb) / 0.5) 14px,
+    transparent 14px,
+    transparent 20px
   );
+  mask-image: radial-gradient(circle at 50% 100%, black 38%, transparent 40%);
+  mask-size: 20px 6px;
+  mask-repeat: repeat-x;
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .sub-themed-info-band::before {
+  top: -1px;
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .sub-themed-info-band::after {
+  bottom: -1px;
+  transform: scaleY(-1);
+}
+
+/* Glass panels — chaleur terre cuite, ocre & coin géométrique */
+[data-subsidiary-theme="gourmet-mexicana"] .glass-panel {
+  position: relative;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56' fill='none'%3E%3Cpath d='M56 0H44v4H40v4h-4v4h-4v4h-4v4H20v4h-4v4H8v4H0' stroke='%23D4A017' stroke-opacity='0.28' stroke-width='0.75'/%3E%3Cpath d='M48 8h8v8h-8V8Z' stroke='%23CE1126' stroke-opacity='0.22' stroke-width='0.6'/%3E%3C/svg%3E"),
+    linear-gradient(
+      165deg,
+      rgb(var(--sub-ochre-rgb) / 0.1) 0%,
+      var(--sub-surface) 36%,
+      rgb(0 0 0 / 0.2) 100%
+    );
+  background-position: top right, 0 0;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 56px 56px, auto;
   border: 1px solid rgb(var(--sub-ochre-rgb) / 0.28);
   border-radius: 0.875rem;
   box-shadow:
@@ -132,10 +202,31 @@
   background: rgb(var(--sub-red-rgb) / 0.1);
 }
 
-/* Galerie */
+/* Galerie — cadre losange discret */
 [data-subsidiary-theme="gourmet-mexicana"] .group.rounded-sm {
+  position: relative;
   border: 1px solid rgb(var(--sub-ochre-rgb) / 0.28);
   border-radius: 0.625rem;
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .group.rounded-sm::after {
+  content: "";
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  transform: rotate(45deg);
+  border: 1px solid rgb(var(--sub-red-rgb) / 0.35);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms ease-out;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-subsidiary-theme="gourmet-mexicana"] .group.rounded-sm:hover::after {
+    opacity: 1;
+  }
 }
 
 [data-subsidiary-theme="gourmet-mexicana"] .group.rounded-sm:focus-visible {
@@ -217,7 +308,19 @@
   color: var(--sub-terracotta);
 }
 
-/* Hero — contrôles carousel */
+/* Hero — overlay motif aztèque + filet tricolore */
+[data-subsidiary-theme="gourmet-mexicana"] .subsidiary-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.065;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23D4A017' stroke-width='0.65' opacity='0.7'%3E%3Cpath d='M0 40h20v-20h20V0M80 40H60v20H40v20'/%3E%3Cpath d='M40 40h8v8h-8v-8Z' fill='%23CE1126' fill-opacity='0.35' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 80px 80px;
+}
+
 [data-subsidiary-theme="gourmet-mexicana"] .subsidiary-hero button.rounded-full {
   background: rgb(0 0 0 / 0.28);
   border-color: rgb(var(--sub-ochre-rgb) / 0.35);

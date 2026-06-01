@@ -191,7 +191,13 @@
     "mapDescription": "Localisez l'établissement sur la carte. L'itinéraire s'ouvre dans Google Maps.",
     "mapOpenExternal": "Ouvrir dans Maps",
     "noEventsScheduled": "Aucun événement programmé pour le moment.",
-    "discover": "Découvrir"
+    "discover": "Découvrir",
+    "contactBand": {
+      "hours": "Horaires",
+      "findUs": "Nous trouver",
+      "callUs": "Appelez-nous",
+      "getDirection": "Itinéraire"
+    }
   },
   "notFound": {
     "code": "404",

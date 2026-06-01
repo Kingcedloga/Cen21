@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import type { ReactNode } from "react";
 
 import { EventCard } from "@/components/cards/EventCard";
 import { StickyMobileActions } from "@/components/filiales/StickyMobileActions";
+import { SubsidiaryContactBand } from "@/components/filiales/SubsidiaryContactBand";
 import { SubsidiaryThemeShell } from "@/components/filiales/SubsidiaryThemeShell";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
 import { MapEmbed } from "@/components/maps/MapEmbed";
@@ -11,7 +11,6 @@ import { SubsidiaryHero } from "@/components/sections/SubsidiaryHero";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Button } from "@/components/ui/Button";
-import { Icon } from "@/components/ui/Icon";
 import { ReadingProgress } from "@/components/ui/ReadingProgress";
 import { routing } from "@/i18n/routing";
 import type { Locale } from "@/i18n/routing";
@@ -24,7 +23,10 @@ import {
 } from "@/lib/content";
 import { buildSubsidiaryGalleryItems, galleryEntrySrc } from "@/lib/gallery-categories";
 import { resolvePageMetadata } from "@/lib/seo";
+import { getSubsidiaryContactImage } from "@/lib/subsidiary-contact-images";
 import { getSubsidiaryPageTheme } from "@/lib/subsidiary-themes";
+
+import "@/styles/subsidiary-contact-band.css";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -108,9 +110,7 @@ export default async function SubsidiaryPage({ params }: Props) {
     ? "sub-themed-heading font-[family-name:var(--font-dm-sans)] text-3xl mb-8"
     : "font-[family-name:var(--font-dm-sans)] text-3xl text-ivory mb-8";
 
-  const infoBandClass = isThemed
-    ? "sub-themed-info-band py-12 px-4 md:px-6"
-    : "py-12 px-4 md:px-6 bg-anthracite/40";
+  const contactImage = getSubsidiaryContactImage(slug, subsidiary.coverImage);
 
   const content = (
     <>
@@ -156,54 +156,18 @@ export default async function SubsidiaryPage({ params }: Props) {
         </div>
       </section>
 
-      <section className={infoBandClass}>
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-3">
-          {(() => {
-            let infoIndex = 0;
-            return (
-              <>
-                {subsidiary.practicalInfo.address && (
-                  <AnimateIn delay={infoIndex++ * 0.05}>
-                    <InfoItem
-                      icon={<Icon name="location" size="md" />}
-                      label={t("address")}
-                      value={subsidiary.practicalInfo.address}
-                      themed={isThemed}
-                    />
-                  </AnimateIn>
-                )}
-                {subsidiary.practicalInfo.hours && (
-                  <AnimateIn delay={infoIndex++ * 0.05}>
-                    <InfoItem
-                      icon={<Icon name="hours" size="md" />}
-                      label={t("hours")}
-                      value={subsidiary.practicalInfo.hours}
-                      themed={isThemed}
-                    />
-                  </AnimateIn>
-                )}
-                {subsidiary.practicalInfo.phone && (
-                  <AnimateIn delay={infoIndex++ * 0.05}>
-                    <InfoItem
-                      icon={<Icon name="phone" size="md" />}
-                      label={t("phone")}
-                      value={
-                        <a
-                          href={`tel:${subsidiary.practicalInfo.phone?.replace(/\s/g, "")}`}
-                          className="transition-colors hover:text-gold cursor-pointer"
-                        >
-                          {subsidiary.practicalInfo.phone}
-                        </a>
-                      }
-                      themed={isThemed}
-                    />
-                  </AnimateIn>
-                )}
-              </>
-            );
-          })()}
-        </div>
-      </section>
+      <SubsidiaryContactBand
+        backgroundImage={contactImage}
+        hoursLabel={t("contactBand.hours")}
+        findUsLabel={t("contactBand.findUs")}
+        callUsLabel={t("contactBand.callUs")}
+        ctaLabel={t("contactBand.getDirection")}
+        hours={subsidiary.practicalInfo.hours}
+        address={subsidiary.practicalInfo.address}
+        phone={subsidiary.practicalInfo.phone}
+        mapsUrl={subsidiary.practicalInfo.address ? mapsUrl : undefined}
+        themed={isThemed}
+      />
 
       {galleryItems.length > 0 && (
         <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
@@ -221,18 +185,6 @@ export default async function SubsidiaryPage({ params }: Props) {
           />
         </section>
       )}
-
-      <section className="mx-auto max-w-7xl px-4 pb-16 md:px-6 md:pb-20">
-        <AnimateIn>
-          <h2 className={headingClass}>{t("mapAccess")}</h2>
-          <p className="mb-6 max-w-xl text-sm text-taupe">{t("mapDescription")}</p>
-        </AnimateIn>
-        <MapEmbed
-          query={mapQuery}
-          title={t("mapTitle", { name: subsidiary.name })}
-          variant="compact"
-        />
-      </section>
 
       <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
         <AnimateIn>
@@ -254,6 +206,18 @@ export default async function SubsidiaryPage({ params }: Props) {
         <Button href="/evenements" variant="secondary">
           {t("allEvents")}
         </Button>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 pb-16 md:px-6 md:pb-20">
+        <AnimateIn>
+          <h2 className={headingClass}>{t("mapAccess")}</h2>
+          <p className="mb-6 max-w-xl text-sm text-taupe">{t("mapDescription")}</p>
+        </AnimateIn>
+        <MapEmbed
+          query={mapQuery}
+          title={t("mapTitle", { name: subsidiary.name })}
+          variant="compact"
+        />
       </section>
 
       <div className="h-20 lg:hidden" aria-hidden />
@@ -281,26 +245,4 @@ function dedupeSlides(slides: { src: string; alt: string }[]) {
     seen.add(s.src);
     return true;
   });
-}
-
-function InfoItem({
-  icon,
-  label,
-  value,
-  themed = false,
-}: {
-  icon: ReactNode;
-  label: string;
-  value: ReactNode;
-  themed?: boolean;
-}) {
-  return (
-    <div className="glass-panel rounded-xl p-6">
-      <div className="mb-2 flex items-center gap-2">
-        <span className={themed ? "text-[var(--sub-gold)]" : undefined}>{icon}</span>
-        <span className="text-xs uppercase tracking-[0.15em] text-gold">{label}</span>
-      </div>
-      <p className="text-sm text-ivory">{value}</p>
-    </div>
-  );
 }

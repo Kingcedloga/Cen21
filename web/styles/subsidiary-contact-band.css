@@ -1,0 +1,38 @@
+/* Section contact pratique filiale — fond photo + overlay sombre */
+
+.sub-contact-band__photo {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Overlay uniforme — la photo reste visible sous le voile sombre */
+.sub-contact-band__overlay--default {
+  background-color: rgb(0 0 0 / 0.62);
+}
+
+.sub-contact-band__overlay--themed {
+  background-color: rgb(0 0 0 / 0.64);
+}
+
+.sub-contact-band__media {
+  z-index: 0;
+}
+
+.sub-contact-band__scroll-runway {
+  pointer-events: none;
+}
+
+.sub-contact-band__content {
+  pointer-events: none;
+}
+
+.sub-contact-band__content a {
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sub-contact-band .will-change-transform {
+    will-change: auto;
+  }
+}

@@ -1,4 +1,9 @@
-import type { GalleryItem, Subsidiary, SubsidiaryGalleryEntry } from "./types";
+import type {
+  GalleryItem,
+  Sector,
+  Subsidiary,
+  SubsidiaryGalleryEntry,
+} from "./types";
 
 /** Catégories standard — slugs stables pour filtrage et i18n */
 export const GALLERY_CATEGORIES = [
@@ -39,8 +44,20 @@ export function galleryEntrySrc(entry: SubsidiaryGalleryEntry): string {
   return typeof entry === "string" ? entry : entry.src;
 }
 
-export function defaultCategoryForIndex(index: number): GalleryCategory {
-  return GALLERY_CATEGORIES[index % GALLERY_CATEGORIES.length];
+const SECTOR_GALLERY_PRIORITIES: Record<Sector, GalleryCategory[]> = {
+  restaurant: ["food", "drinks", "interior", "ambiance", "vibes", "guests", "events"],
+  bar: ["drinks", "vibes", "ambiance", "interior", "events", "guests", "food"],
+  lounge: ["vibes", "ambiance", "drinks", "interior", "guests", "events", "food"],
+  nightclub: ["events", "vibes", "ambiance", "guests", "drinks", "interior", "food"],
+  evenementiel: ["events", "vibes", "guests", "ambiance", "interior", "food", "drinks"],
+};
+
+export function defaultCategoryForIndex(
+  index: number,
+  sector: Sector = "restaurant",
+): GalleryCategory {
+  const priorities = SECTOR_GALLERY_PRIORITIES[sector] ?? GALLERY_CATEGORIES;
+  return priorities[index % priorities.length];
 }
 
 export function normalizeGalleryTags(tags: string[]): GalleryCategory[] {
@@ -57,9 +74,10 @@ function isGalleryCategory(value: string): value is GalleryCategory {
 function entryToCategories(
   entry: SubsidiaryGalleryEntry,
   index: number,
+  sector: Sector,
 ): GalleryCategory[] {
   if (typeof entry === "string") {
-    return [defaultCategoryForIndex(index)];
+    return [defaultCategoryForIndex(index, sector)];
   }
   if (entry.categories?.length) {
     return entry.categories;
@@ -67,7 +85,7 @@ function entryToCategories(
   if (entry.category) {
     return [entry.category];
   }
-  return [defaultCategoryForIndex(index)];
+  return [defaultCategoryForIndex(index, sector)];
 }
 
 export function subsidiaryEntryToGalleryItem(
@@ -75,9 +93,10 @@ export function subsidiaryEntryToGalleryItem(
   slug: string,
   name: string,
   index: number,
+  sector: Sector,
 ): GalleryItem {
   const src = typeof entry === "string" ? entry : entry.src;
-  const categories = entryToCategories(entry, index);
+  const categories = entryToCategories(entry, index, sector);
   return {
     id: `${slug}-gal-${index}`,
     src,
@@ -92,7 +111,13 @@ export function buildSubsidiaryGalleryItems(
   extraItems: GalleryItem[] = [],
 ): GalleryItem[] {
   const fromSubsidiary = subsidiary.galleryImages.map((entry, i) =>
-    subsidiaryEntryToGalleryItem(entry, subsidiary.slug, subsidiary.name, i),
+    subsidiaryEntryToGalleryItem(
+      entry,
+      subsidiary.slug,
+      subsidiary.name,
+      i,
+      subsidiary.sector,
+    ),
   );
 
   if (fromSubsidiary.length > 0) {

@@ -10,9 +10,9 @@ export type SubsidiaryNavbarTheme = {
 /** Slug → charte navbar (aligné sur content/en|fr/subsidiaries.json). */
 export const SUBSIDIARY_NAVBAR_THEMES: Record<string, SubsidiaryNavbarTheme> = {
   "filiale-01": {
-    background: "#8FAF5A",
-    foreground: "#FFFFFF",
-    accent: "#FFFFFF",
+    background: "#767F34",
+    foreground: "#ECE7D1",
+    accent: "#ECE7D1",
   },
   "filiale-02": {
     background: "#004258",
