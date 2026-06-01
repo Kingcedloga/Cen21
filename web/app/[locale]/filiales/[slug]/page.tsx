@@ -4,8 +4,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { EventCard } from "@/components/cards/EventCard";
 import { StickyMobileActions } from "@/components/filiales/StickyMobileActions";
 import { SubsidiaryContactBand } from "@/components/filiales/SubsidiaryContactBand";
+import { SubsidiaryExpandableGallery } from "@/components/filiales/SubsidiaryExpandableGallery";
 import { SubsidiaryThemeShell } from "@/components/filiales/SubsidiaryThemeShell";
-import { GalleryGrid } from "@/components/gallery/GalleryGrid";
 import { MapEmbed } from "@/components/maps/MapEmbed";
 import { SubsidiaryHero } from "@/components/sections/SubsidiaryHero";
 import { AnimateIn } from "@/components/ui/AnimateIn";
@@ -67,17 +67,6 @@ export default async function SubsidiaryPage({ params }: Props) {
     subsidiary,
     getGalleryBySubsidiary(l, slug),
   );
-
-  const galleryCategoryLabels = {
-    all: t("galleryFilterAll"),
-    vibes: t("galleryCategories.vibes"),
-    guests: t("galleryCategories.guests"),
-    events: t("galleryCategories.events"),
-    food: t("galleryCategories.food"),
-    drinks: t("galleryCategories.drinks"),
-    interior: t("galleryCategories.interior"),
-    ambiance: t("galleryCategories.ambiance"),
-  };
 
   const heroSlides =
     slug === "filiale-02" || subsidiary.heroVideo
@@ -176,11 +165,14 @@ export default async function SubsidiaryPage({ params }: Props) {
               {t("galleryDescription")}
             </p>
           </AnimateIn>
-          <GalleryGrid
+          <SubsidiaryExpandableGallery
             items={galleryItems}
-            showFilters
-            categoryLabels={galleryCategoryLabels}
-            emptyFilterLabel={t("galleryEmptyCategory")}
+            subsidiaryName={subsidiary.name}
+            sectorLabel={getSectorLabel(l, subsidiary.sector)}
+            sector={subsidiary.sector}
+            accentColor={pageTheme?.colors.gold ?? subsidiary.accentColor}
+            backgroundColor={pageTheme?.colors.surface}
+            themed={isThemed}
           />
         </section>
       )}

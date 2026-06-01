@@ -7,7 +7,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
-import { useMemo, useState, type ReactNode } from "react";
+import { useMemo, useRef, useState, type ReactNode } from "react";
 
 import { Icon } from "@/components/ui/Icon";
 import { EASE, fadeUpTransition, fadeUpVariants } from "@/lib/motion";
@@ -187,7 +187,13 @@ function HoursRevealColumn({
   const locale = useLocale();
   const t = useTranslations("subsidiaries.contactBand");
   const reduced = useReducedMotion() ?? false;
+  const hoverVisitsRef = useRef(0);
   const [expanded, setExpanded] = useState(false);
+
+  const handleIconMouseEnter = () => {
+    hoverVisitsRef.current += 1;
+    setExpanded(hoverVisitsRef.current % 2 === 1);
+  };
 
   const { preview, schedule } = useMemo(
     () => buildHoursSchedule(hours, locale),
@@ -204,14 +210,15 @@ function HoursRevealColumn({
     : "text-ivory/45";
 
   return (
-    <button
-      type="button"
-      className="group flex w-full cursor-pointer flex-col items-center text-center"
+    <div
+      className="group flex w-full flex-col items-center text-center"
       aria-expanded={expanded}
       aria-label={`${label} — ${preview}`}
-      onClick={() => setExpanded(true)}
     >
-      <span className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-white/15 bg-white/5 backdrop-blur-sm transition-colors duration-fine group-hover:border-white/25">
+      <span
+        onMouseEnter={handleIconMouseEnter}
+        className="mx-auto mb-4 flex h-14 w-14 cursor-default items-center justify-center rounded-full border border-white/15 bg-white/5 backdrop-blur-sm transition-colors duration-fine group-hover:border-white/25"
+      >
         <Icon name="hours" size="xl" className={iconClass} strokeWidth={1.25} />
       </span>
       <p className={`mb-2 text-sm font-medium tracking-wide ${labelClass}`}>
@@ -225,7 +232,7 @@ function HoursRevealColumn({
           {preview}
         </p>
       ) : (
-        <span className="flex w-full flex-col gap-1.5">
+        <span key="hours-full" className="flex w-full flex-col gap-1.5">
           {schedule.map((day, index) => (
             <motion.span
               key={day.index}
@@ -246,6 +253,6 @@ function HoursRevealColumn({
           ))}
         </span>
       )}
-    </button>
+    </div>
   );
 }
