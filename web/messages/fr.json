@@ -195,7 +195,8 @@
     "contactBand": {
       "hours": "Horaires",
       "findUs": "Nous trouver",
-      "callUs": "Appelez-nous"
+      "callUs": "Appelez-nous",
+      "closed": "Fermé"
     }
   },
   "notFound": {

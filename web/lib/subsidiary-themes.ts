@@ -192,26 +192,28 @@ export const MUZIK_CAFE_THEME: SubsidiaryPageTheme = {
   },
 };
 
-/** L'Olive Verte — vert olive #767F34 & crème #ECE7D1 (méditerranéen). */
+/** L'Olive Verte — crème #ECE7D1 · olive #767F34 · rouge #BA2525 (accent). */
 export const OLIVE_VERTE_THEME: SubsidiaryPageTheme = {
   id: "olive-verte",
   slug: "filiale-01",
   colors: {
-    bg: "#767F34",
+    bg: "#ECE7D1",
     gold: "#ECE7D1",
     goldRgb: "236 231 209",
-    text: "#ECE7D1",
-    textMuted: "rgba(236, 231, 209, 0.82)",
-    textSubtle: "rgba(236, 231, 209, 0.58)",
-    surface: "rgba(236, 231, 209, 0.08)",
-    surfaceElevated: "rgba(236, 231, 209, 0.14)",
-    border: "rgba(236, 231, 209, 0.28)",
-    btn: "#ECE7D1",
+    text: "#767F34",
+    textMuted: "rgba(118, 127, 52, 0.76)",
+    textSubtle: "rgba(118, 127, 52, 0.54)",
+    surface: "rgba(118, 127, 52, 0.07)",
+    surfaceElevated: "rgba(118, 127, 52, 0.11)",
+    border: "rgba(118, 127, 52, 0.26)",
+    btn: "#BA2525",
+    red: "#BA2525",
+    redRgb: "186 37 37",
   },
   hero: {
     overlayGradient:
-      "linear-gradient(to top, #767F34 0%, rgba(118,127,52,0.92) 42%, rgba(118,127,52,0.45) 68%, transparent 100%), linear-gradient(90deg, rgba(94,102,42,0.82) 0%, transparent 50%), radial-gradient(ellipse 78% 56% at 50% 100%, rgba(236,231,209,0.12) 0%, transparent 58%)",
-    blurTint: "#767F34",
+      "linear-gradient(to top, #ECE7D1 0%, rgba(236,231,209,0.94) 38%, rgba(236,231,209,0.52) 62%, transparent 100%), linear-gradient(90deg, rgba(118,127,52,0.48) 0%, transparent 52%), radial-gradient(ellipse 80% 58% at 50% 100%, rgba(186,37,37,0.1) 0%, transparent 58%)",
+    blurTint: "#ECE7D1",
   },
 };
 

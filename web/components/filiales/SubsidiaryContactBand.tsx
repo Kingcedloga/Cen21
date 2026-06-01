@@ -6,9 +6,14 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { useRef, type ReactNode } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { useMemo, useState, type ReactNode } from "react";
 
 import { Icon } from "@/components/ui/Icon";
+import { EASE, fadeUpTransition, fadeUpVariants } from "@/lib/motion";
+import { buildHoursSchedule } from "@/lib/subsidiary-hours";
+
+const HOURS_STAGGER_S = 0.06;
 
 type Props = {
   backgroundImage: string;
@@ -79,9 +84,11 @@ export function SubsidiaryContactBand({
       <div className="sub-contact-band__content relative z-10 -mt-[40vh] flex h-[40vh] max-h-[40vh] flex-col items-center justify-center px-5 py-4 text-center md:px-8">
         <div className="sub-contact-band__body pointer-events-auto mx-auto grid w-full max-w-4xl grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6 md:gap-8">
           {hours && (
-            <ContactColumn icon="hours" label={hoursLabel} themed={themed}>
-              {hours}
-            </ContactColumn>
+            <HoursRevealColumn
+              hours={hours}
+              label={hoursLabel}
+              themed={themed}
+            />
           )}
 
             {address && (
@@ -166,4 +173,79 @@ function ContactColumn({
   }
 
   return <div className="flex flex-col items-center text-center">{inner}</div>;
+}
+
+function HoursRevealColumn({
+  hours,
+  label,
+  themed,
+}: {
+  hours: string;
+  label: string;
+  themed?: boolean;
+}) {
+  const locale = useLocale();
+  const t = useTranslations("subsidiaries.contactBand");
+  const reduced = useReducedMotion() ?? false;
+  const [expanded, setExpanded] = useState(false);
+
+  const { preview, schedule } = useMemo(
+    () => buildHoursSchedule(hours, locale),
+    [hours, locale],
+  );
+
+  const iconClass = themed ? "text-[var(--sub-text)]" : "text-ivory";
+  const labelClass = themed ? "text-[var(--sub-text)]" : "text-ivory";
+  const valueClass = themed
+    ? "text-[var(--sub-text-muted)] group-hover:text-[var(--sub-gold)]"
+    : "text-ivory/70 group-hover:text-gold";
+  const closedClass = themed
+    ? "text-[var(--sub-text-subtle)]"
+    : "text-ivory/45";
+
+  return (
+    <button
+      type="button"
+      className="group flex w-full cursor-pointer flex-col items-center text-center"
+      aria-expanded={expanded}
+      aria-label={`${label} — ${preview}`}
+      onClick={() => setExpanded(true)}
+    >
+      <span className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-white/15 bg-white/5 backdrop-blur-sm transition-colors duration-fine group-hover:border-white/25">
+        <Icon name="hours" size="xl" className={iconClass} strokeWidth={1.25} />
+      </span>
+      <p className={`mb-2 text-sm font-medium tracking-wide ${labelClass}`}>
+        {label}
+      </p>
+
+      {!expanded ? (
+        <p
+          className={`text-xs leading-relaxed transition-colors duration-fine md:text-sm ${valueClass}`}
+        >
+          {preview}
+        </p>
+      ) : (
+        <span className="flex w-full flex-col gap-1.5">
+          {schedule.map((day, index) => (
+            <motion.span
+              key={day.index}
+              className={`block text-xs leading-relaxed md:text-sm ${
+                day.closed ? closedClass : valueClass
+              }`}
+              initial={reduced ? false : "hidden"}
+              animate={reduced ? undefined : "visible"}
+              variants={reduced ? undefined : fadeUpVariants}
+              transition={{
+                ...fadeUpTransition,
+                delay: reduced ? 0 : index * HOURS_STAGGER_S,
+                ease: EASE.luxury,
+              }}
+            >
+              {day.label} · {day.closed ? t("closed") : day.range}
+            </motion.span>
+          ))}
+        </span>
+      )}
+    </button>
+  );
 }

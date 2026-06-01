@@ -187,7 +187,8 @@
     "contactBand": {
       "hours": "Hours",
       "findUs": "Find us",
-      "callUs": "Call us"
+      "callUs": "Call us",
+      "closed": "Closed"
     }
   },
   "notFound": {
