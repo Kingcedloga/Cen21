@@ -163,11 +163,27 @@
     "mapAccess": "Map & directions",
     "mapHelper": "Open in Google Maps for directions.",
     "gallery": "Gallery",
+    "galleryDescription": "Explore the venue by theme — atmosphere, cuisine, events, and more.",
+    "galleryFilterAll": "All",
+    "galleryEmptyCategory": "No content in this category yet.",
+    "galleryCategories": {
+      "vibes": "Vibes",
+      "guests": "Guests",
+      "events": "Events",
+      "food": "Food",
+      "drinks": "Drinks",
+      "interior": "Interior",
+      "ambiance": "Ambiance"
+    },
     "upcomingEvents": "Upcoming events",
     "noEvents": "No upcoming events at this venue.",
     "allEvents": "All events",
     "breadcrumbHome": "Home",
-    "breadcrumbSubsidiaries": "Subsidiaries"
+    "breadcrumbSubsidiaries": "Subsidiaries",
+    "mapTitle": "Map — {name}",
+    "mapDescription": "Locate the venue on the map. Directions open in Google Maps.",
+    "mapOpenExternal": "Open in Maps",
+    "noEventsScheduled": "No events scheduled at this time."
   },
   "notFound": {
     "code": "404",

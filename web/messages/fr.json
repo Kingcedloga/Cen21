@@ -170,6 +170,18 @@
     "mapAccess": "Plan d'accès",
     "mapHelper": "Ouvrir dans Google Maps pour l'itinéraire.",
     "gallery": "Galerie",
+    "galleryDescription": "Explorez l'univers de l'établissement par thématiques — ambiance, cuisine, événements et plus.",
+    "galleryFilterAll": "Tout",
+    "galleryEmptyCategory": "Aucun contenu dans cette catégorie pour le moment.",
+    "galleryCategories": {
+      "vibes": "Vibes",
+      "guests": "Guests",
+      "events": "Events",
+      "food": "Food",
+      "drinks": "Drinks",
+      "interior": "Interior",
+      "ambiance": "Ambiance"
+    },
     "upcomingEvents": "Événements à venir",
     "noEvents": "Aucun événement à venir pour cet établissement.",
     "allEvents": "Tous les événements",
@@ -177,6 +189,7 @@
     "breadcrumbSubsidiaries": "Filiales",
     "mapTitle": "Carte — {name}",
     "mapDescription": "Localisez l'établissement sur la carte. L'itinéraire s'ouvre dans Google Maps.",
+    "mapOpenExternal": "Ouvrir dans Maps",
     "noEventsScheduled": "Aucun événement programmé pour le moment.",
     "discover": "Découvrir"
   },

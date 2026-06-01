@@ -22,6 +22,7 @@ import {
   getSubsidiaryBySlug,
   getUpcomingEventsBySubsidiary,
 } from "@/lib/content";
+import { buildSubsidiaryGalleryItems, galleryEntrySrc } from "@/lib/gallery-categories";
 import { resolvePageMetadata } from "@/lib/seo";
 import { getSubsidiaryPageTheme } from "@/lib/subsidiary-themes";
 
@@ -60,16 +61,21 @@ export default async function SubsidiaryPage({ params }: Props) {
   const t = await getTranslations("subsidiaries");
 
   const events = getUpcomingEventsBySubsidiary(l, slug);
-  const galleryItems = [
-    ...subsidiary.galleryImages.map((src, i) => ({
-      id: `${slug}-gal-${i}`,
-      src,
-      alt: `${subsidiary.name} — ${i + 1}`,
-      subsidiarySlug: slug,
-      tags: ["filiale"],
-    })),
-    ...getGalleryBySubsidiary(l, slug),
-  ];
+  const galleryItems = buildSubsidiaryGalleryItems(
+    subsidiary,
+    getGalleryBySubsidiary(l, slug),
+  );
+
+  const galleryCategoryLabels = {
+    all: t("galleryFilterAll"),
+    vibes: t("galleryCategories.vibes"),
+    guests: t("galleryCategories.guests"),
+    events: t("galleryCategories.events"),
+    food: t("galleryCategories.food"),
+    drinks: t("galleryCategories.drinks"),
+    interior: t("galleryCategories.interior"),
+    ambiance: t("galleryCategories.ambiance"),
+  };
 
   const heroSlides =
     slug === "filiale-02" || subsidiary.heroVideo
@@ -81,8 +87,8 @@ export default async function SubsidiaryPage({ params }: Props) {
         ]
       : dedupeSlides([
           { src: subsidiary.coverImage, alt: subsidiary.name },
-          ...subsidiary.galleryImages.slice(0, 5).map((src, i) => ({
-            src,
+          ...subsidiary.galleryImages.slice(0, 5).map((entry, i) => ({
+            src: galleryEntrySrc(entry),
             alt: `${subsidiary.name} — ${i + 1}`,
           })),
         ]);
@@ -121,7 +127,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         name={subsidiary.name}
         tagline={subsidiary.tagline}
         social={subsidiary.social}
-        brandLogo={isThemed ? subsidiary.brandLogo : undefined}
+        brandLogo={subsidiary.brandLogo}
         theme={pageTheme ?? undefined}
         backgroundVideo={subsidiary.heroVideo}
       />
@@ -198,22 +204,34 @@ export default async function SubsidiaryPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
-        <AnimateIn>
-          <h2 className={headingClass}>{t("mapAccess")}</h2>
-          <p className="mb-6 max-w-2xl text-sm text-taupe">{t("mapDescription")}</p>
-        </AnimateIn>
-        <MapEmbed query={mapQuery} title={t("mapTitle", { name: subsidiary.name })} />
-      </section>
-
       {galleryItems.length > 0 && (
         <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
           <AnimateIn>
             <h2 className={sectionHeadingClass}>{t("gallery")}</h2>
+            <p className="-mt-4 mb-8 max-w-2xl text-sm text-taupe md:mb-10">
+              {t("galleryDescription")}
+            </p>
           </AnimateIn>
-          <GalleryGrid items={galleryItems} showFilters={false} />
+          <GalleryGrid
+            items={galleryItems}
+            showFilters
+            categoryLabels={galleryCategoryLabels}
+            emptyFilterLabel={t("galleryEmptyCategory")}
+          />
         </section>
       )}
+
+      <section className="mx-auto max-w-7xl px-4 pb-16 md:px-6 md:pb-20">
+        <AnimateIn>
+          <h2 className={headingClass}>{t("mapAccess")}</h2>
+          <p className="mb-6 max-w-xl text-sm text-taupe">{t("mapDescription")}</p>
+        </AnimateIn>
+        <MapEmbed
+          query={mapQuery}
+          title={t("mapTitle", { name: subsidiary.name })}
+          variant="compact"
+        />
+      </section>
 
       <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
         <AnimateIn>

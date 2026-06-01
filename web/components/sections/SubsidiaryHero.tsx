@@ -62,6 +62,8 @@ export function SubsidiaryHero({
     video.play().catch(() => {});
   }, [useVideoBackground, backgroundVideo?.src]);
 
+  const hasLogo = Boolean(brandLogo);
+
   if (!len && !backgroundVideo?.src) return null;
 
   const defaultOverlay =
@@ -184,28 +186,29 @@ export function SubsidiaryHero({
 
       <motion.div
         className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-14 pt-28 md:px-10 md:pb-20 md:pt-36"
+        data-has-logo={hasLogo ? "" : undefined}
         initial={reduced ? false : "hidden"}
         animate={reduced ? undefined : "visible"}
         variants={reduced ? undefined : heroStaggerVariants}
       >
         {brandLogo && (
           <motion.div
-            className="mb-6 flex justify-start md:mb-8"
+            className="mb-8 flex justify-start md:mb-10"
             variants={reduced ? undefined : fadeUpVariants}
             transition={fadeUpTransition}
           >
             <Image
               src={brandLogo}
-              alt=""
-              width={220}
-              height={80}
-              className="h-12 w-auto object-contain md:h-14"
+              alt={name}
+              width={400}
+              height={140}
+              className="h-20 w-auto max-w-[min(100%,20rem)] object-contain object-left drop-shadow-[0_2px_24px_rgba(0,0,0,0.4)] md:h-24 md:max-w-[min(100%,24rem)] lg:h-28 lg:max-w-[min(100%,26rem)]"
               priority
             />
           </motion.div>
         )}
         <motion.p
-          className={`mb-3 text-sm uppercase tracking-[0.2em] ${
+          className={`mb-3 text-xs uppercase tracking-[0.22em] md:text-sm md:tracking-[0.2em] ${
             isThemed ? "text-[var(--sub-gold)]" : "text-gold"
           }`}
           variants={reduced ? undefined : fadeUpVariants}
@@ -214,16 +217,18 @@ export function SubsidiaryHero({
           {sectorLabel}
         </motion.p>
         <motion.h1
-          className={`mb-4 text-5xl md:text-6xl ${
-            isThemed ? "text-white" : "text-ivory"
-          }`}
+          className={`mb-3 font-[family-name:var(--font-dm-sans)] ${
+            hasLogo
+              ? "text-xl font-medium tracking-[0.06em] md:text-2xl lg:text-[1.75rem]"
+              : "text-4xl font-bold tracking-[-0.02em] md:text-5xl"
+          } ${isThemed ? "text-white" : "text-ivory"}`}
           variants={reduced ? undefined : fadeUpVariants}
           transition={fadeUpTransition}
         >
           {name}
         </motion.h1>
         <motion.p
-          className={`mb-6 max-w-2xl text-xl ${
+          className={`mb-6 max-w-2xl text-base leading-relaxed md:text-lg ${
             isThemed ? "text-white/80" : "text-ivory/80"
           }`}
           variants={reduced ? undefined : fadeUpVariants}

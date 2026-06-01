@@ -17,6 +17,24 @@ export type HeroVideo = {
   poster?: string;
 };
 
+export type GalleryCategory =
+  | "vibes"
+  | "guests"
+  | "events"
+  | "food"
+  | "drinks"
+  | "interior"
+  | "ambiance";
+
+/** Image galerie filiale — chaîne simple ou objet avec catégorie explicite */
+export type SubsidiaryGalleryEntry =
+  | string
+  | {
+      src: string;
+      category?: GalleryCategory;
+      categories?: GalleryCategory[];
+    };
+
 export type Subsidiary = {
   slug: string;
   name: string;
@@ -33,7 +51,7 @@ export type Subsidiary = {
   coverImage: string;
   /** Logo wordmark de l'enseigne (chemin `/public/...`) — carrousel home. */
   brandLogo?: string;
-  galleryImages: string[];
+  galleryImages: SubsidiaryGalleryEntry[];
   featured?: boolean;
   /** Vidéo locale en fond du hero (autoplay muet). */
   heroVideo?: HeroVideo;
