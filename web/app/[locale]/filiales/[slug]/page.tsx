@@ -161,7 +161,6 @@ export default async function SubsidiaryPage({ params }: Props) {
         hoursLabel={t("contactBand.hours")}
         findUsLabel={t("contactBand.findUs")}
         callUsLabel={t("contactBand.callUs")}
-        ctaLabel={t("contactBand.getDirection")}
         hours={subsidiary.practicalInfo.hours}
         address={subsidiary.practicalInfo.address}
         phone={subsidiary.practicalInfo.phone}

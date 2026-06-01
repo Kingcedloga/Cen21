@@ -15,7 +15,6 @@ type Props = {
   hoursLabel: string;
   findUsLabel: string;
   callUsLabel: string;
-  ctaLabel: string;
   hours?: string;
   address?: string;
   phone?: string;
@@ -28,7 +27,6 @@ export function SubsidiaryContactBand({
   hoursLabel,
   findUsLabel,
   callUsLabel,
-  ctaLabel,
   hours,
   address,
   phone,
@@ -56,7 +54,7 @@ export function SubsidiaryContactBand({
   return (
     <section
       ref={sectionRef}
-      className="sub-contact-band relative isolate min-h-[70vh]"
+      className="sub-contact-band relative isolate hidden min-h-[70vh] lg:block"
       aria-label={`${hoursLabel} · ${findUsLabel} · ${callUsLabel}`}
     >
       {/* Fond photo — sticky prolongé + parallax accentué */}
@@ -77,8 +75,8 @@ export function SubsidiaryContactBand({
         />
       </div>
 
-      {/* Contenu centré — colonnes + CTA groupés */}
-      <div className="sub-contact-band__content relative z-10 -mt-[40vh] flex h-[40vh] max-h-[40vh] flex-col items-center justify-center gap-6 px-5 py-4 text-center md:gap-7 md:px-8">
+      {/* Contenu centré — colonnes */}
+      <div className="sub-contact-band__content relative z-10 -mt-[40vh] flex h-[40vh] max-h-[40vh] flex-col items-center justify-center px-5 py-4 text-center md:px-8">
         <div className="sub-contact-band__body pointer-events-auto mx-auto grid w-full max-w-4xl grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6 md:gap-8">
           {hours && (
             <ContactColumn icon="hours" label={hoursLabel} themed={themed}>
@@ -108,21 +106,6 @@ export function SubsidiaryContactBand({
               </ContactColumn>
             )}
         </div>
-
-        {mapsUrl && (
-          <a
-            href={mapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`sub-contact-band__cta relative z-20 inline-flex min-h-[48px] shrink-0 items-center justify-center rounded-full border px-10 py-3 text-xs font-semibold uppercase tracking-[0.2em] transition-[transform,background-color,border-color,color] duration-fine ease-out active:scale-[0.97] cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 ${
-              themed
-                ? "border-[color:var(--sub-text)]/35 bg-black/35 text-[var(--sub-text)] backdrop-blur-md hover:border-[color:var(--sub-gold)]/55 hover:bg-black/45 hover:text-[var(--sub-gold)] focus-visible:outline-[color:var(--sub-gold)]"
-                : "border-white/30 bg-black/35 text-ivory backdrop-blur-md hover:border-gold/50 hover:bg-black/45 hover:text-gold focus-visible:outline-gold"
-            }`}
-          >
-            {ctaLabel}
-          </a>
-        )}
       </div>
 
       {/* Piste de scroll — prolonge l'ancrage sticky au-delà du bandeau visible */}
