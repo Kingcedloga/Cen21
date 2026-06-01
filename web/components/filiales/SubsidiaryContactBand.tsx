@@ -187,32 +187,40 @@ function HoursRevealColumn({
   const locale = useLocale();
   const t = useTranslations("subsidiaries.contactBand");
   const reduced = useReducedMotion() ?? false;
+  const hoverVisitsRef = useRef(0);
   const [expanded, setExpanded] = useState(false);
+  const [animationKey, setAnimationKey] = useState(0);
 
   const { preview, schedule } = useMemo(
     () => buildHoursSchedule(hours, locale),
     [hours, locale],
   );
 
+  const handleIconMouseEnter = () => {
+    hoverVisitsRef.current += 1;
+    const open = hoverVisitsRef.current % 2 === 1;
+    setExpanded(open);
+    if (open) setAnimationKey((k) => k + 1);
+  };
+
   const iconClass = themed ? "text-[var(--sub-text)]" : "text-ivory";
   const labelClass = themed ? "text-[var(--sub-text)]" : "text-ivory";
   const valueClass = themed
-    ? "text-[var(--sub-text-muted)] group-hover:text-[var(--sub-gold)]"
-    : "text-ivory/70 group-hover:text-gold";
+    ? "text-[var(--sub-text-muted)]"
+    : "text-ivory/70";
   const closedClass = themed
     ? "text-[var(--sub-text-subtle)]"
     : "text-ivory/45";
 
   return (
     <div
-      className="group flex w-full flex-col items-center text-center"
+      className="flex w-full flex-col items-center text-center"
       aria-expanded={expanded}
       aria-label={`${label} — ${preview}`}
     >
       <span
-        onMouseEnter={() => setExpanded(true)}
-        onMouseLeave={() => setExpanded(false)}
-        className="mx-auto mb-4 flex h-14 w-14 cursor-default items-center justify-center rounded-full border border-white/15 bg-white/5 backdrop-blur-sm transition-colors duration-fine group-hover:border-white/25"
+        onMouseEnter={handleIconMouseEnter}
+        className="relative mx-auto mb-4 flex h-14 w-14 cursor-default items-center justify-center rounded-full border border-white/15 bg-white/5 backdrop-blur-sm transition-[border-color] duration-fine before:absolute before:-inset-3 before:rounded-full before:content-[''] hover:border-white/25"
       >
         <Icon name="hours" size="xl" className={iconClass} strokeWidth={1.25} />
       </span>
@@ -220,34 +228,49 @@ function HoursRevealColumn({
         {label}
       </p>
 
-      {!expanded ? (
-        <p
-          className={`text-xs leading-relaxed transition-colors duration-fine md:text-sm ${valueClass}`}
+      {/* Hauteur fixe — évite le déplacement de l'icône à l'expansion */}
+      <div className="relative w-full">
+        <div
+          className="invisible flex flex-col gap-1.5 pointer-events-none"
+          aria-hidden
         >
-          {preview}
-        </p>
-      ) : (
-        <span key="hours-full" className="flex w-full flex-col gap-1.5">
-          {schedule.map((day, index) => (
-            <motion.span
-              key={day.index}
-              className={`block text-xs leading-relaxed md:text-sm ${
-                day.closed ? closedClass : valueClass
-              }`}
-              initial={reduced ? false : "hidden"}
-              animate={reduced ? undefined : "visible"}
-              variants={reduced ? undefined : fadeUpVariants}
-              transition={{
-                ...fadeUpTransition,
-                delay: reduced ? 0 : index * HOURS_STAGGER_S,
-                ease: EASE.luxury,
-              }}
-            >
+          {schedule.map((day) => (
+            <span key={day.index} className="block text-xs md:text-sm">
               {day.label} · {day.closed ? t("closed") : day.range}
-            </motion.span>
+            </span>
           ))}
-        </span>
-      )}
+        </div>
+        <div className="absolute inset-x-0 top-0 flex flex-col items-center">
+          {!expanded ? (
+            <p
+              className={`text-xs leading-relaxed transition-opacity duration-fine md:text-sm ${valueClass}`}
+            >
+              {preview}
+            </p>
+          ) : (
+            <span key={`hours-full-${animationKey}`} className="flex w-full flex-col gap-1.5">
+              {schedule.map((day, index) => (
+                <motion.span
+                  key={day.index}
+                  className={`block text-xs leading-relaxed md:text-sm ${
+                    day.closed ? closedClass : valueClass
+                  }`}
+                  initial={reduced ? false : "hidden"}
+                  animate={reduced ? undefined : "visible"}
+                  variants={reduced ? undefined : fadeUpVariants}
+                  transition={{
+                    ...fadeUpTransition,
+                    delay: reduced ? 0 : index * HOURS_STAGGER_S,
+                    ease: EASE.luxury,
+                  }}
+                >
+                  {day.label} · {day.closed ? t("closed") : day.range}
+                </motion.span>
+              ))}
+            </span>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
