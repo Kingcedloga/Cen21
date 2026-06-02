@@ -1,0 +1,287 @@
+/* Section éditoriale « About » — contraste clair (K Lounge & futures filiales) */
+
+.subsidiary-editorial-about {
+  --kl-about-bg: #f9f7f2;
+  --kl-about-bg-texture: radial-gradient(
+    ellipse 120% 80% at 20% 0%,
+    rgb(255 255 255 / 0.65) 0%,
+    transparent 55%
+  );
+  --kl-about-heading: #1c1410;
+  --kl-about-body: #4a4540;
+  --kl-about-muted: #7a736c;
+  --kl-about-accent: #b89450;
+  --kl-about-accent-hover: #9a7a3f;
+  --kl-about-border: rgb(184 148 80 / 0.35);
+
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+  background-color: var(--kl-about-bg);
+  background-image: var(--kl-about-bg-texture);
+  color: var(--kl-about-body);
+}
+
+.subsidiary-editorial-about__inner {
+  margin-inline: auto;
+  max-width: 90rem;
+}
+
+.subsidiary-editorial-about__grid {
+  display: grid;
+  min-height: clamp(28rem, 72vh, 44rem);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+  .subsidiary-editorial-about__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    min-height: clamp(32rem, 78vh, 48rem);
+  }
+}
+
+/* —— Contenu gauche —— */
+.subsidiary-editorial-about__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3.5rem);
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+@media (min-width: 1024px) {
+  .subsidiary-editorial-about__content {
+    padding-inline: clamp(2.5rem, 5vw, 5rem) clamp(1.5rem, 3vw, 2.5rem);
+    padding-block: clamp(4rem, 7vw, 6rem);
+  }
+}
+
+.subsidiary-editorial-about__eyebrow {
+  margin-bottom: 1.25rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--kl-about-accent);
+}
+
+.subsidiary-editorial-about__eyebrow::after {
+  content: "";
+  display: block;
+  width: 2.75rem;
+  height: 1px;
+  margin-top: 0.875rem;
+  background: var(--kl-about-accent);
+  opacity: 0.85;
+}
+
+.subsidiary-editorial-about__title {
+  margin-bottom: 1.25rem;
+  max-width: 14ch;
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.25rem, 4.8vw, 3.75rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--kl-about-heading);
+}
+
+.subsidiary-editorial-about__description {
+  margin-bottom: 2rem;
+  max-width: 34rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--kl-about-muted);
+}
+
+@media (min-width: 768px) {
+  .subsidiary-editorial-about__description {
+    font-size: 1rem;
+  }
+}
+
+/* —— Highlights —— */
+.subsidiary-editorial-about__highlights {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 0 0 2.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  .subsidiary-editorial-about__highlights {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+  }
+}
+
+.subsidiary-editorial-about__highlight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-inline: 0;
+}
+
+@media (min-width: 640px) {
+  .subsidiary-editorial-about__highlight {
+    padding-inline: clamp(0.75rem, 2vw, 1.25rem);
+  }
+
+  .subsidiary-editorial-about__highlight[data-divider] {
+    border-left: 1px solid rgb(184 148 80 / 0.22);
+  }
+
+  .subsidiary-editorial-about__highlight:first-child {
+    padding-left: 0;
+  }
+}
+
+.subsidiary-editorial-about__highlight-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--kl-about-border);
+  border-radius: 9999px;
+}
+
+.subsidiary-editorial-about__highlight-title {
+  margin-bottom: 0.35rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--kl-about-heading);
+}
+
+.subsidiary-editorial-about__highlight-desc {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--kl-about-muted);
+}
+
+/* —— Visuel droit —— */
+.subsidiary-editorial-about__visual {
+  position: relative;
+  display: flex;
+  min-height: clamp(24rem, 58vw, 36rem);
+  background: linear-gradient(165deg, #141414 0%, #000000 55%, #0a0a0a 100%);
+}
+
+@media (min-width: 1024px) {
+  .subsidiary-editorial-about__visual {
+    min-height: 100%;
+  }
+}
+
+.subsidiary-editorial-about__visual-inner {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  min-height: inherit;
+}
+
+.subsidiary-editorial-about__image-wrap {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  min-height: clamp(24rem, 58vw, 36rem);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.subsidiary-editorial-about__image {
+  object-fit: contain;
+  object-position: center center;
+  filter: drop-shadow(0 24px 40px rgb(0 0 0 / 0.45))
+    drop-shadow(0 8px 20px rgb(0 0 0 / 0.25));
+  transform: scale(1.02);
+  transition: transform var(--duration-grand) var(--ease-luxury);
+}
+
+@media (min-width: 1024px) {
+  .subsidiary-editorial-about__image-wrap {
+    min-height: 100%;
+    padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 2vw, 1.5rem);
+  }
+
+  .subsidiary-editorial-about__image {
+    transform: scale(1.06) translateX(2%);
+    object-position: center right;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .subsidiary-editorial-about__visual:hover .subsidiary-editorial-about__image {
+    transform: scale(1.04);
+  }
+
+  @media (min-width: 1024px) {
+    .subsidiary-editorial-about__visual:hover .subsidiary-editorial-about__image {
+      transform: scale(1.08) translateX(2%);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .subsidiary-editorial-about__image {
+    transform: none;
+  }
+}
+
+/* K Lounge — la section claire ne doit pas hériter du remapping sombre */
+[data-subsidiary-theme="k-lounge"] .subsidiary-editorial-about {
+  color: var(--kl-about-body);
+}
+
+[data-subsidiary-theme="k-lounge"] .subsidiary-editorial-about .text-gold {
+  color: var(--kl-about-accent);
+}
+
+/* Bouton — forme design system, lisible sur fond clair */
+.subsidiary-editorial-about .btn-primary,
+.subsidiary-editorial-about .btn-secondary {
+  font-family: var(--font-dm-sans), var(--font-inter), system-ui, sans-serif;
+}
+
+.subsidiary-editorial-about .btn-primary:focus-visible,
+.subsidiary-editorial-about .btn-secondary:focus-visible {
+  outline-color: var(--kl-about-accent);
+}
+
+[data-subsidiary-theme="k-lounge"] .subsidiary-editorial-about .btn-primary {
+  background: linear-gradient(
+    180deg,
+    var(--color-gold) 0%,
+    color-mix(in srgb, var(--color-gold) 86%, var(--color-gold-deep)) 100%
+  );
+  border: 1px solid var(--color-gold-border);
+  color: var(--color-petrol);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.35),
+    inset 0 -1px 0 rgb(0 66 88 / 0.08),
+    0 1px 2px rgb(0 0 0 / 0.24),
+    0 12px 28px -10px rgb(var(--color-gold-rgb) / 0.45);
+}
+
+[data-subsidiary-theme="k-lounge"] .subsidiary-editorial-about .btn-primary:hover {
+  filter: brightness(1.04);
+  background: linear-gradient(
+    180deg,
+    var(--color-gold) 0%,
+    color-mix(in srgb, var(--color-gold) 86%, var(--color-gold-deep)) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.42),
+    inset 0 -1px 0 rgb(0 66 88 / 0.08),
+    0 2px 4px rgb(0 0 0 / 0.28),
+    0 18px 40px -12px rgb(var(--color-gold-rgb) / 0.58);
+}

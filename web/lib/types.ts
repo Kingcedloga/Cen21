@@ -35,6 +35,27 @@ export type SubsidiaryGalleryEntry =
       categories?: GalleryCategory[];
     };
 
+export type SubsidiaryAboutHighlightIcon = "cocktail" | "rating" | "music" | "dining";
+
+export type SubsidiaryAboutHighlight = {
+  icon: SubsidiaryAboutHighlightIcon;
+  title: string;
+  description: string;
+};
+
+/** Bloc éditorial « About » optionnel (ex. K Lounge). */
+export type SubsidiaryAboutSection = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  ctaLabel: string;
+  /** Lien interne (`/contact`) ou ancre (`#…`). */
+  ctaHref?: string;
+  image: string;
+  imageAlt: string;
+  highlights?: SubsidiaryAboutHighlight[];
+};
+
 export type Subsidiary = {
   slug: string;
   name: string;
@@ -55,6 +76,8 @@ export type Subsidiary = {
   featured?: boolean;
   /** Vidéo locale en fond du hero (autoplay muet). */
   heroVideo?: HeroVideo;
+  /** Section éditoriale claire (contraste avec le dark mode filiale). */
+  aboutSection?: SubsidiaryAboutSection;
 };
 
 export type EventItem = {

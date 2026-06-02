@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { EventCard } from "@/components/cards/EventCard";
 import { StickyMobileActions } from "@/components/filiales/StickyMobileActions";
 import { SubsidiaryContactBand } from "@/components/filiales/SubsidiaryContactBand";
+import { SubsidiaryEditorialAbout } from "@/components/filiales/SubsidiaryEditorialAbout";
 import { SubsidiaryExpandableGallery } from "@/components/filiales/SubsidiaryExpandableGallery";
 import { SubsidiaryThemeShell } from "@/components/filiales/SubsidiaryThemeShell";
 import { MapEmbed } from "@/components/maps/MapEmbed";
@@ -181,6 +182,10 @@ export default async function SubsidiaryPage({ params }: Props) {
             themed={isThemed}
           />
         </section>
+      )}
+
+      {subsidiary.aboutSection && (
+        <SubsidiaryEditorialAbout content={subsidiary.aboutSection} />
       )}
 
       <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
