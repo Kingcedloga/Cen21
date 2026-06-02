@@ -169,7 +169,6 @@ export default async function SubsidiaryPage({ params }: Props) {
             items={galleryItems}
             subsidiaryName={subsidiary.name}
             sectorLabel={getSectorLabel(l, subsidiary.sector)}
-            sector={subsidiary.sector}
             accentColor={pageTheme?.colors.gold ?? subsidiary.accentColor}
             backgroundColor={pageTheme?.colors.surface}
             themed={isThemed}

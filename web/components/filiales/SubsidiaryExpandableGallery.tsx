@@ -2,64 +2,52 @@
 
 import Image from "next/image";
 import { useReducedMotion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { useCallback, useState } from "react";
 
 import { BLUR_PETROL } from "@/lib/image-blur";
-import {
-  ICON_STROKE,
-  Music2,
-  Sparkles,
-  Star,
-  Users,
-  UtensilsCrossed,
-  Martini,
-  Armchair,
-  sectorIcons,
-  type LucideIcon,
-} from "@/lib/icons";
 import type { GalleryCategory } from "@/lib/gallery-categories";
-import type { GalleryItem, Sector } from "@/lib/types";
-
-const CATEGORY_ICONS: Record<GalleryCategory, LucideIcon> = {
-  vibes: Star,
-  ambiance: Sparkles,
-  interior: Armchair,
-  food: UtensilsCrossed,
-  drinks: Martini,
-  events: Music2,
-  guests: Users,
-};
+import { GALLERY_CATEGORIES } from "@/lib/gallery-categories";
+import type { GalleryItem } from "@/lib/types";
 
 type SubsidiaryExpandableGalleryProps = {
   items: GalleryItem[];
   subsidiaryName: string;
   sectorLabel: string;
-  sector: Sector;
-  /** Couleur d'accent (icônes, pastilles). */
+  /** Couleur d'accent (pastilles, focus). */
   accentColor: string;
   /** Fond du bloc galerie — charte filiale ou défaut. */
   backgroundColor?: string;
   themed?: boolean;
 };
 
+function itemCategory(item: GalleryItem): GalleryCategory {
+  const tag = item.tags[0];
+  return (GALLERY_CATEGORIES as readonly string[]).includes(tag ?? "")
+    ? (tag as GalleryCategory)
+    : "vibes";
+}
+
 export function SubsidiaryExpandableGallery({
   items,
   subsidiaryName,
   sectorLabel,
-  sector,
   accentColor,
   backgroundColor,
   themed = false,
 }: SubsidiaryExpandableGalleryProps) {
   const reduced = useReducedMotion();
+  const tCat = useTranslations("subsidiaries.galleryCategories");
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const SectorIcon = sectorIcons[sector];
   const duration = reduced ? "0ms" : "650ms";
 
   const activate = useCallback((index: number) => {
     setActiveIndex(index);
   }, []);
+
+  const categoryLabel = (item: GalleryItem) =>
+    tCat(itemCategory(item));
 
   if (items.length === 0) return null;
 
@@ -84,9 +72,7 @@ export function SubsidiaryExpandableGallery({
       >
         {items.map((item, index) => {
           const isActive = activeIndex === index;
-          const CategoryIcon =
-            CATEGORY_ICONS[(item.tags[0] as GalleryCategory) ?? "vibes"] ??
-            CATEGORY_ICONS.vibes;
+          const label = categoryLabel(item);
 
           return (
             <button
@@ -94,7 +80,7 @@ export function SubsidiaryExpandableGallery({
               type="button"
               role="tab"
               aria-selected={isActive}
-              aria-label={item.alt}
+              aria-label={`${label} — ${item.alt}`}
               onMouseEnter={() => activate(index)}
               onFocus={() => activate(index)}
               onClick={() => activate(index)}
@@ -143,36 +129,36 @@ export function SubsidiaryExpandableGallery({
                 }}
               />
 
-              {/* Icône seule — carte inactive */}
+              {/* Catégorie — carte inactive (bas gauche, vertical) */}
               <span
                 aria-hidden
-                className="absolute inset-x-0 bottom-3 flex justify-center transition-opacity duration-[480ms] ease-[var(--ease-luxury)] md:bottom-4"
+                className="pointer-events-none absolute bottom-3 left-2.5 flex max-h-[calc(100%-1.5rem)] transition-opacity duration-[480ms] ease-[var(--ease-luxury)] md:bottom-4 md:left-3"
                 style={{ opacity: isActive ? 0 : 1 }}
               >
                 <span
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/95 shadow-md"
+                  className="max-h-full truncate font-[family-name:var(--font-dm-sans)] text-[8px] font-medium uppercase tracking-[0.18em] [writing-mode:vertical-rl] rotate-180 drop-shadow-[0_1px_2px_rgba(0,0,0,0.45)] md:text-[9px]"
                   style={{ color: accentColor }}
                 >
-                  <CategoryIcon className="h-4 w-4" strokeWidth={ICON_STROKE} />
+                  {label}
                 </span>
               </span>
 
               {/* Légende — carte active */}
               <span
-                className="absolute inset-x-0 bottom-0 flex items-end gap-3 px-4 pb-4 pt-10 transition-opacity duration-[480ms] ease-[var(--ease-luxury)] md:px-5 md:pb-5"
+                className="absolute inset-x-0 bottom-0 flex items-end gap-3 px-4 pb-4 pt-10 text-left transition-opacity duration-[480ms] ease-[var(--ease-luxury)] md:px-5 md:pb-5"
                 style={{ opacity: isActive ? 1 : 0 }}
               >
-                <span
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/95 shadow-md"
-                  style={{ color: accentColor }}
-                >
-                  <SectorIcon className="h-5 w-5" strokeWidth={ICON_STROKE} />
-                </span>
-                <span className="min-w-0 text-left">
-                  <span className="block truncate font-[family-name:var(--font-dm-sans)] text-base font-semibold leading-tight text-white md:text-lg">
+                <span className="min-w-0 flex-1">
+                  <span
+                    className="mb-1 inline-block font-[family-name:var(--font-dm-sans)] text-[9px] font-semibold uppercase tracking-[0.18em] md:text-[10px]"
+                    style={{ color: accentColor }}
+                  >
+                    {label}
+                  </span>
+                  <span className="block truncate font-[family-name:var(--font-dm-sans)] text-sm font-semibold leading-tight text-white md:text-base">
                     {subsidiaryName}
                   </span>
-                  <span className="mt-0.5 block truncate text-xs uppercase tracking-[0.18em] text-white/75 md:text-[13px]">
+                  <span className="mt-0.5 block truncate text-[10px] uppercase tracking-[0.16em] text-white/75 md:text-[11px]">
                     {sectorLabel}
                   </span>
                 </span>
