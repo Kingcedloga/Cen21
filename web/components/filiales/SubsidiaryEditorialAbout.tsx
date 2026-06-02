@@ -66,7 +66,7 @@ export function SubsidiaryEditorialAbout({ content }: Props) {
 
             <Button
               href={ctaHref}
-              variant="primary"
+              variant="secondary"
               external={ctaIsExternal}
               className="self-start"
             >
@@ -82,8 +82,9 @@ export function SubsidiaryEditorialAbout({ content }: Props) {
                   alt={imageAlt}
                   fill
                   className="subsidiary-editorial-about__image"
-                  sizes="(max-width: 1023px) 100vw, 50vw"
-                  quality={92}
+                  sizes="(max-width: 1023px) 100vw, 55vw"
+                  quality={90}
+                  priority
                 />
               </div>
             </AnimateIn>
