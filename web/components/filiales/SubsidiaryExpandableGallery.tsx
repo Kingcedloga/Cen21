@@ -64,10 +64,10 @@ export function SubsidiaryExpandableGallery({
       aria-label={subsidiaryName}
     >
       <div
-        className="flex min-h-[min(68vw,22rem)] gap-2 rounded-[1.75rem] p-3 md:min-h-[26rem] md:gap-3 md:p-4"
+        className="flex min-h-[min(85vw,32rem)] gap-2 rounded-[1.75rem] p-3 md:min-h-[38rem] md:gap-3 md:p-4 lg:min-h-[42rem]"
         style={{
           backgroundColor: panelBg,
-          minWidth: `min(100%, ${Math.max(items.length * 3.25 + 18, 22)}rem)`,
+          minWidth: `min(100%, ${Math.max(items.length * 4 + 22, 26)}rem)`,
         }}
       >
         {items.map((item, index) => {
@@ -86,9 +86,9 @@ export function SubsidiaryExpandableGallery({
               onClick={() => activate(index)}
               className="group relative shrink-0 cursor-pointer overflow-hidden rounded-[1.5rem] border border-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 md:rounded-[1.75rem]"
               style={{
-                flex: isActive ? "1 1 28rem" : "0 0 3.25rem",
-                minWidth: isActive ? "min(62vw, 36rem)" : "3.25rem",
-                maxWidth: isActive ? "36rem" : "3.25rem",
+                flex: isActive ? "1 1 40rem" : "0 0 4rem",
+                minWidth: isActive ? "min(78vw, 48rem)" : "4rem",
+                maxWidth: isActive ? "48rem" : "4rem",
                 transition: `flex ${duration} var(--ease-luxury), min-width ${duration} var(--ease-luxury), max-width ${duration} var(--ease-luxury)`,
                 outlineColor: accentColor,
               }}
@@ -102,8 +102,8 @@ export function SubsidiaryExpandableGallery({
                 className="object-cover object-center transition-transform duration-[700ms] ease-[var(--ease-luxury)] group-hover:scale-[1.03]"
                 sizes={
                   isActive
-                    ? "(max-width: 768px) 70vw, 576px"
-                    : "52px"
+                    ? "(max-width: 768px) 80vw, 832px"
+                    : "64px"
                 }
                 priority={index === 0}
               />

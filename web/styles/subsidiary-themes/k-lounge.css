@@ -204,3 +204,37 @@
 [data-subsidiary-theme="k-lounge"] article.glass-panel a.text-gold:hover {
   color: rgb(var(--sub-gold-rgb) / 0.75);
 }
+
+/* Hero cinématique — plein écran, contenu centré, vidéo Ken Burns */
+[data-subsidiary-theme="k-lounge"] .subsidiary-hero--cinematic .subsidiary-hero__video--cinematic {
+  animation: kl-hero-ken-burns 28s var(--ease-luxury) infinite alternate;
+  will-change: transform;
+}
+
+[data-subsidiary-theme="k-lounge"] .subsidiary-hero--cinematic .subsidiary-hero__content--cinematic {
+  padding-top: 5.5rem;
+  padding-bottom: 2rem;
+}
+
+[data-subsidiary-theme="k-lounge"] .subsidiary-hero--cinematic h1 {
+  text-shadow: 0 2px 24px rgb(0 0 0 / 0.45);
+}
+
+[data-subsidiary-theme="k-lounge"] .subsidiary-hero--cinematic .subsidiary-hero__content--cinematic > p {
+  text-shadow: 0 1px 12px rgb(0 0 0 / 0.35);
+}
+
+@keyframes kl-hero-ken-burns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.07);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-subsidiary-theme="k-lounge"] .subsidiary-hero--cinematic .subsidiary-hero__video--cinematic {
+    animation: none;
+  }
+}

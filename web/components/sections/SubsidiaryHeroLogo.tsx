@@ -10,6 +10,8 @@ type SubsidiaryHeroLogoProps = {
   /** 0 = ghost monochrome, 1 = couleurs officielles */
   reveal: number;
   accentColor?: string;
+  align?: "left" | "center";
+  size?: "default" | "cinematic";
 };
 
 /**
@@ -21,6 +23,8 @@ export function SubsidiaryHeroLogo({
   alt,
   reveal,
   accentColor = DEFAULT_ACCENT,
+  align = "left",
+  size = "default",
 }: SubsidiaryHeroLogoProps) {
   const p = Math.min(1, Math.max(0, reveal));
   const ghostOpacity = (1 - p) * 0.9;
@@ -30,37 +34,48 @@ export function SubsidiaryHeroLogo({
     .padStart(2, "0");
 
   const sizeClass =
-    "h-20 w-auto max-w-full object-contain object-left md:h-24 lg:h-28";
+    size === "cinematic"
+      ? "h-24 w-auto max-w-full object-contain md:h-32 lg:h-36"
+      : "h-20 w-auto max-w-full object-contain md:h-24 lg:h-28";
+
+  const objectClass = align === "center" ? "object-center" : "object-left";
+  const origin = align === "center" ? "center center" : "left center";
+  const wrapClass =
+    align === "center"
+      ? "relative mx-auto w-fit max-w-[min(100%,22rem)] md:max-w-[min(100%,28rem)] lg:max-w-[min(100%,32rem)]"
+      : "relative w-fit max-w-[min(100%,20rem)] md:max-w-[min(100%,24rem)] lg:max-w-[min(100%,26rem)]";
 
   return (
-    <div className="relative w-fit max-w-[min(100%,20rem)] md:max-w-[min(100%,24rem)] lg:max-w-[min(100%,26rem)]">
-      <Image
-        src={src}
-        alt={alt}
-        width={400}
-        height={140}
-        priority
-        className={sizeClass}
-        style={{
-          opacity: p,
-          transform: `scale(${0.988 + p * 0.012})`,
-          transformOrigin: "left center",
-          filter:
-            p > 0.08
-              ? `drop-shadow(0 2px ${glowBlur}px ${accentColor}${glowAlpha})`
-              : "none",
-        }}
-      />
-      <Image
-        src={src}
-        alt=""
-        aria-hidden
-        width={400}
-        height={140}
-        priority
-        className={`pointer-events-none absolute left-0 top-0 ${sizeClass} brightness-0 invert`}
-        style={{ opacity: ghostOpacity }}
-      />
+    <div className={wrapClass}>
+      <div className="relative inline-block max-w-full">
+        <Image
+          src={src}
+          alt={alt}
+          width={400}
+          height={140}
+          priority
+          className={`${sizeClass} ${objectClass}`}
+          style={{
+            opacity: p,
+            transform: `scale(${0.988 + p * 0.012})`,
+            transformOrigin: origin,
+            filter:
+              p > 0.08
+                ? `drop-shadow(0 2px ${glowBlur}px ${accentColor}${glowAlpha})`
+                : "none",
+          }}
+        />
+        <Image
+          src={src}
+          alt=""
+          aria-hidden
+          width={400}
+          height={140}
+          priority
+          className={`pointer-events-none absolute inset-0 ${sizeClass} ${objectClass} brightness-0 invert`}
+          style={{ opacity: ghostOpacity, transformOrigin: origin }}
+        />
+      </div>
     </div>
   );
 }

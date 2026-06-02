@@ -66,7 +66,7 @@ export const K_LOUNGE_THEME: SubsidiaryPageTheme = {
   },
   hero: {
     overlayGradient:
-      "linear-gradient(to top, #000000 0%, rgba(0,0,0,0.68) 44%, rgba(0,0,0,0.22) 72%, transparent 100%), linear-gradient(90deg, rgba(0,0,0,0.78) 0%, transparent 52%), radial-gradient(ellipse 72% 52% at 50% 100%, rgba(255,255,255,0.07) 0%, transparent 58%)",
+      "linear-gradient(180deg, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.42) 45%, rgba(0,0,0,0.62) 100%), radial-gradient(ellipse 110% 85% at 50% 50%, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.52) 100%)",
     blurTint: "#000000",
   },
 };
@@ -167,7 +167,7 @@ export const GOURMET_MEXICANA_THEME: SubsidiaryPageTheme = {
   },
 };
 
-/** Muzik Café — café musical bleu, rouge & blanc (festif & vibrant). */
+/** Café Muzik — café musical bleu, rouge & blanc (festif & vibrant). */
 export const MUZIK_CAFE_THEME: SubsidiaryPageTheme = {
   id: "muzik-cafe",
   slug: "filiale-05",

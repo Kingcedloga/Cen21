@@ -22,6 +22,10 @@ import {
   getUpcomingEventsBySubsidiary,
 } from "@/lib/content";
 import { buildSubsidiaryGalleryItems, galleryEntrySrc } from "@/lib/gallery-categories";
+import {
+  getSubsidiaryHeroLayout,
+  resolveSubsidiaryHeroVideo,
+} from "@/lib/subsidiary-hero-layout";
 import { resolvePageMetadata } from "@/lib/seo";
 import { getSubsidiaryContactImage } from "@/lib/subsidiary-contact-images";
 import { getSubsidiaryPageTheme } from "@/lib/subsidiary-themes";
@@ -68,11 +72,13 @@ export default async function SubsidiaryPage({ params }: Props) {
     getGalleryBySubsidiary(l, slug),
   );
 
+  const heroVideo = resolveSubsidiaryHeroVideo(slug, subsidiary.heroVideo);
+
   const heroSlides =
-    slug === "filiale-02" || subsidiary.heroVideo
+    slug === "filiale-02" || heroVideo
       ? [
           {
-            src: subsidiary.heroVideo?.poster ?? subsidiary.coverImage,
+            src: heroVideo?.poster ?? subsidiary.coverImage,
             alt: subsidiary.name,
           },
         ]
@@ -119,7 +125,8 @@ export default async function SubsidiaryPage({ params }: Props) {
         brandLogo={subsidiary.brandLogo}
         accentColor={subsidiary.accentColor}
         theme={pageTheme ?? undefined}
-        backgroundVideo={subsidiary.heroVideo}
+        backgroundVideo={heroVideo}
+        layout={getSubsidiaryHeroLayout(slug)}
       />
 
       <section className="px-4 pt-8 md:px-6 md:pt-10 lg:px-8">

@@ -9,6 +9,7 @@ import { SocialLinks } from "@/components/ui/SocialLinks";
 import { BLUR_PETROL } from "@/lib/image-blur";
 import { fadeUpTransition, fadeUpVariants, heroStaggerVariants } from "@/lib/motion";
 import { useHeroScrollProgress } from "@/lib/use-hero-scroll-progress";
+import type { SubsidiaryHeroLayout } from "@/lib/subsidiary-hero-layout";
 import type { SubsidiaryPageTheme } from "@/lib/subsidiary-themes";
 
 import { SubsidiaryHeroLogo } from "./SubsidiaryHeroLogo";
@@ -29,6 +30,7 @@ export function SubsidiaryHero({
   accentColor,
   theme,
   backgroundVideo,
+  layout = "default",
 }: {
   slides: Slide[];
   sectorLabel: string;
@@ -39,6 +41,7 @@ export function SubsidiaryHero({
   accentColor?: string;
   theme?: SubsidiaryHeroTheme;
   backgroundVideo?: HeroVideo;
+  layout?: SubsidiaryHeroLayout;
 }) {
   const list = slides.filter((s) => s.src);
   const len = list.length;
@@ -47,6 +50,7 @@ export function SubsidiaryHero({
   const heroRef = useRef<HTMLElement>(null);
   const logoReveal = useHeroScrollProgress(heroRef);
   const isThemed = Boolean(theme);
+  const isCinematic = layout === "cinematic-center";
   const videoRef = useRef<HTMLVideoElement>(null);
   const useVideoBackground = Boolean(backgroundVideo?.src) && !reduced;
   const posterSrc =
@@ -88,12 +92,18 @@ export function SubsidiaryHero({
   return (
     <section
       ref={heroRef}
-      className="subsidiary-hero relative flex min-h-svh h-svh items-end overflow-hidden"
+      className={`subsidiary-hero relative flex min-h-svh h-svh overflow-hidden ${
+        isCinematic
+          ? "subsidiary-hero--cinematic items-center justify-center"
+          : "items-end"
+      }`}
     >
       {useVideoBackground ? (
         <video
           ref={videoRef}
-          className="absolute inset-0 h-full w-full object-cover"
+          className={`absolute inset-0 h-full w-full object-cover ${
+            isCinematic ? "subsidiary-hero__video--cinematic" : ""
+          }`}
           autoPlay
           muted
           loop
@@ -195,7 +205,11 @@ export function SubsidiaryHero({
       )}
 
       <motion.div
-        className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-14 pt-28 md:px-10 md:pb-20 md:pt-36"
+        className={`relative z-10 mx-auto w-full max-w-7xl px-6 md:px-10 ${
+          isCinematic
+            ? "subsidiary-hero__content--cinematic flex flex-col items-center justify-center text-center"
+            : "pb-14 pt-28 md:pb-20 md:pt-36"
+        }`}
         data-has-logo={hasLogo ? "" : undefined}
         initial={reduced ? false : "hidden"}
         animate={reduced ? undefined : "visible"}
@@ -203,7 +217,9 @@ export function SubsidiaryHero({
       >
         {brandLogo && (
           <motion.div
-            className="mb-8 flex justify-start md:mb-10"
+            className={`mb-6 flex md:mb-8 ${
+              isCinematic ? "justify-center" : "justify-start md:mb-10"
+            }`}
             variants={reduced ? undefined : fadeUpVariants}
             transition={fadeUpTransition}
           >
@@ -212,6 +228,8 @@ export function SubsidiaryHero({
               alt={name}
               reveal={logoReveal}
               accentColor={accentColor}
+              align={isCinematic ? "center" : "left"}
+              size={isCinematic ? "cinematic" : "default"}
             />
           </motion.div>
         )}
@@ -227,7 +245,9 @@ export function SubsidiaryHero({
         <motion.h1
           className={`mb-3 font-[family-name:var(--font-dm-sans)] ${
             hasLogo
-              ? "text-xl font-medium tracking-[0.06em] md:text-2xl lg:text-[1.75rem]"
+              ? isCinematic
+                ? "text-2xl font-medium tracking-[0.08em] md:text-3xl lg:text-[2rem]"
+                : "text-xl font-medium tracking-[0.06em] md:text-2xl lg:text-[1.75rem]"
               : "text-4xl font-bold tracking-[-0.02em] md:text-5xl"
           } ${isThemed ? "text-white" : "text-ivory"}`}
           variants={reduced ? undefined : fadeUpVariants}
@@ -236,15 +256,16 @@ export function SubsidiaryHero({
           {name}
         </motion.h1>
         <motion.p
-          className={`mb-6 max-w-2xl text-base leading-relaxed md:text-lg ${
-            isThemed ? "text-white/80" : "text-ivory/80"
-          }`}
+          className={`mb-6 text-base leading-relaxed md:text-lg ${
+            isCinematic ? "max-w-xl" : "max-w-2xl"
+          } ${isThemed ? "text-white/80" : "text-ivory/80"}`}
           variants={reduced ? undefined : fadeUpVariants}
           transition={fadeUpTransition}
         >
           {tagline}
         </motion.p>
         <motion.div
+          className={isCinematic ? "flex justify-center" : undefined}
           variants={reduced ? undefined : fadeUpVariants}
           transition={fadeUpTransition}
         >

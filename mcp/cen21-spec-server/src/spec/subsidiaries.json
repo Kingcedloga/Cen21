@@ -21,7 +21,7 @@
     { "slug": "filiale-02", "name": "Wabi Sabi", "sector": "restaurant", "address": "Gombe, Kinshasa", "status": "active" },
     { "slug": "filiale-03", "name": "K Lounge", "sector": "lounge", "address": "RR House, Boulevard du 30 Juin, Kinshasa", "status": "active" },
     { "slug": "filiale-04", "name": "Millionaire Club", "sector": "nightclub", "address": "72B/95 Boulevard du 30 Juin, Gombe, Kinshasa", "status": "active" },
-    { "slug": "filiale-05", "name": "Muzik Café", "sector": "lounge", "address": "Boulevard du 30 Juin, Kinshasa", "status": "active" },
+    { "slug": "filiale-05", "name": "Café Muzik", "sector": "lounge", "address": "Boulevard du 30 Juin, Kinshasa", "status": "active" },
     { "slug": "filiale-06", "name": "Moka & More", "sector": "restaurant", "address": "Le Premier Mai, Gombe, Kinshasa", "status": "active" },
     { "slug": "filiale-07", "name": "Gourmet Mexicana", "sector": "restaurant", "address": "Kinshasa", "status": "active" },
     { "slug": "filiale-08", "name": "Papa John's", "sector": "restaurant", "address": "Avenue de la Gombe, Kinshasa", "status": "active" },
