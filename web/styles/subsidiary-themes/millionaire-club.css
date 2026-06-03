@@ -212,11 +212,3 @@
   border-color: var(--sub-gold) !important;
 }
 
-[data-subsidiary-theme="millionaire-club"] .sub-contact-band--static {
-  margin-block-start: clamp(2.5rem, 5vw, 3.5rem);
-  margin-block-end: 0;
-}
-
-[data-subsidiary-theme="millionaire-club"] .sub-contact-band--static + .subsidiary-about-after-band {
-  padding-top: clamp(0.75rem, 1.5vw, 1.25rem);
-}

@@ -109,7 +109,6 @@ export default async function SubsidiaryPage({ params }: Props) {
     ? "sub-themed-heading font-[family-name:var(--font-dm-sans)] text-3xl mb-8"
     : "font-[family-name:var(--font-dm-sans)] text-3xl text-ivory mb-8";
 
-  const contactImage = getSubsidiaryContactImage(slug, subsidiary.coverImage);
   const useEventShowcase = hasSubsidiaryEventShowcase(slug);
   const eventShowcaseConfig = getSubsidiaryEventShowcaseConfig(slug);
   const showcaseEvents =
@@ -204,18 +203,19 @@ export default async function SubsidiaryPage({ params }: Props) {
         </div>
       </section>
 
-      <SubsidiaryContactBand
-        backgroundImage={contactImage}
-        hoursLabel={t("contactBand.hours")}
-        findUsLabel={t("contactBand.findUs")}
-        callUsLabel={t("contactBand.callUs")}
-        hours={subsidiary.practicalInfo.hours}
-        address={subsidiary.practicalInfo.address}
-        phone={subsidiary.practicalInfo.phone}
-        mapsUrl={subsidiary.practicalInfo.address ? mapsUrl : undefined}
-        themed={isThemed}
-        variant={slug === "filiale-04" ? "static" : "immersive"}
-      />
+      {slug !== "filiale-04" && (
+        <SubsidiaryContactBand
+          backgroundImage={getSubsidiaryContactImage(slug, subsidiary.coverImage)}
+          hoursLabel={t("contactBand.hours")}
+          findUsLabel={t("contactBand.findUs")}
+          callUsLabel={t("contactBand.callUs")}
+          hours={subsidiary.practicalInfo.hours}
+          address={subsidiary.practicalInfo.address}
+          phone={subsidiary.practicalInfo.phone}
+          mapsUrl={subsidiary.practicalInfo.address ? mapsUrl : undefined}
+          themed={isThemed}
+        />
+      )}
 
       {subsidiary.aboutSection && slug === "filiale-04" && (
         <section className="subsidiary-about-after-band mx-auto max-w-7xl px-4 pb-16 md:px-6 md:pb-20">
