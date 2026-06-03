@@ -80,6 +80,8 @@ export type Subsidiary = {
   aboutSection?: SubsidiaryAboutSection;
 };
 
+export type EventStatus = "upcoming" | "sold-out" | "vip";
+
 export type EventItem = {
   id: string;
   slug: string;
@@ -89,6 +91,9 @@ export type EventItem = {
   subsidiarySlug: string;
   image: string;
   excerpt: string;
+  /** Libellé court pour affiches (ex. « Urban Wednesday »). */
+  displayTitle?: string;
+  status?: EventStatus;
 };
 
 export type GalleryItem = {

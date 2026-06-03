@@ -184,6 +184,14 @@
     "mapDescription": "Locate the venue on the map. Directions open in Google Maps.",
     "mapOpenExternal": "Open in Maps",
     "noEventsScheduled": "No events scheduled at this time.",
+    "eventShowcase": {
+      "bookNow": "Book now",
+      "eventInfo": "Event info",
+      "viewAllEvents": "All events",
+      "statusUpcoming": "Upcoming",
+      "statusSoldOut": "Sold out",
+      "statusVip": "VIP"
+    },
     "contactBand": {
       "hours": "Hours",
       "findUs": "Find us",

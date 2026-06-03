@@ -5,6 +5,7 @@ import { EventCard } from "@/components/cards/EventCard";
 import { StickyMobileActions } from "@/components/filiales/StickyMobileActions";
 import { SubsidiaryContactBand } from "@/components/filiales/SubsidiaryContactBand";
 import { SubsidiaryEditorialAbout } from "@/components/filiales/SubsidiaryEditorialAbout";
+import { SubsidiaryEventShowcase } from "@/components/filiales/SubsidiaryEventShowcase";
 import { SubsidiaryExpandableGallery } from "@/components/filiales/SubsidiaryExpandableGallery";
 import { SubsidiaryThemeShell } from "@/components/filiales/SubsidiaryThemeShell";
 import { MapEmbed } from "@/components/maps/MapEmbed";
@@ -30,6 +31,7 @@ import {
 } from "@/lib/subsidiary-hero-layout";
 import { resolvePageMetadata } from "@/lib/seo";
 import { getSubsidiaryContactImage } from "@/lib/subsidiary-contact-images";
+import { getSubsidiaryEventShowcaseConfig, hasSubsidiaryEventShowcase } from "@/lib/subsidiary-events-showcase";
 import { getSubsidiaryPageTheme } from "@/lib/subsidiary-themes";
 
 import "@/styles/subsidiary-contact-band.css";
@@ -108,6 +110,45 @@ export default async function SubsidiaryPage({ params }: Props) {
     : "font-[family-name:var(--font-dm-sans)] text-3xl text-ivory mb-8";
 
   const contactImage = getSubsidiaryContactImage(slug, subsidiary.coverImage);
+  const useEventShowcase = hasSubsidiaryEventShowcase(slug);
+  const eventShowcaseConfig = getSubsidiaryEventShowcaseConfig(slug);
+  const showcaseEvents =
+    eventShowcaseConfig && useEventShowcase
+      ? events.slice(0, eventShowcaseConfig.maxEvents)
+      : events;
+
+  const eventShowcaseLabels = {
+    bookNow: t("eventShowcase.bookNow"),
+    eventInfo: t("eventShowcase.eventInfo"),
+    viewAllEvents: t("eventShowcase.viewAllEvents"),
+    statusUpcoming: t("eventShowcase.statusUpcoming"),
+    statusSoldOut: t("eventShowcase.statusSoldOut"),
+    statusVip: t("eventShowcase.statusVip"),
+  };
+
+  const standardEventsSection = (
+    <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
+      <AnimateIn>
+        <h2 className={sectionHeadingClass}>{t("upcomingEvents")}</h2>
+      </AnimateIn>
+      {events.length === 0 ? (
+        <AnimateIn delay={0.05}>
+          <p className="mb-8 text-taupe">{t("noEventsScheduled")}</p>
+        </AnimateIn>
+      ) : (
+        <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {events.map((event, index) => (
+            <AnimateIn key={event.id} delay={index * 0.05}>
+              <EventCard event={event} />
+            </AnimateIn>
+          ))}
+        </div>
+      )}
+      <Button href="/evenements" variant="secondary">
+        {t("allEvents")}
+      </Button>
+    </section>
+  );
 
   const content = (
     <>
@@ -131,6 +172,14 @@ export default async function SubsidiaryPage({ params }: Props) {
         layout={getSubsidiaryHeroLayout(slug)}
         contentConfig={getSubsidiaryHeroContent(slug)}
       />
+
+      {useEventShowcase && showcaseEvents.length > 0 && (
+        <SubsidiaryEventShowcase
+          events={showcaseEvents}
+          labels={eventShowcaseLabels}
+          desktopColumns={eventShowcaseConfig?.desktopColumns}
+        />
+      )}
 
       <section className="px-4 pt-8 md:px-6 md:pt-10 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -190,27 +239,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         <SubsidiaryEditorialAbout content={subsidiary.aboutSection} />
       )}
 
-      <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
-        <AnimateIn>
-          <h2 className={sectionHeadingClass}>{t("upcomingEvents")}</h2>
-        </AnimateIn>
-        {events.length === 0 ? (
-          <AnimateIn delay={0.05}>
-            <p className="mb-8 text-taupe">{t("noEventsScheduled")}</p>
-          </AnimateIn>
-        ) : (
-          <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {events.map((event, index) => (
-              <AnimateIn key={event.id} delay={index * 0.05}>
-                <EventCard event={event} />
-              </AnimateIn>
-            ))}
-          </div>
-        )}
-        <Button href="/evenements" variant="secondary">
-          {t("allEvents")}
-        </Button>
-      </section>
+      {!useEventShowcase && standardEventsSection}
 
       <section className="mx-auto max-w-7xl px-4 pb-16 md:px-6 md:pb-20">
         <AnimateIn>

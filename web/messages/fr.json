@@ -191,6 +191,14 @@
     "mapDescription": "Localisez l'établissement sur la carte. L'itinéraire s'ouvre dans Google Maps.",
     "mapOpenExternal": "Ouvrir dans Maps",
     "noEventsScheduled": "Aucun événement programmé pour le moment.",
+    "eventShowcase": {
+      "bookNow": "Réserver",
+      "eventInfo": "Voir les détails",
+      "viewAllEvents": "Tous les événements",
+      "statusUpcoming": "À venir",
+      "statusSoldOut": "Complet",
+      "statusVip": "VIP"
+    },
     "discover": "Découvrir",
     "contactBand": {
       "hours": "Horaires",

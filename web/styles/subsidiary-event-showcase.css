@@ -1,0 +1,243 @@
+/* Vitrine événementielle premium — Millionaire Club & futures filiales */
+
+.subsidiary-event-showcase {
+  --mc-event-gold: var(--sub-gold, #c5a059);
+  --mc-event-gold-rgb: var(--sub-gold-rgb, 197 160 89);
+  --mc-event-bg: #000000;
+  --mc-event-meta: rgb(255 255 255 / 0.72);
+  --mc-event-meta-subtle: rgb(255 255 255 / 0.48);
+
+  background: var(--mc-event-bg);
+  padding-block: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.subsidiary-event-showcase__track {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: clamp(1rem, 4vw, 2rem);
+  padding-inline: clamp(1rem, 4vw, 2rem);
+  scrollbar-width: none;
+}
+
+.subsidiary-event-showcase__track::-webkit-scrollbar {
+  display: none;
+}
+
+.subsidiary-event-showcase__card {
+  flex: 0 0 clamp(15.5rem, 72vw, 18.75rem);
+  scroll-snap-align: start;
+  cursor: pointer;
+  transition:
+    transform var(--duration-luxe) var(--ease-luxury),
+    opacity var(--duration-luxe) var(--ease-luxury);
+}
+
+@media (min-width: 768px) {
+  .subsidiary-event-showcase__card {
+    flex-basis: clamp(16.5rem, 22vw, 20rem);
+  }
+}
+
+.subsidiary-event-showcase__card:not(.is-active) {
+  opacity: 0.82;
+}
+
+.subsidiary-event-showcase__card.is-active {
+  opacity: 1;
+}
+
+.subsidiary-event-showcase__visual {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+.subsidiary-event-showcase__image {
+  object-fit: cover;
+  transition: transform var(--duration-grand) var(--ease-luxury);
+}
+
+.subsidiary-event-showcase__card.is-active .subsidiary-event-showcase__image,
+.subsidiary-event-showcase__card:hover .subsidiary-event-showcase__image,
+.subsidiary-event-showcase__card:focus-within .subsidiary-event-showcase__image {
+  transform: scale(1.06);
+}
+
+.subsidiary-event-showcase__status {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 2;
+  padding: 0.35rem 0.65rem;
+  font-family: var(--font-dm-sans), var(--font-inter), system-ui, sans-serif;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: rgb(0 0 0 / 0.72);
+  border: 1px solid rgb(var(--mc-event-gold-rgb) / 0.45);
+  color: var(--mc-event-gold);
+  backdrop-filter: blur(6px);
+}
+
+.subsidiary-event-showcase__status--vip {
+  border-color: rgb(var(--mc-event-gold-rgb) / 0.75);
+  background: rgb(var(--mc-event-gold-rgb) / 0.18);
+}
+
+.subsidiary-event-showcase__status--sold-out {
+  border-color: rgb(255 255 255 / 0.22);
+  color: rgb(255 255 255 / 0.65);
+}
+
+.subsidiary-event-showcase__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(0 0 0 / 0.55);
+  opacity: 0;
+  transition: opacity var(--duration-luxe) var(--ease-luxury);
+}
+
+.subsidiary-event-showcase__card.is-active .subsidiary-event-showcase__overlay,
+.subsidiary-event-showcase__card:hover .subsidiary-event-showcase__overlay,
+.subsidiary-event-showcase__card:focus-within .subsidiary-event-showcase__overlay {
+  opacity: 1;
+}
+
+.subsidiary-event-showcase__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.625rem;
+  width: min(100% - 2rem, 13rem);
+  padding-inline: 0.25rem;
+}
+
+.subsidiary-event-showcase__btn-book {
+  border-radius: 9999px !important;
+  font-size: 0.6875rem !important;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.subsidiary-event-showcase__btn-info {
+  border-radius: 9999px !important;
+  background: transparent !important;
+  font-size: 0.6875rem !important;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.subsidiary-event-showcase__meta {
+  padding: 1.125rem 0.875rem 1.25rem;
+  text-align: center;
+  background: var(--mc-event-bg);
+}
+
+.subsidiary-event-showcase__title {
+  margin: 0 0 0.625rem;
+  font-family: var(--font-dm-sans), var(--font-inter), system-ui, sans-serif;
+  font-size: clamp(0.95rem, 2.8vw, 1.125rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.subsidiary-event-showcase__date,
+.subsidiary-event-showcase__weekday,
+.subsidiary-event-showcase__time {
+  margin: 0;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--mc-event-meta);
+}
+
+.subsidiary-event-showcase__weekday,
+.subsidiary-event-showcase__time {
+  color: var(--mc-event-meta-subtle);
+  font-size: 0.75rem;
+}
+
+.subsidiary-event-showcase__footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 1.5rem;
+  padding-inline: 1rem;
+}
+
+.subsidiary-event-showcase__all-link {
+  font-family: var(--font-dm-sans), var(--font-inter), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgb(var(--mc-event-gold-rgb) / 0.85);
+  transition: color var(--duration-luxe) var(--ease-luxury);
+}
+
+.subsidiary-event-showcase__all-link:hover {
+  color: var(--mc-event-gold);
+}
+
+/* 5 cartes alignées pleine largeur — Millionaire Club desktop */
+@media (min-width: 1024px) {
+  .subsidiary-event-showcase--cols-5 .subsidiary-event-showcase__track {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    overflow-x: visible;
+    scroll-snap-type: none;
+    padding-inline: 0;
+    gap: 0;
+  }
+
+  .subsidiary-event-showcase--cols-5 .subsidiary-event-showcase__card {
+    flex: none;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .subsidiary-event-showcase--cols-5 .subsidiary-event-showcase__title {
+    font-size: clamp(0.75rem, 0.95vw, 0.9375rem);
+    letter-spacing: 0.05em;
+  }
+
+  .subsidiary-event-showcase--cols-5 .subsidiary-event-showcase__meta {
+    padding-inline: 0.5rem;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .subsidiary-event-showcase--cols-5 .subsidiary-event-showcase__actions {
+    width: min(100% - 1rem, 11rem);
+  }
+
+  .subsidiary-event-showcase--cols-5 .subsidiary-event-showcase__btn-book,
+  .subsidiary-event-showcase--cols-5 .subsidiary-event-showcase__btn-info {
+    font-size: 0.625rem !important;
+    padding-inline: 0.75rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .subsidiary-event-showcase__image,
+  .subsidiary-event-showcase__overlay,
+  .subsidiary-event-showcase__card {
+    transition: none;
+  }
+
+  .subsidiary-event-showcase__card.is-active .subsidiary-event-showcase__image,
+  .subsidiary-event-showcase__card:hover .subsidiary-event-showcase__image {
+    transform: none;
+  }
+}

@@ -193,3 +193,21 @@
 [data-subsidiary-theme="millionaire-club"] .glass-panel .border-t {
   border-color: var(--sub-border);
 }
+
+/* Vitrine événementielle */
+[data-subsidiary-theme="millionaire-club"] .subsidiary-event-showcase__btn-book {
+  background: var(--sub-gold) !important;
+  color: var(--sub-bg) !important;
+  border-color: rgb(var(--sub-gold-rgb) / 0.55) !important;
+}
+
+[data-subsidiary-theme="millionaire-club"] .subsidiary-event-showcase__btn-info {
+  background: transparent !important;
+  color: #fff !important;
+  border-color: rgb(var(--sub-gold-rgb) / 0.55) !important;
+}
+
+[data-subsidiary-theme="millionaire-club"] .subsidiary-event-showcase__btn-info:hover {
+  color: var(--sub-gold) !important;
+  border-color: var(--sub-gold) !important;
+}
