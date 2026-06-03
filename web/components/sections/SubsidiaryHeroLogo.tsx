@@ -11,7 +11,7 @@ type SubsidiaryHeroLogoProps = {
   reveal: number;
   accentColor?: string;
   align?: "left" | "center";
-  size?: "default" | "cinematic" | "cinematic-xl";
+  size?: "default" | "compact" | "cinematic" | "cinematic-xl";
 };
 
 /**
@@ -38,7 +38,9 @@ export function SubsidiaryHeroLogo({
       ? "h-32 w-auto max-w-full object-contain sm:h-36 md:h-44 lg:h-52 xl:h-56"
       : size === "cinematic"
         ? "h-24 w-auto max-w-full object-contain md:h-32 lg:h-36"
-        : "h-20 w-auto max-w-full object-contain md:h-24 lg:h-28";
+        : size === "compact"
+          ? "h-14 w-auto max-w-full object-contain sm:h-16 md:h-[4.5rem] lg:h-20"
+          : "h-20 w-auto max-w-full object-contain md:h-24 lg:h-28";
 
   const objectClass = align === "center" ? "object-center" : "object-left";
   const origin = align === "center" ? "center center" : "left center";
@@ -47,10 +49,14 @@ export function SubsidiaryHeroLogo({
       ? size === "cinematic-xl"
         ? "relative mx-auto w-fit max-w-[min(100%,28rem)] sm:max-w-[min(100%,32rem)] md:max-w-[min(100%,38rem)] lg:max-w-[min(100%,44rem)]"
         : "relative mx-auto w-fit max-w-[min(100%,22rem)] md:max-w-[min(100%,28rem)] lg:max-w-[min(100%,32rem)]"
-      : "relative w-fit max-w-[min(100%,20rem)] md:max-w-[min(100%,24rem)] lg:max-w-[min(100%,26rem)]";
+      : size === "compact"
+        ? "relative w-fit max-w-[min(100%,16rem)] md:max-w-[min(100%,19rem)] lg:max-w-[min(100%,21rem)]"
+        : "relative w-fit max-w-[min(100%,20rem)] md:max-w-[min(100%,24rem)] lg:max-w-[min(100%,26rem)]";
 
-  const imageWidth = size === "cinematic-xl" ? 560 : 400;
-  const imageHeight = size === "cinematic-xl" ? 196 : 140;
+  const imageWidth =
+    size === "cinematic-xl" ? 560 : size === "compact" ? 320 : 400;
+  const imageHeight =
+    size === "cinematic-xl" ? 196 : size === "compact" ? 112 : 140;
 
   return (
     <div className={wrapClass}>

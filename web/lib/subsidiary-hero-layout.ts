@@ -2,7 +2,11 @@ import type { HeroVideo } from "./types";
 
 export type SubsidiaryHeroLayout = "default" | "cinematic-center";
 
-export type SubsidiaryHeroLogoSize = "default" | "cinematic" | "cinematic-xl";
+export type SubsidiaryHeroLogoSize =
+  | "default"
+  | "compact"
+  | "cinematic"
+  | "cinematic-xl";
 
 /** Options de contenu hero par filiale (ex. K Lounge — logo centré, sans titre). */
 export type SubsidiaryHeroContent = {
@@ -10,6 +14,7 @@ export type SubsidiaryHeroContent = {
   hideTitle?: boolean;
   logoSize?: SubsidiaryHeroLogoSize;
   taglineVariant?: "default" | "editorial";
+  typographyScale?: "default" | "compact";
 };
 
 const HERO_LAYOUT_BY_SLUG: Partial<Record<string, SubsidiaryHeroLayout>> = {
@@ -22,6 +27,12 @@ const HERO_CONTENT_BY_SLUG: Partial<Record<string, SubsidiaryHeroContent>> = {
     hideTitle: true,
     logoSize: "cinematic-xl",
     taglineVariant: "editorial",
+  },
+  "filiale-04": {
+    hideSectorLabel: true,
+    hideTitle: true,
+    logoSize: "compact",
+    typographyScale: "compact",
   },
 };
 

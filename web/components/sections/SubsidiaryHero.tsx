@@ -58,6 +58,7 @@ export function SubsidiaryHero({
   const logoSize =
     contentConfig.logoSize ?? (isCinematic ? "cinematic" : "default");
   const isEditorialTagline = contentConfig.taglineVariant === "editorial";
+  const isCompactTypography = contentConfig.typographyScale === "compact";
   const videoRef = useRef<HTMLVideoElement>(null);
   const useVideoBackground = Boolean(backgroundVideo?.src) && !reduced;
   const posterSrc =
@@ -229,7 +230,9 @@ export function SubsidiaryHero({
                 ? hideTitle
                   ? "mb-8 justify-center md:mb-10 lg:mb-12"
                   : "mb-6 justify-center md:mb-8"
-                : "mb-6 justify-start md:mb-10"
+                : isCompactTypography
+                  ? "mb-4 justify-start md:mb-6"
+                  : "mb-6 justify-start md:mb-10"
             }`}
             variants={reduced ? undefined : fadeUpVariants}
             transition={fadeUpTransition}
@@ -246,9 +249,11 @@ export function SubsidiaryHero({
         )}
         {!hideSectorLabel && (
           <motion.p
-            className={`mb-3 text-xs uppercase tracking-[0.22em] md:text-sm md:tracking-[0.2em] ${
-              isThemed ? "text-[var(--sub-gold)]" : "text-gold"
-            }`}
+            className={`uppercase ${
+              isCompactTypography
+                ? "mb-2.5 text-[10px] tracking-[0.2em] md:text-xs md:tracking-[0.18em]"
+                : "mb-3 text-xs tracking-[0.22em] md:text-sm md:tracking-[0.2em]"
+            } ${isThemed ? "text-[var(--sub-gold)]" : "text-gold"}`}
             variants={reduced ? undefined : fadeUpVariants}
             transition={fadeUpTransition}
           >
@@ -262,9 +267,15 @@ export function SubsidiaryHero({
             className={`mb-3 font-[family-name:var(--font-dm-sans)] ${
               hasLogo
                 ? isCinematic
-                  ? "text-2xl font-medium tracking-[0.08em] md:text-3xl lg:text-[2rem]"
-                  : "text-xl font-medium tracking-[0.06em] md:text-2xl lg:text-[1.75rem]"
-                : "text-4xl font-bold tracking-[-0.02em] md:text-5xl"
+                  ? isCompactTypography
+                    ? "text-xl font-medium tracking-[0.07em] md:text-2xl lg:text-[1.65rem]"
+                    : "text-2xl font-medium tracking-[0.08em] md:text-3xl lg:text-[2rem]"
+                  : isCompactTypography
+                    ? "text-lg font-medium tracking-[0.05em] md:text-xl lg:text-2xl"
+                    : "text-xl font-medium tracking-[0.06em] md:text-2xl lg:text-[1.75rem]"
+                : isCompactTypography
+                  ? "text-3xl font-bold tracking-[-0.02em] md:text-4xl"
+                  : "text-4xl font-bold tracking-[-0.02em] md:text-5xl"
             } ${isThemed ? "text-white" : "text-ivory"}`}
             variants={reduced ? undefined : fadeUpVariants}
             transition={fadeUpTransition}
@@ -276,7 +287,9 @@ export function SubsidiaryHero({
           className={`mb-6 ${
             isEditorialTagline
               ? "subsidiary-hero__tagline subsidiary-hero__tagline--editorial max-w-2xl text-lg font-bold leading-snug tracking-[0.015em] sm:text-xl md:text-2xl lg:max-w-3xl lg:text-[1.65rem] lg:leading-snug"
-              : `text-base leading-relaxed md:text-lg ${isCinematic ? "max-w-xl" : "max-w-2xl"}`
+              : isCompactTypography
+                ? `text-sm leading-relaxed md:text-base ${isCinematic ? "max-w-lg" : "max-w-xl"}`
+                : `text-base leading-relaxed md:text-lg ${isCinematic ? "max-w-xl" : "max-w-2xl"}`
           } ${isThemed ? "text-white/90" : "text-ivory/80"}`}
           variants={reduced ? undefined : fadeUpVariants}
           transition={fadeUpTransition}
