@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { BLUR_PETROL } from "@/lib/image-blur";
+import { getSubsidiaryBySlug } from "@/lib/content";
+import { resolveEventImage } from "@/lib/event-images";
 import type { EventItem, EventStatus } from "@/lib/types";
 
 import "@/styles/subsidiary-event-showcase.css";
@@ -79,6 +81,8 @@ export function SubsidiaryEventShowcase({ events, labels, desktopColumns }: Prop
           const badge = statusLabel(event.status, labels);
           const isActive = activeId === event.id;
           const isSoldOut = event.status === "sold-out";
+          const subsidiary = getSubsidiaryBySlug(locale, event.subsidiarySlug);
+          const imageSrc = resolveEventImage(event, subsidiary?.coverImage);
 
           return (
             <article
@@ -89,7 +93,7 @@ export function SubsidiaryEventShowcase({ events, labels, desktopColumns }: Prop
             >
               <div className="subsidiary-event-showcase__visual">
                 <Image
-                  src={event.image}
+                  src={imageSrc}
                   alt={title}
                   fill
                   placeholder="blur"

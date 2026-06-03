@@ -214,7 +214,17 @@ export default async function SubsidiaryPage({ params }: Props) {
         phone={subsidiary.practicalInfo.phone}
         mapsUrl={subsidiary.practicalInfo.address ? mapsUrl : undefined}
         themed={isThemed}
+        variant={slug === "filiale-04" ? "static" : "immersive"}
       />
+
+      {subsidiary.aboutSection && slug === "filiale-04" && (
+        <section className="subsidiary-about-after-band mx-auto max-w-7xl px-4 pb-16 md:px-6 md:pb-20">
+          <SubsidiaryEditorialAbout
+            content={subsidiary.aboutSection}
+            variant="luxury-dark"
+          />
+        </section>
+      )}
 
       {galleryItems.length > 0 && (
         <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
@@ -235,7 +245,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         </section>
       )}
 
-      {subsidiary.aboutSection && (
+      {subsidiary.aboutSection && slug !== "filiale-04" && (
         <SubsidiaryEditorialAbout content={subsidiary.aboutSection} />
       )}
 

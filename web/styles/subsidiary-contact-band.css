@@ -31,6 +31,19 @@
   pointer-events: auto;
 }
 
+/* Variante statique — flux document, sans sticky / parallax / runway */
+.sub-contact-band--static {
+  margin-block: clamp(2rem, 4vw, 3rem);
+}
+
+.sub-contact-band--static .sub-contact-band__panel {
+  min-height: clamp(16rem, 28vh, 20rem);
+}
+
+.sub-contact-band--static .sub-contact-band__content {
+  pointer-events: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .sub-contact-band .will-change-transform {
     will-change: auto;

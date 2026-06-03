@@ -1,0 +1,285 @@
+/* Section présentation premium — Millionaire Club (dark, motifs points dorés) */
+
+.subsidiary-editorial-about--luxury-dark {
+  --lux-pres-bg: var(--sub-bg, #000000);
+  --lux-pres-heading: var(--sub-text, #ffffff);
+  --lux-pres-body: var(--sub-text-muted, rgba(255 255 255 / 0.72));
+  --lux-pres-muted: var(--sub-text-subtle, rgba(255 255 255 / 0.5));
+  --lux-pres-accent: var(--sub-gold, #c9a84c);
+  --lux-pres-accent-rgb: var(--sub-gold-rgb, 201 168 76);
+  --lux-pres-border: rgb(var(--lux-pres-accent-rgb) / 0.28);
+  --lux-pres-surface: var(--sub-surface, rgba(255 255 255 / 0.04));
+
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+  background-color: transparent;
+  background-image: radial-gradient(
+    ellipse 90% 70% at 100% 50%,
+    rgb(var(--lux-pres-accent-rgb) / 0.06) 0%,
+    transparent 58%
+  );
+  color: var(--lux-pres-body);
+}
+
+.subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__inner {
+  max-width: 90rem;
+  padding-inline: 0;
+}
+
+.subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__grid {
+  min-height: auto;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__inner {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__grid {
+    grid-template-columns: minmax(0, 26rem) minmax(0, 1fr);
+    min-height: clamp(28rem, 62vh, 40rem);
+    gap: clamp(2rem, 4vw, 3.5rem);
+  }
+}
+
+.subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__content {
+  padding: 0;
+}
+
+@media (min-width: 1024px) {
+  .subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__content {
+    padding-inline: 0 clamp(1rem, 2vw, 2rem);
+    padding-block: clamp(1rem, 3vw, 2rem);
+  }
+}
+
+.subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__eyebrow {
+  color: var(--lux-pres-accent);
+}
+
+.subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__eyebrow::after {
+  background: linear-gradient(
+    90deg,
+    var(--lux-pres-accent) 0%,
+    rgb(var(--lux-pres-accent-rgb) / 0.15) 100%
+  );
+}
+
+.subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__subtitle {
+  margin: -0.5rem 0 1.5rem;
+  max-width: 28rem;
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.125rem, 2.2vw, 1.5rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  color: rgb(var(--lux-pres-accent-rgb) / 0.88);
+}
+
+.subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__title {
+  max-width: 16ch;
+  color: var(--lux-pres-heading);
+  text-transform: none;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__description {
+  color: var(--lux-pres-body);
+}
+
+.subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__highlights {
+  margin-bottom: 2.5rem;
+}
+
+.subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__highlight-title {
+  color: var(--lux-pres-heading);
+}
+
+.subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__highlight-desc {
+  color: var(--lux-pres-muted);
+}
+
+.subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__highlight-icon {
+  border-color: var(--lux-pres-border);
+  background: var(--lux-pres-surface);
+}
+
+.subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__highlight-icon svg {
+  color: var(--lux-pres-accent);
+}
+
+@media (min-width: 640px) {
+  .subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__highlight[data-divider] {
+    border-left-color: var(--lux-pres-border);
+  }
+}
+
+/* —— Image & motifs —— */
+.subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__visual {
+  min-height: clamp(22rem, 58vw, 32rem);
+  background: transparent;
+}
+
+@media (min-width: 1024px) {
+  .subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__visual {
+    min-height: clamp(28rem, 62vh, 40rem);
+  }
+}
+
+.subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__visual-inner {
+  position: relative;
+  inset: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__image-frame {
+  position: relative;
+  width: 100%;
+  max-width: 42rem;
+  aspect-ratio: 4 / 5;
+  margin-inline: auto;
+}
+
+@media (min-width: 1024px) {
+  .subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__image-frame {
+    aspect-ratio: 5 / 6;
+    max-width: none;
+    height: 100%;
+    max-height: 40rem;
+  }
+}
+
+.subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__image-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid var(--lux-pres-border);
+  box-shadow:
+    0 24px 64px rgb(0 0 0 / 0.55),
+    0 0 0 1px rgb(var(--lux-pres-accent-rgb) / 0.08) inset;
+}
+
+.subsidiary-editorial-about__slideshow {
+  position: absolute;
+  inset: 0;
+}
+
+.subsidiary-editorial-about__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 700ms var(--ease-luxury, cubic-bezier(0.16, 1, 0.3, 1));
+  pointer-events: none;
+}
+
+.subsidiary-editorial-about__slide--active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .subsidiary-editorial-about__slide {
+    transition: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__image-wrap {
+    border-radius: 1.5rem;
+  }
+}
+
+.subsidiary-editorial-about--luxury-dark .subsidiary-editorial-about__image {
+  object-position: center 35%;
+}
+
+/* Motifs points — coins de l’image */
+.presentation-dot-ornament {
+  --dot-fill: rgb(var(--lux-pres-accent-rgb, 201 168 76) / 0.72);
+  position: absolute;
+  z-index: 2;
+  width: clamp(3.5rem, 8vw, 5.5rem);
+  height: clamp(3.5rem, 8vw, 5.5rem);
+  background-image: radial-gradient(circle, var(--dot-fill) 1.35px, transparent 1.35px);
+  background-size: 7px 7px;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.presentation-dot-ornament--tl {
+  top: 0;
+  left: 0;
+  transform: translate(-18%, -18%);
+}
+
+.presentation-dot-ornament--tr {
+  top: 0;
+  right: 0;
+  transform: translate(18%, -18%);
+}
+
+.presentation-dot-ornament--bl {
+  bottom: 0;
+  left: 0;
+  transform: translate(-18%, 18%);
+}
+
+.presentation-dot-ornament--br {
+  bottom: 0;
+  right: 0;
+  transform: translate(18%, 18%);
+}
+
+@media (min-width: 1024px) {
+  .presentation-dot-ornament {
+    width: 5.75rem;
+    height: 5.75rem;
+    background-size: 8px 8px;
+    opacity: 0.62;
+  }
+}
+
+/* Bouton CTA — or sur fond sombre */
+.subsidiary-editorial-about--luxury-dark .btn-secondary {
+  font-family: var(--font-dm-sans), var(--font-inter), system-ui, sans-serif;
+  background: transparent;
+  border: 1px solid var(--lux-pres-border);
+  color: var(--lux-pres-accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.6875rem;
+  backdrop-filter: none;
+}
+
+.subsidiary-editorial-about--luxury-dark .btn-secondary:hover {
+  background: rgb(var(--lux-pres-accent-rgb) / 0.1);
+  border-color: rgb(var(--lux-pres-accent-rgb) / 0.55);
+  color: var(--lux-pres-heading);
+  box-shadow: 0 0 32px rgb(var(--lux-pres-accent-rgb) / 0.12);
+}
+
+.subsidiary-editorial-about--luxury-dark .btn-secondary:focus-visible {
+  outline-color: var(--lux-pres-accent);
+}
+
+[data-subsidiary-theme="millionaire-club"] .subsidiary-editorial-about--luxury-dark {
+  color: var(--lux-pres-body);
+}
+
+[data-subsidiary-theme="millionaire-club"] .subsidiary-editorial-about--luxury-dark .text-gold {
+  color: var(--lux-pres-accent);
+}

@@ -157,6 +157,55 @@
         "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80",
         "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80"
       ],
+      "aboutSection": {
+        "eyebrow": "Nightlife premium",
+        "subtitle": "Soirées à thème & nuits électrisantes",
+        "title": "L'art de vivre la nuit à Kinshasa",
+        "description": "Au cœur du Gombe, le Millionaire Club incarne l'excellence nocturne : sets DJ internationaux, soirées African Tribal et French Touch, espaces VIP et une atmosphère où le luxe rencontre l'énergie. De 18h à 6h, chaque soirée devient une expérience inoubliable.",
+        "ctaLabel": "Réserver votre soirée",
+        "ctaHref": "/contact",
+        "image": "/filiales/photos/filiale-04/events/05-african-tribal-night.webp",
+        "imageAlt": "Ambiance Millionaire Club — soirée African Tribal Night",
+        "slides": [
+          {
+            "src": "/filiales/photos/filiale-04/events/01-urban-wednesday.webp",
+            "alt": "Millionaire Club — Urban Wednesday"
+          },
+          {
+            "src": "/filiales/photos/filiale-04/events/02-french-touch-night.webp",
+            "alt": "Millionaire Club — French Touch Night"
+          },
+          {
+            "src": "/filiales/photos/filiale-04/events/03-neon-saturday.webp",
+            "alt": "Millionaire Club — Neon Saturday"
+          },
+          {
+            "src": "/filiales/photos/filiale-04/events/04-afro-fusion-sunday.webp",
+            "alt": "Millionaire Club — Afro Fusion Sunday"
+          },
+          {
+            "src": "/filiales/photos/filiale-04/events/05-african-tribal-night.webp",
+            "alt": "Millionaire Club — African Tribal Night"
+          }
+        ],
+        "highlights": [
+          {
+            "icon": "music",
+            "title": "Programmation DJ",
+            "description": "Sets premium & nuits à thème signature"
+          },
+          {
+            "icon": "cocktail",
+            "title": "Expérience VIP",
+            "description": "Service exclusif & espaces premium"
+          },
+          {
+            "icon": "rating",
+            "title": "Lieu iconique",
+            "description": "72B/95 Boulevard du 30 Juin, Gombe"
+          }
+        ]
+      },
       "featured": true
     },
     {

@@ -8,6 +8,7 @@ import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { getSubsidiaryBySlug } from "@/lib/content";
 import { BLUR_PETROL } from "@/lib/image-blur";
+import { resolveEventImage } from "@/lib/event-images";
 import type { EventItem } from "@/lib/types";
 
 function formatDate(iso: string, locale: Locale) {
@@ -24,12 +25,13 @@ function formatDate(iso: string, locale: Locale) {
 export function EventCard({ event }: { event: EventItem }) {
   const locale = useLocale() as Locale;
   const subsidiary = getSubsidiaryBySlug(locale, event.subsidiarySlug);
+  const imageSrc = resolveEventImage(event, subsidiary?.coverImage);
 
   return (
     <article className="group relative flex h-full flex-col overflow-hidden rounded-sm border border-white/12 glass-panel shadow-[0_18px_40px_-22px_rgba(0,0,0,0.55)] transition-[transform,box-shadow,border-color] duration-luxe ease-out hover:-translate-y-1 hover:border-gold/45 hover:shadow-[0_26px_60px_-22px_rgba(212,173,101,0.32),0_18px_40px_-18px_rgba(0,0,0,0.65)]">
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
-          src={event.image}
+          src={imageSrc}
           alt={event.title}
           fill
           placeholder="blur"

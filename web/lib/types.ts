@@ -43,9 +43,16 @@ export type SubsidiaryAboutHighlight = {
   description: string;
 };
 
-/** Bloc éditorial « About » optionnel (ex. K Lounge). */
+export type SubsidiaryAboutSlide = {
+  src: string;
+  alt: string;
+};
+
+/** Bloc éditorial « About » optionnel (ex. K Lounge, Millionaire Club). */
 export type SubsidiaryAboutSection = {
   eyebrow: string;
+  /** Slogan ou sous-titre affiché sous le titre (variant luxury-dark). */
+  subtitle?: string;
   title: string;
   description: string;
   ctaLabel: string;
@@ -53,6 +60,8 @@ export type SubsidiaryAboutSection = {
   ctaHref?: string;
   image: string;
   imageAlt: string;
+  /** Carrousel auto sans contrôles (prioritaire sur `image` si défini). */
+  slides?: SubsidiaryAboutSlide[];
   highlights?: SubsidiaryAboutHighlight[];
 };
 

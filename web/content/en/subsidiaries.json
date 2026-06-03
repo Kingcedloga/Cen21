@@ -157,6 +157,55 @@
         "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80",
         "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80"
       ],
+      "aboutSection": {
+        "eyebrow": "Premium nightlife",
+        "subtitle": "Themed nights & electric evenings",
+        "title": "The art of Kinshasa after dark",
+        "description": "In the heart of Gombe, Millionaire Club embodies nightlife excellence: international DJ sets, African Tribal and French Touch themed nights, VIP spaces, and an atmosphere where luxury meets energy. From 6pm to 6am, every evening becomes an unforgettable experience.",
+        "ctaLabel": "Book your night",
+        "ctaHref": "/contact",
+        "image": "/filiales/photos/filiale-04/events/05-african-tribal-night.webp",
+        "imageAlt": "Millionaire Club atmosphere — African Tribal Night",
+        "slides": [
+          {
+            "src": "/filiales/photos/filiale-04/events/01-urban-wednesday.webp",
+            "alt": "Millionaire Club — Urban Wednesday"
+          },
+          {
+            "src": "/filiales/photos/filiale-04/events/02-french-touch-night.webp",
+            "alt": "Millionaire Club — French Touch Night"
+          },
+          {
+            "src": "/filiales/photos/filiale-04/events/03-neon-saturday.webp",
+            "alt": "Millionaire Club — Neon Saturday"
+          },
+          {
+            "src": "/filiales/photos/filiale-04/events/04-afro-fusion-sunday.webp",
+            "alt": "Millionaire Club — Afro Fusion Sunday"
+          },
+          {
+            "src": "/filiales/photos/filiale-04/events/05-african-tribal-night.webp",
+            "alt": "Millionaire Club — African Tribal Night"
+          }
+        ],
+        "highlights": [
+          {
+            "icon": "music",
+            "title": "DJ programming",
+            "description": "Premium sets & signature themed nights"
+          },
+          {
+            "icon": "cocktail",
+            "title": "VIP experience",
+            "description": "Exclusive service & premium spaces"
+          },
+          {
+            "icon": "rating",
+            "title": "Iconic venue",
+            "description": "72B/95 Boulevard du 30 Juin, Gombe"
+          }
+        ]
+      },
       "featured": true
     },
     {

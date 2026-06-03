@@ -25,6 +25,8 @@ type Props = {
   phone?: string;
   mapsUrl?: string;
   themed?: boolean;
+  /** `immersive` = sticky + parallax (défaut) · `static` = flux document normal */
+  variant?: "immersive" | "static";
 };
 
 export function SubsidiaryContactBand({
@@ -37,9 +39,11 @@ export function SubsidiaryContactBand({
   phone,
   mapsUrl,
   themed = false,
+  variant = "immersive",
 }: Props) {
   const sectionRef = useRef<HTMLElement>(null);
   const reduced = useReducedMotion() ?? false;
+  const isStatic = variant === "static";
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -49,75 +53,134 @@ export function SubsidiaryContactBand({
   const bgY = useTransform(
     scrollYProgress,
     [0, 1],
-    reduced ? ["0%", "0%"] : ["-22%", "22%"],
+    reduced || isStatic ? ["0%", "0%"] : ["-22%", "22%"],
   );
 
-  const bgTransform = useTransform(bgY, (y) => `translateY(${y}) scale(1.24)`);
+  const bgTransform = useTransform(bgY, (y) =>
+    isStatic ? "none" : `translateY(${y}) scale(1.24)`,
+  );
 
   const phoneHref = phone ? `tel:${phone.replace(/\s/g, "")}` : undefined;
+
+  const contactColumns = (
+    <ContactColumns
+      hours={hours}
+      hoursLabel={hoursLabel}
+      findUsLabel={findUsLabel}
+      callUsLabel={callUsLabel}
+      address={address}
+      phone={phone}
+      phoneHref={phoneHref}
+      mapsUrl={mapsUrl}
+      themed={themed}
+    />
+  );
 
   return (
     <section
       ref={sectionRef}
-      className="sub-contact-band relative isolate hidden min-h-[70vh] lg:block"
+      className={`sub-contact-band relative isolate hidden lg:block ${
+        isStatic ? "sub-contact-band--static" : "min-h-[70vh]"
+      }`}
       aria-label={`${hoursLabel} · ${findUsLabel} · ${callUsLabel}`}
     >
-      {/* Fond photo — sticky prolongé + parallax accentué */}
-      <div className="sub-contact-band__media sticky top-0 h-[40vh] max-h-[40vh] w-full overflow-hidden">
-        <motion.div
-          className="sub-contact-band__photo absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
-          style={{
-            backgroundImage: `url("${backgroundImage}")`,
-            transform: bgTransform,
-          }}
-          aria-hidden
-        />
+      <div
+        className={
+          isStatic
+            ? "sub-contact-band__panel relative w-full overflow-hidden"
+            : "sub-contact-band__media sticky top-0 h-[40vh] max-h-[40vh] w-full overflow-hidden"
+        }
+      >
+        {isStatic ? (
+          <div
+            className="sub-contact-band__photo absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url("${backgroundImage}")` }}
+            aria-hidden
+          />
+        ) : (
+          <motion.div
+            className="sub-contact-band__photo absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
+            style={{
+              backgroundImage: `url("${backgroundImage}")`,
+              transform: bgTransform,
+            }}
+            aria-hidden
+          />
+        )}
         <div
           className={`sub-contact-band__overlay absolute inset-0 ${
             themed ? "sub-contact-band__overlay--themed" : "sub-contact-band__overlay--default"
           }`}
           aria-hidden
         />
+        {isStatic && (
+          <div className="sub-contact-band__content relative z-10 flex flex-col items-center justify-center px-5 py-14 text-center md:px-8 md:py-16">
+            {contactColumns}
+          </div>
+        )}
       </div>
 
-      {/* Contenu centré — colonnes */}
-      <div className="sub-contact-band__content relative z-10 -mt-[40vh] flex h-[40vh] max-h-[40vh] flex-col items-center justify-center px-5 py-4 text-center md:px-8">
-        <div className="sub-contact-band__body pointer-events-auto mx-auto grid w-full max-w-4xl grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6 md:gap-8">
-          {hours && (
-            <HoursRevealColumn
-              hours={hours}
-              label={hoursLabel}
-              themed={themed}
-            />
-          )}
-
-            {address && (
-              <ContactColumn
-                icon="location"
-                label={findUsLabel}
-                themed={themed}
-                href={mapsUrl}
-              >
-                {address}
-              </ContactColumn>
-            )}
-
-            {phone && phoneHref && (
-              <ContactColumn
-                icon="phone"
-                label={callUsLabel}
-                themed={themed}
-                href={phoneHref}
-              >
-                {phone}
-              </ContactColumn>
-            )}
-        </div>
-      </div>
-
-      {/* Piste de scroll — prolonge l'ancrage sticky au-delà du bandeau visible */}
-      <div className="sub-contact-band__scroll-runway h-[30vh]" aria-hidden />
+      {!isStatic && (
+        <>
+          <div className="sub-contact-band__content relative z-10 -mt-[40vh] flex h-[40vh] max-h-[40vh] flex-col items-center justify-center px-5 py-4 text-center md:px-8">
+            {contactColumns}
+          </div>
+          <div className="sub-contact-band__scroll-runway h-[30vh]" aria-hidden />
+        </>
+      )}
     </section>
+  );
+}
+
+function ContactColumns({
+  hours,
+  hoursLabel,
+  findUsLabel,
+  callUsLabel,
+  address,
+  phone,
+  phoneHref,
+  mapsUrl,
+  themed,
+}: {
+  hours?: string;
+  hoursLabel: string;
+  findUsLabel: string;
+  callUsLabel: string;
+  address?: string;
+  phone?: string;
+  phoneHref?: string;
+  mapsUrl?: string;
+  themed?: boolean;
+}) {
+  return (
+    <div className="sub-contact-band__body pointer-events-auto mx-auto grid w-full max-w-4xl grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6 md:gap-8">
+      {hours && (
+        <HoursRevealColumn hours={hours} label={hoursLabel} themed={themed} />
+      )}
+
+      {address && (
+        <ContactColumn
+          icon="location"
+          label={findUsLabel}
+          themed={themed}
+          href={mapsUrl}
+        >
+          {address}
+        </ContactColumn>
+      )}
+
+      {phone && phoneHref && (
+        <ContactColumn
+          icon="phone"
+          label={callUsLabel}
+          themed={themed}
+          href={phoneHref}
+        >
+          {phone}
+        </ContactColumn>
+      )}
+    </div>
   );
 }
 

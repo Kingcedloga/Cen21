@@ -6,21 +6,58 @@ import { Icon } from "@/components/ui/Icon";
 import { cormorant } from "@/lib/fonts";
 import type { SubsidiaryAboutSection } from "@/lib/types";
 
+import { SubsidiaryEditorialImageSlideshow } from "@/components/filiales/SubsidiaryEditorialImageSlideshow";
+import { PresentationDotOrnaments } from "@/components/filiales/PresentationDotOrnaments";
+
 import "@/styles/subsidiary-editorial-about.css";
+import "@/styles/subsidiary-luxury-presentation.css";
+
+export type SubsidiaryEditorialAboutVariant = "light" | "luxury-dark";
 
 type Props = {
   content: SubsidiaryAboutSection;
+  variant?: SubsidiaryEditorialAboutVariant;
 };
 
-export function SubsidiaryEditorialAbout({ content }: Props) {
-  const { eyebrow, title, description, ctaLabel, ctaHref = "/contact", image, imageAlt, highlights } =
-    content;
+export function SubsidiaryEditorialAbout({
+  content,
+  variant = "light",
+}: Props) {
+  const {
+    eyebrow,
+    subtitle,
+    title,
+    description,
+    ctaLabel,
+    ctaHref = "/contact",
+    image,
+    imageAlt,
+    slides,
+    highlights,
+  } = content;
 
+  const isLuxuryDark = variant === "luxury-dark";
   const ctaIsExternal = ctaHref.startsWith("http");
+  const imageSlides =
+    slides && slides.length > 0
+      ? slides
+      : image
+        ? [{ src: image, alt: imageAlt }]
+        : [];
+  const useSlideshow = isLuxuryDark && imageSlides.length > 1;
+  const imageSizes = isLuxuryDark
+    ? "(max-width: 1023px) 92vw, 42vw"
+    : "(max-width: 1023px) 100vw, 55vw";
 
   return (
     <section
-      className={`subsidiary-editorial-about ${cormorant.variable}`}
+      className={[
+        "subsidiary-editorial-about",
+        cormorant.variable,
+        isLuxuryDark ? "subsidiary-editorial-about--luxury-dark" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
       aria-labelledby="subsidiary-editorial-about-title"
     >
       <div className="subsidiary-editorial-about__inner">
@@ -34,6 +71,10 @@ export function SubsidiaryEditorialAbout({ content }: Props) {
             >
               {title}
             </h2>
+
+            {subtitle ? (
+              <p className="subsidiary-editorial-about__subtitle">{subtitle}</p>
+            ) : null}
 
             <p className="subsidiary-editorial-about__description">{description}</p>
 
@@ -49,7 +90,11 @@ export function SubsidiaryEditorialAbout({ content }: Props) {
                       <Icon
                         name={item.icon}
                         size="sm"
-                        className="text-[var(--kl-about-accent)]"
+                        className={
+                          isLuxuryDark
+                            ? "text-[var(--lux-pres-accent,var(--sub-gold,#c9a84c))]"
+                            : "text-[var(--kl-about-accent)]"
+                        }
                         strokeWidth={1.25}
                       />
                     </span>
@@ -76,16 +121,37 @@ export function SubsidiaryEditorialAbout({ content }: Props) {
 
           <div className="subsidiary-editorial-about__visual">
             <AnimateIn delay={0.08} className="subsidiary-editorial-about__visual-inner">
-              <div className="subsidiary-editorial-about__image-wrap">
-                <Image
-                  src={image}
-                  alt={imageAlt}
-                  fill
-                  className="subsidiary-editorial-about__image"
-                  sizes="(max-width: 1023px) 100vw, 55vw"
-                  quality={90}
-                  priority
-                />
+              <div
+                className={
+                  isLuxuryDark ? "subsidiary-editorial-about__image-frame" : undefined
+                }
+              >
+                {isLuxuryDark ? (
+                  <>
+                    <PresentationDotOrnaments className="presentation-dot-ornament--tl" />
+                    <PresentationDotOrnaments className="presentation-dot-ornament--tr" />
+                    <PresentationDotOrnaments className="presentation-dot-ornament--bl" />
+                    <PresentationDotOrnaments className="presentation-dot-ornament--br" />
+                  </>
+                ) : null}
+                <div className="subsidiary-editorial-about__image-wrap">
+                  {useSlideshow ? (
+                    <SubsidiaryEditorialImageSlideshow
+                      slides={imageSlides}
+                      sizes={imageSizes}
+                    />
+                  ) : (
+                    <Image
+                      src={imageSlides[0]?.src ?? image}
+                      alt={imageSlides[0]?.alt ?? imageAlt}
+                      fill
+                      className="subsidiary-editorial-about__image"
+                      sizes={imageSizes}
+                      quality={90}
+                      priority={isLuxuryDark}
+                    />
+                  )}
+                </div>
               </div>
             </AnimateIn>
           </div>
