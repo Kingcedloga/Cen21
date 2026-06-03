@@ -9,7 +9,7 @@ import { SocialLinks } from "@/components/ui/SocialLinks";
 import { BLUR_PETROL } from "@/lib/image-blur";
 import { fadeUpTransition, fadeUpVariants, heroStaggerVariants } from "@/lib/motion";
 import { useHeroScrollProgress } from "@/lib/use-hero-scroll-progress";
-import type { SubsidiaryHeroLayout } from "@/lib/subsidiary-hero-layout";
+import type { SubsidiaryHeroContent, SubsidiaryHeroLayout } from "@/lib/subsidiary-hero-layout";
 import type { SubsidiaryPageTheme } from "@/lib/subsidiary-themes";
 
 import { SubsidiaryHeroLogo } from "./SubsidiaryHeroLogo";
@@ -31,6 +31,7 @@ export function SubsidiaryHero({
   theme,
   backgroundVideo,
   layout = "default",
+  contentConfig = {},
 }: {
   slides: Slide[];
   sectorLabel: string;
@@ -42,6 +43,7 @@ export function SubsidiaryHero({
   theme?: SubsidiaryHeroTheme;
   backgroundVideo?: HeroVideo;
   layout?: SubsidiaryHeroLayout;
+  contentConfig?: SubsidiaryHeroContent;
 }) {
   const list = slides.filter((s) => s.src);
   const len = list.length;
@@ -51,6 +53,11 @@ export function SubsidiaryHero({
   const logoReveal = useHeroScrollProgress(heroRef);
   const isThemed = Boolean(theme);
   const isCinematic = layout === "cinematic-center";
+  const hideSectorLabel = contentConfig.hideSectorLabel ?? false;
+  const hideTitle = contentConfig.hideTitle ?? false;
+  const logoSize =
+    contentConfig.logoSize ?? (isCinematic ? "cinematic" : "default");
+  const isEditorialTagline = contentConfig.taglineVariant === "editorial";
   const videoRef = useRef<HTMLVideoElement>(null);
   const useVideoBackground = Boolean(backgroundVideo?.src) && !reduced;
   const posterSrc =
@@ -96,7 +103,7 @@ export function SubsidiaryHero({
         isCinematic
           ? "subsidiary-hero--cinematic items-center justify-center"
           : "items-end"
-      }`}
+      }${hideTitle && brandLogo ? " subsidiary-hero--brand-minimal" : ""}`}
     >
       {useVideoBackground ? (
         <video
@@ -217,8 +224,12 @@ export function SubsidiaryHero({
       >
         {brandLogo && (
           <motion.div
-            className={`mb-6 flex md:mb-8 ${
-              isCinematic ? "justify-center" : "justify-start md:mb-10"
+            className={`flex ${
+              isCinematic
+                ? hideTitle
+                  ? "mb-8 justify-center md:mb-10 lg:mb-12"
+                  : "mb-6 justify-center md:mb-8"
+                : "mb-6 justify-start md:mb-10"
             }`}
             variants={reduced ? undefined : fadeUpVariants}
             transition={fadeUpTransition}
@@ -229,36 +240,44 @@ export function SubsidiaryHero({
               reveal={logoReveal}
               accentColor={accentColor}
               align={isCinematic ? "center" : "left"}
-              size={isCinematic ? "cinematic" : "default"}
+              size={logoSize}
             />
           </motion.div>
         )}
+        {!hideSectorLabel && (
+          <motion.p
+            className={`mb-3 text-xs uppercase tracking-[0.22em] md:text-sm md:tracking-[0.2em] ${
+              isThemed ? "text-[var(--sub-gold)]" : "text-gold"
+            }`}
+            variants={reduced ? undefined : fadeUpVariants}
+            transition={fadeUpTransition}
+          >
+            {sectorLabel}
+          </motion.p>
+        )}
+        {hideTitle ? (
+          <h1 className="sr-only">{name}</h1>
+        ) : (
+          <motion.h1
+            className={`mb-3 font-[family-name:var(--font-dm-sans)] ${
+              hasLogo
+                ? isCinematic
+                  ? "text-2xl font-medium tracking-[0.08em] md:text-3xl lg:text-[2rem]"
+                  : "text-xl font-medium tracking-[0.06em] md:text-2xl lg:text-[1.75rem]"
+                : "text-4xl font-bold tracking-[-0.02em] md:text-5xl"
+            } ${isThemed ? "text-white" : "text-ivory"}`}
+            variants={reduced ? undefined : fadeUpVariants}
+            transition={fadeUpTransition}
+          >
+            {name}
+          </motion.h1>
+        )}
         <motion.p
-          className={`mb-3 text-xs uppercase tracking-[0.22em] md:text-sm md:tracking-[0.2em] ${
-            isThemed ? "text-[var(--sub-gold)]" : "text-gold"
-          }`}
-          variants={reduced ? undefined : fadeUpVariants}
-          transition={fadeUpTransition}
-        >
-          {sectorLabel}
-        </motion.p>
-        <motion.h1
-          className={`mb-3 font-[family-name:var(--font-dm-sans)] ${
-            hasLogo
-              ? isCinematic
-                ? "text-2xl font-medium tracking-[0.08em] md:text-3xl lg:text-[2rem]"
-                : "text-xl font-medium tracking-[0.06em] md:text-2xl lg:text-[1.75rem]"
-              : "text-4xl font-bold tracking-[-0.02em] md:text-5xl"
-          } ${isThemed ? "text-white" : "text-ivory"}`}
-          variants={reduced ? undefined : fadeUpVariants}
-          transition={fadeUpTransition}
-        >
-          {name}
-        </motion.h1>
-        <motion.p
-          className={`mb-6 text-base leading-relaxed md:text-lg ${
-            isCinematic ? "max-w-xl" : "max-w-2xl"
-          } ${isThemed ? "text-white/80" : "text-ivory/80"}`}
+          className={`mb-6 ${
+            isEditorialTagline
+              ? "subsidiary-hero__tagline subsidiary-hero__tagline--editorial max-w-2xl text-lg font-bold leading-snug tracking-[0.015em] sm:text-xl md:text-2xl lg:max-w-3xl lg:text-[1.65rem] lg:leading-snug"
+              : `text-base leading-relaxed md:text-lg ${isCinematic ? "max-w-xl" : "max-w-2xl"}`
+          } ${isThemed ? "text-white/90" : "text-ivory/80"}`}
           variants={reduced ? undefined : fadeUpVariants}
           transition={fadeUpTransition}
         >

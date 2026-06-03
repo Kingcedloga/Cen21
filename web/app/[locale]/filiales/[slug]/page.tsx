@@ -24,6 +24,7 @@ import {
 } from "@/lib/content";
 import { buildSubsidiaryGalleryItems, galleryEntrySrc } from "@/lib/gallery-categories";
 import {
+  getSubsidiaryHeroContent,
   getSubsidiaryHeroLayout,
   resolveSubsidiaryHeroVideo,
 } from "@/lib/subsidiary-hero-layout";
@@ -128,6 +129,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         theme={pageTheme ?? undefined}
         backgroundVideo={heroVideo}
         layout={getSubsidiaryHeroLayout(slug)}
+        contentConfig={getSubsidiaryHeroContent(slug)}
       />
 
       <section className="px-4 pt-8 md:px-6 md:pt-10 lg:px-8">

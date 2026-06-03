@@ -11,7 +11,7 @@ type SubsidiaryHeroLogoProps = {
   reveal: number;
   accentColor?: string;
   align?: "left" | "center";
-  size?: "default" | "cinematic";
+  size?: "default" | "cinematic" | "cinematic-xl";
 };
 
 /**
@@ -34,16 +34,23 @@ export function SubsidiaryHeroLogo({
     .padStart(2, "0");
 
   const sizeClass =
-    size === "cinematic"
-      ? "h-24 w-auto max-w-full object-contain md:h-32 lg:h-36"
-      : "h-20 w-auto max-w-full object-contain md:h-24 lg:h-28";
+    size === "cinematic-xl"
+      ? "h-32 w-auto max-w-full object-contain sm:h-36 md:h-44 lg:h-52 xl:h-56"
+      : size === "cinematic"
+        ? "h-24 w-auto max-w-full object-contain md:h-32 lg:h-36"
+        : "h-20 w-auto max-w-full object-contain md:h-24 lg:h-28";
 
   const objectClass = align === "center" ? "object-center" : "object-left";
   const origin = align === "center" ? "center center" : "left center";
   const wrapClass =
     align === "center"
-      ? "relative mx-auto w-fit max-w-[min(100%,22rem)] md:max-w-[min(100%,28rem)] lg:max-w-[min(100%,32rem)]"
+      ? size === "cinematic-xl"
+        ? "relative mx-auto w-fit max-w-[min(100%,28rem)] sm:max-w-[min(100%,32rem)] md:max-w-[min(100%,38rem)] lg:max-w-[min(100%,44rem)]"
+        : "relative mx-auto w-fit max-w-[min(100%,22rem)] md:max-w-[min(100%,28rem)] lg:max-w-[min(100%,32rem)]"
       : "relative w-fit max-w-[min(100%,20rem)] md:max-w-[min(100%,24rem)] lg:max-w-[min(100%,26rem)]";
+
+  const imageWidth = size === "cinematic-xl" ? 560 : 400;
+  const imageHeight = size === "cinematic-xl" ? 196 : 140;
 
   return (
     <div className={wrapClass}>
@@ -51,8 +58,8 @@ export function SubsidiaryHeroLogo({
         <Image
           src={src}
           alt={alt}
-          width={400}
-          height={140}
+          width={imageWidth}
+          height={imageHeight}
           priority
           className={`${sizeClass} ${objectClass}`}
           style={{
@@ -69,8 +76,8 @@ export function SubsidiaryHeroLogo({
           src={src}
           alt=""
           aria-hidden
-          width={400}
-          height={140}
+          width={imageWidth}
+          height={imageHeight}
           priority
           className={`pointer-events-none absolute inset-0 ${sizeClass} ${objectClass} brightness-0 invert`}
           style={{ opacity: ghostOpacity, transformOrigin: origin }}
