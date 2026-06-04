@@ -64,10 +64,10 @@ export function SubsidiaryExpandableGallery({
       aria-label={subsidiaryName}
     >
       <div
-        className="flex min-h-[min(85vw,32rem)] gap-2 rounded-[1.75rem] p-3 md:min-h-[38rem] md:gap-3 md:p-4 lg:min-h-[42rem]"
+        className="flex min-h-[min(95vw,40rem)] gap-2.5 rounded-[1.75rem] p-3.5 md:min-h-[46rem] md:gap-3 md:p-4 lg:min-h-[52rem]"
         style={{
           backgroundColor: panelBg,
-          minWidth: `min(100%, ${Math.max(items.length * 4 + 22, 26)}rem)`,
+          minWidth: `min(100%, ${Math.max(items.length * 5 + 24, 28)}rem)`,
         }}
       >
         {items.map((item, index) => {
@@ -86,9 +86,9 @@ export function SubsidiaryExpandableGallery({
               onClick={() => activate(index)}
               className="group relative shrink-0 cursor-pointer overflow-hidden rounded-[1.5rem] border border-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 md:rounded-[1.75rem]"
               style={{
-                flex: isActive ? "1 1 40rem" : "0 0 4rem",
-                minWidth: isActive ? "min(78vw, 48rem)" : "4rem",
-                maxWidth: isActive ? "48rem" : "4rem",
+                flex: isActive ? "1 1 52rem" : "0 0 5rem",
+                minWidth: isActive ? "min(90vw, 56rem)" : "5rem",
+                maxWidth: isActive ? "56rem" : "5rem",
                 transition: `flex ${duration} var(--ease-luxury), min-width ${duration} var(--ease-luxury), max-width ${duration} var(--ease-luxury)`,
                 outlineColor: accentColor,
               }}
@@ -102,8 +102,8 @@ export function SubsidiaryExpandableGallery({
                 className="object-cover object-center transition-transform duration-[700ms] ease-[var(--ease-luxury)] group-hover:scale-[1.03]"
                 sizes={
                   isActive
-                    ? "(max-width: 768px) 80vw, 832px"
-                    : "64px"
+                    ? "(max-width: 768px) 90vw, 960px"
+                    : "80px"
                 }
                 priority={index === 0}
               />

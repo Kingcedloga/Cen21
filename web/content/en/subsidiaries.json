@@ -149,13 +149,51 @@
       },
       "accentColor": "#C9A84C",
       "brandLogo": "/filiales/logos/filiale-04.png",
-      "coverImage": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1200&q=80",
+      "coverImage": "/filiales/photos/filiale-04/cover.webp",
       "heroVideo": {
-        "src": "/hero.mp4"
+        "src": "/hero.mp4",
+        "poster": "/filiales/photos/filiale-04/cover.webp"
       },
       "galleryImages": [
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80",
-        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80"
+        "/filiales/photos/filiale-04/gallery/01-dsc-0420-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/02-dsc-1862-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/03-dsc-3466-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/04-dsc-3757-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/05-dsc-4746-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/06-dsc-5179-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/07-dsc-5786-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/08-dsc-6684-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/09-dsc-6797-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/10-dsc-6860-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/11-dsc-7329-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/12-dsc-8392-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/13-dsc-8436-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/14-dsc-9554-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/15-dsc-9599-modifier.webp",
+        {
+          "src": "/filiales/photos/filiale-04/gallery/guests/01-dsc-2340.webp",
+          "category": "guests"
+        },
+        {
+          "src": "/filiales/photos/filiale-04/gallery/guests/02-dsc-5120.webp",
+          "category": "guests"
+        },
+        {
+          "src": "/filiales/photos/filiale-04/gallery/guests/03-dsc-8392.webp",
+          "category": "guests"
+        },
+        {
+          "src": "/filiales/photos/filiale-04/gallery/guests/04-dsc-6860.webp",
+          "category": "guests"
+        },
+        {
+          "src": "/filiales/photos/filiale-04/gallery/guests/05-dsc-8298.webp",
+          "category": "guests"
+        },
+        {
+          "src": "/filiales/photos/filiale-04/gallery/guests/06-dsc-4746.webp",
+          "category": "guests"
+        }
       ],
       "aboutSection": {
         "eyebrow": "Premium nightlife",
@@ -164,28 +202,32 @@
         "description": "In the heart of Gombe, Millionaire Club embodies nightlife excellence: international DJ sets, African Tribal and French Touch themed nights, VIP spaces, and an atmosphere where luxury meets energy. From 6pm to 6am, every evening becomes an unforgettable experience.",
         "ctaLabel": "Book your night",
         "ctaHref": "/contact",
-        "image": "/filiales/photos/filiale-04/events/05-african-tribal-night.webp",
-        "imageAlt": "Millionaire Club atmosphere — African Tribal Night",
+        "image": "/filiales/photos/filiale-04/gallery/guests/01-dsc-2340.webp",
+        "imageAlt": "Millionaire Club guest — lifestyle portrait",
         "slides": [
           {
-            "src": "/filiales/photos/filiale-04/events/01-urban-wednesday.webp",
-            "alt": "Millionaire Club — Urban Wednesday"
+            "src": "/filiales/photos/filiale-04/gallery/guests/01-dsc-2340.webp",
+            "alt": "Millionaire Club guest — lifestyle portrait"
           },
           {
-            "src": "/filiales/photos/filiale-04/events/02-french-touch-night.webp",
-            "alt": "Millionaire Club — French Touch Night"
+            "src": "/filiales/photos/filiale-04/gallery/guests/02-dsc-5120.webp",
+            "alt": "Millionaire Club guest — premium night out"
           },
           {
-            "src": "/filiales/photos/filiale-04/events/03-neon-saturday.webp",
-            "alt": "Millionaire Club — Neon Saturday"
+            "src": "/filiales/photos/filiale-04/gallery/guests/03-dsc-8392.webp",
+            "alt": "Millionaire Club guest — live performance"
           },
           {
-            "src": "/filiales/photos/filiale-04/events/04-afro-fusion-sunday.webp",
-            "alt": "Millionaire Club — Afro Fusion Sunday"
+            "src": "/filiales/photos/filiale-04/gallery/guests/04-dsc-6860.webp",
+            "alt": "Millionaire Club guest — club atmosphere"
           },
           {
-            "src": "/filiales/photos/filiale-04/events/05-african-tribal-night.webp",
-            "alt": "Millionaire Club — African Tribal Night"
+            "src": "/filiales/photos/filiale-04/gallery/guests/05-dsc-8298.webp",
+            "alt": "Millionaire Club guests — lifestyle duo"
+          },
+          {
+            "src": "/filiales/photos/filiale-04/gallery/guests/06-dsc-4746.webp",
+            "alt": "Millionaire Club guest — evening look"
           }
         ],
         "highlights": [
