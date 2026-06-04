@@ -42,7 +42,7 @@ const HERO_CONTENT_BY_SLUG: Partial<Record<string, SubsidiaryHeroContent>> = {
  */
 export const SUBSIDIARY_HERO_VIDEOS: Partial<Record<string, HeroVideo>> = {
   "filiale-03": {
-    src: "/filiales/videos/filiale-03/hero-ambient.mp4",
+    src: "/filiales/videos/filiale-03/klounge-hero.mp4",
     poster: "/filiales/photos/filiale-03/cover.webp",
   },
 };
