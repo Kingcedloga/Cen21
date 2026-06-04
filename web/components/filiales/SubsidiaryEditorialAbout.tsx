@@ -120,7 +120,7 @@ export function SubsidiaryEditorialAbout({
           </AnimateIn>
 
           <div className="subsidiary-editorial-about__visual">
-            <AnimateIn delay={0.08} className="subsidiary-editorial-about__visual-inner">
+            <div className="subsidiary-editorial-about__visual-inner">
               <div
                 className={
                   isLuxuryDark ? "subsidiary-editorial-about__image-frame" : undefined
@@ -148,12 +148,12 @@ export function SubsidiaryEditorialAbout({
                       className="subsidiary-editorial-about__image"
                       sizes={imageSizes}
                       quality={90}
-                      priority={isLuxuryDark}
+                      priority={!useSlideshow}
                     />
                   )}
                 </div>
               </div>
-            </AnimateIn>
+            </div>
           </div>
         </div>
       </div>
