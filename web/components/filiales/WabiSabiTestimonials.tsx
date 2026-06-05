@@ -87,6 +87,61 @@ function TestimonialAvatar({
   );
 }
 
+function TestimonialCard({
+  quote,
+  author,
+  role,
+  rating,
+  avatarInitials,
+  avatarImage,
+  ratingLabel,
+}: {
+  quote: string;
+  author: string;
+  role?: string;
+  rating?: number;
+  avatarInitials?: string;
+  avatarImage?: string;
+  ratingLabel: string;
+}) {
+  return (
+    <div className="wabi-testimonials__card">
+      <div className="wabi-testimonials__ornaments" aria-hidden>
+        <span className="wabi-testimonials__quote-mark wabi-testimonials__quote-mark--open">
+          “
+        </span>
+        <span className="wabi-testimonials__quote-mark wabi-testimonials__quote-mark--close">
+          ”
+        </span>
+        <span className="wabi-testimonials__bracket wabi-testimonials__bracket--tr" />
+        <span className="wabi-testimonials__bracket wabi-testimonials__bracket--bl" />
+      </div>
+
+      <div className="wabi-testimonials__canvas">
+        <blockquote className="wabi-testimonials__quote">
+          <p>{quote}</p>
+        </blockquote>
+
+        {rating != null && rating > 0 && (
+          <StarRating rating={rating} label={ratingLabel} />
+        )}
+
+        <footer className="wabi-testimonials__author">
+          <TestimonialAvatar
+            initials={avatarInitials}
+            image={avatarImage}
+            author={author}
+          />
+          <div className="wabi-testimonials__author-meta">
+            <cite className="wabi-testimonials__author-name">{author}</cite>
+            {role ? <p className="wabi-testimonials__author-role">{role}</p> : null}
+          </div>
+        </footer>
+      </div>
+    </div>
+  );
+}
+
 export function WabiSabiTestimonials({ section, labels }: Props) {
   const { eyebrow, title, items } = section;
   const reduced = usePrefersReducedMotion();
@@ -151,7 +206,7 @@ export function WabiSabiTestimonials({ section, labels }: Props) {
   if (slideCount === 0) return null;
 
   const navButtonClass =
-    "wabi-testimonials__nav absolute top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[var(--sub-border)] bg-[var(--sub-bg)]/80 text-[var(--sub-gold)] backdrop-blur-sm transition-colors duration-fine hover:border-[rgb(var(--sub-gold-rgb)/0.55)] hover:bg-[rgb(var(--sub-gold-rgb)/0.12)] disabled:pointer-events-none disabled:opacity-35 cursor-pointer focus-visible:outline-1 focus-visible:outline-[var(--sub-gold)] focus-visible:outline-offset-2";
+    "wabi-testimonials__nav absolute top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[var(--sub-border)] bg-[var(--sub-bg)]/85 text-[var(--sub-gold)] backdrop-blur-sm transition-[transform,border-color,background-color] duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-[rgb(var(--sub-gold-rgb)/0.55)] hover:bg-[rgb(var(--sub-gold-rgb)/0.12)] active:scale-[0.97] disabled:pointer-events-none disabled:opacity-35 cursor-pointer focus-visible:outline-1 focus-visible:outline-[var(--sub-gold)] focus-visible:outline-offset-2";
 
   return (
     <section
@@ -174,10 +229,7 @@ export function WabiSabiTestimonials({ section, labels }: Props) {
           onKeyDown={onCarouselKeyDown}
           tabIndex={hasMultiple ? 0 : undefined}
         >
-          <div
-            ref={scrollRef}
-            className="wabi-testimonials__track"
-          >
+          <div ref={scrollRef} className="wabi-testimonials__track">
             {items.map((item, index) => (
               <article
                 key={item.id}
@@ -186,36 +238,15 @@ export function WabiSabiTestimonials({ section, labels }: Props) {
                 aria-roledescription="slide"
                 aria-label={`${index + 1} / ${slideCount}`}
               >
-                <div className="wabi-testimonials__card">
-                  <span className="wabi-testimonials__quote-mark" aria-hidden>
-                    “
-                  </span>
-
-                  <blockquote className="wabi-testimonials__quote">
-                    <p>{item.quote}</p>
-                  </blockquote>
-
-                  {item.rating != null && item.rating > 0 && (
-                    <StarRating
-                      rating={item.rating}
-                      label={labels.ratingLabel}
-                    />
-                  )}
-
-                  <footer className="wabi-testimonials__author">
-                    <TestimonialAvatar
-                      initials={item.avatarInitials}
-                      image={item.avatarImage}
-                      author={item.author}
-                    />
-                    <div className="wabi-testimonials__author-meta">
-                      <cite className="wabi-testimonials__author-name">{item.author}</cite>
-                      {item.role ? (
-                        <p className="wabi-testimonials__author-role">{item.role}</p>
-                      ) : null}
-                    </div>
-                  </footer>
-                </div>
+                <TestimonialCard
+                  quote={item.quote}
+                  author={item.author}
+                  role={item.role}
+                  rating={item.rating}
+                  avatarInitials={item.avatarInitials}
+                  avatarImage={item.avatarImage}
+                  ratingLabel={labels.ratingLabel}
+                />
               </article>
             ))}
           </div>

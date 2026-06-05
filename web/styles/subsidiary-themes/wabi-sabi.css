@@ -213,9 +213,16 @@
 }
 
 [data-subsidiary-theme="wabi-sabi"] .subsidiary-hero img {
-  object-position: 32% center;
+  /* Sujet sushi à gauche, espace sombre à droite pour le texte */
+  object-position: 24% 52%;
   transform: translateZ(0);
   backface-visibility: hidden;
+}
+
+@media (max-width: 767px) {
+  [data-subsidiary-theme="wabi-sabi"] .subsidiary-hero img {
+    object-position: 32% 48%;
+  }
 }
 
 /* Pas d’assombrissement sur le visuel — overlay thème = transparent */

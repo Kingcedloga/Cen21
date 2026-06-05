@@ -41,6 +41,11 @@ const HERO_CONTENT_BY_SLUG: Partial<Record<string, SubsidiaryHeroContent>> = {
   },
 };
 
+/** Visuel hero dédié (prioritaire sur `coverImage` pour la slide hero). */
+const HERO_IMAGE_BY_SLUG: Partial<Record<string, string>> = {
+  "filiale-02": "/filiales/photos/filiale-02/hero.png",
+};
+
 /**
  * Vidéos hero par slug — remplacer `src` (et optionnellement `webm`) par la vidéo officielle.
  * Priorité : `heroVideo` dans subsidiaries.json > entrée ci-dessous.
@@ -65,4 +70,8 @@ export function resolveSubsidiaryHeroVideo(
   fromContent?: HeroVideo,
 ): HeroVideo | undefined {
   return fromContent ?? SUBSIDIARY_HERO_VIDEOS[slug];
+}
+
+export function resolveSubsidiaryHeroImage(slug: string, coverImage: string): string {
+  return HERO_IMAGE_BY_SLUG[slug] ?? coverImage;
 }

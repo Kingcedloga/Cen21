@@ -60,7 +60,7 @@ export function WabiSabiEditorialAbout({ content }: Props) {
                   alt={image.alt}
                   fill
                   className="wabi-about-mosaic__image"
-                  sizes="(max-width: 639px) 50vw, (max-width: 1023px) 33vw, 22vw"
+                  sizes="(max-width: 1023px) 100vw, 22vw"
                   quality={88}
                 />
               </figure>

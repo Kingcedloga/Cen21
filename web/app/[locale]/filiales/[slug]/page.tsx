@@ -30,6 +30,7 @@ import { buildSubsidiaryGalleryItems, galleryEntrySrc } from "@/lib/gallery-cate
 import {
   getSubsidiaryHeroContent,
   getSubsidiaryHeroLayout,
+  resolveSubsidiaryHeroImage,
   resolveSubsidiaryHeroVideo,
 } from "@/lib/subsidiary-hero-layout";
 import { resolvePageMetadata } from "@/lib/seo";
@@ -85,7 +86,9 @@ export default async function SubsidiaryPage({ params }: Props) {
     slug === "filiale-02" || heroVideo
       ? [
           {
-            src: heroVideo?.poster ?? subsidiary.coverImage,
+            src:
+              heroVideo?.poster ??
+              resolveSubsidiaryHeroImage(slug, subsidiary.coverImage),
             alt: subsidiary.name,
           },
         ]
@@ -175,18 +178,6 @@ export default async function SubsidiaryPage({ params }: Props) {
         contentConfig={getSubsidiaryHeroContent(slug)}
       />
 
-      {slug === "filiale-02" && subsidiary.aboutSection?.mosaicImages && (
-        <WabiSabiEditorialAbout content={subsidiary.aboutSection} />
-      )}
-
-      {useEventShowcase && showcaseEvents.length > 0 && (
-        <SubsidiaryEventShowcase
-          events={showcaseEvents}
-          labels={eventShowcaseLabels}
-          desktopColumns={eventShowcaseConfig?.desktopColumns}
-        />
-      )}
-
       <section className="px-4 pt-8 md:px-6 md:pt-10 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <Breadcrumb
@@ -199,6 +190,18 @@ export default async function SubsidiaryPage({ params }: Props) {
           />
         </div>
       </section>
+
+      {slug === "filiale-02" && subsidiary.aboutSection?.mosaicImages && (
+        <WabiSabiEditorialAbout content={subsidiary.aboutSection} />
+      )}
+
+      {useEventShowcase && showcaseEvents.length > 0 && (
+        <SubsidiaryEventShowcase
+          events={showcaseEvents}
+          labels={eventShowcaseLabels}
+          desktopColumns={eventShowcaseConfig?.desktopColumns}
+        />
+      )}
 
       {slug !== "filiale-02" && (
       <section className="px-4 py-12 md:px-6 md:py-16 lg:px-8">

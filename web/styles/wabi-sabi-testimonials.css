@@ -1,6 +1,11 @@
-/* Section témoignages — Wabi Sabi */
+/* Section témoignages — Wabi Sabi (cartes éditoriales brushstroke) */
 
 .wabi-testimonials {
+  --wabi-card-ink: #0b2f49;
+  --wabi-card-gold: #e1c676;
+  --wabi-card-gold-deep: #c9ad5c;
+  --wabi-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+
   position: relative;
   background-color: var(--sub-bg, #0b2f49);
   color: var(--sub-text, #e1c676);
@@ -12,13 +17,13 @@
 
 .wabi-testimonials__inner {
   margin-inline: auto;
-  max-width: 52rem;
+  max-width: 56rem;
 }
 
 /* —— En-tête —— */
 
 .wabi-testimonials__header {
-  margin-bottom: clamp(2.5rem, 5vw, 3.75rem);
+  margin-bottom: clamp(2.75rem, 5.5vw, 4rem);
   text-align: center;
 }
 
@@ -66,98 +71,157 @@
   width: 100%;
   scroll-snap-align: center;
   scroll-snap-stop: always;
-  padding-inline: clamp(0.25rem, 2vw, 1rem);
+  padding-inline: clamp(0.5rem, 2.5vw, 1.25rem);
 }
 
-/* —— Carte —— */
+/* —— Carte éditoriale (réf. brushstroke + cadre L + guillemets) —— */
 
 .wabi-testimonials__card {
   position: relative;
   margin-inline: auto;
-  max-width: 44rem;
-  padding: clamp(2rem, 5vw, 3.25rem) clamp(1.75rem, 4vw, 3rem);
-  border: 1px solid var(--sub-border);
-  background:
-    linear-gradient(
-      145deg,
-      rgb(var(--sub-gold-rgb) / 0.06) 0%,
-      rgb(var(--sub-gold-rgb) / 0.02) 42%,
-      transparent 100%
-    ),
-    rgb(0 0 0 / 0.12);
-  text-align: center;
+  max-width: 46rem;
+  padding:
+    clamp(1.75rem, 4vw, 2.75rem)
+    clamp(1.25rem, 3.5vw, 2.25rem)
+    clamp(1.5rem, 3.5vw, 2rem);
 }
 
+.wabi-testimonials__ornaments {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+/* Guillemets XXL — diagonale TL / BR */
 .wabi-testimonials__quote-mark {
-  display: block;
-  margin-bottom: 0.25rem;
+  position: absolute;
   font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(3rem, 8vw, 4.5rem);
-  font-weight: 500;
-  line-height: 0.85;
-  color: rgb(var(--sub-gold-rgb) / 0.45);
+  font-size: clamp(4.5rem, 13vw, 7.5rem);
+  font-weight: 700;
+  line-height: 0.75;
+  color: var(--sub-gold);
   user-select: none;
 }
 
+.wabi-testimonials__quote-mark--open {
+  top: clamp(-0.15rem, 0.5vw, 0.35rem);
+  left: clamp(-0.15rem, 0.5vw, 0.25rem);
+}
+
+.wabi-testimonials__quote-mark--close {
+  right: clamp(-0.15rem, 0.5vw, 0.25rem);
+  bottom: clamp(-0.35rem, 0.5vw, 0.15rem);
+}
+
+/* Équerres L — TR et BL */
+.wabi-testimonials__bracket {
+  position: absolute;
+  width: clamp(2.75rem, 8vw, 4.25rem);
+  height: clamp(2.75rem, 8vw, 4.25rem);
+}
+
+.wabi-testimonials__bracket--tr {
+  top: clamp(0.35rem, 1.5vw, 0.85rem);
+  right: clamp(0.35rem, 1.5vw, 0.85rem);
+  border-top: 2px solid var(--sub-gold);
+  border-right: 2px solid var(--sub-gold);
+}
+
+.wabi-testimonials__bracket--bl {
+  bottom: clamp(0.35rem, 1.5vw, 0.85rem);
+  left: clamp(0.35rem, 1.5vw, 0.85rem);
+  border-bottom: 2px solid var(--sub-gold);
+  border-left: 2px solid var(--sub-gold);
+}
+
+/* Panneau brushstroke doré */
+.wabi-testimonials__canvas {
+  position: relative;
+  z-index: 1;
+  min-height: clamp(14rem, 38vw, 18rem);
+  padding:
+    clamp(2.25rem, 5.5vw, 3.5rem)
+    clamp(1.75rem, 4.5vw, 3rem)
+    clamp(1.75rem, 4vw, 2.5rem);
+  background:
+    linear-gradient(
+      118deg,
+      #ead892 0%,
+      var(--wabi-card-gold) 42%,
+      var(--wabi-card-gold-deep) 100%
+    );
+  color: var(--wabi-card-ink);
+  -webkit-mask-image: url("/filiales/wabi-sabi/brush-panel-mask.svg");
+  mask-image: url("/filiales/wabi-sabi/brush-panel-mask.svg");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  transition: transform 280ms var(--wabi-ease-out);
+  transform-origin: center center;
+}
+
 .wabi-testimonials__quote {
-  margin: 0 0 clamp(1.5rem, 3vw, 2rem);
+  margin: 0 0 clamp(1.25rem, 2.5vw, 1.75rem);
+  max-width: 36rem;
 }
 
 .wabi-testimonials__quote p {
   margin: 0;
   font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(1.25rem, 2.8vw, 1.75rem);
-  font-weight: 400;
-  font-style: italic;
-  line-height: 1.55;
-  letter-spacing: 0.01em;
-  color: var(--sub-text);
+  font-size: clamp(1.35rem, 3vw, 1.875rem);
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.42;
+  letter-spacing: -0.01em;
+  color: var(--wabi-card-ink);
 }
 
 .wabi-testimonials__rating {
   display: flex;
-  justify-content: center;
-  gap: 0.2rem;
-  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  gap: 0.15rem;
+  margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
 }
 
 .wabi-testimonials__star {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   line-height: 1;
-  color: rgb(var(--sub-gold-rgb) / 0.22);
+  color: rgb(11 47 73 / 0.22);
 }
 
 .wabi-testimonials__star--filled {
-  color: var(--sub-gold);
+  color: var(--wabi-card-ink);
 }
 
 .wabi-testimonials__author {
   display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 0.875rem;
+  margin-top: auto;
 }
 
 .wabi-testimonials__avatar {
   position: relative;
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: 3rem;
-  height: 3rem;
+  width: 2.75rem;
+  height: 2.75rem;
   overflow: hidden;
   border-radius: 9999px;
-  border: 1px solid var(--sub-border);
-  background: rgb(var(--sub-gold-rgb) / 0.1);
+  border: 1.5px solid rgb(11 47 73 / 0.28);
+  background: rgb(11 47 73 / 0.08);
   font-family: var(--font-inter), system-ui, sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  color: var(--sub-gold);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--wabi-card-ink);
 }
 
 .wabi-testimonials__avatar--photo {
-  background: rgb(0 0 0 / 0.2);
+  background: rgb(11 47 73 / 0.12);
 }
 
 .wabi-testimonials__avatar-image {
@@ -167,25 +231,27 @@
 .wabi-testimonials__author-meta {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.15rem;
+  text-align: left;
 }
 
 .wabi-testimonials__author-name {
   font-family: var(--font-inter), system-ui, sans-serif;
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   font-style: normal;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  color: var(--sub-text);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--wabi-card-ink);
 }
 
 .wabi-testimonials__author-role {
   margin: 0;
   font-family: var(--font-inter), system-ui, sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.06em;
+  font-size: 0.6875rem;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: var(--sub-text-muted);
+  color: rgb(11 47 73 / 0.62);
 }
 
 /* —— Navigation —— */
@@ -202,7 +268,7 @@
   display: flex;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: clamp(1.75rem, 3vw, 2.25rem);
+  margin-top: clamp(2rem, 3.5vw, 2.75rem);
 }
 
 .wabi-testimonials__dot {
@@ -214,12 +280,17 @@
   background: rgb(var(--sub-gold-rgb) / 0.28);
   cursor: pointer;
   transition:
-    width 0.32s cubic-bezier(0.16, 1, 0.3, 1),
-    background-color 0.32s ease;
+    width 200ms var(--wabi-ease-out),
+    background-color 200ms var(--wabi-ease-out),
+    transform 160ms var(--wabi-ease-out);
 }
 
 .wabi-testimonials__dot:hover {
   background: rgb(var(--sub-gold-rgb) / 0.5);
+}
+
+.wabi-testimonials__dot:active {
+  transform: scale(0.92);
 }
 
 .wabi-testimonials__dot--active {
@@ -232,28 +303,52 @@
   outline-offset: 3px;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .wabi-testimonials__slide:not([aria-hidden="true"]) .wabi-testimonials__canvas {
+    transform: scale(1.008);
+  }
+
+  .wabi-testimonials__card:hover .wabi-testimonials__canvas {
+    transform: scale(1.012);
+  }
+}
+
 @media (max-width: 767px) {
   .wabi-testimonials__nav {
     display: none;
   }
 
   .wabi-testimonials__card {
-    padding-inline: 1.25rem;
+    padding-inline: 0.35rem;
+  }
+
+  .wabi-testimonials__quote-mark--open {
+    left: -0.35rem;
+  }
+
+  .wabi-testimonials__quote-mark--close {
+    right: -0.35rem;
+  }
+
+  .wabi-testimonials__bracket {
+    width: 2.25rem;
+    height: 2.25rem;
   }
 }
 
 @media (min-width: 768px) {
   .wabi-testimonials__carousel-wrap {
-    padding-inline: 2.5rem;
+    padding-inline: 2.75rem;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .wabi-testimonials__card {
-    transition: border-color 0.45s ease, background 0.45s ease;
+@media (prefers-reduced-motion: reduce) {
+  .wabi-testimonials__canvas {
+    transition: none;
   }
 
-  .wabi-testimonials__slide:not([aria-hidden="true"]) .wabi-testimonials__card {
-    border-color: rgb(var(--sub-gold-rgb) / 0.38);
+  .wabi-testimonials__slide:not([aria-hidden="true"]) .wabi-testimonials__canvas,
+  .wabi-testimonials__card:hover .wabi-testimonials__canvas {
+    transform: none;
   }
 }
