@@ -173,8 +173,34 @@
   color: var(--sub-text-muted, rgba(225, 198, 118, 0.72));
 }
 
+.wabi-practical__social {
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+  text-align: center;
+}
+
+.wabi-practical__social > p {
+  margin-bottom: 0.75rem;
+  color: var(--sub-gold, #e1c676);
+}
+
+.wabi-practical__social [role="list"] {
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.wabi-practical__social a {
+  border: 1px solid rgb(var(--sub-gold-rgb, 225 198 118) / 0.22);
+  color: var(--sub-text-muted, rgba(225, 198, 118, 0.72));
+}
+
+.wabi-practical__social a:hover {
+  border-color: rgb(var(--sub-gold-rgb, 225 198 118) / 0.45);
+  background: rgb(var(--sub-gold-rgb, 225 198 118) / 0.08);
+  color: var(--sub-gold, #e1c676);
+}
+
 .wabi-practical__directions {
-  margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+  margin-top: clamp(1.25rem, 2.5vw, 1.5rem);
   align-self: center;
   min-width: min(100%, 14rem);
   font-family: var(--font-inter), system-ui, sans-serif;

@@ -9,6 +9,7 @@ import { SubsidiaryEventShowcase } from "@/components/filiales/SubsidiaryEventSh
 import { SubsidiaryExpandableGallery } from "@/components/filiales/SubsidiaryExpandableGallery";
 import { WabiSabiEditorialAbout } from "@/components/filiales/WabiSabiEditorialAbout";
 import { WabiSabiPracticalSection } from "@/components/filiales/WabiSabiPracticalSection";
+import { WabiSabiTestimonials } from "@/components/filiales/WabiSabiTestimonials";
 import { SubsidiaryThemeShell } from "@/components/filiales/SubsidiaryThemeShell";
 import { MapEmbed } from "@/components/maps/MapEmbed";
 import { SubsidiaryHero } from "@/components/sections/SubsidiaryHero";
@@ -211,7 +212,7 @@ export default async function SubsidiaryPage({ params }: Props) {
       </section>
       )}
 
-      {slug !== "filiale-04" && (
+      {slug !== "filiale-04" && slug !== "filiale-02" && (
         <SubsidiaryContactBand
           backgroundImage={getSubsidiaryContactImage(slug, subsidiary.coverImage)}
           hoursLabel={t("contactBand.hours")}
@@ -222,6 +223,19 @@ export default async function SubsidiaryPage({ params }: Props) {
           phone={subsidiary.practicalInfo.phone}
           mapsUrl={subsidiary.practicalInfo.address ? mapsUrl : undefined}
           themed={isThemed}
+        />
+      )}
+
+      {slug === "filiale-02" && subsidiary.testimonialsSection && (
+        <WabiSabiTestimonials
+          section={subsidiary.testimonialsSection}
+          labels={{
+            carouselLabel: t("wabiTestimonials.carouselLabel"),
+            prevSlide: t("wabiTestimonials.prevSlide"),
+            nextSlide: t("wabiTestimonials.nextSlide"),
+            goToSlide: t("wabiTestimonials.goToSlide"),
+            ratingLabel: t("wabiTestimonials.ratingLabel"),
+          }}
         />
       )}
 
@@ -266,12 +280,14 @@ export default async function SubsidiaryPage({ params }: Props) {
           address={subsidiary.practicalInfo.address}
           mapQuery={mapQuery}
           mapsUrl={subsidiary.practicalInfo.address ? mapsUrl : undefined}
+          social={subsidiary.social}
           labels={{
             hoursTitle: t("wabiPractical.hoursTitle"),
             locationTitle: t("wabiPractical.locationTitle"),
             bookTable: t("wabiPractical.bookTable"),
             getDirections: t("wabiPractical.getDirections"),
             closed: t("wabiPractical.closed"),
+            socialLabel: t("wabiPractical.socialLabel"),
             mapTitle: t("mapTitle", { name: subsidiary.name }),
           }}
         />

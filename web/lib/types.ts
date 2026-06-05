@@ -89,6 +89,25 @@ export type Subsidiary = {
   heroVideo?: HeroVideo;
   /** Section éditoriale claire (contraste avec le dark mode filiale). */
   aboutSection?: SubsidiaryAboutSection;
+  /** Témoignages clients (Wabi Sabi). */
+  testimonialsSection?: SubsidiaryTestimonialsSection;
+};
+
+export type SubsidiaryTestimonial = {
+  id: string;
+  quote: string;
+  author: string;
+  role?: string;
+  /** Note sur 5 (optionnelle). */
+  rating?: number;
+  avatarInitials?: string;
+  avatarImage?: string;
+};
+
+export type SubsidiaryTestimonialsSection = {
+  eyebrow: string;
+  title: string;
+  items: SubsidiaryTestimonial[];
 };
 
 export type EventStatus = "upcoming" | "sold-out" | "vip";

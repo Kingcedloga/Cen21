@@ -211,7 +211,15 @@
       "locationTitle": "Nous trouver",
       "bookTable": "Réserver une table",
       "getDirections": "Voir l'itinéraire",
-      "closed": "Fermé"
+      "closed": "Fermé",
+      "socialLabel": "Suivez-nous"
+    },
+    "wabiTestimonials": {
+      "carouselLabel": "Témoignages clients",
+      "prevSlide": "Témoignage précédent",
+      "nextSlide": "Témoignage suivant",
+      "goToSlide": "Aller au témoignage {index}",
+      "ratingLabel": "{rating} sur 5"
     }
   },
   "notFound": {

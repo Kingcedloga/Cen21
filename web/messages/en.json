@@ -203,7 +203,15 @@
       "locationTitle": "Find us",
       "bookTable": "Book a Table",
       "getDirections": "Get Directions",
-      "closed": "Closed"
+      "closed": "Closed",
+      "socialLabel": "Follow us"
+    },
+    "wabiTestimonials": {
+      "carouselLabel": "Guest testimonials",
+      "prevSlide": "Previous testimonial",
+      "nextSlide": "Next testimonial",
+      "goToSlide": "Go to testimonial {index}",
+      "ratingLabel": "{rating} out of 5"
     }
   },
   "notFound": {

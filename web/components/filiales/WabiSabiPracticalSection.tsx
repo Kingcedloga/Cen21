@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useLocale } from "next-intl";
 
 import { Button } from "@/components/ui/Button";
+import { SocialLinks } from "@/components/ui/SocialLinks";
 import { cormorant } from "@/lib/fonts";
 import { BLUR_PETROL } from "@/lib/image-blur";
 import type { Locale } from "@/i18n/routing";
@@ -12,6 +13,7 @@ import {
   buildHoursSchedule,
   groupHoursSchedule,
 } from "@/lib/subsidiary-hours";
+import type { SocialLinks as SocialLinksType } from "@/lib/types";
 
 import "@/styles/subsidiary-wabi-practical.css";
 
@@ -22,6 +24,7 @@ export type WabiPracticalLabels = {
   getDirections: string;
   closed: string;
   mapTitle: string;
+  socialLabel: string;
 };
 
 type Props = {
@@ -30,6 +33,7 @@ type Props = {
   address?: string;
   mapQuery: string;
   mapsUrl?: string;
+  social: SocialLinksType;
   labels: WabiPracticalLabels;
 };
 
@@ -39,6 +43,7 @@ export function WabiSabiPracticalSection({
   address,
   mapQuery,
   mapsUrl,
+  social,
   labels,
 }: Props) {
   const locale = useLocale() as Locale;
@@ -120,6 +125,12 @@ export function WabiSabiPracticalSection({
             {address ? (
               <p className="wabi-practical__address">{address}</p>
             ) : null}
+
+            <SocialLinks
+              social={social}
+              label={labels.socialLabel}
+              className="wabi-practical__social"
+            />
 
             {mapsUrl ? (
               <Button

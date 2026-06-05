@@ -96,6 +96,44 @@
           }
         ]
       },
+      "testimonialsSection": {
+        "eyebrow": "Témoignages",
+        "title": "Ce que disent nos invités",
+        "items": [
+          {
+            "id": "ws-1",
+            "quote": "Une expérience sensorielle exceptionnelle. Les sushis fondent en bouche et la vue sur Kinshasa au coucher du soleil est tout simplement inoubliable.",
+            "author": "Amélie M.",
+            "role": "Voyageuse d'affaires",
+            "rating": 5,
+            "avatarInitials": "AM"
+          },
+          {
+            "id": "ws-2",
+            "quote": "Wabi Sabi maîtrise l'équilibre entre tradition japonaise et créativité contemporaine. Le Robatayaki et les cocktails signature sont remarquables.",
+            "author": "Patrick O.",
+            "role": "Gastronome",
+            "rating": 5,
+            "avatarInitials": "PO"
+          },
+          {
+            "id": "ws-3",
+            "quote": "Service discret et attentionné, ambiance feutrée sans être froide. Mon adresse préférée pour une soirée d'exception à Gombe.",
+            "author": "Sarah N.",
+            "role": "Résidente Kinshasa",
+            "rating": 5,
+            "avatarInitials": "SN"
+          },
+          {
+            "id": "ws-4",
+            "quote": "Chaque détail est pensé : la vaisselle, la lumière, le rythme du service. On se croirait dans un restaurant étoilé, avec une âme africaine.",
+            "author": "David K.",
+            "role": "Client régulier",
+            "rating": 5,
+            "avatarInitials": "DK"
+          }
+        ]
+      },
       "featured": true
     },
     {
