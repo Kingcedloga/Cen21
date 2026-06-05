@@ -90,6 +90,31 @@ export function navbarThemeVars(
   };
 }
 
+/** Variables CSS injectées sur le footer en mode filiale (charte alignée navbar). */
+export function footerThemeVars(
+  theme: SubsidiaryNavbarTheme,
+): Record<string, string> {
+  return {
+    "--footer-bg": theme.background,
+    "--footer-fg": theme.foreground,
+    "--footer-accent": theme.accent,
+    "--footer-fg-muted": colorWithAlpha(theme.foreground, 0.72),
+    "--footer-fg-subtle": colorWithAlpha(theme.foreground, 0.48),
+    "--footer-border": colorWithAlpha(theme.foreground, 0.14),
+    "--footer-border-accent": colorWithAlpha(theme.accent, 0.32),
+    "--footer-btn-fg": theme.background,
+    "--footer-logo-ring": colorWithAlpha(theme.accent, 0.42),
+    "--footer-logo-bg": colorWithAlpha(theme.foreground, 0.06),
+    "--footer-surface": colorWithAlpha(theme.foreground, 0.08),
+  };
+}
+
+/** Motif décoratif footer — trait accent dynamique (SVG data URL). */
+export function footerPatternStyle(accent: string): string {
+  const stroke = accent.replace("#", "");
+  return `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L35 25 L55 30 L35 35 L30 55 L25 35 L5 30 L25 25 Z' fill='none' stroke='%23${stroke}' stroke-width='0.35' opacity='0.45'/%3E%3C/svg%3E")`;
+}
+
 /** Couleur hex → rgba pour fond navbar progressif au scroll */
 export function colorWithAlpha(color: string, alpha: number): string {
   const hex = color.replace("#", "");
