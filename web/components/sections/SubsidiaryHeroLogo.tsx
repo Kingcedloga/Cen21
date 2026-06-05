@@ -35,12 +35,12 @@ export function SubsidiaryHeroLogo({
 
   const sizeClass =
     size === "cinematic-xl"
-      ? "h-32 w-auto max-w-full object-contain sm:h-36 md:h-44 lg:h-52 xl:h-56"
+      ? "subsidiary-hero__logo h-32 w-auto max-w-full object-contain sm:h-36 md:h-44 lg:h-52 xl:h-56"
       : size === "cinematic"
-        ? "h-24 w-auto max-w-full object-contain md:h-32 lg:h-36"
+        ? "subsidiary-hero__logo h-24 w-auto max-w-full object-contain md:h-32 lg:h-36"
         : size === "compact"
-          ? "h-14 w-auto max-w-full object-contain sm:h-16 md:h-[4.5rem] lg:h-20"
-          : "h-20 w-auto max-w-full object-contain md:h-24 lg:h-28";
+          ? "subsidiary-hero__logo h-14 w-auto max-w-full object-contain sm:h-16 md:h-[4.5rem] lg:h-20"
+          : "subsidiary-hero__logo h-20 w-auto max-w-full object-contain md:h-24 lg:h-28";
 
   const objectClass = align === "center" ? "object-center" : "object-left";
   const origin = align === "center" ? "center center" : "left center";

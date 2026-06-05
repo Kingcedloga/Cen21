@@ -130,6 +130,7 @@ export function WabiSabiPracticalSection({
               social={social}
               label={labels.socialLabel}
               className="wabi-practical__social"
+              size="sm"
             />
 
             {mapsUrl ? (

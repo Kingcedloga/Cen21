@@ -17,6 +17,8 @@ export type SubsidiaryHeroContent = {
   typographyScale?: "default" | "compact";
   /** Qualité Next/Image (défaut 75) — utile pour les visuels hero plein écran. */
   imageQuality?: number;
+  /** Masquer les liens sociaux dans le hero. */
+  hideSocialLinks?: boolean;
 };
 
 const HERO_LAYOUT_BY_SLUG: Partial<Record<string, SubsidiaryHeroLayout>> = {
@@ -37,6 +39,10 @@ const HERO_CONTENT_BY_SLUG: Partial<Record<string, SubsidiaryHeroContent>> = {
     typographyScale: "compact",
   },
   "filiale-02": {
+    hideSectorLabel: true,
+    hideTitle: true,
+    hideSocialLinks: true,
+    logoSize: "cinematic-xl",
     imageQuality: 92,
   },
 };

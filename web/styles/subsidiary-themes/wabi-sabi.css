@@ -242,22 +242,36 @@
   padding-bottom: 0;
 }
 
+/* Hero minimal — logo XL aligné au bloc texte */
+[data-subsidiary-theme="wabi-sabi"] .subsidiary-hero.subsidiary-hero--brand-minimal > .relative.z-10 > .subsidiary-hero__logo-row {
+  width: 100%;
+  max-width: min(100%, 34rem);
+  margin-bottom: clamp(1.25rem, 3.5vw, 2rem);
+}
+
+[data-subsidiary-theme="wabi-sabi"] .subsidiary-hero.subsidiary-hero--brand-minimal > .relative.z-10 > .subsidiary-hero__logo-row > div {
+  max-width: 100%;
+}
+
+[data-subsidiary-theme="wabi-sabi"] .subsidiary-hero.subsidiary-hero--brand-minimal .subsidiary-hero__logo {
+  height: clamp(6.5rem, 18vw, 12.5rem) !important;
+  width: auto !important;
+  max-width: min(100%, 28rem);
+}
+
 [data-subsidiary-theme="wabi-sabi"] .subsidiary-hero > .relative.z-10 h1,
-[data-subsidiary-theme="wabi-sabi"] .subsidiary-hero > .relative.z-10 > p {
+[data-subsidiary-theme="wabi-sabi"] .subsidiary-hero > .relative.z-10 > p,
+[data-subsidiary-theme="wabi-sabi"] .subsidiary-hero > .relative.z-10 p.max-w-2xl,
+[data-subsidiary-theme="wabi-sabi"] .subsidiary-hero > .relative.z-10 .subsidiary-hero__tagline {
   text-align: left;
-  color: var(--sub-text);
+  color: #fff;
   text-shadow:
-    0 1px 2px rgb(11 47 73 / 0.92),
-    0 2px 14px rgb(11 47 73 / 0.78),
-    0 0 32px rgb(11 47 73 / 0.42);
+    0 1px 3px rgb(0 0 0 / 0.55),
+    0 2px 16px rgb(0 0 0 / 0.42);
 }
 
 [data-subsidiary-theme="wabi-sabi"] .subsidiary-hero > .relative.z-10 p.max-w-2xl {
   margin-inline-start: 0;
-  color: var(--sub-text-muted);
-  text-shadow:
-    0 1px 2px rgb(11 47 73 / 0.88),
-    0 2px 12px rgb(11 47 73 / 0.72);
 }
 
 [data-subsidiary-theme="wabi-sabi"] .subsidiary-hero > .relative.z-10 .flex.flex-wrap {

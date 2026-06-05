@@ -55,6 +55,7 @@ export function SubsidiaryHero({
   const isCinematic = layout === "cinematic-center";
   const hideSectorLabel = contentConfig.hideSectorLabel ?? false;
   const hideTitle = contentConfig.hideTitle ?? false;
+  const hideSocialLinks = contentConfig.hideSocialLinks ?? false;
   const logoSize =
     contentConfig.logoSize ?? (isCinematic ? "cinematic" : "default");
   const isEditorialTagline = contentConfig.taglineVariant === "editorial";
@@ -228,14 +229,16 @@ export function SubsidiaryHero({
       >
         {brandLogo && (
           <motion.div
-            className={`flex ${
+            className={`subsidiary-hero__logo-row flex ${
               isCinematic
                 ? hideTitle
                   ? "mb-8 justify-center md:mb-10 lg:mb-12"
                   : "mb-6 justify-center md:mb-8"
-                : isCompactTypography
-                  ? "mb-4 justify-start md:mb-6"
-                  : "mb-6 justify-start md:mb-10"
+                : hideTitle
+                  ? "mb-5 justify-start md:mb-7"
+                  : isCompactTypography
+                    ? "mb-4 justify-start md:mb-6"
+                    : "mb-6 justify-start md:mb-10"
             }`}
             variants={reduced ? undefined : fadeUpVariants}
             transition={fadeUpTransition}
@@ -287,7 +290,7 @@ export function SubsidiaryHero({
           </motion.h1>
         )}
         <motion.p
-          className={`mb-6 ${
+          className={`${hideSocialLinks ? "" : "mb-6"} ${
             isEditorialTagline
               ? "subsidiary-hero__tagline subsidiary-hero__tagline--editorial max-w-2xl text-lg font-bold leading-snug tracking-[0.015em] sm:text-xl md:text-2xl lg:max-w-3xl lg:text-[1.65rem] lg:leading-snug"
               : isCompactTypography
@@ -299,6 +302,7 @@ export function SubsidiaryHero({
         >
           {tagline}
         </motion.p>
+        {!hideSocialLinks && (
         <motion.div
           className={isCinematic ? "flex justify-center" : undefined}
           variants={reduced ? undefined : fadeUpVariants}
@@ -306,6 +310,7 @@ export function SubsidiaryHero({
         >
           <SocialLinks social={social} label="Suivez-nous" />
         </motion.div>
+        )}
       </motion.div>
     </section>
   );
