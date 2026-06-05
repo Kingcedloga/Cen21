@@ -7,6 +7,8 @@ import { SubsidiaryContactBand } from "@/components/filiales/SubsidiaryContactBa
 import { SubsidiaryEditorialAbout } from "@/components/filiales/SubsidiaryEditorialAbout";
 import { SubsidiaryEventShowcase } from "@/components/filiales/SubsidiaryEventShowcase";
 import { SubsidiaryExpandableGallery } from "@/components/filiales/SubsidiaryExpandableGallery";
+import { WabiSabiEditorialAbout } from "@/components/filiales/WabiSabiEditorialAbout";
+import { WabiSabiPracticalSection } from "@/components/filiales/WabiSabiPracticalSection";
 import { SubsidiaryThemeShell } from "@/components/filiales/SubsidiaryThemeShell";
 import { MapEmbed } from "@/components/maps/MapEmbed";
 import { SubsidiaryHero } from "@/components/sections/SubsidiaryHero";
@@ -172,6 +174,10 @@ export default async function SubsidiaryPage({ params }: Props) {
         contentConfig={getSubsidiaryHeroContent(slug)}
       />
 
+      {slug === "filiale-02" && subsidiary.aboutSection?.mosaicImages && (
+        <WabiSabiEditorialAbout content={subsidiary.aboutSection} />
+      )}
+
       {useEventShowcase && showcaseEvents.length > 0 && (
         <SubsidiaryEventShowcase
           events={showcaseEvents}
@@ -193,6 +199,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         </div>
       </section>
 
+      {slug !== "filiale-02" && (
       <section className="px-4 py-12 md:px-6 md:py-16 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <AnimateIn>
@@ -202,6 +209,7 @@ export default async function SubsidiaryPage({ params }: Props) {
           </AnimateIn>
         </div>
       </section>
+      )}
 
       {slug !== "filiale-04" && (
         <SubsidiaryContactBand
@@ -245,23 +253,41 @@ export default async function SubsidiaryPage({ params }: Props) {
         </section>
       )}
 
-      {subsidiary.aboutSection && slug !== "filiale-04" && (
+      {subsidiary.aboutSection && slug !== "filiale-04" && slug !== "filiale-02" && (
         <SubsidiaryEditorialAbout content={subsidiary.aboutSection} />
       )}
 
       {!useEventShowcase && standardEventsSection}
 
-      <section className="mx-auto max-w-7xl px-4 pb-16 md:px-6 md:pb-20">
-        <AnimateIn>
-          <h2 className={headingClass}>{t("mapAccess")}</h2>
-          <p className="mb-6 max-w-xl text-sm text-taupe">{t("mapDescription")}</p>
-        </AnimateIn>
-        <MapEmbed
-          query={mapQuery}
-          title={t("mapTitle", { name: subsidiary.name })}
-          variant="compact"
+      {slug === "filiale-02" ? (
+        <WabiSabiPracticalSection
+          backgroundImage="/filiales/photos/filiale-02/gallery/14-ao8a4577.webp"
+          hours={subsidiary.practicalInfo.hours}
+          address={subsidiary.practicalInfo.address}
+          mapQuery={mapQuery}
+          mapsUrl={subsidiary.practicalInfo.address ? mapsUrl : undefined}
+          labels={{
+            hoursTitle: t("wabiPractical.hoursTitle"),
+            locationTitle: t("wabiPractical.locationTitle"),
+            bookTable: t("wabiPractical.bookTable"),
+            getDirections: t("wabiPractical.getDirections"),
+            closed: t("wabiPractical.closed"),
+            mapTitle: t("mapTitle", { name: subsidiary.name }),
+          }}
         />
-      </section>
+      ) : (
+        <section className="mx-auto max-w-7xl px-4 pb-16 md:px-6 md:pb-20">
+          <AnimateIn>
+            <h2 className={headingClass}>{t("mapAccess")}</h2>
+            <p className="mb-6 max-w-xl text-sm text-taupe">{t("mapDescription")}</p>
+          </AnimateIn>
+          <MapEmbed
+            query={mapQuery}
+            title={t("mapTitle", { name: subsidiary.name })}
+            variant="compact"
+          />
+        </section>
+      )}
 
       <div className="h-20 lg:hidden" aria-hidden />
 

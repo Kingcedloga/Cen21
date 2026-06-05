@@ -62,6 +62,8 @@ export type SubsidiaryAboutSection = {
   imageAlt: string;
   /** Carrousel auto sans contrôles (prioritaire sur `image` si défini). */
   slides?: SubsidiaryAboutSlide[];
+  /** Galerie mosaïque (6 visuels) — layout éditorial Wabi Sabi. */
+  mosaicImages?: SubsidiaryAboutSlide[];
   highlights?: SubsidiaryAboutHighlight[];
 };
 

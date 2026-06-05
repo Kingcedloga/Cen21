@@ -15,6 +15,8 @@ export type SubsidiaryHeroContent = {
   logoSize?: SubsidiaryHeroLogoSize;
   taglineVariant?: "default" | "editorial";
   typographyScale?: "default" | "compact";
+  /** Qualité Next/Image (défaut 75) — utile pour les visuels hero plein écran. */
+  imageQuality?: number;
 };
 
 const HERO_LAYOUT_BY_SLUG: Partial<Record<string, SubsidiaryHeroLayout>> = {
@@ -33,6 +35,9 @@ const HERO_CONTENT_BY_SLUG: Partial<Record<string, SubsidiaryHeroContent>> = {
     hideTitle: true,
     logoSize: "compact",
     typographyScale: "compact",
+  },
+  "filiale-02": {
+    imageQuality: 92,
   },
 };
 

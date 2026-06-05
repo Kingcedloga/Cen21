@@ -61,6 +61,41 @@
         "/filiales/photos/filiale-02/gallery/14-ao8a4577.webp",
         "/filiales/photos/filiale-02/gallery/15-ao8a4584.webp"
       ],
+      "aboutSection": {
+        "eyebrow": "About Wabi Sabi",
+        "title": "The art of the moment, between sky and cityscape",
+        "description": "Perched atop Gombe's rooftops, Wabi Sabi celebrates the balance between Japanese tradition and contemporary creativity. Exceptional sushi, flame-kissed Robatayaki, subtly fragrant Thai curry and signature cocktails — every plate and every glass tells a story of precision, light and refined hospitality.",
+        "ctaLabel": "Book a table",
+        "ctaHref": "/contact",
+        "image": "/filiales/photos/filiale-02/gallery/02-ao8a4372.webp",
+        "imageAlt": "Wabi Sabi — contemporary Japanese cuisine",
+        "mosaicImages": [
+          {
+            "src": "/filiales/photos/filiale-02/gallery/01-ao8a4357.webp",
+            "alt": "Wabi Sabi — contemporary interior with soft lighting"
+          },
+          {
+            "src": "/filiales/photos/filiale-02/gallery/02-ao8a4372.webp",
+            "alt": "Wabi Sabi — signature Japanese cuisine plate"
+          },
+          {
+            "src": "/filiales/photos/filiale-02/gallery/05-ao8a4494.webp",
+            "alt": "Wabi Sabi — lounge atmosphere and Kinshasa views"
+          },
+          {
+            "src": "/filiales/photos/filiale-02/gallery/08-ao8a4545.webp",
+            "alt": "Wabi Sabi — bar and signature cocktails"
+          },
+          {
+            "src": "/filiales/photos/filiale-02/gallery/03-ao8a4405.webp",
+            "alt": "Wabi Sabi — Robatayaki and Asian flavours"
+          },
+          {
+            "src": "/filiales/photos/filiale-02/gallery/10-ao8a4549.webp",
+            "alt": "Wabi Sabi — guest experience and hospitality"
+          }
+        ]
+      },
       "featured": true
     },
     {

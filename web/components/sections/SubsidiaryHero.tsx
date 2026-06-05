@@ -59,6 +59,7 @@ export function SubsidiaryHero({
     contentConfig.logoSize ?? (isCinematic ? "cinematic" : "default");
   const isEditorialTagline = contentConfig.taglineVariant === "editorial";
   const isCompactTypography = contentConfig.typographyScale === "compact";
+  const imageQuality = contentConfig.imageQuality;
   const videoRef = useRef<HTMLVideoElement>(null);
   const useVideoBackground = Boolean(backgroundVideo?.src) && !reduced;
   const posterSrc =
@@ -143,6 +144,7 @@ export function SubsidiaryHero({
               blurDataURL={theme?.hero.blurTint ?? BLUR_PETROL}
               className="object-cover"
               sizes="100vw"
+              {...(imageQuality != null ? { quality: imageQuality } : {})}
             />
           </div>
         ))
@@ -159,6 +161,7 @@ export function SubsidiaryHero({
             blurDataURL={theme?.hero.blurTint ?? BLUR_PETROL}
             className="object-cover"
             sizes="100vw"
+            {...(imageQuality != null ? { quality: imageQuality } : {})}
           />
         </div>
       )}

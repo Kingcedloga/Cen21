@@ -1,0 +1,214 @@
+/* Section pratique immersive — Wabi Sabi (horaires + carte) */
+
+.wabi-practical {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.wabi-practical__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.wabi-practical__bg-image {
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.wabi-practical__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      to bottom,
+      rgb(11 47 73 / 0.72) 0%,
+      rgb(11 47 73 / 0.82) 45%,
+      rgb(11 47 73 / 0.9) 100%
+    ),
+    radial-gradient(
+      ellipse 90% 70% at 50% 100%,
+      rgb(0 0 0 / 0.35) 0%,
+      transparent 62%
+    );
+}
+
+.wabi-practical__inner {
+  position: relative;
+  z-index: 2;
+  margin-inline: auto;
+  max-width: 90rem;
+  padding: clamp(4rem, 8vw, 6.5rem) clamp(1.25rem, 4vw, 2rem);
+}
+
+.wabi-practical__grid {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  align-items: stretch;
+}
+
+@media (min-width: 1024px) {
+  .wabi-practical__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 2.5vw, 2.25rem);
+  }
+}
+
+.wabi-practical__card {
+  display: flex;
+  flex-direction: column;
+  min-height: clamp(22rem, 52vw, 28rem);
+  padding: clamp(2rem, 4vw, 2.75rem) clamp(1.75rem, 3.5vw, 2.5rem);
+  border-radius: 1.125rem;
+  border: 1px solid rgb(var(--sub-gold-rgb, 225 198 118) / 0.18);
+  background: rgb(8 28 44 / 0.88);
+  box-shadow:
+    0 24px 64px -28px rgb(0 0 0 / 0.65),
+    inset 0 1px 0 0 rgb(255 255 255 / 0.04);
+  backdrop-filter: blur(10px);
+}
+
+@media (min-width: 1024px) {
+  .wabi-practical__card {
+    min-height: 32rem;
+  }
+}
+
+.wabi-practical__card-title {
+  margin: 0 0 clamp(1.75rem, 3vw, 2.25rem);
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.75rem, 3.2vw, 2.375rem);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: var(--sub-text, rgba(225, 198, 118, 0.94));
+}
+
+.wabi-practical__hours-list {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wabi-practical__hours-row {
+  padding-block: clamp(1rem, 2vw, 1.35rem);
+  border-bottom: 1px solid rgb(var(--sub-gold-rgb, 225 198 118) / 0.22);
+  text-align: center;
+}
+
+.wabi-practical__hours-row:first-child {
+  padding-top: 0;
+}
+
+.wabi-practical__hours-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.wabi-practical__hours-days {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sub-text, rgba(225, 198, 118, 0.94));
+}
+
+.wabi-practical__hours-time {
+  display: block;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: clamp(0.9375rem, 1.6vw, 1.0625rem);
+  line-height: 1.5;
+  color: var(--sub-text-muted, rgba(225, 198, 118, 0.72));
+}
+
+.wabi-practical__hours-time--closed {
+  font-style: italic;
+  opacity: 0.72;
+}
+
+.wabi-practical__cta {
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+  align-self: center;
+  min-width: min(100%, 16rem);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.wabi-practical__map-wrap {
+  position: relative;
+  flex: 1;
+  min-height: 12rem;
+  overflow: hidden;
+  border-radius: 0.625rem;
+  border: 1px solid rgb(var(--sub-gold-rgb, 225 198 118) / 0.14);
+  background: rgb(0 0 0 / 0.25);
+}
+
+.wabi-practical__map-iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(0.12) contrast(1.03);
+}
+
+.wabi-practical__address {
+  margin: clamp(1.25rem, 2.5vw, 1.75rem) 0 0;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  text-align: center;
+  color: var(--sub-text-muted, rgba(225, 198, 118, 0.72));
+}
+
+.wabi-practical__directions {
+  margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+  align-self: center;
+  min-width: min(100%, 14rem);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Boutons — or Wabi sur carte sombre */
+.wabi-practical .btn-primary {
+  background: var(--sub-btn, var(--sub-gold, #e1c676));
+  border: 1px solid rgb(var(--sub-gold-rgb, 225 198 118) / 0.45);
+  color: var(--sub-bg, #0b2f49);
+  box-shadow: 0 12px 32px -14px rgb(var(--sub-gold-rgb, 225 198 118) / 0.45);
+}
+
+.wabi-practical .btn-primary:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 16px 40px -12px rgb(var(--sub-gold-rgb, 225 198 118) / 0.55);
+}
+
+.wabi-practical .btn-secondary {
+  background: transparent;
+  border: 1px solid rgb(var(--sub-gold-rgb, 225 198 118) / 0.35);
+  color: var(--sub-gold, #e1c676);
+}
+
+.wabi-practical .btn-secondary:hover {
+  background: rgb(var(--sub-gold-rgb, 225 198 118) / 0.08);
+  border-color: rgb(var(--sub-gold-rgb, 225 198 118) / 0.55);
+  color: var(--sub-text, rgba(225, 198, 118, 0.94));
+}
+
+[data-subsidiary-theme="wabi-sabi"] .wabi-practical .text-gold {
+  color: var(--sub-gold);
+}

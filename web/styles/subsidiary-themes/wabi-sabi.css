@@ -214,6 +214,13 @@
 
 [data-subsidiary-theme="wabi-sabi"] .subsidiary-hero img {
   object-position: 32% center;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Pas d’assombrissement sur le visuel — overlay thème = transparent */
+[data-subsidiary-theme="wabi-sabi"] .subsidiary-hero > .absolute.inset-0.z-\[1\] {
+  background: transparent !important;
 }
 
 [data-subsidiary-theme="wabi-sabi"] .subsidiary-hero > .relative.z-10 {
@@ -232,12 +239,18 @@
 [data-subsidiary-theme="wabi-sabi"] .subsidiary-hero > .relative.z-10 > p {
   text-align: left;
   color: var(--sub-text);
-  text-shadow: 0 2px 20px rgb(11 47 73 / 0.55);
+  text-shadow:
+    0 1px 2px rgb(11 47 73 / 0.92),
+    0 2px 14px rgb(11 47 73 / 0.78),
+    0 0 32px rgb(11 47 73 / 0.42);
 }
 
 [data-subsidiary-theme="wabi-sabi"] .subsidiary-hero > .relative.z-10 p.max-w-2xl {
   margin-inline-start: 0;
   color: var(--sub-text-muted);
+  text-shadow:
+    0 1px 2px rgb(11 47 73 / 0.88),
+    0 2px 12px rgb(11 47 73 / 0.72);
 }
 
 [data-subsidiary-theme="wabi-sabi"] .subsidiary-hero > .relative.z-10 .flex.flex-wrap {

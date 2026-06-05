@@ -88,3 +88,50 @@ export function buildHoursSchedule(summary: string, locale: string): ParsedHours
 
   return { preview, rangeLabel, schedule };
 }
+
+/** Regroupe les jours consécutifs (même horaire / fermé) pour affichage éditorial. */
+export function groupHoursSchedule(
+  schedule: HoursDayEntry[],
+  locale: string,
+  closedLabel: string,
+): { daysLabel: string; range: string; closed: boolean }[] {
+  if (schedule.length === 0) return [];
+
+  const fmt = (index: number) =>
+    weekdayLabel(locale, index).replace(/\./g, "").toUpperCase();
+
+  const groups: {
+    from: number;
+    to: number;
+    range: string;
+    closed: boolean;
+  }[] = [];
+
+  for (const entry of schedule) {
+    const closed = Boolean(entry.closed);
+    const last = groups[groups.length - 1];
+    if (
+      last &&
+      last.closed === closed &&
+      (closed || last.range === entry.range)
+    ) {
+      last.to = entry.index;
+      continue;
+    }
+    groups.push({
+      from: entry.index,
+      to: entry.index,
+      range: entry.range,
+      closed,
+    });
+  }
+
+  return groups.map((group) => ({
+    daysLabel:
+      group.from === group.to
+        ? fmt(group.from)
+        : `${fmt(group.from)} – ${fmt(group.to)}`,
+    range: group.closed ? closedLabel : group.range,
+    closed: group.closed,
+  }));
+}

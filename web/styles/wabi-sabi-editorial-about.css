@@ -1,0 +1,241 @@
+/* Section About éditoriale — Wabi Sabi (texte + mosaïque asymétrique) */
+
+.wabi-editorial-about {
+  position: relative;
+  background-color: var(--sub-bg, #0b2f49);
+  color: var(--sub-text, #e1c676);
+  padding:
+    clamp(4.5rem, 11vw, 8rem)
+    clamp(1.25rem, 4.5vw, 3.5rem)
+    clamp(3.5rem, 9vw, 7rem);
+}
+
+.wabi-editorial-about__inner {
+  margin-inline: auto;
+  max-width: 90rem;
+}
+
+/* —— Partie éditoriale (haut) —— */
+
+.wabi-editorial-about__header {
+  max-width: 42rem;
+  margin-bottom: clamp(3rem, 7vw, 5.75rem);
+}
+
+.wabi-editorial-about__eyebrow {
+  margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--sub-gold, #e1c676);
+}
+
+.wabi-editorial-about__title {
+  margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.25rem, 5.2vw, 4rem);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: -0.015em;
+  color: var(--sub-text);
+}
+
+.wabi-editorial-about__description {
+  max-width: 36rem;
+  margin-bottom: clamp(2rem, 4vw, 2.75rem);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: clamp(0.9375rem, 1.45vw, 1.0625rem);
+  line-height: 1.78;
+  color: var(--sub-text-muted);
+}
+
+.wabi-editorial-about__cta {
+  min-width: 11rem;
+}
+
+/* —— Mosaïque 6 images —— */
+
+.wabi-about-mosaic {
+  --wabi-mosaic-gap: clamp(0.5rem, 1vw, 0.875rem);
+
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: repeat(5, minmax(0, 1fr));
+  gap: var(--wabi-mosaic-gap);
+  height: clamp(28rem, 58vw, 48.75rem);
+}
+
+.wabi-about-mosaic__item {
+  position: relative;
+  min-height: 0;
+}
+
+.wabi-about-mosaic__figure {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: rgb(0 0 0 / 0.18);
+}
+
+.wabi-about-mosaic__image {
+  object-fit: cover;
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .wabi-about-mosaic__figure:hover .wabi-about-mosaic__image,
+  .wabi-about-mosaic__figure:focus-within .wabi-about-mosaic__image {
+    transform: scale(1.06);
+  }
+}
+
+/* Disposition desktop — rythme asymétrique inspiré de la référence */
+.wabi-about-mosaic__item--1 {
+  grid-column: 1 / 4;
+  grid-row: 2 / 6;
+}
+
+.wabi-about-mosaic__item--2 {
+  grid-column: 4 / 7;
+  grid-row: 1 / 4;
+}
+
+.wabi-about-mosaic__item--3 {
+  grid-column: 4 / 7;
+  grid-row: 4 / 6;
+}
+
+.wabi-about-mosaic__item--4 {
+  grid-column: 7 / 10;
+  grid-row: 1 / 5;
+}
+
+.wabi-about-mosaic__item--5 {
+  grid-column: 7 / 11;
+  grid-row: 5 / 6;
+}
+
+.wabi-about-mosaic__item--6 {
+  grid-column: 10 / 13;
+  grid-row: 3 / 6;
+}
+
+/* —— Tablette —— */
+
+@media (max-width: 1023px) {
+  .wabi-about-mosaic {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-rows: repeat(6, minmax(0, 1fr));
+    height: clamp(26rem, 72vw, 40rem);
+  }
+
+  .wabi-about-mosaic__item--1 {
+    grid-column: 1 / 3;
+    grid-row: 2 / 6;
+  }
+
+  .wabi-about-mosaic__item--2 {
+    grid-column: 3 / 5;
+    grid-row: 1 / 4;
+  }
+
+  .wabi-about-mosaic__item--3 {
+    grid-column: 3 / 5;
+    grid-row: 4 / 6;
+  }
+
+  .wabi-about-mosaic__item--4 {
+    grid-column: 5 / 7;
+    grid-row: 1 / 5;
+  }
+
+  .wabi-about-mosaic__item--5 {
+    grid-column: 1 / 4;
+    grid-row: 6 / 7;
+  }
+
+  .wabi-about-mosaic__item--6 {
+    grid-column: 4 / 7;
+    grid-row: 5 / 7;
+  }
+}
+
+/* —— Mobile —— */
+
+@media (max-width: 639px) {
+  .wabi-editorial-about {
+    padding-top: clamp(3rem, 10vw, 4.5rem);
+  }
+
+  .wabi-editorial-about__header {
+    margin-bottom: clamp(2.25rem, 8vw, 3.5rem);
+  }
+
+  .wabi-about-mosaic {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto;
+    height: auto;
+    gap: 0.625rem;
+  }
+
+  .wabi-about-mosaic__item {
+    min-height: 10rem;
+  }
+
+  .wabi-about-mosaic__item--1 {
+    grid-column: 1 / 2;
+    grid-row: auto;
+    min-height: 16rem;
+  }
+
+  .wabi-about-mosaic__item--2 {
+    grid-column: 2 / 3;
+    grid-row: auto;
+    min-height: 13rem;
+    margin-top: 1.75rem;
+  }
+
+  .wabi-about-mosaic__item--3 {
+    grid-column: 1 / 2;
+    grid-row: auto;
+    min-height: 9rem;
+  }
+
+  .wabi-about-mosaic__item--4 {
+    grid-column: 2 / 3;
+    grid-row: auto;
+    min-height: 15rem;
+  }
+
+  .wabi-about-mosaic__item--5 {
+    grid-column: 1 / 3;
+    grid-row: auto;
+    min-height: 8.5rem;
+  }
+
+  .wabi-about-mosaic__item--6 {
+    grid-column: 2 / 3;
+    grid-row: auto;
+    min-height: 12rem;
+    margin-top: 0.75rem;
+  }
+}
+
+/* Thème Wabi Sabi — CTA premium */
+[data-subsidiary-theme="wabi-sabi"] .wabi-editorial-about .btn-primary {
+  background: var(--sub-gold);
+  color: var(--sub-bg);
+  border: 1px solid rgb(var(--sub-gold-rgb) / 0.45);
+  box-shadow: 0 4px 28px rgb(var(--sub-gold-rgb) / 0.22);
+}
+
+[data-subsidiary-theme="wabi-sabi"] .wabi-editorial-about .btn-primary:hover {
+  background: rgb(var(--sub-gold-rgb) / 0.92);
+  color: var(--sub-bg);
+  box-shadow: 0 8px 36px rgb(var(--sub-gold-rgb) / 0.32);
+}

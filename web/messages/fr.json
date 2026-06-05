@@ -205,6 +205,13 @@
       "findUs": "Nous trouver",
       "callUs": "Appelez-nous",
       "closed": "Fermé"
+    },
+    "wabiPractical": {
+      "hoursTitle": "Horaires d'ouverture",
+      "locationTitle": "Nous trouver",
+      "bookTable": "Réserver une table",
+      "getDirections": "Voir l'itinéraire",
+      "closed": "Fermé"
     }
   },
   "notFound": {

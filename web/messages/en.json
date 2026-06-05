@@ -197,6 +197,13 @@
       "findUs": "Find us",
       "callUs": "Call us",
       "closed": "Closed"
+    },
+    "wabiPractical": {
+      "hoursTitle": "Hours of Operation",
+      "locationTitle": "Find us",
+      "bookTable": "Book a Table",
+      "getDirections": "Get Directions",
+      "closed": "Closed"
     }
   },
   "notFound": {
