@@ -1,9 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 import type { Locale } from "@/i18n/routing";
 
 import { getSiteConfig } from "./content";
 import { getSiteOrigin } from "./site-url";
+
+/** Fond global du site — aligné sur `--background` / `--color-petrol` (globals.css). */
+export const SITE_THEME_COLOR = "#004258";
 
 /** Open Graph / Twitter — `/public/og-image.png` (1200×630). */
 export const OG_IMAGE = {
@@ -46,6 +49,7 @@ export function createPageMetadata({
   return {
     title: fullTitle,
     description: desc,
+    themeColor: SITE_THEME_COLOR,
     icons: {
       icon: "/logo.png",
       apple: "/logo.png",
@@ -105,3 +109,8 @@ export async function createDefaultMetadata(locale: Locale): Promise<Metadata> {
     locale,
   });
 }
+
+/** Barre d’adresse / overscroll mobile — même teinte que le fond global. */
+export const siteViewport: Viewport = {
+  themeColor: SITE_THEME_COLOR,
+};

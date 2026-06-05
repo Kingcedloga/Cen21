@@ -1,11 +1,11 @@
-/* Wabi Sabi — thème page filiale (filiale-02) : pétrole & doré — zen contemporain */
+/* Wabi Sabi — fond bleu #0b2F49 · texte or #e1c676 — zen contemporain */
 
 [data-subsidiary-theme="wabi-sabi"] {
   background-color: var(--sub-bg);
   color: var(--sub-text);
 }
 
-/* Typographie — corps clair, accents dorés */
+/* Typographie or sur fond bleu */
 [data-subsidiary-theme="wabi-sabi"] .text-gold {
   color: var(--sub-gold);
 }
@@ -34,7 +34,7 @@
   color: var(--sub-text);
 }
 
-/* Titres — doré raffiné, séparateur fin */
+/* Titres — or, séparateur fin */
 [data-subsidiary-theme="wabi-sabi"] .sub-themed-heading {
   color: var(--sub-gold);
   letter-spacing: -0.01em;
@@ -54,7 +54,7 @@
   );
 }
 
-/* Surfaces pétrole */
+/* Surfaces bleu profond */
 [data-subsidiary-theme="wabi-sabi"] .bg-anthracite\/40 {
   background-color: rgb(var(--sub-gold-rgb) / 0.04);
 }
@@ -69,13 +69,13 @@
   );
 }
 
-/* Glass panels — zen, hairline doré */
+/* Glass panels — zen, hairline or */
 [data-subsidiary-theme="wabi-sabi"] .glass-panel {
   background: linear-gradient(
     165deg,
     rgb(var(--sub-gold-rgb) / 0.06) 0%,
     var(--sub-surface) 42%,
-    rgb(0 0 0 / 0.35) 100%
+    rgb(0 0 0 / 0.32) 100%
   );
   border: 1px solid var(--sub-border);
   border-radius: 0.75rem;
@@ -94,20 +94,20 @@
     0 0 0 1px rgb(var(--sub-gold-rgb) / 0.1);
 }
 
-/* Boutons — doré sur pétrole */
+/* Boutons — or sur bleu */
 [data-subsidiary-theme="wabi-sabi"] .btn-primary {
   background: var(--sub-btn);
   color: var(--sub-bg);
   border: 1px solid rgb(var(--sub-gold-rgb) / 0.5);
   box-shadow:
-    inset 0 1px 0 0 rgb(255 255 255 / 0.18),
+    inset 0 1px 0 0 rgb(255 255 255 / 0.22),
     0 8px 24px -10px rgb(var(--sub-gold-rgb) / 0.4);
 }
 
 [data-subsidiary-theme="wabi-sabi"] .btn-primary:hover {
   background: rgb(var(--sub-gold-rgb) / 0.92);
   box-shadow:
-    inset 0 1px 0 0 rgb(255 255 255 / 0.22),
+    inset 0 1px 0 0 rgb(255 255 255 / 0.28),
     0 12px 30px -10px rgb(var(--sub-gold-rgb) / 0.48);
 }
 
@@ -165,7 +165,7 @@
 /* Actions mobiles sticky */
 [data-subsidiary-theme="wabi-sabi"] .sub-sticky-bar {
   border-color: rgb(var(--sub-gold-rgb) / 0.28);
-  background: rgb(0 66 88 / 0.94);
+  background: rgb(11 47 73 / 0.96);
   box-shadow:
     0 16px 40px -12px rgb(0 0 0 / 0.55),
     0 0 0 1px rgb(var(--sub-gold-rgb) / 0.08);
@@ -231,10 +231,13 @@
 [data-subsidiary-theme="wabi-sabi"] .subsidiary-hero > .relative.z-10 h1,
 [data-subsidiary-theme="wabi-sabi"] .subsidiary-hero > .relative.z-10 > p {
   text-align: left;
+  color: var(--sub-text);
+  text-shadow: 0 2px 20px rgb(11 47 73 / 0.55);
 }
 
 [data-subsidiary-theme="wabi-sabi"] .subsidiary-hero > .relative.z-10 p.max-w-2xl {
   margin-inline-start: 0;
+  color: var(--sub-text-muted);
 }
 
 [data-subsidiary-theme="wabi-sabi"] .subsidiary-hero > .relative.z-10 .flex.flex-wrap {
@@ -244,7 +247,8 @@
 /* Hero — contrôles carousel */
 [data-subsidiary-theme="wabi-sabi"] .subsidiary-hero button.rounded-full {
   background: rgb(0 0 0 / 0.32);
-  border-color: var(--sub-border);
+  border: 1px solid var(--sub-border);
+  color: var(--sub-gold);
 }
 
 [data-subsidiary-theme="wabi-sabi"] .subsidiary-hero button.rounded-full:hover {
@@ -252,7 +256,12 @@
   color: var(--sub-gold);
 }
 
-/* Filet hero doré discret */
+[data-subsidiary-theme="wabi-sabi"] .subsidiary-hero button[aria-current="true"].rounded-full {
+  background: var(--sub-gold);
+  color: var(--sub-bg);
+}
+
+/* Filet hero or discret */
 [data-subsidiary-theme="wabi-sabi"] .subsidiary-hero > div.pointer-events-none.h-px {
   height: 1px;
   opacity: 0.7;
@@ -262,4 +271,23 @@
     var(--sub-gold) 50%,
     transparent 100%
   ) !important;
+}
+
+/* Bandeau contact */
+[data-subsidiary-theme="wabi-sabi"] .sub-contact-band {
+  background-color: var(--sub-bg);
+}
+
+[data-subsidiary-theme="wabi-sabi"] .sub-contact-band__title,
+[data-subsidiary-theme="wabi-sabi"] .sub-contact-band__label {
+  color: var(--sub-gold);
+}
+
+[data-subsidiary-theme="wabi-sabi"] .sub-contact-band__value,
+[data-subsidiary-theme="wabi-sabi"] .sub-contact-band__value:hover {
+  color: var(--sub-text);
+}
+
+[data-subsidiary-theme="wabi-sabi"] .sub-contact-band__divider {
+  background: var(--sub-border);
 }

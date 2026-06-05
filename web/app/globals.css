@@ -104,6 +104,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Même fond que body — évite un flash / overscroll incohérent (rebond iOS, Safari). */
+  background-color: var(--background);
 }
 
 @media (prefers-reduced-motion: reduce) {

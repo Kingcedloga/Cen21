@@ -11,7 +11,9 @@ import { SiteLoader } from "@/components/layout/SiteLoader";
 import { routing } from "@/i18n/routing";
 import { inter } from "@/lib/fonts";
 import type { Locale } from "@/i18n/routing";
-import { createDefaultMetadata } from "@/lib/seo";
+import { createDefaultMetadata, siteViewport } from "@/lib/seo";
+
+export const viewport = siteViewport;
 
 import "../globals.css";
 

@@ -217,25 +217,26 @@ export const OLIVE_VERTE_THEME: SubsidiaryPageTheme = {
   },
 };
 
-/** Wabi Sabi — restaurant asiatique contemporain pétrole & doré (zen & raffiné). */
+/** Wabi Sabi — fond bleu #0b2F49 · texte or #e1c676 (zen contemporain). */
 export const WABI_SABI_THEME: SubsidiaryPageTheme = {
   id: "wabi-sabi",
   slug: "filiale-02",
   colors: {
-    bg: "#004258",
-    gold: "#B58E48",
-    goldRgb: "181 142 72",
-    text: "rgba(255, 255, 255, 0.92)",
-    textMuted: "rgba(255, 255, 255, 0.68)",
-    textSubtle: "rgba(255, 255, 255, 0.48)",
-    surface: "rgba(255, 255, 255, 0.04)",
-    surfaceElevated: "rgba(255, 255, 255, 0.07)",
-    border: "rgba(181, 142, 72, 0.22)",
-    btn: "#B58E48",
+    bg: "#0b2F49",
+    gold: "#e1c676",
+    goldRgb: "225 198 118",
+    text: "rgba(225, 198, 118, 0.94)",
+    textMuted: "rgba(225, 198, 118, 0.72)",
+    textSubtle: "rgba(225, 198, 118, 0.52)",
+    surface: "rgba(225, 198, 118, 0.06)",
+    surfaceElevated: "rgba(225, 198, 118, 0.1)",
+    border: "rgba(225, 198, 118, 0.24)",
+    btn: "#e1c676",
   },
   hero: {
-    overlayGradient: "transparent",
-    blurTint: "#004258",
+    overlayGradient:
+      "linear-gradient(to top, #0b2F49 0%, rgba(11,47,73,0.78) 42%, rgba(11,47,73,0.28) 68%, transparent 100%), linear-gradient(90deg, rgba(11,47,73,0.72) 0%, transparent 48%), radial-gradient(ellipse 80% 60% at 50% 100%, rgba(225,198,118,0.16) 0%, transparent 58%)",
+    blurTint: "#0b2F49",
   },
 };
 
