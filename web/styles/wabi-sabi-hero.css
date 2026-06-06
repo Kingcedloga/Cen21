@@ -6,13 +6,13 @@
 
   position: relative;
   isolation: isolate;
-  min-height: min(94svh, 56rem);
+  min-height: min(98svh, 68rem);
   display: flex;
   align-items: center;
   padding:
-    clamp(5rem, 13vh, 7rem)
-    clamp(1.25rem, 5vw, 3rem)
-    clamp(2.75rem, 7vh, 4.25rem);
+    clamp(4.5rem, 11vh, 6.5rem)
+    clamp(0.625rem, 2.5vw, 1.75rem)
+    clamp(2rem, 5vh, 3.25rem);
   overflow: hidden;
 }
 
@@ -77,7 +77,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 82rem;
+  max-width: min(100%, 96rem);
   margin-inline: auto;
 }
 
@@ -85,7 +85,7 @@
 .wabi-sabi-hero__card {
   position: relative;
   width: 100%;
-  padding: clamp(0.75rem, 2vw, 1.125rem);
+  padding: clamp(0.5rem, 1.25vw, 0.75rem);
   border-radius: calc(var(--wabi-hero-radius) + 0.5rem);
   border: 1px solid rgb(var(--sub-gold-rgb, 225 198 118) / 0.16);
   background:
@@ -101,44 +101,13 @@
     0 0 0 1px rgb(255 255 255 / 0.05) inset;
 }
 
-/* Logo — badge glass au-dessus du cadre photo */
-.wabi-sabi-hero__brand {
-  position: absolute;
-  top: clamp(1rem, 2.5vw, 1.75rem);
-  left: 50%;
-  z-index: 4;
-  display: flex;
-  justify-content: center;
-  width: max-content;
-  max-width: calc(100% - 2rem);
-  transform: translateX(-50%);
-}
-
-.wabi-sabi-hero__logo-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(0.5rem, 1.2vw, 0.75rem) clamp(1.25rem, 3vw, 2rem);
-  border-radius: 9999px;
-  border: 1px solid rgb(var(--sub-gold-rgb, 225 198 118) / 0.22);
-  background: rgb(11 47 73 / 0.62);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 12px 40px rgb(0 0 0 / 0.28);
-}
-
-.wabi-sabi-hero__logo {
-  height: clamp(2.5rem, 6.5vw, 4.25rem);
-  width: auto;
-  max-width: min(100%, 18rem);
-  object-fit: contain;
-}
-
 /* —— Panorama intérieur —— */
 .wabi-sabi-hero__frame {
   position: relative;
   overflow: hidden;
   width: 100%;
-  aspect-ratio: 2 / 1;
+  aspect-ratio: 16 / 9;
+  min-height: clamp(14rem, 42vw, 28rem);
   border-radius: var(--wabi-hero-radius);
   background: rgb(0 0 0 / 0.3);
   box-shadow: 0 6px 40px rgb(0 0 0 / 0.26);
@@ -187,61 +156,21 @@
   }
 }
 
-/* —— Citation optionnelle —— */
-.wabi-sabi-hero__quote {
-  max-width: 32rem;
-  margin: clamp(1.25rem, 3vw, 1.75rem) 0 0;
-  padding: 0;
-  border: none;
-  text-align: center;
-}
-
-.wabi-sabi-hero__quote p {
-  margin: 0;
-  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(0.9375rem, 2vw, 1.125rem);
-  font-style: italic;
-  line-height: 1.55;
-  color: rgb(var(--sub-gold-rgb, 225 198 118) / 0.72);
-}
-
-.wabi-sabi-hero__attribution {
-  margin: 0.625rem 0 0;
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-size: 0.625rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgb(var(--sub-gold-rgb, 225 198 118) / 0.45);
-}
-
 /* —— Responsive —— */
 @media (max-width: 767px) {
   .wabi-sabi-hero {
     min-height: auto;
-    padding-top: clamp(4.5rem, 11vh, 5.75rem);
-    padding-inline: clamp(0.875rem, 4vw, 1.25rem);
+    padding-top: clamp(4.25rem, 10vh, 5.5rem);
+    padding-inline: clamp(0.5rem, 3vw, 0.875rem);
   }
 
   .wabi-sabi-hero__card {
-    padding: clamp(0.5rem, 1.5vw, 0.75rem);
-  }
-
-  .wabi-sabi-hero__brand {
-    top: clamp(0.75rem, 2vw, 1.125rem);
-  }
-
-  .wabi-sabi-hero__logo-badge {
-    padding-inline: clamp(1rem, 4vw, 1.25rem);
-  }
-
-  .wabi-sabi-hero__logo {
-    height: clamp(2rem, 9vw, 2.75rem);
-    max-width: min(100%, 14rem);
+    padding: clamp(0.375rem, 1.25vw, 0.625rem);
   }
 
   .wabi-sabi-hero__frame {
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 4 / 3;
+    min-height: clamp(13rem, 58vw, 22rem);
   }
 
   .wabi-sabi-hero__media {
@@ -252,13 +181,25 @@
 @media (min-width: 768px) and (max-width: 1023px) {
   .wabi-sabi-hero__frame {
     aspect-ratio: 16 / 9;
+    min-height: clamp(16rem, 44vw, 26rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wabi-sabi-hero__frame {
+    aspect-ratio: 2 / 1;
+    min-height: clamp(18rem, 46vw, 34rem);
   }
 }
 
 @media (min-width: 1440px) {
+  .wabi-sabi-hero__inner {
+    max-width: min(100%, 104rem);
+  }
+
   .wabi-sabi-hero__frame {
     aspect-ratio: 21 / 9;
-    max-height: min(52vh, 28rem);
+    min-height: clamp(22rem, 52vh, 42rem);
   }
 }
 

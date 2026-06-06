@@ -206,6 +206,9 @@
       "callUs": "Appelez-nous",
       "closed": "Fermé"
     },
+    "wabiPhilosophy": {
+      "sectionLabel": "Philosophie de la marque"
+    },
     "wabiPractical": {
       "hoursTitle": "Horaires d'ouverture",
       "locationTitle": "Nous trouver",

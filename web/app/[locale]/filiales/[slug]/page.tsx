@@ -9,6 +9,7 @@ import { SubsidiaryEventShowcase } from "@/components/filiales/SubsidiaryEventSh
 import { SubsidiaryExpandableGallery } from "@/components/filiales/SubsidiaryExpandableGallery";
 import { WabiSabiEditorialAbout } from "@/components/filiales/WabiSabiEditorialAbout";
 import { WabiSabiHero } from "@/components/filiales/WabiSabiHero";
+import { WabiSabiPhilosophySection } from "@/components/filiales/WabiSabiPhilosophySection";
 import { WabiSabiPracticalSection } from "@/components/filiales/WabiSabiPracticalSection";
 import { WabiSabiTestimonials } from "@/components/filiales/WabiSabiTestimonials";
 import { SubsidiaryThemeShell } from "@/components/filiales/SubsidiaryThemeShell";
@@ -168,7 +169,6 @@ export default async function SubsidiaryPage({ params }: Props) {
       {slug === "filiale-02" && subsidiary.heroSection ? (
         <WabiSabiHero
           name={subsidiary.name}
-          brandLogo={subsidiary.brandLogo}
           hero={subsidiary.heroSection}
           backgroundVideo={heroVideo}
         />
@@ -185,6 +185,15 @@ export default async function SubsidiaryPage({ params }: Props) {
           backgroundVideo={heroVideo}
           layout={getSubsidiaryHeroLayout(slug)}
           contentConfig={getSubsidiaryHeroContent(slug)}
+        />
+      )}
+
+      {slug === "filiale-02" && subsidiary.philosophySection && (
+        <WabiSabiPhilosophySection
+          name={subsidiary.name}
+          brandLogo={subsidiary.brandLogo}
+          content={subsidiary.philosophySection}
+          sectionLabel={t("wabiPhilosophy.sectionLabel")}
         />
       )}
 

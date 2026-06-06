@@ -12,7 +12,6 @@ import "@/styles/wabi-sabi-hero.css";
 
 type Props = {
   name: string;
-  brandLogo?: string;
   hero: SubsidiaryHeroSection;
   backgroundVideo?: {
     src: string;
@@ -21,13 +20,12 @@ type Props = {
   };
 };
 
-export function WabiSabiHero({ name, brandLogo, hero, backgroundVideo }: Props) {
+export function WabiSabiHero({ name, hero, backgroundVideo }: Props) {
   const reduced = useReducedMotion() ?? false;
-  const { image, imageAlt, quote, attribution } = hero;
+  const { image, imageAlt } = hero;
   const poster = backgroundVideo?.poster ?? image;
   const useVideo = Boolean(backgroundVideo?.src) && !reduced;
   const stageImage = useVideo ? poster : image;
-  const showQuote = Boolean(quote?.trim());
 
   const cardMotion = reduced
     ? {}
@@ -36,15 +34,6 @@ export function WabiSabiHero({ name, brandLogo, hero, backgroundVideo }: Props) 
         animate: "visible" as const,
         variants: fadeUpVariants,
         transition: { ...fadeUpTransition, delay: 0.06 },
-      };
-
-  const logoMotion = reduced
-    ? {}
-    : {
-        initial: "hidden" as const,
-        animate: "visible" as const,
-        variants: fadeUpVariants,
-        transition: fadeUpTransition,
       };
 
   return (
@@ -60,21 +49,6 @@ export function WabiSabiHero({ name, brandLogo, hero, backgroundVideo }: Props) 
         <h1 className="sr-only">{name}</h1>
 
         <motion.div className="wabi-sabi-hero__card" {...cardMotion}>
-          {brandLogo ? (
-            <motion.div className="wabi-sabi-hero__brand" {...logoMotion}>
-              <span className="wabi-sabi-hero__logo-badge">
-                <Image
-                  src={brandLogo}
-                  alt={name}
-                  width={520}
-                  height={144}
-                  className="wabi-sabi-hero__logo"
-                  priority
-                />
-              </span>
-            </motion.div>
-          ) : null}
-
           <div className="wabi-sabi-hero__frame">
             {useVideo ? (
               <video
@@ -101,7 +75,7 @@ export function WabiSabiHero({ name, brandLogo, hero, backgroundVideo }: Props) 
                 placeholder="blur"
                 blurDataURL={BLUR_PETROL}
                 className="wabi-sabi-hero__media"
-                sizes="(max-width: 767px) 92vw, (max-width: 1200px) 86vw, 80rem"
+                sizes="(max-width: 767px) 96vw, (max-width: 1200px) 92vw, 104rem)"
                 quality={92}
               />
             )}
@@ -109,25 +83,6 @@ export function WabiSabiHero({ name, brandLogo, hero, backgroundVideo }: Props) 
             <span className="wabi-sabi-hero__frame-vignette" aria-hidden />
           </div>
         </motion.div>
-
-        {showQuote ? (
-          <motion.blockquote
-            className="wabi-sabi-hero__quote"
-            {...(reduced
-              ? {}
-              : {
-                  initial: "hidden" as const,
-                  animate: "visible" as const,
-                  variants: fadeUpVariants,
-                  transition: { ...fadeUpTransition, delay: 0.16 },
-                })}
-          >
-            <p>{quote}</p>
-            {attribution ? (
-              <footer className="wabi-sabi-hero__attribution">{attribution}</footer>
-            ) : null}
-          </motion.blockquote>
-        ) : null}
       </div>
     </header>
   );

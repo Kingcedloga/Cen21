@@ -71,8 +71,12 @@ export type SubsidiaryAboutSection = {
 export type SubsidiaryHeroSection = {
   image: string;
   imageAlt: string;
-  quote?: string;
-  attribution?: string;
+};
+
+/** Bande philosophique de marque (Wabi Sabi). */
+export type SubsidiaryPhilosophySection = {
+  quote: string;
+  attribution: string;
 };
 
 export type Subsidiary = {
@@ -97,6 +101,8 @@ export type Subsidiary = {
   heroVideo?: HeroVideo;
   /** Hero éditorial dédié (Wabi Sabi). */
   heroSection?: SubsidiaryHeroSection;
+  /** Philosophie de la marque (Wabi Sabi). */
+  philosophySection?: SubsidiaryPhilosophySection;
   /** Section éditoriale claire (contraste avec le dark mode filiale). */
   aboutSection?: SubsidiaryAboutSection;
   /** Témoignages clients (Wabi Sabi). */
