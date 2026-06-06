@@ -7,6 +7,7 @@ import { SubsidiaryContactBand } from "@/components/filiales/SubsidiaryContactBa
 import { SubsidiaryEditorialAbout } from "@/components/filiales/SubsidiaryEditorialAbout";
 import { SubsidiaryEventShowcase } from "@/components/filiales/SubsidiaryEventShowcase";
 import { SubsidiaryExpandableGallery } from "@/components/filiales/SubsidiaryExpandableGallery";
+import { WabiSabiDiningShowcase } from "@/components/filiales/WabiSabiDiningShowcase";
 import { WabiSabiEditorialAbout } from "@/components/filiales/WabiSabiEditorialAbout";
 import { WabiSabiHero } from "@/components/filiales/WabiSabiHero";
 import { WabiSabiPhilosophySection } from "@/components/filiales/WabiSabiPhilosophySection";
@@ -197,6 +198,10 @@ export default async function SubsidiaryPage({ params }: Props) {
         />
       )}
 
+      {slug === "filiale-02" && subsidiary.diningSection && (
+        <WabiSabiDiningShowcase content={subsidiary.diningSection} />
+      )}
+
       {slug === "filiale-02" && subsidiary.aboutSection?.mosaicImages && (
         <WabiSabiEditorialAbout content={subsidiary.aboutSection} />
       )}
@@ -271,7 +276,10 @@ export default async function SubsidiaryPage({ params }: Props) {
       )}
 
       {galleryItems.length > 0 && (
-        <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
+        <section
+          id={slug === "filiale-02" ? "wabi-sabi-gallery" : undefined}
+          className="mx-auto max-w-7xl px-4 py-16 md:px-6"
+        >
           <AnimateIn>
             <h2 className={sectionHeadingClass}>{t("gallery")}</h2>
             <p className="-mt-4 mb-8 max-w-2xl text-sm text-taupe md:mb-10">

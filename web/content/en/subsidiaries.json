@@ -52,6 +52,32 @@
         "quote": "“Beauty lives in conscious imperfection, mastered simplicity, and the present moment.”",
         "attribution": "Wabi Sabi · Gombe, Kinshasa"
       },
+      "diningSection": {
+        "title": "Experience contemporary Asia atop Kinshasa",
+        "paragraphs": [
+          "Perched above Gombe, Wabi Sabi invites you on a culinary journey where Japanese precision meets contemporary creativity. Exceptional sushi, charcoal-fired Robatayaki, and subtly spiced Thai curry form a menu designed to awaken every sense.",
+          "The lounge bar extends the experience with signature cocktails, curated wines, and a panoramic view over Kinshasa that turns every evening into a suspended moment.",
+          "Whether for a business lunch, a romantic dinner, or an evening with friends, our team welcomes you in a refined setting where hospitality becomes a true celebration."
+        ],
+        "secondaryCta": {
+          "label": "Browse the gallery",
+          "href": "#wabi-sabi-gallery"
+        },
+        "primaryCta": {
+          "label": "Book a table",
+          "href": "/contact"
+        },
+        "images": {
+          "back": {
+            "src": "/filiales/photos/filiale-02/gallery/06-ao8a4510.webp",
+            "alt": "Wabi Sabi — refined sushi platter and Asian flavours"
+          },
+          "front": {
+            "src": "/filiales/photos/filiale-02/gallery/02-ao8a4372.webp",
+            "alt": "Wabi Sabi — signature dish and contemporary plating"
+          }
+        }
+      },
       "galleryImages": [
         "/filiales/photos/filiale-02/gallery/01-ao8a4357.webp",
         "/filiales/photos/filiale-02/gallery/02-ao8a4372.webp",

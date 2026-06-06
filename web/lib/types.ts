@@ -79,6 +79,18 @@ export type SubsidiaryPhilosophySection = {
   attribution: string;
 };
 
+/** Section éditoriale split — texte + images superposées (Wabi Sabi). */
+export type SubsidiaryDiningSection = {
+  title: string;
+  paragraphs: string[];
+  primaryCta: { label: string; href: string };
+  secondaryCta: { label: string; href: string };
+  images: {
+    back: SubsidiaryAboutSlide;
+    front: SubsidiaryAboutSlide;
+  };
+};
+
 export type Subsidiary = {
   slug: string;
   name: string;
@@ -103,6 +115,8 @@ export type Subsidiary = {
   heroSection?: SubsidiaryHeroSection;
   /** Philosophie de la marque (Wabi Sabi). */
   philosophySection?: SubsidiaryPhilosophySection;
+  /** Vitrine culinaire éditoriale (Wabi Sabi). */
+  diningSection?: SubsidiaryDiningSection;
   /** Section éditoriale claire (contraste avec le dark mode filiale). */
   aboutSection?: SubsidiaryAboutSection;
   /** Témoignages clients (Wabi Sabi). */

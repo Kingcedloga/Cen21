@@ -52,6 +52,32 @@
         "quote": "« La beauté réside dans l'imperfection consciente, la simplicité maîtrisée et l'instant présent. »",
         "attribution": "Wabi Sabi · Gombe, Kinshasa"
       },
+      "diningSection": {
+        "title": "Savourez l'Asie contemporaine au sommet de Kinshasa",
+        "paragraphs": [
+          "Perché sur les toits de la Gombe, Wabi Sabi vous invite à une expérience gastronomique où la précision japonaise rencontre la créativité contemporaine. Sushis d'exception, Robatayaki flambé au charbon et curry thaï aux parfums subtils composent une carte pensée pour éveiller tous les sens.",
+          "Le lounge bar prolonge l'expérience avec des cocktails signature, des vins sélectionnés et une vue panoramique sur Kinshasa qui transforme chaque soirée en moment suspendu.",
+          "Que ce soit pour un déjeuner d'affaires, un dîner romantique ou une soirée entre amis, notre équipe vous accueille dans un cadre raffiné où l'art de recevoir devient une véritable célébration."
+        ],
+        "secondaryCta": {
+          "label": "Découvrir la galerie",
+          "href": "#wabi-sabi-gallery"
+        },
+        "primaryCta": {
+          "label": "Réserver une table",
+          "href": "/contact"
+        },
+        "images": {
+          "back": {
+            "src": "/filiales/photos/filiale-02/gallery/06-ao8a4510.webp",
+            "alt": "Wabi Sabi — plateau de sushis et saveurs asiatiques raffinées"
+          },
+          "front": {
+            "src": "/filiales/photos/filiale-02/gallery/02-ao8a4372.webp",
+            "alt": "Wabi Sabi — assiette signature et dressage contemporain"
+          }
+        }
+      },
       "galleryImages": [
         "/filiales/photos/filiale-02/gallery/01-ao8a4357.webp",
         "/filiales/photos/filiale-02/gallery/02-ao8a4372.webp",

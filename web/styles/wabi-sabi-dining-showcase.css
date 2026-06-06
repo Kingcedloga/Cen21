@@ -1,0 +1,198 @@
+/* Wabi Sabi — section éditoriale split (texte + images superposées) */
+
+.wabi-dining-showcase {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding:
+    clamp(4rem, 9vw, 7rem)
+    clamp(1.25rem, 4.5vw, 3.5rem);
+}
+
+.wabi-dining-showcase__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: #0b2f49;
+  background-image:
+    radial-gradient(ellipse 78% 58% at 12% 22%, rgb(255 255 255 / 0.05) 0%, transparent 58%),
+    radial-gradient(ellipse 68% 52% at 88% 78%, rgb(225 198 118 / 0.07) 0%, transparent 55%),
+    linear-gradient(168deg, #0c3350 0%, #0b2f49 44%, #092638 100%);
+}
+
+.wabi-dining-showcase__texture {
+  position: absolute;
+  inset: 0;
+  opacity: 0.56;
+  background-image: url("/filiales/wabi-sabi/hero-texture.svg");
+  background-size: 340px 340px;
+  mix-blend-mode: soft-light;
+}
+
+.wabi-dining-showcase__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.wabi-dining-showcase__glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(88px);
+  pointer-events: none;
+}
+
+.wabi-dining-showcase__glow--tr {
+  top: -8%;
+  right: -6%;
+  width: min(42vw, 22rem);
+  height: min(42vw, 22rem);
+  background: rgb(225 198 118 / 0.07);
+}
+
+.wabi-dining-showcase__inner {
+  position: relative;
+  z-index: 1;
+  margin-inline: auto;
+  max-width: 90rem;
+}
+
+.wabi-dining-showcase__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(2.75rem, 6vw, 4.5rem);
+  align-items: center;
+}
+
+/* —— Colonne texte —— */
+
+.wabi-dining-showcase__content {
+  max-width: 38rem;
+}
+
+.wabi-dining-showcase__title {
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2rem, 4.6vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: var(--sub-gold, #e1c676);
+}
+
+.wabi-dining-showcase__body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vw, 1.35rem);
+  margin-bottom: clamp(2rem, 4vw, 2.75rem);
+}
+
+.wabi-dining-showcase__body p {
+  margin: 0;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: clamp(0.9375rem, 1.4vw, 1.0625rem);
+  line-height: 1.78;
+  color: rgb(255 255 255 / 0.88);
+}
+
+.wabi-dining-showcase__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem 1rem;
+}
+
+.wabi-dining-showcase__cta {
+  min-width: min(100%, 11.5rem);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* —— Colonne visuelle — images superposées —— */
+
+.wabi-dining-showcase__visual {
+  position: relative;
+  width: 100%;
+  min-height: clamp(20rem, 52vw, 28rem);
+  padding:
+    clamp(0.5rem, 2vw, 1rem)
+    clamp(0.25rem, 1.5vw, 0.75rem)
+    clamp(2.5rem, 7vw, 4rem)
+    clamp(0.5rem, 3vw, 1.5rem);
+}
+
+.wabi-dining-showcase__photo {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+}
+
+.wabi-dining-showcase__photo--back {
+  width: min(100%, 88%);
+  margin-left: auto;
+  aspect-ratio: 16 / 10;
+  border-radius: clamp(1.25rem, 3vw, 2rem);
+  box-shadow:
+    0 28px 64px -24px rgb(0 0 0 / 0.58),
+    0 0 0 1px rgb(255 255 255 / 0.04);
+}
+
+.wabi-dining-showcase__photo--front {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: min(46%, 16.5rem);
+  aspect-ratio: 3 / 4;
+  border-radius: clamp(1rem, 2.5vw, 1.75rem);
+  box-shadow:
+    0 22px 52px -18px rgb(0 0 0 / 0.62),
+    0 0 0 1px rgb(255 255 255 / 0.06);
+  z-index: 2;
+}
+
+.wabi-dining-showcase__image {
+  object-fit: cover;
+}
+
+@media (min-width: 1024px) {
+  .wabi-dining-showcase__grid {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: clamp(2.5rem, 4.5vw, 5rem);
+  }
+
+  .wabi-dining-showcase__visual {
+    min-height: clamp(24rem, 34vw, 32rem);
+    padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .wabi-dining-showcase__photo--back {
+    width: 86%;
+  }
+
+  .wabi-dining-showcase__photo--front {
+    width: min(44%, 15.5rem);
+    left: clamp(0.5rem, 2vw, 1.25rem);
+  }
+}
+
+@media (min-width: 1280px) {
+  .wabi-dining-showcase__photo--front {
+    width: min(42%, 17rem);
+  }
+}
+
+@media (max-width: 639px) {
+  .wabi-dining-showcase__actions {
+    flex-direction: column;
+  }
+
+  .wabi-dining-showcase__cta {
+    width: 100%;
+  }
+
+  .wabi-dining-showcase__photo--front {
+    width: min(52%, 11.5rem);
+  }
+}
