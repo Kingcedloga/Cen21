@@ -1,6 +1,9 @@
-/* Hero Wabi Sabi — vitrine panoramique en carte premium */
+/* Hero Wabi Sabi — carrousel en carte écrin premium */
 
 .wabi-sabi-hero {
+  /* CMJN 100 / 80 / 43 / 40 → #0b2f49 rgb(11 47 73) */
+  --wabi-hero-bg: #0b2f49;
+  --wabi-hero-bg-rgb: 11 47 73;
   --wabi-hero-radius: clamp(1.5rem, 4vw, 2.75rem);
   --wabi-hero-ease: cubic-bezier(0.23, 1, 0.32, 1);
 
@@ -14,25 +17,25 @@
     clamp(0.625rem, 2.5vw, 1.75rem)
     clamp(2rem, 5vh, 3.25rem);
   overflow: hidden;
+  background-color: var(--wabi-hero-bg);
 }
 
-/* —— Fond : bleu pétrole, vert minéral, texture washi —— */
+/* —— Fond bleu profond + texture organique —— */
 .wabi-sabi-hero__backdrop {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-color: #071c2c;
+  background-color: var(--wabi-hero-bg);
   background-image:
-    radial-gradient(ellipse 90% 65% at 8% 6%, rgb(14 52 76 / 0.98) 0%, transparent 56%),
-    radial-gradient(ellipse 75% 58% at 92% 94%, rgb(16 68 54 / 0.42) 0%, transparent 54%),
-    radial-gradient(ellipse 60% 48% at 50% 100%, rgb(225 198 118 / 0.07) 0%, transparent 64%),
-    linear-gradient(168deg, #0b2f49 0%, #092638 38%, #071c2c 100%);
+    radial-gradient(ellipse 88% 62% at 18% 12%, rgb(255 255 255 / 0.04) 0%, transparent 58%),
+    radial-gradient(ellipse 72% 54% at 82% 88%, rgb(225 198 118 / 0.05) 0%, transparent 55%),
+    linear-gradient(168deg, #0c3350 0%, #0b2f49 52%, #092638 100%);
 }
 
 .wabi-sabi-hero__texture {
   position: absolute;
   inset: 0;
-  opacity: 0.62;
+  opacity: 0.42;
   background-image: url("/filiales/wabi-sabi/hero-texture.svg");
   background-size: 320px 320px;
   mix-blend-mode: soft-light;
@@ -41,7 +44,7 @@
 .wabi-sabi-hero__grain {
   position: absolute;
   inset: 0;
-  opacity: 0.035;
+  opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
   pointer-events: none;
 }
@@ -101,7 +104,7 @@
     0 0 0 1px rgb(255 255 255 / 0.05) inset;
 }
 
-/* —— Panorama intérieur —— */
+/* —— Cadre panoramique —— */
 .wabi-sabi-hero__frame {
   position: relative;
   overflow: hidden;
@@ -111,6 +114,25 @@
   border-radius: var(--wabi-hero-radius);
   background: rgb(0 0 0 / 0.3);
   box-shadow: 0 6px 40px rgb(0 0 0 / 0.26);
+  touch-action: pan-y pinch-zoom;
+}
+
+.wabi-sabi-hero__slideshow {
+  position: absolute;
+  inset: 0;
+}
+
+.wabi-sabi-hero__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1400ms var(--wabi-hero-ease);
+  pointer-events: none;
+}
+
+.wabi-sabi-hero__slide--active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .wabi-sabi-hero__media {
@@ -147,7 +169,7 @@
   pointer-events: none;
   background:
     linear-gradient(to top, rgb(0 0 0 / 0.22) 0%, transparent 28%),
-    linear-gradient(to bottom, rgb(11 47 73 / 0.18) 0%, transparent 22%);
+    linear-gradient(to bottom, rgb(var(--wabi-hero-bg-rgb) / 0.18) 0%, transparent 22%);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -204,6 +226,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .wabi-sabi-hero__slide {
+    transition: none;
+  }
+
   .wabi-sabi-hero__media {
     transition: none;
   }

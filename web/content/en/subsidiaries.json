@@ -46,7 +46,30 @@
       "coverImage": "/filiales/photos/filiale-02/hero.webp",
       "heroSection": {
         "image": "/filiales/photos/filiale-02/gallery/01-ao8a4357.webp",
-        "imageAlt": "Wabi Sabi — contemporary restaurant interior with soft lighting and refined design"
+        "imageAlt": "Wabi Sabi — contemporary restaurant interior with soft lighting and refined design",
+        "slideIntervalMs": 6000,
+        "slides": [
+          {
+            "src": "/filiales/photos/filiale-02/gallery/01-ao8a4357.webp",
+            "alt": "Wabi Sabi — contemporary restaurant interior with soft lighting and refined design"
+          },
+          {
+            "src": "/filiales/photos/filiale-02/gallery/05-ao8a4494.webp",
+            "alt": "Wabi Sabi — lounge atmosphere and panoramic view over Kinshasa"
+          },
+          {
+            "src": "/filiales/photos/filiale-02/gallery/08-ao8a4545.webp",
+            "alt": "Wabi Sabi — contemporary bar and signature cocktails"
+          },
+          {
+            "src": "/filiales/photos/filiale-02/gallery/03-ao8a4405.webp",
+            "alt": "Wabi Sabi — Robatayaki and contemporary Japanese cuisine"
+          },
+          {
+            "src": "/filiales/photos/filiale-02/gallery/14-ao8a4577.webp",
+            "alt": "Wabi Sabi — rooftop experience and refined hospitality"
+          }
+        ]
       },
       "philosophySection": {
         "quote": "“Beauty lives in conscious imperfection, mastered simplicity, and the present moment.”",
@@ -77,6 +100,19 @@
             "alt": "Wabi Sabi — signature dish and contemporary plating"
           }
         }
+      },
+      "barSection": {
+        "title": "Our Bar",
+        "paragraphs": [
+          "The Wabi Sabi lounge bar is where mixology meets Japanese elegance. Our bartenders craft signature cocktails with Asian-inspired flavours, reimagined classics, and a curated selection of sake, whisky, and fine wines.",
+          "Set in a contemporary space overlooking Kinshasa, the bar invites you to extend the experience after dinner — a moment of ease where every glass becomes an invitation to travel."
+        ],
+        "cta": {
+          "label": "About our bar",
+          "href": "#wabi-sabi-gallery"
+        },
+        "image": "/filiales/photos/filiale-02/gallery/08-ao8a4545.webp",
+        "imageAlt": "Wabi Sabi — contemporary bar, signature cocktails and lounge atmosphere"
       },
       "galleryImages": [
         "/filiales/photos/filiale-02/gallery/01-ao8a4357.webp",

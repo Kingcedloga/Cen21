@@ -67,10 +67,14 @@ export type SubsidiaryAboutSection = {
   highlights?: SubsidiaryAboutHighlight[];
 };
 
-/** Hero éditorial Wabi Sabi — carte photo premium sur fond texturé. */
+/** Hero éditorial Wabi Sabi — carrousel immersif plein format. */
 export type SubsidiaryHeroSection = {
   image: string;
   imageAlt: string;
+  /** Carrousel auto (prioritaire sur `image` si défini). */
+  slides?: SubsidiaryAboutSlide[];
+  /** Intervalle entre deux slides (ms). */
+  slideIntervalMs?: number;
 };
 
 /** Bande philosophique de marque (Wabi Sabi). */
@@ -89,6 +93,15 @@ export type SubsidiaryDiningSection = {
     back: SubsidiaryAboutSlide;
     front: SubsidiaryAboutSlide;
   };
+};
+
+/** Vitrine immersive bar / lounge (Wabi Sabi). */
+export type SubsidiaryBarSection = {
+  title: string;
+  paragraphs: string[];
+  cta: { label: string; href: string };
+  image: string;
+  imageAlt: string;
 };
 
 export type Subsidiary = {
@@ -117,6 +130,8 @@ export type Subsidiary = {
   philosophySection?: SubsidiaryPhilosophySection;
   /** Vitrine culinaire éditoriale (Wabi Sabi). */
   diningSection?: SubsidiaryDiningSection;
+  /** Vitrine bar / lounge immersive (Wabi Sabi). */
+  barSection?: SubsidiaryBarSection;
   /** Section éditoriale claire (contraste avec le dark mode filiale). */
   aboutSection?: SubsidiaryAboutSection;
   /** Témoignages clients (Wabi Sabi). */

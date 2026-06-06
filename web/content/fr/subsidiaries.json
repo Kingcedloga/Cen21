@@ -46,7 +46,30 @@
       "coverImage": "/filiales/photos/filiale-02/hero.webp",
       "heroSection": {
         "image": "/filiales/photos/filiale-02/gallery/01-ao8a4357.webp",
-        "imageAlt": "Wabi Sabi — intérieur contemporain du restaurant, lumière tamisée et design raffiné"
+        "imageAlt": "Wabi Sabi — intérieur contemporain du restaurant, lumière tamisée et design raffiné",
+        "slideIntervalMs": 6000,
+        "slides": [
+          {
+            "src": "/filiales/photos/filiale-02/gallery/01-ao8a4357.webp",
+            "alt": "Wabi Sabi — intérieur contemporain du restaurant, lumière tamisée et design raffiné"
+          },
+          {
+            "src": "/filiales/photos/filiale-02/gallery/05-ao8a4494.webp",
+            "alt": "Wabi Sabi — ambiance lounge et vue panoramique sur Kinshasa"
+          },
+          {
+            "src": "/filiales/photos/filiale-02/gallery/08-ao8a4545.webp",
+            "alt": "Wabi Sabi — bar contemporain et cocktails signature"
+          },
+          {
+            "src": "/filiales/photos/filiale-02/gallery/03-ao8a4405.webp",
+            "alt": "Wabi Sabi — Robatayaki et cuisine japonaise contemporaine"
+          },
+          {
+            "src": "/filiales/photos/filiale-02/gallery/14-ao8a4577.webp",
+            "alt": "Wabi Sabi — expérience rooftop et art de recevoir"
+          }
+        ]
       },
       "philosophySection": {
         "quote": "« La beauté réside dans l'imperfection consciente, la simplicité maîtrisée et l'instant présent. »",
@@ -77,6 +100,19 @@
             "alt": "Wabi Sabi — assiette signature et dressage contemporain"
           }
         }
+      },
+      "barSection": {
+        "title": "Notre Bar",
+        "paragraphs": [
+          "Le lounge bar de Wabi Sabi est un espace où la mixologie rencontre l'élégance japonaise. Nos bartenders composent des cocktails signature aux saveurs asiatiques, des classiques revisités et une sélection de sakés, whiskys et vins soigneusement choisis.",
+          "Installé dans un cadre contemporain avec vue sur Kinshasa, le bar invite à prolonger l'expérience après le dîner — un moment de détente où chaque verre devient une invitation au voyage."
+        ],
+        "cta": {
+          "label": "Découvrir le lounge",
+          "href": "#wabi-sabi-gallery"
+        },
+        "image": "/filiales/photos/filiale-02/gallery/08-ao8a4545.webp",
+        "imageAlt": "Wabi Sabi — bar contemporain, cocktails signature et ambiance lounge"
       },
       "galleryImages": [
         "/filiales/photos/filiale-02/gallery/01-ao8a4357.webp",

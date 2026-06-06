@@ -7,6 +7,7 @@ import { SubsidiaryContactBand } from "@/components/filiales/SubsidiaryContactBa
 import { SubsidiaryEditorialAbout } from "@/components/filiales/SubsidiaryEditorialAbout";
 import { SubsidiaryEventShowcase } from "@/components/filiales/SubsidiaryEventShowcase";
 import { SubsidiaryExpandableGallery } from "@/components/filiales/SubsidiaryExpandableGallery";
+import { WabiSabiBarShowcase } from "@/components/filiales/WabiSabiBarShowcase";
 import { WabiSabiDiningShowcase } from "@/components/filiales/WabiSabiDiningShowcase";
 import { WabiSabiEditorialAbout } from "@/components/filiales/WabiSabiEditorialAbout";
 import { WabiSabiHero } from "@/components/filiales/WabiSabiHero";
@@ -200,6 +201,10 @@ export default async function SubsidiaryPage({ params }: Props) {
 
       {slug === "filiale-02" && subsidiary.diningSection && (
         <WabiSabiDiningShowcase content={subsidiary.diningSection} />
+      )}
+
+      {slug === "filiale-02" && subsidiary.barSection && (
+        <WabiSabiBarShowcase content={subsidiary.barSection} />
       )}
 
       {slug === "filiale-02" && subsidiary.aboutSection?.mosaicImages && (

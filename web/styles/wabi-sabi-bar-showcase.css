@@ -1,0 +1,127 @@
+/* Wabi Sabi — vitrine immersive bar / lounge (pleine largeur) */
+
+.wabi-bar-showcase {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: min(82svh, 46rem);
+  overflow: hidden;
+}
+
+.wabi-bar-showcase__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.wabi-bar-showcase__image {
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.wabi-bar-showcase__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgb(11 47 73 / 0.18) 0%,
+      rgb(11 47 73 / 0.42) 38%,
+      rgb(7 28 44 / 0.72) 68%,
+      rgb(7 28 44 / 0.82) 100%
+    ),
+    linear-gradient(
+      to bottom,
+      rgb(0 0 0 / 0.12) 0%,
+      rgb(0 0 0 / 0.28) 100%
+    );
+}
+
+.wabi-bar-showcase__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-inline: auto;
+  max-width: 90rem;
+  padding:
+    clamp(4rem, 10vh, 6.5rem)
+    clamp(1.25rem, 4.5vw, 3.5rem);
+}
+
+.wabi-bar-showcase__content {
+  width: min(100%, 34rem);
+  text-align: left;
+}
+
+.wabi-bar-showcase__title {
+  margin: 0 0 clamp(1.35rem, 2.8vw, 2rem);
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.125rem, 4.8vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  color: var(--sub-gold, #e1c676);
+}
+
+.wabi-bar-showcase__body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.875rem, 1.8vw, 1.2rem);
+  margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+.wabi-bar-showcase__body p {
+  margin: 0;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: clamp(0.9375rem, 1.4vw, 1.0625rem);
+  line-height: 1.78;
+  color: rgb(255 255 255 / 0.92);
+}
+
+.wabi-bar-showcase__cta {
+  min-width: min(100%, 13rem);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+  .wabi-bar-showcase {
+    min-height: min(78svh, 40rem);
+  }
+
+  .wabi-bar-showcase__overlay {
+    background:
+      linear-gradient(
+        to top,
+        rgb(7 28 44 / 0.88) 0%,
+        rgb(11 47 73 / 0.52) 42%,
+        rgb(11 47 73 / 0.28) 100%
+      );
+  }
+
+  .wabi-bar-showcase__inner {
+    justify-content: flex-start;
+    align-items: flex-end;
+    min-height: min(78svh, 40rem);
+  }
+
+  .wabi-bar-showcase__content {
+    width: 100%;
+    max-width: none;
+  }
+
+  .wabi-bar-showcase__cta {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .wabi-bar-showcase__content {
+    width: min(100%, 36rem);
+    padding-right: clamp(0.5rem, 2vw, 1.5rem);
+  }
+}
