@@ -44,6 +44,10 @@
       "accentColor": "#e1c676",
       "brandLogo": "/filiales/logos/filiale-02.png",
       "coverImage": "/filiales/photos/filiale-02/hero.webp",
+      "heroSection": {
+        "image": "/filiales/photos/filiale-02/gallery/01-ao8a4357.webp",
+        "imageAlt": "Wabi Sabi — contemporary restaurant interior with soft lighting and refined design"
+      },
       "galleryImages": [
         "/filiales/photos/filiale-02/gallery/01-ao8a4357.webp",
         "/filiales/photos/filiale-02/gallery/02-ao8a4372.webp",

@@ -67,6 +67,14 @@ export type SubsidiaryAboutSection = {
   highlights?: SubsidiaryAboutHighlight[];
 };
 
+/** Hero éditorial Wabi Sabi — carte photo premium sur fond texturé. */
+export type SubsidiaryHeroSection = {
+  image: string;
+  imageAlt: string;
+  quote?: string;
+  attribution?: string;
+};
+
 export type Subsidiary = {
   slug: string;
   name: string;
@@ -87,6 +95,8 @@ export type Subsidiary = {
   featured?: boolean;
   /** Vidéo locale en fond du hero (autoplay muet). */
   heroVideo?: HeroVideo;
+  /** Hero éditorial dédié (Wabi Sabi). */
+  heroSection?: SubsidiaryHeroSection;
   /** Section éditoriale claire (contraste avec le dark mode filiale). */
   aboutSection?: SubsidiaryAboutSection;
   /** Témoignages clients (Wabi Sabi). */

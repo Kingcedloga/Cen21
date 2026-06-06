@@ -8,6 +8,7 @@ import { SubsidiaryEditorialAbout } from "@/components/filiales/SubsidiaryEditor
 import { SubsidiaryEventShowcase } from "@/components/filiales/SubsidiaryEventShowcase";
 import { SubsidiaryExpandableGallery } from "@/components/filiales/SubsidiaryExpandableGallery";
 import { WabiSabiEditorialAbout } from "@/components/filiales/WabiSabiEditorialAbout";
+import { WabiSabiHero } from "@/components/filiales/WabiSabiHero";
 import { WabiSabiPracticalSection } from "@/components/filiales/WabiSabiPracticalSection";
 import { WabiSabiTestimonials } from "@/components/filiales/WabiSabiTestimonials";
 import { SubsidiaryThemeShell } from "@/components/filiales/SubsidiaryThemeShell";
@@ -164,19 +165,32 @@ export default async function SubsidiaryPage({ params }: Props) {
             : undefined
         }
       />
-      <SubsidiaryHero
-        slides={heroSlides}
-        sectorLabel={getSectorLabel(l, subsidiary.sector)}
-        name={subsidiary.name}
-        tagline={subsidiary.tagline}
-        social={subsidiary.social}
-        brandLogo={subsidiary.brandLogo}
-        accentColor={subsidiary.accentColor}
-        theme={pageTheme ?? undefined}
-        backgroundVideo={heroVideo}
-        layout={getSubsidiaryHeroLayout(slug)}
-        contentConfig={getSubsidiaryHeroContent(slug)}
-      />
+      {slug === "filiale-02" && subsidiary.heroSection ? (
+        <WabiSabiHero
+          name={subsidiary.name}
+          brandLogo={subsidiary.brandLogo}
+          hero={subsidiary.heroSection}
+          backgroundVideo={heroVideo}
+        />
+      ) : (
+        <SubsidiaryHero
+          slides={heroSlides}
+          sectorLabel={getSectorLabel(l, subsidiary.sector)}
+          name={subsidiary.name}
+          tagline={subsidiary.tagline}
+          social={subsidiary.social}
+          brandLogo={subsidiary.brandLogo}
+          accentColor={subsidiary.accentColor}
+          theme={pageTheme ?? undefined}
+          backgroundVideo={heroVideo}
+          layout={getSubsidiaryHeroLayout(slug)}
+          contentConfig={getSubsidiaryHeroContent(slug)}
+        />
+      )}
+
+      {slug === "filiale-02" && subsidiary.aboutSection?.mosaicImages && (
+        <WabiSabiEditorialAbout content={subsidiary.aboutSection} />
+      )}
 
       <section className="px-4 pt-8 md:px-6 md:pt-10 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -190,10 +204,6 @@ export default async function SubsidiaryPage({ params }: Props) {
           />
         </div>
       </section>
-
-      {slug === "filiale-02" && subsidiary.aboutSection?.mosaicImages && (
-        <WabiSabiEditorialAbout content={subsidiary.aboutSection} />
-      )}
 
       {useEventShowcase && showcaseEvents.length > 0 && (
         <SubsidiaryEventShowcase
