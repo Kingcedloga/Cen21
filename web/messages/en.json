@@ -209,6 +209,9 @@
       "closed": "Closed",
       "socialLabel": "Follow us"
     },
+    "wabiGallery": {
+      "description": "A continuous visual flow — signature cuisine, cocktails, interiors and hospitality, like an editorial fresco."
+    },
     "wabiTestimonials": {
       "carouselLabel": "Guest testimonials",
       "prevSlide": "Previous testimonial",

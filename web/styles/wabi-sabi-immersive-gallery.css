@@ -1,0 +1,198 @@
+/* Wabi Sabi — galerie immersive en bande défilante horizontale */
+
+.wabi-immersive-gallery {
+  --wabi-gallery-gap: clamp(0.25rem, 0.6vw, 0.5rem);
+  --wabi-gallery-height: clamp(15rem, 32vw, 26rem);
+  --wabi-gallery-ease: linear;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding:
+    clamp(3.5rem, 8vw, 6rem)
+    0
+    clamp(3rem, 7vw, 5.5rem);
+  background-color: var(--sub-bg, #0b2f49);
+  background-image:
+    radial-gradient(ellipse 72% 48% at 50% 0%, rgb(255 255 255 / 0.04) 0%, transparent 58%),
+    radial-gradient(ellipse 58% 42% at 88% 100%, rgb(225 198 118 / 0.05) 0%, transparent 55%);
+}
+
+.wabi-immersive-gallery__header {
+  margin-inline: auto;
+  margin-bottom: clamp(2rem, 4.5vw, 3.25rem);
+  max-width: 90rem;
+  padding-inline: clamp(1.25rem, 4.5vw, 3.5rem);
+}
+
+.wabi-immersive-gallery__title {
+  margin: 0 0 clamp(0.75rem, 1.8vw, 1.125rem);
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  color: var(--sub-gold, #e1c676);
+}
+
+.wabi-immersive-gallery__description {
+  margin: 0;
+  max-width: 38rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: clamp(0.9375rem, 1.4vw, 1.0625rem);
+  line-height: 1.72;
+  color: var(--sub-text-muted, rgb(255 255 255 / 0.72));
+}
+
+.wabi-immersive-gallery__viewport {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 4%,
+    #000 96%,
+    transparent 100%
+  );
+}
+
+.wabi-immersive-gallery__track {
+  display: flex;
+  width: max-content;
+  gap: var(--wabi-gallery-gap);
+  padding-inline: var(--wabi-gallery-gap);
+  animation: wabi-gallery-marquee var(--wabi-gallery-duration, 70s) var(--wabi-gallery-ease) infinite;
+  will-change: transform;
+}
+
+.wabi-immersive-gallery__track--static {
+  animation: none;
+  overflow-x: auto;
+  width: 100%;
+  padding-inline: clamp(1rem, 3vw, 1.5rem);
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.wabi-immersive-gallery__track--static::-webkit-scrollbar {
+  display: none;
+}
+
+.wabi-immersive-gallery__item {
+  position: relative;
+  flex-shrink: 0;
+  height: var(--wabi-gallery-height);
+  margin: 0;
+  overflow: hidden;
+  border-radius: clamp(0.5rem, 1vw, 0.75rem);
+  background: rgb(0 0 0 / 0.22);
+  box-shadow: 0 12px 40px -20px rgb(0 0 0 / 0.45);
+}
+
+.wabi-immersive-gallery__item--panorama {
+  width: clamp(18rem, 38vw, 34rem);
+}
+
+.wabi-immersive-gallery__item--standard {
+  width: clamp(14rem, 28vw, 24rem);
+}
+
+.wabi-immersive-gallery__item--detail {
+  width: clamp(11rem, 22vw, 18rem);
+}
+
+.wabi-immersive-gallery__image {
+  object-fit: cover;
+  object-position: center;
+  transition: transform 600ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.wabi-immersive-gallery__fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(2rem, 6vw, 5rem);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.wabi-immersive-gallery__fade--left {
+  left: 0;
+  background: linear-gradient(90deg, var(--sub-bg, #0b2f49) 0%, transparent 100%);
+}
+
+.wabi-immersive-gallery__fade--right {
+  right: 0;
+  background: linear-gradient(270deg, var(--sub-bg, #0b2f49) 0%, transparent 100%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .wabi-immersive-gallery__viewport:hover .wabi-immersive-gallery__track {
+    animation-play-state: paused;
+  }
+
+  .wabi-immersive-gallery__viewport:hover .wabi-immersive-gallery__image {
+    transform: scale(1.02);
+  }
+}
+
+@media (max-width: 767px) {
+  .wabi-immersive-gallery {
+    --wabi-gallery-height: clamp(13rem, 42vw, 18rem);
+  }
+
+  .wabi-immersive-gallery__viewport {
+    overflow-x: auto;
+    overflow-y: hidden;
+    mask-image: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .wabi-immersive-gallery__viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .wabi-immersive-gallery__track {
+    animation: none;
+    padding-inline: clamp(1rem, 3vw, 1.25rem);
+  }
+
+  .wabi-immersive-gallery__item {
+    scroll-snap-align: start;
+  }
+
+  .wabi-immersive-gallery__fade {
+    display: none;
+  }
+}
+
+@keyframes wabi-gallery-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wabi-immersive-gallery__track {
+    animation: none;
+  }
+
+  .wabi-immersive-gallery__viewport {
+    overflow-x: auto;
+    mask-image: none;
+    scroll-snap-type: x proximity;
+  }
+
+  .wabi-immersive-gallery__image {
+    transition: none;
+  }
+}

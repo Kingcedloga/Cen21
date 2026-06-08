@@ -217,6 +217,9 @@
       "closed": "Fermé",
       "socialLabel": "Suivez-nous"
     },
+    "wabiGallery": {
+      "description": "Un flux visuel continu — cuisine signature, cocktails, intérieurs et art de recevoir, à la manière d'une fresque éditoriale."
+    },
     "wabiTestimonials": {
       "carouselLabel": "Témoignages clients",
       "prevSlide": "Témoignage précédent",

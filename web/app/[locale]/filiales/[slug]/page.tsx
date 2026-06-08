@@ -9,8 +9,8 @@ import { SubsidiaryEventShowcase } from "@/components/filiales/SubsidiaryEventSh
 import { SubsidiaryExpandableGallery } from "@/components/filiales/SubsidiaryExpandableGallery";
 import { WabiSabiBarShowcase } from "@/components/filiales/WabiSabiBarShowcase";
 import { WabiSabiDiningShowcase } from "@/components/filiales/WabiSabiDiningShowcase";
-import { WabiSabiEditorialAbout } from "@/components/filiales/WabiSabiEditorialAbout";
 import { WabiSabiHero } from "@/components/filiales/WabiSabiHero";
+import { WabiSabiImmersiveGallery } from "@/components/filiales/WabiSabiImmersiveGallery";
 import { WabiSabiPhilosophySection } from "@/components/filiales/WabiSabiPhilosophySection";
 import { WabiSabiPracticalSection } from "@/components/filiales/WabiSabiPracticalSection";
 import { WabiSabiTestimonials } from "@/components/filiales/WabiSabiTestimonials";
@@ -135,6 +135,26 @@ export default async function SubsidiaryPage({ params }: Props) {
     statusVip: t("eventShowcase.statusVip"),
   };
 
+  const breadcrumbItems = [
+    { label: t("breadcrumbHome"), href: "/" },
+    { label: t("breadcrumbSubsidiaries"), href: "/filiales" },
+    { label: subsidiary.name },
+  ];
+
+  const breadcrumbSection = (
+    <section
+      className={
+        slug === "filiale-02"
+          ? "px-4 pt-4 pb-2 md:px-6 md:pt-5 lg:px-8"
+          : "px-4 pt-8 md:px-6 md:pt-10 lg:px-8"
+      }
+    >
+      <div className="mx-auto max-w-7xl">
+        <Breadcrumb animate items={breadcrumbItems} />
+      </div>
+    </section>
+  );
+
   const standardEventsSection = (
     <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
       <AnimateIn>
@@ -190,6 +210,8 @@ export default async function SubsidiaryPage({ params }: Props) {
         />
       )}
 
+      {slug === "filiale-02" && breadcrumbSection}
+
       {slug === "filiale-02" && subsidiary.philosophySection && (
         <WabiSabiPhilosophySection
           name={subsidiary.name}
@@ -207,22 +229,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         <WabiSabiBarShowcase content={subsidiary.barSection} />
       )}
 
-      {slug === "filiale-02" && subsidiary.aboutSection?.mosaicImages && (
-        <WabiSabiEditorialAbout content={subsidiary.aboutSection} />
-      )}
-
-      <section className="px-4 pt-8 md:px-6 md:pt-10 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <Breadcrumb
-            animate
-            items={[
-              { label: t("breadcrumbHome"), href: "/" },
-              { label: t("breadcrumbSubsidiaries"), href: "/filiales" },
-              { label: subsidiary.name },
-            ]}
-          />
-        </div>
-      </section>
+      {slug !== "filiale-02" && breadcrumbSection}
 
       {useEventShowcase && showcaseEvents.length > 0 && (
         <SubsidiaryEventShowcase
@@ -280,26 +287,31 @@ export default async function SubsidiaryPage({ params }: Props) {
         </section>
       )}
 
-      {galleryItems.length > 0 && (
-        <section
-          id={slug === "filiale-02" ? "wabi-sabi-gallery" : undefined}
-          className="mx-auto max-w-7xl px-4 py-16 md:px-6"
-        >
-          <AnimateIn>
-            <h2 className={sectionHeadingClass}>{t("gallery")}</h2>
-            <p className="-mt-4 mb-8 max-w-2xl text-sm text-taupe md:mb-10">
-              {t("galleryDescription")}
-            </p>
-          </AnimateIn>
-          <SubsidiaryExpandableGallery
-            items={galleryItems}
-            subsidiaryName={subsidiary.name}
-            sectorLabel={getSectorLabel(l, subsidiary.sector)}
-            accentColor={pageTheme?.colors.gold ?? subsidiary.accentColor}
-            backgroundColor={pageTheme?.colors.surface}
-            themed={isThemed}
-          />
-        </section>
+      {galleryItems.length > 0 && slug === "filiale-02" ? (
+        <WabiSabiImmersiveGallery
+          items={galleryItems}
+          title={t("gallery")}
+          description={t("wabiGallery.description")}
+        />
+      ) : (
+        galleryItems.length > 0 && (
+          <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
+            <AnimateIn>
+              <h2 className={sectionHeadingClass}>{t("gallery")}</h2>
+              <p className="-mt-4 mb-8 max-w-2xl text-sm text-taupe md:mb-10">
+                {t("galleryDescription")}
+              </p>
+            </AnimateIn>
+            <SubsidiaryExpandableGallery
+              items={galleryItems}
+              subsidiaryName={subsidiary.name}
+              sectorLabel={getSectorLabel(l, subsidiary.sector)}
+              accentColor={pageTheme?.colors.gold ?? subsidiary.accentColor}
+              backgroundColor={pageTheme?.colors.surface}
+              themed={isThemed}
+            />
+          </section>
+        )
       )}
 
       {subsidiary.aboutSection && slug !== "filiale-04" && slug !== "filiale-02" && (
