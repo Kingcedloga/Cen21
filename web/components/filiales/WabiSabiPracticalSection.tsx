@@ -1,12 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { useLocale } from "next-intl";
 
 import { Button } from "@/components/ui/Button";
 import { SocialLinks } from "@/components/ui/SocialLinks";
 import { cormorant } from "@/lib/fonts";
-import { BLUR_PETROL } from "@/lib/image-blur";
 import type { Locale } from "@/i18n/routing";
 import { googleMapsEmbedUrl } from "@/lib/map";
 import {
@@ -28,7 +26,6 @@ export type WabiPracticalLabels = {
 };
 
 type Props = {
-  backgroundImage: string;
   hours?: string;
   address?: string;
   mapQuery: string;
@@ -38,7 +35,6 @@ type Props = {
 };
 
 export function WabiSabiPracticalSection({
-  backgroundImage,
   hours,
   address,
   mapQuery,
@@ -59,21 +55,6 @@ export function WabiSabiPracticalSection({
       className={`wabi-practical ${cormorant.variable}`}
       aria-label={labels.locationTitle}
     >
-      <div className="wabi-practical__bg" aria-hidden>
-        <Image
-          src={backgroundImage}
-          alt=""
-          fill
-          priority={false}
-          placeholder="blur"
-          blurDataURL={BLUR_PETROL}
-          className="wabi-practical__bg-image"
-          sizes="100vw"
-          quality={85}
-        />
-        <span className="wabi-practical__overlay" />
-      </div>
-
       <div className="wabi-practical__inner">
         <div className="wabi-practical__grid">
           <article className="wabi-practical__card">

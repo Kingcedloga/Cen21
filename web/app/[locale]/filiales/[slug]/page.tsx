@@ -328,7 +328,6 @@ export default async function SubsidiaryPage({ params }: Props) {
 
       {slug === "filiale-02" ? (
         <WabiSabiPracticalSection
-          backgroundImage="/filiales/photos/filiale-02/gallery/14-ao8a4577.webp"
           hours={subsidiary.practicalInfo.hours}
           address={subsidiary.practicalInfo.address}
           mapQuery={mapQuery}

@@ -49,6 +49,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
+  touch-action: pan-y pinch-zoom;
   mask-image: linear-gradient(
     90deg,
     transparent 0%,
@@ -67,6 +68,8 @@
   animation: wabi-establishments-marquee var(--wabi-establishments-duration, 50s)
     var(--wabi-establishments-ease) infinite;
   will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .wabi-establishments__item {
@@ -165,34 +168,35 @@
   }
 }
 
-/* —— Mobile : swipe manuel —— */
-
 @media (max-width: 767px) {
-  .wabi-establishments__viewport {
-    overflow-x: auto;
-    mask-image: none;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x proximity;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+  .wabi-establishments {
+    --wabi-establishments-gap: clamp(1.5rem, 5vw, 2.25rem);
   }
 
-  .wabi-establishments__viewport::-webkit-scrollbar {
-    display: none;
+  .wabi-establishments__viewport {
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      #000 2%,
+      #000 98%,
+      transparent 100%
+    );
   }
 
   .wabi-establishments__track {
-    animation: none;
-    padding-inline: clamp(1rem, 3vw, 1.25rem);
+    padding-inline: clamp(0.75rem, 2vw, 1rem);
   }
 
   .wabi-establishments__item {
-    scroll-snap-align: start;
     width: clamp(7.5rem, 34vw, 9.5rem);
   }
 
   .wabi-establishments__fade {
-    display: none;
+    width: clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  .wabi-establishments__track:has(.wabi-establishments__link:active) {
+    animation-play-state: paused;
   }
 }
 
