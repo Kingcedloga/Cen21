@@ -114,6 +114,16 @@
         "image": "/filiales/photos/filiale-02/gallery/08-ao8a4545.webp",
         "imageAlt": "Wabi Sabi — bar contemporain, cocktails signature et ambiance lounge"
       },
+      "spotlightSection": {
+        "title": "L'art de recevoir, entre ciel et skyline",
+        "description": "Perché sur les toits de la Gombe, Wabi Sabi offre une expérience où la gastronomie japonaise contemporaine rencontre une hospitalité raffinée. Chaque détail — de la lumière tamisée aux vues panoramiques sur Kinshasa — est pensé pour créer des moments d'exception, qu'il s'agisse d'un dîner intimiste ou d'une soirée entre amis.",
+        "cta": {
+          "label": "Réserver une table",
+          "href": "/contact"
+        },
+        "image": "/filiales/photos/filiale-02/gallery/05-ao8a4494.webp",
+        "imageAlt": "Wabi Sabi — ambiance lounge rooftop et vue sur Kinshasa"
+      },
       "galleryImages": [
         { "src": "/filiales/photos/filiale-02/gallery/01-ao8a4357.webp", "category": "interior" },
         { "src": "/filiales/photos/filiale-02/gallery/02-ao8a4372.webp", "category": "food" },

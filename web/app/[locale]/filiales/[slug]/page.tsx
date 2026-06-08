@@ -13,7 +13,8 @@ import { WabiSabiHero } from "@/components/filiales/WabiSabiHero";
 import { WabiSabiImmersiveGallery } from "@/components/filiales/WabiSabiImmersiveGallery";
 import { WabiSabiPhilosophySection } from "@/components/filiales/WabiSabiPhilosophySection";
 import { WabiSabiPracticalSection } from "@/components/filiales/WabiSabiPracticalSection";
-import { WabiSabiTestimonials } from "@/components/filiales/WabiSabiTestimonials";
+import { WabiSabiEstablishmentsSection } from "@/components/filiales/WabiSabiEstablishmentsSection";
+import { WabiSabiSpotlightSection } from "@/components/filiales/WabiSabiSpotlightSection";
 import { SubsidiaryThemeShell } from "@/components/filiales/SubsidiaryThemeShell";
 import { MapEmbed } from "@/components/maps/MapEmbed";
 import { SubsidiaryHero } from "@/components/sections/SubsidiaryHero";
@@ -27,6 +28,7 @@ import {
   getAllSubsidiarySlugs,
   getGalleryBySubsidiary,
   getSectorLabel,
+  getSubsidiaries,
   getSubsidiaryBySlug,
   getUpcomingEventsBySubsidiary,
 } from "@/lib/content";
@@ -43,6 +45,7 @@ import { getSubsidiaryEventShowcaseConfig, hasSubsidiaryEventShowcase } from "@/
 import { getSubsidiaryPageTheme } from "@/lib/subsidiary-themes";
 
 import "@/styles/subsidiary-contact-band.css";
+import "@/styles/wabi-sabi-intro-flow.css";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -83,6 +86,17 @@ export default async function SubsidiaryPage({ params }: Props) {
     subsidiary,
     getGalleryBySubsidiary(l, slug),
   );
+
+  const sisterSubsidiaries =
+    slug === "filiale-02"
+      ? getSubsidiaries(l)
+          .filter((s) => s.slug !== "filiale-02" && s.brandLogo)
+          .map((s) => ({
+            slug: s.slug,
+            name: s.name,
+            brandLogo: s.brandLogo!,
+          }))
+      : [];
 
   const heroVideo = resolveSubsidiaryHeroVideo(slug, subsidiary.heroVideo);
 
@@ -142,13 +156,7 @@ export default async function SubsidiaryPage({ params }: Props) {
   ];
 
   const breadcrumbSection = (
-    <section
-      className={
-        slug === "filiale-02"
-          ? "px-4 pt-4 pb-2 md:px-6 md:pt-5 lg:px-8"
-          : "px-4 pt-8 md:px-6 md:pt-10 lg:px-8"
-      }
-    >
+    <section className="px-4 pt-8 md:px-6 md:pt-10 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <Breadcrumb animate items={breadcrumbItems} />
       </div>
@@ -189,11 +197,25 @@ export default async function SubsidiaryPage({ params }: Props) {
         }
       />
       {slug === "filiale-02" && subsidiary.heroSection ? (
-        <WabiSabiHero
-          name={subsidiary.name}
-          hero={subsidiary.heroSection}
-          backgroundVideo={heroVideo}
-        />
+        <div className="wabi-sabi-intro-flow">
+          <span className="wabi-sabi-intro-flow__atmosphere" aria-hidden />
+          <WabiSabiHero
+            name={subsidiary.name}
+            hero={subsidiary.heroSection}
+            backgroundVideo={heroVideo}
+          />
+          {subsidiary.philosophySection && (
+            <WabiSabiPhilosophySection
+              name={subsidiary.name}
+              brandLogo={subsidiary.brandLogo}
+              content={subsidiary.philosophySection}
+              sectionLabel={t("wabiPhilosophy.sectionLabel")}
+            />
+          )}
+          {subsidiary.diningSection && (
+            <WabiSabiDiningShowcase content={subsidiary.diningSection} />
+          )}
+        </div>
       ) : (
         <SubsidiaryHero
           slides={heroSlides}
@@ -210,23 +232,12 @@ export default async function SubsidiaryPage({ params }: Props) {
         />
       )}
 
-      {slug === "filiale-02" && breadcrumbSection}
-
-      {slug === "filiale-02" && subsidiary.philosophySection && (
-        <WabiSabiPhilosophySection
-          name={subsidiary.name}
-          brandLogo={subsidiary.brandLogo}
-          content={subsidiary.philosophySection}
-          sectionLabel={t("wabiPhilosophy.sectionLabel")}
-        />
-      )}
-
-      {slug === "filiale-02" && subsidiary.diningSection && (
-        <WabiSabiDiningShowcase content={subsidiary.diningSection} />
-      )}
-
       {slug === "filiale-02" && subsidiary.barSection && (
         <WabiSabiBarShowcase content={subsidiary.barSection} />
+      )}
+
+      {slug === "filiale-02" && subsidiary.spotlightSection && (
+        <WabiSabiSpotlightSection content={subsidiary.spotlightSection} />
       )}
 
       {slug !== "filiale-02" && breadcrumbSection}
@@ -265,16 +276,11 @@ export default async function SubsidiaryPage({ params }: Props) {
         />
       )}
 
-      {slug === "filiale-02" && subsidiary.testimonialsSection && (
-        <WabiSabiTestimonials
-          section={subsidiary.testimonialsSection}
-          labels={{
-            carouselLabel: t("wabiTestimonials.carouselLabel"),
-            prevSlide: t("wabiTestimonials.prevSlide"),
-            nextSlide: t("wabiTestimonials.nextSlide"),
-            goToSlide: t("wabiTestimonials.goToSlide"),
-            ratingLabel: t("wabiTestimonials.ratingLabel"),
-          }}
+      {slug === "filiale-02" && sisterSubsidiaries.length > 0 && (
+        <WabiSabiEstablishmentsSection
+          subsidiaries={sisterSubsidiaries}
+          title={t("wabiEstablishments.title")}
+          description={t("wabiEstablishments.description")}
         />
       )}
 

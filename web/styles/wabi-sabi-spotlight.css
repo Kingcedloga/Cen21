@@ -1,0 +1,136 @@
+/* Wabi Sabi — section éditoriale split (texte + image) */
+
+.wabi-spotlight {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding:
+    clamp(4rem, 9vw, 7rem)
+    clamp(1.25rem, 4.5vw, 3.5rem);
+  background-color: #0b2f49;
+}
+
+.wabi-spotlight__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: #0b2f49;
+  background-image:
+    radial-gradient(ellipse 80% 56% at 10% 18%, rgb(255 255 255 / 0.04) 0%, transparent 58%),
+    radial-gradient(ellipse 70% 50% at 90% 82%, rgb(225 198 118 / 0.05) 0%, transparent 55%);
+}
+
+.wabi-spotlight__texture {
+  position: absolute;
+  inset: 0;
+  opacity: 0.4;
+  background-image: url("/filiales/wabi-sabi/hero-texture.svg");
+  background-size: 340px 340px;
+  mix-blend-mode: soft-light;
+}
+
+.wabi-spotlight__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.wabi-spotlight__inner {
+  position: relative;
+  z-index: 1;
+  margin-inline: auto;
+  max-width: 90rem;
+}
+
+.wabi-spotlight__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(2.5rem, 6vw, 4.5rem);
+  align-items: center;
+}
+
+.wabi-spotlight__content {
+  max-width: 34rem;
+}
+
+.wabi-spotlight__title {
+  margin: 0 0 clamp(1.25rem, 2.8vw, 2rem);
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.125rem, 4.8vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--sub-gold, #e1c676);
+}
+
+.wabi-spotlight__description {
+  margin: 0 0 clamp(1.75rem, 3.5vw, 2.5rem);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: clamp(0.9375rem, 1.45vw, 1.0625rem);
+  line-height: 1.78;
+  color: rgb(255 255 255 / 0.88);
+}
+
+.wabi-spotlight__cta {
+  min-width: min(100%, 12.5rem);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.wabi-spotlight__visual {
+  width: 100%;
+}
+
+.wabi-spotlight__figure {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  min-height: clamp(14rem, 42vw, 22rem);
+  border-radius: clamp(0.75rem, 1.8vw, 1.25rem);
+  background: rgb(0 0 0 / 0.2);
+  box-shadow:
+    0 24px 64px -24px rgb(0 0 0 / 0.5),
+    0 0 0 1px rgb(255 255 255 / 0.04);
+}
+
+.wabi-spotlight__image {
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (min-width: 1024px) {
+  .wabi-spotlight__grid {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: clamp(3rem, 5vw, 5.5rem);
+  }
+
+  .wabi-spotlight__figure {
+    aspect-ratio: 5 / 4;
+    min-height: clamp(20rem, 32vw, 30rem);
+  }
+}
+
+@media (max-width: 1023px) {
+  .wabi-spotlight__grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wabi-spotlight__content {
+    order: 1;
+    max-width: none;
+  }
+
+  .wabi-spotlight__visual {
+    order: 2;
+  }
+
+  .wabi-spotlight__cta {
+    width: 100%;
+  }
+}

@@ -220,6 +220,10 @@
     "wabiGallery": {
       "description": "Un flux visuel continu — cuisine signature, cocktails, intérieurs et art de recevoir, à la manière d'une fresque éditoriale."
     },
+    "wabiEstablishments": {
+      "title": "Nos Établissements",
+      "description": "Découvrez les autres adresses du groupe Cen21 Hospitality — chaque enseigne invite à une expérience unique, portée par la même exigence d'excellence."
+    },
     "wabiTestimonials": {
       "carouselLabel": "Témoignages clients",
       "prevSlide": "Témoignage précédent",

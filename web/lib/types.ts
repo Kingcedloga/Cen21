@@ -104,6 +104,15 @@ export type SubsidiaryBarSection = {
   imageAlt: string;
 };
 
+/** Section éditoriale split — titre, texte, CTA + image (Wabi Sabi). */
+export type SubsidiarySpotlightSection = {
+  title: string;
+  description: string;
+  cta: { label: string; href: string };
+  image: string;
+  imageAlt: string;
+};
+
 export type Subsidiary = {
   slug: string;
   name: string;
@@ -132,6 +141,8 @@ export type Subsidiary = {
   diningSection?: SubsidiaryDiningSection;
   /** Vitrine bar / lounge immersive (Wabi Sabi). */
   barSection?: SubsidiaryBarSection;
+  /** Mise en avant éditoriale split (Wabi Sabi). */
+  spotlightSection?: SubsidiarySpotlightSection;
   /** Section éditoriale claire (contraste avec le dark mode filiale). */
   aboutSection?: SubsidiaryAboutSection;
   /** Témoignages clients (Wabi Sabi). */

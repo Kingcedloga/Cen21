@@ -212,6 +212,10 @@
     "wabiGallery": {
       "description": "A continuous visual flow — signature cuisine, cocktails, interiors and hospitality, like an editorial fresco."
     },
+    "wabiEstablishments": {
+      "title": "Our Establishments",
+      "description": "Discover the group's other destinations — each brand offers a distinctive experience, united by the same pursuit of excellence."
+    },
     "wabiTestimonials": {
       "carouselLabel": "Guest testimonials",
       "prevSlide": "Previous testimonial",

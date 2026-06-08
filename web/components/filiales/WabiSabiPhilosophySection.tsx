@@ -55,8 +55,8 @@ export function WabiSabiPhilosophySection({
             <Image
               src={brandLogo}
               alt={name}
-              width={520}
-              height={160}
+              width={720}
+              height={220}
               className="wabi-sabi-philosophy__logo"
             />
           ) : (

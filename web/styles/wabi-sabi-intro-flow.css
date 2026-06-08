@@ -1,0 +1,71 @@
+/* Wabi Sabi — continuum visuel Hero → Philosophie → Dining (#0B2F49) */
+
+.wabi-sabi-intro-flow {
+  --wabi-flow-bg: #0b2f49;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--wabi-flow-bg);
+}
+
+.wabi-sabi-intro-flow__atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--wabi-flow-bg);
+  background-image:
+    radial-gradient(ellipse 92% 58% at 12% 6%, rgb(255 255 255 / 0.035) 0%, transparent 56%),
+    radial-gradient(ellipse 78% 52% at 88% 94%, rgb(225 198 118 / 0.045) 0%, transparent 54%);
+}
+
+.wabi-sabi-intro-flow__atmosphere::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.4;
+  background-image: url("/filiales/wabi-sabi/hero-texture.svg");
+  background-size: 340px 340px;
+  mix-blend-mode: soft-light;
+}
+
+.wabi-sabi-intro-flow__atmosphere::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+.wabi-sabi-intro-flow > :not(.wabi-sabi-intro-flow__atmosphere) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Fonds de section délégués au continuum */
+.wabi-sabi-intro-flow .wabi-sabi-hero,
+.wabi-sabi-intro-flow .wabi-sabi-philosophy,
+.wabi-sabi-intro-flow .wabi-dining-showcase {
+  background: transparent;
+}
+
+.wabi-sabi-intro-flow .wabi-sabi-hero__backdrop,
+.wabi-sabi-intro-flow .wabi-sabi-philosophy__backdrop,
+.wabi-sabi-intro-flow .wabi-dining-showcase__backdrop {
+  display: none;
+}
+
+/* Espacements de transition plus fluides entre sections */
+.wabi-sabi-intro-flow .wabi-sabi-hero {
+  padding-bottom: clamp(1.25rem, 3vh, 2rem);
+}
+
+.wabi-sabi-intro-flow .wabi-sabi-philosophy {
+  padding-top: clamp(2.5rem, 6vw, 4rem);
+  padding-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.wabi-sabi-intro-flow .wabi-dining-showcase {
+  padding-top: clamp(2.5rem, 6vw, 4rem);
+}
