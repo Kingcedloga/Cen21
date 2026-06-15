@@ -256,6 +256,25 @@
         "/filiales/photos/filiale-03/gallery/18-dsc09876.webp",
         "/filiales/photos/filiale-03/gallery/19-dsc09969.webp"
       ],
+      "introSection": {
+        "title": "K Lounge. Rooftop & mixology.",
+        "paragraphs": [
+          "Atop RR House, K Lounge brings together international cuisine, creative mixology, and a refined nightlife atmosphere.",
+          "A rooftop where elegance meets energy — for evenings as memorable as the view over Kinshasa."
+        ],
+        "cta": {
+          "label": "Book a table",
+          "href": "/contact"
+        },
+        "primaryImage": {
+          "src": "/filiales/photos/filiale-03/kloungecover.jpg",
+          "alt": "K Lounge signature dish — premium international cuisine"
+        },
+        "secondaryImage": {
+          "src": "/filiales/photos/filiale-03/gallery/05-dsc01050.webp",
+          "alt": "K Lounge — lounge interior and nightlife atmosphere"
+        }
+      },
       "aboutSection": {
         "eyebrow": "About",
         "title": "K Lounge Experience Redefined",

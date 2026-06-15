@@ -3,6 +3,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { EventCard } from "@/components/cards/EventCard";
 import { StickyMobileActions } from "@/components/filiales/StickyMobileActions";
+import { KLoungeIntroSection } from "@/components/filiales/KLoungeIntroSection";
+import { KLoungeReservationBanner } from "@/components/filiales/KLoungeReservationBanner";
 import { SubsidiaryContactBand } from "@/components/filiales/SubsidiaryContactBand";
 import { SubsidiaryEditorialAbout } from "@/components/filiales/SubsidiaryEditorialAbout";
 import { SubsidiaryEventShowcase } from "@/components/filiales/SubsidiaryEventShowcase";
@@ -242,6 +244,10 @@ export default async function SubsidiaryPage({ params }: Props) {
 
       {slug !== "filiale-02" && breadcrumbSection}
 
+      {slug === "filiale-03" && subsidiary.introSection && (
+        <KLoungeIntroSection content={subsidiary.introSection} />
+      )}
+
       {useEventShowcase && showcaseEvents.length > 0 && (
         <SubsidiaryEventShowcase
           events={showcaseEvents}
@@ -250,7 +256,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         />
       )}
 
-      {slug !== "filiale-02" && (
+      {slug !== "filiale-02" && slug !== "filiale-03" && (
       <section className="px-4 py-12 md:px-6 md:py-16 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <AnimateIn>
@@ -262,18 +268,29 @@ export default async function SubsidiaryPage({ params }: Props) {
       </section>
       )}
 
-      {slug !== "filiale-04" && slug !== "filiale-02" && (
-        <SubsidiaryContactBand
+      {slug === "filiale-03" ? (
+        <KLoungeReservationBanner
           backgroundImage={getSubsidiaryContactImage(slug, subsidiary.coverImage)}
-          hoursLabel={t("contactBand.hours")}
-          findUsLabel={t("contactBand.findUs")}
-          callUsLabel={t("contactBand.callUs")}
-          hours={subsidiary.practicalInfo.hours}
-          address={subsidiary.practicalInfo.address}
-          phone={subsidiary.practicalInfo.phone}
-          mapsUrl={subsidiary.practicalInfo.address ? mapsUrl : undefined}
-          themed={isThemed}
+          eyebrow={t("kLoungeReservation.eyebrow")}
+          title={t("kLoungeReservation.title")}
+          ctaLabel={t("kLoungeReservation.cta")}
+          ctaHref="/contact"
         />
+      ) : (
+        slug !== "filiale-04" &&
+        slug !== "filiale-02" && (
+          <SubsidiaryContactBand
+            backgroundImage={getSubsidiaryContactImage(slug, subsidiary.coverImage)}
+            hoursLabel={t("contactBand.hours")}
+            findUsLabel={t("contactBand.findUs")}
+            callUsLabel={t("contactBand.callUs")}
+            hours={subsidiary.practicalInfo.hours}
+            address={subsidiary.practicalInfo.address}
+            phone={subsidiary.practicalInfo.phone}
+            mapsUrl={subsidiary.practicalInfo.address ? mapsUrl : undefined}
+            themed={isThemed}
+          />
+        )
       )}
 
       {slug === "filiale-02" && sisterSubsidiaries.length > 0 && (

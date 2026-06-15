@@ -1,0 +1,227 @@
+/* K Lounge — introduction éditoriale sombre (réf. Zioux) */
+
+.klounge-intro {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #000000;
+  color: rgb(255 255 255 / 0.82);
+}
+
+.klounge-intro__inner {
+  margin-inline: auto;
+  max-width: 96rem;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+  padding-block: clamp(2.5rem, 5vw, 4rem) clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.klounge-intro__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(2.5rem, 5vw, 3.5rem);
+  align-items: stretch;
+}
+
+/* —— Colonne texte —— */
+.klounge-intro__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(2rem, 4vw, 3rem);
+  min-height: 0;
+}
+
+.klounge-intro__title {
+  margin: 0 0 clamp(1.5rem, 3vw, 2rem);
+  max-width: 13ch;
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.25rem, 5.2vw, 3.75rem);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: -0.01em;
+  color: rgb(255 255 255 / 0.9);
+}
+
+.klounge-intro__body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vw, 1.35rem);
+  margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
+  max-width: 34rem;
+}
+
+.klounge-intro__body p {
+  margin: 0;
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1rem, 1.55vw, 1.125rem);
+  font-weight: 400;
+  line-height: 1.72;
+  color: rgb(255 255 255 / 0.72);
+}
+
+.klounge-intro__cta.btn-secondary {
+  align-self: flex-start;
+  min-width: min(100%, 12.5rem);
+  border-radius: 9999px;
+  border-color: rgb(255 255 255 / 0.72);
+  background: transparent;
+  color: rgb(255 255 255 / 0.9);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.klounge-intro__cta.btn-secondary:hover {
+  border-color: #ffffff;
+  background: rgb(255 255 255 / 0.06);
+  color: #ffffff;
+}
+
+/* Image secondaire — coin bas gauche */
+.klounge-intro__inset {
+  position: relative;
+  width: min(100%, 22rem);
+  overflow: hidden;
+  will-change: transform, opacity;
+}
+
+.klounge-intro__inset-inner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: rgb(255 255 255 / 0.04);
+}
+
+.klounge-intro__inset-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+  transition: transform 720ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .klounge-intro__inset:hover .klounge-intro__inset-image {
+    transform: scale(1.04);
+  }
+}
+
+/* —— Colonne visuelle principale —— */
+.klounge-intro__visual {
+  position: relative;
+  min-height: clamp(22rem, 58vw, 32rem);
+  will-change: transform, opacity;
+}
+
+.klounge-intro__primary-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  overflow: hidden;
+  background: rgb(255 255 255 / 0.03);
+}
+
+.klounge-intro__primary-parallax {
+  position: absolute;
+  inset: -8% 0;
+  height: 116%;
+  will-change: transform;
+}
+
+.klounge-intro__primary-zoom {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.klounge-intro__primary-image {
+  object-fit: cover;
+  object-position: center 38%;
+  animation: klounge-intro-ken-burns 24s cubic-bezier(0.16, 1, 0.3, 1) infinite alternate;
+  will-change: transform;
+}
+
+@keyframes klounge-intro-ken-burns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+@media (min-width: 1024px) {
+  .klounge-intro__inner {
+    padding-inline: clamp(2rem, 4vw, 3.5rem);
+    padding-block: clamp(3rem, 5vw, 4.5rem) clamp(4rem, 6vw, 6rem);
+  }
+
+  .klounge-intro__grid {
+    grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+    gap: clamp(2rem, 3.5vw, 3rem);
+    min-height: clamp(34rem, 78vh, 48rem);
+  }
+
+  .klounge-intro__content {
+    padding-block: clamp(1rem, 2vw, 2rem);
+    padding-right: clamp(0.5rem, 2vw, 1.5rem);
+  }
+
+  .klounge-intro__inset {
+    width: min(88%, 24rem);
+    margin-top: auto;
+  }
+
+  .klounge-intro__visual {
+    min-height: 100%;
+  }
+
+  .klounge-intro__primary-frame {
+    min-height: clamp(34rem, 78vh, 48rem);
+  }
+}
+
+@media (max-width: 1023px) {
+  .klounge-intro__grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .klounge-intro__visual {
+    order: -1;
+    min-height: clamp(18rem, 62vw, 26rem);
+  }
+
+  .klounge-intro__inset {
+    width: min(100%, 20rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .klounge-intro__primary-image {
+    animation: none;
+  }
+
+  .klounge-intro__inset-image {
+    transition: none;
+  }
+
+  .klounge-intro__inset:hover .klounge-intro__inset-image {
+    transform: none;
+  }
+
+  .klounge-intro__inset,
+  .klounge-intro__visual,
+  .klounge-intro__primary-parallax {
+    will-change: auto;
+  }
+}
+
+[data-subsidiary-theme="k-lounge"] .klounge-intro__cta.btn-secondary:focus-visible {
+  outline-color: #ffffff;
+}

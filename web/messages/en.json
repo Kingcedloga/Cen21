@@ -198,6 +198,11 @@
       "callUs": "Call us",
       "closed": "Closed"
     },
+    "kLoungeReservation": {
+      "eyebrow": "We saved you a seat",
+      "title": "Make an online reservation",
+      "cta": "Book now"
+    },
     "wabiPhilosophy": {
       "sectionLabel": "Brand philosophy"
     },

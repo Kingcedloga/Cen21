@@ -1,0 +1,114 @@
+/* K Lounge — bannière réservation (réf. lounge premium) */
+
+.klounge-reservation {
+  --klounge-reservation-accent: #d9a08f;
+  --klounge-reservation-overlay: rgb(0 0 0 / 0.58);
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: clamp(18rem, 42vw, 26rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.klounge-reservation__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.klounge-reservation__image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.klounge-reservation__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgb(0 0 0 / 0.42) 0%,
+      var(--klounge-reservation-overlay) 45%,
+      rgb(0 0 0 / 0.68) 100%
+    ),
+    radial-gradient(ellipse 90% 70% at 50% 50%, transparent 0%, rgb(0 0 0 / 0.35) 100%);
+}
+
+.klounge-reservation__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.875rem, 2vw, 1.25rem);
+  width: min(100%, 44rem);
+  padding:
+    clamp(3rem, 8vw, 5rem)
+    clamp(1.5rem, 5vw, 2.5rem);
+  text-align: center;
+}
+
+.klounge-reservation__eyebrow {
+  margin: 0;
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(0.75rem, 1.4vw, 0.875rem);
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  color: rgb(255 255 255 / 0.92);
+}
+
+.klounge-reservation__title {
+  margin: 0;
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2rem, 5.5vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  color: var(--klounge-reservation-accent);
+}
+
+.klounge-reservation__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  margin-top: clamp(0.25rem, 1vw, 0.5rem);
+  padding: 0.75rem clamp(1.75rem, 4vw, 2.5rem);
+  border: 1px solid rgb(255 255 255 / 0.88);
+  border-radius: 9999px;
+  background: transparent;
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(0.6875rem, 1.2vw, 0.75rem);
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgb(255 255 255 / 0.95);
+  transition:
+    background-color 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+    border-color 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+    color 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.klounge-reservation__cta:hover {
+  background: rgb(255 255 255 / 0.1);
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.klounge-reservation__cta:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .klounge-reservation__cta {
+    transition: none;
+  }
+}

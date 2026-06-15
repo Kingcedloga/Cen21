@@ -206,6 +206,11 @@
       "callUs": "Appelez-nous",
       "closed": "Fermé"
     },
+    "kLoungeReservation": {
+      "eyebrow": "Nous vous avons gardé une place",
+      "title": "Réservez en ligne",
+      "cta": "Réserver"
+    },
     "wabiPhilosophy": {
       "sectionLabel": "Philosophie de la marque"
     },

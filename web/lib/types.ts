@@ -113,6 +113,15 @@ export type SubsidiarySpotlightSection = {
   imageAlt: string;
 };
 
+/** Introduction éditoriale sombre — split texte / visuels (K Lounge). */
+export type SubsidiaryIntroSection = {
+  title: string;
+  paragraphs: string[];
+  cta: { label: string; href: string };
+  primaryImage: SubsidiaryAboutSlide;
+  secondaryImage: SubsidiaryAboutSlide;
+};
+
 export type Subsidiary = {
   slug: string;
   name: string;
@@ -143,6 +152,8 @@ export type Subsidiary = {
   barSection?: SubsidiaryBarSection;
   /** Mise en avant éditoriale split (Wabi Sabi). */
   spotlightSection?: SubsidiarySpotlightSection;
+  /** Introduction éditoriale sombre (K Lounge). */
+  introSection?: SubsidiaryIntroSection;
   /** Section éditoriale claire (contraste avec le dark mode filiale). */
   aboutSection?: SubsidiaryAboutSection;
   /** Témoignages clients (Wabi Sabi). */
