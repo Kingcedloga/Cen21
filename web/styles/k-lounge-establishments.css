@@ -1,0 +1,50 @@
+/* K Lounge — Nos Établissements (variant sombre) */
+
+.wabi-establishments--k-lounge {
+  --wabi-establishments-blue: #ffffff;
+  --wabi-establishments-beige: #000000;
+  --wabi-establishments-beige-deep: #000000;
+
+  background-color: #000000;
+  background-image:
+    radial-gradient(ellipse 80% 55% at 12% 8%, rgb(255 255 255 / 0.04) 0%, transparent 58%),
+    radial-gradient(ellipse 70% 50% at 88% 92%, rgb(255 255 255 / 0.03) 0%, transparent 55%);
+}
+
+.wabi-establishments--k-lounge .wabi-establishments__description {
+  color: rgb(255 255 255 / 0.68);
+}
+
+.wabi-establishments--k-lounge .wabi-establishments__link:hover,
+.wabi-establishments--k-lounge .wabi-establishments__link:focus-visible {
+  background-color: rgb(255 255 255 / 0.06);
+}
+
+.wabi-establishments--k-lounge .wabi-establishments__logo {
+  filter: grayscale(1) brightness(0) invert(1);
+  opacity: 0.78;
+}
+
+.wabi-establishments--k-lounge .wabi-establishments__link:hover .wabi-establishments__logo,
+.wabi-establishments--k-lounge .wabi-establishments__link:focus-visible .wabi-establishments__logo {
+  filter: grayscale(1) brightness(0) invert(1);
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+.wabi-establishments--k-lounge .wabi-establishments__name {
+  color: rgb(255 255 255 / 0.42);
+}
+
+.wabi-establishments--k-lounge .wabi-establishments__link:hover .wabi-establishments__name,
+.wabi-establishments--k-lounge .wabi-establishments__link:focus-visible .wabi-establishments__name {
+  color: #ffffff;
+}
+
+.wabi-establishments--k-lounge .wabi-establishments__fade--left {
+  background: linear-gradient(90deg, #000000 0%, transparent 100%);
+}
+
+.wabi-establishments--k-lounge .wabi-establishments__fade--right {
+  background: linear-gradient(270deg, #000000 0%, transparent 100%);
+}

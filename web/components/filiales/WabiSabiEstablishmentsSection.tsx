@@ -9,6 +9,7 @@ import { Link } from "@/i18n/navigation";
 import { cormorant } from "@/lib/fonts";
 
 import "@/styles/wabi-sabi-establishments.css";
+import "@/styles/k-lounge-establishments.css";
 
 export type SisterSubsidiary = {
   slug: string;
@@ -20,6 +21,7 @@ type Props = {
   subsidiaries: SisterSubsidiary[];
   title: string;
   description: string;
+  variant?: "wabi-sabi" | "k-lounge";
 };
 
 function EstablishmentLogo({ subsidiary }: { subsidiary: SisterSubsidiary }) {
@@ -50,6 +52,7 @@ export function WabiSabiEstablishmentsSection({
   subsidiaries,
   title,
   description,
+  variant = "wabi-sabi",
 }: Props) {
   const reduced = useReducedMotion() ?? false;
   const list = subsidiaries.filter((s) => s.brandLogo);
@@ -63,15 +66,24 @@ export function WabiSabiEstablishmentsSection({
 
   const loop = [...list, ...list];
 
+  const sectionId =
+    variant === "k-lounge" ? "klounge-establishments-title" : "wabi-establishments-title";
+
   return (
     <section
-      className={`wabi-establishments ${cormorant.variable}`}
-      aria-labelledby="wabi-establishments-title"
+      className={[
+        "wabi-establishments",
+        variant === "k-lounge" ? "wabi-establishments--k-lounge" : "",
+        cormorant.variable,
+      ]
+        .filter(Boolean)
+        .join(" ")}
+      aria-labelledby={sectionId}
       style={{ "--wabi-establishments-duration": `${durationSeconds}s` } as CSSProperties}
     >
       <div className="wabi-establishments__inner">
         <AnimateIn className="wabi-establishments__header">
-          <h2 id="wabi-establishments-title" className="wabi-establishments__title">
+          <h2 id={sectionId} className="wabi-establishments__title">
             {title}
           </h2>
           <p className="wabi-establishments__description">{description}</p>

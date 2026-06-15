@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { EventCard } from "@/components/cards/EventCard";
 import { StickyMobileActions } from "@/components/filiales/StickyMobileActions";
 import { KLoungeIntroSection } from "@/components/filiales/KLoungeIntroSection";
+import { KLoungeMarqueeGallery } from "@/components/filiales/KLoungeMarqueeGallery";
 import { KLoungeReservationBanner } from "@/components/filiales/KLoungeReservationBanner";
 import { SubsidiaryContactBand } from "@/components/filiales/SubsidiaryContactBand";
 import { SubsidiaryEditorialAbout } from "@/components/filiales/SubsidiaryEditorialAbout";
@@ -90,9 +91,9 @@ export default async function SubsidiaryPage({ params }: Props) {
   );
 
   const sisterSubsidiaries =
-    slug === "filiale-02"
+    slug === "filiale-02" || slug === "filiale-03"
       ? getSubsidiaries(l)
-          .filter((s) => s.slug !== "filiale-02" && s.brandLogo)
+          .filter((s) => s.slug !== slug && s.brandLogo)
           .map((s) => ({
             slug: s.slug,
             name: s.name,
@@ -188,6 +189,26 @@ export default async function SubsidiaryPage({ params }: Props) {
       </Button>
     </section>
   );
+
+  const standardGallerySection =
+    galleryItems.length > 0 ? (
+      <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
+        <AnimateIn>
+          <h2 className={sectionHeadingClass}>{t("gallery")}</h2>
+          <p className="-mt-4 mb-8 max-w-2xl text-sm text-taupe md:mb-10">
+            {t("galleryDescription")}
+          </p>
+        </AnimateIn>
+        <SubsidiaryExpandableGallery
+          items={galleryItems}
+          subsidiaryName={subsidiary.name}
+          sectorLabel={getSectorLabel(l, subsidiary.sector)}
+          accentColor={pageTheme?.colors.gold ?? subsidiary.accentColor}
+          backgroundColor={pageTheme?.colors.surface}
+          themed={isThemed}
+        />
+      </section>
+    ) : null;
 
   const content = (
     <>
@@ -293,6 +314,15 @@ export default async function SubsidiaryPage({ params }: Props) {
         )
       )}
 
+      {slug === "filiale-03" && sisterSubsidiaries.length > 0 && (
+        <WabiSabiEstablishmentsSection
+          subsidiaries={sisterSubsidiaries}
+          title={t("wabiEstablishments.title")}
+          description={t("wabiEstablishments.description")}
+          variant="k-lounge"
+        />
+      )}
+
       {slug === "filiale-02" && sisterSubsidiaries.length > 0 && (
         <WabiSabiEstablishmentsSection
           subsidiaries={sisterSubsidiaries}
@@ -316,28 +346,21 @@ export default async function SubsidiaryPage({ params }: Props) {
           title={t("gallery")}
           description={t("wabiGallery.description")}
         />
+      ) : galleryItems.length > 0 && slug === "filiale-03" ? (
+        <KLoungeMarqueeGallery
+          items={galleryItems}
+          title={t("gallery")}
+          description={t("kLoungeGallery.description")}
+        />
       ) : (
-        galleryItems.length > 0 && (
-          <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
-            <AnimateIn>
-              <h2 className={sectionHeadingClass}>{t("gallery")}</h2>
-              <p className="-mt-4 mb-8 max-w-2xl text-sm text-taupe md:mb-10">
-                {t("galleryDescription")}
-              </p>
-            </AnimateIn>
-            <SubsidiaryExpandableGallery
-              items={galleryItems}
-              subsidiaryName={subsidiary.name}
-              sectorLabel={getSectorLabel(l, subsidiary.sector)}
-              accentColor={pageTheme?.colors.gold ?? subsidiary.accentColor}
-              backgroundColor={pageTheme?.colors.surface}
-              themed={isThemed}
-            />
-          </section>
-        )
+        standardGallerySection
       )}
 
-      {subsidiary.aboutSection && slug !== "filiale-04" && slug !== "filiale-02" && (
+      {subsidiary.aboutSection && slug === "filiale-03" && (
+        <SubsidiaryEditorialAbout content={subsidiary.aboutSection} />
+      )}
+
+      {subsidiary.aboutSection && slug !== "filiale-04" && slug !== "filiale-02" && slug !== "filiale-03" && (
         <SubsidiaryEditorialAbout content={subsidiary.aboutSection} />
       )}
 
