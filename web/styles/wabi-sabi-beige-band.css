@@ -1,0 +1,180 @@
+/* Surface beige Wabi Sabi — partagée (établissements, galerie, événements) */
+
+.wabi-sabi-beige-band {
+  --wabi-band-blue: #0b2f49;
+  --wabi-band-beige: #f5f0e8;
+  --wabi-band-beige-deep: #ebe4d6;
+
+  background-color: var(--wabi-band-beige);
+  background-image:
+    radial-gradient(ellipse 80% 55% at 12% 8%, rgb(255 255 255 / 0.55) 0%, transparent 58%),
+    radial-gradient(ellipse 70% 50% at 88% 92%, rgb(225 198 118 / 0.08) 0%, transparent 55%),
+    linear-gradient(180deg, var(--wabi-band-beige) 0%, var(--wabi-band-beige-deep) 100%);
+}
+
+/* Bloc continu — une seule couleur de Nos établissements à Événements à venir */
+.wabi-sabi-beige-flow {
+  --wabi-band-blue: #0b2f49;
+  --wabi-band-beige: #f5f0e8;
+
+  background-color: var(--wabi-band-beige);
+}
+
+.wabi-sabi-beige-flow > .wabi-sabi-beige-band,
+.wabi-sabi-beige-flow > .wabi-establishments.wabi-sabi-beige-band,
+.wabi-sabi-beige-flow > .wabi-immersive-gallery.wabi-sabi-beige-band,
+.wabi-sabi-beige-flow > .wabi-sabi-events-section.wabi-sabi-beige-band {
+  background: transparent;
+  background-image: none;
+}
+
+.wabi-sabi-beige-flow > .wabi-establishments {
+  padding-top: clamp(4rem, 9vw, 6.5rem);
+  padding-bottom: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.wabi-sabi-beige-flow > .wabi-immersive-gallery {
+  padding-top: clamp(1.25rem, 2.5vw, 2rem);
+  padding-bottom: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.wabi-sabi-beige-flow > .wabi-sabi-events-section {
+  padding-top: clamp(1.25rem, 2.5vw, 2rem);
+  padding-bottom: clamp(3.5rem, 8vw, 6rem);
+}
+
+.wabi-sabi-beige-band__title {
+  margin: 0 0 clamp(0.75rem, 1.8vw, 1.125rem);
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  color: var(--wabi-band-blue);
+}
+
+.wabi-sabi-beige-band__description {
+  margin: 0;
+  max-width: 38rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: clamp(0.9375rem, 1.4vw, 1.0625rem);
+  line-height: 1.72;
+  color: rgb(11 47 73 / 0.68);
+}
+
+.wabi-sabi-beige-band .btn-secondary {
+  background: transparent;
+  border-color: rgb(11 47 73 / 0.35);
+  color: var(--wabi-band-blue);
+}
+
+.wabi-sabi-beige-band .btn-secondary:hover {
+  background: rgb(11 47 73 / 0.06);
+  border-color: rgb(11 47 73 / 0.55);
+  color: var(--wabi-band-blue);
+}
+
+.wabi-sabi-beige-band .btn-secondary:focus-visible {
+  outline-color: var(--wabi-band-blue);
+}
+
+/* Cartes événements — texte bleu sur fond beige */
+.wabi-sabi-beige-flow .wabi-sabi-events-section article.glass-panel {
+  background: rgb(255 255 255 / 0.42);
+  border-color: rgb(11 47 73 / 0.14);
+  box-shadow: 0 14px 36px -18px rgb(11 47 73 / 0.14);
+}
+
+.wabi-sabi-beige-flow .wabi-sabi-events-section article.glass-panel:hover {
+  border-color: rgb(11 47 73 / 0.32);
+  box-shadow: 0 20px 44px -16px rgb(11 47 73 / 0.18);
+}
+
+.wabi-sabi-beige-flow .wabi-sabi-events-section article .text-gold,
+.wabi-sabi-beige-flow .wabi-sabi-events-section article a.text-gold,
+.wabi-sabi-beige-flow .wabi-sabi-events-section article a.text-gold:hover {
+  color: var(--wabi-band-blue);
+}
+
+.wabi-sabi-beige-flow .wabi-sabi-events-section article .text-ivory {
+  color: var(--wabi-band-blue);
+}
+
+.wabi-sabi-beige-flow .wabi-sabi-events-section article .text-taupe {
+  color: rgb(11 47 73 / 0.72);
+}
+
+.wabi-sabi-beige-flow .wabi-sabi-events-section article .text-stone {
+  color: rgb(11 47 73 / 0.58);
+}
+
+.wabi-sabi-beige-flow .wabi-sabi-events-section article svg {
+  color: rgb(11 47 73 / 0.55);
+}
+
+[data-subsidiary-theme="wabi-sabi"]
+  .wabi-sabi-beige-flow
+  .wabi-sabi-events-section
+  article
+  .text-gold,
+[data-subsidiary-theme="wabi-sabi"]
+  .wabi-sabi-beige-flow
+  .wabi-sabi-events-section
+  article
+  a.text-gold {
+  color: var(--wabi-band-blue);
+}
+
+[data-subsidiary-theme="wabi-sabi"]
+  .wabi-sabi-beige-flow
+  .wabi-sabi-events-section
+  article
+  .text-ivory,
+[data-subsidiary-theme="wabi-sabi"]
+  .wabi-sabi-beige-flow
+  .wabi-sabi-events-section
+  article
+  .text-taupe,
+[data-subsidiary-theme="wabi-sabi"]
+  .wabi-sabi-beige-flow
+  .wabi-sabi-events-section
+  article
+  .text-stone {
+  color: inherit;
+}
+
+[data-subsidiary-theme="wabi-sabi"]
+  .wabi-sabi-beige-flow
+  .wabi-sabi-events-section
+  article
+  .text-ivory {
+  color: var(--wabi-band-blue);
+}
+
+[data-subsidiary-theme="wabi-sabi"]
+  .wabi-sabi-beige-flow
+  .wabi-sabi-events-section
+  article
+  .text-taupe {
+  color: rgb(11 47 73 / 0.72);
+}
+
+[data-subsidiary-theme="wabi-sabi"]
+  .wabi-sabi-beige-flow
+  .wabi-sabi-events-section
+  article
+  .text-stone {
+  color: rgb(11 47 73 / 0.58);
+}
+
+[data-subsidiary-theme="wabi-sabi"] .wabi-sabi-beige-flow .wabi-sabi-events-section .btn-secondary {
+  background: transparent;
+  border-color: rgb(11 47 73 / 0.35);
+  color: var(--wabi-band-blue);
+}
+
+[data-subsidiary-theme="wabi-sabi"] .wabi-sabi-beige-flow .wabi-sabi-events-section .btn-secondary:hover {
+  background: rgb(11 47 73 / 0.06);
+  border-color: rgb(11 47 73 / 0.55);
+  color: var(--wabi-band-blue);
+}

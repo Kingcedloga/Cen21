@@ -1,17 +1,12 @@
 /* Wabi Sabi — Nos Établissements (marquee logos filiales sœurs) */
 
 .wabi-establishments {
-  --wabi-establishments-blue: #0b2f49;
-  --wabi-establishments-beige: #f5f0e8;
-  --wabi-establishments-beige-deep: #ebe4d6;
+  --wabi-establishments-blue: var(--wabi-band-blue, #0b2f49);
+  --wabi-establishments-beige: var(--wabi-band-beige, #f5f0e8);
+  --wabi-establishments-beige-deep: var(--wabi-band-beige-deep, #ebe4d6);
   --wabi-establishments-gap: clamp(2rem, 4vw, 3.5rem);
   --wabi-establishments-ease: linear;
 
-  background-color: var(--wabi-establishments-beige);
-  background-image:
-    radial-gradient(ellipse 80% 55% at 12% 8%, rgb(255 255 255 / 0.55) 0%, transparent 58%),
-    radial-gradient(ellipse 70% 50% at 88% 92%, rgb(225 198 118 / 0.08) 0%, transparent 55%),
-    linear-gradient(180deg, var(--wabi-establishments-beige) 0%, var(--wabi-establishments-beige-deep) 100%);
   padding:
     clamp(4rem, 9vw, 6.5rem)
     0

@@ -27,6 +27,10 @@ import { Button } from "@/components/ui/Button";
 import { ReadingProgress } from "@/components/ui/ReadingProgress";
 import { routing } from "@/i18n/routing";
 import type { Locale } from "@/i18n/routing";
+import { cormorant } from "@/lib/fonts";
+
+import "@/styles/wabi-sabi-beige-band.css";
+import "@/styles/wabi-sabi-events-section.css";
 import {
   getAllSubsidiarySlugs,
   getGalleryBySubsidiary,
@@ -190,6 +194,40 @@ export default async function SubsidiaryPage({ params }: Props) {
     </section>
   );
 
+  const wabiEventsSection = (
+    <section
+      className={`wabi-sabi-beige-band wabi-sabi-events-section ${cormorant.variable}`}
+      aria-labelledby="wabi-sabi-events-title"
+    >
+      <div className="wabi-sabi-events-section__inner">
+        <AnimateIn>
+          <h2
+            id="wabi-sabi-events-title"
+            className="wabi-sabi-beige-band__title wabi-sabi-events-section__title"
+          >
+            {t("upcomingEvents")}
+          </h2>
+        </AnimateIn>
+        {events.length === 0 ? (
+          <AnimateIn delay={0.05}>
+            <p className="wabi-sabi-events-section__empty">{t("noEventsScheduled")}</p>
+          </AnimateIn>
+        ) : (
+          <div className="wabi-sabi-events-section__grid">
+            {events.map((event, index) => (
+              <AnimateIn key={event.id} delay={index * 0.05}>
+                <EventCard event={event} />
+              </AnimateIn>
+            ))}
+          </div>
+        )}
+        <Button href="/evenements" variant="secondary">
+          {t("allEvents")}
+        </Button>
+      </div>
+    </section>
+  );
+
   const standardGallerySection =
     galleryItems.length > 0 ? (
       <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
@@ -314,21 +352,36 @@ export default async function SubsidiaryPage({ params }: Props) {
         )
       )}
 
-      {slug === "filiale-03" && sisterSubsidiaries.length > 0 && (
-        <WabiSabiEstablishmentsSection
-          subsidiaries={sisterSubsidiaries}
-          title={t("wabiEstablishments.title")}
-          description={t("wabiEstablishments.description")}
-          variant="k-lounge"
-        />
-      )}
+      {slug === "filiale-02" ? (
+        <div className={`wabi-sabi-beige-flow ${cormorant.variable}`}>
+          {sisterSubsidiaries.length > 0 && (
+            <WabiSabiEstablishmentsSection
+              subsidiaries={sisterSubsidiaries}
+              title={t("wabiEstablishments.title")}
+              description={t("wabiEstablishments.description")}
+            />
+          )}
 
-      {slug === "filiale-02" && sisterSubsidiaries.length > 0 && (
-        <WabiSabiEstablishmentsSection
-          subsidiaries={sisterSubsidiaries}
-          title={t("wabiEstablishments.title")}
-          description={t("wabiEstablishments.description")}
-        />
+          {galleryItems.length > 0 && (
+            <WabiSabiImmersiveGallery
+              items={galleryItems}
+              title={t("gallery")}
+              description={t("wabiGallery.description")}
+            />
+          )}
+
+          {!useEventShowcase && wabiEventsSection}
+        </div>
+      ) : (
+        slug === "filiale-03" &&
+        sisterSubsidiaries.length > 0 && (
+          <WabiSabiEstablishmentsSection
+            subsidiaries={sisterSubsidiaries}
+            title={t("wabiEstablishments.title")}
+            description={t("wabiEstablishments.description")}
+            variant="k-lounge"
+          />
+        )
       )}
 
       {subsidiary.aboutSection && slug === "filiale-04" && (
@@ -340,33 +393,27 @@ export default async function SubsidiaryPage({ params }: Props) {
         </section>
       )}
 
-      {galleryItems.length > 0 && slug === "filiale-02" ? (
-        <WabiSabiImmersiveGallery
+      {galleryItems.length > 0 && slug === "filiale-03" ? (
+        <KLoungeMarqueeGallery
           items={galleryItems}
           title={t("gallery")}
-          description={t("wabiGallery.description")}
+          description={t("kLoungeGallery.description")}
         />
       ) : (
-        slug !== "filiale-03" && standardGallerySection
+        slug !== "filiale-02" && slug !== "filiale-03" && standardGallerySection
       )}
 
       {subsidiary.aboutSection && slug === "filiale-03" && (
         <SubsidiaryEditorialAbout content={subsidiary.aboutSection} />
       )}
 
-      {galleryItems.length > 0 && slug === "filiale-03" && (
-        <KLoungeMarqueeGallery
-          items={galleryItems}
-          title={t("gallery")}
-          description={t("kLoungeGallery.description")}
-        />
-      )}
-
       {subsidiary.aboutSection && slug !== "filiale-04" && slug !== "filiale-02" && slug !== "filiale-03" && (
         <SubsidiaryEditorialAbout content={subsidiary.aboutSection} />
       )}
 
-      {!useEventShowcase && standardEventsSection}
+      {slug !== "filiale-02" &&
+        !useEventShowcase &&
+        standardEventsSection}
 
       {slug === "filiale-02" ? (
         <WabiSabiPracticalSection

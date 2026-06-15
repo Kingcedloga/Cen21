@@ -12,10 +12,22 @@
     clamp(3.5rem, 8vw, 6rem)
     0
     clamp(3rem, 7vw, 5.5rem);
-  background-color: var(--sub-bg, #0b2f49);
-  background-image:
-    radial-gradient(ellipse 72% 48% at 50% 0%, rgb(255 255 255 / 0.04) 0%, transparent 58%),
-    radial-gradient(ellipse 58% 42% at 88% 100%, rgb(225 198 118 / 0.05) 0%, transparent 55%);
+}
+
+.wabi-immersive-gallery.wabi-sabi-beige-band .wabi-immersive-gallery__title {
+  color: var(--wabi-band-blue);
+}
+
+.wabi-immersive-gallery.wabi-sabi-beige-band .wabi-immersive-gallery__description {
+  color: rgb(11 47 73 / 0.68);
+}
+
+.wabi-immersive-gallery.wabi-sabi-beige-band .wabi-immersive-gallery__fade--left {
+  background: linear-gradient(90deg, var(--wabi-band-beige) 0%, transparent 100%);
+}
+
+.wabi-immersive-gallery.wabi-sabi-beige-band .wabi-immersive-gallery__fade--right {
+  background: linear-gradient(270deg, var(--wabi-band-beige) 0%, transparent 100%);
 }
 
 .wabi-immersive-gallery__header {

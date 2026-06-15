@@ -1,0 +1,47 @@
+/* Wabi Sabi — événements à venir (surface beige) */
+
+.wabi-sabi-events-section {
+  padding:
+    clamp(3.5rem, 8vw, 6rem)
+    clamp(1.25rem, 4.5vw, 3.5rem);
+}
+
+.wabi-sabi-beige-flow > .wabi-sabi-events-section {
+  padding-inline: clamp(1.25rem, 4.5vw, 3.5rem);
+}
+
+.wabi-sabi-events-section__inner {
+  margin-inline: auto;
+  max-width: 80rem;
+}
+
+.wabi-sabi-events-section__title {
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+}
+
+.wabi-sabi-events-section__empty {
+  margin: 0 0 2rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: clamp(0.9375rem, 1.4vw, 1.0625rem);
+  line-height: 1.72;
+  color: rgb(11 47 73 / 0.68);
+}
+
+.wabi-sabi-events-section__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .wabi-sabi-events-section__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .wabi-sabi-events-section__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

@@ -8,6 +8,7 @@ import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Link } from "@/i18n/navigation";
 import { cormorant } from "@/lib/fonts";
 
+import "@/styles/wabi-sabi-beige-band.css";
 import "@/styles/wabi-sabi-establishments.css";
 import "@/styles/k-lounge-establishments.css";
 
@@ -73,7 +74,7 @@ export function WabiSabiEstablishmentsSection({
     <section
       className={[
         "wabi-establishments",
-        variant === "k-lounge" ? "wabi-establishments--k-lounge" : "",
+        variant === "k-lounge" ? "wabi-establishments--k-lounge" : "wabi-sabi-beige-band",
         cormorant.variable,
       ]
         .filter(Boolean)

@@ -11,6 +11,7 @@ import type { GalleryCategory } from "@/lib/gallery-categories";
 import { GALLERY_CATEGORIES } from "@/lib/gallery-categories";
 import type { GalleryItem } from "@/lib/types";
 
+import "@/styles/wabi-sabi-beige-band.css";
 import "@/styles/wabi-sabi-immersive-gallery.css";
 
 type Props = {
@@ -76,7 +77,7 @@ export function WabiSabiImmersiveGallery({ items, title, description }: Props) {
   return (
     <section
       id="wabi-sabi-gallery"
-      className={`wabi-immersive-gallery ${cormorant.variable}`}
+      className={`wabi-immersive-gallery wabi-sabi-beige-band ${cormorant.variable}`}
       aria-labelledby="wabi-immersive-gallery-title"
       style={{ "--wabi-gallery-duration": `${durationSeconds}s` } as CSSProperties}
     >
