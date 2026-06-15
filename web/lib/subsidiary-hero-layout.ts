@@ -49,7 +49,7 @@ const HERO_CONTENT_BY_SLUG: Partial<Record<string, SubsidiaryHeroContent>> = {
 
 /** Visuel hero dédié (prioritaire sur `coverImage` pour la slide hero). */
 const HERO_IMAGE_BY_SLUG: Partial<Record<string, string>> = {
-  "filiale-02": "/filiales/photos/filiale-02/hero.png",
+  "filiale-02": "/filiales/photos/filiale-02/hero/01-salle-principale.jpg",
 };
 
 /**

@@ -346,18 +346,20 @@ export default async function SubsidiaryPage({ params }: Props) {
           title={t("gallery")}
           description={t("wabiGallery.description")}
         />
-      ) : galleryItems.length > 0 && slug === "filiale-03" ? (
+      ) : (
+        slug !== "filiale-03" && standardGallerySection
+      )}
+
+      {subsidiary.aboutSection && slug === "filiale-03" && (
+        <SubsidiaryEditorialAbout content={subsidiary.aboutSection} />
+      )}
+
+      {galleryItems.length > 0 && slug === "filiale-03" && (
         <KLoungeMarqueeGallery
           items={galleryItems}
           title={t("gallery")}
           description={t("kLoungeGallery.description")}
         />
-      ) : (
-        standardGallerySection
-      )}
-
-      {subsidiary.aboutSection && slug === "filiale-03" && (
-        <SubsidiaryEditorialAbout content={subsidiary.aboutSection} />
       )}
 
       {subsidiary.aboutSection && slug !== "filiale-04" && slug !== "filiale-02" && slug !== "filiale-03" && (

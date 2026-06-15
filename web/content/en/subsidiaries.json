@@ -43,31 +43,31 @@
       },
       "accentColor": "#e1c676",
       "brandLogo": "/filiales/logos/filiale-02.png",
-      "coverImage": "/filiales/photos/filiale-02/hero.webp",
+      "coverImage": "/filiales/photos/filiale-02/hero/01-salle-principale.jpg",
       "heroSection": {
-        "image": "/filiales/photos/filiale-02/gallery/01-ao8a4357.webp",
-        "imageAlt": "Wabi Sabi — contemporary restaurant interior with soft lighting and refined design",
+        "image": "/filiales/photos/filiale-02/hero/01-salle-principale.jpg",
+        "imageAlt": "Wabi Sabi — main dining room with velvet seating and golden light",
         "slideIntervalMs": 6000,
         "slides": [
           {
-            "src": "/filiales/photos/filiale-02/gallery/01-ao8a4357.webp",
-            "alt": "Wabi Sabi — contemporary restaurant interior with soft lighting and refined design"
+            "src": "/filiales/photos/filiale-02/hero/01-salle-principale.jpg",
+            "alt": "Wabi Sabi — main dining room with velvet seating and golden light"
           },
           {
-            "src": "/filiales/photos/filiale-02/gallery/05-ao8a4494.webp",
-            "alt": "Wabi Sabi — lounge atmosphere and panoramic view over Kinshasa"
+            "src": "/filiales/photos/filiale-02/hero/02-bar.jpg",
+            "alt": "Wabi Sabi — contemporary bar with golden pendants and red stools"
           },
           {
-            "src": "/filiales/photos/filiale-02/gallery/08-ao8a4545.webp",
-            "alt": "Wabi Sabi — contemporary bar and signature cocktails"
+            "src": "/filiales/photos/filiale-02/hero/03-lounge.jpg",
+            "alt": "Wabi Sabi — premium lounge with red sofa and designer lighting"
           },
           {
-            "src": "/filiales/photos/filiale-02/gallery/03-ao8a4405.webp",
-            "alt": "Wabi Sabi — Robatayaki and contemporary Japanese cuisine"
+            "src": "/filiales/photos/filiale-02/hero/04-reception.jpg",
+            "alt": "Wabi Sabi — reception and illuminated Contemporary Resto-Bar sign"
           },
           {
-            "src": "/filiales/photos/filiale-02/gallery/14-ao8a4577.webp",
-            "alt": "Wabi Sabi — rooftop experience and refined hospitality"
+            "src": "/filiales/photos/filiale-02/hero/05-lounge-floral.jpg",
+            "alt": "Wabi Sabi — lounge area with cherry blossom tree and green bar"
           }
         ]
       },
