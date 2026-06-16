@@ -7,6 +7,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { SocialLinks } from "@/components/ui/SocialLinks";
 import { BLUR_PETROL } from "@/lib/image-blur";
+import { cormorant } from "@/lib/fonts";
 import { fadeUpTransition, fadeUpVariants, heroStaggerVariants } from "@/lib/motion";
 import { useHeroScrollProgress } from "@/lib/use-hero-scroll-progress";
 import type { SubsidiaryHeroContent, SubsidiaryHeroLayout } from "@/lib/subsidiary-hero-layout";
@@ -106,7 +107,9 @@ export function SubsidiaryHero({
         isCinematic
           ? "subsidiary-hero--cinematic items-center justify-center"
           : "items-end"
-      }${hideTitle && brandLogo ? " subsidiary-hero--brand-minimal" : ""}`}
+      }${hideTitle && brandLogo ? " subsidiary-hero--brand-minimal" : ""}${
+        isEditorialTagline ? ` ${cormorant.variable}` : ""
+      }`}
     >
       {useVideoBackground ? (
         <video
@@ -292,11 +295,11 @@ export function SubsidiaryHero({
         <motion.p
           className={`${hideSocialLinks ? "" : "mb-6"} ${
             isEditorialTagline
-              ? "subsidiary-hero__tagline subsidiary-hero__tagline--editorial max-w-2xl text-lg font-bold leading-snug tracking-[0.015em] sm:text-xl md:text-2xl lg:max-w-3xl lg:text-[1.65rem] lg:leading-snug"
+              ? "subsidiary-hero__tagline subsidiary-hero__tagline--editorial"
               : isCompactTypography
                 ? `text-sm leading-relaxed md:text-base ${isCinematic ? "max-w-lg" : "max-w-xl"}`
                 : `text-base leading-relaxed md:text-lg ${isCinematic ? "max-w-xl" : "max-w-2xl"}`
-          } ${isThemed ? "text-white/90" : "text-ivory/80"}`}
+          } ${isThemed && !isEditorialTagline ? "text-white/90" : isThemed ? "" : "text-ivory/80"}`}
           variants={reduced ? undefined : fadeUpVariants}
           transition={fadeUpTransition}
         >

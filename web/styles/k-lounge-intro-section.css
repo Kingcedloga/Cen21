@@ -192,13 +192,14 @@
     flex-direction: column;
   }
 
-  .klounge-intro__visual {
-    order: -1;
-    min-height: clamp(18rem, 62vw, 26rem);
-  }
-
   .klounge-intro__inset {
     width: min(100%, 20rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .klounge-intro__visual {
+    display: none;
   }
 }
 
