@@ -158,6 +158,8 @@ export type Subsidiary = {
   aboutSection?: SubsidiaryAboutSection;
   /** Témoignages clients (Wabi Sabi). */
   testimonialsSection?: SubsidiaryTestimonialsSection;
+  /** Site officiel externe — les liens filiale pointent hors de Cen21 (ex. Pain Quotidien). */
+  externalUrl?: string;
 };
 
 export type SubsidiaryTestimonial = {

@@ -1,26 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
 import { useRouter } from "next/navigation";
 import { ArrowUpRight } from "@/lib/icons";
 
+import { SubsidiaryHrefLink } from "@/components/navigation/SubsidiaryHrefLink";
 import { useSectorLabel } from "@/lib/use-sector-label";
 import { BLUR_PETROL } from "@/lib/image-blur";
+import { prefetchSubsidiaryRoute } from "@/lib/subsidiary-links";
 import type { Subsidiary } from "@/lib/types";
 
 export function SubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }) {
   const sectorLabel = useSectorLabel(subsidiary.sector);
   const router = useRouter();
-  const href = `/filiales/${subsidiary.slug}`;
 
-  const onPrefetch = () => {
-    try {
-      router.prefetch(href);
-    } catch {
-      // best effort
-    }
-  };
+  const onPrefetch = () => prefetchSubsidiaryRoute(router, subsidiary);
 
   return (
     <article
@@ -29,9 +23,8 @@ export function SubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }) {
       onTouchStart={onPrefetch}
       className="group relative overflow-hidden rounded-2xl border border-white/12 bg-anthracite/45 shadow-[0_18px_40px_-22px_rgba(0,0,0,0.55)] transition-[transform,box-shadow,border-color] duration-luxe ease-out hover:-translate-y-1 hover:border-gold/45 hover:shadow-[0_26px_60px_-22px_rgba(212,173,101,0.32),0_18px_40px_-18px_rgba(0,0,0,0.65)]"
     >
-      <Link
-        href={href}
-        prefetch
+      <SubsidiaryHrefLink
+        subsidiary={subsidiary}
         className="absolute inset-0 z-20 cursor-pointer rounded-2xl focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-[-3px]"
         aria-label={`Découvrir ${subsidiary.name}`}
       />

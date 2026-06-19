@@ -1,0 +1,50 @@
+/* Millionaire Club — Nos Établissements (variant sombre doré) */
+
+.wabi-establishments--millionaire-club {
+  --wabi-establishments-blue: #c9a84c;
+  --wabi-establishments-beige: #000000;
+  --wabi-establishments-beige-deep: #000000;
+
+  background-color: #000000;
+  background-image:
+    radial-gradient(ellipse 80% 55% at 12% 8%, rgb(201 168 76 / 0.1) 0%, transparent 58%),
+    radial-gradient(ellipse 70% 50% at 88% 92%, rgb(201 168 76 / 0.06) 0%, transparent 55%);
+}
+
+.wabi-establishments--millionaire-club .wabi-establishments__description {
+  color: rgb(255 255 255 / 0.62);
+}
+
+.wabi-establishments--millionaire-club .wabi-establishments__link:hover,
+.wabi-establishments--millionaire-club .wabi-establishments__link:focus-visible {
+  background-color: rgb(201 168 76 / 0.08);
+}
+
+.wabi-establishments--millionaire-club .wabi-establishments__logo {
+  filter: grayscale(1) brightness(0) invert(1);
+  opacity: 0.72;
+}
+
+.wabi-establishments--millionaire-club .wabi-establishments__link:hover .wabi-establishments__logo,
+.wabi-establishments--millionaire-club .wabi-establishments__link:focus-visible .wabi-establishments__logo {
+  filter: grayscale(1) brightness(0) invert(1) sepia(1) saturate(2.5) hue-rotate(5deg);
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+.wabi-establishments--millionaire-club .wabi-establishments__name {
+  color: rgb(255 255 255 / 0.38);
+}
+
+.wabi-establishments--millionaire-club .wabi-establishments__link:hover .wabi-establishments__name,
+.wabi-establishments--millionaire-club .wabi-establishments__link:focus-visible .wabi-establishments__name {
+  color: #c9a84c;
+}
+
+.wabi-establishments--millionaire-club .wabi-establishments__fade--left {
+  background: linear-gradient(90deg, #000000 0%, transparent 100%);
+}
+
+.wabi-establishments--millionaire-club .wabi-establishments__fade--right {
+  background: linear-gradient(270deg, #000000 0%, transparent 100%);
+}

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Icon } from "@/components/ui/Icon";
 import { useLocale } from "next-intl";
 
-import { Link } from "@/i18n/navigation";
+import { SubsidiaryHrefLink } from "@/components/navigation/SubsidiaryHrefLink";
 import type { Locale } from "@/i18n/routing";
 import { getSubsidiaryBySlug } from "@/lib/content";
 import { BLUR_PETROL } from "@/lib/image-blur";
@@ -42,12 +42,12 @@ export function EventCard({ event }: { event: EventItem }) {
       </div>
       <div className="p-6 flex flex-col flex-1">
         {subsidiary && (
-          <Link
-            href={`/filiales/${subsidiary.slug}`}
+          <SubsidiaryHrefLink
+            subsidiary={subsidiary}
             className="text-gold text-xs tracking-[0.15em] uppercase mb-2 hover:underline cursor-pointer"
           >
             {subsidiary.name}
-          </Link>
+          </SubsidiaryHrefLink>
         )}
         <h3 className="font-[family-name:var(--font-dm-sans)] text-xl text-ivory mb-3">
           {event.title}

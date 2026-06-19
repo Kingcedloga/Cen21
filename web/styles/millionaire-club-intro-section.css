@@ -1,0 +1,106 @@
+/* Millionaire Club — intro post-hero (logo, réseaux, description) */
+
+.millionaire-intro {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #000000;
+  color: rgb(255 255 255 / 0.78);
+  border-bottom: 1px solid rgb(201 168 76 / 0.18);
+}
+
+.millionaire-intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 0%, rgb(201 168 76 / 0.12) 0%, transparent 62%),
+    radial-gradient(ellipse 50% 40% at 100% 100%, rgb(201 168 76 / 0.06) 0%, transparent 55%);
+}
+
+.millionaire-intro__inner {
+  position: relative;
+  z-index: 1;
+  margin-inline: auto;
+  max-width: 44rem;
+  padding-inline: clamp(1.25rem, 4vw, 2rem);
+  padding-block: clamp(2.75rem, 6vw, 4.25rem);
+}
+
+.millionaire-intro__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.millionaire-intro__logo-wrap {
+  width: min(100%, 14rem);
+}
+
+.millionaire-intro__logo {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.millionaire-intro__name {
+  margin: 0;
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: rgb(255 255 255 / 0.94);
+}
+
+.millionaire-intro__tagline {
+  margin: 0;
+  max-width: 32ch;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: clamp(0.9375rem, 1.65vw, 1.0625rem);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  color: rgb(255 255 255 / 0.72);
+}
+
+.millionaire-intro__social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.millionaire-intro__social .flex {
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.millionaire-intro__social a {
+  border: 1px solid rgb(201 168 76 / 0.28);
+  color: rgb(255 255 255 / 0.82);
+}
+
+.millionaire-intro__social a:hover,
+.millionaire-intro__social a:focus-visible {
+  border-color: rgb(201 168 76 / 0.55);
+  background: rgb(201 168 76 / 0.1);
+  color: #c9a84c;
+}
+
+@media (min-width: 768px) {
+  .millionaire-intro__inner {
+    max-width: 48rem;
+    padding-block: clamp(3rem, 5.5vw, 4.75rem);
+  }
+
+  .millionaire-intro__logo-wrap {
+    width: min(100%, 16rem);
+  }
+}
+
+[data-subsidiary-theme="millionaire-club"] .millionaire-intro__social a:focus-visible {
+  outline-color: #c9a84c;
+}

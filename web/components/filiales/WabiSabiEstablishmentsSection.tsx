@@ -5,15 +5,16 @@ import { useReducedMotion } from "framer-motion";
 import { useMemo, type CSSProperties } from "react";
 
 import { AnimateIn } from "@/components/ui/AnimateIn";
-import { Link } from "@/i18n/navigation";
+import { SubsidiaryHrefLink } from "@/components/navigation/SubsidiaryHrefLink";
 import { cormorant } from "@/lib/fonts";
+import type { SubsidiaryLinkTarget } from "@/lib/subsidiary-links";
 
 import "@/styles/wabi-sabi-beige-band.css";
 import "@/styles/wabi-sabi-establishments.css";
 import "@/styles/k-lounge-establishments.css";
+import "@/styles/millionaire-club-establishments.css";
 
-export type SisterSubsidiary = {
-  slug: string;
+export type SisterSubsidiary = SubsidiaryLinkTarget & {
   name: string;
   brandLogo: string;
 };
@@ -22,14 +23,14 @@ type Props = {
   subsidiaries: SisterSubsidiary[];
   title: string;
   description: string;
-  variant?: "wabi-sabi" | "k-lounge";
+  variant?: "wabi-sabi" | "k-lounge" | "millionaire-club";
 };
 
 function EstablishmentLogo({ subsidiary }: { subsidiary: SisterSubsidiary }) {
   return (
     <div className="wabi-establishments__item">
-      <Link
-        href={`/filiales/${subsidiary.slug}`}
+      <SubsidiaryHrefLink
+        subsidiary={subsidiary}
         className="wabi-establishments__link"
         aria-label={subsidiary.name}
       >
@@ -44,7 +45,7 @@ function EstablishmentLogo({ subsidiary }: { subsidiary: SisterSubsidiary }) {
           />
         </span>
         <span className="wabi-establishments__name">{subsidiary.name}</span>
-      </Link>
+      </SubsidiaryHrefLink>
     </div>
   );
 }
@@ -68,15 +69,22 @@ export function WabiSabiEstablishmentsSection({
   const loop = [...list, ...list];
 
   const sectionId =
-    variant === "k-lounge" ? "klounge-establishments-title" : "wabi-establishments-title";
+    variant === "k-lounge"
+      ? "klounge-establishments-title"
+      : variant === "millionaire-club"
+        ? "millionaire-establishments-title"
+        : "wabi-establishments-title";
+
+  const variantClass =
+    variant === "k-lounge"
+      ? "wabi-establishments--k-lounge"
+      : variant === "millionaire-club"
+        ? "wabi-establishments--millionaire-club"
+        : "wabi-sabi-beige-band";
 
   return (
     <section
-      className={[
-        "wabi-establishments",
-        variant === "k-lounge" ? "wabi-establishments--k-lounge" : "wabi-sabi-beige-band",
-        cormorant.variable,
-      ]
+      className={["wabi-establishments", variantClass, cormorant.variable]
         .filter(Boolean)
         .join(" ")}
       aria-labelledby={sectionId}

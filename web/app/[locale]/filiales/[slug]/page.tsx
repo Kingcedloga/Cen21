@@ -1,9 +1,10 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { EventCard } from "@/components/cards/EventCard";
 import { StickyMobileActions } from "@/components/filiales/StickyMobileActions";
 import { KLoungeIntroSection } from "@/components/filiales/KLoungeIntroSection";
+import { MillionaireClubIntroSection } from "@/components/filiales/MillionaireClubIntroSection";
 import { KLoungeMarqueeGallery } from "@/components/filiales/KLoungeMarqueeGallery";
 import { KLoungeReservationBanner } from "@/components/filiales/KLoungeReservationBanner";
 import { SubsidiaryContactBand } from "@/components/filiales/SubsidiaryContactBand";
@@ -82,6 +83,7 @@ export default async function SubsidiaryPage({ params }: Props) {
 
   const subsidiary = getSubsidiaryBySlug(l, slug);
   if (!subsidiary) notFound();
+  if (subsidiary.externalUrl) redirect(subsidiary.externalUrl);
 
   const pageTheme = getSubsidiaryPageTheme(slug);
   const isThemed = Boolean(pageTheme);
@@ -95,13 +97,14 @@ export default async function SubsidiaryPage({ params }: Props) {
   );
 
   const sisterSubsidiaries =
-    slug === "filiale-02" || slug === "filiale-03"
+    slug === "filiale-02" || slug === "filiale-03" || slug === "filiale-04"
       ? getSubsidiaries(l)
           .filter((s) => s.slug !== slug && s.brandLogo)
           .map((s) => ({
             slug: s.slug,
             name: s.name,
             brandLogo: s.brandLogo!,
+            externalUrl: s.externalUrl,
           }))
       : [];
 
@@ -301,7 +304,17 @@ export default async function SubsidiaryPage({ params }: Props) {
         <WabiSabiSpotlightSection content={subsidiary.spotlightSection} />
       )}
 
-      {slug !== "filiale-02" && breadcrumbSection}
+      {slug === "filiale-04" && (
+        <MillionaireClubIntroSection
+          name={subsidiary.name}
+          brandLogo={subsidiary.brandLogo}
+          tagline={subsidiary.tagline}
+          social={subsidiary.social}
+          accentColor={subsidiary.accentColor}
+        />
+      )}
+
+      {slug !== "filiale-02" && slug !== "filiale-04" && breadcrumbSection}
 
       {slug === "filiale-03" && subsidiary.introSection && (
         <KLoungeIntroSection content={subsidiary.introSection} />
@@ -315,7 +328,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         />
       )}
 
-      {slug !== "filiale-02" && slug !== "filiale-03" && (
+      {slug !== "filiale-02" && slug !== "filiale-03" && slug !== "filiale-04" && (
       <section className="px-4 py-12 md:px-6 md:py-16 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <AnimateIn>
@@ -401,6 +414,15 @@ export default async function SubsidiaryPage({ params }: Props) {
         />
       ) : (
         slug !== "filiale-02" && slug !== "filiale-03" && standardGallerySection
+      )}
+
+      {slug === "filiale-04" && sisterSubsidiaries.length > 0 && (
+        <WabiSabiEstablishmentsSection
+          subsidiaries={sisterSubsidiaries}
+          title={t("wabiEstablishments.title")}
+          description={t("wabiEstablishments.description")}
+          variant="millionaire-club"
+        />
       )}
 
       {subsidiary.aboutSection && slug === "filiale-03" && (

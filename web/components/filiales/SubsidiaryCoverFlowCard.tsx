@@ -4,9 +4,10 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 
-import { Link } from "@/i18n/navigation";
+import { SubsidiaryHrefLink } from "@/components/navigation/SubsidiaryHrefLink";
 import { useSectorLabel } from "@/lib/use-sector-label";
 import { BLUR_PETROL } from "@/lib/image-blur";
+import { prefetchSubsidiaryRoute } from "@/lib/subsidiary-links";
 import type { Subsidiary } from "@/lib/types";
 
 function locationLine(subsidiary: Subsidiary, sectorLabel: string) {
@@ -30,15 +31,8 @@ export function SubsidiaryCoverFlowCard({
   const sectorLabel = useSectorLabel(subsidiary.sector);
   const meta = `${sectorLabel} · ${locationLine(subsidiary, sectorLabel)}`;
   const router = useRouter();
-  const href = `/filiales/${subsidiary.slug}`;
 
-  const onPrefetch = () => {
-    try {
-      router.prefetch(href);
-    } catch {
-      // best effort
-    }
-  };
+  const onPrefetch = () => prefetchSubsidiaryRoute(router, subsidiary);
 
   const inner = (
     <>
@@ -118,16 +112,15 @@ export function SubsidiaryCoverFlowCard({
 
   if (isActive) {
     return (
-      <Link
-        href={href}
-        prefetch
+      <SubsidiaryHrefLink
+        subsidiary={subsidiary}
         onMouseEnter={onPrefetch}
         onFocus={onPrefetch}
         className={`${shellClass} block cursor-pointer`}
         aria-label={t("discover", { name: subsidiary.name })}
       >
         {inner}
-      </Link>
+      </SubsidiaryHrefLink>
     );
   }
 

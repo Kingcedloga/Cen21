@@ -19,6 +19,10 @@ export type SubsidiaryHeroContent = {
   imageQuality?: number;
   /** Masquer les liens sociaux dans le hero. */
   hideSocialLinks?: boolean;
+  /** Masquer le logo dans le hero (contenu déplacé sous le hero). */
+  hideLogo?: boolean;
+  /** Masquer la tagline dans le hero. */
+  hideTagline?: boolean;
 };
 
 const HERO_LAYOUT_BY_SLUG: Partial<Record<string, SubsidiaryHeroLayout>> = {
@@ -35,8 +39,9 @@ const HERO_CONTENT_BY_SLUG: Partial<Record<string, SubsidiaryHeroContent>> = {
   "filiale-04": {
     hideSectorLabel: true,
     hideTitle: true,
-    logoSize: "compact",
-    typographyScale: "compact",
+    hideLogo: true,
+    hideTagline: true,
+    hideSocialLinks: true,
   },
   "filiale-02": {
     hideSectorLabel: true,

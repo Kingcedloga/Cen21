@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { routing } from "@/i18n/routing";
-import { getAllSubsidiarySlugs } from "@/lib/content";
+import { getAllSubsidiarySlugs, getSubsidiaryBySlug } from "@/lib/content";
 import { getSiteOrigin } from "@/lib/site-url";
 
 const STATIC_PATHS = [
@@ -44,6 +44,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
 
     for (const slug of getAllSubsidiarySlugs(locale)) {
+      const subsidiary = getSubsidiaryBySlug(locale, slug);
+      if (subsidiary?.externalUrl) continue;
+
       const localized = localePath(locale, `/filiales/${slug}`);
       entries.push({
         url: `${origin}${localized}`,

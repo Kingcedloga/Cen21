@@ -57,6 +57,10 @@ export function SubsidiaryHero({
   const hideSectorLabel = contentConfig.hideSectorLabel ?? false;
   const hideTitle = contentConfig.hideTitle ?? false;
   const hideSocialLinks = contentConfig.hideSocialLinks ?? false;
+  const hideLogo = contentConfig.hideLogo ?? false;
+  const hideTagline = contentConfig.hideTagline ?? false;
+  const heroContentHidden =
+    hideLogo && hideTagline && hideSocialLinks && hideTitle && hideSectorLabel;
   const logoSize =
     contentConfig.logoSize ?? (isCinematic ? "cinematic" : "default");
   const isEditorialTagline = contentConfig.taglineVariant === "editorial";
@@ -219,6 +223,11 @@ export function SubsidiaryHero({
         </>
       )}
 
+      {heroContentHidden && hideTitle && (
+        <h1 className="sr-only">{name}</h1>
+      )}
+
+      {!heroContentHidden && (
       <motion.div
         className={`relative z-10 mx-auto w-full max-w-7xl px-6 md:px-10 ${
           isCinematic
@@ -230,7 +239,7 @@ export function SubsidiaryHero({
         animate={reduced ? undefined : "visible"}
         variants={reduced ? undefined : heroStaggerVariants}
       >
-        {brandLogo && (
+        {brandLogo && !hideLogo && (
           <motion.div
             className={`subsidiary-hero__logo-row flex ${
               isCinematic
@@ -292,6 +301,7 @@ export function SubsidiaryHero({
             {name}
           </motion.h1>
         )}
+        {!hideTagline && (
         <motion.p
           className={`${hideSocialLinks ? "" : "mb-6"} ${
             isEditorialTagline
@@ -305,6 +315,7 @@ export function SubsidiaryHero({
         >
           {tagline}
         </motion.p>
+        )}
         {!hideSocialLinks && (
         <motion.div
           className={isCinematic ? "flex justify-center" : undefined}
@@ -315,6 +326,7 @@ export function SubsidiaryHero({
         </motion.div>
         )}
       </motion.div>
+      )}
     </section>
   );
 }

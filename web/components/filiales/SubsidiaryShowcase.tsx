@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
 import { ArrowUpRight, ICON_STROKE, sectorIcons } from "@/lib/icons";
+import { SubsidiaryHrefLink } from "@/components/navigation/SubsidiaryHrefLink";
 import { useSectorLabel } from "@/lib/use-sector-label";
 import type { Subsidiary } from "@/lib/types";
 
@@ -39,13 +39,13 @@ export function SubsidiaryShowcaseFeatured({ subsidiary }: { subsidiary: Subsidi
         <p className="mt-2 max-w-md text-sm leading-relaxed text-ivory/85 md:text-base">
           {subsidiary.tagline}
         </p>
-        <Link
-          href={`/filiales/${subsidiary.slug}`}
+        <SubsidiaryHrefLink
+          subsidiary={subsidiary}
           className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-medium text-ivory transition-colors hover:text-gold cursor-pointer"
         >
           Découvrir
           <span aria-hidden>→</span>
-        </Link>
+        </SubsidiaryHrefLink>
       </div>
     </article>
   );
@@ -72,13 +72,13 @@ export function SubsidiaryShowcaseCompact({ subsidiary }: { subsidiary: Subsidia
             {subsidiary.tagline}
           </p>
         </div>
-        <Link
-          href={`/filiales/${subsidiary.slug}`}
+        <SubsidiaryHrefLink
+          subsidiary={subsidiary}
           className="absolute bottom-3 right-3 flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-petrol/90 text-ivory shadow-md backdrop-blur-sm transition-all hover:border-gold/60 hover:bg-gold hover:text-petrol md:hidden cursor-pointer"
           aria-label={`Découvrir ${subsidiary.name}`}
         >
           <ArrowUpRight className="h-4 w-4" />
-        </Link>
+        </SubsidiaryHrefLink>
       </div>
 
       <div className="relative hidden w-[34%] max-w-[11rem] shrink-0 md:block lg:max-w-[13rem]">
@@ -90,13 +90,13 @@ export function SubsidiaryShowcaseCompact({ subsidiary }: { subsidiary: Subsidia
           sizes="200px"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-ivory/[0.12] to-transparent" />
-        <Link
-          href={`/filiales/${subsidiary.slug}`}
+        <SubsidiaryHrefLink
+          subsidiary={subsidiary}
           className="absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-petrol/85 text-ivory shadow-lg backdrop-blur-sm transition-all hover:border-gold/50 hover:bg-gold hover:text-petrol cursor-pointer"
           aria-label={`Découvrir ${subsidiary.name}`}
         >
           <ArrowUpRight className="h-4 w-4" />
-        </Link>
+        </SubsidiaryHrefLink>
       </div>
     </article>
   );
