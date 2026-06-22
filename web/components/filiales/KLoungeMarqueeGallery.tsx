@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useReducedMotion } from "framer-motion";
-import { useMemo, type CSSProperties } from "react";
+import { useCallback, useMemo, useRef, useState, type CSSProperties } from "react";
 
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { cormorant } from "@/lib/fonts";
@@ -39,11 +39,20 @@ function PanelFigure({ item }: { item: GalleryItem }) {
 export function KLoungeMarqueeGallery({ items, title, description }: Props) {
   const reduced = useReducedMotion() ?? false;
   const list = items.filter((item) => item.src);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const [cursorVisible, setCursorVisible] = useState(false);
 
   const durationSeconds = useMemo(
     () => Math.max(list.length * 5.5, 48),
     [list.length],
   );
+
+  const onMouseMove = useCallback((e: React.MouseEvent) => {
+    if (cursorRef.current) {
+      cursorRef.current.style.left = `${e.clientX}px`;
+      cursorRef.current.style.top = `${e.clientY}px`;
+    }
+  }, []);
 
   if (list.length === 0) return null;
 
@@ -65,7 +74,13 @@ export function KLoungeMarqueeGallery({ items, title, description }: Props) {
         </AnimateIn>
       </div>
 
-      <div className="klounge-marquee-gallery__viewport" aria-label={title}>
+      <div
+        className="klounge-marquee-gallery__viewport"
+        aria-label={title}
+        onMouseMove={onMouseMove}
+        onMouseEnter={() => setCursorVisible(true)}
+        onMouseLeave={() => setCursorVisible(false)}
+      >
         <div
           className={`klounge-marquee-gallery__track${reduced ? " klounge-marquee-gallery__track--static" : ""}`}
         >
@@ -73,6 +88,14 @@ export function KLoungeMarqueeGallery({ items, title, description }: Props) {
             <PanelFigure key={`${item.id}-${index}`} item={item} />
           ))}
         </div>
+      </div>
+
+      <div
+        ref={cursorRef}
+        className={`klounge-marquee-gallery__cursor${cursorVisible ? " klounge-marquee-gallery__cursor--visible" : ""}`}
+        aria-hidden
+      >
+        Voir
       </div>
     </section>
   );
