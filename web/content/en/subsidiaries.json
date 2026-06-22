@@ -323,7 +323,7 @@
       "brandLogo": "/filiales/logos/filiale-04.png",
       "coverImage": "/filiales/photos/filiale-04/cover.webp",
       "heroVideo": {
-        "src": "/hero.mp4",
+        "src": "/filiales/videos/filiale-03/hero-ambient.mp4",
         "poster": "/filiales/photos/filiale-04/cover.webp"
       },
       "galleryImages": [
