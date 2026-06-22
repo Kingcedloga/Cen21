@@ -43,8 +43,7 @@ export const MILLIONAIRE_CLUB_THEME: SubsidiaryPageTheme = {
     border: "rgba(201, 168, 76, 0.22)",
   },
   hero: {
-    overlayGradient:
-      "linear-gradient(to top, #000000 0%, rgba(0,0,0,0.72) 42%, rgba(0,0,0,0.25) 68%, transparent 100%), linear-gradient(90deg, rgba(0,0,0,0.82) 0%, transparent 48%), radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,168,76,0.14) 0%, transparent 58%)",
+    overlayGradient: "transparent",
     blurTint: "#0a0a0a",
   },
 };
