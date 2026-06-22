@@ -1,5 +1,6 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Mail, MapPin, Phone } from "@/lib/icons";
 import { usePathname } from "@/i18n/navigation";
 import {
@@ -12,6 +13,16 @@ import type { SiteConfig } from "@/lib/types";
 import { Logo } from "@/components/brand/Logo";
 import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
+import {
+  defaultScrollViewport,
+  fadeScaleTransition,
+  fadeScaleVariants,
+  fadeUpTransition,
+  fadeUpVariants,
+  footerStaggerContainerVariants,
+  ornamentLineTransition,
+  ornamentLineVariants,
+} from "@/lib/motion";
 
 import { NAV_PATHS } from "./nav-links";
 
@@ -74,6 +85,7 @@ export function FooterView({
   const subsidiaryTheme = getSubsidiaryNavbarTheme(pathname);
   const isThemed = subsidiaryTheme !== null;
 
+  const reduced = useReducedMotion();
   const quickCol1 = NAV_PATHS.slice(0, 3);
   const quickCol2 = NAV_PATHS.slice(3);
 
@@ -102,50 +114,76 @@ export function FooterView({
       />
 
       <div className="relative mx-auto max-w-7xl px-6 pb-12 pt-6 md:px-10 md:pb-16 md:pt-8">
-        <div className="subsidiary-footer__brand mb-12 text-center md:mb-14">
+        <motion.div
+          className="subsidiary-footer__brand mb-12 text-center md:mb-14"
+          initial={reduced ? false : "hidden"}
+          whileInView={reduced ? undefined : "visible"}
+          viewport={defaultScrollViewport}
+          variants={reduced ? undefined : footerStaggerContainerVariants}
+        >
           <div className="subsidiary-footer__crest relative flex w-full items-center">
-            <span
+            <motion.span
               className={`subsidiary-footer__rule subsidiary-footer__rule--left h-px min-h-px flex-1 ${
                 isThemed ? "" : "subsidiary-footer__rule--default"
               }`}
               aria-hidden
+              style={{ transformOrigin: "right center" }}
+              variants={reduced ? undefined : ornamentLineVariants}
+              transition={ornamentLineTransition}
             />
-            <div
+            <motion.div
               className={`subsidiary-footer__logo-badge relative z-[2] mx-6 flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-full border p-2 shadow-lg md:mx-8 md:h-24 md:w-24 md:p-2.5 ${
                 isThemed ? "" : "border-gold/40 bg-anthracite shadow-black/40"
               }`}
+              variants={reduced ? undefined : fadeScaleVariants}
+              transition={fadeScaleTransition}
             >
               <Logo variant="footer" />
-            </div>
-            <span
+            </motion.div>
+            <motion.span
               className={`subsidiary-footer__rule subsidiary-footer__rule--right h-px min-h-px flex-1 ${
                 isThemed ? "" : "subsidiary-footer__rule--default"
               }`}
               aria-hidden
+              style={{ transformOrigin: "left center" }}
+              variants={reduced ? undefined : ornamentLineVariants}
+              transition={ornamentLineTransition}
             />
           </div>
-          <p
+          <motion.p
             className={`mt-6 font-[family-name:var(--font-dm-sans)] text-2xl font-bold tracking-wide md:mt-7 md:text-3xl ${
               isThemed ? "subsidiary-footer__brand-title" : ""
             }`}
+            variants={reduced ? undefined : fadeUpVariants}
+            transition={fadeUpTransition}
           >
             {site.name}
-          </p>
-          <p
+          </motion.p>
+          <motion.p
             className={`mx-auto mt-2 max-w-md text-sm italic ${
               isThemed ? "subsidiary-footer__brand-tagline" : "text-taupe"
             }`}
+            variants={reduced ? undefined : fadeUpVariants}
+            transition={fadeUpTransition}
           >
             {site.tagline}
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div
+        <motion.div
           className={`grid grid-cols-1 gap-12 border-t pt-12 md:grid-cols-12 md:gap-10 md:pt-14 ${
             isThemed ? "subsidiary-footer__divider" : "border-white/10"
           }`}
+          initial={reduced ? false : "hidden"}
+          whileInView={reduced ? undefined : "visible"}
+          viewport={defaultScrollViewport}
+          variants={reduced ? undefined : footerStaggerContainerVariants}
         >
-          <div className="md:col-span-4">
+          <motion.div
+            className="md:col-span-4"
+            variants={reduced ? undefined : fadeUpVariants}
+            transition={fadeUpTransition}
+          >
             <p
               className={`mb-5 text-xs tracking-[0.25em] uppercase ${
                 isThemed ? "subsidiary-footer__heading" : "text-gold"
@@ -235,9 +273,13 @@ export function FooterView({
                 />
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="flex flex-col items-start justify-start gap-3 md:col-span-4 md:items-center md:pt-2">
+          <motion.div
+            className="flex flex-col items-start justify-start gap-3 md:col-span-4 md:items-center md:pt-2"
+            variants={reduced ? undefined : fadeUpVariants}
+            transition={fadeUpTransition}
+          >
             <Button href="/evenements">
               {labels.events}
               <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} aria-hidden />
@@ -246,9 +288,13 @@ export function FooterView({
               {labels.quickContact}
               <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} aria-hidden />
             </Button>
-          </div>
+          </motion.div>
 
-          <div className="md:col-span-4">
+          <motion.div
+            className="md:col-span-4"
+            variants={reduced ? undefined : fadeUpVariants}
+            transition={fadeUpTransition}
+          >
             <p
               className={`mb-5 text-xs tracking-[0.25em] uppercase ${
                 isThemed ? "subsidiary-footer__heading" : "text-gold"
@@ -290,8 +336,8 @@ export function FooterView({
                 ))}
               </ul>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         <div
           className={`mt-14 flex flex-col-reverse items-center justify-between gap-4 border-t pt-8 text-xs md:flex-row md:pt-10 ${

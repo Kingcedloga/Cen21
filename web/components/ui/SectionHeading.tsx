@@ -105,7 +105,7 @@ export function SectionHeading({
         >
           <motion.span
             aria-hidden
-            className={`block h-px w-7 shrink-0 sm:w-9 ${styles.line}`}
+            className={`block h-px w-7 shrink-0 sm:w-9 ornament-line-glow ${styles.line}`}
             style={{ transformOrigin: isCenter ? "right center" : "left center" }}
             {...lineMotion}
           />
@@ -128,7 +128,7 @@ export function SectionHeading({
               />
               <motion.span
                 aria-hidden
-                className={`block h-px w-7 shrink-0 bg-gradient-to-l from-transparent sm:w-9 ${
+                className={`block h-px w-7 shrink-0 bg-gradient-to-l from-transparent sm:w-9 ornament-line-glow ${
                   tone === "light" ? "to-gold-deep/75" : "to-gold/85"
                 }`}
                 style={{ transformOrigin: "left center" }}
