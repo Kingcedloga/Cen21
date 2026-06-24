@@ -5,6 +5,7 @@ import { EventCard } from "@/components/cards/EventCard";
 import { StickyMobileActions } from "@/components/filiales/StickyMobileActions";
 import { KLoungeIntroSection } from "@/components/filiales/KLoungeIntroSection";
 import { MillionaireClubIntroSection } from "@/components/filiales/MillionaireClubIntroSection";
+import { MillionaireClubScatteredGallery } from "@/components/filiales/MillionaireClubScatteredGallery";
 import { KLoungeMarqueeGallery } from "@/components/filiales/KLoungeMarqueeGallery";
 import { KLoungeReservationBanner } from "@/components/filiales/KLoungeReservationBanner";
 import { SubsidiaryContactBand } from "@/components/filiales/SubsidiaryContactBand";
@@ -406,14 +407,20 @@ export default async function SubsidiaryPage({ params }: Props) {
         </section>
       )}
 
-      {galleryItems.length > 0 && slug === "filiale-03" ? (
+      {galleryItems.length > 0 && slug === "filiale-04" ? (
+        <MillionaireClubScatteredGallery
+          items={galleryItems}
+          title={t("gallery")}
+          description={t("galleryDescription")}
+        />
+      ) : galleryItems.length > 0 && slug === "filiale-03" ? (
         <KLoungeMarqueeGallery
           items={galleryItems}
           title={t("gallery")}
           description={t("kLoungeGallery.description")}
         />
       ) : (
-        slug !== "filiale-02" && slug !== "filiale-03" && standardGallerySection
+        slug !== "filiale-02" && slug !== "filiale-03" && slug !== "filiale-04" && standardGallerySection
       )}
 
       {slug === "filiale-04" && sisterSubsidiaries.length > 0 && (
