@@ -1,15 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "@/lib/icons";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/Button";
 import { BLUR_PETROL } from "@/lib/image-blur";
-import { fadeUpTransition, fadeUpVariants, heroStaggerVariants } from "@/lib/motion";
+import { DURATION_S, EASE, fadeUpTransition, fadeUpVariants, heroStaggerVariants } from "@/lib/motion";
 
 export type HeroSlide = {
   src: string;
@@ -30,6 +30,14 @@ export function HeroCinematic({ slides, siteName, className = "" }: HeroCinemati
 
   const [index, setIndex] = useState(0);
   const reducedMotion = useReducedMotion() ?? false;
+
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+  const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0.3, 0.7]);
 
   const len = list.length;
   const safeIndex = len ? index % len : 0;
@@ -64,28 +72,43 @@ export function HeroCinematic({ slides, siteName, className = "" }: HeroCinemati
 
   return (
     <section
+      ref={sectionRef}
       className={`relative flex h-[clamp(220px,60dvh,520px)] shrink-0 items-end overflow-hidden ${className}`}
     >
-      {list.map((slide, i) => (
-        <div
-          key={`${slide.src}-${i}`}
-          className={`absolute inset-0 transition-opacity duration-hero-crossfade ease-out ${
-            i === safeIndex ? "opacity-100 z-0" : "opacity-0 z-0 pointer-events-none"
-          }`}
-          aria-hidden={i !== safeIndex}
-        >
-          <Image
-            src={slide.src}
-            alt={slide.alt}
-            fill
-            priority={i === 0}
-            placeholder="blur"
-            blurDataURL={BLUR_PETROL}
-            className="object-cover"
-            sizes="100vw"
-          />
-        </div>
-      ))}
+      <motion.div
+        className="absolute inset-0 will-change-transform"
+        style={reducedMotion ? undefined : { y: imageY }}
+      >
+        {list.map((slide, i) => (
+          <div
+            key={`${slide.src}-${i}`}
+            className={`absolute inset-0 h-[115%] transition-opacity duration-hero-crossfade ease-out ${
+              i === safeIndex ? "opacity-100 z-0" : "opacity-0 z-0 pointer-events-none"
+            }`}
+            aria-hidden={i !== safeIndex}
+          >
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              fill
+              priority={i === 0}
+              placeholder="blur"
+              blurDataURL={BLUR_PETROL}
+              className="object-cover"
+              sizes="100vw"
+            />
+          </div>
+        ))}
+      </motion.div>
+
+      <motion.div
+        aria-hidden
+        className="absolute inset-0 z-[1] bg-gradient-to-t from-petrol via-petrol/40 to-transparent"
+        style={reducedMotion ? undefined : { opacity: overlayOpacity }}
+        initial={reducedMotion ? false : { opacity: 0 }}
+        animate={reducedMotion ? undefined : { opacity: 1 }}
+        transition={{ duration: DURATION_S.grand, ease: EASE.luxury }}
+      />
 
       {len > 1 && (
         <>
@@ -111,21 +134,24 @@ export function HeroCinematic({ slides, siteName, className = "" }: HeroCinemati
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 pb-12 md:pb-14 pt-28 md:pt-32">
         <h1 className="sr-only">{siteName}</h1>
         <motion.div
-          className="flex flex-wrap gap-3 md:gap-4"
+          className="flex flex-col gap-5 md:gap-6"
           initial={reducedMotion ? false : "hidden"}
           animate={reducedMotion ? undefined : "visible"}
           variants={reducedMotion ? undefined : heroStaggerVariants}
         >
-          <motion.div
+          <motion.p
+            className="eyebrow text-[10.5px] font-medium uppercase text-gold sm:text-[11px]"
             variants={reducedMotion ? undefined : fadeUpVariants}
             transition={fadeUpTransition}
+          >
+            {t("tagline")}
+          </motion.p>
+          <motion.div
+            className="flex flex-wrap gap-3 md:gap-4"
+            variants={reducedMotion ? undefined : fadeUpVariants}
+            transition={{ ...fadeUpTransition, delay: 0.12 }}
           >
             <Button href="/filiales">{t("ctaSubsidiaries")}</Button>
-          </motion.div>
-          <motion.div
-            variants={reducedMotion ? undefined : fadeUpVariants}
-            transition={fadeUpTransition}
-          >
             <Button href="/contact" variant="secondary">
               {t("ctaContact")}
             </Button>

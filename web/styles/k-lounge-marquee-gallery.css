@@ -98,6 +98,46 @@
   .klounge-marquee-gallery__panel:hover .klounge-marquee-gallery__image {
     transform: scale(1.03);
   }
+
+  .klounge-marquee-gallery__panel {
+    cursor: none;
+  }
+
+  .klounge-marquee-gallery__cursor {
+    position: fixed;
+    z-index: 100;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 1px solid rgb(212 173 101 / 0.55);
+    background: rgb(212 173 101 / 0.12);
+    backdrop-filter: blur(8px);
+    color: #d4ad65;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+    transition:
+      opacity 200ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .klounge-marquee-gallery__cursor--visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@media not all and (hover: hover) {
+  .klounge-marquee-gallery__cursor {
+    display: none;
+  }
 }
 
 @media (max-width: 767px) {

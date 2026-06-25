@@ -227,6 +227,41 @@ export const routeTransitionMotion = {
   transition: { duration: DURATION_S.base, ease: EASE.outSoft },
 } as const;
 
+/* ── Icon pop — scale 0.6→1 + opacity pour icônes stat ─────────────── */
+
+export const iconPopVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.6 },
+  visible: { opacity: 1, scale: 1 },
+};
+
+export const iconPopTransition: Transition = {
+  duration: DURATION_S.base,
+  ease: EASE.spring,
+};
+
+/* ── Stat stagger container — 80ms entre chaque stat ───────────────── */
+
+export const statStaggerContainerVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: STAGGER.max,
+      delayChildren: 0,
+    },
+  },
+};
+
+/** Conteneur stagger pour footer — 60ms entre chaque colonne */
+export const footerStaggerContainerVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.06,
+      delayChildren: 0.1,
+    },
+  },
+};
+
 /* ── Viewport par défaut scroll-driven ───────────────────────────────── */
 
 export const defaultScrollViewport = {
