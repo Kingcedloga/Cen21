@@ -24,23 +24,26 @@ type Props = {
 function cardTransformStyle(
   index: number,
   activeIndex: number,
+  total: number,
   reduced: boolean,
 ): CSSProperties {
-  if (reduced) {
-    return {};
-  }
+  if (reduced) return {};
 
   const distance = index - activeIndex;
   const absDistance = Math.abs(distance);
-  const rotateY = distance * -22;
-  const scale = Math.max(0.72, 1 - absDistance * 0.1);
-  const translateZ = -absDistance * 55;
-  const opacity = Math.max(0.38, 1 - absDistance * 0.17);
+  const maxVisible = Math.min(Math.floor(total / 2), 4);
+
+  const rotateY = distance * -18;
+  const scale = absDistance === 0 ? 1.08 : Math.max(0.68, 1 - absDistance * 0.12);
+  const translateZ = absDistance === 0 ? 30 : -absDistance * 70;
+  const translateX = distance * 6;
+  const opacity = absDistance > maxVisible ? 0 : Math.max(0.3, 1 - absDistance * 0.2);
 
   return {
     "--mc-arc-rotate-y": `${rotateY}deg`,
     "--mc-arc-scale": scale,
     "--mc-arc-translate-z": `${translateZ}px`,
+    "--mc-arc-translate-x": `${translateX}px`,
     "--mc-arc-opacity": opacity,
   } as CSSProperties;
 }
@@ -52,6 +55,13 @@ export function MillionaireClubScatteredGallery({ items, title, description }: P
   const [activeIndex, setActiveIndex] = useState(() =>
     Math.min(Math.floor(items.length / 2), Math.max(items.length - 1, 0)),
   );
+
+  const scrollToIndex = useCallback((index: number) => {
+    const card = cardRefs.current[index];
+    if (card) {
+      card.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+    }
+  }, []);
 
   const updateActiveFromScroll = useCallback(() => {
     const viewport = viewportRef.current;
@@ -74,6 +84,33 @@ export function MillionaireClubScatteredGallery({ items, title, description }: P
 
     setActiveIndex(closest);
   }, []);
+
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === "ArrowLeft" && activeIndex > 0) {
+        e.preventDefault();
+        const next = activeIndex - 1;
+        setActiveIndex(next);
+        scrollToIndex(next);
+      } else if (e.key === "ArrowRight" && activeIndex < items.length - 1) {
+        e.preventDefault();
+        const next = activeIndex + 1;
+        setActiveIndex(next);
+        scrollToIndex(next);
+      }
+    },
+    [activeIndex, items.length, scrollToIndex],
+  );
+
+  const handleCardClick = useCallback(
+    (index: number) => {
+      if (index !== activeIndex) {
+        setActiveIndex(index);
+        scrollToIndex(index);
+      }
+    },
+    [activeIndex, scrollToIndex],
+  );
 
   useEffect(() => {
     const viewport = viewportRef.current;
@@ -116,11 +153,15 @@ export function MillionaireClubScatteredGallery({ items, title, description }: P
 
       <div className="mc-arc-gallery__stage">
         <div className="mc-arc-gallery__glow" aria-hidden="true" />
+        <div className="mc-arc-gallery__floor-reflection" aria-hidden="true" />
 
         <div
           ref={viewportRef}
           className="mc-arc-gallery__viewport"
           aria-label={title}
+          role="listbox"
+          tabIndex={0}
+          onKeyDown={handleKeyDown}
         >
           <div className="mc-arc-gallery__track">
             {items.map((item, index) => {
@@ -133,13 +174,19 @@ export function MillionaireClubScatteredGallery({ items, title, description }: P
                     cardRefs.current[index] = element;
                   }}
                   className={`mc-arc-gallery__card${isActive ? " is-active" : ""}`}
-                  style={cardTransformStyle(index, activeIndex, reduced)}
+                  style={cardTransformStyle(index, activeIndex, items.length, reduced)}
                   aria-current={isActive ? "true" : undefined}
+                  role="option"
+                  aria-selected={isActive}
+                  onClick={() => handleCardClick(index)}
                 >
                   <div className="mc-arc-gallery__card-inner">
-                    {isActive ? (
-                      <span className="mc-arc-gallery__shine" aria-hidden="true" />
-                    ) : null}
+                    {isActive && (
+                      <>
+                        <span className="mc-arc-gallery__shine" aria-hidden="true" />
+                        <span className="mc-arc-gallery__edge-glow" aria-hidden="true" />
+                      </>
+                    )}
                     <div className="mc-arc-gallery__image-wrap">
                       <Image
                         src={item.src}
@@ -148,7 +195,7 @@ export function MillionaireClubScatteredGallery({ items, title, description }: P
                         placeholder="blur"
                         blurDataURL={BLUR_PETROL}
                         className="mc-arc-gallery__image"
-                        sizes="(max-width: 639px) 72vw, (max-width: 1023px) 38vw, 16vw"
+                        sizes="(max-width: 639px) 72vw, (max-width: 1023px) 38vw, 18vw"
                       />
                     </div>
                   </div>
@@ -158,6 +205,23 @@ export function MillionaireClubScatteredGallery({ items, title, description }: P
           </div>
         </div>
       </div>
+
+      {items.length > 1 && (
+        <nav className="mc-arc-gallery__dots" aria-label="Gallery navigation">
+          {items.map((item, index) => (
+            <button
+              key={item.id}
+              className={`mc-arc-gallery__dot${index === activeIndex ? " is-active" : ""}`}
+              onClick={() => {
+                setActiveIndex(index);
+                scrollToIndex(index);
+              }}
+              aria-label={`Image ${index + 1} of ${items.length}`}
+              aria-current={index === activeIndex ? "true" : undefined}
+            />
+          ))}
+        </nav>
+      )}
     </section>
   );
 }
