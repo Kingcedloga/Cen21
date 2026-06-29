@@ -3,7 +3,7 @@ import { headers } from "next/headers";
 function normalizeOrigin(value: string): string {
   const trimmed = value.trim().replace(/\/+$/, "");
   if (/^https?:\/\//i.test(trimmed)) return trimmed;
-  return `https://${trimmed}`;
+  return `https://${trimmed}`; 
 }
 
 function originFromHost(host: string, proto?: string | null): string {
