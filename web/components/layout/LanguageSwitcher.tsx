@@ -1,9 +1,9 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { useTransition } from "react";
+import { useState } from "react";
 
-import { usePathname, useRouter } from "@/i18n/navigation";
+import { usePathname, getPathname } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import type { SubsidiaryNavbarTheme } from "@/lib/navbar-theme";
 
@@ -20,16 +20,15 @@ export function LanguageSwitcher({
   navbarTheme?: SubsidiaryNavbarTheme | null;
 }) {
   const locale = useLocale() as Locale;
-  const router = useRouter();
   const pathname = usePathname();
   const t = useTranslations("language");
-  const [pending, startTransition] = useTransition();
+  const [pending, setPending] = useState(false);
 
   const switchLocale = (next: Locale) => {
-    if (next === locale) return;
-    startTransition(() => {
-      router.replace(pathname, { locale: next });
-    });
+    if (next === locale || pending) return;
+    setPending(true);
+    const target = getPathname({ href: pathname, locale: next });
+    window.location.href = target;
   };
 
   const isBrand = navbarTheme !== null;
