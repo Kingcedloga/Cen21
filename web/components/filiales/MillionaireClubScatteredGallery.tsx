@@ -89,11 +89,19 @@ export function MillionaireClubScatteredGallery({ items, title, description }: P
       updateActiveFromScroll();
     });
 
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      viewport.scrollLeft += delta;
+    };
+
     viewport.addEventListener("scroll", updateActiveFromScroll, { passive: true });
+    viewport.addEventListener("wheel", onWheel, { passive: false });
     window.addEventListener("resize", updateActiveFromScroll);
 
     return () => {
       viewport.removeEventListener("scroll", updateActiveFromScroll);
+      viewport.removeEventListener("wheel", onWheel);
       window.removeEventListener("resize", updateActiveFromScroll);
     };
   }, [items.length, updateActiveFromScroll]);

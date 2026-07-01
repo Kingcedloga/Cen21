@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useReducedMotion } from "framer-motion";
-import { useMemo, type CSSProperties } from "react";
+import { useCallback, useEffect, useMemo, useRef, type CSSProperties } from "react";
 
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { cormorant } from "@/lib/fonts";
@@ -65,10 +65,92 @@ export function WabiSabiImmersiveGallery({ items, title, description }: Props) {
   const reduced = useReducedMotion() ?? false;
   const list = items.filter((item) => item.src);
 
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const offsetRef = useRef(0);
+  const hoverRef = useRef(false);
+  const isWheelingRef = useRef(false);
+  const wheelTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const rafRef = useRef<number | null>(null);
+
   const durationSeconds = useMemo(
     () => Math.max(list.length * 7, 56),
     [list.length],
   );
+
+  // JS-driven auto-scroll — same speed as CSS animation, but controllable
+  useEffect(() => {
+    if (reduced) return;
+    const track = trackRef.current;
+    if (!track) return;
+
+    track.style.animation = "none";
+
+    let halfWidth = 0;
+    let speed = 0;
+
+    const tick = () => {
+      if (!halfWidth) {
+        halfWidth = track.scrollWidth / 2;
+        if (halfWidth > 0) speed = halfWidth / (durationSeconds * 60);
+      }
+      if (!hoverRef.current && !isWheelingRef.current && halfWidth > 0) {
+        offsetRef.current = (offsetRef.current + speed) % halfWidth;
+      }
+      track.style.transform = `translateX(-${offsetRef.current}px)`;
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [reduced, durationSeconds]);
+
+  // Wheel → horizontal scroll through the marquee
+  const onWheel = useCallback(
+    (e: WheelEvent) => {
+      if (reduced) return;
+      e.preventDefault();
+      const track = trackRef.current;
+      if (!track) return;
+
+      const halfWidth = track.scrollWidth / 2;
+      if (halfWidth <= 0) return;
+
+      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      offsetRef.current =
+        ((offsetRef.current + delta * 0.9) % halfWidth + halfWidth) % halfWidth;
+
+      isWheelingRef.current = true;
+      if (wheelTimerRef.current) clearTimeout(wheelTimerRef.current);
+      wheelTimerRef.current = setTimeout(() => {
+        isWheelingRef.current = false;
+      }, 1500);
+    },
+    [reduced],
+  );
+
+  // Hover pauses auto-scroll; wheel listener converts vertical → horizontal
+  useEffect(() => {
+    if (reduced) return;
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    const onEnter = () => { hoverRef.current = true; };
+    const onLeave = () => { hoverRef.current = false; };
+
+    viewport.addEventListener("mouseenter", onEnter);
+    viewport.addEventListener("mouseleave", onLeave);
+    viewport.addEventListener("wheel", onWheel, { passive: false });
+
+    return () => {
+      viewport.removeEventListener("mouseenter", onEnter);
+      viewport.removeEventListener("mouseleave", onLeave);
+      viewport.removeEventListener("wheel", onWheel);
+      if (wheelTimerRef.current) clearTimeout(wheelTimerRef.current);
+    };
+  }, [reduced, onWheel]);
 
   if (list.length === 0) return null;
 
@@ -91,10 +173,12 @@ export function WabiSabiImmersiveGallery({ items, title, description }: Props) {
       </div>
 
       <div
+        ref={viewportRef}
         className="wabi-immersive-gallery__viewport"
         aria-label={title}
       >
         <div
+          ref={trackRef}
           className={`wabi-immersive-gallery__track${reduced ? " wabi-immersive-gallery__track--static" : ""}`}
         >
           {loop.map((item, index) => (
