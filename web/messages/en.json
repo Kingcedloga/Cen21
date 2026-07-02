@@ -243,6 +243,7 @@
   "legal": {
     "mentions": {
       "metaTitle": "Legal notice",
+      "metaDescription": "Legal information about the {name} website.",
       "title": "Legal notice",
       "editor": "Site publisher",
       "publication": "Publication director",
@@ -252,6 +253,7 @@
     },
     "privacy": {
       "metaTitle": "Privacy policy",
+      "metaDescription": "Personal data and privacy practices — {name}.",
       "title": "Privacy policy",
       "controller": "Data controller",
       "collected": "Data collected via the form",
@@ -260,6 +262,7 @@
     },
     "cookies": {
       "metaTitle": "Cookies",
+      "metaDescription": "Cookie and tracker information — {name}.",
       "title": "Cookie policy",
       "what": "What is a cookie?",
       "necessary": "Essential",
