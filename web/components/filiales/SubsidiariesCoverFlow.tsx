@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { SubsidiaryCoverFlowCard } from "@/components/filiales/SubsidiaryCoverFlowCard";
 import { DURATION_S } from "@/lib/motion";
-import type { Subsidiary } from "@/lib/types";
+import type { Subsidiary } from "@/lib/types"; 
 
 const AUTO_MS = 5500;
 const VISIBLE_RANGE = 3;
