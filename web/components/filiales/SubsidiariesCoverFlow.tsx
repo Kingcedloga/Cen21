@@ -203,20 +203,22 @@ export function SubsidiariesCoverFlow({
 
   // Troisième mode de navigation : scroll horizontal natif (molette desktop
   // + swipe tactile mobile/tablette). Écouteurs natifs non-passifs (plutôt que
-  // onWheel/onTouchMove React) pour pouvoir preventDefault le scroll vertical
-  // de la page uniquement quand l'intention est horizontale.
+  // onWheel/onTouchMove React) pour pouvoir preventDefault correctement.
+  // Wheel : capture systématique (voir commentaire ci-dessous). Touch : gating
+  // par axe pour ne bloquer le scroll vertical de page que sur swipe horizontal.
   useEffect(() => {
     const el = stageRef.current;
     if (!el || !mounted || len <= 1) return;
 
+    // Convention molette déjà en place ailleurs sur le site (KLoungeMarqueeGallery,
+    // MillionaireClubScatteredGallery) : tout wheel au-dessus du stage pilote la
+    // navigation horizontale, sans condition d'axe — un wheel vertical standard
+    // (deltaY seul, sans Shift) doit aussi faire défiler les slides.
     let wheelLocked = false;
     const onWheel = (e: WheelEvent) => {
-      const horizontalWheel = Math.abs(e.deltaX) > Math.abs(e.deltaY);
-      const shiftScroll = e.shiftKey && Math.abs(e.deltaY) > Math.abs(e.deltaX);
-      if (!horizontalWheel && !shiftScroll) return; // scroll vertical de page inchangé
       e.preventDefault();
       if (wheelLocked) return;
-      const delta = horizontalWheel ? e.deltaX : e.deltaY;
+      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
       if (Math.abs(delta) < WHEEL_THRESHOLD) return;
       wheelLocked = true;
       go(delta > 0 ? 1 : -1);
