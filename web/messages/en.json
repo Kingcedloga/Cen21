@@ -207,6 +207,11 @@
     "kLoungeGallery": {
       "description": "Signature dishes, creative cocktails, and nightlife atmosphere — a visual immersion at the heart of the K Lounge experience."
     },
+    "pinkberryHero": {
+      "cta": "Explore Now",
+      "previousVisual": "Previous visual",
+      "nextVisual": "Next visual"
+    },
     "wabiPhilosophy": {
       "sectionLabel": "Brand philosophy"
     },

@@ -5,6 +5,7 @@ import type { SubsidiaryPageTheme } from "@/lib/subsidiary-themes";
 import { MexicanaMotifLayer } from "@/components/filiales/MexicanaMotifLayer";
 
 import "@/styles/subsidiary-themes/pinkberry.css";
+import "@/styles/pinkberry-hero.css";
 import "@/styles/subsidiary-themes/wabi-sabi.css";
 import "@/styles/subsidiary-themes/millionaire-club.css";
 import "@/styles/subsidiary-themes/olive-verte.css";

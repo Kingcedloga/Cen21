@@ -8,6 +8,7 @@ import { MillionaireClubIntroSection } from "@/components/filiales/MillionaireCl
 import { MillionaireClubScatteredGallery } from "@/components/filiales/MillionaireClubScatteredGallery";
 import { KLoungeMarqueeGallery } from "@/components/filiales/KLoungeMarqueeGallery";
 import { KLoungeReservationBanner } from "@/components/filiales/KLoungeReservationBanner";
+import { PinkberryHero } from "@/components/filiales/PinkberryHero";
 import { SubsidiaryContactBand } from "@/components/filiales/SubsidiaryContactBand";
 import { SubsidiaryEditorialAbout } from "@/components/filiales/SubsidiaryEditorialAbout";
 import { SubsidiaryEventShowcase } from "@/components/filiales/SubsidiaryEventShowcase";
@@ -281,6 +282,8 @@ export default async function SubsidiaryPage({ params }: Props) {
             <WabiSabiDiningShowcase content={subsidiary.diningSection} />
           )}
         </div>
+      ) : slug === "filiale-09" ? (
+        <PinkberryHero subsidiary={subsidiary} />
       ) : (
         <SubsidiaryHero
           slides={heroSlides}
