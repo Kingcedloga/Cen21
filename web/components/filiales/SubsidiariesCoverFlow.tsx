@@ -1,13 +1,19 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { SubsidiaryCoverFlowCard } from "@/components/filiales/SubsidiaryCoverFlowCard";
+import { DURATION_S } from "@/lib/motion";
 import type { Subsidiary } from "@/lib/types";
 
 const AUTO_MS = 5500;
 const VISIBLE_RANGE = 3;
+// Verrou anti-rebond aligné sur la durée de transition des cartes (DURATION_S.luxe).
+const GESTURE_LOCK_MS = DURATION_S.luxe * 1000;
+const WHEEL_THRESHOLD = 8;
+const SWIPE_THRESHOLD = 40;
+const AXIS_INTENT_THRESHOLD = 10;
 
 type Breakpoint = "mobile" | "tablet" | "desktop";
 
@@ -175,6 +181,7 @@ export function SubsidiariesCoverFlow({
   const [active, setActive] = useState(0);
   const { bp, mounted } = useBreakpoint();
   const reduced = useReducedMotion();
+  const stageRef = useRef<HTMLDivElement>(null);
 
   const metrics = METRICS[bp];
   const wrapperH = compactLayout ? COMPACT_WRAPPER[bp] : metrics.wrapperH;
@@ -194,10 +201,80 @@ export function SubsidiariesCoverFlow({
     return () => window.clearInterval(t);
   }, [mounted, reduced, len, go]);
 
+  // Troisième mode de navigation : scroll horizontal natif (molette desktop
+  // + swipe tactile mobile/tablette). Écouteurs natifs non-passifs (plutôt que
+  // onWheel/onTouchMove React) pour pouvoir preventDefault le scroll vertical
+  // de la page uniquement quand l'intention est horizontale.
+  useEffect(() => {
+    const el = stageRef.current;
+    if (!el || !mounted || len <= 1) return;
+
+    let wheelLocked = false;
+    const onWheel = (e: WheelEvent) => {
+      const horizontalWheel = Math.abs(e.deltaX) > Math.abs(e.deltaY);
+      const shiftScroll = e.shiftKey && Math.abs(e.deltaY) > Math.abs(e.deltaX);
+      if (!horizontalWheel && !shiftScroll) return; // scroll vertical de page inchangé
+      e.preventDefault();
+      if (wheelLocked) return;
+      const delta = horizontalWheel ? e.deltaX : e.deltaY;
+      if (Math.abs(delta) < WHEEL_THRESHOLD) return;
+      wheelLocked = true;
+      go(delta > 0 ? 1 : -1);
+      window.setTimeout(() => {
+        wheelLocked = false;
+      }, GESTURE_LOCK_MS);
+    };
+
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchAxis: "horizontal" | "vertical" | null = null;
+    let touchLocked = false;
+
+    const onTouchStart = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+      touchAxis = null;
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      const dx = touch.clientX - touchStartX;
+      const dy = touch.clientY - touchStartY;
+
+      if (!touchAxis) {
+        if (Math.abs(dx) < AXIS_INTENT_THRESHOLD && Math.abs(dy) < AXIS_INTENT_THRESHOLD) return;
+        touchAxis = Math.abs(dx) > Math.abs(dy) ? "horizontal" : "vertical";
+      }
+      if (touchAxis === "vertical") return; // laisse le scroll de page natif
+
+      e.preventDefault();
+      if (touchLocked || Math.abs(dx) < SWIPE_THRESHOLD) return;
+      touchLocked = true;
+      go(dx < 0 ? 1 : -1);
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+      window.setTimeout(() => {
+        touchLocked = false;
+      }, GESTURE_LOCK_MS);
+    };
+
+    el.addEventListener("wheel", onWheel, { passive: false });
+    el.addEventListener("touchstart", onTouchStart, { passive: true });
+    el.addEventListener("touchmove", onTouchMove, { passive: false });
+
+    return () => {
+      el.removeEventListener("wheel", onWheel);
+      el.removeEventListener("touchstart", onTouchStart);
+      el.removeEventListener("touchmove", onTouchMove);
+    };
+  }, [go, mounted, len]);
+
   if (!len) return null;
 
   return (
     <motion.div
+      ref={stageRef}
       // Hauteurs Tailwind responsives (CSS-only) STRICTEMENT alignées sur METRICS.wrapperH :
       // mobile  520px  ↔ METRICS.mobile.wrapperH + deckYOffset (deck abaissé sous le titre)
       //   tablet  398px  ↔ METRICS.tablet.wrapperH = 398 (card 378px + 20px buffer)

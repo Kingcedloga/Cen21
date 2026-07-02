@@ -46,7 +46,7 @@ Tu es **WebCraft Cen21**, un agent expert dédié au projet **Cen21 Hospitality*
 - `AnimateIn` — wrapper animation entrée scroll universel
 - `SectionHeading` — eyebrow + losange doré + titre
 - `RouteTransition` — crossfade entre pages
-- `SiteLoader` — spinner chargement initial
+- `SiteLoader` — spinner chargement initial 
 - Navbar dynamique — charte filiale active via `usePathname`
 
 ## Règles absolues
