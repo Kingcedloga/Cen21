@@ -1,11 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import { useReducedMotion } from "framer-motion";
-import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { cormorant } from "@/lib/fonts";
+import { X } from "@/lib/icons";
+import { DURATION_S, EASE } from "@/lib/motion";
 import type { GalleryItem } from "@/lib/types";
 
 import "@/styles/k-lounge-marquee-gallery.css";
@@ -13,15 +22,34 @@ import "@/styles/k-lounge-marquee-gallery.css";
 const BLUR_BLACK =
   "data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxNiAxNic+PHJlY3Qgd2lkdGg9JzE2JyBoZWlnaHQ9JzE2JyBmaWxsPScjMDAwMDAwJy8+PC9zdmc+";
 
+// Shared layout transition — ease-luxury 480 ms
+const PANEL_TRANSITION = {
+  duration: DURATION_S.luxe,
+  ease: EASE.luxury,
+} as const;
+
 type Props = {
   items: GalleryItem[];
   title: string;
   description: string;
 };
 
-function PanelFigure({ item }: { item: GalleryItem }) {
+type PanelProps = {
+  item: GalleryItem;
+  layoutId: string;
+  onOpen: (item: GalleryItem, id: string) => void;
+};
+
+function PanelFigure({ item, layoutId, onOpen }: PanelProps) {
   return (
-    <figure className="klounge-marquee-gallery__panel">
+    <motion.figure
+      layoutId={layoutId}
+      className="klounge-marquee-gallery__panel"
+      onClick={() => onOpen(item, layoutId)}
+      whileTap={{ scale: 1.05, transition: { duration: 0.12 } }}
+      style={{ cursor: "pointer", originX: 0.5, originY: 0.5 }}
+      transition={PANEL_TRANSITION}
+    >
       <Image
         src={item.src}
         alt={item.alt}
@@ -32,7 +60,7 @@ function PanelFigure({ item }: { item: GalleryItem }) {
         placeholder="blur"
         blurDataURL={BLUR_BLACK}
       />
-    </figure>
+    </motion.figure>
   );
 }
 
@@ -46,14 +74,50 @@ export function KLoungeMarqueeGallery({ items, title, description }: Props) {
   const offsetRef = useRef(0);
   const hoverRef = useRef(false);
   const isWheelingRef = useRef(false);
+  const isOpenRef = useRef(false);
   const wheelTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const rafRef = useRef<number | null>(null);
+
   const [cursorVisible, setCursorVisible] = useState(false);
+  const [openId, setOpenId] = useState<string | null>(null);
+  const [openItem, setOpenItem] = useState<GalleryItem | null>(null);
 
   const durationSeconds = useMemo(
     () => Math.max(list.length * 5.5, 48),
     [list.length],
   );
+
+  // Lock body scroll while lightbox is open
+  useEffect(() => {
+    if (!openId) return;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [openId]);
+
+  // Escape key closes lightbox
+  useEffect(() => {
+    if (!openId) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") handleClose();
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [openId]);
+
+  const handleOpen = useCallback((item: GalleryItem, id: string) => {
+    setOpenId(id);
+    setOpenItem(item);
+    isOpenRef.current = true;
+  }, []);
+
+  const handleClose = useCallback(() => {
+    setOpenId(null);
+    setOpenItem(null);
+    isOpenRef.current = false;
+  }, []);
 
   // JS-driven auto-scroll — same speed as CSS animation, but controllable
   useEffect(() => {
@@ -71,7 +135,9 @@ export function KLoungeMarqueeGallery({ items, title, description }: Props) {
         halfWidth = track.scrollWidth / 2;
         if (halfWidth > 0) speed = halfWidth / (durationSeconds * 60);
       }
-      if (!hoverRef.current && !isWheelingRef.current && halfWidth > 0) {
+      const paused =
+        hoverRef.current || isWheelingRef.current || isOpenRef.current;
+      if (!paused && halfWidth > 0) {
         offsetRef.current = (offsetRef.current + speed) % halfWidth;
       }
       track.style.transform = `translateX(-${offsetRef.current}px)`;
@@ -87,7 +153,7 @@ export function KLoungeMarqueeGallery({ items, title, description }: Props) {
   // Wheel → horizontal scroll through the marquee
   const onWheel = useCallback(
     (e: WheelEvent) => {
-      if (reduced) return;
+      if (reduced || isOpenRef.current) return;
       e.preventDefault();
       const track = trackRef.current;
       if (!track) return;
@@ -95,7 +161,8 @@ export function KLoungeMarqueeGallery({ items, title, description }: Props) {
       const halfWidth = track.scrollWidth / 2;
       if (halfWidth <= 0) return;
 
-      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      const delta =
+        Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
       offsetRef.current =
         ((offsetRef.current + delta * 0.9) % halfWidth + halfWidth) % halfWidth;
 
@@ -147,44 +214,112 @@ export function KLoungeMarqueeGallery({ items, title, description }: Props) {
   const loop = [...list, ...list];
 
   return (
-    <section
-      id="k-lounge-gallery"
-      className={`klounge-marquee-gallery ${cormorant.variable}`}
-      aria-labelledby="klounge-marquee-gallery-title"
-      style={{ "--kl-gallery-duration": `${durationSeconds}s` } as CSSProperties}
-    >
-      <div className="klounge-marquee-gallery__header">
-        <AnimateIn>
-          <h2 id="klounge-marquee-gallery-title" className="klounge-marquee-gallery__title">
-            {title}
-          </h2>
-          <p className="klounge-marquee-gallery__description">{description}</p>
-        </AnimateIn>
-      </div>
-
-      <div
-        ref={viewportRef}
-        className="klounge-marquee-gallery__viewport"
-        aria-label={title}
-        onMouseMove={onMouseMove}
+    <>
+      <section
+        id="k-lounge-gallery"
+        className={`klounge-marquee-gallery ${cormorant.variable}`}
+        aria-labelledby="klounge-marquee-gallery-title"
+        style={{ "--kl-gallery-duration": `${durationSeconds}s` } as CSSProperties}
       >
-        <div
-          ref={trackRef}
-          className={`klounge-marquee-gallery__track${reduced ? " klounge-marquee-gallery__track--static" : ""}`}
-        >
-          {loop.map((item, index) => (
-            <PanelFigure key={`${item.id}-${index}`} item={item} />
-          ))}
+        <div className="klounge-marquee-gallery__header">
+          <AnimateIn>
+            <h2 id="klounge-marquee-gallery-title" className="klounge-marquee-gallery__title">
+              {title}
+            </h2>
+            <p className="klounge-marquee-gallery__description">{description}</p>
+          </AnimateIn>
         </div>
-      </div>
 
-      <div
-        ref={cursorRef}
-        className={`klounge-marquee-gallery__cursor${cursorVisible ? " klounge-marquee-gallery__cursor--visible" : ""}`}
-        aria-hidden
-      >
-        Voir
-      </div>
-    </section>
+        <div
+          ref={viewportRef}
+          className="klounge-marquee-gallery__viewport"
+          aria-label={title}
+          onMouseMove={onMouseMove}
+        >
+          <div
+            ref={trackRef}
+            className={`klounge-marquee-gallery__track${
+              reduced ? " klounge-marquee-gallery__track--static" : ""
+            }`}
+          >
+            {loop.map((item, index) => (
+              <PanelFigure
+                key={`${item.id}-${index}`}
+                item={item}
+                layoutId={`klounge-panel-${item.id}-${index}`}
+                onOpen={handleOpen}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div
+          ref={cursorRef}
+          className={`klounge-marquee-gallery__cursor${
+            cursorVisible ? " klounge-marquee-gallery__cursor--visible" : ""
+          }`}
+          aria-hidden
+        >
+          Voir
+        </div>
+      </section>
+
+      {/* Lightbox — shared layout animation from clicked panel */}
+      <AnimatePresence>
+        {openId && openItem && (
+          <motion.div
+            className="fixed inset-0 z-[200] flex items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: { duration: DURATION_S.base, ease: EASE.luxury },
+            }}
+            exit={{
+              opacity: 0,
+              transition: { duration: DURATION_S.base, ease: EASE.luxury },
+            }}
+            onClick={handleClose}
+            role="dialog"
+            aria-modal="true"
+            aria-label={openItem.alt}
+          >
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-black/88" aria-hidden />
+
+            {/* Close */}
+            <button
+              type="button"
+              onClick={handleClose}
+              className="absolute top-4 right-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/50 text-white/60 cursor-pointer transition-colors hover:text-[#d4ad65] hover:border-[#d4ad65]/40 focus-visible:outline-2 focus-visible:outline-[#d4ad65]"
+              aria-label="Fermer"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Expanded card — morphs from clicked panel via layoutId */}
+            <motion.figure
+              layoutId={openId}
+              transition={PANEL_TRANSITION}
+              className="relative z-[1] overflow-hidden"
+              style={{
+                width: "min(90vw, 28rem)",
+                aspectRatio: "13 / 21",
+                maxHeight: "85vh",
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={openItem.src}
+                alt={openItem.alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 639px) 90vw, 28rem"
+                priority
+              />
+            </motion.figure>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
