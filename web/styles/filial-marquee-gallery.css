@@ -1,0 +1,194 @@
+/* Galerie marquee filiale — structure K Lounge, palette par variant */
+/* Utilisé par WabiSabi (fmg--wabi-sabi) et Millionnaire (fmg--millionnaire) */
+
+.fmg {
+  --fmg-gap: 3px;
+  --fmg-panel-width: clamp(13rem, 21vw, 19rem);
+  --fmg-panel-height: clamp(21rem, 36vw, 30rem);
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding:
+    clamp(3.5rem, 8vw, 6rem)
+    0
+    clamp(3rem, 7vw, 5.5rem);
+  background-color: var(--fmg-bg, #000000);
+}
+
+/* —— Variant WabiSabi — fond beige, texte bleu pétrole —— */
+
+.fmg--wabi-sabi {
+  --fmg-bg: #f5f0e8;
+  --fmg-title-color: #0b2f49;
+  --fmg-desc-color: rgb(11 47 73 / 0.68);
+  --fmg-accent: #0b2f49;
+  --fmg-accent-rgb: 11 47 73;
+
+  background-image:
+    radial-gradient(ellipse 80% 55% at 12% 8%, rgb(255 255 255 / 0.55) 0%, transparent 58%),
+    radial-gradient(ellipse 70% 50% at 88% 92%, rgb(225 198 118 / 0.08) 0%, transparent 55%),
+    linear-gradient(180deg, #f5f0e8 0%, #ebe4d6 100%);
+}
+
+/* —— Variant Millionnaire — fond noir, accents dorés —— */
+
+.fmg--millionnaire {
+  --fmg-bg: #000000;
+  --fmg-title-color: #ffffff;
+  --fmg-desc-color: rgb(255 255 255 / 0.52);
+  --fmg-accent: #c9a84c;
+  --fmg-accent-rgb: 201 168 76;
+}
+
+/* —— En-tête —— */
+
+.fmg__header {
+  margin-inline: auto;
+  margin-bottom: clamp(2rem, 4.5vw, 3.25rem);
+  max-width: 90rem;
+  padding-inline: clamp(1.25rem, 4.5vw, 3.5rem);
+}
+
+.fmg__title {
+  margin: 0 0 clamp(0.75rem, 1.8vw, 1.125rem);
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  color: var(--fmg-title-color, rgb(255 255 255 / 0.92));
+}
+
+.fmg__description {
+  margin: 0;
+  max-width: 38rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: clamp(0.9375rem, 1.4vw, 1.0625rem);
+  line-height: 1.72;
+  color: var(--fmg-desc-color, rgb(255 255 255 / 0.62));
+}
+
+/* —— Viewport & track —— */
+
+.fmg__viewport {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  touch-action: pan-y pinch-zoom;
+}
+
+.fmg__track {
+  display: flex;
+  width: max-content;
+  gap: var(--fmg-gap);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.fmg__track--static {
+  overflow-x: auto;
+  width: 100%;
+  padding-inline: clamp(1rem, 3vw, 1.5rem);
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.fmg__track--static::-webkit-scrollbar {
+  display: none;
+}
+
+/* —— Panneaux portrait —— */
+
+.fmg__panel {
+  position: relative;
+  flex: 0 0 var(--fmg-panel-width);
+  width: var(--fmg-panel-width);
+  height: var(--fmg-panel-height);
+  margin: 0;
+  overflow: hidden;
+  background: rgb(0 0 0 / 0.04);
+}
+
+.fmg__image {
+  object-fit: cover;
+  object-position: center;
+  transition: transform 640ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* —— Curseur personnalisé —— */
+
+@media (hover: hover) and (pointer: fine) {
+  .fmg__panel:hover .fmg__image {
+    transform: scale(1.03);
+  }
+
+  .fmg__panel {
+    cursor: none;
+  }
+
+  .fmg__cursor {
+    position: fixed;
+    z-index: 100;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 1px solid rgb(var(--fmg-accent-rgb, 212 173 101) / 0.55);
+    background: rgb(var(--fmg-accent-rgb, 212 173 101) / 0.12);
+    backdrop-filter: blur(8px);
+    color: var(--fmg-accent, #d4ad65);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+    transition:
+      opacity 200ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .fmg__cursor--visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@media not all and (hover: hover) {
+  .fmg__cursor {
+    display: none;
+  }
+}
+
+/* —— Responsive —— */
+
+@media (max-width: 767px) {
+  .fmg {
+    --fmg-panel-width: clamp(11rem, 46vw, 15rem);
+    --fmg-panel-height: clamp(18rem, 68vw, 24rem);
+    --fmg-gap: 2px;
+  }
+
+  .fmg__track--static .fmg__panel {
+    scroll-snap-align: start;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .fmg {
+    --fmg-panel-width: clamp(12rem, 24vw, 17rem);
+    --fmg-panel-height: clamp(19rem, 38vw, 27rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fmg__panel .fmg__image {
+    transition: none;
+  }
+}
