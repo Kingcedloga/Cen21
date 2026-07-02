@@ -7,7 +7,6 @@ import { SubsidiaryCoverFlowCard } from "@/components/filiales/SubsidiaryCoverFl
 import { DURATION_S } from "@/lib/motion";
 import type { Subsidiary } from "@/lib/types"; 
 
-const AUTO_MS = 5500;
 const VISIBLE_RANGE = 3;
 // Verrou anti-rebond aligné sur la durée de transition des cartes (DURATION_S.luxe).
 const GESTURE_LOCK_MS = DURATION_S.luxe * 1000;
@@ -194,12 +193,6 @@ export function SubsidiariesCoverFlow({
     },
     [len],
   );
-
-  useEffect(() => {
-    if (!mounted || reduced || len <= 1) return;
-    const t = window.setInterval(() => go(1), AUTO_MS);
-    return () => window.clearInterval(t);
-  }, [mounted, reduced, len, go]);
 
   // Troisième mode de navigation : scroll horizontal natif (molette desktop
   // + swipe tactile mobile/tablette). Écouteurs natifs non-passifs (plutôt que
