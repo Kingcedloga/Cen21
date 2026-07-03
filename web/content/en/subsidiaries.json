@@ -545,6 +545,21 @@
         "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800&q=80",
         "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800&q=80"
       ],
+      "storySection": {
+        "eyebrow": "Our Story",
+        "title": "Fresh & Fun, One Swirl at a Time",
+        "aboutTitle": "About Pinkberry",
+        "aboutText": "Born from a love of clean, feel-good treats, Pinkberry brings Kinshasa a taste of real fruit, tangy frozen yogurt, and gourmet toppings — a refreshing ritual for every mood and every day.",
+        "signatureName": "The Pinkberry Team",
+        "overviewTitle": "Pinkberry Overview",
+        "overviewText": "Every cup is made to order, layered with fresh flavours and finished with toppings chosen just for you.",
+        "highlights": [
+          "Real fruit, real flavour",
+          "Gourmet toppings bar",
+          "Fresh, made-to-order cups"
+        ],
+        "ctaLabel": "Contact Us"
+      },
       "featured": false
     },
     {

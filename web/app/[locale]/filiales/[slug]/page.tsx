@@ -9,6 +9,7 @@ import { MillionaireClubScatteredGallery } from "@/components/filiales/Millionai
 import { KLoungeMarqueeGallery } from "@/components/filiales/KLoungeMarqueeGallery";
 import { KLoungeReservationBanner } from "@/components/filiales/KLoungeReservationBanner";
 import { PinkberryHero } from "@/components/filiales/PinkberryHero";
+import { PinkberryStorySection } from "@/components/filiales/PinkberryStorySection";
 import { SubsidiaryContactBand } from "@/components/filiales/SubsidiaryContactBand";
 import { SubsidiaryEditorialAbout } from "@/components/filiales/SubsidiaryEditorialAbout";
 import { SubsidiaryEventShowcase } from "@/components/filiales/SubsidiaryEventShowcase";
@@ -297,6 +298,15 @@ export default async function SubsidiaryPage({ params }: Props) {
           backgroundVideo={heroVideo}
           layout={getSubsidiaryHeroLayout(slug)}
           contentConfig={getSubsidiaryHeroContent(slug)}
+        />
+      )}
+
+      {slug === "filiale-09" && subsidiary.storySection && (
+        <PinkberryStorySection
+          content={subsidiary.storySection}
+          backgroundImage={galleryEntrySrc(subsidiary.galleryImages[0])}
+          productImage={subsidiary.coverImage}
+          name={subsidiary.name}
         />
       )}
 

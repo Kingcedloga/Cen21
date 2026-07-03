@@ -545,6 +545,21 @@
         "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800&q=80",
         "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800&q=80"
       ],
+      "storySection": {
+        "eyebrow": "Notre histoire",
+        "title": "Frais et gourmand, à chaque cuillère",
+        "aboutTitle": "À propos de Pinkberry",
+        "aboutText": "Né d'un amour pour les plaisirs sains et gourmands, Pinkberry apporte à Kinshasa de vrais fruits, un yaourt glacé rafraîchissant et des toppings gourmets — un rituel frais pour chaque humeur, chaque jour.",
+        "signatureName": "L'équipe Pinkberry",
+        "overviewTitle": "Aperçu Pinkberry",
+        "overviewText": "Chaque coupe est préparée sur place, garnie de saveurs fraîches et de toppings choisis pour vous.",
+        "highlights": [
+          "De vrais fruits, du vrai goût",
+          "Bar à toppings gourmets",
+          "Coupes fraîches, préparées à la demande"
+        ],
+        "ctaLabel": "Nous contacter"
+      },
       "featured": false
     },
     {

@@ -158,8 +158,23 @@ export type Subsidiary = {
   aboutSection?: SubsidiaryAboutSection;
   /** Témoignages clients (Wabi Sabi). */
   testimonialsSection?: SubsidiaryTestimonialsSection;
+  /** Section « Notre histoire » 3 colonnes (Pinkberry). */
+  storySection?: SubsidiaryStorySection;
   /** Site officiel externe — les liens filiale pointent hors de Cen21 (ex. Pain Quotidien). */
   externalUrl?: string;
+};
+
+/** Section éditoriale « Notre histoire » 3 colonnes (Pinkberry). */
+export type SubsidiaryStorySection = {
+  eyebrow: string;
+  title: string;
+  aboutTitle: string;
+  aboutText: string;
+  signatureName: string;
+  overviewTitle: string;
+  overviewText: string;
+  highlights: string[];
+  ctaLabel: string;
 };
 
 export type SubsidiaryTestimonial = {
