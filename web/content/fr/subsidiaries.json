@@ -560,6 +560,34 @@
         ],
         "ctaLabel": "Nous contacter"
       },
+      "productGallerySection": {
+        "eyebrow": "Galerie photo",
+        "title": "Découvrez notre galerie",
+        "description": "Un aperçu de nos yaourts glacés, toppings et créations signature.",
+        "categories": [
+          { "id": "frozen-yogurt", "label": "Yaourt glacé" },
+          { "id": "toppings", "label": "Toppings" },
+          { "id": "smoothies", "label": "Smoothies" },
+          { "id": "specials", "label": "Spécialités" }
+        ],
+        "photos": [
+          {
+            "src": "https://images.unsplash.com/photo-1488900128323-21503983a07e?w=900&q=80",
+            "alt": "Yaourt glacé — Pinkberry",
+            "categoryIds": ["frozen-yogurt", "specials"]
+          },
+          {
+            "src": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=900&q=80",
+            "alt": "Dessert en couches — Pinkberry",
+            "categoryIds": ["smoothies", "specials"]
+          },
+          {
+            "src": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=900&q=80",
+            "alt": "Toppings gourmands — Pinkberry",
+            "categoryIds": ["toppings"]
+          }
+        ]
+      },
       "featured": false
     },
     {

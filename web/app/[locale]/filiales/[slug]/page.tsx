@@ -10,6 +10,7 @@ import { KLoungeMarqueeGallery } from "@/components/filiales/KLoungeMarqueeGalle
 import { KLoungeReservationBanner } from "@/components/filiales/KLoungeReservationBanner";
 import { PinkberryHero } from "@/components/filiales/PinkberryHero";
 import { PinkberryStorySection } from "@/components/filiales/PinkberryStorySection";
+import { PinkberryGallerySection } from "@/components/filiales/PinkberryGallerySection";
 import { SubsidiaryContactBand } from "@/components/filiales/SubsidiaryContactBand";
 import { SubsidiaryEditorialAbout } from "@/components/filiales/SubsidiaryEditorialAbout";
 import { SubsidiaryEventShowcase } from "@/components/filiales/SubsidiaryEventShowcase";
@@ -432,8 +433,17 @@ export default async function SubsidiaryPage({ params }: Props) {
           title={t("gallery")}
           description={t("kLoungeGallery.description")}
         />
+      ) : slug === "filiale-09" && subsidiary.productGallerySection ? (
+        <PinkberryGallerySection
+          content={subsidiary.productGallerySection}
+          backgroundImage={galleryEntrySrc(subsidiary.galleryImages[1])}
+        />
       ) : (
-        slug !== "filiale-02" && slug !== "filiale-03" && slug !== "filiale-04" && standardGallerySection
+        slug !== "filiale-02" &&
+        slug !== "filiale-03" &&
+        slug !== "filiale-04" &&
+        slug !== "filiale-09" &&
+        standardGallerySection
       )}
 
       {slug === "filiale-04" && sisterSubsidiaries.length > 0 && (
