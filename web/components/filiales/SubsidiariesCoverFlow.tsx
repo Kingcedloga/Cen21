@@ -205,14 +205,14 @@ export function SubsidiariesCoverFlow({
 
     let wheelLocked = false;
     const onWheel = (e: WheelEvent) => {
-      // Ignore le scroll horizontal (trackpad gauche/droite) — laisse le scroll de page natif.
-      // Seule la molette verticale (deltaY) navigue entre les slides.
-      if (Math.abs(e.deltaX) >= Math.abs(e.deltaY)) return;
+      // Ignore la molette verticale (deltaY) — laisse le scroll de page natif.
+      // Seul le scroll horizontal (trackpad gauche/droite, deltaX) navigue entre les slides.
+      if (Math.abs(e.deltaY) >= Math.abs(e.deltaX)) return;
       e.preventDefault();
       if (wheelLocked) return;
-      if (Math.abs(e.deltaY) < WHEEL_THRESHOLD) return;
+      if (Math.abs(e.deltaX) < WHEEL_THRESHOLD) return;
       wheelLocked = true;
-      go(e.deltaY > 0 ? 1 : -1);
+      go(e.deltaX > 0 ? 1 : -1);
       window.setTimeout(() => {
         wheelLocked = false;
       }, GESTURE_LOCK_MS);
