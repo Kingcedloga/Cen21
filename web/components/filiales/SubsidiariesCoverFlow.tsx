@@ -10,7 +10,6 @@ import type { Subsidiary } from "@/lib/types";
 const VISIBLE_RANGE = 3;
 // Verrou anti-rebond aligné sur la durée de transition des cartes (DURATION_S.luxe).
 const GESTURE_LOCK_MS = DURATION_S.luxe * 1000;
-const WHEEL_THRESHOLD = 8;
 const SWIPE_THRESHOLD = 40;
 const AXIS_INTENT_THRESHOLD = 10;
 
@@ -203,23 +202,6 @@ export function SubsidiariesCoverFlow({
     const el = stageRef.current;
     if (!el || !mounted || len <= 1) return;
 
-    // Convention molette déjà en place ailleurs sur le site (KLoungeMarqueeGallery,
-    // MillionaireClubScatteredGallery) : tout wheel au-dessus du stage pilote la
-    // navigation horizontale, sans condition d'axe — un wheel vertical standard
-    // (deltaY seul, sans Shift) doit aussi faire défiler les slides.
-    let wheelLocked = false;
-    const onWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      if (wheelLocked) return;
-      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-      if (Math.abs(delta) < WHEEL_THRESHOLD) return;
-      wheelLocked = true;
-      go(delta > 0 ? 1 : -1);
-      window.setTimeout(() => {
-        wheelLocked = false;
-      }, GESTURE_LOCK_MS);
-    };
-
     let touchStartX = 0;
     let touchStartY = 0;
     let touchAxis: "horizontal" | "vertical" | null = null;
@@ -254,12 +236,10 @@ export function SubsidiariesCoverFlow({
       }, GESTURE_LOCK_MS);
     };
 
-    el.addEventListener("wheel", onWheel, { passive: false });
     el.addEventListener("touchstart", onTouchStart, { passive: true });
     el.addEventListener("touchmove", onTouchMove, { passive: false });
 
     return () => {
-      el.removeEventListener("wheel", onWheel);
       el.removeEventListener("touchstart", onTouchStart);
       el.removeEventListener("touchmove", onTouchMove);
     };
