@@ -160,6 +160,8 @@ export type Subsidiary = {
   testimonialsSection?: SubsidiaryTestimonialsSection;
   /** Section « Notre histoire » 3 colonnes (Pinkberry). */
   storySection?: SubsidiaryStorySection;
+  /** Galerie produits filtrable par catégorie (Pinkberry). */
+  productGallerySection?: SubsidiaryProductGallerySection;
   /** Site officiel externe — les liens filiale pointent hors de Cen21 (ex. Pain Quotidien). */
   externalUrl?: string;
 };
@@ -175,6 +177,27 @@ export type SubsidiaryStorySection = {
   overviewText: string;
   highlights: string[];
   ctaLabel: string;
+};
+
+/** Catégorie de filtre — galerie produits (Pinkberry). */
+export type SubsidiaryProductGalleryCategory = {
+  id: string;
+  label: string;
+};
+
+export type SubsidiaryProductGalleryPhoto = {
+  src: string;
+  alt: string;
+  categoryIds: string[];
+};
+
+/** Galerie produits filtrable par catégorie (Pinkberry). */
+export type SubsidiaryProductGallerySection = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  categories: SubsidiaryProductGalleryCategory[];
+  photos: SubsidiaryProductGalleryPhoto[];
 };
 
 export type SubsidiaryTestimonial = {

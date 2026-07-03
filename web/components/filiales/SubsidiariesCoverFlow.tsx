@@ -10,6 +10,7 @@ import type { Subsidiary } from "@/lib/types";
 const VISIBLE_RANGE = 3;
 // Verrou anti-rebond aligné sur la durée de transition des cartes (DURATION_S.luxe).
 const GESTURE_LOCK_MS = DURATION_S.luxe * 1000;
+const WHEEL_THRESHOLD = 8;
 const SWIPE_THRESHOLD = 40;
 const AXIS_INTENT_THRESHOLD = 10;
 
@@ -202,6 +203,21 @@ export function SubsidiariesCoverFlow({
     const el = stageRef.current;
     if (!el || !mounted || len <= 1) return;
 
+    let wheelLocked = false;
+    const onWheel = (e: WheelEvent) => {
+      // Ignore le scroll horizontal (trackpad gauche/droite) — laisse le scroll de page natif.
+      // Seule la molette verticale (deltaY) navigue entre les slides.
+      if (Math.abs(e.deltaX) >= Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      if (wheelLocked) return;
+      if (Math.abs(e.deltaY) < WHEEL_THRESHOLD) return;
+      wheelLocked = true;
+      go(e.deltaY > 0 ? 1 : -1);
+      window.setTimeout(() => {
+        wheelLocked = false;
+      }, GESTURE_LOCK_MS);
+    };
+
     let touchStartX = 0;
     let touchStartY = 0;
     let touchAxis: "horizontal" | "vertical" | null = null;
@@ -236,10 +252,12 @@ export function SubsidiariesCoverFlow({
       }, GESTURE_LOCK_MS);
     };
 
+    el.addEventListener("wheel", onWheel, { passive: false });
     el.addEventListener("touchstart", onTouchStart, { passive: true });
     el.addEventListener("touchmove", onTouchMove, { passive: false });
 
     return () => {
+      el.removeEventListener("wheel", onWheel);
       el.removeEventListener("touchstart", onTouchStart);
       el.removeEventListener("touchmove", onTouchMove);
     };
