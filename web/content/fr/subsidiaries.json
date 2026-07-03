@@ -588,6 +588,40 @@
           }
         ]
       },
+      "newsSection": {
+        "eyebrow": "À suivre",
+        "title": "Actualités Pinkberry",
+        "ctaLabel": "Lire la suite",
+        "cards": [
+          {
+            "image": "https://images.unsplash.com/photo-1488900128323-21503983a07e?w=700&q=80",
+            "imageAlt": "Nouvelles saveurs de saison — Pinkberry",
+            "badgeLabel": "Pinkberry",
+            "date": "LE 15 JANV. 2026",
+            "author": "PAR PINKBERRY",
+            "title": "De nouvelles saveurs de saison sont arrivées",
+            "description": "Découvrez nos dernières saveurs aux fruits frais, préparées en petites quantités et disponibles pour une durée limitée."
+          },
+          {
+            "image": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=700&q=80",
+            "imageAlt": "Bar à toppings gourmands — Pinkberry",
+            "badgeLabel": "Pinkberry",
+            "date": "LE 3 FÉVR. 2026",
+            "author": "PAR PINKBERRY",
+            "title": "Découvrez notre bar à toppings gourmands",
+            "description": "Vrais fruits, granola croquant et sauces généreuses — composez votre coupe idéale avec notre sélection élargie de toppings."
+          },
+          {
+            "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=700&q=80",
+            "imageAlt": "Boutique Pinkberry — Kinshasa",
+            "badgeLabel": "Pinkberry",
+            "date": "LE 20 FÉVR. 2026",
+            "author": "PAR PINKBERRY",
+            "title": "Désormais ouvert tous les jours jusqu'à 22h",
+            "description": "Une envie sucrée en soirée ? Pinkberry Kinshasa est désormais ouvert tous les jours jusqu'à 22h."
+          }
+        ]
+      },
       "featured": false
     },
     {

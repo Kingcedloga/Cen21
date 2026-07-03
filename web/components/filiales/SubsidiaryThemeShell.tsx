@@ -8,6 +8,7 @@ import "@/styles/subsidiary-themes/pinkberry.css";
 import "@/styles/pinkberry-hero.css";
 import "@/styles/pinkberry-story-section.css";
 import "@/styles/pinkberry-gallery-section.css";
+import "@/styles/pinkberry-news-section.css";
 import "@/styles/subsidiary-themes/wabi-sabi.css";
 import "@/styles/subsidiary-themes/millionaire-club.css";
 import "@/styles/subsidiary-themes/olive-verte.css";

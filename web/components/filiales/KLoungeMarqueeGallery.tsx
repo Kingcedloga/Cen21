@@ -150,10 +150,12 @@ export function KLoungeMarqueeGallery({ items, title, description }: Props) {
     };
   }, [reduced, durationSeconds]);
 
-  // Wheel → horizontal scroll through the marquee
+  // Wheel → horizontal scroll through the marquee (deltaX only)
+  // deltaY ignored: vertical mouse wheel scrolls the page normally.
   const onWheel = useCallback(
     (e: WheelEvent) => {
       if (reduced || isOpenRef.current) return;
+      if (Math.abs(e.deltaY) >= Math.abs(e.deltaX)) return;
       e.preventDefault();
       const track = trackRef.current;
       if (!track) return;
@@ -161,10 +163,8 @@ export function KLoungeMarqueeGallery({ items, title, description }: Props) {
       const halfWidth = track.scrollWidth / 2;
       if (halfWidth <= 0) return;
 
-      const delta =
-        Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
       offsetRef.current =
-        ((offsetRef.current + delta * 0.9) % halfWidth + halfWidth) % halfWidth;
+        ((offsetRef.current + e.deltaX * 0.9) % halfWidth + halfWidth) % halfWidth;
 
       isWheelingRef.current = true;
       if (wheelTimerRef.current) clearTimeout(wheelTimerRef.current);

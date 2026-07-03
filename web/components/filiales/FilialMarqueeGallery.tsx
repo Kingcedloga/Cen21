@@ -160,10 +160,12 @@ export function FilialMarqueeGallery({
     };
   }, [reduced, durationSeconds]);
 
-  // Wheel → scroll horizontal dans le marquee
+  // Wheel → scroll horizontal dans le marquee (deltaX seulement)
+  // deltaY ignoré : la page défile normalement à la molette verticale.
   const onWheel = useCallback(
     (e: WheelEvent) => {
       if (reduced || isOpenRef.current) return;
+      if (Math.abs(e.deltaY) >= Math.abs(e.deltaX)) return;
       e.preventDefault();
       const track = trackRef.current;
       if (!track) return;
@@ -171,10 +173,8 @@ export function FilialMarqueeGallery({
       const halfWidth = track.scrollWidth / 2;
       if (halfWidth <= 0) return;
 
-      const delta =
-        Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
       offsetRef.current =
-        ((offsetRef.current + delta * 0.9) % halfWidth + halfWidth) % halfWidth;
+        ((offsetRef.current + e.deltaX * 0.9) % halfWidth + halfWidth) % halfWidth;
 
       isWheelingRef.current = true;
       if (wheelTimerRef.current) clearTimeout(wheelTimerRef.current);

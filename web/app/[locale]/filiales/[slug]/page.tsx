@@ -11,6 +11,7 @@ import { KLoungeReservationBanner } from "@/components/filiales/KLoungeReservati
 import { PinkberryHero } from "@/components/filiales/PinkberryHero";
 import { PinkberryStorySection } from "@/components/filiales/PinkberryStorySection";
 import { PinkberryGallerySection } from "@/components/filiales/PinkberryGallerySection";
+import { PinkberryEventsSection } from "@/components/filiales/PinkberryEventsSection";
 import { SubsidiaryContactBand } from "@/components/filiales/SubsidiaryContactBand";
 import { SubsidiaryEditorialAbout } from "@/components/filiales/SubsidiaryEditorialAbout";
 import { SubsidiaryEventShowcase } from "@/components/filiales/SubsidiaryEventShowcase";
@@ -463,9 +464,14 @@ export default async function SubsidiaryPage({ params }: Props) {
         <SubsidiaryEditorialAbout content={subsidiary.aboutSection} />
       )}
 
-      {slug !== "filiale-02" &&
-        !useEventShowcase &&
-        standardEventsSection}
+      {slug === "filiale-09" && subsidiary.newsSection ? (
+        <PinkberryEventsSection
+          content={subsidiary.newsSection}
+          backgroundImage={galleryEntrySrc(subsidiary.galleryImages[0])}
+        />
+      ) : (
+        slug !== "filiale-02" && !useEventShowcase && standardEventsSection
+      )}
 
       {slug === "filiale-02" ? (
         <WabiSabiPracticalSection
