@@ -1,7 +1,7 @@
 /* Section Positionnement Marché — homepage uniquement */
 
 .mp-section {
-  background: #ffffff;
+  background: #e7d1bf;
   padding: clamp(4rem, 8vw, 7rem) 0;
 }
 
@@ -42,32 +42,6 @@
   top: 22%;
   bottom: 0;
   width: 55%;
-}
-
-/* Badge circulaire doré — jonction photos */
-.mp-badge {
-  position: absolute;
-  width: clamp(4rem, 6vw, 5.5rem);
-  height: clamp(4rem, 6vw, 5.5rem);
-  border-radius: 50%;
-  background: #b58e48;
-  left: 58%;
-  top: 23%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  box-shadow:
-    0 0 0 6px rgb(181 142 72 / 0.15),
-    0 8px 28px rgb(181 142 72 / 0.35);
-}
-
-.mp-badge__icon {
-  width: 42%;
-  height: 42%;
-  color: #ffffff;
-  stroke-width: 1.5;
 }
 
 /* Bloc vidéo — fond pétrole */

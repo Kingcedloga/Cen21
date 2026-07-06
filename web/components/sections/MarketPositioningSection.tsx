@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 
-import { Building2, Check, Play } from "@/lib/icons";
+import { Check, Play } from "@/lib/icons";
 import { DURATION_S, EASE } from "@/lib/motion";
 
 import "@/styles/market-positioning.css";
@@ -27,8 +27,6 @@ type Props = {
   watchLabel: string;
   watchSub: string;
 };
-
-const SPRING = { type: "spring" as const, stiffness: 300, damping: 22 };
 
 function collageVariant(i: number) {
   return {
@@ -92,16 +90,6 @@ export function MarketPositioningSection({
             animate={reduced ? undefined : animate}
           >
             <Image src={image2} alt={image2Alt} fill className="object-cover" sizes="(max-width:1023px) 55vw, 25vw" />
-          </motion.div>
-
-          {/* Badge doré flottant */}
-          <motion.div
-            className="mp-badge"
-            initial={reduced ? false : { scale: 0 }}
-            animate={reduced ? undefined : (inView ? { scale: 1 } : { scale: 0 })}
-            transition={reduced ? undefined : { ...SPRING, delay: 0.22 }}
-          >
-            <Building2 className="mp-badge__icon" aria-hidden />
           </motion.div>
 
           {/* Bloc vidéo */}
