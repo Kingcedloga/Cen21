@@ -13,6 +13,7 @@ import { PinkberryStorySection } from "@/components/filiales/PinkberryStorySecti
 import { PinkberryGallerySection } from "@/components/filiales/PinkberryGallerySection";
 import { PinkberryEventsSection } from "@/components/filiales/PinkberryEventsSection";
 import { PinkberryMenuSection } from "@/components/filiales/PinkberryMenuSection";
+import { PinkberryContactSection } from "@/components/filiales/PinkberryContactSection";
 import { SubsidiaryContactBand } from "@/components/filiales/SubsidiaryContactBand";
 import { SubsidiaryEditorialAbout } from "@/components/filiales/SubsidiaryEditorialAbout";
 import { SubsidiaryEventShowcase } from "@/components/filiales/SubsidiaryEventShowcase";
@@ -42,6 +43,7 @@ import {
   getAllSubsidiarySlugs,
   getGalleryBySubsidiary,
   getSectorLabel,
+  getSiteConfig,
   getSubsidiaries,
   getSubsidiaryBySlug,
   getUpcomingEventsBySubsidiary,
@@ -498,6 +500,16 @@ export default async function SubsidiaryPage({ params }: Props) {
             socialLabel: t("wabiPractical.socialLabel"),
             mapTitle: t("mapTitle", { name: subsidiary.name }),
           }}
+        />
+      ) : slug === "filiale-09" && subsidiary.contactSection ? (
+        <PinkberryContactSection
+          content={subsidiary.contactSection}
+          hours={subsidiary.practicalInfo.hours}
+          address={subsidiary.practicalInfo.address}
+          phone={subsidiary.practicalInfo.phone}
+          email={getSiteConfig(l).contact.email}
+          social={subsidiary.social}
+          decorImages={[subsidiary.coverImage, galleryEntrySrc(subsidiary.galleryImages[1])]}
         />
       ) : (
         <section className="mx-auto max-w-7xl px-4 pb-16 md:px-6 md:pb-20">

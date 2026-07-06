@@ -4,7 +4,8 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  min-height: clamp(30rem, 70vw, 42rem);
+  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   background-color: var(--sub-bg);

@@ -166,6 +166,8 @@ export type Subsidiary = {
   newsSection?: SubsidiaryNewsSection;
   /** Carrousel produits « Our Menu » (Pinkberry). */
   menuSection?: SubsidiaryMenuSection;
+  /** Section « Get In Touch » — infos pratiques + formulaire (Pinkberry). */
+  contactSection?: SubsidiaryContactSection;
   /** Site officiel externe — les liens filiale pointent hors de Cen21 (ex. Pain Quotidien). */
   externalUrl?: string;
 };
@@ -235,6 +237,22 @@ export type SubsidiaryMenuSection = {
   title: string;
   ctaLabel: string;
   products: SubsidiaryMenuProduct[];
+};
+
+/** Section « Get In Touch » — infos pratiques + formulaire (Pinkberry). */
+export type SubsidiaryContactSection = {
+  eyebrow: string;
+  title: string;
+  hoursTitle: string;
+  contactInfoTitle: string;
+  socialTitle: string;
+  formTitle: string;
+  namePlaceholder: string;
+  emailPlaceholder: string;
+  phonePlaceholder: string;
+  subjectPlaceholder: string;
+  messagePlaceholder: string;
+  submitLabel: string;
 };
 
 export type SubsidiaryTestimonial = {

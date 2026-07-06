@@ -647,6 +647,20 @@
           }
         ]
       },
+      "contactSection": {
+        "eyebrow": "Contact Us",
+        "title": "Get In Touch",
+        "hoursTitle": "Opening hours",
+        "contactInfoTitle": "Contact info",
+        "socialTitle": "Social contact",
+        "formTitle": "Drop us a line",
+        "namePlaceholder": "Your Name *",
+        "emailPlaceholder": "Your Email *",
+        "phonePlaceholder": "Your Phone",
+        "subjectPlaceholder": "Subject",
+        "messagePlaceholder": "Your Message …",
+        "submitLabel": "Submit Now"
+      },
       "featured": false
     },
     {

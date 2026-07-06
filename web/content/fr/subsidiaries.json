@@ -648,6 +648,20 @@
           }
         ]
       },
+      "contactSection": {
+        "eyebrow": "Contactez-nous",
+        "title": "Restons en contact",
+        "hoursTitle": "Horaires d'ouverture",
+        "contactInfoTitle": "Coordonnées",
+        "socialTitle": "Réseaux sociaux",
+        "formTitle": "Envoyez-nous un message",
+        "namePlaceholder": "Votre nom *",
+        "emailPlaceholder": "Votre email *",
+        "phonePlaceholder": "Votre téléphone",
+        "subjectPlaceholder": "Sujet",
+        "messagePlaceholder": "Votre message …",
+        "submitLabel": "Envoyer"
+      },
       "featured": false
     },
     {

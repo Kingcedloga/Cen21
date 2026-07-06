@@ -9,6 +9,7 @@ export function getContactSchema(messages: {
   return z.object({
     name: z.string().min(2, messages.name),
     email: z.string().email(messages.email),
+    phone: z.string().optional(),
     subject: z.string().min(3, messages.subject),
     message: z.string().min(10, messages.message),
     website: z.string().optional(),

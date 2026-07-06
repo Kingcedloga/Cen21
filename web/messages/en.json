@@ -111,6 +111,7 @@
   "form": {
     "name": "Name",
     "email": "Email",
+    "phone": "Phone",
     "subject": "Subject",
     "message": "Message",
     "honeypot": "Do not fill in",
