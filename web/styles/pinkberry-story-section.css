@@ -91,7 +91,7 @@
   align-items: center;
   justify-content: center;
   margin-inline: auto;
-  width: clamp(14rem, 20vw, 18rem);
+  width: clamp(16rem, 24vw, 22rem);
   aspect-ratio: 1 / 1;
 }
 

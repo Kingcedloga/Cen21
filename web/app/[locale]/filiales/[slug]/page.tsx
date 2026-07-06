@@ -310,7 +310,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         <PinkberryStorySection
           content={subsidiary.storySection}
           backgroundImage={galleryEntrySrc(subsidiary.galleryImages[0])}
-          productImage={subsidiary.coverImage}
+          productImage="/filiales/photos/filiale-09/strawberry-cream-cutout.png"
           name={subsidiary.name}
         />
       )}
