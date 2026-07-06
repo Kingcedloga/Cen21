@@ -105,7 +105,10 @@ export default async function SubsidiaryPage({ params }: Props) {
   );
 
   const sisterSubsidiaries =
-    slug === "filiale-02" || slug === "filiale-03" || slug === "filiale-04"
+    slug === "filiale-02" ||
+    slug === "filiale-03" ||
+    slug === "filiale-04" ||
+    slug === "filiale-09"
       ? getSubsidiaries(l)
           .filter((s) => s.slug !== slug && s.brandLogo)
           .map((s) => ({
@@ -354,16 +357,27 @@ export default async function SubsidiaryPage({ params }: Props) {
         />
       )}
 
-      {slug !== "filiale-02" && slug !== "filiale-03" && slug !== "filiale-04" && (
-      <section className="px-4 py-12 md:px-6 md:py-16 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <AnimateIn>
-            <p className="max-w-3xl text-lg leading-relaxed text-taupe">
-              {subsidiary.description}
-            </p>
-          </AnimateIn>
-        </div>
-      </section>
+      {slug === "filiale-09" && sisterSubsidiaries.length > 0 ? (
+        <WabiSabiEstablishmentsSection
+          subsidiaries={sisterSubsidiaries}
+          title={t("wabiEstablishments.title")}
+          description={t("wabiEstablishments.description")}
+          variant="pinkberry"
+        />
+      ) : (
+        slug !== "filiale-02" &&
+        slug !== "filiale-03" &&
+        slug !== "filiale-04" && (
+          <section className="px-4 py-12 md:px-6 md:py-16 lg:px-8">
+            <div className="mx-auto max-w-7xl">
+              <AnimateIn>
+                <p className="max-w-3xl text-lg leading-relaxed text-taupe">
+                  {subsidiary.description}
+                </p>
+              </AnimateIn>
+            </div>
+          </section>
+        )
       )}
 
       {slug === "filiale-03" ? (

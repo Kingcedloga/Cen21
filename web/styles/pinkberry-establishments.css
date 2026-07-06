@@ -1,0 +1,48 @@
+/* Pinkberry — Nos Établissements (variant clair, accents roses) */
+
+.wabi-establishments--pinkberry {
+  --wabi-establishments-blue: #e8427c;
+  --wabi-establishments-beige: #ffffff;
+  --wabi-establishments-beige-deep: #ffffff;
+
+  background-color: #ffffff;
+}
+
+.wabi-establishments--pinkberry .wabi-establishments__description {
+  color: rgb(17 17 17 / 0.62);
+}
+
+.wabi-establishments--pinkberry .wabi-establishments__link:hover,
+.wabi-establishments--pinkberry .wabi-establishments__link:focus-visible {
+  background-color: rgb(232 66 124 / 0.06);
+}
+
+.wabi-establishments--pinkberry .wabi-establishments__logo {
+  filter: grayscale(1) brightness(0);
+  opacity: 0.72;
+}
+
+.wabi-establishments--pinkberry .wabi-establishments__link:hover .wabi-establishments__logo,
+.wabi-establishments--pinkberry .wabi-establishments__link:focus-visible .wabi-establishments__logo {
+  filter: brightness(0) saturate(100%) invert(32%) sepia(85%) saturate(3207%)
+    hue-rotate(316deg) brightness(96%) contrast(92%);
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+.wabi-establishments--pinkberry .wabi-establishments__name {
+  color: rgb(17 17 17 / 0.42);
+}
+
+.wabi-establishments--pinkberry .wabi-establishments__link:hover .wabi-establishments__name,
+.wabi-establishments--pinkberry .wabi-establishments__link:focus-visible .wabi-establishments__name {
+  color: #e8427c;
+}
+
+.wabi-establishments--pinkberry .wabi-establishments__fade--left {
+  background: linear-gradient(90deg, #ffffff 0%, transparent 100%);
+}
+
+.wabi-establishments--pinkberry .wabi-establishments__fade--right {
+  background: linear-gradient(270deg, #ffffff 0%, transparent 100%);
+}
