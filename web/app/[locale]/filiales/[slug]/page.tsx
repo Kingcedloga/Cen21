@@ -12,6 +12,7 @@ import { PinkberryHero } from "@/components/filiales/PinkberryHero";
 import { PinkberryStorySection } from "@/components/filiales/PinkberryStorySection";
 import { PinkberryGallerySection } from "@/components/filiales/PinkberryGallerySection";
 import { PinkberryEventsSection } from "@/components/filiales/PinkberryEventsSection";
+import { PinkberryMenuSection } from "@/components/filiales/PinkberryMenuSection";
 import { SubsidiaryContactBand } from "@/components/filiales/SubsidiaryContactBand";
 import { SubsidiaryEditorialAbout } from "@/components/filiales/SubsidiaryEditorialAbout";
 import { SubsidiaryEventShowcase } from "@/components/filiales/SubsidiaryEventShowcase";
@@ -312,6 +313,13 @@ export default async function SubsidiaryPage({ params }: Props) {
         />
       )}
 
+      {slug === "filiale-09" && subsidiary.menuSection && (
+        <PinkberryMenuSection
+          content={subsidiary.menuSection}
+          backgroundImage={galleryEntrySrc(subsidiary.galleryImages[1])}
+        />
+      )}
+
       {slug === "filiale-02" && subsidiary.barSection && (
         <WabiSabiBarShowcase content={subsidiary.barSection} />
       )}
@@ -330,7 +338,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         />
       )}
 
-      {slug !== "filiale-02" && slug !== "filiale-04" && breadcrumbSection}
+      {slug !== "filiale-02" && slug !== "filiale-04" && slug !== "filiale-09" && breadcrumbSection}
 
       {slug === "filiale-03" && subsidiary.introSection && (
         <KLoungeIntroSection content={subsidiary.introSection} />
@@ -366,7 +374,8 @@ export default async function SubsidiaryPage({ params }: Props) {
         />
       ) : (
         slug !== "filiale-04" &&
-        slug !== "filiale-02" && (
+        slug !== "filiale-02" &&
+        slug !== "filiale-09" && (
           <SubsidiaryContactBand
             backgroundImage={getSubsidiaryContactImage(slug, subsidiary.coverImage)}
             hoursLabel={t("contactBand.hours")}

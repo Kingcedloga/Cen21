@@ -164,6 +164,8 @@ export type Subsidiary = {
   productGallerySection?: SubsidiaryProductGallerySection;
   /** Cartes actualités « Stay Tuned » (Pinkberry). */
   newsSection?: SubsidiaryNewsSection;
+  /** Carrousel produits « Our Menu » (Pinkberry). */
+  menuSection?: SubsidiaryMenuSection;
   /** Site officiel externe — les liens filiale pointent hors de Cen21 (ex. Pain Quotidien). */
   externalUrl?: string;
 };
@@ -218,6 +220,21 @@ export type SubsidiaryNewsSection = {
   title: string;
   ctaLabel: string;
   cards: SubsidiaryNewsCard[];
+};
+
+export type SubsidiaryMenuProduct = {
+  image: string;
+  imageAlt: string;
+  name: string;
+  price: string;
+};
+
+/** Carrousel produits « Our Menu » (Pinkberry). */
+export type SubsidiaryMenuSection = {
+  eyebrow: string;
+  title: string;
+  ctaLabel: string;
+  products: SubsidiaryMenuProduct[];
 };
 
 export type SubsidiaryTestimonial = {

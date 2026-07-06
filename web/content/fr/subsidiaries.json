@@ -622,6 +622,32 @@
           }
         ]
       },
+
+      "menuSection": {
+        "eyebrow": "Notre menu",
+        "title": "Nos délices à déguster",
+        "ctaLabel": "Ajouter au panier",
+        "products": [
+          {
+            "image": "https://images.unsplash.com/photo-1488900128323-21503983a07e?w=600&q=80",
+            "imageAlt": "Yaourt glacé nature — Pinkberry",
+            "name": "Yaourt Glacé Nature",
+            "price": "5 $"
+          },
+          {
+            "image": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&q=80",
+            "imageAlt": "Sundae tourbillon chocolat — Pinkberry",
+            "name": "Sundae Tourbillon Chocolat",
+            "price": "6 $"
+          },
+          {
+            "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80",
+            "imageAlt": "Coupe aux fruits rouges — Pinkberry",
+            "name": "Coupe aux Fruits Rouges",
+            "price": "7 $"
+          }
+        ]
+      },
       "featured": false
     },
     {
