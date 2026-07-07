@@ -1,4 +1,4 @@
-/* Pinkberry — hero dédié (filiale-09) : fond rose uni, texte gauche, visuel droit */
+/* Pinkberry — hero dédié (filiale-09) : couleur par slide, cercle animé, motifs dispersés */
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-hero {
   position: relative;
@@ -8,52 +8,30 @@
   min-height: 100svh;
   display: flex;
   align-items: center;
-  background-color: var(--sub-bg);
+  background-color: #e8427c; /* valeur initiale — remplacée en JS via inline style */
+  transition: background-color 600ms var(--ease-luxury, ease);
 }
 
-/* Décor — cercles concentriques, centrés sur le visuel produit */
-[data-subsidiary-theme="pinkberry"] .pinkberry-hero__circles {
-  position: absolute;
-  top: 50%;
-  right: clamp(2rem, 12vw, 14rem);
-  width: clamp(18rem, 34vw, 30rem);
-  height: clamp(18rem, 34vw, 30rem);
-  transform: translateY(-50%);
-  pointer-events: none;
-  z-index: 0;
-}
+/* ── Motifs décoratifs dispersés ── */
 
-[data-subsidiary-theme="pinkberry"] .pinkberry-hero__circle {
+[data-subsidiary-theme="pinkberry"] .pinkberry-hero__motifs {
   position: absolute;
   inset: 0;
-  border-radius: 50%;
-  border: 1px solid rgb(255 255 255 / 0.18);
-}
-
-[data-subsidiary-theme="pinkberry"] .pinkberry-hero__circle--2 {
-  inset: 14%;
-  border-color: rgb(255 255 255 / 0.14);
-}
-
-/* Décor — grille de croix, bas-centre */
-[data-subsidiary-theme="pinkberry"] .pinkberry-hero__dots {
-  position: absolute;
-  left: clamp(1.5rem, 30vw, 26rem);
-  bottom: clamp(1.5rem, 5vw, 3.5rem);
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(0.5rem, 1.4vw, 0.85rem);
   pointer-events: none;
   z-index: 0;
 }
 
-[data-subsidiary-theme="pinkberry"] .pinkberry-hero__dot {
-  font-size: 0.9rem;
+[data-subsidiary-theme="pinkberry"] .pinkberry-hero__motif {
+  position: absolute;
+  font-size: clamp(0.8rem, 1.1vw, 1rem);
+  font-weight: 700;
   line-height: 1;
-  color: rgb(255 255 255 / 0.4);
+  color: rgb(255 255 255 / 0.22);
+  user-select: none;
 }
 
-/* Contenu */
+/* ── Contenu ── */
+
 [data-subsidiary-theme="pinkberry"] .pinkberry-hero__content {
   position: relative;
   z-index: 1;
@@ -123,26 +101,62 @@
   color: var(--sub-bg);
 }
 
+/* ── Visuel : conteneur carré = les deux cercles + la photo ── */
+
 [data-subsidiary-theme="pinkberry"] .pinkberry-hero__visual {
   position: relative;
-  flex: 1 1 22rem;
-  aspect-ratio: 3 / 4;
-  max-width: 26rem;
-  min-width: 0;
+  flex: 0 0 clamp(18rem, 34vw, 30rem);
+  width: clamp(18rem, 34vw, 30rem);
+  aspect-ratio: 1 / 1;
+}
+
+@media (max-width: 767px) {
+  [data-subsidiary-theme="pinkberry"] .pinkberry-hero__visual {
+    flex: 0 0 clamp(13rem, 72vw, 22rem);
+    width: clamp(13rem, 72vw, 22rem);
+    align-self: center;
+  }
+}
+
+/* Cercle extérieur — dashed, rotation pilotée par Framer Motion */
+[data-subsidiary-theme="pinkberry"] .pinkberry-hero__circle {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px dashed rgb(255 255 255 / 0.3);
+  box-shadow: 0 0 40px rgb(255 255 255 / 0.06);
+}
+
+/* Cercle intérieur — solid, pulsation scale pilotée par Framer Motion */
+[data-subsidiary-theme="pinkberry"] .pinkberry-hero__circle--2 {
+  inset: 12%;
+  border: 1px solid rgb(255 255 255 / 0.18);
+  box-shadow: none;
+}
+
+/* Photo produit — centrée horizontalement, déborde 16 % en haut du cercle */
+[data-subsidiary-theme="pinkberry"] .pinkberry-hero__photo-wrap {
+  position: absolute;
+  top: -16%;
+  left: 16%; /* (100% − 68%) / 2 */
+  width: 68%;
+  bottom: 0;
+  z-index: 1;
 }
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-hero__image {
   object-fit: contain;
-  object-position: center;
-  filter: drop-shadow(0 24px 48px rgb(0 0 0 / 0.25));
+  object-position: bottom;
+  filter: drop-shadow(0 24px 48px rgb(0 0 0 / 0.22));
 }
 
-/* Navigation — flèches décoratives, à droite du visuel */
+/* ── Navigation — flèches à droite ── */
+
 [data-subsidiary-theme="pinkberry"] .pinkberry-hero__nav {
   position: absolute;
   right: clamp(1rem, 4vw, 2.5rem);
   top: 50%;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   gap: 2px;
   transform: translateY(-50%);
@@ -162,9 +176,14 @@
   height: 3rem;
   background: #ffffff;
   color: var(--sub-bg);
+  border: none;
+  cursor: pointer;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  [data-subsidiary-theme="pinkberry"] .pinkberry-hero {
+    transition: none;
+  }
   [data-subsidiary-theme="pinkberry"] .pinkberry-hero__cta {
     transition: none;
   }
