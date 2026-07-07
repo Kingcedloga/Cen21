@@ -36,7 +36,14 @@
   color: var(--sub-text);
 }
 
-/* Titres — blanc lumineux, séparateur gourmand */
+/* Titres — Nunito (arrondi, gourmand) */
+[data-subsidiary-theme="pinkberry"] h1,
+[data-subsidiary-theme="pinkberry"] h2,
+[data-subsidiary-theme="pinkberry"] h3,
+[data-subsidiary-theme="pinkberry"] h4 {
+  font-family: var(--font-nunito), "Nunito", system-ui, sans-serif;
+}
+
 [data-subsidiary-theme="pinkberry"] .sub-themed-heading {
   color: var(--sub-text);
   letter-spacing: -0.015em;

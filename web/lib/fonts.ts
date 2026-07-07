@@ -1,4 +1,4 @@
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Cormorant_Garamond, Inter, Nunito } from "next/font/google";
 
 /**
  * Inter (variable) — sans-serif pour le corps et l’UI.
@@ -9,6 +9,13 @@ export const inter = Inter({
   variable: "--font-inter",
   display: "swap",
   axes: ["opsz"],
+});
+
+/** Pinkberry page headings — rounded, friendly sans-serif. */
+export const nunito = Nunito({
+  subsets: ["latin"],
+  variable: "--font-nunito",
+  display: "swap",
 });
 
 /** Serif éditoriale — sections premium (ex. About K Lounge). */

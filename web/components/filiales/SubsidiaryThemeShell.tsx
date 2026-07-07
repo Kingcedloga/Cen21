@@ -25,9 +25,10 @@ import "@/styles/subsidiary-contact-band.css";
 type Props = {
   theme: SubsidiaryPageTheme;
   children: ReactNode;
+  className?: string;
 };
 
-export function SubsidiaryThemeShell({ theme, children }: Props) {
+export function SubsidiaryThemeShell({ theme, children, className }: Props) {
   const { colors } = theme;
   const hasMotifs = theme.id === "gourmet-mexicana";
 
@@ -55,7 +56,7 @@ export function SubsidiaryThemeShell({ theme, children }: Props) {
   return (
     <div
       data-subsidiary-theme={theme.id}
-      className={`subsidiary-themed-page min-h-full text-white${hasMotifs ? " subsidiary-themed-page--motifs" : ""}`}
+      className={`subsidiary-themed-page min-h-full text-white${hasMotifs ? " subsidiary-themed-page--motifs" : ""}${className ? ` ${className}` : ""}`}
       style={style}
     >
       {hasMotifs && <MexicanaMotifLayer />}

@@ -57,7 +57,7 @@
 }
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-hero__title {
-  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  font-family: var(--font-nunito), "Nunito", system-ui, sans-serif;
   font-weight: 800;
   color: #ffffff;
   font-size: clamp(2.5rem, 6vw, 4.25rem);
