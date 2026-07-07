@@ -79,7 +79,7 @@ function VideoSlide({
             aria-label={t("closeVideoAria")}
             className="absolute right-3 top-3 z-20 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/20 bg-petrol/80 text-ivory transition-colors duration-fine hover:border-gold/45 hover:bg-petrol hover:text-gold focus-visible:outline-2 focus-visible:outline-petrol focus-visible:outline-offset-2"
           >
-            <X className="h-4 w-4" strokeWidth={1.5} aria-hidden />
+            <X className="h-4 w-4" weight="light" aria-hidden />
           </button>
         </>
       ) : (
@@ -111,8 +111,8 @@ function VideoSlide({
           <span className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6">
             <span className="flex items-center justify-center rounded-xl bg-[#FF0000] px-5 py-3 text-white">
               <Play
-                className="ml-1 h-7 w-7 fill-current md:h-8 md:w-8"
-                strokeWidth={0}
+                className="ml-1 h-7 w-7 md:h-8 md:w-8"
+                weight="fill"
                 aria-hidden
               />
             </span>
@@ -248,7 +248,7 @@ export function CtaBand({ videos }: CtaBandProps) {
                         aria-label={t("prevSlide")}
                         className={`${navButtonClass} -left-4 lg:-left-14`}
                       >
-                        <ChevronLeft className="h-5 w-5" strokeWidth={1.5} aria-hidden />
+                        <ChevronLeft className="h-5 w-5" weight="light" aria-hidden />
                       </button>
                       <button
                         type="button"
@@ -257,7 +257,7 @@ export function CtaBand({ videos }: CtaBandProps) {
                         aria-label={t("nextSlide")}
                         className={`${navButtonClass} -right-4 lg:-right-14`}
                       >
-                        <ChevronRight className="h-5 w-5" strokeWidth={1.5} aria-hidden />
+                        <ChevronRight className="h-5 w-5" weight="light" aria-hidden />
                       </button>
 
                       <div

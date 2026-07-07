@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Ticket } from "lucide-react";
+import { Ticket } from "@/lib/icons";
 import { useLocale } from "next-intl";
 import { useRef, useState } from "react";
 
@@ -120,7 +120,7 @@ export function SubsidiaryEventShowcase({ events, labels, desktopColumns }: Prop
                       ariaLabel={labels.bookNow}
                       disabled={isSoldOut}
                     >
-                      <Ticket className="h-4 w-4 shrink-0" strokeWidth={1.5} aria-hidden />
+                      <Ticket className="h-4 w-4 shrink-0" weight="light" aria-hidden />
                       {labels.bookNow}
                     </Button>
                     <Button

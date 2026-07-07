@@ -73,7 +73,7 @@ export function StickyMobileActions({
                   name="phone"
                   size="sm"
                   className={themed ? "text-current" : "text-petrol"}
-                  strokeWidth={ICON_STROKE}
+                  weight={ICON_STROKE}
                 />
                 <span>Appeler</span>
               </a>
@@ -93,7 +93,7 @@ export function StickyMobileActions({
                   name="location"
                   size="sm"
                   className={themed ? "text-current" : "text-ivory"}
-                  strokeWidth={ICON_STROKE}
+                  weight={ICON_STROKE}
                 />
                 <span>Itinéraire</span>
               </a>

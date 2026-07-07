@@ -95,7 +95,7 @@ export function SubsidiaryEditorialAbout({
                             ? "text-[var(--lux-pres-accent,var(--sub-gold,#c9a84c))]"
                             : "text-[var(--kl-about-accent)]"
                         }
-                        strokeWidth={1.25}
+                        weight="thin"
                       />
                     </span>
                     <span className="subsidiary-editorial-about__highlight-title">

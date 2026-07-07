@@ -114,7 +114,7 @@ export function PinkberryMenuSection({
 
             <div className="pinkberry-menu__stars" aria-hidden="true">
               {Array.from({ length: 5 }).map((_, star) => (
-                <Star key={star} size={14} fill="currentColor" strokeWidth={0} />
+                <Star key={star} size={14} weight="fill" />
               ))}
             </div>
 

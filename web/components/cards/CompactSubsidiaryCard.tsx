@@ -72,7 +72,7 @@ export function CompactSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }
         {/* Bloc éditorial central */}
         <div className="flex min-w-0 flex-1 flex-col justify-center gap-1.5 py-1">
           <div className="flex items-center gap-2">
-            <Icon className="h-3.5 w-3.5 text-gold" strokeWidth={ICON_STROKE} aria-hidden />
+            <Icon className="h-3.5 w-3.5 text-gold" weight={ICON_STROKE} aria-hidden />
             <p className="text-[10.5px] font-semibold uppercase tracking-[0.22em] text-gold">
               {sectorLabel}
             </p>
@@ -93,7 +93,7 @@ export function CompactSubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }
           <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-ivory/60 transition-all duration-base group-hover:border-gold/55 group-hover:bg-gold/10 group-hover:text-gold">
             <ArrowUpRight
               className="h-4 w-4 -translate-x-px transition-transform duration-base group-hover:translate-x-0 group-hover:-translate-y-px"
-              strokeWidth={1.5}
+              weight="light"
             />
           </span>
         </div>

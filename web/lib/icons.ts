@@ -1,47 +1,49 @@
 import {
-  AlertCircle,
+  WarningCircle as AlertCircle,
   Armchair,
   ArrowUpRight,
-  Award,
-  Building2,
+  Medal as Award,
+  Buildings as Building2,
   Calendar,
   CalendarCheck,
-  CalendarClock,
+  CalendarDots as CalendarClock,
   Check,
-  CheckCircle2,
-  ChevronLeft,
-  ChevronRight,
+  CheckCircle as CheckCircle2,
+  CaretLeft as ChevronLeft,
+  CaretRight as ChevronRight,
   Clock,
-  Clock3,
-  ExternalLink,
+  Clock as Clock3,
+  ArrowSquareOut as ExternalLink,
   Globe,
-  Home,
-  Mail,
+  House as Home,
+  EnvelopeSimple as Mail,
   MapPin,
   Martini,
-  Menu,
-  Music2,
+  List as Menu,
+  MusicNote as Music2,
   Phone,
   Play,
-  Sparkles,
+  Sparkle as Sparkles,
   Star,
-  TrendingUp,
+  TrendUp as TrendingUp,
   Users,
-  UtensilsCrossed,
+  ForkKnife as UtensilsCrossed,
   Wine,
   X,
-  type LucideIcon,
-} from "lucide-react";
+  Ticket,
+} from "@phosphor-icons/react/ssr";
+
+import type { Icon as LucideIcon, IconWeight } from "@phosphor-icons/react";
 
 import type { Sector, StatIconId } from "@/lib/types";
 
-export type { LucideIcon };
+export type { LucideIcon, IconWeight };
 
-/** Stroke fin — style premium Cen21 (cartes, fiches, chips). */
-export const ICON_STROKE = 1.5 as const;
+/** Poids fin — style premium Cen21 (cartes, fiches, chips). */
+export const ICON_STROKE = "light" as const satisfies IconWeight;
 
-/** Stroke léger — grands blocs clairs (stats banner). */
-export const ICON_STROKE_LIGHT = 1.25 as const;
+/** Poids léger — grands blocs clairs (stats banner). */
+export const ICON_STROKE_LIGHT = "thin" as const satisfies IconWeight;
 
 export const ICON_SIZE = {
   xs: "h-3.5 w-3.5",
@@ -136,4 +138,5 @@ export {
   UtensilsCrossed,
   Wine,
   X,
+  Ticket,
 };

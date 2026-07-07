@@ -47,7 +47,7 @@ export function StatsBannerView({ items }: { items: StatItemData[] }) {
               >
                 <Icon
                   className="mx-auto mb-3 h-7 w-7 text-petrol"
-                  strokeWidth={ICON_STROKE_LIGHT}
+                  weight={ICON_STROKE_LIGHT}
                   aria-hidden
                 />
               </motion.div>

@@ -282,11 +282,11 @@ export function FooterView({
           >
             <Button href="/evenements">
               {labels.events}
-              <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} aria-hidden />
+              <ArrowUpRight className="h-4 w-4" weight="light" aria-hidden />
             </Button>
             <Button href="/contact" variant="secondary">
               {labels.quickContact}
-              <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} aria-hidden />
+              <ArrowUpRight className="h-4 w-4" weight="light" aria-hidden />
             </Button>
           </motion.div>
 

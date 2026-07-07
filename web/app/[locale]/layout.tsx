@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { PhosphorProvider } from "@/components/layout/PhosphorProvider";
 import { RouteTransition } from "@/components/layout/RouteTransition";
 import { SiteLoader } from "@/components/layout/SiteLoader";
 import { routing } from "@/i18n/routing";
@@ -55,6 +56,7 @@ export default async function LocaleLayout({
     >
       <body className="min-h-full flex flex-col antialiased leading-relaxed">
         <NextIntlClientProvider messages={messages}>
+          <PhosphorProvider>
           <SiteLoader />
           <a
             href="#main-content"
@@ -67,6 +69,7 @@ export default async function LocaleLayout({
             <RouteTransition>{children}</RouteTransition>
           </main>
           <Footer />
+          </PhosphorProvider>
         </NextIntlClientProvider>
       </body>
     </html>

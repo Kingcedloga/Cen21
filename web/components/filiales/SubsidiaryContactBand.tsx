@@ -206,7 +206,7 @@ function ContactColumn({
   const inner = (
     <>
       <span className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-white/15 bg-white/5 backdrop-blur-sm transition-colors duration-fine group-hover:border-white/25">
-        <Icon name={icon} size="xl" className={iconClass} strokeWidth={1.25} />
+        <Icon name={icon} size="xl" className={iconClass} weight="thin" />
       </span>
       <p className={`mb-2 text-sm font-medium tracking-wide ${labelClass}`}>
         {label}
@@ -285,7 +285,7 @@ function HoursRevealColumn({
         onMouseEnter={handleIconMouseEnter}
         className="relative mx-auto mb-4 flex h-14 w-14 cursor-default items-center justify-center rounded-full border border-white/15 bg-white/5 backdrop-blur-sm transition-[border-color] duration-fine before:absolute before:-inset-3 before:rounded-full before:content-[''] hover:border-white/25"
       >
-        <Icon name="hours" size="xl" className={iconClass} strokeWidth={1.25} />
+        <Icon name="hours" size="xl" className={iconClass} weight="thin" />
       </span>
       <p className={`mb-2 text-sm font-medium tracking-wide ${labelClass}`}>
         {label}

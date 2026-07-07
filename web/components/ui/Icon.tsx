@@ -4,27 +4,28 @@ import {
   icons,
   type IconName,
   type IconSize,
+  type IconWeight,
 } from "@/lib/icons";
 
 type IconProps = {
   name: IconName;
   className?: string;
   size?: IconSize;
-  strokeWidth?: number;
+  weight?: IconWeight;
 };
 
 export function Icon({
   name,
   className = "text-gold",
   size = "md",
-  strokeWidth = ICON_STROKE,
+  weight = ICON_STROKE,
 }: IconProps) {
-  const LucideIcon = icons[name];
+  const PhIcon = icons[name];
 
   return (
-    <LucideIcon
+    <PhIcon
       className={`${ICON_SIZE[size]} shrink-0 ${className}`}
-      strokeWidth={strokeWidth}
+      weight={weight}
       aria-hidden
     />
   );

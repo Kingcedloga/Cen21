@@ -260,7 +260,7 @@ export function WabiSabiTestimonials({ section, labels }: Props) {
                 aria-label={labels.prevSlide}
                 className={`${navButtonClass} wabi-testimonials__nav--prev`}
               >
-                <ChevronLeft className="h-5 w-5" strokeWidth={1.5} aria-hidden />
+                <ChevronLeft className="h-5 w-5" weight="light" aria-hidden />
               </button>
               <button
                 type="button"
@@ -269,7 +269,7 @@ export function WabiSabiTestimonials({ section, labels }: Props) {
                 aria-label={labels.nextSlide}
                 className={`${navButtonClass} wabi-testimonials__nav--next`}
               >
-                <ChevronRight className="h-5 w-5" strokeWidth={1.5} aria-hidden />
+                <ChevronRight className="h-5 w-5" weight="light" aria-hidden />
               </button>
 
               <div
