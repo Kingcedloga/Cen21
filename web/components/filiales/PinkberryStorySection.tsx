@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useInView, useReducedMotion } from "framer-motion";
-import { useRef } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Link } from "@/i18n/navigation";
@@ -24,8 +23,15 @@ export function PinkberryStorySection({
   name: string;
 }) {
   const reduced = useReducedMotion();
-  const photoFrameRef = useRef<HTMLDivElement>(null);
-  const photoInView = useInView(photoFrameRef, { once: true, margin: "-10% 0px" });
+
+  const photoMotion = reduced
+    ? {}
+    : {
+        initial: { opacity: 0, y: 80 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, margin: "-10% 0px" },
+        transition: { duration: 0.8, ease: EASE.luxury },
+      };
 
   const columnMotion = (i: number) =>
     reduced
@@ -66,18 +72,18 @@ export function PinkberryStorySection({
           <p className="pinkberry-story__signature">{content.signatureName}</p>
         </motion.div>
 
-        <div className="pinkberry-story__photo-wrap">
+        <motion.div className="pinkberry-story__photo-wrap" {...photoMotion}>
           <span className="pinkberry-story__photo-circle" aria-hidden="true" />
-          <div className="pinkberry-story__photo-frame" ref={photoFrameRef}>
+          <div className="pinkberry-story__photo-frame">
             <Image
               src={productImage}
               alt={name}
               fill
-              className={`pinkberry-story__photo${!reduced && photoInView ? " pinkberry-photo-fadeoutup" : ""}`}
+              className="pinkberry-story__photo"
               sizes="(max-width: 899px) 80vw, 24rem"
             />
           </div>
-        </div>
+        </motion.div>
 
         <motion.div {...columnMotion(2)}>
           <h3 className="pinkberry-story__col-title">{content.overviewTitle}</h3>

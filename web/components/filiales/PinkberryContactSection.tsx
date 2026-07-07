@@ -6,8 +6,6 @@ import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 
-import Image from "next/image";
-
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { IconFacebook, IconInstagram, IconLinkedin } from "@/components/ui/SocialLinks";
 import { Toast, ToastViewport } from "@/components/ui/Toast";
@@ -29,7 +27,6 @@ export function PinkberryContactSection({
   phone,
   email,
   social,
-  decorImages,
   backgroundImage,
 }: {
   content: SubsidiaryContactSection;
@@ -38,7 +35,6 @@ export function PinkberryContactSection({
   phone?: string;
   email: string;
   social: SocialLinksType;
-  decorImages: string[];
   backgroundImage?: string;
 }) {
   const reduced = useReducedMotion();
@@ -108,29 +104,15 @@ export function PinkberryContactSection({
   return (
     <section className="pinkberry-contact" aria-labelledby="pinkberry-contact-title">
       {backgroundImage && (
-        <Image
-          src={backgroundImage}
-          alt=""
-          fill
-          aria-hidden="true"
-          className="pinkberry-contact__bg-photo"
-          sizes="100vw"
-        />
+        <>
+          <div
+            className="pinkberry-contact__bg-photo"
+            style={{ backgroundImage: `url(${backgroundImage})` }}
+            aria-hidden="true"
+          />
+          <div className="pinkberry-contact__bg-overlay" aria-hidden="true" />
+        </>
       )}
-
-      {decorImages.map((src, i) => (
-        <motion.img
-          key={src}
-          src={src}
-          alt=""
-          aria-hidden="true"
-          className={`pinkberry-contact__decor pinkberry-contact__decor--${i + 1}`}
-          initial={reduced ? false : { opacity: 0, scale: 0.95 }}
-          whileInView={reduced ? undefined : { opacity: 0.9, scale: 1 }}
-          viewport={defaultScrollViewport}
-          transition={{ duration: DURATION_S.grand, ease: EASE.luxury, delay: i * 0.1 }}
-        />
-      ))}
 
       <AnimateIn className="pinkberry-contact__header">
         <p className="pinkberry-contact__eyebrow">{content.eyebrow}</p>

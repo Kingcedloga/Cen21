@@ -522,8 +522,7 @@ export default async function SubsidiaryPage({ params }: Props) {
           phone={subsidiary.practicalInfo.phone}
           email={getSiteConfig(l).contact.email}
           social={subsidiary.social}
-          decorImages={[subsidiary.coverImage, galleryEntrySrc(subsidiary.galleryImages[1])]}
-          backgroundImage={galleryEntrySrc(subsidiary.galleryImages[1])}
+          backgroundImage="/filiales/photos/filiale-09/contact-bg.jpg"
         />
       ) : (
         <section className="mx-auto max-w-7xl px-4 pb-16 md:px-6 md:pb-20">

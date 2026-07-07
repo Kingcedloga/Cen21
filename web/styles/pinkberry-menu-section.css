@@ -75,7 +75,7 @@
 }
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-menu__nav-btn:hover {
-  color: #e8427c;
+  color: #f4a7c3;
 }
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-menu__track {
@@ -137,7 +137,7 @@
   right: -0.5rem;
   padding: 0.3rem 0.85rem;
   border-radius: 9999px;
-  background: #e8427c;
+  background: #f4a7c3;
   color: #ffffff;
   font-size: 0.8125rem;
   font-weight: 700;
@@ -156,7 +156,7 @@
   display: flex;
   gap: 0.15rem;
   margin-bottom: 1.25rem;
-  color: #e8427c;
+  color: #f4a7c3;
 }
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-menu__cta {
@@ -176,8 +176,8 @@
 }
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-menu__cta:hover {
-  background: #e8427c;
-  border-color: #e8427c;
+  background: #f4a7c3;
+  border-color: #f4a7c3;
   color: #ffffff;
 }
 

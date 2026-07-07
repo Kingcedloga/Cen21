@@ -50,7 +50,7 @@ export const SUBSIDIARY_NAVBAR_THEMES: Record<string, SubsidiaryNavbarTheme> = {
     accent: "#FFFFFF",
   },
   "filiale-09": {
-    background: "#E8427C",
+    background: "#F4A7C3",
     foreground: "#FFFFFF",
     accent: "#FFFFFF",
   },

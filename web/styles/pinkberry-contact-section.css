@@ -12,36 +12,20 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  opacity: 0.1;
-  filter: grayscale(1);
   pointer-events: none;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
-[data-subsidiary-theme="pinkberry"] .pinkberry-contact__decor {
+[data-subsidiary-theme="pinkberry"] .pinkberry-contact__bg-overlay {
   position: absolute;
+  inset: 0;
   z-index: 0;
-  width: clamp(9rem, 16vw, 13rem);
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  object-fit: cover;
   pointer-events: none;
+  background: rgba(255, 255, 255, 0.55);
 }
 
-[data-subsidiary-theme="pinkberry"] .pinkberry-contact__decor--1 {
-  top: -2rem;
-  right: 4%;
-}
-
-[data-subsidiary-theme="pinkberry"] .pinkberry-contact__decor--2 {
-  bottom: -2.5rem;
-  left: 5%;
-}
-
-@media (max-width: 767px) {
-  [data-subsidiary-theme="pinkberry"] .pinkberry-contact__decor {
-    display: none;
-  }
-}
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-contact__header {
   position: relative;
@@ -57,7 +41,7 @@
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgb(255 255 255 / 0.85);
+  color: #f4a7c3;
 }
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-contact__title {
@@ -67,7 +51,7 @@
   font-size: clamp(1.75rem, 4vw, 2.75rem);
   line-height: 1.2;
   letter-spacing: -0.015em;
-  color: #ffffff;
+  color: #111111;
 }
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-contact__grid {
@@ -134,8 +118,8 @@
 }
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-contact__social-btn:hover {
-  background: #e8427c;
-  border-color: #e8427c;
+  background: #f4a7c3;
+  border-color: #f4a7c3;
   color: #ffffff;
 }
 
@@ -150,7 +134,7 @@
 [data-subsidiary-theme="pinkberry"] .pinkberry-contact__form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 @media (max-width: 599px) {
@@ -160,11 +144,15 @@
 }
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-contact__field {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-contact__form-row .pinkberry-contact__field {
   margin-top: 0;
+}
+
+[data-subsidiary-theme="pinkberry"] .pinkberry-contact__form-row + .pinkberry-contact__form-row {
+  margin-top: 1.25rem;
 }
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-contact__field:first-child {
@@ -190,7 +178,7 @@
 }
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-contact__input:focus {
-  border-color: #e8427c;
+  border-color: #f4a7c3;
 }
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-contact__input[aria-invalid="true"] {
@@ -216,7 +204,7 @@
   padding: 0.875rem 2rem;
   border: none;
   border-radius: 9999px;
-  background: #e8427c;
+  background: #f4a7c3;
   color: #ffffff;
   font-weight: 600;
   font-size: 0.9375rem;
@@ -225,7 +213,7 @@
 }
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-contact__submit:hover {
-  background: #c72f5e;
+  background: #CF8EA6;
 }
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-contact__submit:disabled {

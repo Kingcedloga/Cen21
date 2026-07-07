@@ -103,15 +103,15 @@
   background: radial-gradient(
     circle,
     #ffffff 0%,
-    rgb(232 66 124 / 0.4) 62%,
-    rgb(232 66 124 / 0.12) 100%
+    rgb(244 167 195 / 0.4) 62%,
+    rgb(244 167 195 / 0.12) 100%
   );
 }
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-story__photo-frame {
   position: absolute;
   z-index: 1;
-  inset: -32% -18% -2%;
+  inset: -30% -30% -20%;
 }
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-story__photo {
@@ -144,7 +144,7 @@
 [data-subsidiary-theme="pinkberry"] .pinkberry-story__list-icon {
   flex-shrink: 0;
   margin-top: 0.15rem;
-  color: #e8427c;
+  color: #f4a7c3;
 }
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-story__cta-wrap {
@@ -160,7 +160,7 @@
   padding: 0.875rem 2.25rem;
   border-radius: 9999px;
   border: none;
-  background: #e8427c;
+  background: #f4a7c3;
   color: #ffffff;
   font-weight: 600;
   font-size: 0.9375rem;
@@ -169,27 +169,11 @@
 }
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-story__cta:hover {
-  background: #d02f68;
+  background: #CF8EA6;
 }
 
 @media (prefers-reduced-motion: reduce) {
   [data-subsidiary-theme="pinkberry"] .pinkberry-story__cta {
     transition: none;
   }
-}
-
-@keyframes fadeOutUp {
-    from {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    to {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-}
-
-.pinkberry-photo-fadeoutup {
-    animation: fadeOutUp 1s ease-in;
-    animation-fill-mode: forwards;
 }

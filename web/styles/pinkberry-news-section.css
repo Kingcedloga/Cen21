@@ -85,7 +85,7 @@
   z-index: 1;
   padding: 0.3rem 0.85rem;
   border-radius: 9999px;
-  background: #e8427c;
+  background: #f4a7c3;
   color: #ffffff;
   font-size: 0.6875rem;
   font-weight: 700;
@@ -150,8 +150,8 @@
 }
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-news__cta:hover {
-  background: #e8427c;
-  border-color: #e8427c;
+  background: #f4a7c3;
+  border-color: #f4a7c3;
   color: #ffffff;
 }
 

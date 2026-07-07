@@ -243,7 +243,7 @@ export const PINKBERRY_THEME: SubsidiaryPageTheme = {
   id: "pinkberry",
   slug: "filiale-09",
   colors: {
-    bg: "#E8427C",
+    bg: "#F4A7C3",
     gold: "#FFFFFF",
     goldRgb: "255 255 255",
     text: "#FFFFFF",
@@ -256,8 +256,8 @@ export const PINKBERRY_THEME: SubsidiaryPageTheme = {
   },
   hero: {
     overlayGradient:
-      "linear-gradient(to top, #E8427C 0%, rgba(232,66,124,0.92) 42%, rgba(232,66,124,0.48) 68%, transparent 100%), linear-gradient(90deg, rgba(210,50,105,0.82) 0%, transparent 50%), radial-gradient(ellipse 82% 58% at 50% 100%, rgba(255,255,255,0.16) 0%, transparent 58%), radial-gradient(ellipse 44% 36% at 88% 14%, rgba(255,255,255,0.12) 0%, transparent 52%)",
-    blurTint: "#E8427C",
+      "linear-gradient(to top, #F4A7C3 0%, rgba(244,167,195,0.92) 42%, rgba(244,167,195,0.48) 68%, transparent 100%), linear-gradient(90deg, rgba(210,50,105,0.82) 0%, transparent 50%), radial-gradient(ellipse 82% 58% at 50% 100%, rgba(255,255,255,0.16) 0%, transparent 58%), radial-gradient(ellipse 44% 36% at 88% 14%, rgba(255,255,255,0.12) 0%, transparent 52%)",
+    blurTint: "#F4A7C3",
   },
 };
 
