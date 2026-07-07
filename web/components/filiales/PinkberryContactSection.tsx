@@ -6,6 +6,8 @@ import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 
+import Image from "next/image";
+
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { IconFacebook, IconInstagram, IconLinkedin } from "@/components/ui/SocialLinks";
 import { Toast, ToastViewport } from "@/components/ui/Toast";
@@ -28,6 +30,7 @@ export function PinkberryContactSection({
   email,
   social,
   decorImages,
+  backgroundImage,
 }: {
   content: SubsidiaryContactSection;
   hours?: string;
@@ -36,6 +39,7 @@ export function PinkberryContactSection({
   email: string;
   social: SocialLinksType;
   decorImages: string[];
+  backgroundImage?: string;
 }) {
   const reduced = useReducedMotion();
   const t = useTranslations("form");
@@ -103,6 +107,17 @@ export function PinkberryContactSection({
 
   return (
     <section className="pinkberry-contact" aria-labelledby="pinkberry-contact-title">
+      {backgroundImage && (
+        <Image
+          src={backgroundImage}
+          alt=""
+          fill
+          aria-hidden="true"
+          className="pinkberry-contact__bg-photo"
+          sizes="100vw"
+        />
+      )}
+
       {decorImages.map((src, i) => (
         <motion.img
           key={src}

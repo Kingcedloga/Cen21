@@ -15,10 +15,8 @@ const CARD_STEP = 260;
 
 export function PinkberryGallerySection({
   content,
-  backgroundImage,
 }: {
   content: SubsidiaryProductGallerySection;
-  backgroundImage: string;
 }) {
   const reduced = useReducedMotion();
   const trackRef = useRef<HTMLDivElement>(null);
@@ -39,15 +37,6 @@ export function PinkberryGallerySection({
 
   return (
     <section className="pinkberry-gallery" aria-labelledby="pinkberry-gallery-title">
-      <Image
-        src={backgroundImage}
-        alt=""
-        fill
-        aria-hidden="true"
-        className="pinkberry-gallery__bg-photo"
-        sizes="100vw"
-      />
-
       <div className="pinkberry-gallery__grid">
         <p className="pinkberry-gallery__eyebrow">{content.eyebrow}</p>
 

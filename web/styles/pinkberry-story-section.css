@@ -97,15 +97,24 @@
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-story__photo-circle {
   position: absolute;
-  inset: 8%;
+  inset: 26%;
   z-index: 0;
   border-radius: 50%;
-  background: #e8427c;
+  background: radial-gradient(
+    circle,
+    #ffffff 0%,
+    rgb(232 66 124 / 0.4) 62%,
+    rgb(232 66 124 / 0.12) 100%
+  );
+}
+
+[data-subsidiary-theme="pinkberry"] .pinkberry-story__photo-frame {
+  position: absolute;
+  z-index: 1;
+  inset: -32% -18% -2%;
 }
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-story__photo {
-  position: relative;
-  z-index: 1;
   object-fit: contain;
 }
 
@@ -167,4 +176,20 @@
   [data-subsidiary-theme="pinkberry"] .pinkberry-story__cta {
     transition: none;
   }
+}
+
+@keyframes fadeOutUp {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+.pinkberry-photo-fadeoutup {
+    animation: fadeOutUp 1s ease-in;
+    animation-fill-mode: forwards;
 }

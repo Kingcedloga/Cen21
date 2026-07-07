@@ -4,16 +4,19 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background-color: #f9d8e0;
+  background-image: url('/filiales/photos/filiale-09/gallery-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   padding: clamp(3rem, 7vw, 5rem) clamp(1.25rem, 6vw, 3.5rem);
 }
 
-[data-subsidiary-theme="pinkberry"] .pinkberry-gallery__bg-photo {
+[data-subsidiary-theme="pinkberry"] .pinkberry-gallery::before {
+  content: "";
   position: absolute;
   inset: 0;
   z-index: 0;
-  opacity: 0.1;
-  filter: grayscale(1);
+  background: rgba(255, 255, 255, 0.55);
   pointer-events: none;
 }
 

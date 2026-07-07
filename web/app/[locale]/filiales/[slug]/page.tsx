@@ -462,7 +462,6 @@ export default async function SubsidiaryPage({ params }: Props) {
       ) : slug === "filiale-09" && subsidiary.productGallerySection ? (
         <PinkberryGallerySection
           content={subsidiary.productGallerySection}
-          backgroundImage={galleryEntrySrc(subsidiary.galleryImages[1])}
         />
       ) : (
         slug !== "filiale-02" &&
@@ -524,6 +523,7 @@ export default async function SubsidiaryPage({ params }: Props) {
           email={getSiteConfig(l).contact.email}
           social={subsidiary.social}
           decorImages={[subsidiary.coverImage, galleryEntrySrc(subsidiary.galleryImages[1])]}
+          backgroundImage={galleryEntrySrc(subsidiary.galleryImages[1])}
         />
       ) : (
         <section className="mx-auto max-w-7xl px-4 pb-16 md:px-6 md:pb-20">

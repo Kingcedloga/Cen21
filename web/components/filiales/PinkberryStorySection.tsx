@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
 
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Link } from "@/i18n/navigation";
@@ -23,6 +24,8 @@ export function PinkberryStorySection({
   name: string;
 }) {
   const reduced = useReducedMotion();
+  const photoFrameRef = useRef<HTMLDivElement>(null);
+  const photoInView = useInView(photoFrameRef, { once: true, margin: "-10% 0px" });
 
   const columnMotion = (i: number) =>
     reduced
@@ -63,26 +66,18 @@ export function PinkberryStorySection({
           <p className="pinkberry-story__signature">{content.signatureName}</p>
         </motion.div>
 
-        <motion.div
-          className="pinkberry-story__photo-wrap"
-          initial={reduced ? false : { opacity: 0, scale: 0.92 }}
-          whileInView={reduced ? undefined : { opacity: 1, scale: 1 }}
-          viewport={defaultScrollViewport}
-          transition={{
-            duration: DURATION_S.luxe,
-            ease: EASE.luxury,
-            delay: STAGGER.max,
-          }}
-        >
+        <div className="pinkberry-story__photo-wrap">
           <span className="pinkberry-story__photo-circle" aria-hidden="true" />
-          <Image
-            src={productImage}
-            alt={name}
-            fill
-            className="pinkberry-story__photo"
-            sizes="(max-width: 899px) 60vw, 18rem"
-          />
-        </motion.div>
+          <div className="pinkberry-story__photo-frame" ref={photoFrameRef}>
+            <Image
+              src={productImage}
+              alt={name}
+              fill
+              className={`pinkberry-story__photo${!reduced && photoInView ? " pinkberry-photo-fadeoutup" : ""}`}
+              sizes="(max-width: 899px) 80vw, 24rem"
+            />
+          </div>
+        </div>
 
         <motion.div {...columnMotion(2)}>
           <h3 className="pinkberry-story__col-title">{content.overviewTitle}</h3>
