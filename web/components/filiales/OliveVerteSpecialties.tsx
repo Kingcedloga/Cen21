@@ -7,20 +7,20 @@ import { defaultScrollViewport, DURATION_S, EASE } from "@/lib/motion";
 import "@/styles/olive-verte-specialties.css";
 
 const MOTIFS = [
-  { symbol: "+", x: "4%",  y: "8%"  },
-  { symbol: "●", x: "9%",  y: "68%" },
-  { symbol: "+", x: "18%", y: "30%" },
-  { symbol: "●", x: "2%",  y: "48%" },
-  { symbol: "+", x: "26%", y: "82%" },
-  { symbol: "●", x: "47%", y: "5%"  },
-  { symbol: "+", x: "55%", y: "92%" },
-  { symbol: "●", x: "63%", y: "18%" },
-  { symbol: "+", x: "74%", y: "72%" },
-  { symbol: "●", x: "82%", y: "38%" },
-  { symbol: "+", x: "91%", y: "14%" },
-  { symbol: "●", x: "96%", y: "60%" },
-  { symbol: "+", x: "38%", y: "55%" },
-  { symbol: "●", x: "88%", y: "86%" },
+  { symbol: "+",      x: "6%",  y: "12%", circle: false },
+  { symbol: "",       x: "11%", y: "70%", circle: true  },
+  { symbol: "+",      x: "20%", y: "32%", circle: false },
+  { symbol: "",       x: "4%",  y: "50%", circle: true  },
+  { symbol: "+",      x: "28%", y: "85%", circle: false },
+  { symbol: "+",      x: "48%", y: "6%",  circle: false },
+  { symbol: "",       x: "56%", y: "93%", circle: true  },
+  { symbol: "+",      x: "65%", y: "20%", circle: false },
+  { symbol: "",       x: "75%", y: "74%", circle: true  },
+  { symbol: "+",      x: "83%", y: "40%", circle: false },
+  { symbol: "",       x: "92%", y: "16%", circle: true  },
+  { symbol: "+",      x: "97%", y: "62%", circle: false },
+  { symbol: "+",      x: "39%", y: "57%", circle: false },
+  { symbol: "",       x: "88%", y: "88%", circle: true  },
 ] as const;
 
 const transition = {
@@ -35,23 +35,28 @@ type Props = {
 export function OliveVerteSpecialties({ content }: Props) {
   return (
     <section className="olive-specialties">
-      {/* Blobs décoratifs */}
-      <div className="olive-specialties__blobs" aria-hidden="true">
-        <span className="olive-specialties__blob olive-specialties__blob--left" />
-        <span className="olive-specialties__blob olive-specialties__blob--right" />
+      {/* Grand cercle outline gauche */}
+      <div className="olive-specialties__circle-left" aria-hidden="true" />
+
+      {/* Courbes organiques droite */}
+      <div className="olive-specialties__curves-right" aria-hidden="true">
+        <span className="olive-specialties__curve olive-specialties__curve--a" />
+        <span className="olive-specialties__curve olive-specialties__curve--b" />
       </div>
+
+      {/* Accent cercle plein bas gauche */}
+      <div className="olive-specialties__dot-accent" aria-hidden="true" />
 
       {/* Motifs dispersés */}
       <div className="olive-specialties__motifs" aria-hidden="true">
         {MOTIFS.map((m, i) => (
           <motion.span
             key={i}
-            className="olive-specialties__motif"
+            className={`olive-specialties__motif${m.circle ? " olive-specialties__motif--circle" : ""}`}
             style={{ left: m.x, top: m.y }}
             initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={defaultScrollViewport}
-            transition={{ ...transition, delay: i * 0.04 }}
+            animate={{ opacity: 1 }}
+            transition={{ ...transition, delay: i * 0.12 }}
           >
             {m.symbol}
           </motion.span>
@@ -63,7 +68,7 @@ export function OliveVerteSpecialties({ content }: Props) {
         className="olive-specialties__header"
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={defaultScrollViewport}
+        viewport={{ ...defaultScrollViewport, once: true }}
         transition={transition}
       >
         <p className="olive-specialties__eyebrow">{content.eyebrow}</p>
@@ -71,7 +76,7 @@ export function OliveVerteSpecialties({ content }: Props) {
         <p className="olive-specialties__description">{content.description}</p>
       </motion.div>
 
-      {/* Rangées alternées */}
+      {/* Blocs alternés */}
       <div className="olive-specialties__rows">
         {content.rows.map((row, i) => {
           const isReverse = i % 2 === 1;
@@ -88,7 +93,7 @@ export function OliveVerteSpecialties({ content }: Props) {
                 className="olive-specialties__image-wrap"
                 initial={{ opacity: 0, x: imageX }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={defaultScrollViewport}
+                viewport={{ ...defaultScrollViewport, once: true }}
                 transition={{ ...transition, delay: 0.1 }}
               >
                 <Image
@@ -96,7 +101,7 @@ export function OliveVerteSpecialties({ content }: Props) {
                   alt={row.imageAlt}
                   fill
                   className="olive-specialties__image"
-                  sizes="(max-width: 767px) 100vw, 60vw"
+                  sizes="(max-width: 767px) 100vw, 500px"
                 />
               </motion.div>
 
@@ -105,8 +110,8 @@ export function OliveVerteSpecialties({ content }: Props) {
                 className="olive-specialties__text"
                 initial={{ opacity: 0, x: textX }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={defaultScrollViewport}
-                transition={{ ...transition, delay: 0.2 }}
+                viewport={{ ...defaultScrollViewport, once: true }}
+                transition={{ ...transition, delay: 0.22 }}
               >
                 <h3 className="olive-specialties__row-title">{row.title}</h3>
                 <p className="olive-specialties__row-description">{row.description}</p>

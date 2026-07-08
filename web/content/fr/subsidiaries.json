@@ -39,6 +39,12 @@
             "description": "Des grillades au feu de bois aux entrées soigneusement travaillées, chaque création de notre carte reflète notre passion pour l'accueil et la gastronomie. Accompagnez votre repas d'un cocktail signature pour une expérience complète.",
             "image": "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=1200&q=80",
             "imageAlt": "Assiette premium — L'Olive Verte"
+          },
+          {
+            "title": "Un accueil chaleureux, à chaque visite",
+            "description": "De votre arrivée jusqu'au dernier dessert, notre équipe s'engage à rendre chaque passage inoubliable. Un service attentionné, une atmosphère conviviale et une chaleur humaine — toujours au rendez-vous.",
+            "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
+            "imageAlt": "Salle du restaurant — L'Olive Verte"
           }
         ]
       },

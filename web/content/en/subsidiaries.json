@@ -39,6 +39,12 @@
             "description": "From wood-fired grills to carefully crafted starters, every creation on our menu reflects our passion for hospitality. Pair your plate with one of our signature cocktails for a truly complete experience.",
             "image": "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=1200&q=80",
             "imageAlt": "Premium platter — L'Olive Verte"
+          },
+          {
+            "title": "A warm welcome, every single time",
+            "description": "From the moment you walk in to the last bite of dessert, our team is committed to making every visit feel special. Warm hospitality, attentive service and an inviting atmosphere — every time.",
+            "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
+            "imageAlt": "Restaurant interior — L'Olive Verte"
           }
         ]
       },
