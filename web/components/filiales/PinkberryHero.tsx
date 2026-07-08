@@ -6,13 +6,19 @@ import { useTranslations } from "next-intl";
 import { useCallback, useRef, useState } from "react";
 
 import { ChevronLeft, ChevronRight } from "@/lib/icons";
-import { galleryEntrySrc } from "@/lib/gallery-categories";
 import { DURATION_S, EASE, fadeUpVariants, heroStaggerVariants } from "@/lib/motion";
 import type { Subsidiary } from "@/lib/types";
 
 import "@/styles/pinkberry-hero.css";
 
 const SLIDE_COLORS = ["#E8427C", "#F4A7C3", "#FF6B6B", "#C84B8F"] as const;
+
+const HERO_IMAGES = [
+  "/filiales/photos/filiale-09/PBRY_Original_Logo_MilkPour.png",
+  "/filiales/photos/filiale-09/PB_StrawberryCrunch.png",
+  "/filiales/photos/filiale-09/PB_WaffleBowl.png",
+  "/filiales/photos/filiale-09/PB_WildBlueberry_Topped.png",
+] as const;
 
 const MOTIF_POSITIONS = [
   { x: "5%",  y: "10%" },
@@ -42,10 +48,7 @@ export function PinkberryHero({ subsidiary }: { subsidiary: Subsidiary }) {
   const t = useTranslations("subsidiaries");
   const sectionRef = useRef<HTMLElement>(null);
 
-  const images = [
-    subsidiary.coverImage,
-    ...subsidiary.galleryImages.map(galleryEntrySrc),
-  ].filter((src, i, arr) => arr.indexOf(src) === i);
+  const images = HERO_IMAGES;
 
   const [active, setActive] = useState(0);
   const go = useCallback(
