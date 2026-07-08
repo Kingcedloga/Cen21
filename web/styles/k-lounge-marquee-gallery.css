@@ -195,3 +195,29 @@
 [data-subsidiary-theme="k-lounge"] .klounge-marquee-gallery__description {
   color: var(--sub-text-muted, rgb(255 255 255 / 0.62));
 }
+
+/* ── L'Olive Verte overrides ── */
+
+[data-subsidiary-theme="olive-verte"] .klounge-marquee-gallery {
+  background-color: #ece7d1;
+}
+
+[data-subsidiary-theme="olive-verte"] .klounge-marquee-gallery__title {
+  color: #767f34;
+}
+
+[data-subsidiary-theme="olive-verte"] .klounge-marquee-gallery__description {
+  color: #4b5563;
+}
+
+[data-subsidiary-theme="olive-verte"] .klounge-marquee-gallery__panel {
+  background: rgb(118 127 52 / 0.04);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-subsidiary-theme="olive-verte"] .klounge-marquee-gallery__cursor {
+    border-color: rgb(118 127 52 / 0.55);
+    background: rgb(118 127 52 / 0.12);
+    color: #767f34;
+  }
+}

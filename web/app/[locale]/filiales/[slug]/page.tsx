@@ -9,6 +9,7 @@ import { MillionaireClubScatteredGallery } from "@/components/filiales/Millionai
 import { KLoungeMarqueeGallery } from "@/components/filiales/KLoungeMarqueeGallery";
 import { KLoungeReservationBanner } from "@/components/filiales/KLoungeReservationBanner";
 import { OliveVerteHero } from "@/components/filiales/OliveVerteHero";
+import { OliveVerteMenuSection } from "@/components/filiales/OliveVerteMenuSection";
 import { OliveVerteSpecialties } from "@/components/filiales/OliveVerteSpecialties";
 import { PinkberryHero } from "@/components/filiales/PinkberryHero";
 import { PinkberryStorySection } from "@/components/filiales/PinkberryStorySection";
@@ -300,6 +301,16 @@ export default async function SubsidiaryPage({ params }: Props) {
           <OliveVerteHero subsidiary={subsidiary} />
           {subsidiary.specialtiesSection && (
             <OliveVerteSpecialties content={subsidiary.specialtiesSection} />
+          )}
+          {galleryItems.length > 0 && (
+            <KLoungeMarqueeGallery
+              items={galleryItems}
+              title={t("gallery")}
+              description={t("oliveVerteGallery.description")}
+            />
+          )}
+          {subsidiary.menuCategoriesSection && (
+            <OliveVerteMenuSection content={subsidiary.menuCategoriesSection} />
           )}
         </>
       ) : (

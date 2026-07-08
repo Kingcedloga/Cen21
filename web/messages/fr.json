@@ -222,6 +222,14 @@
     "kLoungeGallery": {
       "description": "Plats signature, cocktails créatifs et ambiance nocturne — une immersion visuelle au cœur de l'expérience K Lounge."
     },
+    "oliveVerteGallery": {
+      "description": "Saveurs méditerranéennes, terrasses conviviales et plats préparés avec soin — un voyage visuel au cœur de l'expérience L'Olive Verte."
+    },
+    "oliveVerteMenu": {
+      "orderNow": "Commander",
+      "previousDish": "Plat précédent",
+      "nextDish": "Plat suivant"
+    },
     "pinkberryHero": {
       "eyebrow": "Frais & Gourmand",
       "title": "L'excellent goût du bon vieux temps.",

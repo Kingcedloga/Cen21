@@ -20,8 +20,14 @@
       "brandLogo": "/filiales/logos/filiale-01.png",
       "coverImage": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80",
-        "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80"
+        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80",
+        "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=800&q=80",
+        "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
+        "https://images.unsplash.com/photo-1540189549336-e6e99eb4b5d2?w=800&q=80",
+        "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80",
+        "https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=800&q=80",
+        "https://images.unsplash.com/photo-1530469912745-a215c6b256ea?w=800&q=80",
+        "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80"
       ],
       "specialtiesSection": {
         "eyebrow": "Our Specialities",
@@ -45,6 +51,112 @@
             "description": "From the moment you walk in to the last bite of dessert, our team is committed to making every visit feel special. Warm hospitality, attentive service and an inviting atmosphere — every time.",
             "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
             "imageAlt": "Restaurant interior — L'Olive Verte"
+          }
+        ]
+      },
+      "menuCategoriesSection": {
+        "title": "Our Best Dishes",
+        "description": "A menu built on quality ingredients and bold flavours — European classics, wood-fired grills, and refreshing cocktails for every craving.",
+        "categories": [
+          {
+            "id": "starters",
+            "label": "Starters",
+            "dishes": [
+              {
+                "name": "Burrata & Heirloom Tomatoes",
+                "description": "Creamy burrata, sun-ripened tomatoes, basil oil and toasted sourdough.",
+                "price": "$14",
+                "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200&q=80",
+                "imageAlt": "Burrata and tomato starter"
+              },
+              {
+                "name": "Market Garden Salad",
+                "description": "Seasonal greens, shaved vegetables, herbs and a light citrus vinaigrette.",
+                "price": "$11",
+                "image": "https://images.unsplash.com/photo-1530469912745-a215c6b256ea?w=1200&q=80",
+                "imageAlt": "Market garden salad"
+              }
+            ]
+          },
+          {
+            "id": "mains",
+            "label": "Mains",
+            "dishes": [
+              {
+                "name": "Tomato Paniyaram Bowl",
+                "description": "Slow-cooked tomato base with soft paniyaram, fresh fruit and toasted coconut.",
+                "price": "$20",
+                "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80",
+                "imageAlt": "Tomato Paniyaram bowl"
+              },
+              {
+                "name": "Herb-Roasted Chicken",
+                "description": "Free-range chicken, seasonal vegetables and a light pan jus.",
+                "price": "$18",
+                "image": "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=1200&q=80",
+                "imageAlt": "Herb-roasted chicken plate"
+              }
+            ]
+          },
+          {
+            "id": "grills",
+            "label": "Grills",
+            "dishes": [
+              {
+                "name": "Wood-Fired Ribeye",
+                "description": "Charcoal-grilled ribeye with garlic butter and crispy potatoes.",
+                "price": "$26",
+                "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80",
+                "imageAlt": "Wood-fired ribeye steak"
+              },
+              {
+                "name": "Mixed Grill Platter",
+                "description": "Beef, chicken and merguez skewers with grilled seasonal vegetables.",
+                "price": "$24",
+                "image": "https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=1200&q=80",
+                "imageAlt": "Mixed grill platter"
+              }
+            ]
+          },
+          {
+            "id": "desserts",
+            "label": "Desserts",
+            "dishes": [
+              {
+                "name": "Chocolate Fondant",
+                "description": "Warm chocolate fondant with vanilla ice cream and berry coulis.",
+                "price": "$9",
+                "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80",
+                "imageAlt": "Chocolate fondant dessert"
+              },
+              {
+                "name": "Seasonal Fruit Tart",
+                "description": "Buttery pastry, pastry cream and fresh seasonal fruit.",
+                "price": "$8",
+                "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
+                "imageAlt": "Seasonal fruit tart"
+              }
+            ]
+          },
+          {
+            "id": "drinks",
+            "label": "Drinks",
+            "dishes": [
+              {
+                "name": "Signature Mojito",
+                "description": "White rum, fresh mint, lime and a splash of soda.",
+                "price": "$10",
+                "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200&q=80",
+                "imageAlt": "Signature mojito cocktail"
+              },
+              {
+                "name": "Tropical Sangria",
+                "description": "Red wine, tropical fruits and a hint of citrus.",
+                "price": "$9",
+                "image": "https://images.unsplash.com/photo-1530469912745-a215c6b256ea?w=1200&q=80",
+                "imageAlt": "Tropical sangria pitcher"
+              }
+            ]
           }
         ]
       },

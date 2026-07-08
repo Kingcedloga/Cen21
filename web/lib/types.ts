@@ -172,6 +172,8 @@ export type Subsidiary = {
   externalUrl?: string;
   /** Section « Nos Spécialités » — rangées alternées photo/texte (L'Olive Verte). */
   specialtiesSection?: SubsidiarySpecialtiesSection;
+  /** Section « Notre Menu » — catégories navigables (L'Olive Verte). */
+  menuCategoriesSection?: SubsidiaryMenuCategoriesSection;
 };
 
 /** Rangée de spécialité — photo + texte (L'Olive Verte). */
@@ -188,6 +190,29 @@ export type SubsidiarySpecialtiesSection = {
   title: string;
   description: string;
   rows: SubsidiarySpecialtyRow[];
+};
+
+/** Plat — catégorie navigable (L'Olive Verte). */
+export type SubsidiaryMenuDish = {
+  name: string;
+  description: string;
+  price: string;
+  image: string;
+  imageAlt: string;
+};
+
+/** Catégorie de plats — colonne gauche (L'Olive Verte). */
+export type SubsidiaryMenuCategory = {
+  id: string;
+  label: string;
+  dishes: SubsidiaryMenuDish[];
+};
+
+/** Section « Notre Menu » — catégories navigables (L'Olive Verte). */
+export type SubsidiaryMenuCategoriesSection = {
+  title: string;
+  description: string;
+  categories: SubsidiaryMenuCategory[];
 };
 
 /** Section éditoriale « Notre histoire » 3 colonnes (Pinkberry). */

@@ -20,8 +20,14 @@
       "brandLogo": "/filiales/logos/filiale-01.png",
       "coverImage": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80",
-        "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80"
+        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80",
+        "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=800&q=80",
+        "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
+        "https://images.unsplash.com/photo-1540189549336-e6e99eb4b5d2?w=800&q=80",
+        "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80",
+        "https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=800&q=80",
+        "https://images.unsplash.com/photo-1530469912745-a215c6b256ea?w=800&q=80",
+        "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80"
       ],
       "specialtiesSection": {
         "eyebrow": "Nos Spécialités",
@@ -45,6 +51,112 @@
             "description": "De votre arrivée jusqu'au dernier dessert, notre équipe s'engage à rendre chaque passage inoubliable. Un service attentionné, une atmosphère conviviale et une chaleur humaine — toujours au rendez-vous.",
             "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
             "imageAlt": "Salle du restaurant — L'Olive Verte"
+          }
+        ]
+      },
+      "menuCategoriesSection": {
+        "title": "Nos Meilleurs Plats",
+        "description": "Une carte pensée autour d'ingrédients de qualité et de saveurs affirmées — classiques européens, grillades au feu de bois et cocktails rafraîchissants pour toutes les envies.",
+        "categories": [
+          {
+            "id": "starters",
+            "label": "Entrées",
+            "dishes": [
+              {
+                "name": "Burrata & tomates anciennes",
+                "description": "Burrata crémeuse, tomates mûries au soleil, huile de basilic et pain de campagne toasté.",
+                "price": "14 $",
+                "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200&q=80",
+                "imageAlt": "Entrée burrata et tomates"
+              },
+              {
+                "name": "Salade du potager",
+                "description": "Légumes de saison, herbes fraîches et une vinaigrette légère aux agrumes.",
+                "price": "11 $",
+                "image": "https://images.unsplash.com/photo-1530469912745-a215c6b256ea?w=1200&q=80",
+                "imageAlt": "Salade du potager"
+              }
+            ]
+          },
+          {
+            "id": "mains",
+            "label": "Plats",
+            "dishes": [
+              {
+                "name": "Bol Tomato Paniyaram",
+                "description": "Base tomate mijotée, paniyaram moelleux, fruits frais et noix de coco toastée.",
+                "price": "20 $",
+                "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80",
+                "imageAlt": "Bol Tomato Paniyaram"
+              },
+              {
+                "name": "Poulet rôti aux herbes",
+                "description": "Poulet fermier, légumes de saison et jus léger au jus de cuisson.",
+                "price": "18 $",
+                "image": "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=1200&q=80",
+                "imageAlt": "Assiette de poulet rôti aux herbes"
+              }
+            ]
+          },
+          {
+            "id": "grills",
+            "label": "Grillades",
+            "dishes": [
+              {
+                "name": "Entrecôte au feu de bois",
+                "description": "Entrecôte grillée au charbon, beurre à l'ail et pommes de terre croustillantes.",
+                "price": "26 $",
+                "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80",
+                "imageAlt": "Entrecôte grillée au feu de bois"
+              },
+              {
+                "name": "Plateau de grillades mixtes",
+                "description": "Brochettes de bœuf, poulet et merguez, légumes de saison grillés.",
+                "price": "24 $",
+                "image": "https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=1200&q=80",
+                "imageAlt": "Plateau de grillades mixtes"
+              }
+            ]
+          },
+          {
+            "id": "desserts",
+            "label": "Desserts",
+            "dishes": [
+              {
+                "name": "Fondant au chocolat",
+                "description": "Fondant au chocolat tiède, glace vanille et coulis de fruits rouges.",
+                "price": "9 $",
+                "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80",
+                "imageAlt": "Fondant au chocolat"
+              },
+              {
+                "name": "Tarte aux fruits de saison",
+                "description": "Pâte sablée, crème pâtissière et fruits frais de saison.",
+                "price": "8 $",
+                "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
+                "imageAlt": "Tarte aux fruits de saison"
+              }
+            ]
+          },
+          {
+            "id": "drinks",
+            "label": "Boissons",
+            "dishes": [
+              {
+                "name": "Mojito signature",
+                "description": "Rhum blanc, menthe fraîche, citron vert et un trait de soda.",
+                "price": "10 $",
+                "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200&q=80",
+                "imageAlt": "Cocktail mojito signature"
+              },
+              {
+                "name": "Sangria tropicale",
+                "description": "Vin rouge, fruits tropicaux et une pointe d'agrumes.",
+                "price": "9 $",
+                "image": "https://images.unsplash.com/photo-1530469912745-a215c6b256ea?w=1200&q=80",
+                "imageAlt": "Pichet de sangria tropicale"
+              }
+            ]
           }
         ]
       },

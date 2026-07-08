@@ -214,6 +214,14 @@
     "kLoungeGallery": {
       "description": "Signature dishes, creative cocktails, and nightlife atmosphere — a visual immersion at the heart of the K Lounge experience."
     },
+    "oliveVerteGallery": {
+      "description": "Mediterranean flavours, convivial terraces and lovingly crafted dishes — a visual journey through the L'Olive Verte experience."
+    },
+    "oliveVerteMenu": {
+      "orderNow": "Order Now",
+      "previousDish": "Previous dish",
+      "nextDish": "Next dish"
+    },
     "pinkberryHero": {
       "eyebrow": "Fresh & Gourmet",
       "title": "Taste From The Good Old Days.",
