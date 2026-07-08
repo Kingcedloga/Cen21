@@ -56,7 +56,38 @@
   min-width: 0;
 }
 
+[data-subsidiary-theme="pinkberry"] .pinkberry-hero__logo-wrap {
+  margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+@media (max-width: 767px) {
+  [data-subsidiary-theme="pinkberry"] .pinkberry-hero__logo-wrap {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+[data-subsidiary-theme="pinkberry"] .pinkberry-hero__logo {
+  height: auto;
+  width: auto;
+  max-width: 120px;
+}
+
+[data-subsidiary-theme="pinkberry"] .pinkberry-hero__eyebrow {
+  margin: 0 0 0.75rem;
+  font-size: 0.8125rem;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: rgb(255 255 255 / 0.85);
+}
+
 [data-subsidiary-theme="pinkberry"] .pinkberry-hero__title {
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   font-family: var(--font-nunito), "Nunito", system-ui, sans-serif;
   font-weight: 800;
   color: #ffffff;
@@ -101,46 +132,71 @@
   color: var(--sub-bg);
 }
 
-/* ── Visuel : conteneur carré = les deux cercles + la photo ── */
+/* ── Visuel : conteneur carré = les cercles + la photo — quasi pleine hauteur du hero ── */
 
 [data-subsidiary-theme="pinkberry"] .pinkberry-hero__visual {
   position: relative;
-  flex: 0 0 clamp(18rem, 34vw, 30rem);
-  width: clamp(18rem, 34vw, 30rem);
+  flex: 0 0 clamp(26rem, 46vw, 42rem);
+  width: clamp(26rem, 46vw, 42rem);
   aspect-ratio: 1 / 1;
 }
 
 @media (max-width: 767px) {
   [data-subsidiary-theme="pinkberry"] .pinkberry-hero__visual {
-    flex: 0 0 clamp(13rem, 72vw, 22rem);
-    width: clamp(13rem, 72vw, 22rem);
+    flex: 0 0 clamp(16rem, 82vw, 26rem);
+    width: clamp(16rem, 82vw, 26rem);
     align-self: center;
   }
 }
 
-/* Cercle extérieur — dashed, rotation pilotée par Framer Motion */
+/* Cercles concentriques — rotation CSS continue, jamais interrompue par le changement de slide */
 [data-subsidiary-theme="pinkberry"] .pinkberry-hero__circle {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 2px dashed rgb(255 255 255 / 0.3);
+  border: 1.5px solid rgb(255 255 255 / 0.28);
   box-shadow: 0 0 40px rgb(255 255 255 / 0.06);
+  animation: pinkberry-hero-rotate-cw 20s linear infinite;
 }
 
-/* Cercle intérieur — solid, pulsation scale pilotée par Framer Motion */
 [data-subsidiary-theme="pinkberry"] .pinkberry-hero__circle--2 {
-  inset: 12%;
-  border: 1px solid rgb(255 255 255 / 0.18);
+  inset: 9%;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  box-shadow: none;
+  animation: pinkberry-hero-rotate-ccw 15s linear infinite;
+}
+
+[data-subsidiary-theme="pinkberry"] .pinkberry-hero__circle--3 {
+  inset: 18%;
+  border: 1px solid rgb(255 255 255 / 0.14);
   box-shadow: none;
 }
 
-/* Photo produit — centrée horizontalement, déborde 16 % en haut du cercle */
+@keyframes pinkberry-hero-rotate-cw {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pinkberry-hero-rotate-ccw {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* Photo produit — centrée horizontalement, déborde largement en haut et en bas du cercle */
 [data-subsidiary-theme="pinkberry"] .pinkberry-hero__photo-wrap {
   position: absolute;
-  top: -16%;
-  left: 16%; /* (100% − 68%) / 2 */
-  width: 68%;
-  bottom: 0;
+  top: -22%;
+  left: 12%; /* (100% − 76%) / 2 */
+  width: 76%;
+  bottom: -12%;
   z-index: 1;
 }
 
@@ -186,5 +242,9 @@
   }
   [data-subsidiary-theme="pinkberry"] .pinkberry-hero__cta {
     transition: none;
+  }
+  [data-subsidiary-theme="pinkberry"] .pinkberry-hero__circle,
+  [data-subsidiary-theme="pinkberry"] .pinkberry-hero__circle--2 {
+    animation: none;
   }
 }

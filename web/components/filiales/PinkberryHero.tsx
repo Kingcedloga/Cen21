@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { useCallback, useRef, useState } from "react";
 
 import { ChevronLeft, ChevronRight } from "@/lib/icons";
-import { DURATION_S, EASE, fadeUpVariants, heroStaggerVariants } from "@/lib/motion";
+import { DURATION_S, EASE } from "@/lib/motion";
 import type { Subsidiary } from "@/lib/types";
 
 import "@/styles/pinkberry-hero.css";
@@ -65,6 +65,15 @@ export function PinkberryHero({ subsidiary }: { subsidiary: Subsidiary }) {
 
   const bgColor = SLIDE_COLORS[active % SLIDE_COLORS.length];
 
+  const textItemMotion = (i: number) =>
+    reduced
+      ? {}
+      : {
+          initial: { opacity: 0, y: 24 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: DURATION_S.luxe, ease: EASE.luxury, delay: i * 0.08 },
+        };
+
   return (
     <section
       ref={sectionRef}
@@ -102,31 +111,34 @@ export function PinkberryHero({ subsidiary }: { subsidiary: Subsidiary }) {
       </div>
 
       <div className="pinkberry-hero__content">
-        {/* Texte gauche */}
-        <motion.div
-          className="pinkberry-hero__text"
-          initial={reduced ? false : "hidden"}
-          animate={reduced ? undefined : "visible"}
-          variants={reduced ? undefined : heroStaggerVariants}
-        >
-          <motion.h1
-            className="pinkberry-hero__title"
-            variants={reduced ? undefined : fadeUpVariants}
-          >
+        {/* Texte gauche : logo → eyebrow → titre → sous-titre → CTA */}
+        <div className="pinkberry-hero__text">
+          <motion.div className="pinkberry-hero__logo-wrap" {...textItemMotion(0)}>
+            {subsidiary.brandLogo && (
+              <Image
+                src={subsidiary.brandLogo}
+                alt={subsidiary.name}
+                width={120}
+                height={50}
+                className="pinkberry-hero__logo"
+              />
+            )}
+          </motion.div>
+          <motion.p className="pinkberry-hero__eyebrow" {...textItemMotion(1)}>
+            {t("pinkberryHero.eyebrow")}
+          </motion.p>
+          <motion.h1 className="pinkberry-hero__title" {...textItemMotion(2)}>
             {subsidiary.name}
           </motion.h1>
-          <motion.p
-            className="pinkberry-hero__tagline"
-            variants={reduced ? undefined : fadeUpVariants}
-          >
+          <motion.p className="pinkberry-hero__tagline" {...textItemMotion(3)}>
             {subsidiary.tagline}
           </motion.p>
-          <motion.div variants={reduced ? undefined : fadeUpVariants}>
+          <motion.div {...textItemMotion(4)}>
             <button type="button" className="pinkberry-hero__cta" onClick={scrollToNext}>
               {t("pinkberryHero.cta")}
             </button>
           </motion.div>
-        </motion.div>
+        </div>
 
         {/* Visuel droit : cercles + photo produit */}
         <motion.div
@@ -135,18 +147,10 @@ export function PinkberryHero({ subsidiary }: { subsidiary: Subsidiary }) {
           animate={reduced ? undefined : { opacity: 1, x: 0 }}
           transition={{ duration: DURATION_S.grand, ease: EASE.luxury, delay: 0.15 }}
         >
-          {/* Cercle extérieur — dashed, rotation lente */}
-          <motion.span
-            className="pinkberry-hero__circle"
-            animate={reduced ? undefined : { rotate: 360 }}
-            transition={{ duration: 10, ease: "linear", repeat: Infinity }}
-          />
-          {/* Cercle intérieur — pulsation scale */}
-          <motion.span
-            className="pinkberry-hero__circle pinkberry-hero__circle--2"
-            animate={reduced ? undefined : { scale: [1, 1.05, 1] }}
-            transition={{ duration: 3, ease: "easeInOut", repeat: Infinity }}
-          />
+          {/* Cercles concentriques — rotation CSS continue, indépendante du changement de slide */}
+          <span className="pinkberry-hero__circle" aria-hidden="true" />
+          <span className="pinkberry-hero__circle pinkberry-hero__circle--2" aria-hidden="true" />
+          <span className="pinkberry-hero__circle pinkberry-hero__circle--3" aria-hidden="true" />
           {/* Photo produit — centrée dans le cercle, déborde en haut */}
           <AnimatePresence mode="wait">
             <motion.div
@@ -163,7 +167,7 @@ export function PinkberryHero({ subsidiary }: { subsidiary: Subsidiary }) {
                 fill
                 priority={active === 0}
                 className="pinkberry-hero__image"
-                sizes="(max-width: 767px) 55vw, (max-width: 1023px) 38vw, 22rem"
+                sizes="(max-width: 767px) 78vw, (max-width: 1023px) 50vw, 40rem"
               />
             </motion.div>
           </AnimatePresence>
