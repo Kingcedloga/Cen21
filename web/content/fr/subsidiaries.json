@@ -23,6 +23,25 @@
         "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80",
         "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80"
       ],
+      "specialtiesSection": {
+        "eyebrow": "Nos Spécialités",
+        "title": "Nos Spécialités",
+        "description": "Des classiques européens généreux aux créations contemporaines légères, chaque assiette de L'Olive Verte est préparée avec des ingrédients de qualité et des saveurs affirmées — pour une expérience inoubliable à toute heure.",
+        "rows": [
+          {
+            "title": "Une cuisine fraîche et généreuse, à toute heure",
+            "description": "Nos chefs élaborent chaque plat avec les meilleurs produits de saison pour allier saveurs et convivialité. Déjeuner rapide, repas d'affaires ou soirée festive : la qualité est toujours au rendez-vous.",
+            "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80",
+            "imageAlt": "Plat signature — L'Olive Verte"
+          },
+          {
+            "title": "Les plats les plus savoureux, rien que pour vous",
+            "description": "Des grillades au feu de bois aux entrées soigneusement travaillées, chaque création de notre carte reflète notre passion pour l'accueil et la gastronomie. Accompagnez votre repas d'un cocktail signature pour une expérience complète.",
+            "image": "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=1200&q=80",
+            "imageAlt": "Assiette premium — L'Olive Verte"
+          }
+        ]
+      },
       "featured": true
     },
     {

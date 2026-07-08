@@ -170,6 +170,24 @@ export type Subsidiary = {
   contactSection?: SubsidiaryContactSection;
   /** Site officiel externe — les liens filiale pointent hors de Cen21 (ex. Pain Quotidien). */
   externalUrl?: string;
+  /** Section « Nos Spécialités » — rangées alternées photo/texte (L'Olive Verte). */
+  specialtiesSection?: SubsidiarySpecialtiesSection;
+};
+
+/** Rangée de spécialité — photo + texte (L'Olive Verte). */
+export type SubsidiarySpecialtyRow = {
+  title: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+};
+
+/** Section « Nos Spécialités » — rangées alternées photo/texte (L'Olive Verte). */
+export type SubsidiarySpecialtiesSection = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  rows: SubsidiarySpecialtyRow[];
 };
 
 /** Section éditoriale « Notre histoire » 3 colonnes (Pinkberry). */

@@ -23,6 +23,25 @@
         "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80",
         "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80"
       ],
+      "specialtiesSection": {
+        "eyebrow": "Our Specialities",
+        "title": "Our Specialities",
+        "description": "From hearty European classics to fresh contemporary dishes, every plate at L'Olive Verte is crafted with quality ingredients and bold flavours — for a memorable dining experience at any hour.",
+        "rows": [
+          {
+            "title": "Fresh, generous cuisine for every occasion",
+            "description": "Our chefs work with the finest seasonal produce to create dishes that balance flavour and conviviality. Whether it's a quick lunch, a business meal or a festive evening, quality is always at the table.",
+            "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80",
+            "imageAlt": "Signature dish — L'Olive Verte"
+          },
+          {
+            "title": "The most attractive dishes, made just for you",
+            "description": "From wood-fired grills to carefully crafted starters, every creation on our menu reflects our passion for hospitality. Pair your plate with one of our signature cocktails for a truly complete experience.",
+            "image": "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=1200&q=80",
+            "imageAlt": "Premium platter — L'Olive Verte"
+          }
+        ]
+      },
       "featured": true
     },
     {

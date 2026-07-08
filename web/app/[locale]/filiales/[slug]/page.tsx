@@ -8,6 +8,8 @@ import { MillionaireClubIntroSection } from "@/components/filiales/MillionaireCl
 import { MillionaireClubScatteredGallery } from "@/components/filiales/MillionaireClubScatteredGallery";
 import { KLoungeMarqueeGallery } from "@/components/filiales/KLoungeMarqueeGallery";
 import { KLoungeReservationBanner } from "@/components/filiales/KLoungeReservationBanner";
+import { OliveVerteHero } from "@/components/filiales/OliveVerteHero";
+import { OliveVerteSpecialties } from "@/components/filiales/OliveVerteSpecialties";
 import { PinkberryHero } from "@/components/filiales/PinkberryHero";
 import { PinkberryStorySection } from "@/components/filiales/PinkberryStorySection";
 import { PinkberryGallerySection } from "@/components/filiales/PinkberryGallerySection";
@@ -293,6 +295,13 @@ export default async function SubsidiaryPage({ params }: Props) {
         </div>
       ) : slug === "filiale-09" ? (
         <PinkberryHero subsidiary={subsidiary} />
+      ) : slug === "filiale-01" ? (
+        <>
+          <OliveVerteHero subsidiary={subsidiary} />
+          {subsidiary.specialtiesSection && (
+            <OliveVerteSpecialties content={subsidiary.specialtiesSection} />
+          )}
+        </>
       ) : (
         <SubsidiaryHero
           slides={heroSlides}

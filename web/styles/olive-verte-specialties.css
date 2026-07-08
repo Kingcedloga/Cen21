@@ -1,0 +1,178 @@
+/* L'Olive Verte — Nos Spécialités (filiale-01) : rangées alternées photo / texte */
+
+[data-subsidiary-theme="olive-verte"] .olive-specialties {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #ece7d1;
+  padding: clamp(4rem, 9vw, 7rem) clamp(1.25rem, 6vw, 5rem);
+}
+
+/* ── Blobs décoratifs ── */
+
+[data-subsidiary-theme="olive-verte"] .olive-specialties__blobs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-subsidiary-theme="olive-verte"] .olive-specialties__blob {
+  position: absolute;
+  border: 1.5px solid rgba(118, 127, 52, 0.15);
+}
+
+[data-subsidiary-theme="olive-verte"] .olive-specialties__blob--left {
+  left: -10%;
+  top: 12%;
+  width: clamp(180px, 22vw, 340px);
+  height: clamp(240px, 30vw, 460px);
+  border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+  transform: rotate(-18deg);
+}
+
+[data-subsidiary-theme="olive-verte"] .olive-specialties__blob--right {
+  right: -10%;
+  bottom: 8%;
+  width: clamp(160px, 20vw, 300px);
+  height: clamp(210px, 27vw, 420px);
+  border-radius: 42% 58% 38% 62% / 62% 35% 65% 38%;
+  transform: rotate(22deg);
+}
+
+/* ── Motifs dispersés ── */
+
+[data-subsidiary-theme="olive-verte"] .olive-specialties__motifs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-subsidiary-theme="olive-verte"] .olive-specialties__motif {
+  position: absolute;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(118, 127, 52, 0.18);
+  user-select: none;
+}
+
+/* ── En-tête centré ── */
+
+[data-subsidiary-theme="olive-verte"] .olive-specialties__header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 52rem;
+  margin: 0 auto clamp(3rem, 7vw, 5.5rem);
+}
+
+[data-subsidiary-theme="olive-verte"] .olive-specialties__eyebrow {
+  margin: 0 0 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #767f34;
+}
+
+[data-subsidiary-theme="olive-verte"] .olive-specialties__title {
+  margin: 0 0 1.1rem;
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #767f34;
+}
+
+[data-subsidiary-theme="olive-verte"] .olive-specialties__description {
+  margin: 0 auto;
+  max-width: 44rem;
+  font-size: clamp(0.9375rem, 1.3vw, 1.0625rem);
+  line-height: 1.75;
+  color: #4b5563;
+}
+
+/* ── Rangées alternées ── */
+
+[data-subsidiary-theme="olive-verte"] .olive-specialties__rows {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3.5rem, 7vw, 6rem);
+  max-width: 80rem;
+  margin-inline: auto;
+}
+
+[data-subsidiary-theme="olive-verte"] .olive-specialties__row {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+/* Rangée inversée : texte gauche (40%), photo droite (60%) */
+[data-subsidiary-theme="olive-verte"] .olive-specialties__row--reverse {
+  grid-template-columns: 40% 60%;
+}
+
+[data-subsidiary-theme="olive-verte"] .olive-specialties__row--reverse .olive-specialties__image-wrap {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+[data-subsidiary-theme="olive-verte"] .olive-specialties__row--reverse .olive-specialties__text {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+@media (max-width: 767px) {
+  [data-subsidiary-theme="olive-verte"] .olive-specialties__row,
+  [data-subsidiary-theme="olive-verte"] .olive-specialties__row--reverse {
+    grid-template-columns: 1fr;
+  }
+
+  [data-subsidiary-theme="olive-verte"] .olive-specialties__row--reverse .olive-specialties__image-wrap,
+  [data-subsidiary-theme="olive-verte"] .olive-specialties__row--reverse .olive-specialties__text {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+/* ── Photo ── */
+
+[data-subsidiary-theme="olive-verte"] .olive-specialties__image-wrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+[data-subsidiary-theme="olive-verte"] .olive-specialties__image {
+  object-fit: cover;
+}
+
+/* ── Texte ── */
+
+[data-subsidiary-theme="olive-verte"] .olive-specialties__text {
+  padding-block: clamp(0.5rem, 2vw, 1.5rem);
+}
+
+[data-subsidiary-theme="olive-verte"] .olive-specialties__row-title {
+  margin: 0 0 1rem;
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.375rem, 2.4vw, 1.875rem);
+  line-height: 1.25;
+  color: #111111;
+}
+
+[data-subsidiary-theme="olive-verte"] .olive-specialties__row-description {
+  margin: 0;
+  font-size: clamp(0.875rem, 1.2vw, 1rem);
+  line-height: 1.8;
+  color: #4b5563;
+}
