@@ -540,6 +540,7 @@
         "linkedin": "https://www.linkedin.com/company/pinkberry-kin"
       },
       "accentColor": "#F4A7C3",
+      "externalUrl": "https://www.pinkberry.com/",
       "brandLogo": "/filiales/logos/filiale-09.png",
       "coverImage": "https://images.unsplash.com/photo-1488900128323-21503983a07e?w=1200&q=80",
       "galleryImages": [
@@ -573,19 +574,54 @@
         ],
         "photos": [
           {
-            "src": "https://images.unsplash.com/photo-1488900128323-21503983a07e?w=900&q=80",
-            "alt": "Yaourt glacé — Pinkberry",
+            "src": "/filiales/photos/filiale-09/PB_Chocolate-Naked.png",
+            "alt": "Yaourt glacé chocolat nature — Pinkberry",
             "categoryIds": ["frozen-yogurt", "specials"]
           },
           {
-            "src": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=900&q=80",
-            "alt": "Dessert en couches — Pinkberry",
+            "src": "/filiales/photos/filiale-09/PB_PinkTeas_01.png",
+            "alt": "Pink teas — Pinkberry",
+            "categoryIds": ["smoothies"]
+          },
+          {
+            "src": "/filiales/photos/filiale-09/PB_PinkTeas_StrawberryPoppingSoda-WStrawberry.png",
+            "alt": "Soda pétillant fraise — Pinkberry",
             "categoryIds": ["smoothies", "specials"]
           },
           {
-            "src": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=900&q=80",
-            "alt": "Toppings gourmands — Pinkberry",
-            "categoryIds": ["toppings"]
+            "src": "/filiales/photos/filiale-09/PB_StrawberryCrunch.png",
+            "alt": "Crunch fraise — Pinkberry",
+            "categoryIds": ["frozen-yogurt", "toppings"]
+          },
+          {
+            "src": "/filiales/photos/filiale-09/PB_TaroMilkTeaWithTapioca.png",
+            "alt": "Milk tea taro avec tapioca — Pinkberry",
+            "categoryIds": ["smoothies"]
+          },
+          {
+            "src": "/filiales/photos/filiale-09/PB_WaffleBowl.png",
+            "alt": "Bol gaufre — Pinkberry",
+            "categoryIds": ["frozen-yogurt", "toppings", "specials"]
+          },
+          {
+            "src": "/filiales/photos/filiale-09/PB_WildBlueberry_Topped.png",
+            "alt": "Yaourt glacé myrtille sauvage garni — Pinkberry",
+            "categoryIds": ["frozen-yogurt", "toppings"]
+          },
+          {
+            "src": "/filiales/photos/filiale-09/PBCoconut_ToppingsStrawberryAlmonds_72dpiRGB.png",
+            "alt": "Noix de coco, fraise & amandes — Pinkberry",
+            "categoryIds": ["toppings", "specials"]
+          },
+          {
+            "src": "/filiales/photos/filiale-09/PBRY_Original_Logo_MilkPour.png",
+            "alt": "Lait versé original — Pinkberry",
+            "categoryIds": ["frozen-yogurt", "smoothies", "specials"]
+          },
+          {
+            "src": "/filiales/photos/filiale-09/PBRY_Topped_Guapa.png",
+            "alt": "Guapa garnie — Pinkberry",
+            "categoryIds": ["toppings", "specials"]
           }
         ]
       },
@@ -630,22 +666,28 @@
         "ctaLabel": "Ajouter au panier",
         "products": [
           {
-            "image": "https://images.unsplash.com/photo-1488900128323-21503983a07e?w=600&q=80",
+            "image": "/filiales/photos/filiale-09/PBRY_Original_Logo_MilkPour.png",
             "imageAlt": "Yaourt glacé nature — Pinkberry",
             "name": "Yaourt Glacé Nature",
             "price": "5 $"
           },
           {
-            "image": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&q=80",
+            "image": "/filiales/photos/filiale-09/PB_Chocolate-Naked.png",
             "imageAlt": "Sundae tourbillon chocolat — Pinkberry",
             "name": "Sundae Tourbillon Chocolat",
             "price": "6 $"
           },
           {
-            "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80",
-            "imageAlt": "Coupe aux fruits rouges — Pinkberry",
-            "name": "Coupe aux Fruits Rouges",
+            "image": "/filiales/photos/filiale-09/PB_WildBlueberry_Topped.png",
+            "imageAlt": "Coupe myrtille sauvage — Pinkberry",
+            "name": "Coupe Myrtille Sauvage",
             "price": "7 $"
+          },
+          {
+            "image": "/filiales/photos/filiale-09/PB_PinkTeas_StrawberryPoppingSoda-WStrawberry.png",
+            "imageAlt": "Soda pétillant fraise — Pinkberry",
+            "name": "Soda Pétillant Fraise",
+            "price": "6 $"
           }
         ]
       },

@@ -540,6 +540,7 @@
         "linkedin": "https://www.linkedin.com/company/pinkberry-kin"
       },
       "accentColor": "#F4A7C3",
+      "externalUrl": "https://www.pinkberry.com/",
       "brandLogo": "/filiales/logos/filiale-09.png",
       "coverImage": "https://images.unsplash.com/photo-1488900128323-21503983a07e?w=1200&q=80",
       "galleryImages": [
@@ -573,19 +574,54 @@
         ],
         "photos": [
           {
-            "src": "https://images.unsplash.com/photo-1488900128323-21503983a07e?w=900&q=80",
-            "alt": "Frozen yogurt — Pinkberry",
+            "src": "/filiales/photos/filiale-09/PB_Chocolate-Naked.png",
+            "alt": "Chocolate naked frozen yogurt — Pinkberry",
             "categoryIds": ["frozen-yogurt", "specials"]
           },
           {
-            "src": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=900&q=80",
-            "alt": "Layered dessert — Pinkberry",
+            "src": "/filiales/photos/filiale-09/PB_PinkTeas_01.png",
+            "alt": "Pink teas — Pinkberry",
+            "categoryIds": ["smoothies"]
+          },
+          {
+            "src": "/filiales/photos/filiale-09/PB_PinkTeas_StrawberryPoppingSoda-WStrawberry.png",
+            "alt": "Strawberry popping soda tea — Pinkberry",
             "categoryIds": ["smoothies", "specials"]
           },
           {
-            "src": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=900&q=80",
-            "alt": "Gourmet toppings — Pinkberry",
-            "categoryIds": ["toppings"]
+            "src": "/filiales/photos/filiale-09/PB_StrawberryCrunch.png",
+            "alt": "Strawberry crunch — Pinkberry",
+            "categoryIds": ["frozen-yogurt", "toppings"]
+          },
+          {
+            "src": "/filiales/photos/filiale-09/PB_TaroMilkTeaWithTapioca.png",
+            "alt": "Taro milk tea with tapioca — Pinkberry",
+            "categoryIds": ["smoothies"]
+          },
+          {
+            "src": "/filiales/photos/filiale-09/PB_WaffleBowl.png",
+            "alt": "Waffle bowl — Pinkberry",
+            "categoryIds": ["frozen-yogurt", "toppings", "specials"]
+          },
+          {
+            "src": "/filiales/photos/filiale-09/PB_WildBlueberry_Topped.png",
+            "alt": "Wild blueberry topped frozen yogurt — Pinkberry",
+            "categoryIds": ["frozen-yogurt", "toppings"]
+          },
+          {
+            "src": "/filiales/photos/filiale-09/PBCoconut_ToppingsStrawberryAlmonds_72dpiRGB.png",
+            "alt": "Coconut with strawberry & almond toppings — Pinkberry",
+            "categoryIds": ["toppings", "specials"]
+          },
+          {
+            "src": "/filiales/photos/filiale-09/PBRY_Original_Logo_MilkPour.png",
+            "alt": "Original milk pour — Pinkberry",
+            "categoryIds": ["frozen-yogurt", "smoothies", "specials"]
+          },
+          {
+            "src": "/filiales/photos/filiale-09/PBRY_Topped_Guapa.png",
+            "alt": "Topped Guapa — Pinkberry",
+            "categoryIds": ["toppings", "specials"]
           }
         ]
       },
@@ -629,22 +665,28 @@
         "ctaLabel": "Add to Cart",
         "products": [
           {
-            "image": "https://images.unsplash.com/photo-1488900128323-21503983a07e?w=600&q=80",
+            "image": "/filiales/photos/filiale-09/PBRY_Original_Logo_MilkPour.png",
             "imageAlt": "Original frozen yogurt — Pinkberry",
             "name": "Original Frozen Yogurt",
             "price": "$5"
           },
           {
-            "image": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&q=80",
+            "image": "/filiales/photos/filiale-09/PB_Chocolate-Naked.png",
             "imageAlt": "Chocolate swirl sundae — Pinkberry",
             "name": "Chocolate Swirl Sundae",
             "price": "$6"
           },
           {
-            "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80",
-            "imageAlt": "Berry topping cup — Pinkberry",
-            "name": "Berry Topping Cup",
+            "image": "/filiales/photos/filiale-09/PB_WildBlueberry_Topped.png",
+            "imageAlt": "Wild blueberry topping cup — Pinkberry",
+            "name": "Wild Blueberry Cup",
             "price": "$7"
+          },
+          {
+            "image": "/filiales/photos/filiale-09/PB_PinkTeas_StrawberryPoppingSoda-WStrawberry.png",
+            "imageAlt": "Strawberry popping soda — Pinkberry",
+            "name": "Strawberry Popping Soda",
+            "price": "$6"
           }
         ]
       },

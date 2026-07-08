@@ -20,6 +20,8 @@ const HERO_IMAGES = [
   "/filiales/photos/filiale-09/PB_WildBlueberry_Topped.png",
 ] as const;
 
+const MOTIF_SHAPES = ["plus", "star", "hexagon", "ball"] as const;
+
 const MOTIF_POSITIONS = [
   { x: "5%",  y: "10%" },
   { x: "13%", y: "72%" },
@@ -83,31 +85,35 @@ export function PinkberryHero({ subsidiary }: { subsidiary: Subsidiary }) {
     >
       {/* Motifs décoratifs dispersés sur tout le hero */}
       <div className="pinkberry-hero__motifs" aria-hidden="true">
-        {MOTIF_POSITIONS.map((pos, i) => (
-          <motion.span
-            key={i}
-            className="pinkberry-hero__motif"
-            style={{ left: pos.x, top: pos.y }}
-            initial={reduced ? false : { opacity: 0, scale: 0.6 }}
-            animate={
-              reduced
-                ? undefined
-                : { opacity: 1, scale: 1, y: [0, -5, 0] }
-            }
-            transition={{
-              opacity: { delay: i * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] },
-              scale:   { delay: i * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] },
-              y: {
-                delay: i * 0.08 + 0.5,
-                duration: 3.2 + (i % 5) * 0.4,
-                ease: "easeInOut",
-                repeat: Infinity,
-              },
-            }}
-          >
-            +
-          </motion.span>
-        ))}
+        {MOTIF_POSITIONS.map((pos, i) => {
+          const shape = MOTIF_SHAPES[i % MOTIF_SHAPES.length];
+          return (
+            <motion.span
+              key={i}
+              className={`pinkberry-hero__motif pinkberry-hero__motif--${shape}`}
+              style={{ left: pos.x, top: pos.y }}
+              initial={reduced ? false : { opacity: 0, scale: 0.6 }}
+              animate={
+                reduced
+                  ? undefined
+                  : { opacity: 1, scale: 1, y: [0, -5, 0] }
+              }
+              transition={{
+                opacity: { delay: i * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+                scale:   { delay: i * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+                y: {
+                  delay: i * 0.08 + 0.5,
+                  duration: 3.2 + (i % 5) * 0.4,
+                  ease: "easeInOut",
+                  repeat: Infinity,
+                },
+              }}
+            >
+              {shape === "plus" && "+"}
+              {shape === "star" && "✦"}
+            </motion.span>
+          );
+        })}
       </div>
 
       <div className="pinkberry-hero__content">
@@ -118,8 +124,8 @@ export function PinkberryHero({ subsidiary }: { subsidiary: Subsidiary }) {
               <Image
                 src={subsidiary.brandLogo}
                 alt={subsidiary.name}
-                width={120}
-                height={50}
+                width={180}
+                height={75}
                 className="pinkberry-hero__logo"
               />
             )}
@@ -128,7 +134,7 @@ export function PinkberryHero({ subsidiary }: { subsidiary: Subsidiary }) {
             {t("pinkberryHero.eyebrow")}
           </motion.p>
           <motion.h1 className="pinkberry-hero__title" {...textItemMotion(2)}>
-            {subsidiary.name}
+            {t("pinkberryHero.title")}
           </motion.h1>
           <motion.p className="pinkberry-hero__tagline" {...textItemMotion(3)}>
             {subsidiary.tagline}
@@ -151,7 +157,7 @@ export function PinkberryHero({ subsidiary }: { subsidiary: Subsidiary }) {
           <span className="pinkberry-hero__circle" aria-hidden="true" />
           <span className="pinkberry-hero__circle pinkberry-hero__circle--2" aria-hidden="true" />
           <span className="pinkberry-hero__circle pinkberry-hero__circle--3" aria-hidden="true" />
-          {/* Photo produit — centrée dans le cercle, déborde en haut */}
+          {/* Photo produit — centrée au milieu du cercle, déborde symétriquement */}
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
