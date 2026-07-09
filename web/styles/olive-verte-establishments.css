@@ -3,6 +3,7 @@
 .wabi-establishments--olive-verte .wabi-establishments__title {
   font-family: var(--font-inter), "Inter Fallback", system-ui, sans-serif;
   font-size: clamp(2rem, 4.2vw, 3rem);
+  font-weight: 700;
 }
 
 .wabi-establishments--olive-verte {

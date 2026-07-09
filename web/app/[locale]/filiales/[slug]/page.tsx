@@ -11,6 +11,7 @@ import { KLoungeReservationBanner } from "@/components/filiales/KLoungeReservati
 import { OliveVerteHero } from "@/components/filiales/OliveVerteHero";
 import { OliveVerteMenuSection } from "@/components/filiales/OliveVerteMenuSection";
 import { OliveVerteReservationSection } from "@/components/filiales/OliveVerteReservationSection";
+import { OliveVerteMotifs } from "@/components/filiales/OliveVerteMotifs";
 import { OliveVerteSpecialties } from "@/components/filiales/OliveVerteSpecialties";
 import { PinkberryHero } from "@/components/filiales/PinkberryHero";
 import { PinkberryStorySection } from "@/components/filiales/PinkberryStorySection";
@@ -323,6 +324,7 @@ export default async function SubsidiaryPage({ params }: Props) {
               title={t("wabiEstablishments.title")}
               description={t("wabiEstablishments.description")}
               variant="olive-verte"
+              decorativeSlot={<OliveVerteMotifs />}
             />
           )}
         </>
@@ -560,6 +562,14 @@ export default async function SubsidiaryPage({ params }: Props) {
           social={subsidiary.social}
           backgroundImage="/filiales/photos/filiale-09/contact-bg.jpg"
         />
+      ) : slug === "filiale-01" ? (
+        <section className="mx-auto max-w-7xl px-4 pb-16 md:px-6 md:pb-20 flex justify-center">
+          <MapEmbed
+            query={mapQuery}
+            title={t("mapTitle", { name: subsidiary.name })}
+            variant="compact"
+          />
+        </section>
       ) : (
         <section className="mx-auto max-w-7xl px-4 pb-16 md:px-6 md:pb-20">
           <AnimateIn>

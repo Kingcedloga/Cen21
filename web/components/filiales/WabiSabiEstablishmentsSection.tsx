@@ -26,6 +26,7 @@ type Props = {
   title: string;
   description: string;
   variant?: "wabi-sabi" | "k-lounge" | "millionaire-club" | "pinkberry" | "olive-verte";
+  decorativeSlot?: React.ReactNode;
 };
 
 function EstablishmentLogo({ subsidiary }: { subsidiary: SisterSubsidiary }) {
@@ -57,6 +58,7 @@ export function WabiSabiEstablishmentsSection({
   title,
   description,
   variant = "wabi-sabi",
+  decorativeSlot,
 }: Props) {
   const reduced = useReducedMotion() ?? false;
   const list = subsidiaries.filter((s) => s.brandLogo);
@@ -100,6 +102,7 @@ export function WabiSabiEstablishmentsSection({
       aria-labelledby={sectionId}
       style={{ "--wabi-establishments-duration": `${durationSeconds}s` } as CSSProperties}
     >
+      {decorativeSlot}
       <div className="wabi-establishments__inner">
         <AnimateIn className="wabi-establishments__header">
           <h2 id={sectionId} className="wabi-establishments__title">

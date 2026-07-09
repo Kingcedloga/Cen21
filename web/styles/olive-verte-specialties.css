@@ -117,8 +117,8 @@
 [data-subsidiary-theme="olive-verte"] .olive-specialties__title {
   margin: 0 0 1.1rem;
   font-family: var(--font-inter), "Inter Fallback", system-ui, sans-serif;
-  font-weight: 800;
-  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 700;
+  font-size: clamp(2rem, 4.2vw, 3rem);
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: #767f34;
