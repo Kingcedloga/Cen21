@@ -36,6 +36,8 @@
 
 /* Titres — séparateur rouge accent */
 [data-subsidiary-theme="olive-verte"] .sub-themed-heading {
+  font-family: var(--font-inter), "Inter Fallback", system-ui, sans-serif;
+  font-size: clamp(2rem, 4.2vw, 3rem);
   color: var(--sub-text);
   letter-spacing: -0.015em;
   font-weight: 500;

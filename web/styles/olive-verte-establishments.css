@@ -1,0 +1,53 @@
+/* L'Olive Verte — Nos Établissements (variant clair, accents vert olive) */
+
+.wabi-establishments--olive-verte .wabi-establishments__title {
+  font-family: var(--font-inter), "Inter Fallback", system-ui, sans-serif;
+  font-size: clamp(2rem, 4.2vw, 3rem);
+}
+
+.wabi-establishments--olive-verte {
+  --wabi-establishments-blue: #767f34;
+  --wabi-establishments-beige: #ece7d1;
+  --wabi-establishments-beige-deep: #ece7d1;
+
+  background-color: #ece7d1;
+}
+
+.wabi-establishments--olive-verte .wabi-establishments__description {
+  color: rgb(0 0 0 / 0.62);
+}
+
+.wabi-establishments--olive-verte .wabi-establishments__link:hover,
+.wabi-establishments--olive-verte .wabi-establishments__link:focus-visible {
+  background-color: rgb(118 127 52 / 0.08);
+}
+
+.wabi-establishments--olive-verte .wabi-establishments__logo {
+  filter: grayscale(1) brightness(0);
+  opacity: 0.72;
+}
+
+.wabi-establishments--olive-verte .wabi-establishments__link:hover .wabi-establishments__logo,
+.wabi-establishments--olive-verte .wabi-establishments__link:focus-visible .wabi-establishments__logo {
+  filter: brightness(0) saturate(100%) invert(31%) sepia(39%) saturate(468%)
+    hue-rotate(27deg) brightness(138%) contrast(108%);
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+.wabi-establishments--olive-verte .wabi-establishments__name {
+  color: rgb(0 0 0 / 0.42);
+}
+
+.wabi-establishments--olive-verte .wabi-establishments__link:hover .wabi-establishments__name,
+.wabi-establishments--olive-verte .wabi-establishments__link:focus-visible .wabi-establishments__name {
+  color: #767f34;
+}
+
+.wabi-establishments--olive-verte .wabi-establishments__fade--left {
+  background: linear-gradient(90deg, #ece7d1 0%, transparent 100%);
+}
+
+.wabi-establishments--olive-verte .wabi-establishments__fade--right {
+  background: linear-gradient(270deg, #ece7d1 0%, transparent 100%);
+}

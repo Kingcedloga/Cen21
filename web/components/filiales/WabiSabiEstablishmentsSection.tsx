@@ -14,6 +14,7 @@ import "@/styles/wabi-sabi-establishments.css";
 import "@/styles/k-lounge-establishments.css";
 import "@/styles/millionaire-club-establishments.css";
 import "@/styles/pinkberry-establishments.css";
+import "@/styles/olive-verte-establishments.css";
 
 export type SisterSubsidiary = SubsidiaryLinkTarget & {
   name: string;
@@ -24,7 +25,7 @@ type Props = {
   subsidiaries: SisterSubsidiary[];
   title: string;
   description: string;
-  variant?: "wabi-sabi" | "k-lounge" | "millionaire-club" | "pinkberry";
+  variant?: "wabi-sabi" | "k-lounge" | "millionaire-club" | "pinkberry" | "olive-verte";
 };
 
 function EstablishmentLogo({ subsidiary }: { subsidiary: SisterSubsidiary }) {
@@ -76,7 +77,9 @@ export function WabiSabiEstablishmentsSection({
         ? "millionaire-establishments-title"
         : variant === "pinkberry"
           ? "pinkberry-establishments-title"
-          : "wabi-establishments-title";
+          : variant === "olive-verte"
+            ? "olive-verte-establishments-title"
+            : "wabi-establishments-title";
 
   const variantClass =
     variant === "k-lounge"
@@ -85,7 +88,9 @@ export function WabiSabiEstablishmentsSection({
         ? "wabi-establishments--millionaire-club"
         : variant === "pinkberry"
           ? "wabi-establishments--pinkberry"
-          : "wabi-sabi-beige-band";
+          : variant === "olive-verte"
+            ? "wabi-establishments--olive-verte"
+            : "wabi-sabi-beige-band";
 
   return (
     <section

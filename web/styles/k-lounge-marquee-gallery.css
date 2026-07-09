@@ -202,11 +202,17 @@
   background-color: #ece7d1;
 }
 
+[data-subsidiary-theme="olive-verte"] .klounge-marquee-gallery__header {
+  text-align: center;
+}
+
 [data-subsidiary-theme="olive-verte"] .klounge-marquee-gallery__title {
+  font-family: var(--font-inter), "Inter Fallback", system-ui, sans-serif;
   color: #767f34;
 }
 
 [data-subsidiary-theme="olive-verte"] .klounge-marquee-gallery__description {
+  margin-inline: auto;
   color: #4b5563;
 }
 
