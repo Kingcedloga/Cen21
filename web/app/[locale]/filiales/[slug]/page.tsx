@@ -563,7 +563,8 @@ export default async function SubsidiaryPage({ params }: Props) {
           backgroundImage="/filiales/photos/filiale-09/contact-bg.jpg"
         />
       ) : slug === "filiale-01" ? (
-        <section className="mx-auto max-w-7xl px-4 pb-16 md:px-6 md:pb-20 flex justify-center">
+        <section className="relative overflow-hidden mx-auto max-w-7xl px-4 pb-16 md:px-6 md:pb-20 flex justify-center">
+          <OliveVerteMotifs />
           <MapEmbed
             query={mapQuery}
             title={t("mapTitle", { name: subsidiary.name })}
