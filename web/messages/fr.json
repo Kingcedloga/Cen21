@@ -230,6 +230,12 @@
       "previousDish": "Plat précédent",
       "nextDish": "Plat suivant"
     },
+    "oliveVerteReservation": {
+      "title": "Envie d'une table ce soir ?",
+      "description": "Réservez votre place à L'Olive Verte et profitez de saveurs méditerranéennes, de cocktails et d'une ambiance de terrasse conviviale.",
+      "placeholder": "Votre message",
+      "cta": "Réserver"
+    },
     "pinkberryHero": {
       "eyebrow": "Frais & Gourmand",
       "title": "L'excellent goût du bon vieux temps.",

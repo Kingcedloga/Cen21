@@ -10,6 +10,7 @@ import { KLoungeMarqueeGallery } from "@/components/filiales/KLoungeMarqueeGalle
 import { KLoungeReservationBanner } from "@/components/filiales/KLoungeReservationBanner";
 import { OliveVerteHero } from "@/components/filiales/OliveVerteHero";
 import { OliveVerteMenuSection } from "@/components/filiales/OliveVerteMenuSection";
+import { OliveVerteReservationSection } from "@/components/filiales/OliveVerteReservationSection";
 import { OliveVerteSpecialties } from "@/components/filiales/OliveVerteSpecialties";
 import { PinkberryHero } from "@/components/filiales/PinkberryHero";
 import { PinkberryStorySection } from "@/components/filiales/PinkberryStorySection";
@@ -312,6 +313,9 @@ export default async function SubsidiaryPage({ params }: Props) {
           {subsidiary.menuCategoriesSection && (
             <OliveVerteMenuSection content={subsidiary.menuCategoriesSection} />
           )}
+          <OliveVerteReservationSection
+            backgroundImage={getSubsidiaryContactImage(slug, subsidiary.coverImage)}
+          />
         </>
       ) : (
         <SubsidiaryHero

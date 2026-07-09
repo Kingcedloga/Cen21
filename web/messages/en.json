@@ -222,6 +222,12 @@
       "previousDish": "Previous dish",
       "nextDish": "Next dish"
     },
+    "oliveVerteReservation": {
+      "title": "Craving a table tonight?",
+      "description": "Reserve your spot at L'Olive Verte and enjoy Mediterranean flavours, cocktails, and a lively terrace atmosphere.",
+      "placeholder": "Your message",
+      "cta": "Book Now"
+    },
     "pinkberryHero": {
       "eyebrow": "Fresh & Gourmet",
       "title": "Taste From The Good Old Days.",
