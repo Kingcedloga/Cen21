@@ -10,10 +10,10 @@ import { useReducedMotion } from "framer-motion";
 
 /** Durées en secondes (Framer Motion) */
 export const DURATION_S = {
-  fine: 0.2,
-  base: 0.32,
-  luxe: 0.48,
-  grand: 0.7,
+  fine: 0.3,
+  base: 0.48,
+  luxe: 0.7,
+  grand: 1.0,
   shimmer: 0.9,
   heroCrossfade: 1,
 } as const;
@@ -25,11 +25,11 @@ export const EASE = {
   spring: [0.34, 1.56, 0.64, 1] as const,
 } as const;
 
-/** Stagger enfant — 40–80 ms (Emil: garder court) */
+/** Stagger enfant — 100 ms */
 export const STAGGER = {
-  min: 0.04,
-  default: 0.05,
-  max: 0.08,
+  min: 0.1,
+  default: 0.1,
+  max: 0.1,
 } as const;
 
 export function staggerDelay(index: number, step = STAGGER.default): number {
@@ -79,18 +79,18 @@ export const staggerContainerVariants: Variants = {
   visible: {
     transition: {
       staggerChildren: STAGGER.default,
-      delayChildren: 0,
+      delayChildren: 0.1,
     },
   },
 };
 
-/** Hero / PageHero — eyebrow → titre → description (40 ms entre chaque) */
+/** Hero / PageHero — eyebrow → titre → description */
 export const heroStaggerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
       staggerChildren: STAGGER.min,
-      delayChildren: 0.06,
+      delayChildren: 0.1,
     },
   },
 };
@@ -246,7 +246,7 @@ export const statStaggerContainerVariants: Variants = {
   visible: {
     transition: {
       staggerChildren: STAGGER.max,
-      delayChildren: 0,
+      delayChildren: 0.1,
     },
   },
 };

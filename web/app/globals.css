@@ -52,10 +52,10 @@
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* Durées — toujours pleines centaines pour un rythme régulier. */
-  --duration-fine: 200ms;
-  --duration-base: 320ms;
-  --duration-luxe: 480ms;
-  --duration-grand: 700ms;
+  --duration-fine: 300ms;
+  --duration-base: 480ms;
+  --duration-luxe: 700ms;
+  --duration-grand: 1000ms;
   /* Sémantiques — miroir lib/motion.ts DURATION_S */
   --duration-shimmer: 900ms;
   --duration-hero-crossfade: 1000ms;
