@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import type { SubsidiarySpecialtiesSection } from "@/lib/types";
 import { defaultScrollViewport, DURATION_S, EASE } from "@/lib/motion";
+import { OliveMotifs } from "@/components/filiales/OliveMotifs";
 import "@/styles/olive-verte-specialties.css";
 
 const MOTIFS = [
@@ -35,6 +36,7 @@ type Props = {
 export function OliveVerteSpecialties({ content }: Props) {
   return (
     <section className="olive-specialties">
+      <OliveMotifs section="specialties" />
       {/* Grand cercle outline gauche */}
       <div className="olive-specialties__circle-left" aria-hidden="true" />
 

@@ -11,6 +11,7 @@ import { KLoungeReservationBanner } from "@/components/filiales/KLoungeReservati
 import { OliveVerteHero } from "@/components/filiales/OliveVerteHero";
 import { OliveVerteMenuSection } from "@/components/filiales/OliveVerteMenuSection";
 import { OliveVerteReservationSection } from "@/components/filiales/OliveVerteReservationSection";
+import { OliveMotifs } from "@/components/filiales/OliveMotifs";
 import { OliveVerteMotifs } from "@/components/filiales/OliveVerteMotifs";
 import { OliveVerteSpecialties } from "@/components/filiales/OliveVerteSpecialties";
 import { PinkberryHero } from "@/components/filiales/PinkberryHero";
@@ -306,11 +307,14 @@ export default async function SubsidiaryPage({ params }: Props) {
             <OliveVerteSpecialties content={subsidiary.specialtiesSection} />
           )}
           {galleryItems.length > 0 && (
-            <KLoungeMarqueeGallery
-              items={galleryItems}
-              title={t("gallery")}
-              description={t("oliveVerteGallery.description")}
-            />
+            <div style={{ position: "relative", overflow: "hidden" }}>
+              <OliveMotifs section="gallery" />
+              <KLoungeMarqueeGallery
+                items={galleryItems}
+                title={t("gallery")}
+                description={t("oliveVerteGallery.description")}
+              />
+            </div>
           )}
           {subsidiary.menuCategoriesSection && (
             <OliveVerteMenuSection content={subsidiary.menuCategoriesSection} />
@@ -324,7 +328,7 @@ export default async function SubsidiaryPage({ params }: Props) {
               title={t("wabiEstablishments.title")}
               description={t("wabiEstablishments.description")}
               variant="olive-verte"
-              decorativeSlot={<OliveVerteMotifs />}
+              decorativeSlot={<><OliveVerteMotifs /><OliveMotifs section="establishments" /></>}
             />
           )}
         </>
@@ -565,6 +569,7 @@ export default async function SubsidiaryPage({ params }: Props) {
       ) : slug === "filiale-01" ? (
         <section className="relative overflow-hidden mx-auto max-w-7xl px-4 pb-16 md:px-6 md:pb-20 flex justify-center">
           <OliveVerteMotifs />
+          <OliveMotifs section="map" />
           <MapEmbed
             query={mapQuery}
             title={t("mapTitle", { name: subsidiary.name })}

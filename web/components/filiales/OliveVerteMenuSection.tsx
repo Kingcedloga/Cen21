@@ -9,6 +9,7 @@ import { ChevronLeft, ChevronRight } from "@/lib/icons";
 import { defaultScrollViewport, DURATION_S, EASE } from "@/lib/motion";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import type { SubsidiaryMenuCategoriesSection } from "@/lib/types";
+import { OliveMotifs } from "@/components/filiales/OliveMotifs";
 
 import "@/styles/olive-verte-menu-section.css";
 
@@ -42,6 +43,7 @@ export function OliveVerteMenuSection({ content }: Props) {
 
   return (
     <section className="olive-menu">
+      <OliveMotifs section="menu" />
       {/* Blob courbe gauche — identique à Nos Spécialités */}
       <div className="olive-menu__blob-left" aria-hidden="true" />
 
