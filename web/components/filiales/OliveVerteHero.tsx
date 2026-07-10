@@ -8,8 +8,6 @@ import { useCallback, useRef } from "react";
 import { Play } from "@/lib/icons";
 import { DURATION_S, EASE } from "@/lib/motion";
 import type { Subsidiary } from "@/lib/types";
-import { OliveMotifs } from "@/components/filiales/OliveMotifs";
-
 import "@/styles/olive-verte-hero.css";
 
 const PHOTO_SRC = "/filiales/photos/filiale-01/plat-cutout.png";
@@ -57,7 +55,6 @@ export function OliveVerteHero({ subsidiary }: { subsidiary: Subsidiary }) {
 
   return (
     <section ref={sectionRef} className="olive-hero" aria-label={subsidiary.name}>
-      <OliveMotifs section="hero" />
       {/* Motifs décoratifs dispersés : cercles creux, points, lignes ondulées */}
       <div className="olive-hero__motifs" aria-hidden="true">
         {MOTIF_POSITIONS.map((pos, i) => {

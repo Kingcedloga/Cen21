@@ -236,6 +236,29 @@
       "placeholder": "Votre message",
       "cta": "Réserver"
     },
+    "muzikCafeHero": {
+      "eyebrow": "Musique & Saveurs",
+      "title": "On croit qu'une bonne musique offre une super ambiance",
+      "ctaPrimary": "Réserver une table",
+      "ctaSecondary": "Voir plus",
+      "dishName": "Brochettes de poulet",
+      "dishDescription": "Brochettes grillées, herbes fraîches et marinade fumée.",
+      "dishRatingAria": "5 sur 5",
+      "previousVisual": "Visuel précédent",
+      "nextVisual": "Visuel suivant",
+      "goToVisual": "Aller au visuel {index}"
+    },
+    "muzikCafeMenu": {
+      "regularPrice": "Prix régulier",
+      "addToOrder": "Ajouter {name} à la commande",
+      "previousDishes": "Plats précédents",
+      "nextDishes": "Plats suivants"
+    },
+    "muzikCafeGallery": {
+      "previousDishes": "Plats précédents",
+      "nextDishes": "Plats suivants",
+      "addToOrder": "Ajouter {name} à la commande"
+    },
     "pinkberryHero": {
       "eyebrow": "Frais & Gourmand",
       "title": "L'excellent goût du bon vieux temps.",

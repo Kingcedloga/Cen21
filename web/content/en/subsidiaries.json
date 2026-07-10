@@ -582,6 +582,94 @@
         "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80",
         "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80"
       ],
+      "muzikMenuSection": {
+        "menuTitle": "Browse Our Menu",
+        "benefits": [
+          {
+            "title": "Live Music",
+            "description": "Live sets and DJ nights for an animated evening."
+          },
+          {
+            "title": "Varied Cuisine",
+            "description": "Pizza, Indian and Moroccan dishes on one menu."
+          },
+          {
+            "title": "Fast Service",
+            "description": "Quick, attentive service on the outdoor patio."
+          }
+        ],
+        "items": [
+          {
+            "name": "Margherita Pizza",
+            "subtitle": "Delicious and Spicy",
+            "price": "$14.00",
+            "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80",
+            "imageAlt": "Margherita pizza"
+          },
+          {
+            "name": "Grilled Wrap Platter",
+            "subtitle": "Delicious and Spicy",
+            "price": "$12.00",
+            "image": "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=600&q=80",
+            "imageAlt": "Grilled wrap platter with dipping sauce"
+          },
+          {
+            "name": "Shawarma Skewers",
+            "subtitle": "Delicious and Spicy",
+            "price": "$16.00",
+            "image": "https://images.unsplash.com/photo-1530469912745-a215c6b256ea?w=600&q=80",
+            "imageAlt": "Shawarma rotisserie skewers"
+          },
+          {
+            "name": "Grilled Protein Bowl",
+            "subtitle": "Delicious and Spicy",
+            "price": "$10.00",
+            "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80",
+            "imageAlt": "Grilled protein grain bowl"
+          }
+        ]
+      },
+      "muzikGallerySection": {
+        "title": "Gallery",
+        "items": [
+          {
+            "name": "Margherita Pizza",
+            "price": "$14.00",
+            "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&q=80",
+            "imageAlt": "Margherita pizza"
+          },
+          {
+            "name": "Grilled Wrap Platter",
+            "price": "$12.00",
+            "image": "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=800&q=80",
+            "imageAlt": "Grilled wrap platter with dipping sauce"
+          },
+          {
+            "name": "Shawarma Skewers",
+            "price": "$16.00",
+            "image": "https://images.unsplash.com/photo-1530469912745-a215c6b256ea?w=800&q=80",
+            "imageAlt": "Shawarma rotisserie skewers"
+          },
+          {
+            "name": "Grilled Protein Bowl",
+            "price": "$10.00",
+            "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80",
+            "imageAlt": "Grilled protein grain bowl"
+          },
+          {
+            "name": "Chef's Plated Dish",
+            "price": "$18.00",
+            "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
+            "imageAlt": "Chef's plated dish with wine"
+          },
+          {
+            "name": "Berry Dessert",
+            "price": "$20.00",
+            "image": "https://images.unsplash.com/photo-1488900128323-21503983a07e?w=800&q=80",
+            "imageAlt": "Berry popsicle dessert"
+          }
+        ]
+      },
       "featured": false
     },
     {

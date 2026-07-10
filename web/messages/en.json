@@ -228,6 +228,29 @@
       "placeholder": "Your message",
       "cta": "Book Now"
     },
+    "muzikCafeHero": {
+      "eyebrow": "Music & Flavours",
+      "title": "We believe Good Music Offer Great Vibes",
+      "ctaPrimary": "Book a Table",
+      "ctaSecondary": "View More",
+      "dishName": "Chicken Skewers",
+      "dishDescription": "Grilled skewers, fresh herbs and a smoky marinade.",
+      "dishRatingAria": "5 out of 5",
+      "previousVisual": "Previous visual",
+      "nextVisual": "Next visual",
+      "goToVisual": "Go to visual {index}"
+    },
+    "muzikCafeMenu": {
+      "regularPrice": "Regular Price",
+      "addToOrder": "Add {name} to order",
+      "previousDishes": "Previous dishes",
+      "nextDishes": "Next dishes"
+    },
+    "muzikCafeGallery": {
+      "previousDishes": "Previous dishes",
+      "nextDishes": "Next dishes",
+      "addToOrder": "Add {name} to order"
+    },
     "pinkberryHero": {
       "eyebrow": "Fresh & Gourmet",
       "title": "Taste From The Good Old Days.",

@@ -582,6 +582,94 @@
         "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80",
         "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80"
       ],
+      "muzikMenuSection": {
+        "menuTitle": "Parcourez Notre Menu",
+        "benefits": [
+          {
+            "title": "Musique live",
+            "description": "Sets live et soirées DJ pour une ambiance animée."
+          },
+          {
+            "title": "Cuisine variée",
+            "description": "Pizza, plats indiens et marocains sur une même carte."
+          },
+          {
+            "title": "Service rapide",
+            "description": "Un service rapide et attentif sur le patio extérieur."
+          }
+        ],
+        "items": [
+          {
+            "name": "Pizza Margherita",
+            "subtitle": "Délicieux et épicé",
+            "price": "14,00 $",
+            "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80",
+            "imageAlt": "Pizza Margherita"
+          },
+          {
+            "name": "Plateau de wraps grillés",
+            "subtitle": "Délicieux et épicé",
+            "price": "12,00 $",
+            "image": "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=600&q=80",
+            "imageAlt": "Plateau de wraps grillés avec sauce"
+          },
+          {
+            "name": "Brochettes Shawarma",
+            "subtitle": "Délicieux et épicé",
+            "price": "16,00 $",
+            "image": "https://images.unsplash.com/photo-1530469912745-a215c6b256ea?w=600&q=80",
+            "imageAlt": "Broche de shawarma grillée"
+          },
+          {
+            "name": "Bol protéiné grillé",
+            "subtitle": "Délicieux et épicé",
+            "price": "10,00 $",
+            "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80",
+            "imageAlt": "Bol de céréales avec protéine grillée"
+          }
+        ]
+      },
+      "muzikGallerySection": {
+        "title": "Galerie",
+        "items": [
+          {
+            "name": "Pizza Margherita",
+            "price": "14,00 $",
+            "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&q=80",
+            "imageAlt": "Pizza Margherita"
+          },
+          {
+            "name": "Plateau de wraps grillés",
+            "price": "12,00 $",
+            "image": "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=800&q=80",
+            "imageAlt": "Plateau de wraps grillés avec sauce"
+          },
+          {
+            "name": "Brochettes Shawarma",
+            "price": "16,00 $",
+            "image": "https://images.unsplash.com/photo-1530469912745-a215c6b256ea?w=800&q=80",
+            "imageAlt": "Broche de shawarma grillée"
+          },
+          {
+            "name": "Bol protéiné grillé",
+            "price": "10,00 $",
+            "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80",
+            "imageAlt": "Bol de céréales avec protéine grillée"
+          },
+          {
+            "name": "Plat signature du chef",
+            "price": "18,00 $",
+            "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
+            "imageAlt": "Plat signature du chef avec vin"
+          },
+          {
+            "name": "Dessert aux fruits rouges",
+            "price": "20,00 $",
+            "image": "https://images.unsplash.com/photo-1488900128323-21503983a07e?w=800&q=80",
+            "imageAlt": "Dessert glacé aux fruits rouges"
+          }
+        ]
+      },
       "featured": false
     },
     {

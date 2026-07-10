@@ -174,6 +174,10 @@ export type Subsidiary = {
   specialtiesSection?: SubsidiarySpecialtiesSection;
   /** Section « Notre Menu » — catégories navigables (L'Olive Verte). */
   menuCategoriesSection?: SubsidiaryMenuCategoriesSection;
+  /** Bandeau avantages + carrousel menu (Muzik Café). */
+  muzikMenuSection?: SubsidiaryMuzikMenuSection;
+  /** Carrousel galerie plats — hover reveal nom/prix (Muzik Café). */
+  muzikGallerySection?: SubsidiaryMuzikGallerySection;
 };
 
 /** Rangée de spécialité — photo + texte (L'Olive Verte). */
@@ -213,6 +217,42 @@ export type SubsidiaryMenuCategoriesSection = {
   title: string;
   description: string;
   categories: SubsidiaryMenuCategory[];
+};
+
+/** Avantage — bandeau 3 colonnes (Muzik Café). */
+export type SubsidiaryMuzikBenefit = {
+  title: string;
+  description: string;
+};
+
+/** Plat — carrousel menu à plat (Muzik Café). */
+export type SubsidiaryMuzikMenuItem = {
+  name: string;
+  subtitle: string;
+  price: string;
+  image: string;
+  imageAlt: string;
+};
+
+/** Bandeau avantages + carrousel menu (Muzik Café). */
+export type SubsidiaryMuzikMenuSection = {
+  menuTitle: string;
+  benefits: SubsidiaryMuzikBenefit[];
+  items: SubsidiaryMuzikMenuItem[];
+};
+
+/** Plat — carrousel galerie avec hover reveal nom/prix (Muzik Café). */
+export type SubsidiaryMuzikGalleryItem = {
+  name: string;
+  price: string;
+  image: string;
+  imageAlt: string;
+};
+
+/** Carrousel galerie plats (Muzik Café). */
+export type SubsidiaryMuzikGallerySection = {
+  title: string;
+  items: SubsidiaryMuzikGalleryItem[];
 };
 
 /** Section éditoriale « Notre histoire » 3 colonnes (Pinkberry). */

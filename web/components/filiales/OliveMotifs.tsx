@@ -3,7 +3,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 
 export type OliveSection =
-  | "hero"
   | "specialties"
   | "gallery"
   | "menu"
@@ -19,13 +18,6 @@ interface OliveItem {
 }
 
 const CONFIGS: Record<OliveSection, OliveItem[]> = {
-  hero: [
-    { x: "86%", y: "8%",  size: 52, rotate: 20,  animated: true  },
-    { x: "80%", y: "58%", size: 36, rotate: -15, animated: false },
-    { x: "92%", y: "34%", size: 28, rotate: 45,  animated: true  },
-    { x: "76%", y: "82%", size: 44, rotate: -30, animated: false },
-    { x: "94%", y: "70%", size: 32, rotate: 10,  animated: true  },
-  ],
   specialties: [
     { x: "88%", y: "10%", size: 48, rotate: 25,  animated: true  },
     { x: "2%",  y: "78%", size: 38, rotate: -20, animated: false },

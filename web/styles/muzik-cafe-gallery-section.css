@@ -1,0 +1,177 @@
+/* Muzik Café — carrousel galerie plats, hover reveal nom/prix (filiale-05) */
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery {
+  position: relative;
+  background-color: #ffffff;
+  padding: clamp(3rem, 7vw, 5rem) clamp(1.25rem, 6vw, 5rem);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery__header {
+  text-align: center;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery__title {
+  margin: 0;
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: clamp(2rem, 4vw, 2.875rem);
+  color: #000000;
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery__row {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  max-width: 90rem;
+  margin-inline: auto;
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery__nav {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 899px) {
+  [data-subsidiary-theme="muzik-cafe"] .muzik-gallery__nav {
+    display: none;
+  }
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery__nav-line {
+  width: clamp(1.5rem, 3vw, 2.75rem);
+  height: 1px;
+  background: rgb(0 0 0 / 0.35);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery__nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: 2px solid #ef3340;
+  background: #ef3340;
+  color: #ffffff;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-luxe) var(--ease-luxury),
+    color var(--duration-luxe) var(--ease-luxury);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery__nav-btn:hover,
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery__nav-btn:focus-visible {
+  background: transparent;
+  border-style: dashed;
+  border-color: rgb(239 51 64 / 0.55);
+  color: #ef3340;
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery__track {
+  display: flex;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery__track::-webkit-scrollbar {
+  display: none;
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery__card {
+  position: relative;
+  flex: 0 0 clamp(11rem, 20vw, 15.5rem);
+  aspect-ratio: 3 / 4;
+  border-radius: 14px;
+  overflow: hidden;
+  scroll-snap-align: start;
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery__photo {
+  object-fit: cover;
+  transition: transform var(--duration-grand, 700ms) var(--ease-luxury);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery__card:hover .muzik-gallery__photo {
+  transform: scale(1.05);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.25rem;
+  padding: 1rem 1.125rem;
+  background: linear-gradient(
+    to top,
+    rgb(239 51 64 / 0.92) 0%,
+    rgb(239 51 64 / 0.45) 42%,
+    transparent 72%
+  );
+  opacity: 0;
+  transition: opacity var(--duration-luxe) var(--ease-luxury);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery__card:hover .muzik-gallery__overlay,
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery__card:focus-within .muzik-gallery__overlay {
+  opacity: 1;
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery__name {
+  font-weight: 700;
+  font-size: 1.0625rem;
+  color: #ffffff;
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery__price {
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: #ffffff;
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery__cart {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 8px;
+  border: none;
+  background: #ffffff;
+  color: #ef3340;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity var(--duration-luxe) var(--ease-luxury),
+    transform var(--duration-luxe) var(--ease-luxury);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery__card:hover .muzik-gallery__cart,
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery__card:focus-within .muzik-gallery__cart {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-subsidiary-theme="muzik-cafe"] .muzik-gallery__nav-btn,
+  [data-subsidiary-theme="muzik-cafe"] .muzik-gallery__photo,
+  [data-subsidiary-theme="muzik-cafe"] .muzik-gallery__overlay,
+  [data-subsidiary-theme="muzik-cafe"] .muzik-gallery__cart {
+    transition: none;
+  }
+}

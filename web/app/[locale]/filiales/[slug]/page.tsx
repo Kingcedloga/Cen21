@@ -8,6 +8,9 @@ import { MillionaireClubIntroSection } from "@/components/filiales/MillionaireCl
 import { MillionaireClubScatteredGallery } from "@/components/filiales/MillionaireClubScatteredGallery";
 import { KLoungeMarqueeGallery } from "@/components/filiales/KLoungeMarqueeGallery";
 import { KLoungeReservationBanner } from "@/components/filiales/KLoungeReservationBanner";
+import { MuzikCafeGallerySection } from "@/components/filiales/MuzikCafeGallerySection";
+import { MuzikCafeHero } from "@/components/filiales/MuzikCafeHero";
+import { MuzikCafeMenuSection } from "@/components/filiales/MuzikCafeMenuSection";
 import { OliveVerteHero } from "@/components/filiales/OliveVerteHero";
 import { OliveVerteMenuSection } from "@/components/filiales/OliveVerteMenuSection";
 import { OliveVerteReservationSection } from "@/components/filiales/OliveVerteReservationSection";
@@ -330,6 +333,16 @@ export default async function SubsidiaryPage({ params }: Props) {
               variant="olive-verte"
               decorativeSlot={<><OliveVerteMotifs /><OliveMotifs section="establishments" /></>}
             />
+          )}
+        </>
+      ) : slug === "filiale-05" ? (
+        <>
+          <MuzikCafeHero subsidiary={subsidiary} />
+          {subsidiary.muzikMenuSection && (
+            <MuzikCafeMenuSection content={subsidiary.muzikMenuSection} />
+          )}
+          {subsidiary.muzikGallerySection && (
+            <MuzikCafeGallerySection content={subsidiary.muzikGallerySection} />
           )}
         </>
       ) : (
