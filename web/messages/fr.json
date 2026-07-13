@@ -259,6 +259,16 @@
       "nextDishes": "Plats suivants",
       "addToOrder": "Ajouter {name} à la commande"
     },
+    "muzikCafeReservation": {
+      "title": "Réservation",
+      "name": "Votre nom",
+      "phone": "Numéro de téléphone",
+      "email": "Votre email",
+      "people": "Nombre de personnes",
+      "date": "Date",
+      "time": "Heure",
+      "cta": "Réserver une table"
+    },
     "pinkberryHero": {
       "eyebrow": "Frais & Gourmand",
       "title": "L'excellent goût du bon vieux temps.",

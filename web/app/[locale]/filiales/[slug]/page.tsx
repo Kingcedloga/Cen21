@@ -11,6 +11,7 @@ import { KLoungeReservationBanner } from "@/components/filiales/KLoungeReservati
 import { MuzikCafeGallerySection } from "@/components/filiales/MuzikCafeGallerySection";
 import { MuzikCafeHero } from "@/components/filiales/MuzikCafeHero";
 import { MuzikCafeMenuSection } from "@/components/filiales/MuzikCafeMenuSection";
+import { MuzikCafeReservationSection } from "@/components/filiales/MuzikCafeReservationSection";
 import { OliveVerteHero } from "@/components/filiales/OliveVerteHero";
 import { OliveVerteMenuSection } from "@/components/filiales/OliveVerteMenuSection";
 import { OliveVerteReservationSection } from "@/components/filiales/OliveVerteReservationSection";
@@ -353,6 +354,9 @@ export default async function SubsidiaryPage({ params }: Props) {
               variant="muzik-cafe"
             />
           )}
+          <MuzikCafeReservationSection
+            backgroundImage={getSubsidiaryContactImage(slug, subsidiary.coverImage)}
+          />
         </>
       ) : (
         <SubsidiaryHero
@@ -404,7 +408,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         />
       )}
 
-      {slug !== "filiale-01" && slug !== "filiale-02" && slug !== "filiale-04" && slug !== "filiale-09" && breadcrumbSection}
+      {slug !== "filiale-01" && slug !== "filiale-02" && slug !== "filiale-04" && slug !== "filiale-05" && slug !== "filiale-09" && breadcrumbSection}
 
       {slug === "filiale-03" && subsidiary.introSection && (
         <KLoungeIntroSection content={subsidiary.introSection} />
@@ -429,7 +433,8 @@ export default async function SubsidiaryPage({ params }: Props) {
         slug !== "filiale-01" &&
         slug !== "filiale-02" &&
         slug !== "filiale-03" &&
-        slug !== "filiale-04" && (
+        slug !== "filiale-04" &&
+        slug !== "filiale-05" && (
           <section className="px-4 py-12 md:px-6 md:py-16 lg:px-8">
             <div className="mx-auto max-w-7xl">
               <AnimateIn>
@@ -454,6 +459,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         slug !== "filiale-01" &&
         slug !== "filiale-04" &&
         slug !== "filiale-02" &&
+        slug !== "filiale-05" &&
         slug !== "filiale-09" && (
           <SubsidiaryContactBand
             backgroundImage={getSubsidiaryContactImage(slug, subsidiary.coverImage)}
@@ -531,6 +537,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         slug !== "filiale-02" &&
         slug !== "filiale-03" &&
         slug !== "filiale-04" &&
+        slug !== "filiale-05" &&
         slug !== "filiale-09" &&
         standardGallerySection
       )}

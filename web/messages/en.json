@@ -251,6 +251,16 @@
       "nextDishes": "Next dishes",
       "addToOrder": "Add {name} to order"
     },
+    "muzikCafeReservation": {
+      "title": "Reservation",
+      "name": "Your Name",
+      "phone": "Phone Number",
+      "email": "Your Email",
+      "people": "Number Of People",
+      "date": "Date",
+      "time": "Time",
+      "cta": "Book a Table"
+    },
     "pinkberryHero": {
       "eyebrow": "Fresh & Gourmet",
       "title": "Taste From The Good Old Days.",

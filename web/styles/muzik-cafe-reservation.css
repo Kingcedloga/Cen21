@@ -1,0 +1,115 @@
+/* Muzik Café — Réservation (filiale-05) : photo de fond + overlay sombre + formulaire */
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-reservation {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(28rem, 50vw, 36rem);
+  padding: clamp(3rem, 8vw, 5rem) clamp(1.25rem, 6vw, 5rem);
+  text-align: center;
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-reservation__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-reservation__image {
+  object-fit: cover;
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-reservation__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-reservation__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 56rem;
+  margin-inline: auto;
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-reservation__title {
+  margin: 0 0 clamp(2rem, 4vw, 3rem);
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: clamp(2.25rem, 4.4vw, 3.25rem);
+  color: #ffffff;
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-reservation__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: clamp(2rem, 4vw, 2.75rem);
+}
+
+@media (max-width: 767px) {
+  [data-subsidiary-theme="muzik-cafe"] .muzik-reservation__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-reservation__field {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 0.625rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-reservation__field-icon {
+  flex-shrink: 0;
+  color: #ffffff;
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-reservation__input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 0.9375rem;
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-reservation__input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-reservation__input:focus {
+  outline: none;
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-reservation__cta {
+  display: inline-flex;
+  padding: 0.9375rem 2.5rem;
+  border: none;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #000000;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-luxe) var(--ease-luxury),
+    color var(--duration-luxe) var(--ease-luxury);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-reservation__cta:hover {
+  background: #ef3340;
+  color: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-subsidiary-theme="muzik-cafe"] .muzik-reservation__cta {
+    transition: none;
+  }
+}
