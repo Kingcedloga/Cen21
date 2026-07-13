@@ -15,6 +15,7 @@ import "@/styles/k-lounge-establishments.css";
 import "@/styles/millionaire-club-establishments.css";
 import "@/styles/pinkberry-establishments.css";
 import "@/styles/olive-verte-establishments.css";
+import "@/styles/muzik-cafe-establishments.css";
 
 export type SisterSubsidiary = SubsidiaryLinkTarget & {
   name: string;
@@ -25,7 +26,7 @@ type Props = {
   subsidiaries: SisterSubsidiary[];
   title: string;
   description: string;
-  variant?: "wabi-sabi" | "k-lounge" | "millionaire-club" | "pinkberry" | "olive-verte";
+  variant?: "wabi-sabi" | "k-lounge" | "millionaire-club" | "pinkberry" | "olive-verte" | "muzik-cafe";
   decorativeSlot?: React.ReactNode;
 };
 
@@ -81,7 +82,9 @@ export function WabiSabiEstablishmentsSection({
           ? "pinkberry-establishments-title"
           : variant === "olive-verte"
             ? "olive-verte-establishments-title"
-            : "wabi-establishments-title";
+            : variant === "muzik-cafe"
+              ? "muzik-cafe-establishments-title"
+              : "wabi-establishments-title";
 
   const variantClass =
     variant === "k-lounge"
@@ -92,7 +95,9 @@ export function WabiSabiEstablishmentsSection({
           ? "wabi-establishments--pinkberry"
           : variant === "olive-verte"
             ? "wabi-establishments--olive-verte"
-            : "wabi-sabi-beige-band";
+            : variant === "muzik-cafe"
+              ? "wabi-establishments--muzik-cafe"
+              : "wabi-sabi-beige-band";
 
   return (
     <section

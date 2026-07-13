@@ -1,0 +1,48 @@
+/* Muzik Café — Nos Établissements (variant clair, accents rouges) */
+
+.wabi-establishments--muzik-cafe {
+  --wabi-establishments-blue: #ef3340;
+  --wabi-establishments-beige: #ffffff;
+  --wabi-establishments-beige-deep: #ffffff;
+
+  background-color: #ffffff;
+}
+
+.wabi-establishments--muzik-cafe .wabi-establishments__description {
+  color: rgb(0 0 0 / 0.62);
+}
+
+.wabi-establishments--muzik-cafe .wabi-establishments__link:hover,
+.wabi-establishments--muzik-cafe .wabi-establishments__link:focus-visible {
+  background-color: rgb(239 51 64 / 0.06);
+}
+
+.wabi-establishments--muzik-cafe .wabi-establishments__logo {
+  filter: grayscale(1) brightness(0);
+  opacity: 0.72;
+}
+
+.wabi-establishments--muzik-cafe .wabi-establishments__link:hover .wabi-establishments__logo,
+.wabi-establishments--muzik-cafe .wabi-establishments__link:focus-visible .wabi-establishments__logo {
+  filter: brightness(0) saturate(100%) invert(40%) sepia(97%) saturate(540%)
+    hue-rotate(311deg) brightness(82%) contrast(136%);
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+.wabi-establishments--muzik-cafe .wabi-establishments__name {
+  color: rgb(0 0 0 / 0.42);
+}
+
+.wabi-establishments--muzik-cafe .wabi-establishments__link:hover .wabi-establishments__name,
+.wabi-establishments--muzik-cafe .wabi-establishments__link:focus-visible .wabi-establishments__name {
+  color: #ef3340;
+}
+
+.wabi-establishments--muzik-cafe .wabi-establishments__fade--left {
+  background: linear-gradient(90deg, #ffffff 0%, transparent 100%);
+}
+
+.wabi-establishments--muzik-cafe .wabi-establishments__fade--right {
+  background: linear-gradient(270deg, #ffffff 0%, transparent 100%);
+}

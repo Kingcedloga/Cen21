@@ -118,6 +118,7 @@ export default async function SubsidiaryPage({ params }: Props) {
     slug === "filiale-02" ||
     slug === "filiale-03" ||
     slug === "filiale-04" ||
+    slug === "filiale-05" ||
     slug === "filiale-09"
       ? getSubsidiaries(l)
           .filter((s) => s.slug !== slug && s.brandLogo)
@@ -343,6 +344,14 @@ export default async function SubsidiaryPage({ params }: Props) {
           )}
           {subsidiary.muzikGallerySection && (
             <MuzikCafeGallerySection content={subsidiary.muzikGallerySection} />
+          )}
+          {sisterSubsidiaries.length > 0 && (
+            <WabiSabiEstablishmentsSection
+              subsidiaries={sisterSubsidiaries}
+              title={t("wabiEstablishments.title")}
+              description={t("wabiEstablishments.description")}
+              variant="muzik-cafe"
+            />
           )}
         </>
       ) : (
