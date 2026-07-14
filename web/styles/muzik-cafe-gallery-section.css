@@ -1,4 +1,4 @@
-/* Muzik Café — carrousel galerie plats, hover reveal nom/prix (filiale-05) */
+/* Muzik Café — carrousel galerie plats + lightbox (filiale-05) */
 
 [data-subsidiary-theme="muzik-cafe"] .muzik-gallery {
   position: relative;
@@ -92,6 +92,12 @@
   border-radius: 14px;
   overflow: hidden;
   scroll-snap-align: start;
+  cursor: pointer;
+  transition: box-shadow var(--duration-luxe) var(--ease-luxury);
+}
+
+[data-subsidiary-theme="muzik-cafe"] .muzik-gallery__card:hover {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
 }
 
 [data-subsidiary-theme="muzik-cafe"] .muzik-gallery__photo {
@@ -171,7 +177,151 @@
   [data-subsidiary-theme="muzik-cafe"] .muzik-gallery__nav-btn,
   [data-subsidiary-theme="muzik-cafe"] .muzik-gallery__photo,
   [data-subsidiary-theme="muzik-cafe"] .muzik-gallery__overlay,
-  [data-subsidiary-theme="muzik-cafe"] .muzik-gallery__cart {
+  [data-subsidiary-theme="muzik-cafe"] .muzik-gallery__cart,
+  [data-subsidiary-theme="muzik-cafe"] .muzik-gallery__card {
+    transition: none;
+  }
+}
+
+/* ── Lightbox ──────────────────────────────────────────────────────────── */
+
+.muzik-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  padding: clamp(1rem, 4vw, 2rem);
+}
+
+.muzik-lightbox__frame {
+  position: relative;
+  width: min(420px, 90vw);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #111111;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.7);
+}
+
+.muzik-lightbox__image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  max-height: calc(min(85svh, 560px) - 3.5rem);
+  overflow: hidden;
+}
+
+.muzik-lightbox__image {
+  object-fit: cover;
+}
+
+.muzik-lightbox__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.875rem 1.125rem;
+  background: #000000;
+}
+
+.muzik-lightbox__meta-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.muzik-lightbox__meta-price {
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: #ef3340;
+  white-space: nowrap;
+}
+
+/* Flèches de navigation */
+
+.muzik-lightbox__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+  cursor: pointer;
+  transition:
+    background 200ms,
+    border-color 200ms;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.muzik-lightbox__arrow:hover {
+  background: #ef3340;
+  border-color: #ef3340;
+}
+
+.muzik-lightbox__arrow--prev {
+  left: clamp(0.75rem, 3vw, 2.5rem);
+}
+
+.muzik-lightbox__arrow--next {
+  right: clamp(0.75rem, 3vw, 2.5rem);
+}
+
+/* Bouton fermer */
+
+.muzik-lightbox__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  background: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  cursor: pointer;
+  transition:
+    background 200ms,
+    border-color 200ms;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.muzik-lightbox__close:hover {
+  background: #ef3340;
+  border-color: #ef3340;
+}
+
+/* Compteur */
+
+.muzik-lightbox__counter {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  color: rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .muzik-lightbox__arrow,
+  .muzik-lightbox__close {
     transition: none;
   }
 }

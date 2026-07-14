@@ -28,32 +28,6 @@
   margin-inline: auto;
 }
 
-[data-subsidiary-theme="muzik-cafe"] .muzik-events__nav-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 50%;
-  border: none;
-  background: #0033a0;
-  color: #ffffff;
-  cursor: pointer;
-  transition: transform var(--duration-base) var(--ease-spring);
-}
-
-[data-subsidiary-theme="muzik-cafe"] .muzik-events__nav-btn:hover,
-[data-subsidiary-theme="muzik-cafe"] .muzik-events__nav-btn:focus-visible {
-  transform: scale(1.08);
-}
-
-@media (max-width: 767px) {
-  [data-subsidiary-theme="muzik-cafe"] .muzik-events__nav-btn {
-    display: none;
-  }
-}
-
 [data-subsidiary-theme="muzik-cafe"] .muzik-events__track {
   display: flex;
   gap: clamp(1.25rem, 2.5vw, 2rem);
@@ -166,7 +140,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-subsidiary-theme="muzik-cafe"] .muzik-events__nav-btn,
   [data-subsidiary-theme="muzik-cafe"] .muzik-events__cta {
     transition: none;
   }

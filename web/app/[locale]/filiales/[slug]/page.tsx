@@ -8,6 +8,7 @@ import { MillionaireClubIntroSection } from "@/components/filiales/MillionaireCl
 import { MillionaireClubScatteredGallery } from "@/components/filiales/MillionaireClubScatteredGallery";
 import { KLoungeMarqueeGallery } from "@/components/filiales/KLoungeMarqueeGallery";
 import { KLoungeReservationBanner } from "@/components/filiales/KLoungeReservationBanner";
+import { MuzikCafeContactMapSection } from "@/components/filiales/MuzikCafeContactMapSection";
 import { MuzikCafeEventsSection } from "@/components/filiales/MuzikCafeEventsSection";
 import { MuzikCafeGallerySection } from "@/components/filiales/MuzikCafeGallerySection";
 import { MuzikCafeHero } from "@/components/filiales/MuzikCafeHero";
@@ -613,6 +614,11 @@ export default async function SubsidiaryPage({ params }: Props) {
             variant="compact"
           />
         </section>
+      ) : slug === "filiale-05" ? (
+        <MuzikCafeContactMapSection
+          mapQuery={mapQuery}
+          subsidiaryName={subsidiary.name}
+        />
       ) : (
         <section className="mx-auto max-w-7xl px-4 pb-16 md:px-6 md:pb-20">
           <AnimateIn>

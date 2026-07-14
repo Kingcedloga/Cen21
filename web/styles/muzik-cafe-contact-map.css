@@ -1,0 +1,28 @@
+/* ── Muzik Café — Section Direction & Maps ──────────────────────────────── */
+
+.muzik-contact-map {
+  width: 100%;
+}
+
+.muzik-contact-map__map-clip {
+  position: relative;
+  width: 100%;
+  height: clamp(380px, 48vw, 480px);
+  overflow: hidden;
+}
+
+.muzik-contact-map__iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  filter: grayscale(0.12) contrast(1.02);
+}
+
+@media (max-width: 640px) {
+  .muzik-contact-map__map-clip {
+    height: 320px;
+  }
+}

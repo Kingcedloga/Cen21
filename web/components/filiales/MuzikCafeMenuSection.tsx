@@ -7,6 +7,7 @@ import { useCallback, useRef } from "react";
 
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { ChevronLeft, ChevronRight, Lightning, Music2, UtensilsCrossed } from "@/lib/icons";
+import { cormorant } from "@/lib/fonts";
 import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
 import type { SubsidiaryMuzikMenuSection } from "@/lib/types";
 
@@ -32,7 +33,7 @@ export function MuzikCafeMenuSection({ content }: Props) {
   );
 
   return (
-    <section className="muzik-menu">
+    <section className={`muzik-menu ${cormorant.variable}`}>
       {/* ── Bloc 1 : bandeau avantages ── */}
       <div className="muzik-menu__benefits">
         {content.benefits.map((benefit, i) => {

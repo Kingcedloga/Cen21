@@ -15,6 +15,7 @@ import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
 import type { EventItem } from "@/lib/types";
 
 import "@/styles/muzik-cafe-events-section.css";
+import "@/styles/muzik-cafe-gallery-section.css";
 
 const CARD_STEP = 340;
 
@@ -62,14 +63,17 @@ export function MuzikCafeEventsSection({ events, title, ctaLabel, fallbackImage 
 
       <div className="muzik-events__row">
         {events.length > 1 && (
-          <button
-            type="button"
-            className="muzik-events__nav-btn"
-            aria-label={t("muzikCafeEvents.previous")}
-            onClick={() => scroll(-CARD_STEP)}
-          >
-            <ArrowLeft size={18} aria-hidden="true" />
-          </button>
+          <div className="muzik-gallery__nav muzik-gallery__nav--prev">
+            <button
+              type="button"
+              className="muzik-gallery__nav-btn"
+              aria-label={t("muzikCafeEvents.previous")}
+              onClick={() => scroll(-CARD_STEP)}
+            >
+              <ArrowLeft size={18} aria-hidden="true" />
+            </button>
+            <span className="muzik-gallery__nav-line" aria-hidden="true" />
+          </div>
         )}
 
         <div className="muzik-events__track" ref={trackRef}>
@@ -113,14 +117,17 @@ export function MuzikCafeEventsSection({ events, title, ctaLabel, fallbackImage 
         </div>
 
         {events.length > 1 && (
-          <button
-            type="button"
-            className="muzik-events__nav-btn"
-            aria-label={t("muzikCafeEvents.next")}
-            onClick={() => scroll(CARD_STEP)}
-          >
-            <ArrowRight size={18} aria-hidden="true" />
-          </button>
+          <div className="muzik-gallery__nav muzik-gallery__nav--next">
+            <span className="muzik-gallery__nav-line" aria-hidden="true" />
+            <button
+              type="button"
+              className="muzik-gallery__nav-btn"
+              aria-label={t("muzikCafeEvents.next")}
+              onClick={() => scroll(CARD_STEP)}
+            >
+              <ArrowRight size={18} aria-hidden="true" />
+            </button>
+          </div>
         )}
       </div>
     </section>
