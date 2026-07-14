@@ -101,6 +101,16 @@
       "excerpt": "Musique live, karaoké et DJ sets sur le patio extérieur."
     },
     {
+      "id": "evt-8",
+      "slug": "dj-night-muzik-cafe",
+      "title": "Soirée DJ — Café Muzik",
+      "date": "2026-10-04T21:00:00",
+      "location": "Café Muzik, Boulevard du 30 Juin — Kinshasa",
+      "subsidiarySlug": "filiale-05",
+      "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80",
+      "excerpt": "Une soirée animée avec DJ sets, cocktails et cuisine internationale."
+    },
+    {
       "id": "evt-6",
       "slug": "brunch-terrasse-moka-more",
       "title": "Brunch terrasse — Moka & More",

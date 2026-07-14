@@ -261,6 +261,12 @@
       "time": "Time",
       "cta": "Book a Table"
     },
+    "muzikCafeEvents": {
+      "title": "News & Events",
+      "ctaLabel": "Read More",
+      "previous": "Previous event",
+      "next": "Next event"
+    },
     "pinkberryHero": {
       "eyebrow": "Fresh & Gourmet",
       "title": "Taste From The Good Old Days.",

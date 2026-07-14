@@ -269,6 +269,12 @@
       "time": "Heure",
       "cta": "Réserver une table"
     },
+    "muzikCafeEvents": {
+      "title": "News & Événements",
+      "ctaLabel": "Lire plus",
+      "previous": "Événement précédent",
+      "next": "Événement suivant"
+    },
     "pinkberryHero": {
       "eyebrow": "Frais & Gourmand",
       "title": "L'excellent goût du bon vieux temps.",

@@ -8,6 +8,7 @@ import { MillionaireClubIntroSection } from "@/components/filiales/MillionaireCl
 import { MillionaireClubScatteredGallery } from "@/components/filiales/MillionaireClubScatteredGallery";
 import { KLoungeMarqueeGallery } from "@/components/filiales/KLoungeMarqueeGallery";
 import { KLoungeReservationBanner } from "@/components/filiales/KLoungeReservationBanner";
+import { MuzikCafeEventsSection } from "@/components/filiales/MuzikCafeEventsSection";
 import { MuzikCafeGallerySection } from "@/components/filiales/MuzikCafeGallerySection";
 import { MuzikCafeHero } from "@/components/filiales/MuzikCafeHero";
 import { MuzikCafeMenuSection } from "@/components/filiales/MuzikCafeMenuSection";
@@ -563,6 +564,13 @@ export default async function SubsidiaryPage({ params }: Props) {
         <PinkberryEventsSection
           content={subsidiary.newsSection}
           backgroundImage={galleryEntrySrc(subsidiary.galleryImages[0])}
+        />
+      ) : slug === "filiale-05" ? (
+        <MuzikCafeEventsSection
+          events={events}
+          title={t("muzikCafeEvents.title")}
+          ctaLabel={t("muzikCafeEvents.ctaLabel")}
+          fallbackImage={subsidiary.coverImage}
         />
       ) : (
         slug !== "filiale-01" && slug !== "filiale-02" && !useEventShowcase && standardEventsSection
