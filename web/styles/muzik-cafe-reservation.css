@@ -16,10 +16,18 @@
   position: absolute;
   inset: 0;
   z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-[data-subsidiary-theme="muzik-cafe"] .muzik-reservation__image {
-  object-fit: cover;
+/* background-attachment: fixed est peu fiable sur mobile (iOS Safari) —
+   on repasse en scroll normal sous 900px pour éviter tout artefact visuel */
+@media (max-width: 900px) {
+  [data-subsidiary-theme="muzik-cafe"] .muzik-reservation__media {
+    background-attachment: scroll;
+  }
 }
 
 [data-subsidiary-theme="muzik-cafe"] .muzik-reservation__overlay {

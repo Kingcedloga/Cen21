@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useCallback, type FormEvent } from "react";
@@ -40,14 +39,11 @@ export function MuzikCafeReservationSection({ backgroundImage }: Props) {
 
   return (
     <section className={`muzik-reservation ${cormorant.variable}`}>
-      <div className="muzik-reservation__media" aria-hidden="true">
-        <Image
-          src={backgroundImage}
-          alt=""
-          fill
-          className="muzik-reservation__image"
-          sizes="100vw"
-        />
+      <div
+        className="muzik-reservation__media"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+        aria-hidden="true"
+      >
         <span className="muzik-reservation__overlay" />
       </div>
 

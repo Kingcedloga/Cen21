@@ -7,7 +7,7 @@
 .muzik-contact-map__map-clip {
   position: relative;
   width: 100%;
-  height: clamp(380px, 48vw, 480px);
+  height: clamp(280px, 38vw, 400px);
   overflow: hidden;
 }
 
