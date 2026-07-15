@@ -63,6 +63,7 @@
 .klounge-marquee-gallery__track--static {
   animation: none;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   width: 100%;
   padding-inline: clamp(1rem, 3vw, 1.5rem);
   scroll-snap-type: x mandatory;

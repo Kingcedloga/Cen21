@@ -78,6 +78,21 @@ export function FilialMarqueeGallery({
   const reduced = useReducedMotion() ?? false;
   const list = items.filter((item) => item.src);
 
+  const [isMobile, setIsMobile] = useState<boolean>(
+    () => typeof window !== "undefined" && window.innerWidth < 768,
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  // Static (scrollable) mode on mobile or when reduced-motion is requested
+  const useStatic = reduced || isMobile;
+
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -129,9 +144,9 @@ export function FilialMarqueeGallery({
     isOpenRef.current = false;
   }, []);
 
-  // JS-driven auto-scroll (même vitesse que animation CSS)
+  // JS-driven auto-scroll — skipped in static mode (mobile or reduced-motion)
   useEffect(() => {
-    if (reduced) return;
+    if (useStatic) return;
     const track = trackRef.current;
     if (!track) return;
 
@@ -157,14 +172,15 @@ export function FilialMarqueeGallery({
     rafRef.current = requestAnimationFrame(tick);
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      // Reset transform so static mode starts at position 0
+      if (track) track.style.transform = "";
     };
-  }, [reduced, durationSeconds]);
+  }, [useStatic, durationSeconds]);
 
-  // Wheel → scroll horizontal dans le marquee (deltaX seulement)
-  // deltaY ignoré : la page défile normalement à la molette verticale.
+  // Wheel → horizontal scroll through the marquee (deltaX only)
   const onWheel = useCallback(
     (e: WheelEvent) => {
-      if (reduced || isOpenRef.current) return;
+      if (useStatic || isOpenRef.current) return;
       if (Math.abs(e.deltaY) >= Math.abs(e.deltaX)) return;
       e.preventDefault();
       const track = trackRef.current;
@@ -182,12 +198,12 @@ export function FilialMarqueeGallery({
         isWheelingRef.current = false;
       }, 1500);
     },
-    [reduced],
+    [useStatic],
   );
 
-  // Hover (pause + curseur) + wheel listener
+  // Hover (pause + curseur) + wheel listener — skipped in static mode
   useEffect(() => {
-    if (reduced) return;
+    if (useStatic) return;
     const viewport = viewportRef.current;
     if (!viewport) return;
 
@@ -210,7 +226,7 @@ export function FilialMarqueeGallery({
       viewport.removeEventListener("wheel", onWheel);
       if (wheelTimerRef.current) clearTimeout(wheelTimerRef.current);
     };
-  }, [reduced, onWheel]);
+  }, [useStatic, onWheel]);
 
   const onMouseMove = useCallback((e: React.MouseEvent) => {
     if (cursorRef.current) {
@@ -221,7 +237,8 @@ export function FilialMarqueeGallery({
 
   if (list.length === 0) return null;
 
-  const loop = [...list, ...list];
+  // Marquee duplicates items for infinite loop; static mode shows each item once
+  const displayItems = useStatic ? list : [...list, ...list];
   const titleId = `${variant}-marquee-gallery-title`;
   const sectionClass = [
     "fmg",
@@ -256,9 +273,9 @@ export function FilialMarqueeGallery({
         >
           <div
             ref={trackRef}
-            className={`fmg__track${reduced ? " fmg__track--static" : ""}`}
+            className={`fmg__track${useStatic ? " fmg__track--static" : ""}`}
           >
-            {loop.map((item, index) => (
+            {displayItems.map((item, index) => (
               <PanelFigure
                 key={`${item.id}-${index}`}
                 item={item}
