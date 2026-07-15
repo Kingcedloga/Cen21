@@ -56,21 +56,6 @@ export function MuzikCafeHero({ subsidiary }: { subsidiary: Subsidiary }) {
     >
       <div className="muzik-hero__texture" aria-hidden="true" />
 
-      <motion.span
-        className="muzik-hero__shape muzik-hero__shape--top"
-        aria-hidden="true"
-        initial={reduced ? false : { opacity: 0, scale: 0.9 }}
-        animate={reduced ? undefined : { opacity: 1, scale: 1 }}
-        transition={{ duration: DURATION_S.grand, ease: EASE.luxury, delay: 0.2 }}
-      />
-      <motion.span
-        className="muzik-hero__shape muzik-hero__shape--bottom"
-        aria-hidden="true"
-        initial={reduced ? false : { opacity: 0, scale: 0.9 }}
-        animate={reduced ? undefined : { opacity: 1, scale: 1 }}
-        transition={{ duration: DURATION_S.grand, ease: EASE.luxury, delay: 0.3 }}
-      />
-
       <div className="muzik-hero__content">
         <div className="muzik-hero__text">
           <motion.p className="muzik-hero__eyebrow" {...textItemMotion(0)}>
@@ -115,8 +100,17 @@ export function MuzikCafeHero({ subsidiary }: { subsidiary: Subsidiary }) {
         <motion.div
           className="muzik-hero__visual"
           initial={reduced ? false : { opacity: 0, x: 60 }}
-          animate={reduced ? undefined : { opacity: 1, x: 0 }}
-          transition={{ duration: DURATION_S.grand, ease: EASE.luxury, delay: 0.15 }}
+          animate={reduced ? undefined : { opacity: 1, x: 0, y: [0, -12, 0] }}
+          whileHover={reduced ? undefined : { rotate: 2, transition: { duration: 0.3, ease: EASE.spring } }}
+          transition={
+            reduced
+              ? undefined
+              : {
+                  opacity: { duration: 0.8, ease: EASE.luxury, delay: 0.15 },
+                  x: { duration: 0.8, ease: EASE.luxury, delay: 0.15 },
+                  y: { duration: 4, ease: "easeInOut", repeat: Infinity, delay: 0.95 },
+                }
+          }
         >
           <Image
             src={HERO_IMAGES[active]}

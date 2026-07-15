@@ -25,31 +25,6 @@
   background-position: 0 0, 2px 3px;
 }
 
-/* ── Formes organiques bleues ── */
-
-[data-subsidiary-theme="muzik-cafe"] .muzik-hero__shape {
-  position: absolute;
-  z-index: 0;
-  background-color: #0033a0;
-  pointer-events: none;
-}
-
-[data-subsidiary-theme="muzik-cafe"] .muzik-hero__shape--top {
-  top: -12%;
-  right: -8%;
-  width: clamp(16rem, 32vw, 30rem);
-  height: clamp(16rem, 32vw, 30rem);
-  border-radius: 38% 62% 55% 45% / 45% 40% 60% 55%;
-}
-
-[data-subsidiary-theme="muzik-cafe"] .muzik-hero__shape--bottom {
-  bottom: -16%;
-  right: -10%;
-  width: clamp(18rem, 36vw, 34rem);
-  height: clamp(18rem, 36vw, 34rem);
-  border-radius: 55% 45% 40% 60% / 60% 55% 45% 40%;
-}
-
 /* ── Contenu ── */
 
 [data-subsidiary-theme="muzik-cafe"] .muzik-hero__content {
