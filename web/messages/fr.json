@@ -261,6 +261,23 @@
       "line2": "de passion et de précision — du choix des meilleurs",
       "line3": "ingrédients de saison à la maîtrise de chaque geste."
     },
+    "mokaMoreAbout": {
+      "watermark": "About Us",
+      "titlePrefix": "Bienvenue Chez",
+      "titleScript": "Moka & More",
+      "description": "Nous offrons une expérience café et lounge chaleureuse pensée pour illuminer votre journée — pâtisseries fraîches, café de spécialité, petits-déjeuners généreux, burgers et bar complet sur notre terrasse extérieure.",
+      "featuresTitleLine1": "Quelques Atouts",
+      "featuresTitleLine2": "De Notre Établissement",
+      "featuresDescription": "Un lieu fondé sur la chaleur, la qualité et un service attentionné, à toute heure.",
+      "feature1Label": "Cuisine raffinée,",
+      "feature1Detail": "présentée avec soin",
+      "feature2Label": "Ambiance chaleureuse,",
+      "feature2Detail": "idéale pour vos matins ou soirées",
+      "feature3Label": "Service personnalisé,",
+      "feature3Detail": "où chaque client est choyé",
+      "feature4Label": "Ingrédients frais et de saison,",
+      "feature4Detail": "sélectionnés avec soin"
+    },
     "muzikCafeMenu": {
       "regularPrice": "Prix régulier",
       "addToOrder": "Ajouter {name} à la commande",

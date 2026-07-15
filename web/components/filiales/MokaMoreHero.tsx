@@ -12,7 +12,6 @@ import type { Subsidiary } from "@/lib/types";
 import "@/styles/moka-more-hero.css";
 
 const MAIN_PHOTO = "/filiales/photos/filiale-06/main-photo.png";
-const SECONDARY_PHOTO = "/filiales/photos/filiale-06/secondary-photo.png";
 
 export function MokaMoreHero({ subsidiary }: { subsidiary: Subsidiary }) {
   const reduced = useReducedMotion() ?? false;
@@ -40,14 +39,15 @@ export function MokaMoreHero({ subsidiary }: { subsidiary: Subsidiary }) {
       <div className="moka-hero__texture" aria-hidden="true" />
       <span className="moka-hero__divider" aria-hidden="true" />
 
+      {/* Motif calligraphique — coin haut droit (i = 0, delay 300ms) */}
       <motion.svg
         className="moka-hero__motif"
         viewBox="0 0 200 140"
         fill="none"
         aria-hidden="true"
         initial={reduced ? false : { opacity: 0 }}
-        animate={reduced ? undefined : { opacity: 0.3 }}
-        transition={{ duration: 0.6, ease: EASE.luxury, delay: 0.3 }}
+        animate={reduced ? undefined : { opacity: 0.25 }}
+        transition={{ duration: 0.7, ease: EASE.luxury, delay: 0.3 }}
       >
         <path
           d="M8 92c22-42 62-42 72 0s46 46 62-8"
@@ -58,6 +58,24 @@ export function MokaMoreHero({ subsidiary }: { subsidiary: Subsidiary }) {
         <path d="M148 12l12 22" stroke="#CC0000" strokeWidth="2" strokeLinecap="round" />
         <path d="M172 8l7 28" stroke="#CC0000" strokeWidth="2" strokeLinecap="round" />
       </motion.svg>
+
+      {/* Grille de points — coin bas gauche (i = 1, delay 450ms) */}
+      <motion.div
+        className="moka-hero__motif-dots"
+        aria-hidden="true"
+        initial={reduced ? false : { opacity: 0 }}
+        animate={reduced ? undefined : { opacity: 1 }}
+        transition={{ duration: 0.7, ease: EASE.luxury, delay: 0.45 }}
+      />
+
+      {/* Cercle outline — milieu gauche (i = 2, delay 600ms) */}
+      <motion.div
+        className="moka-hero__motif-circle"
+        aria-hidden="true"
+        initial={reduced ? false : { opacity: 0 }}
+        animate={reduced ? undefined : { opacity: 1 }}
+        transition={{ duration: 0.7, ease: EASE.luxury, delay: 0.6 }}
+      />
 
       <div className="moka-hero__content">
         <div className="moka-hero__text">
@@ -93,11 +111,12 @@ export function MokaMoreHero({ subsidiary }: { subsidiary: Subsidiary }) {
         </div>
 
         <div className="moka-hero__visual">
+          {/* Photo principale : entrée depuis droite + lévitation en boucle + hover rotation */}
           <motion.div
             className="moka-hero__main-photo-wrap"
             initial={reduced ? false : { opacity: 0, x: 60 }}
             animate={reduced ? undefined : { opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: EASE.luxury, delay: 0.15 }}
+            transition={{ duration: DURATION_S.grand, ease: EASE.luxury, delay: 0.15 }}
           >
             <Image
               src={MAIN_PHOTO}
@@ -106,21 +125,6 @@ export function MokaMoreHero({ subsidiary }: { subsidiary: Subsidiary }) {
               priority
               className="moka-hero__main-photo"
               sizes="(max-width: 767px) 90vw, 48vw"
-            />
-          </motion.div>
-
-          <motion.div
-            className="moka-hero__secondary-photo-wrap"
-            initial={reduced ? false : { opacity: 0, y: 30, scale: 0.9 }}
-            animate={reduced ? undefined : { opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.4 }}
-          >
-            <Image
-              src={SECONDARY_PHOTO}
-              alt={subsidiary.name}
-              fill
-              className="moka-hero__secondary-photo"
-              sizes="(max-width: 767px) 40vw, 14rem"
             />
           </motion.div>
         </div>

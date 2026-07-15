@@ -65,7 +65,7 @@
   width: 100%;
   max-width: 90rem;
   margin-inline: auto;
-  padding: clamp(7rem, 16vw, 9rem) clamp(1.25rem, 6vw, 5rem) clamp(3rem, 8vw, 5rem);
+  padding: clamp(7rem, 16vw, 9rem) clamp(1.25rem, 6vw, 5rem) clamp(4rem, 8vw, 5.5rem);
 }
 
 @media (max-width: 899px) {
@@ -161,35 +161,36 @@
 
 [data-subsidiary-theme="moka-more"] .moka-hero__visual {
   position: relative;
-  flex: 0 0 50%;
+  flex: 0 0 52%;
   min-width: 0;
-  height: clamp(24rem, 62vh, 40rem);
+  height: clamp(34rem, 88vh, 62rem);
+  overflow: visible;
 }
 
 @media (max-width: 899px) {
   [data-subsidiary-theme="moka-more"] .moka-hero__visual {
     flex: 1 1 auto;
     width: 100%;
-    height: clamp(20rem, 70vw, 28rem);
+    height: clamp(28rem, 90vw, 44rem);
     margin-top: 2rem;
   }
 }
 
 [data-subsidiary-theme="moka-more"] .moka-hero__main-photo-wrap {
   position: absolute;
-  inset: 0 -6% 0 6%;
+  inset: -8% -14% -8% 0%;
 }
 
 @media (max-width: 899px) {
   [data-subsidiary-theme="moka-more"] .moka-hero__main-photo-wrap {
-    inset: 0;
+    inset: -4% -4% -4% -4%;
   }
 }
 
 [data-subsidiary-theme="moka-more"] .moka-hero__main-photo {
   object-fit: contain;
   object-position: right center;
-  filter: drop-shadow(0 30px 60px rgb(0 0 0 / 0.6));
+  filter: drop-shadow(0 48px 96px rgb(0 0 0 / 0.72));
 }
 
 @media (max-width: 899px) {
@@ -198,27 +199,46 @@
   }
 }
 
-[data-subsidiary-theme="moka-more"] .moka-hero__secondary-photo-wrap {
+
+/* ── Motifs décoratifs supplémentaires ── */
+
+/* Grille de points blancs — coin bas gauche */
+[data-subsidiary-theme="moka-more"] .moka-hero__motif-dots {
   position: absolute;
-  left: 12%;
-  bottom: -8%;
-  width: clamp(9rem, 18vw, 14rem);
-  aspect-ratio: 1 / 1;
-  z-index: 2;
+  bottom: clamp(2rem, 6vw, 4rem);
+  left: clamp(1rem, 3vw, 2rem);
+  width: 80px;
+  height: 80px;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgb(255 255 255 / 0.1) 1.5px, transparent 1.5px);
+  background-size: 10px 10px;
+}
+
+/* Cercle outline rouge — milieu gauche */
+[data-subsidiary-theme="moka-more"] .moka-hero__motif-circle {
+  position: absolute;
+  left: clamp(1.5rem, 4vw, 3rem);
+  top: calc(50% - 40px);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1.5px solid rgb(204 0 0 / 0.15);
+  z-index: 0;
+  pointer-events: none;
 }
 
 @media (max-width: 899px) {
-  [data-subsidiary-theme="moka-more"] .moka-hero__secondary-photo-wrap {
-    left: 4%;
-    bottom: -6%;
-    width: clamp(7rem, 30vw, 9rem);
+  [data-subsidiary-theme="moka-more"] .moka-hero__motif-dots {
+    bottom: 1.25rem;
+    left: 1rem;
+    width: 60px;
+    height: 60px;
   }
-}
 
-[data-subsidiary-theme="moka-more"] .moka-hero__secondary-photo {
-  object-fit: contain;
-  object-position: center;
-  filter: drop-shadow(0 18px 36px rgb(0 0 0 / 0.55));
+  [data-subsidiary-theme="moka-more"] .moka-hero__motif-circle {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

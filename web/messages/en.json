@@ -253,6 +253,23 @@
       "line2": "and precision — from sourcing the finest seasonal",
       "line3": "ingredients to perfecting each technique."
     },
+    "mokaMoreAbout": {
+      "watermark": "About Us",
+      "titlePrefix": "Welcome To",
+      "titleScript": "Moka & More",
+      "description": "We offer a warm café and lounge experience designed to brighten your day — freshly baked pastries, specialty coffee, hearty breakfasts, burgers, and a full bar on our outdoor terrace.",
+      "featuresTitleLine1": "Some Features Of",
+      "featuresTitleLine2": "Our Establishment",
+      "featuresDescription": "A place built on warmth, quality, and attentive service, at any time of day.",
+      "feature1Label": "Exceptional cuisine,",
+      "feature1Detail": "prepared with care and passion",
+      "feature2Label": "Warm atmosphere,",
+      "feature2Detail": "ideal for relaxed mornings or evenings",
+      "feature3Label": "Personalized service,",
+      "feature3Detail": "where every guest is valued",
+      "feature4Label": "Fresh, seasonal ingredients,",
+      "feature4Detail": "sourced with care"
+    },
     "muzikCafeMenu": {
       "regularPrice": "Regular Price",
       "addToOrder": "Add {name} to order",
