@@ -247,6 +247,12 @@
       "previousVisual": "Previous visual",
       "nextVisual": "Next visual"
     },
+    "mokaMoreQuote": {
+      "dateLabel": "Moka & More",
+      "line1": "Every dish at Moka & More tells a story of passion",
+      "line2": "and precision — from sourcing the finest seasonal",
+      "line3": "ingredients to perfecting each technique."
+    },
     "muzikCafeMenu": {
       "regularPrice": "Regular Price",
       "addToOrder": "Add {name} to order",

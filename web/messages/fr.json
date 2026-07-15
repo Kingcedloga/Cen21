@@ -255,6 +255,12 @@
       "previousVisual": "Visuel précédent",
       "nextVisual": "Visuel suivant"
     },
+    "mokaMoreQuote": {
+      "dateLabel": "Moka & More",
+      "line1": "Chaque plat chez Moka & More raconte une histoire",
+      "line2": "de passion et de précision — du choix des meilleurs",
+      "line3": "ingrédients de saison à la maîtrise de chaque geste."
+    },
     "muzikCafeMenu": {
       "regularPrice": "Prix régulier",
       "addToOrder": "Ajouter {name} à la commande",

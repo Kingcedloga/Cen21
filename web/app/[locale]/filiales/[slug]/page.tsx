@@ -9,6 +9,7 @@ import { MillionaireClubScatteredGallery } from "@/components/filiales/Millionai
 import { KLoungeMarqueeGallery } from "@/components/filiales/KLoungeMarqueeGallery";
 import { KLoungeReservationBanner } from "@/components/filiales/KLoungeReservationBanner";
 import { MokaMoreHero } from "@/components/filiales/MokaMoreHero";
+import { MokaMoreQuoteSection } from "@/components/filiales/MokaMoreQuoteSection";
 import { MuzikCafeContactMapSection } from "@/components/filiales/MuzikCafeContactMapSection";
 import { MuzikCafeEventsSection } from "@/components/filiales/MuzikCafeEventsSection";
 import { MuzikCafeGallerySection } from "@/components/filiales/MuzikCafeGallerySection";
@@ -362,7 +363,13 @@ export default async function SubsidiaryPage({ params }: Props) {
           />
         </>
       ) : slug === "filiale-06" ? (
-        <MokaMoreHero subsidiary={subsidiary} />
+        <>
+          <MokaMoreHero subsidiary={subsidiary} />
+          <MokaMoreQuoteSection
+            leftImage={subsidiary.coverImage}
+            rightImage={galleryEntrySrc(subsidiary.galleryImages[0])}
+          />
+        </>
       ) : (
         <SubsidiaryHero
           slides={heroSlides}
