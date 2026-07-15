@@ -240,6 +240,13 @@
       "nextVisual": "Next visual",
       "goToVisual": "Go to visual {index}"
     },
+    "mokaMoreHero": {
+      "eyebrow": "Dine. Delight. Discover.",
+      "title": "Café, Lounge & Flavours In Kinshasa",
+      "ctaLabel": "Browse Our Menu",
+      "previousVisual": "Previous visual",
+      "nextVisual": "Next visual"
+    },
     "muzikCafeMenu": {
       "regularPrice": "Regular Price",
       "addToOrder": "Add {name} to order",

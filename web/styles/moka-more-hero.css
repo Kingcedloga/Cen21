@@ -1,0 +1,228 @@
+/* Moka & More — hero dédié (filiale-06) : fond noir texturé, photos produit sans fond */
+
+[data-subsidiary-theme="moka-more"] .moka-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  background-color: #000000;
+}
+
+/* Texture granuleuse subtile (CSS pur, sans image) */
+[data-subsidiary-theme="moka-more"] .moka-hero__texture {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    radial-gradient(rgb(255 255 255 / 0.035) 1px, transparent 1px),
+    radial-gradient(rgb(255 255 255 / 0.025) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px;
+  background-position: 0 0, 2px 3px;
+}
+
+/* Ligne verticale séparant vaguement les deux colonnes */
+[data-subsidiary-theme="moka-more"] .moka-hero__divider {
+  position: absolute;
+  left: 50%;
+  top: 8%;
+  bottom: 8%;
+  width: 1px;
+  background: rgb(255 255 255 / 0.12);
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 899px) {
+  [data-subsidiary-theme="moka-more"] .moka-hero__divider {
+    display: none;
+  }
+}
+
+/* Motifs décoratifs calligraphiques — coin haut droit */
+[data-subsidiary-theme="moka-more"] .moka-hero__motif {
+  position: absolute;
+  top: clamp(1rem, 4vw, 2.5rem);
+  right: clamp(1rem, 4vw, 3rem);
+  width: clamp(6rem, 10vw, 9rem);
+  height: clamp(4.2rem, 7vw, 6.3rem);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── Contenu ── */
+
+[data-subsidiary-theme="moka-more"] .moka-hero__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 5vw, 4rem);
+  width: 100%;
+  max-width: 90rem;
+  margin-inline: auto;
+  padding: clamp(7rem, 16vw, 9rem) clamp(1.25rem, 6vw, 5rem) clamp(3rem, 8vw, 5rem);
+}
+
+@media (max-width: 899px) {
+  [data-subsidiary-theme="moka-more"] .moka-hero__content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+[data-subsidiary-theme="moka-more"] .moka-hero__text {
+  flex: 0 0 50%;
+  min-width: 0;
+}
+
+@media (max-width: 899px) {
+  [data-subsidiary-theme="moka-more"] .moka-hero__text {
+    flex: 1 1 auto;
+  }
+}
+
+[data-subsidiary-theme="moka-more"] .moka-hero__eyebrow {
+  margin: 0 0 0.875rem;
+  font-style: italic;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #cc0000;
+}
+
+[data-subsidiary-theme="moka-more"] .moka-hero__title {
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #ffffff;
+  font-size: clamp(2.25rem, 4.6vw, 3.75rem);
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+}
+
+[data-subsidiary-theme="moka-more"] .moka-hero__cta {
+  display: inline-flex;
+  margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
+  padding: 0.9375rem 2rem;
+  border: 1.5px solid #ffffff;
+  border-radius: 2px;
+  background: transparent;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-luxe) var(--ease-luxury),
+    color var(--duration-luxe) var(--ease-luxury);
+}
+
+[data-subsidiary-theme="moka-more"] .moka-hero__cta:hover {
+  background: #cc0000;
+  color: #ffffff;
+  border-color: #cc0000;
+}
+
+[data-subsidiary-theme="moka-more"] .moka-hero__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+@media (max-width: 899px) {
+  [data-subsidiary-theme="moka-more"] .moka-hero__nav {
+    justify-content: center;
+  }
+}
+
+[data-subsidiary-theme="moka-more"] .moka-hero__nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+[data-subsidiary-theme="moka-more"] .moka-hero__nav-divider {
+  width: 1px;
+  height: 1.25rem;
+  background: rgb(255 255 255 / 0.3);
+}
+
+/* ── Colonne droite : photos ── */
+
+[data-subsidiary-theme="moka-more"] .moka-hero__visual {
+  position: relative;
+  flex: 0 0 50%;
+  min-width: 0;
+  height: clamp(24rem, 62vh, 40rem);
+}
+
+@media (max-width: 899px) {
+  [data-subsidiary-theme="moka-more"] .moka-hero__visual {
+    flex: 1 1 auto;
+    width: 100%;
+    height: clamp(20rem, 70vw, 28rem);
+    margin-top: 2rem;
+  }
+}
+
+[data-subsidiary-theme="moka-more"] .moka-hero__main-photo-wrap {
+  position: absolute;
+  inset: 0 -6% 0 6%;
+}
+
+@media (max-width: 899px) {
+  [data-subsidiary-theme="moka-more"] .moka-hero__main-photo-wrap {
+    inset: 0;
+  }
+}
+
+[data-subsidiary-theme="moka-more"] .moka-hero__main-photo {
+  object-fit: contain;
+  object-position: right center;
+  filter: drop-shadow(0 30px 60px rgb(0 0 0 / 0.6));
+}
+
+@media (max-width: 899px) {
+  [data-subsidiary-theme="moka-more"] .moka-hero__main-photo {
+    object-position: center;
+  }
+}
+
+[data-subsidiary-theme="moka-more"] .moka-hero__secondary-photo-wrap {
+  position: absolute;
+  left: 12%;
+  bottom: -8%;
+  width: clamp(9rem, 18vw, 14rem);
+  aspect-ratio: 1 / 1;
+  z-index: 2;
+}
+
+@media (max-width: 899px) {
+  [data-subsidiary-theme="moka-more"] .moka-hero__secondary-photo-wrap {
+    left: 4%;
+    bottom: -6%;
+    width: clamp(7rem, 30vw, 9rem);
+  }
+}
+
+[data-subsidiary-theme="moka-more"] .moka-hero__secondary-photo {
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 18px 36px rgb(0 0 0 / 0.55));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-subsidiary-theme="moka-more"] .moka-hero__cta {
+    transition: none;
+  }
+}

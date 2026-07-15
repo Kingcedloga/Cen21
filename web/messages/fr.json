@@ -248,6 +248,13 @@
       "nextVisual": "Visuel suivant",
       "goToVisual": "Aller au visuel {index}"
     },
+    "mokaMoreHero": {
+      "eyebrow": "Savourez. Dégustez. Découvrez.",
+      "title": "Café, Lounge & Saveurs À Kinshasa",
+      "ctaLabel": "Voir Notre Menu",
+      "previousVisual": "Visuel précédent",
+      "nextVisual": "Visuel suivant"
+    },
     "muzikCafeMenu": {
       "regularPrice": "Prix régulier",
       "addToOrder": "Ajouter {name} à la commande",

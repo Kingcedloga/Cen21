@@ -3,35 +3,21 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useRef } from "react";
 
-import { ChevronDown, ChevronUp, ShoppingCart } from "@/lib/icons";
+import { ShoppingCart } from "@/lib/icons";
 import { cormorant } from "@/lib/fonts";
 import { DURATION_S, EASE } from "@/lib/motion";
 import type { Subsidiary } from "@/lib/types";
 
 import "@/styles/muzik-cafe-hero.css";
 
-// 3 slots pour la navigation "1 · 2 · 3" — les slides 2 et 3 réutilisent encore
-// la 1re photo tant que 2 visuels supplémentaires n'ont pas été fournis.
-const HERO_IMAGES = [
-  "/filiales/photos/filiale-05/herosectio-img.png",
-  "/filiales/photos/filiale-05/herosectio-img.png",
-  "/filiales/photos/filiale-05/herosectio-img.png",
-] as const;
+const HERO_IMAGE = "/filiales/photos/filiale-05/herosectio-img.png";
 
 export function MuzikCafeHero({ subsidiary }: { subsidiary: Subsidiary }) {
   const reduced = useReducedMotion() ?? false;
   const t = useTranslations("subsidiaries");
   const sectionRef = useRef<HTMLElement>(null);
-  const [active, setActive] = useState(0);
-
-  const go = useCallback(
-    (delta: number) =>
-      setActive((i) => (i + delta + HERO_IMAGES.length) % HERO_IMAGES.length),
-    [],
-  );
-
   const scrollToNext = useCallback(() => {
     sectionRef.current?.nextElementSibling?.scrollIntoView({
       behavior: reduced ? "auto" : "smooth",
@@ -113,7 +99,7 @@ export function MuzikCafeHero({ subsidiary }: { subsidiary: Subsidiary }) {
           }
         >
           <Image
-            src={HERO_IMAGES[active]}
+            src={HERO_IMAGE}
             alt={subsidiary.name}
             fill
             priority
@@ -123,40 +109,7 @@ export function MuzikCafeHero({ subsidiary }: { subsidiary: Subsidiary }) {
         </motion.div>
       </div>
 
-      {HERO_IMAGES.length > 1 && (
-        <div className="muzik-hero__nav" aria-label={subsidiary.name}>
-          <button
-            type="button"
-            className="muzik-hero__nav-arrow"
-            aria-label={t("muzikCafeHero.previousVisual")}
-            onClick={() => go(-1)}
-          >
-            <ChevronUp size={16} aria-hidden="true" />
-          </button>
-          <div className="muzik-hero__nav-dots">
-            {HERO_IMAGES.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                className={`muzik-hero__nav-dot${i === active ? " muzik-hero__nav-dot--active" : ""}`}
-                aria-label={t("muzikCafeHero.goToVisual", { index: i + 1 })}
-                aria-current={i === active}
-                onClick={() => setActive(i)}
-              >
-                {i + 1}
-              </button>
-            ))}
-          </div>
-          <button
-            type="button"
-            className="muzik-hero__nav-arrow"
-            aria-label={t("muzikCafeHero.nextVisual")}
-            onClick={() => go(1)}
-          >
-            <ChevronDown size={16} aria-hidden="true" />
-          </button>
-        </div>
-      )}
+
     </section>
   );
 }
