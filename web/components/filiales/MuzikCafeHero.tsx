@@ -12,12 +12,12 @@ import type { Subsidiary } from "@/lib/types";
 
 import "@/styles/muzik-cafe-hero.css";
 
-// 3 slots pour la navigation "1 · 2 · 3" — réutilisent la même photo tant que
-// 2 visuels supplémentaires n'ont pas été fournis (à remplacer par des chemins distincts).
+// 3 slots pour la navigation "1 · 2 · 3" — les slides 2 et 3 réutilisent encore
+// la 1re photo tant que 2 visuels supplémentaires n'ont pas été fournis.
 const HERO_IMAGES = [
-  "/filiales/photos/filiale-05/plat-cutout.png",
-  "/filiales/photos/filiale-05/plat-cutout.png",
-  "/filiales/photos/filiale-05/plat-cutout.png",
+  "/filiales/photos/filiale-05/herosectio-img.png",
+  "/filiales/photos/filiale-05/herosectio-img.png",
+  "/filiales/photos/filiale-05/herosectio-img.png",
 ] as const;
 
 export function MuzikCafeHero({ subsidiary }: { subsidiary: Subsidiary }) {
