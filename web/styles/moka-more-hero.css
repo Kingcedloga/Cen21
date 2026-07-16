@@ -158,6 +158,28 @@
   background: rgb(255 255 255 / 0.3);
 }
 
+/* ── Keyframes photo ── */
+
+@keyframes moka-visual-enter {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moka-photo-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(3deg);
+  }
+}
+
 /* ── Colonne droite : photos ── */
 
 [data-subsidiary-theme="moka-more"] .moka-hero__visual {
@@ -166,6 +188,7 @@
   min-width: 0;
   height: clamp(34rem, 88vh, 62rem);
   overflow: visible;
+  animation: moka-visual-enter 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
 }
 
 @media (max-width: 899px) {
@@ -175,6 +198,14 @@
     height: clamp(28rem, 90vw, 44rem);
     margin-top: 2rem;
   }
+}
+
+[data-subsidiary-theme="moka-more"] .moka-hero__photo-loop {
+  position: absolute;
+  inset: 0;
+  animation: moka-photo-float 5s ease-in-out infinite;
+  animation-delay: 0.85s;
+  animation-fill-mode: backwards;
 }
 
 [data-subsidiary-theme="moka-more"] .moka-hero__main-photo-wrap {
@@ -243,6 +274,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  [data-subsidiary-theme="moka-more"] .moka-hero__visual,
+  [data-subsidiary-theme="moka-more"] .moka-hero__photo-loop {
+    animation: none;
+  }
+
   [data-subsidiary-theme="moka-more"] .moka-hero__cta {
     transition: none;
   }

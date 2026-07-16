@@ -104,25 +104,8 @@ export function MokaMoreHero({ subsidiary }: { subsidiary: Subsidiary }) {
 
         </div>
 
-        {/* Outer : entrée one-shot (opacity + x) */}
-        <motion.div
-          className="moka-hero__visual"
-          initial={reduced ? false : { opacity: 0, x: 60 }}
-          animate={reduced ? undefined : { opacity: 1, x: 0 }}
-          transition={reduced ? undefined : {
-            opacity: { duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.15 },
-            x: { duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.15 },
-          }}
-        >
-          {/* Inner : boucles continues (lévitation + rotation) */}
-          <motion.div
-            style={{ position: "absolute", inset: 0 }}
-            animate={reduced ? undefined : { y: [0, -10, 0], rotate: [-1.5, 1.5, -1.5] }}
-            transition={reduced ? undefined : {
-              y: { duration: 4.5, ease: "easeInOut", repeat: Infinity, delay: 0.9 },
-              rotate: { duration: 6, ease: "easeInOut", repeat: Infinity, delay: 0.9 },
-            }}
-          >
+        <div className="moka-hero__visual">
+          <div className="moka-hero__photo-loop">
             <div className="moka-hero__main-photo-wrap">
               <Image
                 src={MAIN_PHOTO}
@@ -133,8 +116,8 @@ export function MokaMoreHero({ subsidiary }: { subsidiary: Subsidiary }) {
                 sizes="(max-width: 767px) 90vw, 48vw"
               />
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
