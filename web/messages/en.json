@@ -243,9 +243,7 @@
     "mokaMoreHero": {
       "eyebrow": "Dine. Delight. Discover.",
       "title": "Café, Lounge & Flavours In Kinshasa",
-      "ctaLabel": "Browse Our Menu",
-      "previousVisual": "Previous visual",
-      "nextVisual": "Next visual"
+      "ctaLabel": "Reserve a Table"
     },
     "mokaMoreQuote": {
       "dateLabel": "Moka & More",
@@ -269,6 +267,20 @@
       "feature3Detail": "where every guest is valued",
       "feature4Label": "Fresh, seasonal ingredients,",
       "feature4Detail": "sourced with care"
+    },
+    "mokaMoreReservation": {
+      "watermark": "Reach Out To Us",
+      "formEyebrow": "Reservation Table",
+      "formTitle": "Book A Table",
+      "formNote": "*reservations recommended",
+      "nameField": "Type your name",
+      "emailField": "Email address",
+      "peopleField": "Number of guests",
+      "dateField": "Select date",
+      "timeField": "Select time",
+      "submitLabel": "Book Now",
+      "locationEyebrow": "Restaurant Location",
+      "locationTitle": "Visit Our Restaurant"
     },
     "muzikCafeMenu": {
       "regularPrice": "Regular Price",

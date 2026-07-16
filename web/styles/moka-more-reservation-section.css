@@ -1,0 +1,271 @@
+/* Moka & More — Réservation (filiale-06) : formulaire + photo arche + localisation */
+
+[data-subsidiary-theme="moka-more"] .moka-reservation {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #000000;
+  padding: clamp(4rem, 9vw, 6.5rem) clamp(1.25rem, 6vw, 5rem);
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__watermark {
+  position: absolute;
+  top: clamp(-1rem, -1.5vw, 0rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #ffffff;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+@media (max-width: 899px) {
+  [data-subsidiary-theme="moka-more"] .moka-reservation__watermark {
+    font-size: clamp(1.75rem, 9vw, 2.75rem);
+    top: 0.25rem;
+  }
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__grid {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: stretch;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  max-width: 90rem;
+  margin-inline: auto;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+@media (max-width: 899px) {
+  [data-subsidiary-theme="moka-more"] .moka-reservation__grid {
+    flex-direction: column;
+    margin-top: 2.5rem;
+  }
+}
+
+/* ── Colonne gauche : formulaire ── */
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__form-col {
+  flex: 0 0 33%;
+  min-width: 0;
+}
+
+@media (max-width: 899px) {
+  [data-subsidiary-theme="moka-more"] .moka-reservation__form-col {
+    flex: 1 1 auto;
+  }
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__eyebrow {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #cc0000;
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__title {
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #ffffff;
+  font-size: clamp(1.375rem, 2.4vw, 1.75rem);
+  line-height: 1.25;
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__note {
+  margin: 0 0 1.75rem;
+  font-style: italic;
+  font-size: 0.8125rem;
+  color: rgb(255 255 255 / 0.5);
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__field {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8125rem 1rem;
+  border: 1px solid rgb(255 255 255 / 0.15);
+  border-radius: 4px;
+  background: rgb(255 255 255 / 0.05);
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__field-icon {
+  flex-shrink: 0;
+  color: #ffffff;
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 0.875rem;
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__input::placeholder {
+  color: rgb(255 255 255 / 0.6);
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__input:focus {
+  outline: none;
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__submit {
+  display: inline-flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  border: 1.5px solid #ffffff;
+  border-radius: 4px;
+  background: transparent;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-luxe) var(--ease-luxury),
+    color var(--duration-luxe) var(--ease-luxury);
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__submit:hover {
+  background: #cc0000;
+  border-color: #cc0000;
+  color: #ffffff;
+}
+
+/* ── Colonne centre : photo arche ── */
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__photo-col {
+  position: relative;
+  flex: 0 0 33%;
+  min-width: 0;
+  min-height: 22rem;
+  border-radius: 50% 50% 0 40% / 40% 40% 0 30%;
+  overflow: hidden;
+}
+
+@media (max-width: 899px) {
+  [data-subsidiary-theme="moka-more"] .moka-reservation__photo-col {
+    flex: 1 1 auto;
+    min-height: 18rem;
+    border-radius: 50% 50% 0 30% / 30% 30% 0 20%;
+  }
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__photo {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ── Colonne droite : localisation ── */
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__location-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 33%;
+  min-width: 0;
+  text-align: center;
+}
+
+@media (max-width: 899px) {
+  [data-subsidiary-theme="moka-more"] .moka-reservation__location-col {
+    flex: 1 1 auto;
+  }
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__address {
+  margin: 0;
+  max-width: 20rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgb(255 255 255 / 0.7);
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__divider {
+  display: block;
+  width: 1px;
+  height: 2.5rem;
+  margin: 1.25rem auto;
+  background: #cc0000;
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__hours {
+  margin: 0 0 1.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgb(255 255 255 / 0.7);
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1.5px solid rgb(255 255 255 / 0.35);
+  border-radius: 50%;
+  color: #ffffff;
+  transition:
+    background-color var(--duration-luxe) var(--ease-luxury),
+    border-color var(--duration-luxe) var(--ease-luxury);
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__social-icon {
+  width: 0.9375rem;
+  height: 0.9375rem;
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__social-link:hover {
+  background: #cc0000;
+  border-color: #cc0000;
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__secondary-photo-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-top: auto;
+  border-radius: 0 50% 50% 0;
+  overflow: hidden;
+}
+
+@media (max-width: 899px) {
+  [data-subsidiary-theme="moka-more"] .moka-reservation__secondary-photo-wrap {
+    border-radius: 0 40% 40% 0;
+  }
+}
+
+[data-subsidiary-theme="moka-more"] .moka-reservation__secondary-photo {
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-subsidiary-theme="moka-more"] .moka-reservation__submit,
+  [data-subsidiary-theme="moka-more"] .moka-reservation__social-link {
+    transition: none;
+  }
+}

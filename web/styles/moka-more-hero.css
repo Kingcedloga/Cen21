@@ -96,8 +96,9 @@
 
 [data-subsidiary-theme="moka-more"] .moka-hero__title {
   margin: 0;
+  font-family: var(--font-inter), system-ui, sans-serif;
   text-transform: uppercase;
-  font-weight: 800;
+  font-weight: 900;
   color: #ffffff;
   font-size: clamp(2.25rem, 4.6vw, 3.75rem);
   line-height: 1.15;
