@@ -282,6 +282,12 @@
       "locationEyebrow": "Restaurant Location",
       "locationTitle": "Visit Our Restaurant"
     },
+    "mokaMoreVideo": {
+      "watermark": "Watch Video",
+      "circularText": "Book private dining & banquet rooms",
+      "playAria": "Play video",
+      "closeAria": "Close video"
+    },
     "muzikCafeMenu": {
       "regularPrice": "Regular Price",
       "addToOrder": "Add {name} to order",

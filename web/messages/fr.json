@@ -290,6 +290,12 @@
       "locationEyebrow": "Localisation",
       "locationTitle": "Visitez Notre Établissement"
     },
+    "mokaMoreVideo": {
+      "watermark": "Regarder La Vidéo",
+      "circularText": "Réservez nos salles privées & banquets",
+      "playAria": "Lire la vidéo",
+      "closeAria": "Fermer la vidéo"
+    },
     "muzikCafeMenu": {
       "regularPrice": "Prix régulier",
       "addToOrder": "Ajouter {name} à la commande",

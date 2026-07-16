@@ -10,6 +10,7 @@ import { KLoungeMarqueeGallery } from "@/components/filiales/KLoungeMarqueeGalle
 import { KLoungeReservationBanner } from "@/components/filiales/KLoungeReservationBanner";
 import { MokaMoreAboutSection } from "@/components/filiales/MokaMoreAboutSection";
 import { MokaMoreReservationSection } from "@/components/filiales/MokaMoreReservationSection";
+import { MokaMoreVideoSection } from "@/components/filiales/MokaMoreVideoSection";
 import { MokaMoreHero } from "@/components/filiales/MokaMoreHero";
 import { MokaMoreQuoteSection } from "@/components/filiales/MokaMoreQuoteSection";
 import { MuzikCafeContactMapSection } from "@/components/filiales/MuzikCafeContactMapSection";
@@ -373,6 +374,9 @@ export default async function SubsidiaryPage({ params }: Props) {
           />
           <MokaMoreAboutSection subsidiary={subsidiary} />
           <MokaMoreReservationSection subsidiary={subsidiary} />
+          <MokaMoreVideoSection
+            backgroundImage={galleryEntrySrc(subsidiary.galleryImages[1] ?? subsidiary.coverImage)}
+          />
         </>
       ) : (
         <SubsidiaryHero
