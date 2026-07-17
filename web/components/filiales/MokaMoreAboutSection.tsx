@@ -10,8 +10,8 @@ import type { Subsidiary } from "@/lib/types";
 
 import "@/styles/moka-more-about-section.css";
 
-const MAIN_PHOTO = "/filiales/photos/filiale-06/about-main.png";
-const SECONDARY_PHOTO = "/filiales/photos/filiale-06/about-secondary.png";
+const MAIN_PHOTO = "/filiales/photos/filiale-06/about-mokomore1.png";
+const SECONDARY_PHOTO = "/filiales/photos/filiale-06/aboutpicture.png";
 
 const FEATURE_KEYS = [1, 2, 3, 4] as const;
 

@@ -99,19 +99,19 @@
 
 .moka-video__frame {
   position: relative;
-  width: min(26rem, 92vw);
-  height: min(85vh, 47.5rem);
+  width: min(28rem, 92vw);
+  min-height: 26rem;
+  max-height: 90vh;
   border-radius: 12px;
   overflow: hidden;
-  background: #000000;
+  background: #ffffff;
   box-shadow: 0 32px 80px rgba(0, 0, 0, 0.7);
 }
 
-.moka-video__iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
+.moka-video__embed-scroll {
+  min-height: 26rem;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .moka-video__close {

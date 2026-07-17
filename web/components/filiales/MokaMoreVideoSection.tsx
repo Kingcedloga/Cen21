@@ -10,7 +10,38 @@ import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
 
 import "@/styles/moka-more-video-section.css";
 
-const VIDEO_EMBED_URL = "https://www.instagram.com/reel/DUIuuJwjZmW/embed";
+const VIDEO_PERMALINK = "https://www.instagram.com/reel/DUIuuJwjZmW/";
+const EMBED_SCRIPT_SRC = "https://www.instagram.com/embed.js";
+
+declare global {
+  interface Window {
+    instgrm?: {
+      Embeds: { process: () => void };
+    };
+  }
+}
+
+function loadInstagramEmbed(): Promise<void> {
+  return new Promise((resolve) => {
+    if (window.instgrm) {
+      window.instgrm.Embeds.process();
+      resolve();
+      return;
+    }
+    const existing = document.querySelector<HTMLScriptElement>(
+      `script[src="${EMBED_SCRIPT_SRC}"]`,
+    );
+    if (existing) {
+      existing.addEventListener("load", () => resolve(), { once: true });
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = EMBED_SCRIPT_SRC;
+    script.async = true;
+    script.onload = () => resolve();
+    document.body.appendChild(script);
+  });
+}
 
 type Props = {
   backgroundImage: string;
@@ -35,6 +66,19 @@ export function MokaMoreVideoSection({ backgroundImage }: Props) {
       document.body.style.overflow = "";
     };
   }, [isOpen, close]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    let cancelled = false;
+    // Laisse le blockquote se monter avant de demander à Instagram de le transformer en iframe
+    const timer = setTimeout(() => {
+      if (!cancelled) loadInstagramEmbed();
+    }, 50);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [isOpen]);
 
   const circularText = t("mokaMoreVideo.circularText");
   const repeatedText = `${circularText} ★ ${circularText} ★ `;
@@ -122,13 +166,14 @@ export function MokaMoreVideoSection({ backgroundImage }: Props) {
               transition={{ duration: reduced ? 0 : 0.4, ease: EASE.luxury }}
               onClick={(e) => e.stopPropagation()}
             >
-              <iframe
-                src={VIDEO_EMBED_URL}
-                title="Moka & More"
-                className="moka-video__iframe"
-                allow="autoplay; encrypted-media; picture-in-picture"
-                allowFullScreen
-              />
+              <div className="moka-video__embed-scroll">
+                <blockquote
+                  className="instagram-media"
+                  data-instgrm-permalink={VIDEO_PERMALINK}
+                  data-instgrm-version="14"
+                  style={{ margin: 0, width: "100%" }}
+                />
+              </div>
               <button
                 type="button"
                 className="moka-video__close"
