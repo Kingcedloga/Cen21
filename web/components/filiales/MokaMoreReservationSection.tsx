@@ -13,8 +13,8 @@ import type { Subsidiary } from "@/lib/types";
 
 import "@/styles/moka-more-reservation-section.css";
 
-const MAIN_PHOTO = "/filiales/photos/filiale-06/reservation-main.png";
-const SECONDARY_PHOTO = "/filiales/photos/filiale-06/reservation-secondary.png";
+const MAIN_PHOTO = "/filiales/photos/filiale-06/terrasse-moka.png";
+const SECONDARY_PHOTO = "/filiales/photos/filiale-06/terrasse-moka1.png";
 
 const FIELDS = [
   { key: "name", icon: User, type: "text" },

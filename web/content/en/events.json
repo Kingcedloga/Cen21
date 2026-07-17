@@ -121,6 +121,36 @@
       "excerpt": "Breakfasts, pastries, and coffee on the outdoor terrace."
     },
     {
+      "id": "evt-9",
+      "slug": "jazz-coffee-night-moka-more",
+      "title": "Jazz & Coffee Night",
+      "date": "2026-08-23T20:00:00",
+      "location": "Moka & More, Le Premier Mai — Kinshasa",
+      "subsidiarySlug": "filiale-06",
+      "image": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80",
+      "excerpt": "Live jazz trio, cozy ambiance, and our signature coffee menu all evening."
+    },
+    {
+      "id": "evt-10",
+      "slug": "coffee-tasting-moka-more",
+      "title": "Coffee Tasting — Barista Workshop",
+      "date": "2026-09-06T17:00:00",
+      "location": "Moka & More, Le Premier Mai — Kinshasa",
+      "subsidiarySlug": "filiale-06",
+      "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80",
+      "excerpt": "A friendly workshop exploring the origins and roasts of our coffees."
+    },
+    {
+      "id": "evt-11",
+      "slug": "afterwork-lounge-moka-more",
+      "title": "Afterwork Lounge — Moka & More",
+      "date": "2026-09-20T18:30:00",
+      "location": "Moka & More, Le Premier Mai — Kinshasa",
+      "subsidiarySlug": "filiale-06",
+      "image": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&q=80",
+      "excerpt": "Signature cocktails and light bites to unwind after the week."
+    },
+    {
       "id": "evt-7",
       "slug": "french-touch-millionaire-club",
       "title": "French Touch Night — 2025 Edition",
