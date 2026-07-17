@@ -1,0 +1,145 @@
+/* Moka & More — Galerie / Instagram posts (filiale-06) */
+
+[data-subsidiary-theme="moka-more"] .moka-gallery {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #000000;
+  padding: clamp(4rem, 9vw, 6.5rem) 0 clamp(3rem, 6vw, 5rem);
+}
+
+[data-subsidiary-theme="moka-more"] .moka-gallery__header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 40rem;
+  margin: 0 auto clamp(2.5rem, 5vw, 3.5rem);
+  padding-inline: 1.25rem;
+}
+
+[data-subsidiary-theme="moka-more"] .moka-gallery__title {
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #ffffff;
+  font-size: clamp(1.625rem, 3.2vw, 2.25rem);
+  letter-spacing: 0.02em;
+}
+
+[data-subsidiary-theme="moka-more"] .moka-gallery__title-script {
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  text-transform: none;
+  color: #cc0000;
+}
+
+[data-subsidiary-theme="moka-more"] .moka-gallery__description {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgb(255 255 255 / 0.6);
+}
+
+[data-subsidiary-theme="moka-more"] .moka-gallery__watermark {
+  position: absolute;
+  top: clamp(6rem, 13vw, 9rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+  font-size: clamp(3rem, 9vw, 7.5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: #ffffff;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+[data-subsidiary-theme="moka-more"] .moka-gallery__track {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(0.5rem, 1.5vw, 1rem);
+  max-width: 90rem;
+  margin-inline: auto;
+  padding: 0 clamp(1.25rem, 6vw, 5rem) 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+[data-subsidiary-theme="moka-more"] .moka-gallery__track::-webkit-scrollbar {
+  display: none;
+}
+
+[data-subsidiary-theme="moka-more"] .moka-gallery__item {
+  position: relative;
+  display: block;
+  flex: 0 0 clamp(11rem, 22vw, 17rem);
+  aspect-ratio: 4 / 5;
+  border-radius: 8px;
+  overflow: hidden;
+  scroll-snap-align: start;
+}
+
+/* Alternance de hauteurs — effet dynamique */
+[data-subsidiary-theme="moka-more"] .moka-gallery__item--1 {
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  aspect-ratio: 4 / 6;
+}
+
+[data-subsidiary-theme="moka-more"] .moka-gallery__item--2 {
+  margin-top: clamp(0.75rem, 1.5vw, 1.25rem);
+  aspect-ratio: 4 / 5.5;
+}
+
+@media (max-width: 767px) {
+  [data-subsidiary-theme="moka-more"] .moka-gallery__item--1,
+  [data-subsidiary-theme="moka-more"] .moka-gallery__item--2 {
+    margin-top: 0;
+    aspect-ratio: 4 / 5;
+  }
+}
+
+[data-subsidiary-theme="moka-more"] .moka-gallery__photo {
+  object-fit: cover;
+  object-position: center;
+}
+
+[data-subsidiary-theme="moka-more"] .moka-gallery__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transition: opacity 200ms var(--ease-luxury);
+}
+
+[data-subsidiary-theme="moka-more"] .moka-gallery__item:hover .moka-gallery__overlay,
+[data-subsidiary-theme="moka-more"] .moka-gallery__item:focus-visible .moka-gallery__overlay {
+  opacity: 1;
+}
+
+[data-subsidiary-theme="moka-more"] .moka-gallery__overlay-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: #ffffff;
+  transform: scale(0.8);
+  transition: transform var(--duration-base) var(--ease-spring);
+}
+
+[data-subsidiary-theme="moka-more"] .moka-gallery__item:hover .moka-gallery__overlay-icon,
+[data-subsidiary-theme="moka-more"] .moka-gallery__item:focus-visible .moka-gallery__overlay-icon {
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-subsidiary-theme="moka-more"] .moka-gallery__overlay,
+  [data-subsidiary-theme="moka-more"] .moka-gallery__overlay-icon {
+    transition: none;
+  }
+}

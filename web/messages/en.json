@@ -288,6 +288,13 @@
       "playAria": "Play video",
       "closeAria": "Close video"
     },
+    "mokaMoreGallery": {
+      "watermark": "Gallery",
+      "titlePrefix": "Our Gallery",
+      "titleScript": "Posts",
+      "description": "A glimpse of the flavours and moments shared at Moka & More.",
+      "viewAria": "View on Instagram"
+    },
     "muzikCafeMenu": {
       "regularPrice": "Regular Price",
       "addToOrder": "Add {name} to order",

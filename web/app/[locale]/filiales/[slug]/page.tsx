@@ -10,6 +10,7 @@ import { KLoungeMarqueeGallery } from "@/components/filiales/KLoungeMarqueeGalle
 import { KLoungeReservationBanner } from "@/components/filiales/KLoungeReservationBanner";
 import { MokaMoreAboutSection } from "@/components/filiales/MokaMoreAboutSection";
 import { MokaMoreReservationSection } from "@/components/filiales/MokaMoreReservationSection";
+import { MokaMoreGallerySection } from "@/components/filiales/MokaMoreGallerySection";
 import { MokaMoreVideoSection } from "@/components/filiales/MokaMoreVideoSection";
 import { MokaMoreHero } from "@/components/filiales/MokaMoreHero";
 import { MokaMoreQuoteSection } from "@/components/filiales/MokaMoreQuoteSection";
@@ -376,6 +377,15 @@ export default async function SubsidiaryPage({ params }: Props) {
           <MokaMoreReservationSection subsidiary={subsidiary} />
           <MokaMoreVideoSection
             backgroundImage={galleryEntrySrc(subsidiary.galleryImages[1] ?? subsidiary.coverImage)}
+          />
+          <MokaMoreGallerySection
+            photos={[
+              subsidiary.coverImage,
+              galleryEntrySrc(subsidiary.galleryImages[0]),
+              galleryEntrySrc(subsidiary.galleryImages[1] ?? subsidiary.coverImage),
+              "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&q=80",
+            ]}
+            instagramUrl={subsidiary.social.instagram}
           />
         </>
       ) : (
