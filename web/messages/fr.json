@@ -299,9 +299,12 @@
     "mokaMoreGallery": {
       "watermark": "Galerie",
       "titlePrefix": "Notre Galerie",
-      "titleScript": "Posts",
+      "titleScript": "Moments",
       "description": "Un aperçu des saveurs et des moments partagés chez Moka & More.",
-      "viewAria": "Voir sur Instagram"
+      "viewAria": "Voir la photo",
+      "prev": "Photo précédente",
+      "next": "Photo suivante",
+      "close": "Fermer"
     },
     "muzikCafeMenu": {
       "regularPrice": "Prix régulier",

@@ -128,6 +128,7 @@ export default async function SubsidiaryPage({ params }: Props) {
     slug === "filiale-03" ||
     slug === "filiale-04" ||
     slug === "filiale-05" ||
+    slug === "filiale-06" ||
     slug === "filiale-09"
       ? getSubsidiaries(l)
           .filter((s) => s.slug !== slug && s.brandLogo)
@@ -385,8 +386,15 @@ export default async function SubsidiaryPage({ params }: Props) {
               galleryEntrySrc(subsidiary.galleryImages[1] ?? subsidiary.coverImage),
               "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&q=80",
             ]}
-            instagramUrl={subsidiary.social.instagram}
           />
+          {sisterSubsidiaries.length > 0 && (
+            <WabiSabiEstablishmentsSection
+              subsidiaries={sisterSubsidiaries}
+              title={t("wabiEstablishments.title")}
+              description={t("wabiEstablishments.description")}
+              variant="moka-more"
+            />
+          )}
         </>
       ) : (
         <SubsidiaryHero
@@ -438,7 +446,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         />
       )}
 
-      {slug !== "filiale-01" && slug !== "filiale-02" && slug !== "filiale-04" && slug !== "filiale-05" && slug !== "filiale-09" && breadcrumbSection}
+      {slug !== "filiale-01" && slug !== "filiale-02" && slug !== "filiale-04" && slug !== "filiale-05" && slug !== "filiale-06" && slug !== "filiale-09" && breadcrumbSection}
 
       {slug === "filiale-03" && subsidiary.introSection && (
         <KLoungeIntroSection content={subsidiary.introSection} />
@@ -464,7 +472,8 @@ export default async function SubsidiaryPage({ params }: Props) {
         slug !== "filiale-02" &&
         slug !== "filiale-03" &&
         slug !== "filiale-04" &&
-        slug !== "filiale-05" && (
+        slug !== "filiale-05" &&
+        slug !== "filiale-06" && (
           <section className="px-4 py-12 md:px-6 md:py-16 lg:px-8">
             <div className="mx-auto max-w-7xl">
               <AnimateIn>
@@ -490,6 +499,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         slug !== "filiale-04" &&
         slug !== "filiale-02" &&
         slug !== "filiale-05" &&
+        slug !== "filiale-06" &&
         slug !== "filiale-09" && (
           <SubsidiaryContactBand
             backgroundImage={getSubsidiaryContactImage(slug, subsidiary.coverImage)}
@@ -568,6 +578,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         slug !== "filiale-03" &&
         slug !== "filiale-04" &&
         slug !== "filiale-05" &&
+        slug !== "filiale-06" &&
         slug !== "filiale-09" &&
         standardGallerySection
       )}

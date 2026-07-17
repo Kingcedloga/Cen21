@@ -291,9 +291,12 @@
     "mokaMoreGallery": {
       "watermark": "Gallery",
       "titlePrefix": "Our Gallery",
-      "titleScript": "Posts",
+      "titleScript": "Moments",
       "description": "A glimpse of the flavours and moments shared at Moka & More.",
-      "viewAria": "View on Instagram"
+      "viewAria": "View photo",
+      "prev": "Previous photo",
+      "next": "Next photo",
+      "close": "Close"
     },
     "muzikCafeMenu": {
       "regularPrice": "Regular Price",

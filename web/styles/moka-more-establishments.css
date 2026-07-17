@@ -1,0 +1,57 @@
+/* Moka & More — Nos Établissements (variant sombre, accents rouges) */
+
+.wabi-establishments--moka-more {
+  --wabi-establishments-blue: #cc0000;
+  --wabi-establishments-beige: #000000;
+  --wabi-establishments-beige-deep: #000000;
+
+  background-color: #000000;
+}
+
+.wabi-establishments--moka-more .wabi-establishments__title {
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.625rem, 3.2vw, 2.25rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+}
+
+.wabi-establishments--moka-more .wabi-establishments__description {
+  color: rgb(255 255 255 / 0.6);
+}
+
+.wabi-establishments--moka-more .wabi-establishments__link:hover,
+.wabi-establishments--moka-more .wabi-establishments__link:focus-visible {
+  background-color: rgb(204 0 0 / 0.08);
+}
+
+.wabi-establishments--moka-more .wabi-establishments__logo {
+  filter: grayscale(1) brightness(3);
+  opacity: 0.55;
+}
+
+.wabi-establishments--moka-more .wabi-establishments__link:hover .wabi-establishments__logo,
+.wabi-establishments--moka-more .wabi-establishments__link:focus-visible .wabi-establishments__logo {
+  filter: brightness(0) saturate(100%) invert(27%) sepia(93%) saturate(548%)
+    hue-rotate(317deg) brightness(98%) contrast(182%);
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+.wabi-establishments--moka-more .wabi-establishments__name {
+  color: rgb(255 255 255 / 0.42);
+}
+
+.wabi-establishments--moka-more .wabi-establishments__link:hover .wabi-establishments__name,
+.wabi-establishments--moka-more .wabi-establishments__link:focus-visible .wabi-establishments__name {
+  color: #cc0000;
+}
+
+.wabi-establishments--moka-more .wabi-establishments__fade--left {
+  background: linear-gradient(90deg, #000000 0%, transparent 100%);
+}
+
+.wabi-establishments--moka-more .wabi-establishments__fade--right {
+  background: linear-gradient(270deg, #000000 0%, transparent 100%);
+}
