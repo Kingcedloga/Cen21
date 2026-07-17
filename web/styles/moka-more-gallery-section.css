@@ -19,8 +19,9 @@
 
 [data-subsidiary-theme="moka-more"] .moka-gallery__title {
   margin: 0 0 0.75rem;
+  font-family: var(--font-inter), system-ui, sans-serif;
   text-transform: uppercase;
-  font-weight: 800;
+  font-weight: 900;
   color: #ffffff;
   font-size: clamp(1.625rem, 3.2vw, 2.25rem);
   letter-spacing: 0.02em;

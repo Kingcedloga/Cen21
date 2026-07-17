@@ -306,6 +306,15 @@
       "next": "Photo suivante",
       "close": "Fermer"
     },
+    "mokaMoreEvents": {
+      "watermark": "Événements",
+      "eyebrow": "À Ne Pas Manquer",
+      "title": "Nos Événements",
+      "badgeLabel": "Événement",
+      "ctaLabel": "Lire plus",
+      "previous": "Événement précédent",
+      "next": "Événement suivant"
+    },
     "muzikCafeMenu": {
       "regularPrice": "Prix régulier",
       "addToOrder": "Ajouter {name} à la commande",

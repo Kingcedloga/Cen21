@@ -14,6 +14,7 @@ import { MokaMoreGallerySection } from "@/components/filiales/MokaMoreGallerySec
 import { MokaMoreVideoSection } from "@/components/filiales/MokaMoreVideoSection";
 import { MokaMoreHero } from "@/components/filiales/MokaMoreHero";
 import { MokaMoreQuoteSection } from "@/components/filiales/MokaMoreQuoteSection";
+import { MokaMoreEventsSection } from "@/components/filiales/MokaMoreEventsSection";
 import { MuzikCafeContactMapSection } from "@/components/filiales/MuzikCafeContactMapSection";
 import { MuzikCafeEventsSection } from "@/components/filiales/MuzikCafeEventsSection";
 import { MuzikCafeGallerySection } from "@/components/filiales/MuzikCafeGallerySection";
@@ -612,6 +613,8 @@ export default async function SubsidiaryPage({ params }: Props) {
           ctaLabel={t("muzikCafeEvents.ctaLabel")}
           fallbackImage={subsidiary.coverImage}
         />
+      ) : slug === "filiale-06" ? (
+        <MokaMoreEventsSection events={events} fallbackImage={subsidiary.coverImage} />
       ) : (
         slug !== "filiale-01" && slug !== "filiale-02" && !useEventShowcase && standardEventsSection
       )}
@@ -653,7 +656,7 @@ export default async function SubsidiaryPage({ params }: Props) {
             variant="compact"
           />
         </section>
-      ) : slug === "filiale-05" ? (
+      ) : slug === "filiale-05" || slug === "filiale-06" ? (
         <MuzikCafeContactMapSection
           mapQuery={mapQuery}
           subsidiaryName={subsidiary.name}
