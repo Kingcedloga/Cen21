@@ -156,6 +156,12 @@
   background: #cc0000;
 }
 
+@media (max-width: 899px) {
+  [data-subsidiary-theme="moka-more"] .moka-events__nav-btn {
+    display: none;
+  }
+}
+
 [data-subsidiary-theme="moka-more"] .moka-events__card {
   display: flex;
   flex: 0 0 min(34rem, 88vw);
