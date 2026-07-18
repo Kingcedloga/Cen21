@@ -191,7 +191,7 @@ export const MUZIK_CAFE_THEME: SubsidiaryPageTheme = {
   },
 };
 
-/** L'Olive Verte — crème #ECE7D1 · olive #767F34 · rouge #BA2525 (accent). */
+/** L'Olive Verte — crème #ECE7D1 · olive #767F34 (bicolore, sans rouge). */
 export const OLIVE_VERTE_THEME: SubsidiaryPageTheme = {
   id: "olive-verte",
   slug: "filiale-01",
@@ -205,13 +205,13 @@ export const OLIVE_VERTE_THEME: SubsidiaryPageTheme = {
     surface: "rgba(118, 127, 52, 0.07)",
     surfaceElevated: "rgba(118, 127, 52, 0.11)",
     border: "rgba(118, 127, 52, 0.26)",
-    btn: "#BA2525",
-    red: "#BA2525",
-    redRgb: "186 37 37",
+    btn: "#767F34",
+    red: "#767F34",
+    redRgb: "118 127 52",
   },
   hero: {
     overlayGradient:
-      "linear-gradient(to top, #ECE7D1 0%, rgba(236,231,209,0.94) 38%, rgba(236,231,209,0.52) 62%, transparent 100%), linear-gradient(90deg, rgba(118,127,52,0.48) 0%, transparent 52%), radial-gradient(ellipse 80% 58% at 50% 100%, rgba(186,37,37,0.1) 0%, transparent 58%)",
+      "linear-gradient(to top, #ECE7D1 0%, rgba(236,231,209,0.94) 38%, rgba(236,231,209,0.52) 62%, transparent 100%), linear-gradient(90deg, rgba(118,127,52,0.48) 0%, transparent 52%), radial-gradient(ellipse 80% 58% at 50% 100%, rgba(118,127,52,0.1) 0%, transparent 58%)",
     blurTint: "#ECE7D1",
   },
 };
