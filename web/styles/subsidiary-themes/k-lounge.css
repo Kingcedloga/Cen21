@@ -90,8 +90,9 @@
     0 0 0 1px rgb(var(--sub-gold-rgb) / 0.1);
 }
 
-/* Boutons — contraste maximal */
+/* Boutons — contraste maximal, forme pill uniforme */
 [data-subsidiary-theme="k-lounge"] .btn-primary {
+  border-radius: 9999px;
   background: var(--sub-gold);
   color: var(--sub-bg);
   border: 1px solid rgb(var(--sub-gold-rgb) / 0.9);
@@ -108,16 +109,17 @@
 }
 
 [data-subsidiary-theme="k-lounge"] .btn-secondary {
+  border-radius: 9999px;
   background: transparent;
   color: var(--sub-text);
-  border: 1px solid var(--sub-border);
+  border: 1px solid rgb(255 255 255 / 0.72);
   backdrop-filter: blur(8px);
 }
 
 [data-subsidiary-theme="k-lounge"] .btn-secondary:hover {
-  border-color: rgb(var(--sub-gold-rgb) / 0.55);
-  color: var(--sub-gold);
-  background: rgb(var(--sub-gold-rgb) / 0.04);
+  border-color: rgb(255 255 255 / 1);
+  color: var(--sub-text);
+  background: rgb(255 255 255 / 0.06);
 }
 
 /* Galerie */
