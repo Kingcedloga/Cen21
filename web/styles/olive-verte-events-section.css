@@ -36,7 +36,7 @@
   height: 2.875rem;
   border-radius: 50%;
   border: none;
-  background: var(--sub-red, #ba2525);
+  background: #767f34;
   color: #ffffff;
   cursor: pointer;
   z-index: 1;
@@ -46,7 +46,7 @@
 }
 
 [data-subsidiary-theme="olive-verte"] .ov-events__nav-btn:hover {
-  background: color-mix(in srgb, var(--sub-red, #ba2525) 88%, #000);
+  background: #5c6228;
   transform: scale(1.06);
 }
 
@@ -207,7 +207,7 @@
 }
 
 [data-subsidiary-theme="olive-verte"] .ov-events__dot.is-active {
-  background: var(--sub-red, #ba2525);
+  background: #767f34;
   transform: scale(1.3);
 }
 
