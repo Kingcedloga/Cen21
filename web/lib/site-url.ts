@@ -1,27 +1,24 @@
-import { headers } from "next/headers";
-
 function normalizeOrigin(value: string): string {
   const trimmed = value.trim().replace(/\/+$/, "");
   if (/^https?:\/\//i.test(trimmed)) return trimmed;
-  return `https://${trimmed}`; 
+  return `https://${trimmed}`;
 }
 
-function originFromHost(host: string, proto?: string | null): string {
-  const hostname = host.split(",")[0]?.trim();
-  if (!hostname) return "http://localhost:3000";
-
-  const protocol =
-    proto?.split(",")[0]?.trim() ??
-    (hostname.startsWith("localhost") || hostname.startsWith("127.0.0.1")
-      ? "http"
-      : "https");
-
-  return `${protocol}://${hostname}`;
-}
-
-/** Origine de secours quand `headers()` n'est pas disponible (build, scripts). */
+/**
+ * Origine de secours résolue au build à partir des variables d'environnement
+ * injectées par la plateforme de déploiement — jamais depuis les en-têtes de
+ * la requête. Priorité : domaine de production stable (Vercel) → domaine du
+ * déploiement courant (Vercel/Netlify) → override manuel → localhost.
+ *
+ * Volontairement statique : une origine résolue par requête (`headers()`)
+ * empêche Next.js de pré-rendre les pages (tout le site passait en rendu
+ * dynamique côté serveur à chaque requête, sans cache CDN/Edge).
+ */
 export function getDeployOrigin(): string | undefined {
   const candidates = [
+    process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : undefined,
     process.env.URL,
     process.env.DEPLOY_PRIME_URL,
     process.env.DEPLOY_URL,
@@ -36,21 +33,8 @@ export function getDeployOrigin(): string | undefined {
   return undefined;
 }
 
-/**
- * Origine absolue du site pour metadataBase, OG, sitemap, JSON-LD.
- * Priorité : en-têtes de la requête (domaine courant) → variables de déploiement → localhost.
- */
+/** Origine absolue du site pour metadataBase, OG, sitemap, JSON-LD — résolue au build. */
 export async function getSiteOrigin(): Promise<string> {
-  try {
-    const h = await headers();
-    const host = h.get("x-forwarded-host") ?? h.get("host");
-    if (host) {
-      return originFromHost(host, h.get("x-forwarded-proto"));
-    }
-  } catch {
-    // Hors contexte requête (build statique, tests).
-  }
-
   return getDeployOrigin() ?? "http://localhost:3000";
 }
 
