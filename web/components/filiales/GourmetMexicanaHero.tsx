@@ -96,8 +96,22 @@ export function GourmetMexicanaHero({ subsidiary }: { subsidiary: Subsidiary }) 
         </div>
 
         <div className="mex-hero__visual">
+          <span className="mex-hero__visual-halo" aria-hidden="true" />
           <div className="mex-hero__circle-wrap">
-            <span className="mex-hero__circle-ring" aria-hidden="true" />
+            <svg
+              className="mex-hero__ring mex-hero__ring--primary"
+              viewBox="0 0 600 600"
+              aria-hidden="true"
+            >
+              <circle cx="300" cy="300" r="292" fill="none" stroke="#006847" strokeWidth="3" strokeDasharray="8 6" />
+            </svg>
+            <svg
+              className="mex-hero__ring mex-hero__ring--secondary"
+              viewBox="0 0 600 600"
+              aria-hidden="true"
+            >
+              <circle cx="300" cy="300" r="272" fill="none" stroke="#c9a96e" strokeWidth="2" strokeDasharray="6 5" />
+            </svg>
             <motion.div
               className="mex-hero__circle-photo-wrap"
               initial={reduced ? false : { opacity: 0, scale: 0.9 }}

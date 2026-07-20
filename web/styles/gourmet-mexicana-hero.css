@@ -33,7 +33,7 @@
 /* ── Colonne gauche : texte ── */
 
 [data-subsidiary-theme="gourmet-mexicana"] .mex-hero__text {
-  flex: 0 0 50%;
+  flex: 0 0 45%;
   min-width: 0;
 }
 
@@ -167,47 +167,73 @@
 
 [data-subsidiary-theme="gourmet-mexicana"] .mex-hero__visual {
   position: relative;
-  flex: 0 0 50%;
+  flex: 0 0 55%;
   min-width: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: clamp(22rem, 58vh, 36rem);
+  height: clamp(44rem, 72vh, 50rem);
+  overflow: visible;
 }
 
 @media (max-width: 899px) {
   [data-subsidiary-theme="gourmet-mexicana"] .mex-hero__visual {
     flex: 1 1 auto;
     width: 100%;
-    height: clamp(18rem, 70vw, 26rem);
+    height: clamp(22rem, 82vw, 30rem);
     margin-top: 2.5rem;
   }
 }
 
-[data-subsidiary-theme="gourmet-mexicana"] .mex-hero__visual::before {
-  content: "";
+[data-subsidiary-theme="gourmet-mexicana"] .mex-hero__visual-halo {
   position: absolute;
-  inset: 6% 10%;
+  top: 50%;
+  left: 50%;
   z-index: 0;
-  background: #00301f;
+  width: clamp(47rem, 70vh, 51rem);
+  height: clamp(47rem, 70vh, 51rem);
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.35);
   border-radius: 50%;
-  filter: blur(2px);
+  filter: blur(40px);
 }
 
 [data-subsidiary-theme="gourmet-mexicana"] .mex-hero__circle-wrap {
   position: relative;
   z-index: 1;
-  width: min(28rem, 92%);
-  aspect-ratio: 1 / 1;
+  width: clamp(42.5rem, 65vh, 45rem);
+  height: clamp(42.5rem, 65vh, 45rem);
+  max-width: 100%;
 }
 
-[data-subsidiary-theme="gourmet-mexicana"] .mex-hero__circle-ring {
+@media (max-width: 899px) {
+  [data-subsidiary-theme="gourmet-mexicana"] .mex-hero__circle-wrap {
+    width: clamp(20rem, 78vw, 28rem);
+    height: clamp(20rem, 78vw, 28rem);
+  }
+
+  [data-subsidiary-theme="gourmet-mexicana"] .mex-hero__visual-halo {
+    width: clamp(22rem, 84vw, 30rem);
+    height: clamp(22rem, 84vw, 30rem);
+  }
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-hero__ring {
   position: absolute;
   inset: 0;
-  border-radius: 50%;
-  border: 5px dashed #006847;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
+  overflow: visible;
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-hero__ring--primary {
   animation: mex-ring-rotate 20s linear infinite;
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-hero__ring--secondary {
+  opacity: 0.3;
+  animation: mex-ring-rotate-reverse 15s linear infinite;
 }
 
 @keyframes mex-ring-rotate {
@@ -219,15 +245,30 @@
   }
 }
 
+@keyframes mex-ring-rotate-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
 [data-subsidiary-theme="gourmet-mexicana"] .mex-hero__circle-photo-wrap {
   position: absolute;
-  top: -4%;
-  right: -4%;
-  left: 4%;
-  bottom: 4%;
+  inset: 30px;
+  z-index: 1;
   border-radius: 50%;
   overflow: hidden;
+  transform: translate(50px, -60px);
   box-shadow: 0 30px 70px rgb(0 0 0 / 0.45);
+}
+
+@media (max-width: 899px) {
+  [data-subsidiary-theme="gourmet-mexicana"] .mex-hero__circle-photo-wrap {
+    inset: 16px;
+    transform: translate(22px, -28px);
+  }
 }
 
 [data-subsidiary-theme="gourmet-mexicana"] .mex-hero__circle-photo {
@@ -236,7 +277,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-subsidiary-theme="gourmet-mexicana"] .mex-hero__circle-ring {
+  [data-subsidiary-theme="gourmet-mexicana"] .mex-hero__ring--primary,
+  [data-subsidiary-theme="gourmet-mexicana"] .mex-hero__ring--secondary {
     animation: none;
   }
 
