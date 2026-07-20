@@ -240,6 +240,14 @@
       "nextVisual": "Next visual",
       "goToVisual": "Go to visual {index}"
     },
+    "gourmetMexicanaHero": {
+      "titleLine1": "Contemporary Mexican",
+      "titleLine2": "Fine Dining in Kinshasa",
+      "description": "Noble ingredients and refined presentation, in the spirit of Mexico City's fine tables.",
+      "ctaPrimaryLabel": "Order Now",
+      "ctaSecondaryLabel": "Contact Us",
+      "thumbnailAlt": "Gourmet Mexicana dish {index}"
+    },
     "mokaMoreHero": {
       "eyebrow": "Dine. Delight. Discover.",
       "title": "Café, Lounge & Flavours In Kinshasa",

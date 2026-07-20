@@ -13,6 +13,7 @@ import { MokaMoreReservationSection } from "@/components/filiales/MokaMoreReserv
 import { MokaMoreGallerySection } from "@/components/filiales/MokaMoreGallerySection";
 import { MokaMoreVideoSection } from "@/components/filiales/MokaMoreVideoSection";
 import { MokaMoreHero } from "@/components/filiales/MokaMoreHero";
+import { GourmetMexicanaHero } from "@/components/filiales/GourmetMexicanaHero";
 import { MokaMoreQuoteSection } from "@/components/filiales/MokaMoreQuoteSection";
 import { MokaMoreEventsSection } from "@/components/filiales/MokaMoreEventsSection";
 import { MuzikCafeContactMapSection } from "@/components/filiales/MuzikCafeContactMapSection";
@@ -130,6 +131,7 @@ export default async function SubsidiaryPage({ params }: Props) {
     slug === "filiale-04" ||
     slug === "filiale-05" ||
     slug === "filiale-06" ||
+    slug === "filiale-07" ||
     slug === "filiale-09"
       ? getSubsidiaries(l)
           .filter((s) => s.slug !== slug && s.brandLogo)
@@ -397,6 +399,10 @@ export default async function SubsidiaryPage({ params }: Props) {
             />
           )}
         </>
+      ) : slug === "filiale-07" ? (
+        <>
+          <GourmetMexicanaHero subsidiary={subsidiary} />
+        </>
       ) : (
         <SubsidiaryHero
           slides={heroSlides}
@@ -447,7 +453,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         />
       )}
 
-      {slug !== "filiale-01" && slug !== "filiale-02" && slug !== "filiale-04" && slug !== "filiale-05" && slug !== "filiale-06" && slug !== "filiale-09" && breadcrumbSection}
+      {slug !== "filiale-01" && slug !== "filiale-02" && slug !== "filiale-04" && slug !== "filiale-05" && slug !== "filiale-06" && slug !== "filiale-07" && slug !== "filiale-09" && breadcrumbSection}
 
       {slug === "filiale-03" && subsidiary.introSection && (
         <KLoungeIntroSection content={subsidiary.introSection} />
@@ -474,7 +480,8 @@ export default async function SubsidiaryPage({ params }: Props) {
         slug !== "filiale-03" &&
         slug !== "filiale-04" &&
         slug !== "filiale-05" &&
-        slug !== "filiale-06" && (
+        slug !== "filiale-06" &&
+        slug !== "filiale-07" && (
           <section className="px-4 py-12 md:px-6 md:py-16 lg:px-8">
             <div className="mx-auto max-w-7xl">
               <AnimateIn>
@@ -501,6 +508,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         slug !== "filiale-02" &&
         slug !== "filiale-05" &&
         slug !== "filiale-06" &&
+        slug !== "filiale-07" &&
         slug !== "filiale-09" && (
           <SubsidiaryContactBand
             backgroundImage={getSubsidiaryContactImage(slug, subsidiary.coverImage)}
@@ -580,6 +588,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         slug !== "filiale-04" &&
         slug !== "filiale-05" &&
         slug !== "filiale-06" &&
+        slug !== "filiale-07" &&
         slug !== "filiale-09" &&
         standardGallerySection
       )}
@@ -616,7 +625,11 @@ export default async function SubsidiaryPage({ params }: Props) {
       ) : slug === "filiale-06" ? (
         <MokaMoreEventsSection events={events} fallbackImage={subsidiary.coverImage} />
       ) : (
-        slug !== "filiale-01" && slug !== "filiale-02" && !useEventShowcase && standardEventsSection
+        slug !== "filiale-01" &&
+        slug !== "filiale-02" &&
+        slug !== "filiale-07" &&
+        !useEventShowcase &&
+        standardEventsSection
       )}
 
       {slug === "filiale-02" ? (
@@ -661,7 +674,7 @@ export default async function SubsidiaryPage({ params }: Props) {
           mapQuery={mapQuery}
           subsidiaryName={subsidiary.name}
         />
-      ) : (
+      ) : slug === "filiale-07" ? null : (
         <section className="mx-auto max-w-7xl px-4 pb-16 md:px-6 md:pb-20">
           <AnimateIn>
             <h2 className={headingClass}>{t("mapAccess")}</h2>

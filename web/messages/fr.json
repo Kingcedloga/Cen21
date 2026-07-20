@@ -248,6 +248,14 @@
       "nextVisual": "Visuel suivant",
       "goToVisual": "Aller au visuel {index}"
     },
+    "gourmetMexicanaHero": {
+      "titleLine1": "Gastronomie Mexicaine",
+      "titleLine2": "Contemporaine à Kinshasa",
+      "description": "Ingrédients nobles et présentation épurée, dans l'esprit des tables fines de Mexico.",
+      "ctaPrimaryLabel": "Commander",
+      "ctaSecondaryLabel": "Nous contacter",
+      "thumbnailAlt": "Plat Gourmet Mexicana {index}"
+    },
     "mokaMoreHero": {
       "eyebrow": "Savourez. Dégustez. Découvrez.",
       "title": "Café, Lounge & Saveurs À Kinshasa",

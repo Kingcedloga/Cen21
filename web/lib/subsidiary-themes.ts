@@ -137,32 +137,32 @@ export const PAPA_JOHNS_THEME: SubsidiaryPageTheme = {
   },
 };
 
-/** Gourmet Mexicana — restaurant mexicain tricolore (vert, blanc, rouge + ocre/terre cuite). */
+/** Gourmet Mexicana — hacienda contemporaine sobre (brun nuit, vert & rouge mexicains en accents discrets, or). */
 export const GOURMET_MEXICANA_THEME: SubsidiaryPageTheme = {
   id: "gourmet-mexicana",
   slug: "filiale-07",
   colors: {
-    bg: "#006847",
-    gold: "#D4A017",
-    goldRgb: "212 160 23",
-    text: "#FFFFFF",
-    textMuted: "rgba(255, 255, 255, 0.78)",
-    textSubtle: "rgba(255, 255, 255, 0.55)",
-    surface: "rgba(255, 255, 255, 0.08)",
-    surfaceElevated: "rgba(255, 255, 255, 0.12)",
-    border: "rgba(255, 255, 255, 0.22)",
+    bg: "#1A1208",
+    gold: "#CE1126",
+    goldRgb: "206 17 38",
+    text: "#F5EFE0",
+    textMuted: "rgba(245, 239, 224, 0.72)",
+    textSubtle: "rgba(245, 239, 224, 0.5)",
+    surface: "rgba(245, 239, 224, 0.05)",
+    surfaceElevated: "rgba(245, 239, 224, 0.09)",
+    border: "rgba(201, 169, 110, 0.24)",
     btn: "#CE1126",
     red: "#CE1126",
     redRgb: "206 17 38",
-    ochre: "#D4A017",
-    ochreRgb: "212 160 23",
-    terracotta: "#C1440E",
-    terracottaRgb: "193 68 14",
+    ochre: "#C9A96E",
+    ochreRgb: "201 169 110",
+    terracotta: "#006847",
+    terracottaRgb: "0 104 71",
   },
   hero: {
     overlayGradient:
-      "linear-gradient(to top, #006847 0%, rgba(0,104,71,0.9) 40%, rgba(0,104,71,0.38) 68%, transparent 100%), linear-gradient(90deg, rgba(0,72,49,0.85) 0%, transparent 48%), radial-gradient(ellipse 85% 62% at 50% 100%, rgba(206,17,38,0.2) 0%, transparent 58%), radial-gradient(ellipse 55% 42% at 88% 18%, rgba(212,160,23,0.14) 0%, transparent 52%)",
-    blurTint: "#006847",
+      "linear-gradient(to top, #1A1208 0%, rgba(26,18,8,0.9) 40%, rgba(26,18,8,0.36) 68%, transparent 100%), linear-gradient(90deg, rgba(26,18,8,0.85) 0%, transparent 48%), radial-gradient(ellipse 85% 62% at 50% 100%, rgba(206,17,38,0.14) 0%, transparent 58%), radial-gradient(ellipse 55% 42% at 88% 18%, rgba(201,169,110,0.12) 0%, transparent 52%)",
+    blurTint: "#1A1208",
   },
 };
 
