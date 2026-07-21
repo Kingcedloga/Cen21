@@ -248,6 +248,19 @@
       "ctaSecondaryLabel": "Contact Us",
       "thumbnailAlt": "Gourmet Mexicana dish {index}"
     },
+    "gourmetMexicanaCategories": {
+      "eyebrow": "Culinary Category",
+      "title": "Our Mexican Categories",
+      "previous": "Previous category",
+      "next": "Next category",
+      "items": {
+        "tacos": { "name": "Tacos & Tostadas" },
+        "ceviches": { "name": "Ceviches" },
+        "grilledMeats": { "name": "Grilled Meats" },
+        "desserts": { "name": "Desserts" },
+        "cocktails": { "name": "Mexican Cocktails" }
+      }
+    },
     "mokaMoreHero": {
       "eyebrow": "Dine. Delight. Discover.",
       "title": "Café, Lounge & Flavours In Kinshasa",

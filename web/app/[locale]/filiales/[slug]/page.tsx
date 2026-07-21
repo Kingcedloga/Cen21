@@ -14,6 +14,7 @@ import { MokaMoreGallerySection } from "@/components/filiales/MokaMoreGallerySec
 import { MokaMoreVideoSection } from "@/components/filiales/MokaMoreVideoSection";
 import { MokaMoreHero } from "@/components/filiales/MokaMoreHero";
 import { GourmetMexicanaHero } from "@/components/filiales/GourmetMexicanaHero";
+import { GourmetMexicanaCategoriesSection } from "@/components/filiales/GourmetMexicanaCategoriesSection";
 import { MokaMoreQuoteSection } from "@/components/filiales/MokaMoreQuoteSection";
 import { MokaMoreEventsSection } from "@/components/filiales/MokaMoreEventsSection";
 import { MuzikCafeContactMapSection } from "@/components/filiales/MuzikCafeContactMapSection";
@@ -402,6 +403,7 @@ export default async function SubsidiaryPage({ params }: Props) {
       ) : slug === "filiale-07" ? (
         <>
           <GourmetMexicanaHero subsidiary={subsidiary} />
+          <GourmetMexicanaCategoriesSection />
         </>
       ) : (
         <SubsidiaryHero

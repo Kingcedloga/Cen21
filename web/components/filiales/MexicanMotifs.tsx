@@ -13,7 +13,8 @@ export type MexicanMotifVariant =
   | "menu"
   | "gallery"
   | "reservation"
-  | "events";
+  | "events"
+  | "categories";
 
 function FadeInMotif({
   className,
@@ -272,6 +273,25 @@ export function MexicanMotifs({ variant }: { variant: MexicanMotifVariant }) {
           </FadeInMotif>
           <FadeInMotif
             className="mexican-motifs__item mexican-motifs__losange mexican-motifs__pos--events-losange"
+            targetOpacity={0.08}
+            parallax
+          >
+            <LosangeSvg />
+          </FadeInMotif>
+        </>
+      );
+
+    case "categories":
+      return (
+        <>
+          <FadeInMotif
+            className="mexican-motifs__item mexican-motifs__grecque mexican-motifs__pos--categories-grecque"
+            targetOpacity={0.1}
+          >
+            <GrecqueSvg id="mex-grecque-categories" />
+          </FadeInMotif>
+          <FadeInMotif
+            className="mexican-motifs__item mexican-motifs__losange mexican-motifs__pos--categories-losange"
             targetOpacity={0.08}
             parallax
           >

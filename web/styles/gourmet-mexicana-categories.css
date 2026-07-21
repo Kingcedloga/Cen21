@@ -1,0 +1,206 @@
+/* Gourmet Mexicana — Catégories de plats (filiale-07) : fond crème, cartes arche */
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #f5efe0;
+  padding: clamp(4rem, 9vw, 6.5rem) 0 clamp(3.5rem, 7vw, 5.5rem);
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 78rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 6vw, 5rem);
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__header {
+  text-align: center;
+  max-width: 40rem;
+  margin: 0 auto clamp(2.5rem, 5vw, 3.5rem);
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__eyebrow {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: #ce1126;
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__title {
+  margin: 0;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  letter-spacing: 0.01em;
+  color: #14110b;
+}
+
+/* ── Carrousel ── */
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__row {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__nav-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: none;
+  border-radius: 50%;
+  background: #ce1126;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color var(--duration-luxe) var(--ease-luxury);
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__nav-btn:hover,
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__nav-btn:focus-visible {
+  background: #a80e1f;
+}
+
+@media (max-width: 899px) {
+  [data-subsidiary-theme="gourmet-mexicana"] .mex-categories__nav-btn {
+    display: none;
+  }
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__track {
+  display: flex;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  padding-bottom: 0.5rem;
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__track::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Carte ── */
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 calc(25% - clamp(0.75rem, 1.5vw, 1.125rem));
+  min-width: 12rem;
+  scroll-snap-align: start;
+  padding: clamp(2rem, 4vw, 2.75rem) 1.25rem clamp(1.5rem, 3vw, 2rem);
+  border: none;
+  border-radius: 50% 50% 0 0 / 30% 30% 0 0;
+  background-color: #f0ede8;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 400ms var(--ease-luxury);
+}
+
+@media (max-width: 899px) {
+  [data-subsidiary-theme="gourmet-mexicana"] .mex-categories__card {
+    flex: 0 0 min(16rem, 70vw);
+  }
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__card:hover,
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__card--active {
+  background-color: #006847;
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__photo-circle {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(7rem, 14vw, 9.5rem);
+  height: clamp(7rem, 14vw, 9.5rem);
+  margin-bottom: 1.25rem;
+  border-radius: 50%;
+  background: rgb(0 0 0 / 0.08);
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__card:hover .mex-categories__photo-circle,
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__card--active .mex-categories__photo-circle {
+  background: rgb(0 0 0 / 0.22);
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__photo-wrap {
+  position: relative;
+  width: 82%;
+  height: 82%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__photo {
+  object-fit: cover;
+  object-position: center;
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__name {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.0625rem;
+  text-align: center;
+  color: #14110b;
+  transition: color 400ms var(--ease-luxury);
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__card:hover .mex-categories__name,
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__card--active .mex-categories__name {
+  color: #ffffff;
+}
+
+/* ── Brush stroke (bas de carte, état actif) ── */
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__brush {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  height: 2.5rem;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition:
+    opacity 300ms var(--ease-luxury),
+    transform 300ms var(--ease-luxury);
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__brush svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__card:hover .mex-categories__brush,
+[data-subsidiary-theme="gourmet-mexicana"] .mex-categories__card--active .mex-categories__brush {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-subsidiary-theme="gourmet-mexicana"] .mex-categories__card,
+  [data-subsidiary-theme="gourmet-mexicana"] .mex-categories__name,
+  [data-subsidiary-theme="gourmet-mexicana"] .mex-categories__brush,
+  [data-subsidiary-theme="gourmet-mexicana"] .mex-categories__nav-btn {
+    transition: none;
+  }
+}

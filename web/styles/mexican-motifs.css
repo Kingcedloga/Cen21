@@ -161,6 +161,22 @@
   height: clamp(3rem, 5vw, 4rem);
 }
 
+/* ── Catégories : grecques en haut + losange en accent bas ── */
+
+[data-subsidiary-theme="gourmet-mexicana"] .mexican-motifs__pos--categories-grecque {
+  top: clamp(1.5rem, 3vw, 2.5rem);
+  right: clamp(1rem, 4vw, 3rem);
+  width: clamp(9rem, 16vw, 13rem);
+  height: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .mexican-motifs__pos--categories-losange {
+  bottom: clamp(1.5rem, 4vw, 3rem);
+  left: clamp(1.5rem, 4vw, 3rem);
+  width: clamp(3rem, 5vw, 4rem);
+  height: clamp(3rem, 5vw, 4rem);
+}
+
 @media (max-width: 767px) {
   [data-subsidiary-theme="gourmet-mexicana"] .mexican-motifs__pos--about-arch,
   [data-subsidiary-theme="gourmet-mexicana"] .mexican-motifs__pos--reservation-arch {

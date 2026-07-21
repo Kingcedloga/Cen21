@@ -256,6 +256,19 @@
       "ctaSecondaryLabel": "Nous contacter",
       "thumbnailAlt": "Plat Gourmet Mexicana {index}"
     },
+    "gourmetMexicanaCategories": {
+      "eyebrow": "Catégorie culinaire",
+      "title": "Nos Catégories Mexicaines",
+      "previous": "Catégorie précédente",
+      "next": "Catégorie suivante",
+      "items": {
+        "tacos": { "name": "Tacos & Tostadas" },
+        "ceviches": { "name": "Ceviches" },
+        "grilledMeats": { "name": "Viandes Grillées" },
+        "desserts": { "name": "Desserts" },
+        "cocktails": { "name": "Cocktails Mexicains" }
+      }
+    },
     "mokaMoreHero": {
       "eyebrow": "Savourez. Dégustez. Découvrez.",
       "title": "Café, Lounge & Saveurs À Kinshasa",
