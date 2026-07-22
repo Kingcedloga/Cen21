@@ -16,6 +16,7 @@ import { MokaMoreHero } from "@/components/filiales/MokaMoreHero";
 import { GourmetMexicanaHero } from "@/components/filiales/GourmetMexicanaHero";
 import { GourmetMexicanaCategoriesSection } from "@/components/filiales/GourmetMexicanaCategoriesSection";
 import { GourmetMexicanaAboutSection } from "@/components/filiales/GourmetMexicanaAboutSection";
+import { MexicanMotifs } from "@/components/filiales/MexicanMotifs";
 import { MokaMoreQuoteSection } from "@/components/filiales/MokaMoreQuoteSection";
 import { MokaMoreEventsSection } from "@/components/filiales/MokaMoreEventsSection";
 import { MuzikCafeContactMapSection } from "@/components/filiales/MuzikCafeContactMapSection";
@@ -406,6 +407,15 @@ export default async function SubsidiaryPage({ params }: Props) {
           <GourmetMexicanaHero subsidiary={subsidiary} />
           <GourmetMexicanaCategoriesSection />
           <GourmetMexicanaAboutSection subsidiary={subsidiary} />
+          {sisterSubsidiaries.length > 0 && (
+            <WabiSabiEstablishmentsSection
+              subsidiaries={sisterSubsidiaries}
+              title={t("wabiEstablishments.title")}
+              description={t("wabiEstablishments.description")}
+              variant="gourmet-mexicana"
+              decorativeSlot={<MexicanMotifs variant="establishments" />}
+            />
+          )}
         </>
       ) : (
         <SubsidiaryHero

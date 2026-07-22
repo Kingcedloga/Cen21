@@ -1,0 +1,70 @@
+/* Gourmet Mexicana — Nos Établissements (variant crème, accents rouges & or) */
+
+.wabi-establishments--gourmet-mexicana {
+  --wabi-establishments-blue: #ce1126;
+  --wabi-establishments-beige: #f5efe0;
+  --wabi-establishments-beige-deep: #f5efe0;
+
+  background-color: #f5efe0;
+}
+
+.wabi-establishments--gourmet-mexicana .wabi-establishments__title {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  letter-spacing: 0.01em;
+  color: #1a1208;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.wabi-establishments--gourmet-mexicana .wabi-establishments__title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 3.5rem;
+  height: 2px;
+  background: #c9a96e;
+}
+
+.wabi-establishments--gourmet-mexicana .wabi-establishments__description {
+  color: rgb(26 18 8 / 0.6);
+}
+
+.wabi-establishments--gourmet-mexicana .wabi-establishments__link:hover,
+.wabi-establishments--gourmet-mexicana .wabi-establishments__link:focus-visible {
+  background-color: rgb(206 17 38 / 0.06);
+}
+
+.wabi-establishments--gourmet-mexicana .wabi-establishments__logo {
+  filter: grayscale(1) brightness(0);
+  opacity: 0.68;
+}
+
+.wabi-establishments--gourmet-mexicana .wabi-establishments__link:hover .wabi-establishments__logo,
+.wabi-establishments--gourmet-mexicana .wabi-establishments__link:focus-visible .wabi-establishments__logo {
+  filter: brightness(0) saturate(100%) invert(59%) sepia(17%) saturate(2226%)
+    hue-rotate(307deg) brightness(66%) contrast(198%);
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+.wabi-establishments--gourmet-mexicana .wabi-establishments__name {
+  color: rgb(26 18 8 / 0.45);
+}
+
+.wabi-establishments--gourmet-mexicana .wabi-establishments__link:hover .wabi-establishments__name,
+.wabi-establishments--gourmet-mexicana .wabi-establishments__link:focus-visible .wabi-establishments__name {
+  color: #ce1126;
+}
+
+.wabi-establishments--gourmet-mexicana .wabi-establishments__fade--left {
+  background: linear-gradient(90deg, #f5efe0 0%, transparent 100%);
+}
+
+.wabi-establishments--gourmet-mexicana .wabi-establishments__fade--right {
+  background: linear-gradient(270deg, #f5efe0 0%, transparent 100%);
+}
