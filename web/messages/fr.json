@@ -269,6 +269,22 @@
         "cocktails": { "name": "Cocktails Mexicains" }
       }
     },
+    "gourmetMexicanaAbout": {
+      "eyebrow": "À propos de nous",
+      "titleLine1": "Où l'authenticité",
+      "titleLine2": "rencontre l'art",
+      "titleLine3": "de la gastronomie",
+      "description": "Une cuisine mexicaine fine et sincère, portée par des ingrédients nobles et un savoir-faire artisanal, au cœur de Kinshasa.",
+      "ctaLabel": "Découvrir notre restaurant",
+      "highlights": {
+        "tacos": "Tacos artisanaux",
+        "ceviches": "Ceviches frais",
+        "meats": "Viandes marinées",
+        "salsas": "Salsas maison",
+        "guacamole": "Guacamole traditionnel",
+        "desserts": "Desserts mexicains"
+      }
+    },
     "mokaMoreHero": {
       "eyebrow": "Savourez. Dégustez. Découvrez.",
       "title": "Café, Lounge & Saveurs À Kinshasa",

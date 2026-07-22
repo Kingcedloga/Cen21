@@ -261,6 +261,22 @@
         "cocktails": { "name": "Mexican Cocktails" }
       }
     },
+    "gourmetMexicanaAbout": {
+      "eyebrow": "About Us",
+      "titleLine1": "Where Authenticity",
+      "titleLine2": "Meets The Art",
+      "titleLine3": "Of Fine Dining",
+      "description": "Fine, sincere Mexican cuisine, built on noble ingredients and artisanal craft, in the heart of Kinshasa.",
+      "ctaLabel": "Discover Our Restaurant",
+      "highlights": {
+        "tacos": "Artisanal Tacos",
+        "ceviches": "Fresh Ceviches",
+        "meats": "Marinated Meats",
+        "salsas": "Homemade Salsas",
+        "guacamole": "Traditional Guacamole",
+        "desserts": "Mexican Desserts"
+      }
+    },
     "mokaMoreHero": {
       "eyebrow": "Dine. Delight. Discover.",
       "title": "Café, Lounge & Flavours In Kinshasa",
