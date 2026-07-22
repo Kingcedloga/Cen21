@@ -23,6 +23,10 @@
   padding-inline: clamp(1.25rem, 4.5vw, 3.5rem);
 }
 
+.klounge-marquee-gallery__eyebrow {
+  margin: 0 0 0.5rem;
+}
+
 .klounge-marquee-gallery__title {
   margin: 0 0 clamp(0.75rem, 1.8vw, 1.125rem);
   font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
@@ -228,5 +232,49 @@
     border-color: rgb(118 127 52 / 0.55);
     background: rgb(118 127 52 / 0.12);
     color: #767f34;
+  }
+}
+
+/* ── Gourmet Mexicana overrides ── */
+
+[data-subsidiary-theme="gourmet-mexicana"] .klounge-marquee-gallery {
+  background-color: #ffffff;
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .klounge-marquee-gallery__header {
+  text-align: center;
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .klounge-marquee-gallery__eyebrow {
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: #ce1126;
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .klounge-marquee-gallery__title {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  letter-spacing: 0.01em;
+  color: #14110b;
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .klounge-marquee-gallery__description {
+  margin-inline: auto;
+  color: rgb(26 18 8 / 0.62);
+}
+
+[data-subsidiary-theme="gourmet-mexicana"] .klounge-marquee-gallery__panel {
+  background: rgb(201 169 110 / 0.06);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-subsidiary-theme="gourmet-mexicana"] .klounge-marquee-gallery__cursor {
+    border-color: rgb(206 17 38 / 0.55);
+    background: rgb(206 17 38 / 0.12);
+    color: #ce1126;
   }
 }

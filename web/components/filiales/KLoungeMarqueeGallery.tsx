@@ -32,6 +32,7 @@ type Props = {
   items: GalleryItem[];
   title: string;
   description: string;
+  eyebrow?: string;
 };
 
 type PanelProps = {
@@ -64,7 +65,7 @@ function PanelFigure({ item, layoutId, onOpen }: PanelProps) {
   );
 }
 
-export function KLoungeMarqueeGallery({ items, title, description }: Props) {
+export function KLoungeMarqueeGallery({ items, title, description, eyebrow }: Props) {
   const reduced = useReducedMotion() ?? false;
   const list = items.filter((item) => item.src);
 
@@ -241,6 +242,7 @@ export function KLoungeMarqueeGallery({ items, title, description }: Props) {
       >
         <div className="klounge-marquee-gallery__header">
           <AnimateIn>
+            {eyebrow && <p className="klounge-marquee-gallery__eyebrow">{eyebrow}</p>}
             <h2 id="klounge-marquee-gallery-title" className="klounge-marquee-gallery__title">
               {title}
             </h2>
