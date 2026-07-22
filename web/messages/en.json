@@ -281,6 +281,18 @@
       "eyebrow": "Gourmet Moments",
       "description": "A glimpse of our dishes, our kitchen, and the atmosphere at Gourmet Mexicana."
     },
+    "gourmetMexicanaReservation": {
+      "eyebrow": "Reservation",
+      "titleLine1": "Reserve Your",
+      "titleLine2": "Table Now",
+      "note": "*reservations recommended",
+      "nameField": "Your name",
+      "phoneField": "Phone number",
+      "emailField": "Your email",
+      "guestsField": "Number of guests",
+      "submitLabel": "Reserve Now",
+      "footnote": "*Authentic Mexican fine-dining experience"
+    },
     "mokaMoreHero": {
       "eyebrow": "Dine. Delight. Discover.",
       "title": "Café, Lounge & Flavours In Kinshasa",

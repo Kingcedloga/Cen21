@@ -16,6 +16,7 @@ import { MokaMoreHero } from "@/components/filiales/MokaMoreHero";
 import { GourmetMexicanaHero } from "@/components/filiales/GourmetMexicanaHero";
 import { GourmetMexicanaCategoriesSection } from "@/components/filiales/GourmetMexicanaCategoriesSection";
 import { GourmetMexicanaAboutSection } from "@/components/filiales/GourmetMexicanaAboutSection";
+import { GourmetMexicanaReservationSection } from "@/components/filiales/GourmetMexicanaReservationSection";
 import { MexicanMotifs } from "@/components/filiales/MexicanMotifs";
 import { MokaMoreQuoteSection } from "@/components/filiales/MokaMoreQuoteSection";
 import { MokaMoreEventsSection } from "@/components/filiales/MokaMoreEventsSection";
@@ -436,6 +437,7 @@ export default async function SubsidiaryPage({ params }: Props) {
               eyebrow={t("gourmetMexicanaGallery.eyebrow")}
             />
           </div>
+          <GourmetMexicanaReservationSection />
         </>
       ) : (
         <SubsidiaryHero
