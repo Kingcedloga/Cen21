@@ -1,5 +1,19 @@
 /* Gourmet Mexicana — Catégories de plats (filiale-07) : fond crème, cartes arche */
 
+/* ── Motif mexicain en arrière-plan fondu sur toutes les sections (hors hero) ── */
+[data-subsidiary-theme="gourmet-mexicana"] .mex-reservation::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("/filiales/photos/filiale-07/motifmexican.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
 [data-subsidiary-theme="gourmet-mexicana"] .mex-categories {
   position: relative;
   isolation: isolate;
