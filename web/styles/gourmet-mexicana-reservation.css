@@ -8,6 +8,19 @@
   padding: clamp(4rem, 9vw, 6.5rem) clamp(1.25rem, 6vw, 5rem);
 }
 
+[data-subsidiary-theme="gourmet-mexicana"] .mex-reservation::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("/filiales/photos/filiale-07/motifmexican.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
 [data-subsidiary-theme="gourmet-mexicana"] .mex-reservation__inner {
   position: relative;
   z-index: 1;
@@ -40,13 +53,11 @@
 }
 
 [data-subsidiary-theme="gourmet-mexicana"] .mex-reservation__eyebrow {
+  margin: 0 0 0.5rem;
   font-family: var(--font-dynalight), cursive;
   font-style: normal;
-  margin: 0 0 0.5rem;
-  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-  font-style: italic;
-  font-weight: 600;
-  font-size: 1.125rem;
+  font-weight: 400;
+  font-size: 1.5rem;
   color: #ce1126;
 }
 

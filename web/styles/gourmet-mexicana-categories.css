@@ -97,10 +97,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 0 0 calc(25% - clamp(0.75rem, 1.5vw, 1.125rem));
-  min-width: 17rem;
+  flex: 0 0 clamp(13rem, 22vw, 18rem);
   scroll-snap-align: start;
-  padding: clamp(3rem, 5.5vw, 4rem) 1.75rem clamp(2.25rem, 4vw, 3rem);
+  padding: clamp(2.25rem, 4vw, 3rem) 1.25rem clamp(1.75rem, 3vw, 2.25rem);
   border: none;
   border-radius: 50% 50% 0 0 / 30% 30% 0 0;
   background-color: #f0ede8;
@@ -111,7 +110,7 @@
 
 @media (max-width: 899px) {
   [data-subsidiary-theme="gourmet-mexicana"] .mex-categories__card {
-    flex: 0 0 min(21rem, 80vw);
+    flex: 0 0 min(15rem, 68vw);
   }
 }
 
@@ -126,8 +125,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(10.5rem, 19vw, 14rem);
-  height: clamp(10.5rem, 19vw, 14rem);
+  width: clamp(8rem, 14vw, 11.5rem);
+  height: clamp(8rem, 14vw, 11.5rem);
   margin-bottom: 1.25rem;
   border-radius: 50%;
   background: rgb(0 0 0 / 0.08);
