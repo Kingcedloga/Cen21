@@ -20,14 +20,7 @@
 }
 
 .wabi-establishments--gourmet-mexicana .wabi-establishments__title::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  width: 3.5rem;
-  height: 2px;
-  background: #c9a96e;
+  display: none;
 }
 
 .wabi-establishments--gourmet-mexicana .wabi-establishments__description {

@@ -24,8 +24,8 @@
 
 [data-subsidiary-theme="gourmet-mexicana"] .mex-categories__eyebrow {
   margin: 0 0 0.5rem;
-  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-  font-style: italic;
+  font-family: var(--font-dynalight), cursive;
+  font-style: normal;
   font-weight: 600;
   font-size: 1.125rem;
   color: #ce1126;
@@ -98,9 +98,9 @@
   flex-direction: column;
   align-items: center;
   flex: 0 0 calc(25% - clamp(0.75rem, 1.5vw, 1.125rem));
-  min-width: 14rem;
+  min-width: 17rem;
   scroll-snap-align: start;
-  padding: clamp(2.5rem, 4.5vw, 3.25rem) 1.5rem clamp(1.75rem, 3.5vw, 2.5rem);
+  padding: clamp(3rem, 5.5vw, 4rem) 1.75rem clamp(2.25rem, 4vw, 3rem);
   border: none;
   border-radius: 50% 50% 0 0 / 30% 30% 0 0;
   background-color: #f0ede8;
@@ -111,7 +111,7 @@
 
 @media (max-width: 899px) {
   [data-subsidiary-theme="gourmet-mexicana"] .mex-categories__card {
-    flex: 0 0 min(18rem, 75vw);
+    flex: 0 0 min(21rem, 80vw);
   }
 }
 
@@ -126,8 +126,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(8.5rem, 16vw, 11.5rem);
-  height: clamp(8.5rem, 16vw, 11.5rem);
+  width: clamp(10.5rem, 19vw, 14rem);
+  height: clamp(10.5rem, 19vw, 14rem);
   margin-bottom: 1.25rem;
   border-radius: 50%;
   background: rgb(0 0 0 / 0.08);

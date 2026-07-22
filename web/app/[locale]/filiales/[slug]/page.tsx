@@ -59,7 +59,7 @@ import { Button } from "@/components/ui/Button";
 import { ReadingProgress } from "@/components/ui/ReadingProgress";
 import { routing } from "@/i18n/routing";
 import type { Locale } from "@/i18n/routing";
-import { cormorant, nunito } from "@/lib/fonts";
+import { cormorant, dynalight, nunito } from "@/lib/fonts";
 
 import "@/styles/wabi-sabi-beige-band.css";
 import "@/styles/wabi-sabi-events-section.css";
@@ -739,7 +739,13 @@ export default async function SubsidiaryPage({ params }: Props) {
     return (
       <SubsidiaryThemeShell
         theme={pageTheme}
-        className={slug === "filiale-09" ? nunito.variable : undefined}
+        className={
+          slug === "filiale-09"
+            ? nunito.variable
+            : slug === "filiale-07"
+              ? dynalight.variable
+              : undefined
+        }
       >
         {content}
       </SubsidiaryThemeShell>

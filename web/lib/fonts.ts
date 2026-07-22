@@ -1,4 +1,4 @@
-import { Cormorant_Garamond, Inter, Nunito } from "next/font/google";
+import { Cormorant_Garamond, Dynalight, Inter, Nunito } from "next/font/google";
 
 /**
  * Inter (variable) — sans-serif pour le corps et l’UI.
@@ -15,6 +15,14 @@ export const inter = Inter({
 export const nunito = Nunito({
   subsets: ["latin"],
   variable: "--font-nunito",
+  display: "swap",
+});
+
+/** Gourmet Mexicana section labels — display cursive. */
+export const dynalight = Dynalight({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-dynalight",
   display: "swap",
 });
 

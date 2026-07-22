@@ -246,8 +246,8 @@
 }
 
 [data-subsidiary-theme="gourmet-mexicana"] .klounge-marquee-gallery__eyebrow {
-  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-  font-style: italic;
+  font-family: var(--font-dynalight), cursive;
+  font-style: normal;
   font-weight: 600;
   font-size: 1.125rem;
   color: #ce1126;
