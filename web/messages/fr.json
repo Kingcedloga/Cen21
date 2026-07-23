@@ -301,6 +301,14 @@
       "submitLabel": "Réserver maintenant",
       "footnote": "*Expérience gastronomique mexicaine authentique"
     },
+    "gourmetMexicanaEvents": {
+      "eyebrow": "Actualités",
+      "title": "Actualités & Événements",
+      "allEventsLabel": "Tous les événements",
+      "readMoreLabel": "Lire plus",
+      "previous": "Événement précédent",
+      "next": "Événement suivant"
+    },
     "mokaMoreHero": {
       "eyebrow": "Savourez. Dégustez. Découvrez.",
       "title": "Café, Lounge & Saveurs À Kinshasa",

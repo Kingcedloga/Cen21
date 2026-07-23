@@ -151,6 +151,36 @@
       "excerpt": "Cocktails signature et grignotages pour terminer la semaine en douceur."
     },
     {
+      "id": "evt-12",
+      "slug": "cocktails-saveurs-mexicaines",
+      "title": "Soirée Cocktails & Saveurs Mexicaines",
+      "date": "2026-09-04T19:00:00",
+      "location": "Gourmet Mexicana, Kinshasa",
+      "subsidiarySlug": "filiale-07",
+      "image": "https://images.unsplash.com/photo-1545438102-799c3991ffb2?w=800&q=80",
+      "excerpt": "Cocktails signature et bouchées mexicaines raffinées, dans une ambiance feutrée."
+    },
+    {
+      "id": "evt-13",
+      "slug": "brunch-dominical-oaxaca",
+      "title": "Brunch Dominical — Saveurs de Oaxaca",
+      "date": "2026-09-13T10:30:00",
+      "location": "Gourmet Mexicana, Kinshasa",
+      "subsidiarySlug": "filiale-07",
+      "image": "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=800&q=80",
+      "excerpt": "Un brunch dominical inspiré des tables de Oaxaca, entre douceur et caractère."
+    },
+    {
+      "id": "evt-14",
+      "slug": "atelier-guacamole-traditionnel",
+      "title": "Atelier Guacamole — Recette Traditionnelle",
+      "date": "2026-09-27T17:00:00",
+      "location": "Gourmet Mexicana, Kinshasa",
+      "subsidiarySlug": "filiale-07",
+      "image": "https://images.unsplash.com/photo-1601039641847-7857b994d704?w=800&q=80",
+      "excerpt": "Un atelier convivial pour apprendre à préparer un guacamole authentique."
+    },
+    {
       "id": "evt-7",
       "slug": "french-touch-millionaire-club",
       "title": "French Touch Night — Édition 2025",

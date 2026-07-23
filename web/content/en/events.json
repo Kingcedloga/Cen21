@@ -151,6 +151,36 @@
       "excerpt": "Signature cocktails and light bites to unwind after the week."
     },
     {
+      "id": "evt-12",
+      "slug": "cocktails-mexican-flavours-night",
+      "title": "Cocktails & Mexican Flavours Night",
+      "date": "2026-09-04T19:00:00",
+      "location": "Gourmet Mexicana, Kinshasa",
+      "subsidiarySlug": "filiale-07",
+      "image": "https://images.unsplash.com/photo-1545438102-799c3991ffb2?w=800&q=80",
+      "excerpt": "Signature cocktails and refined Mexican bites in an intimate setting."
+    },
+    {
+      "id": "evt-13",
+      "slug": "sunday-brunch-oaxaca-flavours",
+      "title": "Sunday Brunch — Flavours of Oaxaca",
+      "date": "2026-09-13T10:30:00",
+      "location": "Gourmet Mexicana, Kinshasa",
+      "subsidiarySlug": "filiale-07",
+      "image": "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=800&q=80",
+      "excerpt": "A Sunday brunch inspired by the tables of Oaxaca, gentle yet full of character."
+    },
+    {
+      "id": "evt-14",
+      "slug": "traditional-guacamole-workshop",
+      "title": "Guacamole Workshop — Traditional Recipe",
+      "date": "2026-09-27T17:00:00",
+      "location": "Gourmet Mexicana, Kinshasa",
+      "subsidiarySlug": "filiale-07",
+      "image": "https://images.unsplash.com/photo-1601039641847-7857b994d704?w=800&q=80",
+      "excerpt": "A friendly workshop to learn how to prepare an authentic guacamole."
+    },
+    {
       "id": "evt-7",
       "slug": "french-touch-millionaire-club",
       "title": "French Touch Night — 2025 Edition",

@@ -293,6 +293,14 @@
       "submitLabel": "Reserve Now",
       "footnote": "*Authentic Mexican fine-dining experience"
     },
+    "gourmetMexicanaEvents": {
+      "eyebrow": "Latest News",
+      "title": "News & Events",
+      "allEventsLabel": "All Events",
+      "readMoreLabel": "Read More",
+      "previous": "Previous event",
+      "next": "Next event"
+    },
     "mokaMoreHero": {
       "eyebrow": "Dine. Delight. Discover.",
       "title": "Café, Lounge & Flavours In Kinshasa",
