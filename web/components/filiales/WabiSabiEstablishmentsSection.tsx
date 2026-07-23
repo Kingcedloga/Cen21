@@ -28,6 +28,7 @@ type Props = {
   subsidiaries: SisterSubsidiary[];
   title: string;
   description: string;
+  eyebrow?: string;
   variant?:
     | "wabi-sabi"
     | "k-lounge"
@@ -68,6 +69,7 @@ export function WabiSabiEstablishmentsSection({
   subsidiaries,
   title,
   description,
+  eyebrow,
   variant = "wabi-sabi",
   decorativeSlot,
 }: Props) {
@@ -128,6 +130,9 @@ export function WabiSabiEstablishmentsSection({
       {decorativeSlot}
       <div className="wabi-establishments__inner">
         <AnimateIn className="wabi-establishments__header">
+          {eyebrow && (
+            <p className="wabi-establishments__eyebrow">{eyebrow}</p>
+          )}
           <h2 id={sectionId} className="wabi-establishments__title">
             {title}
           </h2>

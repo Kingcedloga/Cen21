@@ -18,6 +18,7 @@ import { GourmetMexicanaCategoriesSection } from "@/components/filiales/GourmetM
 import { GourmetMexicanaAboutSection } from "@/components/filiales/GourmetMexicanaAboutSection";
 import { GourmetMexicanaReservationSection } from "@/components/filiales/GourmetMexicanaReservationSection";
 import { GourmetMexicanaEventsSection } from "@/components/filiales/GourmetMexicanaEventsSection";
+import { GourmetMexicanaPromotionsSection } from "@/components/filiales/GourmetMexicanaPromotionsSection";
 import { GourmetMexicanaContactMapSection } from "@/components/filiales/GourmetMexicanaContactMapSection";
 import { MexicanMotifs } from "@/components/filiales/MexicanMotifs";
 import { MokaMoreQuoteSection } from "@/components/filiales/MokaMoreQuoteSection";
@@ -424,6 +425,7 @@ export default async function SubsidiaryPage({ params }: Props) {
           {sisterSubsidiaries.length > 0 && (
             <WabiSabiEstablishmentsSection
               subsidiaries={sisterSubsidiaries}
+              eyebrow={t("wabiEstablishments.eyebrow")}
               title={t("wabiEstablishments.title")}
               description={t("wabiEstablishments.description")}
               variant="gourmet-mexicana"
@@ -444,6 +446,7 @@ export default async function SubsidiaryPage({ params }: Props) {
             authorName={subsidiary.name}
             fallbackImage={subsidiary.coverImage}
           />
+          <GourmetMexicanaPromotionsSection />
           <GourmetMexicanaReservationSection />
           <GourmetMexicanaContactMapSection mapQuery={mapQuery} mapsUrl={mapsUrl} />
         </>

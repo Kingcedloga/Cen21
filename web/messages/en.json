@@ -301,6 +301,16 @@
       "previous": "Previous event",
       "next": "Next event"
     },
+    "gourmetMexicanaPromotions": {
+      "subtitle": "Special Of The Moment",
+      "offLabel": "off",
+      "ctaLabel": "Order Now",
+      "items": {
+        "tacos": "Tacos El Fuego",
+        "enchiladas": "Enchiladas Supremas",
+        "ceviche": "Ceviche Royal"
+      }
+    },
     "gourmetMexicanaMap": {
       "eyebrow": "Find Us",
       "title": "Maps & Directions",
@@ -429,6 +439,7 @@
       "description": "A continuous visual flow — signature cuisine, cocktails, interiors and hospitality, like an editorial fresco."
     },
     "wabiEstablishments": {
+      "eyebrow": "Our addresses",
       "title": "Our Establishments",
       "description": "Discover the group's other destinations — each brand offers a distinctive experience, united by the same pursuit of excellence."
     },

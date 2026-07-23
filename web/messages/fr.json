@@ -309,6 +309,16 @@
       "previous": "Événement précédent",
       "next": "Événement suivant"
     },
+    "gourmetMexicanaPromotions": {
+      "subtitle": "Spécialité du moment",
+      "offLabel": "off",
+      "ctaLabel": "Commander",
+      "items": {
+        "tacos": "Tacos El Fuego",
+        "enchiladas": "Enchiladas Supremas",
+        "ceviche": "Ceviche Royal"
+      }
+    },
     "gourmetMexicanaMap": {
       "eyebrow": "Nous Trouver",
       "title": "Maps & Directions",
@@ -437,6 +447,7 @@
       "description": "Un flux visuel continu — cuisine signature, cocktails, intérieurs et art de recevoir, à la manière d'une fresque éditoriale."
     },
     "wabiEstablishments": {
+      "eyebrow": "Nos adresses",
       "title": "Nos Établissements",
       "description": "Découvrez les autres adresses du groupe Cen21 Hospitality — chaque enseigne invite à une expérience unique, portée par la même exigence d'excellence."
     },
