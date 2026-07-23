@@ -239,10 +239,12 @@
 
 [data-subsidiary-theme="gourmet-mexicana"] .klounge-marquee-gallery {
   background-color: #f5efe0;
+  padding: clamp(4rem, 9vw, 6.5rem) 0;
 }
 
 [data-subsidiary-theme="gourmet-mexicana"] .klounge-marquee-gallery__header {
   text-align: center;
+  padding-inline: clamp(1.25rem, 6vw, 5rem);
 }
 
 [data-subsidiary-theme="gourmet-mexicana"] .klounge-marquee-gallery__eyebrow {

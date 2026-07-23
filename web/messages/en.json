@@ -301,6 +301,12 @@
       "previous": "Previous event",
       "next": "Next event"
     },
+    "gourmetMexicanaMap": {
+      "eyebrow": "Find Us",
+      "title": "Maps & Directions",
+      "ctaLabel": "Get Directions",
+      "iframeTitle": "Gourmet Mexicana Map"
+    },
     "mokaMoreHero": {
       "eyebrow": "Dine. Delight. Discover.",
       "title": "Café, Lounge & Flavours In Kinshasa",

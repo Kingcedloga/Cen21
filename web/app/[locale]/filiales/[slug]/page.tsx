@@ -18,6 +18,7 @@ import { GourmetMexicanaCategoriesSection } from "@/components/filiales/GourmetM
 import { GourmetMexicanaAboutSection } from "@/components/filiales/GourmetMexicanaAboutSection";
 import { GourmetMexicanaReservationSection } from "@/components/filiales/GourmetMexicanaReservationSection";
 import { GourmetMexicanaEventsSection } from "@/components/filiales/GourmetMexicanaEventsSection";
+import { GourmetMexicanaContactMapSection } from "@/components/filiales/GourmetMexicanaContactMapSection";
 import { MexicanMotifs } from "@/components/filiales/MexicanMotifs";
 import { MokaMoreQuoteSection } from "@/components/filiales/MokaMoreQuoteSection";
 import { MokaMoreEventsSection } from "@/components/filiales/MokaMoreEventsSection";
@@ -444,6 +445,7 @@ export default async function SubsidiaryPage({ params }: Props) {
             fallbackImage={subsidiary.coverImage}
           />
           <GourmetMexicanaReservationSection />
+          <GourmetMexicanaContactMapSection mapQuery={mapQuery} mapsUrl={mapsUrl} />
         </>
       ) : (
         <SubsidiaryHero

@@ -309,6 +309,12 @@
       "previous": "Événement précédent",
       "next": "Événement suivant"
     },
+    "gourmetMexicanaMap": {
+      "eyebrow": "Nous Trouver",
+      "title": "Maps & Directions",
+      "ctaLabel": "Itinéraire",
+      "iframeTitle": "Carte Gourmet Mexicana"
+    },
     "mokaMoreHero": {
       "eyebrow": "Savourez. Dégustez. Découvrez.",
       "title": "Café, Lounge & Saveurs À Kinshasa",

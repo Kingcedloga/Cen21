@@ -19,7 +19,7 @@
   isolation: isolate;
   overflow: hidden;
   background-color: #f5efe0;
-  padding: clamp(4rem, 9vw, 6.5rem) 0 clamp(3.5rem, 7vw, 5.5rem);
+  padding: clamp(4rem, 9vw, 6.5rem) 0;
 }
 
 [data-subsidiary-theme="gourmet-mexicana"] .mex-categories__inner {
