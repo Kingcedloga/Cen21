@@ -38,9 +38,9 @@ export default async function AboutPage({ params }: Props) {
       <ReadingProgress />
 
       <AboutHero
-        eyebrow={t("eyebrow")}
         title={t("title")}
         homeLabel={tNav("home")}
+        currentPageLabel={tNav("about")}
         image={about.heroImage ?? FALLBACK_HERO}
         imageAlt={t("heroImageAlt")}
       />

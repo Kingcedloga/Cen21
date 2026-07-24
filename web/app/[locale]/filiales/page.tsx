@@ -28,13 +28,15 @@ export default async function SubsidiariesPage({ params }: Props) {
   const l = locale as Locale;
   const subsidiaries = getSubsidiaries(l);
   const t = await getTranslations("subsidiaries");
+  const tNav = await getTranslations("nav");
 
   return (
     <>
       <PageHero
-        eyebrow={t("eyebrow")}
         title={t("title")}
-        description={t("description")}
+        homeLabel={tNav("home")}
+        currentPageLabel={tNav("subsidiaries")}
+        image="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=2400&q=85"
       />
 
       <PageSection

@@ -25,10 +25,16 @@ export default async function GalleryPage({ params }: Props) {
   setRequestLocale(locale);
   const items = getGalleryItems(locale as Locale);
   const t = await getTranslations("gallery");
+  const tNav = await getTranslations("nav");
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} description={t("description")} />
+      <PageHero
+        title={t("title")}
+        homeLabel={tNav("home")}
+        currentPageLabel={tNav("gallery")}
+        image="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=2400&q=85"
+      />
       <PageSection variant="default">
         <GalleryGrid items={items} />
       </PageSection>

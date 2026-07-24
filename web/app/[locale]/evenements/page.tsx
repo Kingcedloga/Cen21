@@ -25,12 +25,18 @@ export default async function EventsPage({ params }: Props) {
   setRequestLocale(locale);
   const l = locale as Locale;
   const t = await getTranslations("events");
+  const tNav = await getTranslations("nav");
   const upcoming = getEvents(l, false);
   const past = getPastEvents(l);
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} description={t("description")} />
+      <PageHero
+        title={t("title")}
+        homeLabel={tNav("home")}
+        currentPageLabel={tNav("events")}
+        image="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=2400&q=85"
+      />
       <PageSection variant="default">
         <EventsList events={upcoming} pastEvents={past} />
       </PageSection>

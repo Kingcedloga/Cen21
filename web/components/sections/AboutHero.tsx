@@ -18,15 +18,15 @@ import {
  * titre centré + fil d'Ariane (Accueil - {page}), à la manière d'un page banner.
  */
 export function AboutHero({
-  eyebrow,
   title,
   homeLabel,
+  currentPageLabel,
   image,
   imageAlt = "",
 }: {
-  eyebrow?: string;
   title: string;
   homeLabel: string;
+  currentPageLabel?: string;
   image: string;
   imageAlt?: string;
 }) {
@@ -83,12 +83,12 @@ export function AboutHero({
           <Link href="/" className="text-ivory transition-colors hover:text-gold">
             {homeLabel}
           </Link>
-          {eyebrow && (
+          {currentPageLabel && (
             <>
               <span aria-hidden className="text-ivory/60">
                 -
               </span>
-              <span className="text-gold">{eyebrow}</span>
+              <span className="text-gold">{currentPageLabel}</span>
             </>
           )}
         </motion.div>

@@ -30,10 +30,16 @@ export default async function ContactPage({ params }: Props) {
   setRequestLocale(locale);
   const site = getSiteConfig(locale as Locale);
   const t = await getTranslations("contact");
+  const tNav = await getTranslations("nav");
 
   return (
     <>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} description={t("description")} />
+      <PageHero
+        title={t("title")}
+        homeLabel={tNav("home")}
+        currentPageLabel={tNav("contact")}
+        image="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=2400&q=85"
+      />
 
       <PageSection variant="default">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
