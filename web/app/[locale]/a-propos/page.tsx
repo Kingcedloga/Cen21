@@ -31,6 +31,7 @@ export default async function AboutPage({ params }: Props) {
   setRequestLocale(locale);
   const about = getAboutContent(locale as Locale);
   const t = await getTranslations("about");
+  const tNav = await getTranslations("nav");
 
   return (
     <>
@@ -39,7 +40,7 @@ export default async function AboutPage({ params }: Props) {
       <AboutHero
         eyebrow={t("eyebrow")}
         title={t("title")}
-        description={t("description")}
+        homeLabel={tNav("home")}
         image={about.heroImage ?? FALLBACK_HERO}
         imageAlt={t("heroImageAlt")}
       />

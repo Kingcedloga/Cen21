@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 
+import { Link } from "@/i18n/navigation";
 import { BLUR_PETROL } from "@/lib/image-blur";
 import {
   DURATION_S,
@@ -13,19 +14,19 @@ import {
 } from "@/lib/motion";
 
 /**
- * Hero éditorial pour la page À propos : image immersive en background,
- * triple voile petrol pour profondeur cinématique, texte premium au premier plan.
+ * Bandeau éditorial pour la page À propos : image immersive en background,
+ * titre centré + fil d'Ariane (Accueil - {page}), à la manière d'un page banner.
  */
 export function AboutHero({
   eyebrow,
   title,
-  description,
+  homeLabel,
   image,
   imageAlt = "",
 }: {
   eyebrow?: string;
   title: string;
-  description?: string;
+  homeLabel: string;
   image: string;
   imageAlt?: string;
 }) {
@@ -34,7 +35,7 @@ export function AboutHero({
   return (
     <section
       aria-labelledby="about-hero-title"
-      className="relative isolate overflow-hidden bg-petrol pt-32 pb-24 md:pt-40 md:pb-28 lg:pt-44 lg:pb-32"
+      className="relative isolate flex min-h-[22rem] items-center overflow-hidden bg-petrol py-20 md:min-h-[26rem] md:py-24"
     >
       <motion.div
         className="absolute inset-0"
@@ -54,61 +55,43 @@ export function AboutHero({
         />
       </motion.div>
 
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-petrol via-petrol/85 to-petrol/35"
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_75%,rgba(212,173,101,0.18)_0%,transparent_55%)]"
-      />
+      <div aria-hidden className="absolute inset-0 bg-petrol/70" />
       <div
         aria-hidden
         className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/55 via-black/15 to-transparent"
       />
 
       <motion.div
-        className="relative z-10 mx-auto max-w-7xl px-4 md:px-6 lg:px-8"
+        className="relative z-10 mx-auto w-full max-w-7xl px-4 text-center md:px-6 lg:px-8"
         initial={reduced ? false : "hidden"}
         animate={reduced ? undefined : "visible"}
         variants={reduced ? undefined : heroStaggerVariants}
       >
-        {eyebrow && (
-          <motion.div
-            className="mb-5 flex items-center gap-3"
-            variants={reduced ? undefined : fadeUpVariants}
-            transition={fadeUpTransition}
-          >
-            <span
-              aria-hidden
-              className="h-px w-9 bg-gradient-to-r from-transparent to-gold/85"
-            />
-            <span
-              aria-hidden
-              className="inline-flex h-1.5 w-1.5 rotate-45 bg-gold/85 shadow-[0_0_10px_rgba(212,173,101,0.55)]"
-            />
-            <p className="text-gold text-[11px] font-semibold tracking-[0.32em] uppercase">
-              {eyebrow}
-            </p>
-          </motion.div>
-        )}
         <motion.h1
           id="about-hero-title"
-          className="mb-5 max-w-4xl text-4xl font-bold leading-[1.08] tracking-[-0.02em] text-ivory md:text-5xl lg:text-6xl"
+          className="mx-auto max-w-3xl text-4xl font-bold leading-[1.08] tracking-[-0.02em] text-ivory md:text-5xl lg:text-6xl"
           variants={reduced ? undefined : fadeUpVariants}
           transition={fadeUpTransition}
         >
           {title}
         </motion.h1>
-        {description && (
-          <motion.p
-            className="max-w-2xl text-base leading-[1.65] text-ivory/85 [text-shadow:0_1px_12px_rgba(0,0,0,0.45)] md:text-lg"
-            variants={reduced ? undefined : fadeUpVariants}
-            transition={fadeUpTransition}
-          >
-            {description}
-          </motion.p>
-        )}
+        <motion.div
+          className="mt-4 flex items-center justify-center gap-2 text-sm font-semibold md:text-base"
+          variants={reduced ? undefined : fadeUpVariants}
+          transition={fadeUpTransition}
+        >
+          <Link href="/" className="text-ivory transition-colors hover:text-gold">
+            {homeLabel}
+          </Link>
+          {eyebrow && (
+            <>
+              <span aria-hidden className="text-ivory/60">
+                -
+              </span>
+              <span className="text-gold">{eyebrow}</span>
+            </>
+          )}
+        </motion.div>
       </motion.div>
     </section>
   );
