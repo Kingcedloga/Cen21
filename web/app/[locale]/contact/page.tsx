@@ -102,7 +102,7 @@ export default async function ContactPage({ params }: Props) {
           />
         </AnimateIn>
         <AnimateIn delay={0.1}>
-          <MapEmbed query={site.contact.address} title={`${site.name}`} />
+          <MapEmbed query={site.contact.address} title={`${site.name}`} variant="banner" />
         </AnimateIn>
       </PageSection>
     </>

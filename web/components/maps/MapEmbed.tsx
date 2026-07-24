@@ -19,8 +19,8 @@ type MapEmbedProps = {
   query: string;
   title?: string;
   className?: string;
-  /** Carte compacte pour pages filiales */
-  variant?: "default" | "compact";
+  /** "banner" : bandeau large, coins arrondis en haut uniquement (cf. carte Gourmet Mexicana) */
+  variant?: "default" | "compact" | "banner";
 };
 
 /**
@@ -40,12 +40,13 @@ export function MapEmbed({
   const src = googleMapsEmbedUrl(query);
   const external = googleMapsExternalUrl(query);
   const compact = variant === "compact";
+  const banner = variant === "banner";
 
   return (
     <motion.div
-      className={`glass-panel overflow-hidden rounded-2xl border border-white/10 ${
-        compact ? "max-w-3xl" : ""
-      } ${className}`}
+      className={`glass-panel overflow-hidden border border-white/10 ${
+        banner ? "rounded-t-2xl" : "rounded-2xl"
+      } ${compact ? "max-w-3xl" : ""} ${className}`}
       initial={reduced ? false : "hidden"}
       whileInView={reduced ? undefined : "visible"}
       viewport={defaultScrollViewport}
@@ -54,9 +55,11 @@ export function MapEmbed({
     >
       <div
         className={`relative w-full ${
-          compact
-            ? "aspect-[21/9] min-h-[140px] sm:min-h-[168px] md:min-h-[180px]"
-            : "aspect-[4/3] min-h-[220px] md:min-h-[280px]"
+          banner
+            ? "h-[clamp(300px,42vw,480px)]"
+            : compact
+              ? "aspect-[21/9] min-h-[140px] sm:min-h-[168px] md:min-h-[180px]"
+              : "aspect-[4/3] min-h-[220px] md:min-h-[280px]"
         }`}
       >
         <iframe
