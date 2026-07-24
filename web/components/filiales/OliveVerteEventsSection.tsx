@@ -3,13 +3,24 @@
 import Image from "next/image";
 import { useState, useCallback } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import type { Locale } from "@/i18n/routing";
+import { resolveEventImage } from "@/lib/event-images";
 import { EASE, DURATION_S } from "@/lib/motion";
-import type { SubsidiaryNewsSection } from "@/lib/types";
+import type { EventItem } from "@/lib/types";
 
 import "@/styles/olive-verte-events-section.css";
 
 const CARDS_PER_PAGE = 2;
+
+function formatShortDate(iso: string, locale: Locale) {
+  return new Intl.DateTimeFormat(locale === "fr" ? "fr-FR" : "en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  }).format(new Date(iso));
+}
 
 function CalendarIcon({ className }: { className?: string }) {
   return (
@@ -45,23 +56,29 @@ function ChevronRight({ className }: { className?: string }) {
   );
 }
 
-export function OliveVerteEventsSection({ content }: { content: SubsidiaryNewsSection }) {
+type Props = {
+  events: EventItem[];
+  fallbackImage?: string;
+};
+
+export function OliveVerteEventsSection({ events, fallbackImage }: Props) {
   const reduced = useReducedMotion();
+  const locale = useLocale() as Locale;
+  const t = useTranslations("subsidiaries");
   const [page, setPage] = useState(0);
 
-  const totalPages = Math.ceil(content.cards.length / CARDS_PER_PAGE);
-  const visibleCards = content.cards.slice(
-    page * CARDS_PER_PAGE,
-    page * CARDS_PER_PAGE + CARDS_PER_PAGE,
-  );
+  const totalPages = Math.ceil(events.length / CARDS_PER_PAGE);
+  const visibleEvents = events.slice(page * CARDS_PER_PAGE, page * CARDS_PER_PAGE + CARDS_PER_PAGE);
 
   const prev = useCallback(() => setPage((p) => (p - 1 + totalPages) % totalPages), [totalPages]);
   const next = useCallback(() => setPage((p) => (p + 1) % totalPages), [totalPages]);
 
+  if (events.length === 0) return null;
+
   return (
     <section className="ov-events" aria-labelledby="ov-events-title">
       <h2 id="ov-events-title" className="ov-events__title">
-        {content.title}
+        {t("oliveVerteEvents.title")}
       </h2>
 
       <div className="ov-events__nav-row">
@@ -86,13 +103,13 @@ export function OliveVerteEventsSection({ content }: { content: SubsidiaryNewsSe
             exit={reduced ? undefined : { opacity: 0, x: -24 }}
             transition={{ duration: DURATION_S.luxe, ease: EASE.luxury }}
           >
-            {visibleCards.map((card) => (
-              <article key={card.title} className="ov-events__card">
+            {visibleEvents.map((event) => (
+              <article key={event.id} className="ov-events__card">
                 {/* Image gauche */}
                 <div className="ov-events__card-image-wrap">
                   <Image
-                    src={card.image}
-                    alt={card.imageAlt}
+                    src={resolveEventImage(event, fallbackImage)}
+                    alt={event.title}
                     fill
                     className="ov-events__card-image"
                     sizes="(max-width: 767px) 42vw, 18rem"
@@ -104,17 +121,17 @@ export function OliveVerteEventsSection({ content }: { content: SubsidiaryNewsSe
                   <div className="ov-events__meta">
                     <span className="ov-events__meta-item">
                       <CalendarIcon className="ov-events__meta-icon" />
-                      {card.date}
+                      {formatShortDate(event.date, locale)}
                     </span>
                     <span className="ov-events__meta-item">
                       <CommentIcon className="ov-events__meta-icon" />
-                      {card.badgeLabel}
+                      {t("oliveVerteEvents.badgeLabel")}
                     </span>
                   </div>
-                  <h3 className="ov-events__card-title">{card.title}</h3>
-                  <p className="ov-events__card-description">{card.description}</p>
+                  <h3 className="ov-events__card-title">{event.title}</h3>
+                  <p className="ov-events__card-description">{event.excerpt}</p>
                   <Link href="/evenements" className="ov-events__cta">
-                    {content.ctaLabel}
+                    {t("oliveVerteEvents.ctaLabel")}
                   </Link>
                 </div>
               </article>

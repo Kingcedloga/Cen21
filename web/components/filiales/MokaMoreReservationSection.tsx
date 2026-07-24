@@ -5,10 +5,11 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useCallback, type FormEvent } from "react";
 
-import { useRouter } from "@/i18n/navigation";
+import { Toast, ToastViewport } from "@/components/ui/Toast";
 import { IconFacebook, IconInstagram, IconLinkedin } from "@/components/ui/SocialLinks";
 import { Calendar, Clock, Mail, User, Users } from "@/lib/icons";
 import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
+import { useReservationForm } from "@/lib/use-reservation-form";
 import type { Subsidiary } from "@/lib/types";
 
 import "@/styles/moka-more-reservation-section.css";
@@ -17,24 +18,32 @@ const MAIN_PHOTO = "/filiales/photos/filiale-06/terrasse-moka.png";
 const SECONDARY_PHOTO = "/filiales/photos/filiale-06/terrasse-moka1.png";
 
 const FIELDS = [
-  { key: "name", icon: User, type: "text" },
-  { key: "email", icon: Mail, type: "email" },
-  { key: "people", icon: Users, type: "text" },
-  { key: "date", icon: Calendar, type: "text" },
-  { key: "time", icon: Clock, type: "text" },
+  { key: "name", icon: User, type: "text", required: true },
+  { key: "email", icon: Mail, type: "email", required: true },
+  { key: "people", icon: Users, type: "text", required: false },
+  { key: "date", icon: Calendar, type: "text", required: false },
+  { key: "time", icon: Clock, type: "text", required: false },
 ] as const;
 
 export function MokaMoreReservationSection({ subsidiary }: { subsidiary: Subsidiary }) {
   const reduced = useReducedMotion();
   const t = useTranslations("subsidiaries");
-  const router = useRouter();
+  const tForm = useTranslations("form");
+  const { isSubmitting, toast, setToast, submit } = useReservationForm(
+    `Réservation — ${subsidiary.name}`,
+  );
 
   const handleSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      router.push("/contact");
+      void submit(event.currentTarget, {
+        successTitle: tForm("successTitle"),
+        successBody: tForm("successBody"),
+        errorTitle: tForm("errorTitle"),
+        errorBody: tForm("errorBody"),
+      });
     },
-    [router],
+    [submit, tForm],
   );
 
   const socialLinks = [
@@ -46,8 +55,9 @@ export function MokaMoreReservationSection({ subsidiary }: { subsidiary: Subsidi
   );
 
   return (
-    <section className="moka-reservation">
-      <motion.span
+    <>
+      <section className="moka-reservation">
+        <motion.span
         className="moka-reservation__watermark"
         aria-hidden="true"
         initial={reduced ? false : { opacity: 0 }}
@@ -71,6 +81,11 @@ export function MokaMoreReservationSection({ subsidiary }: { subsidiary: Subsidi
           <p className="moka-reservation__note">{t("mokaMoreReservation.formNote")}</p>
 
           <form className="moka-reservation__form" onSubmit={handleSubmit}>
+            <div className="hidden" aria-hidden="true">
+              <label htmlFor="moka-resa-website">Ne pas remplir</label>
+              <input id="moka-resa-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+            </div>
+
             {FIELDS.map((field, i) => {
               const Icon = field.icon;
               const label = t(`mokaMoreReservation.${field.key}Field`);
@@ -85,7 +100,9 @@ export function MokaMoreReservationSection({ subsidiary }: { subsidiary: Subsidi
                 >
                   <Icon size={16} className="moka-reservation__field-icon" aria-hidden="true" />
                   <input
+                    name={field.key}
                     type={field.type}
+                    required={field.required}
                     placeholder={label}
                     aria-label={label}
                     className="moka-reservation__input"
@@ -93,8 +110,8 @@ export function MokaMoreReservationSection({ subsidiary }: { subsidiary: Subsidi
                 </motion.div>
               );
             })}
-            <button type="submit" className="moka-reservation__submit">
-              {t("mokaMoreReservation.submitLabel")}
+            <button type="submit" className="moka-reservation__submit" disabled={isSubmitting}>
+              {isSubmitting ? tForm("submitting") : t("mokaMoreReservation.submitLabel")}
             </button>
           </form>
         </motion.div>
@@ -163,6 +180,19 @@ export function MokaMoreReservationSection({ subsidiary }: { subsidiary: Subsidi
           </div>
         </motion.div>
       </div>
-    </section>
+      </section>
+
+      <ToastViewport>
+        {toast && (
+          <Toast
+            key={`${toast.variant}-${toast.title}`}
+            variant={toast.variant}
+            title={toast.title}
+            message={toast.message}
+            onClose={() => setToast(null)}
+          />
+        )}
+      </ToastViewport>
+    </>
   );
 }

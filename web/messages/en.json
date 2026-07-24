@@ -97,8 +97,10 @@
     "marketEyebrow": "Market",
     "marketTitle": "Positioning",
     "teamEyebrow": "Leadership",
-    "teamTitle": "The team",
-    "teamDescription": "Profiles that embody our standards of excellence and operational rigor."
+    "teamTitle": "Our leadership team",
+    "teamDescription": "Profiles that embody our standards of excellence and operational rigor.",
+    "teamSubtitle": "The architects of our vision",
+    "heroImageAlt": "Interior architecture of a Cen21 Hospitality venue"
   },
   "contact": {
     "metaTitle": "Contact",
@@ -222,10 +224,16 @@
       "previousDish": "Previous dish",
       "nextDish": "Next dish"
     },
+    "oliveVerteEvents": {
+      "title": "Upcoming events",
+      "badgeLabel": "Don't miss out",
+      "ctaLabel": "Learn more"
+    },
     "oliveVerteReservation": {
       "title": "Craving a table tonight?",
       "description": "Reserve your spot at L'Olive Verte and enjoy Mediterranean flavours, cocktails, and a lively terrace atmosphere.",
-      "placeholder": "Your message",
+      "namePlaceholder": "Your name",
+      "placeholder": "Your email",
       "cta": "Book Now"
     },
     "muzikCafeHero": {
@@ -417,6 +425,13 @@
       "cta": "Explore Now",
       "previousVisual": "Previous visual",
       "nextVisual": "Next visual"
+    },
+    "pinkberryEvents": {
+      "eyebrow": "Coming up",
+      "title": "Pinkberry News",
+      "badgeLabel": "Pinkberry",
+      "author": "BY PINKBERRY",
+      "ctaLabel": "Read more"
     },
     "oliveVerteHero": {
       "eyebrow": "Flavours & Authenticity",

@@ -4,40 +4,51 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useCallback, type FormEvent } from "react";
 
-import { useRouter } from "@/i18n/navigation";
 import { AnimateIn } from "@/components/ui/AnimateIn";
+import { Toast, ToastViewport } from "@/components/ui/Toast";
 import { Calendar, Clock, Mail, Phone, User, Users } from "@/lib/icons";
 import { cormorant } from "@/lib/fonts";
 import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
+import { useReservationForm } from "@/lib/use-reservation-form";
 
 import "@/styles/muzik-cafe-reservation.css";
 
 type Props = {
   backgroundImage: string;
+  subsidiaryName: string;
 };
 
 const FIELDS = [
-  { key: "name", icon: User, type: "text" },
-  { key: "phone", icon: Phone, type: "tel" },
-  { key: "email", icon: Mail, type: "email" },
-  { key: "people", icon: Users, type: "text" },
-  { key: "date", icon: Calendar, type: "text" },
-  { key: "time", icon: Clock, type: "text" },
+  { key: "name", icon: User, type: "text", required: true },
+  { key: "phone", icon: Phone, type: "tel", required: false },
+  { key: "email", icon: Mail, type: "email", required: true },
+  { key: "people", icon: Users, type: "text", required: false },
+  { key: "date", icon: Calendar, type: "text", required: false },
+  { key: "time", icon: Clock, type: "text", required: false },
 ] as const;
 
-export function MuzikCafeReservationSection({ backgroundImage }: Props) {
+export function MuzikCafeReservationSection({ backgroundImage, subsidiaryName }: Props) {
   const t = useTranslations("subsidiaries");
-  const router = useRouter();
+  const tForm = useTranslations("form");
+  const { isSubmitting, toast, setToast, submit } = useReservationForm(
+    `Réservation — ${subsidiaryName}`,
+  );
 
   const handleSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      router.push("/contact");
+      void submit(event.currentTarget, {
+        successTitle: tForm("successTitle"),
+        successBody: tForm("successBody"),
+        errorTitle: tForm("errorTitle"),
+        errorBody: tForm("errorBody"),
+      });
     },
-    [router],
+    [submit, tForm],
   );
 
   return (
+    <>
     <section className={`muzik-reservation ${cormorant.variable}`}>
       <div
         className="muzik-reservation__media"
@@ -53,6 +64,11 @@ export function MuzikCafeReservationSection({ backgroundImage }: Props) {
         </AnimateIn>
 
         <form className="muzik-reservation__form" onSubmit={handleSubmit}>
+          <div className="hidden" aria-hidden="true">
+            <label htmlFor="muzik-resa-website">Ne pas remplir</label>
+            <input id="muzik-resa-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+          </div>
+
           <div className="muzik-reservation__grid">
             {FIELDS.map((field, i) => {
               const Icon = field.icon;
@@ -68,7 +84,9 @@ export function MuzikCafeReservationSection({ backgroundImage }: Props) {
                 >
                   <Icon size={18} className="muzik-reservation__field-icon" aria-hidden="true" />
                   <input
+                    name={field.key}
                     type={field.type}
+                    required={field.required}
                     placeholder={label}
                     aria-label={label}
                     className="muzik-reservation__input"
@@ -81,15 +99,29 @@ export function MuzikCafeReservationSection({ backgroundImage }: Props) {
           <motion.button
             type="submit"
             className="muzik-reservation__cta"
+            disabled={isSubmitting}
             initial={{ opacity: 0, y: 24, scale: 0.96 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={defaultScrollViewport}
             transition={{ duration: DURATION_S.luxe, ease: EASE.spring, delay: 0.3 }}
           >
-            {t("muzikCafeReservation.cta")}
+            {isSubmitting ? tForm("submitting") : t("muzikCafeReservation.cta")}
           </motion.button>
         </form>
       </div>
     </section>
+
+      <ToastViewport>
+        {toast && (
+          <Toast
+            key={`${toast.variant}-${toast.title}`}
+            variant={toast.variant}
+            title={toast.title}
+            message={toast.message}
+            onClose={() => setToast(null)}
+          />
+        )}
+      </ToastViewport>
+    </>
   );
 }

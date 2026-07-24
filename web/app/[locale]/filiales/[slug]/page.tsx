@@ -29,6 +29,7 @@ import { MuzikCafeGallerySection } from "@/components/filiales/MuzikCafeGalleryS
 import { MuzikCafeHero } from "@/components/filiales/MuzikCafeHero";
 import { MuzikCafeMenuSection } from "@/components/filiales/MuzikCafeMenuSection";
 import { MuzikCafeReservationSection } from "@/components/filiales/MuzikCafeReservationSection";
+import { OliveVerteEventsSection } from "@/components/filiales/OliveVerteEventsSection";
 import { OliveVerteHero } from "@/components/filiales/OliveVerteHero";
 import { OliveVerteMenuSection } from "@/components/filiales/OliveVerteMenuSection";
 import { OliveVerteReservationSection } from "@/components/filiales/OliveVerteReservationSection";
@@ -354,8 +355,10 @@ export default async function SubsidiaryPage({ params }: Props) {
           {subsidiary.menuCategoriesSection && (
             <OliveVerteMenuSection content={subsidiary.menuCategoriesSection} />
           )}
+          <OliveVerteEventsSection events={events} fallbackImage={subsidiary.coverImage} />
           <OliveVerteReservationSection
             backgroundImage={getSubsidiaryContactImage(slug, subsidiary.coverImage)}
+            subsidiaryName={subsidiary.name}
           />
           {sisterSubsidiaries.length > 0 && (
             <WabiSabiEstablishmentsSection
@@ -386,6 +389,7 @@ export default async function SubsidiaryPage({ params }: Props) {
           )}
           <MuzikCafeReservationSection
             backgroundImage={getSubsidiaryContactImage(slug, subsidiary.coverImage)}
+            subsidiaryName={subsidiary.name}
           />
         </>
       ) : slug === "filiale-06" ? (
@@ -657,10 +661,11 @@ export default async function SubsidiaryPage({ params }: Props) {
         <SubsidiaryEditorialAbout content={subsidiary.aboutSection} />
       )}
 
-      {slug === "filiale-09" && subsidiary.newsSection ? (
+      {slug === "filiale-09" ? (
         <PinkberryEventsSection
-          content={subsidiary.newsSection}
+          events={events}
           backgroundImage={galleryEntrySrc(subsidiary.galleryImages[0])}
+          fallbackImage={subsidiary.coverImage}
         />
       ) : slug === "filiale-05" ? (
         <MuzikCafeEventsSection

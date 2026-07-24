@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { Ticket } from "@/lib/icons";
 import { useLocale } from "next-intl";
 import { useRef, useState } from "react";
@@ -11,6 +12,7 @@ import type { Locale } from "@/i18n/routing";
 import { BLUR_PETROL } from "@/lib/image-blur";
 import { getSubsidiaryBySlug } from "@/lib/content";
 import { resolveEventImage } from "@/lib/event-images";
+import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
 import type { EventItem, EventStatus } from "@/lib/types";
 
 import "@/styles/subsidiary-event-showcase.css";
@@ -75,7 +77,7 @@ export function SubsidiaryEventShowcase({ events, labels, desktopColumns }: Prop
       aria-label={labels.eventInfo}
     >
       <div ref={trackRef} className="subsidiary-event-showcase__track">
-        {events.map((event) => {
+        {events.map((event, i) => {
           const parts = formatEventParts(event.date, locale);
           const title = displayTitle(event);
           const badge = statusLabel(event.status, labels);
@@ -85,11 +87,15 @@ export function SubsidiaryEventShowcase({ events, labels, desktopColumns }: Prop
           const imageSrc = resolveEventImage(event, subsidiary?.coverImage);
 
           return (
-            <article
+            <motion.article
               key={event.id}
               className={`subsidiary-event-showcase__card${isActive ? " is-active" : ""}`}
               onMouseEnter={() => setActiveId(event.id)}
               onFocus={() => setActiveId(event.id)}
+              initial={{ y: 24 }}
+              whileInView={{ y: 0 }}
+              viewport={defaultScrollViewport}
+              transition={{ duration: DURATION_S.luxe, ease: EASE.luxury, delay: i * 0.08 }}
             >
               <div className="subsidiary-event-showcase__visual">
                 <Image
@@ -143,7 +149,7 @@ export function SubsidiaryEventShowcase({ events, labels, desktopColumns }: Prop
                 <p className="subsidiary-event-showcase__weekday">{parts.weekday}</p>
                 <p className="subsidiary-event-showcase__time">{parts.time}</p>
               </div>
-            </article>
+            </motion.article>
           );
         })}
       </div>

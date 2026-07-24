@@ -54,19 +54,24 @@
 
 [data-subsidiary-theme="olive-verte"] .olive-reservation__form {
   display: flex;
+  flex-wrap: wrap;
   margin: clamp(1.75rem, 3.5vw, 2.5rem) auto 0;
-  max-width: 30rem;
+  max-width: 34rem;
 }
 
 [data-subsidiary-theme="olive-verte"] .olive-reservation__input {
   flex: 1;
-  min-width: 0;
+  min-width: 10rem;
   padding: 0.9375rem 1.25rem;
   border: none;
-  border-radius: 4px 0 0 4px;
+  border-radius: 0;
   background: #ffffff;
   color: #000000;
   font-size: 0.9375rem;
+}
+
+[data-subsidiary-theme="olive-verte"] .olive-reservation__input:first-of-type {
+  border-radius: 4px 0 0 4px;
 }
 
 [data-subsidiary-theme="olive-verte"] .olive-reservation__input::placeholder {

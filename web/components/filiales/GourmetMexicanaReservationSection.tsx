@@ -3,37 +3,42 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { useCallback } from "react";
+import { useCallback, type FormEvent } from "react";
 
-import { useRouter } from "@/i18n/navigation";
 import { MexicanMotifs } from "@/components/filiales/MexicanMotifs";
+import { Toast, ToastViewport } from "@/components/ui/Toast";
 import { ArrowUpRight, Mail, Phone, User, Users } from "@/lib/icons";
 import { EASE, defaultScrollViewport } from "@/lib/motion";
+import { useReservationForm } from "@/lib/use-reservation-form";
 
 import "@/styles/gourmet-mexicana-reservation.css";
 
-const DISH_PHOTO =
-  "https://images.unsplash.com/photo-1615870216519-2f9fa575fa5c?w=700&q=80";
 const CHEF_PHOTO = "/filiales/photos/filiale-07/mascottemexiacain.png";
 
 const FIELDS = [
-  { key: "name", icon: User, type: "text" },
-  { key: "phone", icon: Phone, type: "tel" },
-  { key: "email", icon: Mail, type: "email" },
-  { key: "guests", icon: Users, type: "text" },
+  { key: "name", icon: User, type: "text", required: true },
+  { key: "phone", icon: Phone, type: "tel", required: false },
+  { key: "email", icon: Mail, type: "email", required: true },
+  { key: "guests", icon: Users, type: "text", required: false },
 ] as const;
 
 export function GourmetMexicanaReservationSection() {
   const reduced = useReducedMotion();
   const t = useTranslations("subsidiaries");
-  const router = useRouter();
+  const tForm = useTranslations("form");
+  const { isSubmitting, toast, setToast, submit } = useReservationForm("Réservation — Gourmet Mexicana");
 
   const handleSubmit = useCallback(
-    (event: React.FormEvent<HTMLFormElement>) => {
+    (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      router.push("/contact");
+      void submit(event.currentTarget, {
+        successTitle: tForm("successTitle"),
+        successBody: tForm("successBody"),
+        errorTitle: tForm("errorTitle"),
+        errorBody: tForm("errorBody"),
+      });
     },
-    [router],
+    [submit, tForm],
   );
 
   const staggerMotion = (i: number) =>
@@ -47,6 +52,7 @@ export function GourmetMexicanaReservationSection() {
         };
 
   return (
+    <>
     <section className="mex-reservation">
       <MexicanMotifs variant="reservation" />
 
@@ -64,6 +70,11 @@ export function GourmetMexicanaReservationSection() {
           </motion.p>
 
           <motion.form className="mex-reservation__form" onSubmit={handleSubmit} {...staggerMotion(3)}>
+            <div className="hidden" aria-hidden="true">
+              <label htmlFor="mex-resa-website">Ne pas remplir</label>
+              <input id="mex-resa-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+            </div>
+
             <div className="mex-reservation__grid">
               {FIELDS.map((field) => {
                 const Icon = field.icon;
@@ -72,7 +83,9 @@ export function GourmetMexicanaReservationSection() {
                   <div key={field.key} className="mex-reservation__field">
                     <Icon size={16} className="mex-reservation__field-icon" aria-hidden="true" />
                     <input
+                      name={field.key}
                       type={field.type}
+                      required={field.required}
                       placeholder={label}
                       aria-label={label}
                       className="mex-reservation__input"
@@ -82,8 +95,13 @@ export function GourmetMexicanaReservationSection() {
               })}
             </div>
 
-            <motion.button type="submit" className="mex-reservation__submit" {...staggerMotion(4)}>
-              {t("gourmetMexicanaReservation.submitLabel")}
+            <motion.button
+              type="submit"
+              className="mex-reservation__submit"
+              disabled={isSubmitting}
+              {...staggerMotion(4)}
+            >
+              {isSubmitting ? tForm("submitting") : t("gourmetMexicanaReservation.submitLabel")}
               <ArrowUpRight size={16} aria-hidden="true" />
             </motion.button>
           </motion.form>
@@ -110,5 +128,18 @@ export function GourmetMexicanaReservationSection() {
         </div>
       </div>
     </section>
+
+      <ToastViewport>
+        {toast && (
+          <Toast
+            key={`${toast.variant}-${toast.title}`}
+            variant={toast.variant}
+            title={toast.title}
+            message={toast.message}
+            onClose={() => setToast(null)}
+          />
+        )}
+      </ToastViewport>
+    </>
   );
 }

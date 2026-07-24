@@ -189,6 +189,36 @@
       "subsidiarySlug": "filiale-04",
       "image": "/filiales/photos/filiale-04/events/02-french-touch-night.webp",
       "excerpt": "Retour sur la soirée French Touch au Millionaire Club."
+    },
+    {
+      "id": "evt-15",
+      "slug": "lancement-saveurs-de-saison-pinkberry",
+      "title": "Lancement des saveurs de saison",
+      "date": "2026-08-10T11:00:00",
+      "location": "Pinkberry Kinshasa",
+      "subsidiarySlug": "filiale-09",
+      "image": "https://images.unsplash.com/photo-1488900128323-21503983a07e?w=800&q=80",
+      "excerpt": "Découvrez en avant-première nos dernières saveurs aux fruits frais, préparées en petites quantités pour une durée limitée."
+    },
+    {
+      "id": "evt-16",
+      "slug": "soiree-bar-a-toppings-pinkberry",
+      "title": "Soirée dégustation — Bar à toppings",
+      "date": "2026-08-24T18:00:00",
+      "location": "Pinkberry Kinshasa",
+      "subsidiarySlug": "filiale-09",
+      "image": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800&q=80",
+      "excerpt": "Composez votre coupe idéale : vrais fruits, granola croquant et sauces généreuses à volonté."
+    },
+    {
+      "id": "evt-17",
+      "slug": "nocturne-pinkberry-22h",
+      "title": "Nocturne Pinkberry — Ouvert jusqu'à 22h",
+      "date": "2026-09-05T19:00:00",
+      "location": "Pinkberry Kinshasa",
+      "subsidiarySlug": "filiale-09",
+      "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800&q=80",
+      "excerpt": "Une envie sucrée en soirée ? Profitez de Pinkberry Kinshasa, désormais ouvert tous les jours jusqu'à 22h."
     }
   ]
 }

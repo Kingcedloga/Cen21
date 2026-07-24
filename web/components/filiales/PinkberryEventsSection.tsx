@@ -2,22 +2,37 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
+import { useLocale, useTranslations } from "next-intl";
 
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Link } from "@/i18n/navigation";
+import type { Locale } from "@/i18n/routing";
+import { resolveEventImage } from "@/lib/event-images";
 import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
-import type { SubsidiaryNewsSection } from "@/lib/types";
+import type { EventItem } from "@/lib/types";
 
 import "@/styles/pinkberry-news-section.css";
 
-export function PinkberryEventsSection({
-  content,
-  backgroundImage,
-}: {
-  content: SubsidiaryNewsSection;
+function formatShortDate(iso: string, locale: Locale) {
+  return new Intl.DateTimeFormat(locale === "fr" ? "fr-FR" : "en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  }).format(new Date(iso));
+}
+
+type Props = {
+  events: EventItem[];
   backgroundImage: string;
-}) {
+  fallbackImage?: string;
+};
+
+export function PinkberryEventsSection({ events, backgroundImage, fallbackImage }: Props) {
   const reduced = useReducedMotion();
+  const locale = useLocale() as Locale;
+  const t = useTranslations("subsidiaries");
+
+  if (events.length === 0) return null;
 
   return (
     <section className="pinkberry-news" aria-labelledby="pinkberry-news-title">
@@ -31,16 +46,16 @@ export function PinkberryEventsSection({
       />
 
       <AnimateIn className="pinkberry-news__header">
-        <p className="pinkberry-news__eyebrow">{content.eyebrow}</p>
+        <p className="pinkberry-news__eyebrow">{t("pinkberryEvents.eyebrow")}</p>
         <h2 id="pinkberry-news-title" className="pinkberry-news__title">
-          {content.title}
+          {t("pinkberryEvents.title")}
         </h2>
       </AnimateIn>
 
       <div className="pinkberry-news__grid">
-        {content.cards.map((card, i) => (
+        {events.map((event, i) => (
           <motion.article
-            key={card.title}
+            key={event.id}
             className="pinkberry-news__card"
             initial={reduced ? false : { opacity: 0, y: 24 }}
             whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
@@ -63,11 +78,11 @@ export function PinkberryEventsSection({
                   delay: i * 0.08 + 0.1,
                 }}
               >
-                {card.badgeLabel}
+                {t("pinkberryEvents.badgeLabel")}
               </motion.span>
               <Image
-                src={card.image}
-                alt={card.imageAlt}
+                src={resolveEventImage(event, fallbackImage)}
+                alt={event.title}
                 fill
                 className="pinkberry-news__card-image"
                 sizes="(max-width: 899px) 90vw, 24rem"
@@ -75,12 +90,12 @@ export function PinkberryEventsSection({
             </div>
             <div className="pinkberry-news__body">
               <p className="pinkberry-news__meta">
-                {card.date} / {card.author}
+                {formatShortDate(event.date, locale)} / {t("pinkberryEvents.author")}
               </p>
-              <h3 className="pinkberry-news__card-title">{card.title}</h3>
-              <p className="pinkberry-news__description">{card.description}</p>
+              <h3 className="pinkberry-news__card-title">{event.title}</h3>
+              <p className="pinkberry-news__description">{event.excerpt}</p>
               <Link href="/evenements" className="pinkberry-news__cta">
-                {content.ctaLabel}
+                {t("pinkberryEvents.ctaLabel")}
               </Link>
             </div>
           </motion.article>

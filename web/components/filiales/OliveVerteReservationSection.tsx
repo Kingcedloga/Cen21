@@ -5,29 +5,40 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useCallback, type FormEvent } from "react";
 
-import { useRouter } from "@/i18n/navigation";
 import { AnimateIn } from "@/components/ui/AnimateIn";
+import { Toast, ToastViewport } from "@/components/ui/Toast";
 import { DURATION_S, EASE } from "@/lib/motion";
+import { useReservationForm } from "@/lib/use-reservation-form";
 
 import "@/styles/olive-verte-reservation.css";
 
 type Props = {
   backgroundImage: string;
+  subsidiaryName: string;
 };
 
-export function OliveVerteReservationSection({ backgroundImage }: Props) {
+export function OliveVerteReservationSection({ backgroundImage, subsidiaryName }: Props) {
   const t = useTranslations("subsidiaries");
-  const router = useRouter();
+  const tForm = useTranslations("form");
+  const { isSubmitting, toast, setToast, submit } = useReservationForm(
+    `Réservation — ${subsidiaryName}`,
+  );
 
   const handleSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      router.push("/contact");
+      void submit(event.currentTarget, {
+        successTitle: tForm("successTitle"),
+        successBody: tForm("successBody"),
+        errorTitle: tForm("errorTitle"),
+        errorBody: tForm("errorBody"),
+      });
     },
-    [router],
+    [submit, tForm],
   );
 
   return (
+    <>
     <section className="olive-reservation">
       <div className="olive-reservation__media" aria-hidden="true">
         <Image
@@ -57,18 +68,44 @@ export function OliveVerteReservationSection({ backgroundImage }: Props) {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.16 }}
         >
+          <div className="hidden" aria-hidden="true">
+            <label htmlFor="olive-resa-website">Ne pas remplir</label>
+            <input id="olive-resa-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+          </div>
           <input
+            name="name"
+            type="text"
+            required
+            placeholder={t("oliveVerteReservation.namePlaceholder")}
+            aria-label={t("oliveVerteReservation.namePlaceholder")}
+            className="olive-reservation__input"
+          />
+          <input
+            name="email"
             type="email"
             required
             placeholder={t("oliveVerteReservation.placeholder")}
             aria-label={t("oliveVerteReservation.placeholder")}
             className="olive-reservation__input"
           />
-          <button type="submit" className="olive-reservation__cta">
-            {t("oliveVerteReservation.cta")}
+          <button type="submit" className="olive-reservation__cta" disabled={isSubmitting}>
+            {isSubmitting ? tForm("submitting") : t("oliveVerteReservation.cta")}
           </button>
         </motion.form>
       </div>
     </section>
+
+      <ToastViewport>
+        {toast && (
+          <Toast
+            key={`${toast.variant}-${toast.title}`}
+            variant={toast.variant}
+            title={toast.title}
+            message={toast.message}
+            onClose={() => setToast(null)}
+          />
+        )}
+      </ToastViewport>
+    </>
   );
 }
