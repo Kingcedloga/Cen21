@@ -35,7 +35,7 @@ export function AboutHero({
   return (
     <section
       aria-labelledby="about-hero-title"
-      className="relative isolate flex min-h-[22rem] items-center overflow-hidden bg-petrol py-20 md:min-h-[26rem] md:py-24"
+      className="relative isolate flex min-h-[50vh] items-center overflow-hidden bg-petrol py-20 md:py-24"
     >
       <motion.div
         className="absolute inset-0"
