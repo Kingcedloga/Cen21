@@ -431,5 +431,6 @@ export type AboutContent = {
   values: { title: string; description: string }[];
   positioning: string;
   heroImage?: string;
+  originsImage?: string;
   team?: TeamMember[];
 };

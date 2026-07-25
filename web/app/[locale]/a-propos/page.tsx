@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { PageSection } from "@/components/layout/PageSection";
 import { AboutHero } from "@/components/sections/AboutHero";
+import { AboutOriginsSection } from "@/components/sections/AboutOriginsSection";
 import { TeamGrid } from "@/components/sections/TeamGrid";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { ReadingProgress } from "@/components/ui/ReadingProgress";
@@ -12,6 +13,8 @@ import { resolvePageMetadata } from "@/lib/seo";
 
 const FALLBACK_HERO =
   "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=2400&q=85";
+const FALLBACK_ORIGINS_IMAGE =
+  "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=2400&q=85";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -45,20 +48,13 @@ export default async function AboutPage({ params }: Props) {
         imageAlt={t("heroImageAlt")}
       />
 
-      <PageSection variant="default">
-        <AnimateIn>
-          <SectionHeading
-            eyebrow={t("originsEyebrow")}
-            title={t("originsTitle")}
-            titleAs="h2"
-            align="left"
-            className="mb-10 max-w-2xl"
-          />
-        </AnimateIn>
-        <AnimateIn delay={0.1}>
-          <p className="max-w-3xl text-lg leading-relaxed text-taupe">{about.history}</p>
-        </AnimateIn>
-      </PageSection>
+      <AboutOriginsSection
+        eyebrow={t("originsEyebrow")}
+        title={t("originsTitle")}
+        description={about.history}
+        image={about.originsImage ?? FALLBACK_ORIGINS_IMAGE}
+        imageAlt={t("originsImageAlt")}
+      />
 
       <PageSection variant="alt">
         <AnimateIn>
