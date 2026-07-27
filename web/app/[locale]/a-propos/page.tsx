@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageSection } from "@/components/layout/PageSection";
 import { AboutHero } from "@/components/sections/AboutHero";
 import { AboutOriginsSection } from "@/components/sections/AboutOriginsSection";
-import { TeamGrid } from "@/components/sections/TeamGrid";
+import { AboutTeamSection } from "@/components/sections/AboutTeamSection";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { ReadingProgress } from "@/components/ui/ReadingProgress";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -72,29 +72,11 @@ export default async function AboutPage({ params }: Props) {
       </PageSection>
 
       {about.team && about.team.length > 0 && (
-        <>
-          <PageSection
-            variant="default"
-            spacing="loose"
-            id="equipe-dirigeante"
-            ariaLabelledby="equipe-dirigeante-title"
-          >
-            <AnimateIn>
-              <SectionHeading
-                eyebrow={t("teamEyebrow")}
-                title={t("teamTitle")}
-                subtitle={t("teamSubtitle")}
-                titleAs="h2"
-                subtitleAs="h3"
-                titleId="equipe-dirigeante-title"
-                description={t("teamDescription")}
-                align="left"
-                className="mb-12 max-w-2xl md:mb-16"
-              />
-            </AnimateIn>
-            <TeamGrid members={about.team} />
-          </PageSection>
-        </>
+        <AboutTeamSection
+          eyebrow={t("teamEyebrow")}
+          title={t("teamTitle")}
+          members={about.team}
+        />
       )}
 
       <PageSection variant={about.team && about.team.length > 0 ? "alt" : "default"}>
