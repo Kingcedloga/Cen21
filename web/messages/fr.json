@@ -154,7 +154,21 @@
     "emptyFilteredTitle": "Pas d'événement programmé",
     "emptyAgendaTitle": "L'agenda se prépare",
     "emptyFilteredBody": "Cet établissement n'a pas encore publié son prochain rendez-vous.",
-    "emptyAgendaBody": "Nos prochaines soirées arrivent — restez à l'écoute, ou parcourez les éditions passées."
+    "emptyAgendaBody": "Nos prochaines soirées arrivent — restez à l'écoute, ou parcourez les éditions passées.",
+    "hero": {
+      "comingSoonFallback": "Coming Soon",
+      "daysLabel": "Jours",
+      "hoursLabel": "Heures",
+      "minutesLabel": "Minutes",
+      "secondsLabel": "Secondes",
+      "subscribeText": "Abonnez-vous pour rester informé",
+      "emailPlaceholder": "Adresse email",
+      "subscribeCta": "S'abonner",
+      "subscribing": "Envoi…",
+      "subscribeSuccess": "Merci ! Vous êtes inscrit.",
+      "subscribeError": "Une erreur est survenue. Réessayez.",
+      "slidePagination": "Aller à l'événement {index}"
+    }
   },
   "gallery": {
     "metaTitle": "Galerie",

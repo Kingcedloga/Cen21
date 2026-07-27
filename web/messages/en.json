@@ -150,7 +150,21 @@
     "viewAll": "View all events",
     "archives": "Archives",
     "viewArchives": "View archives",
-    "notify": "Get notified"
+    "notify": "Get notified",
+    "hero": {
+      "comingSoonFallback": "Coming Soon",
+      "daysLabel": "Days",
+      "hoursLabel": "Hours",
+      "minutesLabel": "Minutes",
+      "secondsLabel": "Seconds",
+      "subscribeText": "Subscribe to stay informed",
+      "emailPlaceholder": "Email address",
+      "subscribeCta": "Subscribe",
+      "subscribing": "Sending…",
+      "subscribeSuccess": "Thank you! You're subscribed.",
+      "subscribeError": "Something went wrong. Please try again.",
+      "slidePagination": "Go to event {index}"
+    }
   },
   "gallery": {
     "metaTitle": "Gallery",

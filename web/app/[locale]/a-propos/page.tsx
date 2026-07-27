@@ -103,20 +103,6 @@ export default async function AboutPage({ params }: Props) {
         </div>
       </PageSection>
 
-      <PageSection variant={about.team && about.team.length > 0 ? "default" : "alt"}>
-        <AnimateIn>
-          <SectionHeading
-            eyebrow={t("marketEyebrow")}
-            title={t("marketTitle")}
-            titleAs="h2"
-            align="left"
-            className="mb-10 max-w-2xl"
-          />
-        </AnimateIn>
-        <AnimateIn delay={0.1}>
-          <p className="max-w-3xl text-lg leading-relaxed text-taupe">{about.positioning}</p>
-        </AnimateIn>
-      </PageSection>
     </>
   );
 }
