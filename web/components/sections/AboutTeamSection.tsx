@@ -30,7 +30,7 @@ export function AboutTeamSection({ eyebrow, title, members }: Props) {
     >
       <div className="mx-auto mb-12 max-w-3xl text-center md:mb-16">
         <AnimateIn>
-          <p className="text-2xl italic text-gold-mid [font-family:var(--font-dynalight),cursive]">
+          <p className="text-2xl font-bold italic text-gold-mid [font-family:var(--font-dynalight),cursive]">
             {eyebrow}
           </p>
         </AnimateIn>

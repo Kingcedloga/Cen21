@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import type { ElementType, ReactNode } from "react";
 
+import { dynalight } from "@/lib/fonts";
 import {
   defaultScrollViewport,
   ornamentDiamondTransition,
@@ -93,7 +94,7 @@ export function SectionHeading({
 
   return (
     <header
-      className={`max-w-3xl mb-10 md:mb-12 ${
+      className={`max-w-3xl mb-10 md:mb-12 ${dynalight.variable} ${
         isCenter ? "mx-auto text-center" : "text-left"
       } ${className}`}
     >
@@ -115,7 +116,7 @@ export function SectionHeading({
             {...diamondMotion}
           />
           <p
-            className={`eyebrow text-[10.5px] font-medium uppercase sm:text-[11px] ${styles.eyebrow}`}
+            className={`eyebrow text-[10.5px] font-bold uppercase sm:text-[11px] [font-family:var(--font-dynalight),cursive] ${styles.eyebrow}`}
           >
             {eyebrow}
           </p>

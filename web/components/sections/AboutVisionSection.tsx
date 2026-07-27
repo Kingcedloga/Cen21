@@ -89,7 +89,7 @@ export function AboutVisionSection({ eyebrow, title, description, cta, images }:
         {/* Contenu droite */}
         <div className="flex flex-col justify-center">
           <motion.p
-            className="text-2xl italic text-gold-mid [font-family:var(--font-dynalight),cursive]"
+            className="text-2xl font-bold italic text-gold-mid [font-family:var(--font-dynalight),cursive]"
             initial={reduced ? false : { opacity: 0, y: 24 }}
             whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}

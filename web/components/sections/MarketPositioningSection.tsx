@@ -6,6 +6,7 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 
 import { Check, Play } from "@/lib/icons";
+import { dynalight } from "@/lib/fonts";
 import { DURATION_S, EASE } from "@/lib/motion";
 
 import "@/styles/market-positioning.css";
@@ -69,7 +70,7 @@ export function MarketPositioningSection({
   const animate = inView ? "visible" : "hidden";
 
   return (
-    <section className="mp-section" ref={ref} aria-labelledby="mp-title">
+    <section className={`mp-section ${dynalight.variable}`} ref={ref} aria-labelledby="mp-title">
       <div className="mp-inner">
 
         {/* ── Colonne gauche : collage ── */}

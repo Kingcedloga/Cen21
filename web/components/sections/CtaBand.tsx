@@ -12,6 +12,7 @@ import {
 } from "react";
 
 import { AnimateIn } from "@/components/ui/AnimateIn";
+import { dynalight } from "@/lib/fonts";
 import { youtubeEmbedUrl, youtubeThumbnailUrl } from "@/lib/youtube";
 
 export type CtaBandVideo = {
@@ -195,11 +196,11 @@ export function CtaBand({ videos }: CtaBandProps) {
   );
 
   return (
-    <section className="relative bg-ivory px-4 py-24 text-petrol md:px-6 md:py-28 lg:px-8">
+    <section className={`relative bg-ivory px-4 py-24 text-petrol md:px-6 md:py-28 lg:px-8 ${dynalight.variable}`}>
       <AnimateIn>
         <div className="relative mx-auto max-w-4xl">
           <div className="flex flex-col items-center">
-            <span className="inline-flex items-center rounded-full border border-petrol/30 px-5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.32em] text-petrol">
+            <span className="inline-flex items-center rounded-full border border-petrol/30 px-5 py-1.5 text-[10px] font-bold uppercase tracking-[0.32em] text-petrol [font-family:var(--font-dynalight),cursive]">
               {t("eyebrow")}
             </span>
 

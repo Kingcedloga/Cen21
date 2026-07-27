@@ -34,7 +34,7 @@ export function AboutOriginsSection({ eyebrow, title, description, image, imageA
     >
       <div className="mx-auto max-w-3xl text-center">
         <motion.p
-          className="mb-4 text-2xl italic text-gold-mid [font-family:var(--font-dynalight),cursive]"
+          className="mb-4 text-2xl font-bold italic text-gold-mid [font-family:var(--font-dynalight),cursive]"
           initial={reduced ? false : { opacity: 0, y: 24 }}
           whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
           viewport={defaultScrollViewport}

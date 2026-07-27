@@ -8,6 +8,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/Button";
+import { dynalight } from "@/lib/fonts";
 import { BLUR_PETROL } from "@/lib/image-blur";
 import { DURATION_S, EASE, fadeUpTransition, fadeUpVariants, heroStaggerVariants } from "@/lib/motion";
 
@@ -73,7 +74,7 @@ export function HeroCinematic({ slides, siteName, className = "" }: HeroCinemati
   return (
     <section
       ref={sectionRef}
-      className={`relative flex h-[clamp(220px,60dvh,520px)] shrink-0 items-end overflow-hidden ${className}`}
+      className={`relative flex h-[clamp(220px,60dvh,520px)] shrink-0 items-end overflow-hidden ${dynalight.variable} ${className}`}
     >
       <motion.div
         className="absolute inset-0 will-change-transform"
@@ -140,7 +141,7 @@ export function HeroCinematic({ slides, siteName, className = "" }: HeroCinemati
           variants={reducedMotion ? undefined : heroStaggerVariants}
         >
           <motion.p
-            className="eyebrow text-[10.5px] font-medium uppercase text-gold sm:text-[11px]"
+            className="eyebrow text-[10.5px] font-bold uppercase text-gold sm:text-[11px] [font-family:var(--font-dynalight),cursive]"
             variants={reducedMotion ? undefined : fadeUpVariants}
             transition={fadeUpTransition}
           >
