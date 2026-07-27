@@ -444,6 +444,9 @@ h4 {
 .ease-out-soft {
   transition-timing-function: var(--ease-out-soft);
 }
+.ease-spring {
+  transition-timing-function: var(--ease-spring);
+}
 
 /* === Animations signatures ============================================ */
 @keyframes scroll-cue {
