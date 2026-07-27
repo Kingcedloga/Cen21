@@ -432,5 +432,6 @@ export type AboutContent = {
   positioning: string;
   heroImage?: string;
   originsImage?: string;
+  visionImages?: string[];
   team?: TeamMember[];
 };

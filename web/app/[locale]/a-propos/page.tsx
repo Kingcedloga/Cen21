@@ -1,12 +1,10 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-import { PageSection } from "@/components/layout/PageSection";
 import { AboutHero } from "@/components/sections/AboutHero";
 import { AboutOriginsSection } from "@/components/sections/AboutOriginsSection";
 import { AboutTeamSection } from "@/components/sections/AboutTeamSection";
-import { AnimateIn } from "@/components/ui/AnimateIn";
+import { AboutVisionSection } from "@/components/sections/AboutVisionSection";
 import { ReadingProgress } from "@/components/ui/ReadingProgress";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { Locale } from "@/i18n/routing";
 import { getAboutContent } from "@/lib/content";
 import { resolvePageMetadata } from "@/lib/seo";
@@ -15,6 +13,11 @@ const FALLBACK_HERO =
   "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=2400&q=85";
 const FALLBACK_ORIGINS_IMAGE =
   "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=2400&q=85";
+const FALLBACK_VISION_IMAGES: [string, string, string] = [
+  "https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=1200&q=85",
+  "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=85",
+  "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=85",
+];
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -56,20 +59,17 @@ export default async function AboutPage({ params }: Props) {
         imageAlt={t("originsImageAlt")}
       />
 
-      <PageSection variant="alt">
-        <AnimateIn>
-          <SectionHeading
-            eyebrow={t("visionEyebrow")}
-            title={t("visionTitle")}
-            titleAs="h2"
-            align="left"
-            className="mb-10 max-w-2xl"
-          />
-        </AnimateIn>
-        <AnimateIn delay={0.1}>
-          <p className="max-w-3xl text-lg leading-relaxed text-taupe">{about.vision}</p>
-        </AnimateIn>
-      </PageSection>
+      <AboutVisionSection
+        eyebrow={t("visionEyebrow")}
+        title={t("visionTitle")}
+        description={about.vision}
+        cta={t("visionCta")}
+        images={[
+          about.visionImages?.[0] ?? FALLBACK_VISION_IMAGES[0],
+          about.visionImages?.[1] ?? FALLBACK_VISION_IMAGES[1],
+          about.visionImages?.[2] ?? FALLBACK_VISION_IMAGES[2],
+        ]}
+      />
 
       {about.team && about.team.length > 0 && (
         <AboutTeamSection
@@ -79,29 +79,6 @@ export default async function AboutPage({ params }: Props) {
         />
       )}
 
-      <PageSection variant={about.team && about.team.length > 0 ? "alt" : "default"}>
-        <AnimateIn>
-          <SectionHeading
-            eyebrow={t("dnaEyebrow")}
-            title={t("dnaTitle")}
-            titleAs="h2"
-            align="left"
-            className="mb-10 max-w-2xl"
-          />
-        </AnimateIn>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {about.values.map((v, i) => (
-            <AnimateIn key={v.title} delay={i * 0.05}>
-              <article className="glass-panel rounded-xl p-8">
-                <h3 className="mb-3 font-[family-name:var(--font-dm-sans)] text-xl text-gold">
-                  {v.title}
-                </h3>
-                <p className="leading-relaxed text-taupe">{v.description}</p>
-              </article>
-            </AnimateIn>
-          ))}
-        </div>
-      </PageSection>
 
     </>
   );
