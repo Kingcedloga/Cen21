@@ -71,6 +71,7 @@
     "description": "Explorez nos adresses ou contactez notre équipe pour une demande privée.",
     "subsidiaries": "Nos filiales",
     "contact": "Nous contacter",
+    "videoWatermark": "Regarder La Vidéo",
     "playVideoAria": "Lire la vidéo d'expérience Cen21 Hospitality",
     "playVideoAriaSlide": "Lire la vidéo {current} sur {total}",
     "closeVideoAria": "Fermer la vidéo",

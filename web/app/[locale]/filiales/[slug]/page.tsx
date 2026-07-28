@@ -504,7 +504,7 @@ export default async function SubsidiaryPage({ params }: Props) {
         />
       )}
 
-      {slug !== "filiale-01" && slug !== "filiale-02" && slug !== "filiale-04" && slug !== "filiale-05" && slug !== "filiale-06" && slug !== "filiale-07" && slug !== "filiale-09" && breadcrumbSection}
+      {slug !== "filiale-01" && slug !== "filiale-02" && slug !== "filiale-03" && slug !== "filiale-04" && slug !== "filiale-05" && slug !== "filiale-06" && slug !== "filiale-07" && slug !== "filiale-09" && breadcrumbSection}
 
       {slug === "filiale-03" && subsidiary.introSection && (
         <KLoungeIntroSection content={subsidiary.introSection} />

@@ -2,14 +2,14 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
 import { FeaturedSubsidiariesSlider } from "@/components/sections/FeaturedSubsidiariesSlider";
-import { CtaBand } from "@/components/sections/CtaBand";
 import { HeroCinematic } from "@/components/sections/HeroCinematic";
+import { HomeExperienceSection } from "@/components/sections/HomeExperienceSection";
 import { MarketPositioningSection } from "@/components/sections/MarketPositioningSection";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StatsBanner } from "@/components/sections/StatsBanner";
 import { PageSection } from "@/components/layout/PageSection";
-import { getSubsidiaries, getSiteConfig, getExperienceVideos, getAboutContent } from "@/lib/content";
+import { getSubsidiaries, getSiteConfig, getExperienceVideoId, getAboutContent } from "@/lib/content";
 import type { Locale } from "@/i18n/routing";
 import { resolvePageMetadata } from "@/lib/seo";
 
@@ -64,6 +64,9 @@ export default async function HomePage({ params }: Props) {
     typeof site.experienceYoutubeId === "string" && site.experienceYoutubeId
       ? site.experienceYoutubeId
       : "https://youtu.be/cCRgd85KfxY";
+
+  // Photo d'ambiance pour la section Expérience (fond du bouton play)
+  const experienceImage = heroSlides[2]?.src ?? heroSlides[0]?.src ?? site.heroImage;
 
   return (
     <>
@@ -135,7 +138,7 @@ export default async function HomePage({ params }: Props) {
 
       <StatsBanner />
 
-      <CtaBand videos={getExperienceVideos(l)} />
+      <HomeExperienceSection backgroundImage={experienceImage} videoId={getExperienceVideoId(l)} />
     </>
   );
 }
