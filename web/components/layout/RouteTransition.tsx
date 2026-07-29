@@ -2,31 +2,28 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { type ReactNode, useEffect, useRef } from "react";
+import { type ReactNode, useState } from "react";
 
 import { DURATION_S, EASE } from "@/lib/motion";
 
 export function RouteTransition({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const reduced = useReducedMotion();
-  const prevPath = useRef(pathname);
-  const direction = useRef(1);
+  const [prevPath, setPrevPath] = useState(pathname);
+  const [direction, setDirection] = useState(1);
 
-  useEffect(() => {
-    if (pathname !== prevPath.current) {
-      direction.current =
-        (pathname?.length ?? 0) >= (prevPath.current?.length ?? 0) ? 1 : -1;
-      prevPath.current = pathname;
-    }
-  }, [pathname]);
+  if (pathname !== prevPath) {
+    setDirection((pathname?.length ?? 0) >= (prevPath?.length ?? 0) ? 1 : -1);
+    setPrevPath(pathname);
+  }
 
   if (reduced) return <>{children}</>;
 
-  const xOut = -16 * direction.current;
-  const xIn = 16 * direction.current;
+  const xOut = -16 * direction;
+  const xIn = 16 * direction;
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
+    <AnimatePresence mode="popLayout" initial={false}>
       <motion.div
         key={pathname}
         initial={{ opacity: 0, x: xIn }}
