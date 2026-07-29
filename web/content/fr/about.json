@@ -7,7 +7,7 @@
     "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=85"
   ],
   "history": "Fondée sur une vision audacieuse de l'hospitalité contemporaine, Cen21 Hospitality rassemble des adresses emblématiques où gastronomie, mixologie et scénographie se rencontrent. Chaque établissement cultive son identité tout en partageant une exigence commune : offrir des moments mémorables.",
-  "vision": "Devenir la référence européenne des expériences lifestyle premium, en créant des univers où le détail, le service et l'émotion redéfinissent les standards du secteur.",
+  "vision": "Devenir la référence africaine des expériences lifestyle premium, en créant des univers où le détail, le service et l'émotion redéfinissent les standards du secteur.",
   "values": [
     {
       "title": "Excellence",
@@ -29,25 +29,19 @@
   "positioning": "Cen21 Hospitality incarne le luxe moderne : minimalisme éditorial, profondeur cinématographique et expériences nocturnes d'exception, inspirées des hôtels de palace et de la scène lifestyle internationale.",
   "team": [
     {
-      "name": "Alexandre Dubois",
-      "role": "Président-Directeur Général",
-      "bio": "Vingt ans d'expérience dans l'hôtellerie de luxe, ancien directeur de palaces parisiens. Vision long-terme et exigence opérationnelle.",
-      "photo": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=85",
-      "linkedin": "https://www.linkedin.com/in/example-ceo"
+      "name": "Kenny Rawtani",
+      "role": "Chairman",
+      "photo": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=85"
     },
     {
-      "name": "Camille Laurent",
-      "role": "Directrice Générale Déléguée",
-      "bio": "Stratégie de marque et expansion internationale. Précédemment chez LVMH Hospitality Excellence, elle pilote le déploiement de nos adresses.",
-      "photo": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=85",
-      "linkedin": "https://www.linkedin.com/in/example-coo"
+      "name": "Ritesh Hemnani",
+      "role": "Vice Chairman",
+      "photo": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=800&q=85"
     },
     {
-      "name": "Thomas Moreau",
-      "role": "Directeur Financier & Développement",
-      "bio": "Architecte du modèle économique du groupe, il orchestre l'allocation du capital et les partenariats stratégiques avec les meilleurs investisseurs.",
-      "photo": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=800&q=85",
-      "linkedin": "https://www.linkedin.com/in/example-cfo"
+      "name": "Subrajeet Phookan",
+      "role": "Chief Executive Officer",
+      "photo": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=85"
     }
   ]
 }

@@ -5,7 +5,7 @@
       "name": "L'Olive Verte",
       "sector": "lounge",
       "tagline": "Restaurant & lounge — bar sportif premium en plein air",
-      "description": "Bar sportif haut de gamme en plein air sur le Boulevard du 30 Juin. Cuisine européenne, cocktails, piscine, grands écrans pour le foot, karaoké et lounge dans une ambiance conviviale et festive.",
+      "description": "Bar sportif haut de gamme en plein air sur le Boulevard du 30 Juin. Cuisine africaine, cocktails, piscine, grands écrans pour le foot, karaoké et lounge dans une ambiance conviviale et festive.",
       "practicalInfo": {
         "address": "Boulevard du 30 Juin, Kinshasa",
         "hours": "Tous les jours 11h–02h",
@@ -32,7 +32,7 @@
       "specialtiesSection": {
         "eyebrow": "Nos Spécialités",
         "title": "Nos Spécialités",
-        "description": "Des classiques européens généreux aux créations contemporaines légères, chaque assiette de L'Olive Verte est préparée avec des ingrédients de qualité et des saveurs affirmées — pour une expérience inoubliable à toute heure.",
+        "description": "Des classiques africains généreux aux créations contemporaines légères, chaque assiette de L'Olive Verte est préparée avec des ingrédients de qualité et des saveurs affirmées — pour une expérience inoubliable à toute heure.",
         "rows": [
           {
             "title": "Une cuisine fraîche et généreuse, à toute heure",
@@ -56,7 +56,7 @@
       },
       "menuCategoriesSection": {
         "title": "Nos Meilleurs Plats",
-        "description": "Une carte pensée autour d'ingrédients de qualité et de saveurs affirmées — classiques européens, grillades au feu de bois et cocktails rafraîchissants pour toutes les envies.",
+        "description": "Une carte pensée autour d'ingrédients de qualité et de saveurs affirmées — classiques africains, grillades au feu de bois et cocktails rafraîchissants pour toutes les envies.",
         "categories": [
           {
             "id": "starters",

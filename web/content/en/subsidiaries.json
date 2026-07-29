@@ -5,7 +5,7 @@
       "name": "L'Olive Verte",
       "sector": "lounge",
       "tagline": "Restaurant & lounge — premium open-air sports bar",
-      "description": "Premium open-air sports bar on Boulevard du 30 Juin. European cuisine, cocktails, swimming pool, large football screens, karaoke, and lounge in a lively, festive atmosphere.",
+      "description": "Premium open-air sports bar on Boulevard du 30 Juin. African cuisine, cocktails, swimming pool, large football screens, karaoke, and lounge in a lively, festive atmosphere.",
       "practicalInfo": {
         "address": "Boulevard du 30 Juin, Kinshasa",
         "hours": "Daily 11am–2am",
@@ -32,7 +32,7 @@
       "specialtiesSection": {
         "eyebrow": "Our Specialities",
         "title": "Our Specialities",
-        "description": "From hearty European classics to fresh contemporary dishes, every plate at L'Olive Verte is crafted with quality ingredients and bold flavours — for a memorable dining experience at any hour.",
+        "description": "From hearty African classics to fresh contemporary dishes, every plate at L'Olive Verte is crafted with quality ingredients and bold flavours — for a memorable dining experience at any hour.",
         "rows": [
           {
             "title": "Fresh, generous cuisine for every occasion",
@@ -56,7 +56,7 @@
       },
       "menuCategoriesSection": {
         "title": "Our Best Dishes",
-        "description": "A menu built on quality ingredients and bold flavours — European classics, wood-fired grills, and refreshing cocktails for every craving.",
+        "description": "A menu built on quality ingredients and bold flavours — African classics, wood-fired grills, and refreshing cocktails for every craving.",
         "categories": [
           {
             "id": "starters",
