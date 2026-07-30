@@ -36,7 +36,7 @@ export function MokaMoreQuoteSection({ leftImage, rightImage }: Props) {
         initial={reduced ? false : { opacity: 0, x: -40 }}
         whileInView={reduced ? undefined : { opacity: 0.5, x: 0 }}
         viewport={defaultScrollViewport}
-        transition={{ duration: 0.7, ease: EASE.luxury }}
+        transition={{ duration: DURATION_S.luxe, ease: EASE.luxury }}
       >
         <Image src={leftImage} alt="" fill className="moka-quote__photo-img" sizes="22vw" />
       </motion.div>
@@ -47,7 +47,7 @@ export function MokaMoreQuoteSection({ leftImage, rightImage }: Props) {
         initial={reduced ? false : { opacity: 0, x: 40 }}
         whileInView={reduced ? undefined : { opacity: 0.5, x: 0 }}
         viewport={defaultScrollViewport}
-        transition={{ duration: 0.7, ease: EASE.luxury }}
+        transition={{ duration: DURATION_S.luxe, ease: EASE.luxury }}
       >
         <Image src={rightImage} alt="" fill className="moka-quote__photo-img" sizes="22vw" />
       </motion.div>

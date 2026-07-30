@@ -53,9 +53,9 @@
 
   /* Durées — toujours pleines centaines pour un rythme régulier. */
   --duration-fine: 300ms;
-  --duration-base: 480ms;
-  --duration-luxe: 700ms;
-  --duration-grand: 1000ms;
+  --duration-base: 500ms;
+  --duration-luxe: 750ms;
+  --duration-grand: 1100ms;
   /* Sémantiques — miroir lib/motion.ts DURATION_S */
   --duration-shimmer: 900ms;
   --duration-hero-crossfade: 1000ms;

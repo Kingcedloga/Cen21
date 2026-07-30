@@ -71,8 +71,8 @@ export function OliveVerteHero({ subsidiary }: { subsidiary: Subsidiary }) {
                   : { opacity: 1, scale: 1, y: [0, -6, 0] }
               }
               transition={{
-                opacity: { delay: i * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] },
-                scale:   { delay: i * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+                opacity: { delay: i * 0.08, duration: DURATION_S.base, ease: [0.16, 1, 0.3, 1] },
+                scale:   { delay: i * 0.08, duration: DURATION_S.base, ease: [0.16, 1, 0.3, 1] },
                 y: {
                   delay: i * 0.08 + 0.4,
                   duration: 3.2 + (i % 4) * 0.3,

@@ -189,13 +189,18 @@ export default async function SubsidiaryPage({ params }: Props) {
 
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
 
+  const headingFontClass =
+    slug === "filiale-03"
+      ? "font-[family-name:var(--font-cormorant)]"
+      : "font-[family-name:var(--font-dm-sans)]";
+
   const headingClass = isThemed
-    ? "sub-themed-heading font-[family-name:var(--font-dm-sans)] text-3xl mb-4"
-    : "font-[family-name:var(--font-dm-sans)] text-3xl text-ivory mb-4";
+    ? `sub-themed-heading ${headingFontClass} text-3xl mb-4`
+    : `${headingFontClass} text-3xl text-ivory mb-4`;
 
   const sectionHeadingClass = isThemed
-    ? "sub-themed-heading font-[family-name:var(--font-dm-sans)] text-3xl mb-8"
-    : "font-[family-name:var(--font-dm-sans)] text-3xl text-ivory mb-8";
+    ? `sub-themed-heading ${headingFontClass} text-3xl mb-8`
+    : `${headingFontClass} text-3xl text-ivory mb-8`;
 
   const useEventShowcase = hasSubsidiaryEventShowcase(slug);
   const eventShowcaseConfig = getSubsidiaryEventShowcaseConfig(slug);

@@ -2,6 +2,8 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 
+import { DURATION_S } from "@/lib/motion";
+
 const SHAPES = ["circle", "dot", "wave"] as const;
 
 const POSITIONS = [
@@ -38,8 +40,8 @@ export function OliveVerteMotifs() {
             initial={reduced ? false : { opacity: 0, scale: 0.6 }}
             animate={reduced ? undefined : { opacity: 1, scale: 1, y: [0, -6, 0] }}
             transition={{
-              opacity: { delay: i * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] },
-              scale:   { delay: i * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+              opacity: { delay: i * 0.08, duration: DURATION_S.base, ease: [0.16, 1, 0.3, 1] },
+              scale:   { delay: i * 0.08, duration: DURATION_S.base, ease: [0.16, 1, 0.3, 1] },
               y: {
                 delay: i * 0.08 + 0.4,
                 duration: 3.2 + (i % 4) * 0.3,

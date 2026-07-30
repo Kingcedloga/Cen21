@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
-import { EASE, defaultScrollViewport } from "@/lib/motion";
+import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
 
 import "@/styles/gourmet-mexicana-promotions.css";
 
@@ -44,7 +44,7 @@ export function GourmetMexicanaPromotionsSection() {
           whileInView={reduced ? undefined : { opacity: 1, y: 0, scale: 1 }}
           whileHover={reduced ? undefined : { y: -4 }}
           viewport={defaultScrollViewport}
-          transition={{ duration: 0.9, ease: EASE.luxury, delay: i * 0.1 }}
+          transition={{ duration: DURATION_S.shimmer, ease: EASE.luxury, delay: i * 0.1 }}
         >
           <p className="mex-promo__subtitle">{t("gourmetMexicanaPromotions.subtitle")}</p>
           <h3 className="mex-promo__title">{t(`gourmetMexicanaPromotions.items.${panel.key}`)}</h3>
@@ -55,7 +55,7 @@ export function GourmetMexicanaPromotionsSection() {
             initial={reduced ? false : { opacity: 0 }}
             whileInView={reduced ? undefined : { opacity: 1 }}
             viewport={defaultScrollViewport}
-            transition={{ duration: 0.6, ease: EASE.luxury, delay: 0.5 }}
+            transition={{ duration: DURATION_S.base, ease: EASE.luxury, delay: 0.5 }}
           >
             <svg viewBox="0 0 60 60" fill="none">
               <motion.path
@@ -66,7 +66,7 @@ export function GourmetMexicanaPromotionsSection() {
                 initial={reduced ? false : { pathLength: 0 }}
                 whileInView={reduced ? undefined : { pathLength: 1 }}
                 viewport={defaultScrollViewport}
-                transition={{ duration: 0.7, ease: EASE.luxury, delay: 0.5 }}
+                transition={{ duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.5 }}
               />
               <path d="M22 36l8 4-2-9" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
@@ -77,7 +77,7 @@ export function GourmetMexicanaPromotionsSection() {
             initial={reduced ? false : { scale: 0 }}
             whileInView={reduced ? undefined : { scale: 1 }}
             viewport={defaultScrollViewport}
-            transition={{ duration: 0.6, ease: EASE.spring, delay: 0.4 }}
+            transition={{ duration: DURATION_S.base, ease: EASE.spring, delay: 0.4 }}
           >
             {panel.discount}%
             <span>{t("gourmetMexicanaPromotions.offLabel")}</span>
@@ -88,7 +88,7 @@ export function GourmetMexicanaPromotionsSection() {
             initial={reduced ? false : { opacity: 0, y: 20 }}
             whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
             viewport={defaultScrollViewport}
-            transition={{ duration: 0.7, ease: EASE.luxury, delay: 0.3 }}
+            transition={{ duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.3 }}
           >
             <Image
               src={panel.photo}

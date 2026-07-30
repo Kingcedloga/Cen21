@@ -30,7 +30,7 @@ export function PinkberryStorySection({
         initial: { opacity: 0, y: 80 },
         whileInView: { opacity: 1, y: 0 },
         viewport: { once: true, margin: "-10% 0px" },
-        transition: { duration: 0.8, ease: EASE.luxury },
+        transition: { duration: DURATION_S.luxe, ease: EASE.luxury },
       };
 
   const columnMotion = (i: number) =>

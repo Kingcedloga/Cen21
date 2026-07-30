@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { LegalArticle, LegalH2, LegalP } from "@/components/legal/LegalArticle";
 import { PageHero } from "@/components/sections/PageHero";
+import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { getSiteConfig } from "@/lib/content";
@@ -31,45 +32,55 @@ export default async function ConfidentialitePage({ params }: Props) {
     <>
       <PageHero eyebrow={t("eyebrow")} title={t("title")} description={t("description")} />
       <LegalArticle>
-        <section className="space-y-4">
-          <LegalH2>{t("controller")}</LegalH2>
-          <LegalP>
-            {t("controllerBody", { name: site.name })}{" "}
-            <a
-              href={`mailto:${site.contact.email}`}
-              className="text-gold hover:text-ivory underline-offset-4 hover:underline"
-            >
-              {site.contact.email}
-            </a>
-            .
-          </LegalP>
-        </section>
+        <AnimateIn delay={0 * 0.08}>
+          <section className="space-y-4">
+            <LegalH2>{t("controller")}</LegalH2>
+            <LegalP>
+              {t("controllerBody", { name: site.name })}{" "}
+              <a
+                href={`mailto:${site.contact.email}`}
+                className="text-gold hover:text-ivory underline-offset-4 hover:underline"
+              >
+                {site.contact.email}
+              </a>
+              .
+            </LegalP>
+          </section>
+        </AnimateIn>
 
-        <section className="space-y-4">
-          <LegalH2>{t("collected")}</LegalH2>
-          <LegalP>{t("collectedBody")}</LegalP>
-        </section>
+        <AnimateIn delay={1 * 0.08}>
+          <section className="space-y-4">
+            <LegalH2>{t("collected")}</LegalH2>
+            <LegalP>{t("collectedBody")}</LegalP>
+          </section>
+        </AnimateIn>
 
-        <section className="space-y-4">
-          <LegalH2>{t("analytics")}</LegalH2>
-          <LegalP>
-            {t("analyticsBody")}{" "}
-            <Link href="/cookies" className="text-gold hover:text-ivory hover:underline underline-offset-4">
-              {t("cookieLink")}
-            </Link>
-            .
-          </LegalP>
-        </section>
+        <AnimateIn delay={2 * 0.08}>
+          <section className="space-y-4">
+            <LegalH2>{t("analytics")}</LegalH2>
+            <LegalP>
+              {t("analyticsBody")}{" "}
+              <Link href="/cookies" className="text-gold hover:text-ivory hover:underline underline-offset-4">
+                {t("cookieLink")}
+              </Link>
+              .
+            </LegalP>
+          </section>
+        </AnimateIn>
 
-        <section className="space-y-4">
-          <LegalH2>{t("rights")}</LegalH2>
-          <LegalP>{t("rightsBody")}</LegalP>
-        </section>
+        <AnimateIn delay={3 * 0.08}>
+          <section className="space-y-4">
+            <LegalH2>{t("rights")}</LegalH2>
+            <LegalP>{t("rightsBody")}</LegalP>
+          </section>
+        </AnimateIn>
 
-        <section className="space-y-4">
-          <LegalH2>{t("retention")}</LegalH2>
-          <LegalP>{t("retentionBody")}</LegalP>
-        </section>
+        <AnimateIn delay={4 * 0.08}>
+          <section className="space-y-4">
+            <LegalH2>{t("retention")}</LegalH2>
+            <LegalP>{t("retentionBody")}</LegalP>
+          </section>
+        </AnimateIn>
       </LegalArticle>
     </>
   );

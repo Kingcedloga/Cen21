@@ -45,7 +45,7 @@ export function GourmetMexicanaAboutSection({ subsidiary }: { subsidiary: Subsid
           initial={reduced ? false : { opacity: 0, x: -40 }}
           whileInView={reduced ? undefined : { opacity: 1, x: 0 }}
           viewport={defaultScrollViewport}
-          transition={{ duration: 0.9, ease: EASE.luxury }}
+          transition={{ duration: DURATION_S.shimmer, ease: EASE.luxury }}
         >
           <Image
             src={AMBIANCE_PHOTO}
@@ -94,7 +94,7 @@ export function GourmetMexicanaAboutSection({ subsidiary }: { subsidiary: Subsid
             initial={reduced ? false : { opacity: 0, y: -20 }}
             whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
             viewport={defaultScrollViewport}
-            transition={{ duration: 0.9, ease: EASE.luxury, delay: 0.3 }}
+            transition={{ duration: DURATION_S.shimmer, ease: EASE.luxury, delay: 0.3 }}
           >
             <div className="mex-about__ingredient-float">
               <Image
@@ -112,7 +112,7 @@ export function GourmetMexicanaAboutSection({ subsidiary }: { subsidiary: Subsid
             initial={reduced ? false : { opacity: 0, scale: 0.9 }}
             whileInView={reduced ? undefined : { opacity: 1, scale: 1 }}
             viewport={defaultScrollViewport}
-            transition={{ duration: 0.9, ease: EASE.luxury, delay: 0.4 }}
+            transition={{ duration: DURATION_S.shimmer, ease: EASE.luxury, delay: 0.4 }}
           >
             <svg className="mex-about__ring" viewBox="0 0 300 300" aria-hidden="true">
               <circle cx="150" cy="150" r="144" fill="none" stroke="#006847" strokeWidth="2.5" strokeDasharray="7 5" />

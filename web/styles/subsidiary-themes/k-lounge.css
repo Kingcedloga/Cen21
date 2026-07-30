@@ -37,8 +37,10 @@
 /* Titres — séparateur blanc épuré */
 [data-subsidiary-theme="k-lounge"] .sub-themed-heading {
   color: var(--sub-text);
-  letter-spacing: -0.025em;
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
   font-weight: 500;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  letter-spacing: -0.015em;
 }
 
 [data-subsidiary-theme="k-lounge"] .sub-themed-heading::after {

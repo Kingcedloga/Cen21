@@ -92,8 +92,8 @@ export function MuzikCafeHero({ subsidiary }: { subsidiary: Subsidiary }) {
             reduced
               ? undefined
               : {
-                  opacity: { duration: 0.8, ease: EASE.luxury, delay: 0.15 },
-                  x: { duration: 0.8, ease: EASE.luxury, delay: 0.15 },
+                  opacity: { duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.15 },
+                  x: { duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.15 },
                   y: { duration: 4, ease: "easeInOut", repeat: Infinity, delay: 0.95 },
                 }
           }

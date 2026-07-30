@@ -8,7 +8,7 @@ import { useCallback, type FormEvent } from "react";
 import { MexicanMotifs } from "@/components/filiales/MexicanMotifs";
 import { Toast, ToastViewport } from "@/components/ui/Toast";
 import { ArrowUpRight, Mail, Phone, User, Users } from "@/lib/icons";
-import { EASE, defaultScrollViewport } from "@/lib/motion";
+import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
 import { useReservationForm } from "@/lib/use-reservation-form";
 
 import "@/styles/gourmet-mexicana-reservation.css";
@@ -48,7 +48,7 @@ export function GourmetMexicanaReservationSection() {
           initial: { opacity: 0, y: 24 },
           whileInView: { opacity: 1, y: 0 },
           viewport: defaultScrollViewport,
-          transition: { duration: 0.9, ease: EASE.luxury, delay: i * 0.08 },
+          transition: { duration: DURATION_S.shimmer, ease: EASE.luxury, delay: i * 0.08 },
         };
 
   return (
@@ -115,7 +115,7 @@ export function GourmetMexicanaReservationSection() {
             initial={reduced ? false : { opacity: 0, x: 40 }}
             whileInView={reduced ? undefined : { opacity: 1, x: 0 }}
             viewport={defaultScrollViewport}
-            transition={{ duration: 0.9, ease: EASE.luxury, delay: 0.15 }}
+            transition={{ duration: DURATION_S.shimmer, ease: EASE.luxury, delay: 0.15 }}
           >
             <Image
               src={CHEF_PHOTO}

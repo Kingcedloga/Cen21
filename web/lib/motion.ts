@@ -11,9 +11,9 @@ import { useReducedMotion } from "framer-motion";
 /** Durées en secondes (Framer Motion) */
 export const DURATION_S = {
   fine: 0.3,
-  base: 0.48,
-  luxe: 0.7,
-  grand: 1.0,
+  base: 0.5,
+  luxe: 0.75,
+  grand: 1.1,
   shimmer: 0.9,
   heroCrossfade: 1,
 } as const;

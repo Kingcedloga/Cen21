@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 
 import { EventCard } from "@/components/cards/EventCard";
+import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
@@ -63,23 +64,29 @@ export function EventsList({
         />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((event) => (
-            <EventCard key={event.id} event={event} />
+          {filtered.map((event, i) => (
+            <AnimateIn key={event.id} delay={(i % 6) * 0.08}>
+              <EventCard event={event} />
+            </AnimateIn>
           ))}
         </div>
       )}
 
       {showArchive && pastEvents.length > 0 && (
         <section className="mt-20 pt-12 border-t border-white/10">
-          <h2
-            id="archives-events"
-            className="font-[family-name:var(--font-dm-sans)] text-3xl font-bold text-ivory mb-8"
-          >
-            {t("archives")}
-          </h2>
+          <AnimateIn>
+            <h2
+              id="archives-events"
+              className="font-[family-name:var(--font-dm-sans)] text-3xl font-bold text-ivory mb-8"
+            >
+              {t("archives")}
+            </h2>
+          </AnimateIn>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 opacity-80">
-            {pastEvents.map((event) => (
-              <EventCard key={event.id} event={event} />
+            {pastEvents.map((event, i) => (
+              <AnimateIn key={event.id} delay={(i % 6) * 0.08}>
+                <EventCard event={event} />
+              </AnimateIn>
             ))}
           </div>
         </section>

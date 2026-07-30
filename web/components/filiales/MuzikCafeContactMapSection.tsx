@@ -1,6 +1,9 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
+
 import { googleMapsEmbedUrl } from "@/lib/map";
+import { defaultScrollViewport, fadeUpTransition, fadeUpVariants } from "@/lib/motion";
 
 import "@/styles/muzik-cafe-contact-map.css";
 
@@ -10,11 +13,19 @@ type Props = {
 };
 
 export function MuzikCafeContactMapSection({ mapQuery, subsidiaryName }: Props) {
+  const reduced = useReducedMotion();
   const embedUrl = googleMapsEmbedUrl(mapQuery);
 
   return (
     <section className="muzik-contact-map">
-      <div className="muzik-contact-map__map-clip">
+      <motion.div
+        className="muzik-contact-map__map-clip"
+        initial={reduced ? false : "hidden"}
+        whileInView={reduced ? undefined : "visible"}
+        viewport={defaultScrollViewport}
+        variants={reduced ? undefined : fadeUpVariants}
+        transition={fadeUpTransition}
+      >
         <iframe
           title={`Carte — ${subsidiaryName}`}
           src={embedUrl}
@@ -24,7 +35,7 @@ export function MuzikCafeContactMapSection({ mapQuery, subsidiaryName }: Props) 
           allowFullScreen
           aria-hidden="true"
         />
-      </div>
+      </motion.div>
     </section>
   );
 }

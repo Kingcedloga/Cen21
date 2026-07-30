@@ -10,7 +10,12 @@ import { useLocale, useTranslations } from "next-intl";
 import { useMemo, useRef, useState, type ReactNode } from "react";
 
 import { Icon } from "@/components/ui/Icon";
-import { EASE, fadeUpTransition, fadeUpVariants } from "@/lib/motion";
+import {
+  EASE,
+  defaultScrollViewport,
+  fadeUpTransition,
+  fadeUpVariants,
+} from "@/lib/motion";
 import { buildHoursSchedule } from "@/lib/subsidiary-hours";
 
 const HOURS_STAGGER_S = 0.06;
@@ -63,17 +68,25 @@ export function SubsidiaryContactBand({
   const phoneHref = phone ? `tel:${phone.replace(/\s/g, "")}` : undefined;
 
   const contactColumns = (
-    <ContactColumns
-      hours={hours}
-      hoursLabel={hoursLabel}
-      findUsLabel={findUsLabel}
-      callUsLabel={callUsLabel}
-      address={address}
-      phone={phone}
-      phoneHref={phoneHref}
-      mapsUrl={mapsUrl}
-      themed={themed}
-    />
+    <motion.div
+      initial={reduced ? false : "hidden"}
+      whileInView={reduced ? undefined : "visible"}
+      viewport={defaultScrollViewport}
+      variants={reduced ? undefined : fadeUpVariants}
+      transition={fadeUpTransition}
+    >
+      <ContactColumns
+        hours={hours}
+        hoursLabel={hoursLabel}
+        findUsLabel={findUsLabel}
+        callUsLabel={callUsLabel}
+        address={address}
+        phone={phone}
+        phoneHref={phoneHref}
+        mapsUrl={mapsUrl}
+        themed={themed}
+      />
+    </motion.div>
   );
 
   return (

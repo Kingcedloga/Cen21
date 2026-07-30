@@ -1,10 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 
 import { Link } from "@/i18n/navigation";
 import { cormorant } from "@/lib/fonts";
 import { BLUR_PETROL } from "@/lib/image-blur";
+import { defaultScrollViewport, fadeUpTransition, fadeUpVariants } from "@/lib/motion";
 
 import "@/styles/k-lounge-reservation-banner.css";
 
@@ -23,6 +25,8 @@ export function KLoungeReservationBanner({
   ctaLabel,
   ctaHref,
 }: Props) {
+  const reduced = useReducedMotion();
+
   return (
     <section
       className={`klounge-reservation ${cormorant.variable}`}
@@ -43,7 +47,14 @@ export function KLoungeReservationBanner({
         <span className="klounge-reservation__overlay" />
       </div>
 
-      <div className="klounge-reservation__content">
+      <motion.div
+        className="klounge-reservation__content"
+        initial={reduced ? false : "hidden"}
+        whileInView={reduced ? undefined : "visible"}
+        viewport={defaultScrollViewport}
+        variants={reduced ? undefined : fadeUpVariants}
+        transition={fadeUpTransition}
+      >
         <p className="klounge-reservation__eyebrow">{eyebrow}</p>
         <h2 id="klounge-reservation-title" className="klounge-reservation__title">
           {title}
@@ -51,7 +62,7 @@ export function KLoungeReservationBanner({
         <Link href={ctaHref} className="klounge-reservation__cta">
           {ctaLabel}
         </Link>
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
 
 import { resolveEventImage } from "@/lib/event-images";
-import { EASE } from "@/lib/motion";
+import { DURATION_S, EASE } from "@/lib/motion";
 import type { EventItem } from "@/lib/types";
 
 const AUTOPLAY_MS = 6000;
@@ -74,7 +74,7 @@ function CountdownDigit({ value, label }: { value: number; label: string }) {
             initial={reduced ? false : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={reduced ? undefined : { opacity: 0, y: -10 }}
-            transition={{ duration: 0.3, ease: EASE.luxury }}
+            transition={{ duration: DURATION_S.fine, ease: EASE.luxury }}
           >
             {pad(value)}
           </motion.span>
@@ -157,7 +157,7 @@ export function EventsCountdownHero({ events, fallbackImage, labels }: Props) {
           initial={reduced ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={reduced ? undefined : { opacity: 0 }}
-          transition={{ duration: 0.7, ease: EASE.luxury }}
+          transition={{ duration: DURATION_S.luxe, ease: EASE.luxury }}
         >
           <Image
             src={backgroundImage}
@@ -179,7 +179,7 @@ export function EventsCountdownHero({ events, fallbackImage, labels }: Props) {
             initial={reduced ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={reduced ? undefined : { opacity: 0, y: -20 }}
-            transition={{ duration: 0.5, ease: EASE.luxury }}
+            transition={{ duration: DURATION_S.base, ease: EASE.luxury }}
             className="text-5xl font-extrabold leading-[1.05] text-white md:text-7xl"
           >
             {title}
@@ -204,7 +204,7 @@ export function EventsCountdownHero({ events, fallbackImage, labels }: Props) {
           className="mt-8 w-full max-w-lg"
           initial={reduced ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: EASE.luxury, delay: 0.2 }}
+          transition={{ duration: DURATION_S.base, ease: EASE.luxury, delay: 0.2 }}
         >
           <p className="text-white/80">{labels.subscribeText}</p>
           <form onSubmit={handleSubscribe} className="mt-4 flex w-full flex-col gap-3 sm:flex-row">

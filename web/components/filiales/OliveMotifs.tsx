@@ -2,6 +2,8 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 
+import { DURATION_S } from "@/lib/motion";
+
 export type OliveSection =
   | "specialties"
   | "gallery"
@@ -113,7 +115,7 @@ export function OliveMotifs({ section }: { section: OliveSection }) {
           initial={reduced ? false : { opacity: 0 }}
           whileInView={reduced ? undefined : { opacity: 0.15 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: i * 0.15 }}
+          transition={{ duration: DURATION_S.luxe, ease: [0.16, 1, 0.3, 1], delay: i * 0.15 }}
         >
           <motion.div
             style={{ rotate: item.rotate, width: "100%", height: "100%" }}

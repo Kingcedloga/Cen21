@@ -44,7 +44,7 @@ export function MokaMoreHero({ subsidiary }: { subsidiary: Subsidiary }) {
         aria-hidden="true"
         initial={reduced ? false : { opacity: 0 }}
         animate={reduced ? undefined : { opacity: 1 }}
-        transition={reduced ? undefined : { duration: 0.7, ease: EASE.luxury, delay: 0.3 }}
+        transition={reduced ? undefined : { duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.3 }}
       >
         <motion.div
           animate={reduced ? undefined : { y: [0, -6, 0] }}
@@ -64,7 +64,7 @@ export function MokaMoreHero({ subsidiary }: { subsidiary: Subsidiary }) {
         aria-hidden="true"
         initial={reduced ? false : { opacity: 0 }}
         animate={reduced ? undefined : { opacity: 1 }}
-        transition={reduced ? undefined : { duration: 0.7, ease: EASE.luxury, delay: 0.45 }}
+        transition={reduced ? undefined : { duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.45 }}
       >
         <motion.div
           style={{ width: "100%", height: "100%" }}
@@ -79,7 +79,7 @@ export function MokaMoreHero({ subsidiary }: { subsidiary: Subsidiary }) {
         aria-hidden="true"
         initial={reduced ? false : { opacity: 0 }}
         animate={reduced ? undefined : { opacity: 1 }}
-        transition={reduced ? undefined : { duration: 0.7, ease: EASE.luxury, delay: 0.6 }}
+        transition={reduced ? undefined : { duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.6 }}
       >
         <motion.div
           style={{ width: "100%", height: "100%", borderRadius: "50%" }}

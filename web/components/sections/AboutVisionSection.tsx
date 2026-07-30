@@ -42,7 +42,7 @@ export function AboutVisionSection({ eyebrow, title, description, cta, images }:
             initial={reduced ? false : { opacity: 0, x: -30, rotate: -2 }}
             whileInView={reduced ? undefined : { opacity: 1, x: 0, rotate: -2 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, ease: EASE.luxury }}
+            transition={{ duration: DURATION_S.luxe, ease: EASE.luxury }}
           >
             <Image
               src={images[0]}
@@ -58,7 +58,7 @@ export function AboutVisionSection({ eyebrow, title, description, cta, images }:
             initial={reduced ? false : { opacity: 0, y: -20, scale: 0.95 }}
             whileInView={reduced ? undefined : { opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, ease: EASE.luxury, delay: 0.1 }}
+            transition={{ duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.1 }}
           >
             <Image
               src={images[1]}
@@ -74,7 +74,7 @@ export function AboutVisionSection({ eyebrow, title, description, cta, images }:
             initial={reduced ? false : { opacity: 0, x: 30, rotate: 1 }}
             whileInView={reduced ? undefined : { opacity: 1, x: 0, rotate: 1 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, ease: EASE.luxury, delay: 0.15 }}
+            transition={{ duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.15 }}
           >
             <Image
               src={images[2]}

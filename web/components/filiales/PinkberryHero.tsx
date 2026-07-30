@@ -99,8 +99,8 @@ export function PinkberryHero({ subsidiary }: { subsidiary: Subsidiary }) {
                   : { opacity: 1, scale: 1, y: [0, -5, 0] }
               }
               transition={{
-                opacity: { delay: i * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] },
-                scale:   { delay: i * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+                opacity: { delay: i * 0.08, duration: DURATION_S.base, ease: [0.16, 1, 0.3, 1] },
+                scale:   { delay: i * 0.08, duration: DURATION_S.base, ease: [0.16, 1, 0.3, 1] },
                 y: {
                   delay: i * 0.08 + 0.5,
                   duration: 3.2 + (i % 5) * 0.4,
@@ -165,7 +165,7 @@ export function PinkberryHero({ subsidiary }: { subsidiary: Subsidiary }) {
               initial={reduced ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={reduced ? undefined : { opacity: 0, y: -8 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: DURATION_S.base, ease: [0.16, 1, 0.3, 1] }}
             >
               <Image
                 src={images[active]}

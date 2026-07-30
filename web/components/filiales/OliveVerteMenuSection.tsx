@@ -86,7 +86,7 @@ export function OliveVerteMenuSection({ content }: Props) {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: DURATION_S.fine }}
                   className="olive-menu__dish-heading"
                 >
                   <h3 className="olive-menu__dish-name">{dish.name}</h3>
@@ -123,7 +123,7 @@ export function OliveVerteMenuSection({ content }: Props) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: DURATION_S.fine }}
               >
                 <Image
                   src={dish.image}

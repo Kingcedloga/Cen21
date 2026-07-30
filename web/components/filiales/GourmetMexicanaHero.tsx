@@ -9,7 +9,7 @@ import { Link } from "@/i18n/navigation";
 import { MexicanMotifs } from "@/components/filiales/MexicanMotifs";
 import { ArrowUpRight } from "@/lib/icons";
 import { galleryEntrySrc } from "@/lib/gallery-categories";
-import { EASE } from "@/lib/motion";
+import { DURATION_S, EASE } from "@/lib/motion";
 import type { Subsidiary } from "@/lib/types";
 
 import "@/styles/gourmet-mexicana-hero.css";
@@ -42,7 +42,7 @@ export function GourmetMexicanaHero({ subsidiary }: { subsidiary: Subsidiary }) 
       : {
           initial: { opacity: 0, y: 24 },
           animate: { opacity: 1, y: 0 },
-          transition: { duration: 0.9, ease: EASE.luxury, delay: i * 0.08 },
+          transition: { duration: DURATION_S.shimmer, ease: EASE.luxury, delay: i * 0.08 },
         };
 
   return (
@@ -87,7 +87,7 @@ export function GourmetMexicanaHero({ subsidiary }: { subsidiary: Subsidiary }) 
                 initial={reduced ? false : { opacity: 0, y: 16 }}
                 whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, ease: EASE.luxury, delay: i * 0.1 }}
+                transition={{ duration: DURATION_S.base, ease: EASE.luxury, delay: i * 0.1 }}
               >
                 <Image src={src} alt="" fill sizes="4rem" className="mex-hero__thumb-photo" />
               </motion.button>
@@ -116,7 +116,7 @@ export function GourmetMexicanaHero({ subsidiary }: { subsidiary: Subsidiary }) 
               className="mex-hero__circle-photo-wrap"
               initial={reduced ? false : { opacity: 0, scale: 0.9 }}
               animate={reduced ? undefined : { opacity: 1, scale: 1 }}
-              transition={{ duration: 0.9, ease: EASE.luxury, delay: 0.2 }}
+              transition={{ duration: DURATION_S.shimmer, ease: EASE.luxury, delay: 0.2 }}
             >
               <Image
                 src={thumbnails[activeIndex]}

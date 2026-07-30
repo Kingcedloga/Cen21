@@ -74,7 +74,7 @@ export function MokaMoreReservationSection({ subsidiary }: { subsidiary: Subsidi
           initial={reduced ? false : { opacity: 0, x: -40 }}
           whileInView={reduced ? undefined : { opacity: 1, x: 0 }}
           viewport={defaultScrollViewport}
-          transition={{ duration: 0.7, ease: EASE.luxury }}
+          transition={{ duration: DURATION_S.luxe, ease: EASE.luxury }}
         >
           <p className="moka-reservation__eyebrow">{t("mokaMoreReservation.formEyebrow")}</p>
           <h2 className="moka-reservation__title">{t("mokaMoreReservation.formTitle")}</h2>
@@ -137,7 +137,7 @@ export function MokaMoreReservationSection({ subsidiary }: { subsidiary: Subsidi
           initial={reduced ? false : { opacity: 0, x: 40 }}
           whileInView={reduced ? undefined : { opacity: 1, x: 0 }}
           viewport={defaultScrollViewport}
-          transition={{ duration: 0.7, ease: EASE.luxury, delay: 0.2 }}
+          transition={{ duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.2 }}
         >
           <p className="moka-reservation__eyebrow">{t("mokaMoreReservation.locationEyebrow")}</p>
           <h2 className="moka-reservation__title">{t("mokaMoreReservation.locationTitle")}</h2>
