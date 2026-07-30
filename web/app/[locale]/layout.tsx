@@ -54,7 +54,7 @@ export default async function LocaleLayout({
       className={`${inter.variable} h-full`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col antialiased leading-relaxed">
+      <body className="min-h-full flex flex-col antialiased leading-relaxed" suppressHydrationWarning>
         <NextIntlClientProvider messages={messages}>
           <PhosphorProvider>
           <SiteLoader />
