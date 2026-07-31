@@ -34,8 +34,10 @@
   color: var(--sub-text);
 }
 
-/* Titres de section — séparateur doré */
+/* Titres de section — police & séparateur doré */
 [data-subsidiary-theme="millionaire-club"] .sub-themed-heading {
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
   color: var(--sub-text);
   letter-spacing: -0.02em;
 }
@@ -194,7 +196,21 @@
   border-color: var(--sub-border);
 }
 
-/* Vitrine événementielle */
+/* Sécurité — tous les h2 de section en Cormorant */
+[data-subsidiary-theme="millionaire-club"] .fmg__title,
+[data-subsidiary-theme="millionaire-club"] .wabi-establishments__title,
+[data-subsidiary-theme="millionaire-club"] .sea__title {
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+}
+
+/* Vitrine événementielle — titres des cartes en Cormorant */
+[data-subsidiary-theme="millionaire-club"] .subsidiary-event-showcase__title {
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
 [data-subsidiary-theme="millionaire-club"] .subsidiary-event-showcase__btn-book {
   background: var(--sub-gold) !important;
   color: var(--sub-bg) !important;
