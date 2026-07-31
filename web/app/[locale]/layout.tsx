@@ -10,7 +10,7 @@ import { PhosphorProvider } from "@/components/layout/PhosphorProvider";
 import { RouteTransition } from "@/components/layout/RouteTransition";
 import { SiteLoader } from "@/components/layout/SiteLoader";
 import { routing } from "@/i18n/routing";
-import { inter } from "@/lib/fonts";
+import { cormorant, inter } from "@/lib/fonts";
 import type { Locale } from "@/i18n/routing";
 import { createDefaultMetadata, siteViewport } from "@/lib/seo";
 
@@ -51,7 +51,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${inter.variable} h-full`}
+      className={`${inter.variable} ${cormorant.variable} h-full`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col antialiased leading-relaxed" suppressHydrationWarning>

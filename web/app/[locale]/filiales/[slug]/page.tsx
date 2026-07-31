@@ -190,7 +190,7 @@ export default async function SubsidiaryPage({ params }: Props) {
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
 
   const headingFontClass =
-    slug === "filiale-03"
+    slug === "filiale-03" || slug === "filiale-04"
       ? "font-[family-name:var(--font-cormorant)]"
       : "font-[family-name:var(--font-dm-sans)]";
 
