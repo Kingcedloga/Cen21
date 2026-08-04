@@ -38,7 +38,7 @@
 [data-subsidiary-theme="millionaire-club"] .sub-themed-heading {
   font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
   font-weight: 500;
-  color: var(--sub-text);
+  color: var(--sub-gold);
   letter-spacing: -0.02em;
 }
 
@@ -197,10 +197,15 @@
 }
 
 /* Sécurité — tous les h2 de section en Cormorant */
-[data-subsidiary-theme="millionaire-club"] .fmg__title,
 [data-subsidiary-theme="millionaire-club"] .wabi-establishments__title,
 [data-subsidiary-theme="millionaire-club"] .sea__title {
   font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+}
+
+/* Gallery — titre en doré */
+[data-subsidiary-theme="millionaire-club"] .fmg__title {
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  color: var(--sub-gold);
 }
 
 /* Vitrine événementielle — titres des cartes en Cormorant */
