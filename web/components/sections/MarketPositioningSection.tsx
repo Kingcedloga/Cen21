@@ -95,6 +95,7 @@ export function MarketPositioningSection({
 
           {/* Bloc vidéo */}
           <motion.div
+            className="mp-video-wrapper"
             variants={reduced ? undefined : collageVariant(2)}
             initial={reduced ? false : "hidden"}
             animate={reduced ? undefined : animate}

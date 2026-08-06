@@ -44,19 +44,23 @@
   width: 55%;
 }
 
-/* Bloc vidéo — fond pétrole */
-.mp-video-block {
+/* Wrapper positionné — reçoit le transform Framer Motion sans perturber le containing block */
+.mp-video-wrapper {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 54%;
+  z-index: 5;
+}
+
+/* Bloc vidéo — fond pétrole */
+.mp-video-block {
   display: flex;
   align-items: center;
   gap: 0.875rem;
   padding: 1.25rem 1.5rem;
   background: #004258;
   text-decoration: none;
-  z-index: 5;
   transition: background-color 240ms ease;
 }
 
