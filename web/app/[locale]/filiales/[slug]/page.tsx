@@ -364,6 +364,7 @@ export default async function SubsidiaryPage({ params }: Props) {
           <OliveVerteReservationSection
             backgroundImage={getSubsidiaryContactImage(slug, subsidiary.coverImage)}
             subsidiaryName={subsidiary.name}
+            phone={subsidiary.practicalInfo.phone}
           />
           {sisterSubsidiaries.length > 0 && (
             <WabiSabiEstablishmentsSection
@@ -395,6 +396,7 @@ export default async function SubsidiaryPage({ params }: Props) {
           <MuzikCafeReservationSection
             backgroundImage={getSubsidiaryContactImage(slug, subsidiary.coverImage)}
             subsidiaryName={subsidiary.name}
+            phone={subsidiary.practicalInfo.phone}
           />
         </>
       ) : slug === "filiale-06" ? (
@@ -557,6 +559,7 @@ export default async function SubsidiaryPage({ params }: Props) {
           title={t("kLoungeReservation.title")}
           ctaLabel={t("kLoungeReservation.cta")}
           ctaHref="/contact"
+          locations={subsidiary.practicalInfo.locations}
         />
       ) : (
         slug !== "filiale-01" &&
@@ -696,6 +699,7 @@ export default async function SubsidiaryPage({ params }: Props) {
           mapQuery={mapQuery}
           mapsUrl={subsidiary.practicalInfo.address ? mapsUrl : undefined}
           social={subsidiary.social}
+          locations={subsidiary.practicalInfo.locations}
           labels={{
             hoursTitle: t("wabiPractical.hoursTitle"),
             locationTitle: t("wabiPractical.locationTitle"),

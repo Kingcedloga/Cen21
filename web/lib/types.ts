@@ -132,6 +132,8 @@ export type Subsidiary = {
     address?: string;
     hours?: string;
     phone?: string;
+    /** Établissements multi-sites (Wabi Sabi, K Lounge) */
+    locations?: { city: string; address: string; phone: string }[];
   };
   social: SocialLinks;
   accentColor: string;

@@ -7,9 +7,9 @@
       "tagline": "Restaurant & lounge — premium open-air sports bar",
       "description": "Premium open-air sports bar on Boulevard du 30 Juin. African cuisine, cocktails, swimming pool, large football screens, karaoke, and lounge in a lively, festive atmosphere.",
       "practicalInfo": {
-        "address": "Boulevard du 30 Juin, Kinshasa",
+        "address": "40 Boulevard du 30 Juin, TMB Bank, Kinshasa",
         "hours": "Daily 11am–2am",
-        "phone": "+243 81 00 00 001"
+        "phone": "+243 89 52 22 777"
       },
       "social": {
         "instagram": "https://www.instagram.com/loliveverte.kin",
@@ -201,9 +201,21 @@
       "tagline": "Contemporary Asian restaurant & lounge bar",
       "description": "Rooftop with views over Kinshasa in the heart of Gombe. Sushi, Robatayaki, Thai curry, Szechuan cuisine, and signature cocktails in a contemporary, refined setting.",
       "practicalInfo": {
-        "address": "Gombe, Kinshasa",
+        "address": "10 Avenue Équateur, Gombe, Kinshasa",
         "hours": "Tue–Sun 12pm–12am",
-        "phone": "+243 81 00 00 002"
+        "phone": "+243 900 000 702",
+        "locations": [
+          {
+            "city": "Kinshasa",
+            "address": "10 Avenue Équateur, Gombe, Kinshasa",
+            "phone": "+243 900 000 702"
+          },
+          {
+            "city": "Lubumbashi",
+            "address": "1618, Boulevard du 30 Juin, Réf : Coin Sandoa, Lubumbashi",
+            "phone": "+243 83 46 99 903"
+          }
+        ]
       },
       "social": {
         "instagram": "https://www.instagram.com/wabisabi.kin",
@@ -257,7 +269,7 @@
         },
         "primaryCta": {
           "label": "Book a table",
-          "href": "/contact"
+          "href": "tel:+243900000702"
         },
         "images": {
           "back": {
@@ -288,7 +300,7 @@
         "description": "Perched above Gombe, Wabi Sabi offers an experience where contemporary Japanese gastronomy meets refined hospitality. Every detail — from soft lighting to panoramic views over Kinshasa — is designed to create exceptional moments, whether for an intimate dinner or an evening with friends.",
         "cta": {
           "label": "Book a table",
-          "href": "/contact"
+          "href": "tel:+243900000702"
         },
         "image": "/filiales/photos/filiale-02/gallery/05-ao8a4494.webp",
         "imageAlt": "Wabi Sabi — rooftop lounge atmosphere and view over Kinshasa"
@@ -315,7 +327,7 @@
         "title": "The art of the moment, between sky and cityscape",
         "description": "Perched atop Gombe's rooftops, Wabi Sabi celebrates the balance between Japanese tradition and contemporary creativity. Exceptional sushi, flame-kissed Robatayaki, subtly fragrant Thai curry and signature cocktails — every plate and every glass tells a story of precision, light and refined hospitality.",
         "ctaLabel": "Book a table",
-        "ctaHref": "/contact",
+        "ctaHref": "tel:+243900000702",
         "image": "/filiales/photos/filiale-02/gallery/02-ao8a4372.webp",
         "imageAlt": "Wabi Sabi — contemporary Japanese cuisine",
         "mosaicImages": [
@@ -392,9 +404,21 @@
       "tagline": "Premium restaurant & lounge bar — rooftop",
       "description": "Premium address at RR House, Boulevard du 30 Juin. Rooftop, international cuisine, creative cocktails, festive atmosphere, and panoramic views over the capital.",
       "practicalInfo": {
-        "address": "RR House, Boulevard du 30 Juin, Kinshasa",
+        "address": "124 Boulevard du 30 Juin, Immeuble RR House, 4ème Niveau",
         "hours": "Wed–Sun 6pm–3am",
-        "phone": "+243 81 00 00 003"
+        "phone": "+243 89 80 88 818",
+        "locations": [
+          {
+            "city": "Kinshasa",
+            "address": "124 Boulevard du 30 Juin, Immeuble RR House, 4ème Niveau",
+            "phone": "+243 89 80 88 818"
+          },
+          {
+            "city": "Lubumbashi",
+            "address": "1618, Boulevard du 30 Juin, Réf : Coin Sandoa, Lubumbashi",
+            "phone": "+243 83 46 999 01"
+          }
+        ]
       },
       "social": {
         "instagram": "https://www.instagram.com/klounge.kin",
@@ -433,7 +457,7 @@
         ],
         "cta": {
           "label": "Book a table",
-          "href": "/contact"
+          "href": "tel:+243898088818"
         },
         "primaryImage": {
           "src": "/filiales/photos/filiale-03/kloungecover.jpg",
@@ -479,9 +503,9 @@
       "tagline": "Nightclub — themed nights & electric evenings",
       "description": "Kinshasa nightlife landmark at 72B/95 Boulevard du 30 Juin, Gombe. African tribal and French Touch themed nights, premium DJ programming, open daily from 6pm to 6am.",
       "practicalInfo": {
-        "address": "72B/95 Boulevard du 30 Juin, Gombe, Kinshasa",
+        "address": "72B Boulevard du 30 Juin, Gombe, Kinshasa, En face de la CNSS",
         "hours": "Daily 6pm–6am",
-        "phone": "+243 81 00 00 004"
+        "phone": "+243 89 09 00 002"
       },
       "social": {
         "instagram": "https://www.instagram.com/millionaireclub.kin",
@@ -542,7 +566,7 @@
         "title": "The art of Kinshasa after dark",
         "description": "In the heart of Gombe, Millionaire Club embodies nightlife excellence: international DJ sets, African Tribal and French Touch themed nights, VIP spaces, and an atmosphere where luxury meets energy. From 6pm to 6am, every evening becomes an unforgettable experience.",
         "ctaLabel": "Book your night",
-        "ctaHref": "/contact",
+        "ctaHref": "tel:+243890900002",
         "image": "/filiales/photos/filiale-04/gallery/guests/01-dsc-2340.webp",
         "imageAlt": "Millionaire Club guest — lifestyle portrait",
         "slides": [
@@ -598,9 +622,9 @@
       "tagline": "Restaurant, lounge & bar — patio & live music",
       "description": "Lively address on Boulevard du 30 Juin. Outdoor patio, varied cuisine (pizza, Indian, Moroccan), live music, karaoke, and DJ sets for animated evenings.",
       "practicalInfo": {
-        "address": "Boulevard du 30 Juin, Kinshasa",
+        "address": "72B Boulevard du 30 Juin, En face de la CNSS, Kinshasa",
         "hours": "Daily 12pm–2am",
-        "phone": "+243 81 00 00 005"
+        "phone": "+243 81 700 00 45"
       },
       "social": {
         "instagram": "https://www.instagram.com/muzikcafe.kin",
@@ -711,9 +735,8 @@
       "tagline": "Café, lounge & restaurant — Le Premier Mai",
       "description": "Café and restaurant at Le Premier Mai, Gombe. Pastries, breakfasts, burgers, full bar, and outdoor terrace for gourmet moments at any time of day.",
       "practicalInfo": {
-        "address": "Le Premier Mai, Gombe, Kinshasa",
-        "hours": "Daily 7am–11pm",
-        "phone": "+243 81 00 00 006"
+        "address": "6133 Avenue Lukusa, Gombe, Kinshasa — Premier Mall",
+        "hours": "Daily 7am–11pm"
       },
       "social": {
         "instagram": "https://www.instagram.com/mokaandmore.kin",
@@ -736,9 +759,8 @@
       "tagline": "Authentic premium Mexican restaurant",
       "description": "Authentic, refined Mexican cuisine in Kinshasa. Spicy and mild dishes, fresh and colourful atmosphere, ideal for a convivial dinner with friends or family.",
       "practicalInfo": {
-        "address": "Kinshasa",
-        "hours": "Tue–Sun 12pm–11pm",
-        "phone": "+243 81 00 00 007"
+        "address": "9ème étage, Matrix Tower, Boulevard du 30 Juin, Gombe, Kinshasa",
+        "hours": "Tue–Sun 12pm–11pm"
       },
       "social": {
         "instagram": "https://www.instagram.com/gourmetmexicana.kin",

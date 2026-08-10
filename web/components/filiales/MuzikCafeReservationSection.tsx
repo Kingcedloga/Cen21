@@ -16,6 +16,7 @@ import "@/styles/muzik-cafe-reservation.css";
 type Props = {
   backgroundImage: string;
   subsidiaryName: string;
+  phone?: string;
 };
 
 const FIELDS = [
@@ -27,7 +28,7 @@ const FIELDS = [
   { key: "time", icon: Clock, type: "text", required: false },
 ] as const;
 
-export function MuzikCafeReservationSection({ backgroundImage, subsidiaryName }: Props) {
+export function MuzikCafeReservationSection({ backgroundImage, subsidiaryName, phone }: Props) {
   const t = useTranslations("subsidiaries");
   const tForm = useTranslations("form");
   const { isSubmitting, toast, setToast, submit } = useReservationForm(
@@ -96,17 +97,30 @@ export function MuzikCafeReservationSection({ backgroundImage, subsidiaryName }:
             })}
           </div>
 
-          <motion.button
-            type="submit"
-            className="muzik-reservation__cta"
-            disabled={isSubmitting}
-            initial={{ opacity: 0, y: 24, scale: 0.96 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={defaultScrollViewport}
-            transition={{ duration: DURATION_S.luxe, ease: EASE.spring, delay: 0.3 }}
-          >
-            {isSubmitting ? tForm("submitting") : t("muzikCafeReservation.cta")}
-          </motion.button>
+          {phone ? (
+            <motion.a
+              href={`tel:${phone.replace(/\s/g, "")}`}
+              className="muzik-reservation__cta"
+              initial={{ opacity: 0, y: 24, scale: 0.96 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={defaultScrollViewport}
+              transition={{ duration: DURATION_S.luxe, ease: EASE.spring, delay: 0.3 }}
+            >
+              {t("muzikCafeReservation.cta")}
+            </motion.a>
+          ) : (
+            <motion.button
+              type="submit"
+              className="muzik-reservation__cta"
+              disabled={isSubmitting}
+              initial={{ opacity: 0, y: 24, scale: 0.96 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={defaultScrollViewport}
+              transition={{ duration: DURATION_S.luxe, ease: EASE.spring, delay: 0.3 }}
+            >
+              {isSubmitting ? tForm("submitting") : t("muzikCafeReservation.cta")}
+            </motion.button>
+          )}
         </form>
       </div>
     </section>

@@ -7,6 +7,7 @@ import { Link } from "@/i18n/navigation";
 import { cormorant } from "@/lib/fonts";
 import { BLUR_PETROL } from "@/lib/image-blur";
 import { defaultScrollViewport, fadeUpTransition, fadeUpVariants } from "@/lib/motion";
+import { PhoneLocationPicker, type PhoneLocation } from "@/components/filiales/PhoneLocationPicker";
 
 import "@/styles/k-lounge-reservation-banner.css";
 
@@ -16,6 +17,7 @@ type Props = {
   title: string;
   ctaLabel: string;
   ctaHref: string;
+  locations?: PhoneLocation[];
 };
 
 export function KLoungeReservationBanner({
@@ -24,6 +26,7 @@ export function KLoungeReservationBanner({
   title,
   ctaLabel,
   ctaHref,
+  locations,
 }: Props) {
   const reduced = useReducedMotion();
 
@@ -59,9 +62,22 @@ export function KLoungeReservationBanner({
         <h2 id="klounge-reservation-title" className="klounge-reservation__title">
           {title}
         </h2>
-        <Link href={ctaHref} className="klounge-reservation__cta">
-          {ctaLabel}
-        </Link>
+        {locations && locations.length > 0 ? (
+          <PhoneLocationPicker
+            locations={locations}
+            popoverVariant="dark"
+            align="center"
+            renderTrigger={(onClick) => (
+              <button type="button" onClick={onClick} className="klounge-reservation__cta">
+                {ctaLabel}
+              </button>
+            )}
+          />
+        ) : (
+          <Link href={ctaHref} className="klounge-reservation__cta">
+            {ctaLabel}
+          </Link>
+        )}
       </motion.div>
     </section>
   );

@@ -15,9 +15,10 @@ import "@/styles/olive-verte-reservation.css";
 type Props = {
   backgroundImage: string;
   subsidiaryName: string;
+  phone?: string;
 };
 
-export function OliveVerteReservationSection({ backgroundImage, subsidiaryName }: Props) {
+export function OliveVerteReservationSection({ backgroundImage, subsidiaryName, phone }: Props) {
   const t = useTranslations("subsidiaries");
   const tForm = useTranslations("form");
   const { isSubmitting, toast, setToast, submit } = useReservationForm(
@@ -88,9 +89,15 @@ export function OliveVerteReservationSection({ backgroundImage, subsidiaryName }
             aria-label={t("oliveVerteReservation.placeholder")}
             className="olive-reservation__input"
           />
-          <button type="submit" className="olive-reservation__cta" disabled={isSubmitting}>
-            {isSubmitting ? tForm("submitting") : t("oliveVerteReservation.cta")}
-          </button>
+          {phone ? (
+            <a href={`tel:${phone.replace(/\s/g, "")}`} className="olive-reservation__cta">
+              {t("oliveVerteReservation.cta")}
+            </a>
+          ) : (
+            <button type="submit" className="olive-reservation__cta" disabled={isSubmitting}>
+              {isSubmitting ? tForm("submitting") : t("oliveVerteReservation.cta")}
+            </button>
+          )}
         </motion.form>
       </div>
     </section>

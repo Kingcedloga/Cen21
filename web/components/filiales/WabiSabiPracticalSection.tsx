@@ -5,6 +5,7 @@ import { useLocale } from "next-intl";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Button } from "@/components/ui/Button";
 import { SocialLinks } from "@/components/ui/SocialLinks";
+import { PhoneLocationPicker, type PhoneLocation } from "@/components/filiales/PhoneLocationPicker";
 import { cormorant } from "@/lib/fonts";
 import type { Locale } from "@/i18n/routing";
 import { googleMapsEmbedUrl } from "@/lib/map";
@@ -33,6 +34,7 @@ type Props = {
   mapsUrl?: string;
   social: SocialLinksType;
   labels: WabiPracticalLabels;
+  locations?: PhoneLocation[];
 };
 
 export function WabiSabiPracticalSection({
@@ -42,6 +44,7 @@ export function WabiSabiPracticalSection({
   mapsUrl,
   social,
   labels,
+  locations,
 }: Props) {
   const locale = useLocale() as Locale;
   const parsed = hours ? buildHoursSchedule(hours, locale) : null;
@@ -84,9 +87,17 @@ export function WabiSabiPracticalSection({
                 <p className="wabi-practical__hours-time text-center">{hours}</p>
               ) : null}
 
-              <Button href="/contact" variant="primary" size="lg" className="wabi-practical__cta">
-                {labels.bookTable}
-              </Button>
+              {locations && locations.length > 0 ? (
+                <PhoneLocationPicker
+                  locations={locations}
+                  popoverVariant="light"
+                  renderTrigger={(onClick) => (
+                    <Button variant="primary" size="lg" className="wabi-practical__cta" onClick={onClick}>
+                      {labels.bookTable}
+                    </Button>
+                  )}
+                />
+              ) : null}
             </article>
           </AnimateIn>
 

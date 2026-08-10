@@ -1,0 +1,129 @@
+/* PhoneLocationPicker — sélecteur d'établissement avant appel */
+
+.plp {
+  position: relative;
+  display: inline-block;
+}
+
+/* Popover */
+.plp__popover {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  z-index: 60;
+  min-width: 18rem;
+  border-radius: 0.625rem;
+  overflow: hidden;
+  box-shadow:
+    0 8px 32px rgb(0 0 0 / 0.18),
+    0 2px 8px rgb(0 0 0 / 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.plp--open .plp__popover {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.plp__popover--center {
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+}
+
+.plp--open .plp__popover--center {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Variante claire (Wabi Sabi) */
+.plp__popover--light {
+  background: #ffffff;
+  border: 1px solid rgb(0 0 0 / 0.1);
+}
+
+/* Variante sombre (K Lounge) */
+.plp__popover--dark {
+  background: #111111;
+  border: 1px solid rgb(255 255 255 / 0.12);
+}
+
+/* Options */
+.plp__option {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding: 0.875rem 1.25rem;
+  text-decoration: none;
+  transition: background 150ms ease;
+}
+
+.plp__popover--light .plp__option + .plp__option {
+  border-top: 1px solid rgb(0 0 0 / 0.07);
+}
+
+.plp__popover--dark .plp__option + .plp__option {
+  border-top: 1px solid rgb(255 255 255 / 0.08);
+}
+
+.plp__popover--light .plp__option:hover {
+  background: #f5f2ee;
+}
+
+.plp__popover--dark .plp__option:hover {
+  background: rgb(255 255 255 / 0.05);
+}
+
+.plp__city {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.plp__popover--light .plp__city {
+  color: #111111;
+}
+
+.plp__popover--dark .plp__city {
+  color: #ffffff;
+}
+
+.plp__address {
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.plp__popover--light .plp__address {
+  color: #767676;
+}
+
+.plp__popover--dark .plp__address {
+  color: rgb(255 255 255 / 0.5);
+}
+
+.plp__phone {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+.plp__popover--light .plp__phone {
+  color: #004258;
+}
+
+.plp__popover--dark .plp__phone {
+  color: #c9a84c;
+}
+
+.plp__phone-icon {
+  width: 0.8125rem;
+  height: 0.8125rem;
+  flex-shrink: 0;
+}
