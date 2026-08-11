@@ -116,7 +116,7 @@ export function WabiSabiHero({ name, hero, backgroundVideo }: Props) {
                 muted
                 loop
                 playsInline
-                preload="auto"
+                preload="none"
                 poster={poster}
                 aria-label={hero.imageAlt}
               >

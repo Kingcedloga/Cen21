@@ -26,7 +26,9 @@ export function GourmetMexicanaReservationSection() {
   const reduced = useReducedMotion();
   const t = useTranslations("subsidiaries");
   const tForm = useTranslations("form");
-  const { isSubmitting, toast, setToast, submit } = useReservationForm("Réservation — Gourmet Mexicana");
+  const { isSubmitting, toast, setToast, submit } = useReservationForm(
+    tForm("reservationSubject", { name: "Gourmet Mexicana" }),
+  );
 
   const handleSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
@@ -71,7 +73,7 @@ export function GourmetMexicanaReservationSection() {
 
           <motion.form className="mex-reservation__form" onSubmit={handleSubmit} {...staggerMotion(3)}>
             <div className="hidden" aria-hidden="true">
-              <label htmlFor="mex-resa-website">Ne pas remplir</label>
+              <label htmlFor="mex-resa-website">{tForm("honeypot")}</label>
               <input id="mex-resa-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
             </div>
 

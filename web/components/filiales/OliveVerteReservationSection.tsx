@@ -22,7 +22,7 @@ export function OliveVerteReservationSection({ backgroundImage, subsidiaryName, 
   const t = useTranslations("subsidiaries");
   const tForm = useTranslations("form");
   const { isSubmitting, toast, setToast, submit } = useReservationForm(
-    `Réservation — ${subsidiaryName}`,
+    tForm("reservationSubject", { name: subsidiaryName }),
   );
 
   const handleSubmit = useCallback(
@@ -61,44 +61,52 @@ export function OliveVerteReservationSection({ backgroundImage, subsidiaryName, 
             {t("oliveVerteReservation.description")}
           </p>
         </AnimateIn>
-        <motion.form
-          className="olive-reservation__form"
-          onSubmit={handleSubmit}
-          initial={{ opacity: 0, y: 24, scale: 0.96 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.16 }}
-        >
-          <div className="hidden" aria-hidden="true">
-            <label htmlFor="olive-resa-website">Ne pas remplir</label>
-            <input id="olive-resa-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
-          </div>
-          <input
-            name="name"
-            type="text"
-            required
-            placeholder={t("oliveVerteReservation.namePlaceholder")}
-            aria-label={t("oliveVerteReservation.namePlaceholder")}
-            className="olive-reservation__input"
-          />
-          <input
-            name="email"
-            type="email"
-            required
-            placeholder={t("oliveVerteReservation.placeholder")}
-            aria-label={t("oliveVerteReservation.placeholder")}
-            className="olive-reservation__input"
-          />
-          {phone ? (
+        {phone ? (
+          <motion.div
+            className="olive-reservation__form"
+            initial={{ opacity: 0, y: 24, scale: 0.96 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.16 }}
+          >
             <a href={`tel:${phone.replace(/\s/g, "")}`} className="olive-reservation__cta">
               {t("oliveVerteReservation.cta")}
             </a>
-          ) : (
+          </motion.div>
+        ) : (
+          <motion.form
+            className="olive-reservation__form"
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0, y: 24, scale: 0.96 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.16 }}
+          >
+            <div className="hidden" aria-hidden="true">
+              <label htmlFor="olive-resa-website">Ne pas remplir</label>
+              <input id="olive-resa-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+            </div>
+            <input
+              name="name"
+              type="text"
+              required
+              placeholder={t("oliveVerteReservation.namePlaceholder")}
+              aria-label={t("oliveVerteReservation.namePlaceholder")}
+              className="olive-reservation__input"
+            />
+            <input
+              name="email"
+              type="email"
+              required
+              placeholder={t("oliveVerteReservation.placeholder")}
+              aria-label={t("oliveVerteReservation.placeholder")}
+              className="olive-reservation__input"
+            />
             <button type="submit" className="olive-reservation__cta" disabled={isSubmitting}>
               {isSubmitting ? tForm("submitting") : t("oliveVerteReservation.cta")}
             </button>
-          )}
-        </motion.form>
+          </motion.form>
+        )}
       </div>
     </section>
 

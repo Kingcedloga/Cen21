@@ -14,7 +14,9 @@
     "expandMap": "Cliquez sur « Agrandir la carte » pour l'itinéraire dans Google Maps.",
     "byAppointment": "Sur réservation",
     "allRights": "Tous droits réservés.",
-    "loadingSite": "Chargement de Cen21 Hospitality"
+    "loadingSite": "Chargement de Cen21 Hospitality",
+    "call": "Appeler",
+    "directions": "Itinéraire"
   },
   "language": {
     "label": "Langue",
@@ -126,6 +128,7 @@
     "subject": "Sujet",
     "message": "Message",
     "honeypot": "Ne pas remplir",
+    "reservationSubject": "Réservation — {name}",
     "submit": "Envoyer",
     "submitting": "Envoi…",
     "successTitle": "Message envoyé",

@@ -51,6 +51,12 @@ export async function POST(request: Request) {
     }
   } else if (process.env.NODE_ENV === "development") {
     console.info("[contact]", data);
+  } else {
+    console.error("[contact] CONTACT_WEBHOOK_URL is not set — submission discarded:", data);
+    return NextResponse.json(
+      { error: "Service de contact non configuré." },
+      { status: 503 },
+    );
   }
 
   return NextResponse.json({ success: true });

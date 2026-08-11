@@ -32,7 +32,7 @@ export function MuzikCafeReservationSection({ backgroundImage, subsidiaryName, p
   const t = useTranslations("subsidiaries");
   const tForm = useTranslations("form");
   const { isSubmitting, toast, setToast, submit } = useReservationForm(
-    `Réservation — ${subsidiaryName}`,
+    tForm("reservationSubject", { name: subsidiaryName }),
   );
 
   const handleSubmit = useCallback(
@@ -66,7 +66,7 @@ export function MuzikCafeReservationSection({ backgroundImage, subsidiaryName, p
 
         <form className="muzik-reservation__form" onSubmit={handleSubmit}>
           <div className="hidden" aria-hidden="true">
-            <label htmlFor="muzik-resa-website">Ne pas remplir</label>
+            <label htmlFor="muzik-resa-website">{tForm("honeypot")}</label>
             <input id="muzik-resa-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
           </div>
 

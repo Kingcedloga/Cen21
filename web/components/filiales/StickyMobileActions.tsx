@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Icon } from "@/components/ui/Icon";
 import { ICON_STROKE } from "@/lib/icons";
 import { panelEnterTransition, fadeUpVariants } from "@/lib/motion";
@@ -19,6 +20,7 @@ export function StickyMobileActions({
   subsidiaryName: string;
   themed?: boolean;
 }) {
+  const t = useTranslations("common");
   const [visible, setVisible] = useState(false);
   const reduced = useReducedMotion();
 
@@ -75,7 +77,7 @@ export function StickyMobileActions({
                   className={themed ? "text-current" : "text-petrol"}
                   weight={ICON_STROKE}
                 />
-                <span>Appeler</span>
+                <span>{t("call")}</span>
               </a>
             )}
             {mapsUrl && (
@@ -95,7 +97,7 @@ export function StickyMobileActions({
                   className={themed ? "text-current" : "text-ivory"}
                   weight={ICON_STROKE}
                 />
-                <span>Itinéraire</span>
+                <span>{t("directions")}</span>
               </a>
             )}
           </div>

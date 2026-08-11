@@ -125,7 +125,7 @@ export function SubsidiaryHero({
           muted
           loop
           playsInline
-          preload="auto"
+          preload="none"
           poster={posterSrc || undefined}
           aria-hidden
         >

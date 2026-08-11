@@ -30,7 +30,7 @@ export function MokaMoreReservationSection({ subsidiary }: { subsidiary: Subsidi
   const t = useTranslations("subsidiaries");
   const tForm = useTranslations("form");
   const { isSubmitting, toast, setToast, submit } = useReservationForm(
-    `Réservation — ${subsidiary.name}`,
+    tForm("reservationSubject", { name: subsidiary.name }),
   );
 
   const handleSubmit = useCallback(
@@ -82,7 +82,7 @@ export function MokaMoreReservationSection({ subsidiary }: { subsidiary: Subsidi
 
           <form className="moka-reservation__form" onSubmit={handleSubmit}>
             <div className="hidden" aria-hidden="true">
-              <label htmlFor="moka-resa-website">Ne pas remplir</label>
+              <label htmlFor="moka-resa-website">{tForm("honeypot")}</label>
               <input id="moka-resa-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
             </div>
 

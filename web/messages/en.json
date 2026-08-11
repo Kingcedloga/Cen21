@@ -14,7 +14,9 @@
     "expandMap": "Click “Enlarge map” for directions in Google Maps.",
     "byAppointment": "By appointment",
     "allRights": "All rights reserved.",
-    "loadingSite": "Loading Cen21 Hospitality"
+    "loadingSite": "Loading Cen21 Hospitality",
+    "call": "Call",
+    "directions": "Directions"
   },
   "language": {
     "label": "Language",
@@ -126,6 +128,7 @@
     "subject": "Subject",
     "message": "Message",
     "honeypot": "Do not fill in",
+    "reservationSubject": "Reservation — {name}",
     "submit": "Send",
     "submitting": "Sending…",
     "successTitle": "Message sent",
