@@ -769,10 +769,17 @@
       },
       "accentColor": "#CE1126",
       "brandLogo": "/filiales/logos/filiale-07.png",
-      "coverImage": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80",
+      "coverImage": "/filiales/photos/filiale-07/gallery/dsc09820.jpg",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80",
-        "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800&q=80"
+        "/filiales/photos/filiale-07/gallery/dsc09778.jpg",
+        "/filiales/photos/filiale-07/gallery/dsc09782.jpg",
+        "/filiales/photos/filiale-07/gallery/dsc09787.jpg",
+        "/filiales/photos/filiale-07/gallery/dsc09789.jpg",
+        "/filiales/photos/filiale-07/gallery/dsc09792.jpg",
+        "/filiales/photos/filiale-07/gallery/dsc09802.jpg",
+        "/filiales/photos/filiale-07/gallery/dsc09809.jpg",
+        "/filiales/photos/filiale-07/gallery/dsc09813.jpg",
+        "/filiales/photos/filiale-07/gallery/dsc09820.jpg"
       ],
       "featured": false
     },

@@ -132,16 +132,12 @@ export default async function SubsidiaryPage({ params }: Props) {
     getGalleryBySubsidiary(l, slug),
   );
 
-  const gourmetMexicanaGalleryItems = [
-    { id: "gm-1", src: subsidiary.coverImage, alt: `${subsidiary.name} — 1`, tags: [] },
-    { id: "gm-2", src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80", alt: `${subsidiary.name} — 2`, tags: [] },
-    { id: "gm-3", src: "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=900&q=80", alt: `${subsidiary.name} — 3`, tags: [] },
-    { id: "gm-4", src: "https://images.unsplash.com/photo-1615870216519-2f9fa575fa5c?w=900&q=80", alt: `${subsidiary.name} — 4`, tags: [] },
-    { id: "gm-5", src: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=900&q=80", alt: `${subsidiary.name} — 5`, tags: [] },
-    { id: "gm-6", src: "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=900&q=80", alt: `${subsidiary.name} — 6`, tags: [] },
-    { id: "gm-7", src: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=900&q=80", alt: `${subsidiary.name} — 7`, tags: [] },
-    { id: "gm-8", src: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=900&q=80", alt: `${subsidiary.name} — 8`, tags: [] },
-  ];
+  const gourmetMexicanaGalleryItems = subsidiary.galleryImages.map((entry, i) => ({
+    id: `gm-${i + 1}`,
+    src: galleryEntrySrc(entry),
+    alt: `${subsidiary.name} — ${i + 1}`,
+    tags: [] as string[],
+  }));
 
   const sisterSubsidiaries =
     slug === "filiale-01" ||
