@@ -408,12 +408,7 @@ export default async function SubsidiaryPage({ params }: Props) {
             backgroundImage={galleryEntrySrc(subsidiary.galleryImages[1] ?? subsidiary.coverImage)}
           />
           <MokaMoreGallerySection
-            photos={[
-              subsidiary.coverImage,
-              galleryEntrySrc(subsidiary.galleryImages[0]),
-              galleryEntrySrc(subsidiary.galleryImages[1] ?? subsidiary.coverImage),
-              "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&q=80",
-            ]}
+            photos={subsidiary.galleryImages.map((entry) => galleryEntrySrc(entry))}
           />
           {sisterSubsidiaries.length > 0 && (
             <WabiSabiEstablishmentsSection
