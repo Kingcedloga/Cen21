@@ -31,17 +31,23 @@
     {
       "name": "Kenny Rawtani",
       "role": "Chairman",
-      "photo": "/home/profil-chairman.png"
+      "photo": "/home/profil-chairman.png",
+      "quote": "Construire le luxe africain de demain, c'est honorer la richesse de notre territoire.",
+      "bio": "Visionnaire et entrepreneur accompli, Kenny Rawtani a fondé Cen21 Hospitality avec la conviction que l'Afrique mérite ses propres références en matière d'expériences lifestyle premium. Son leadership incarne l'ambition d'un groupe en perpétuel mouvement."
     },
     {
       "name": "Ritesh Hemnani",
       "role": "Vice Chairman",
-      "photo": "/home/vice-chairman-profil.png"
+      "photo": "/home/vice-chairman-profil.png",
+      "quote": "L'excellence n'est pas un objectif, c'est une habitude cultivée chaque jour.",
+      "bio": "Avec une expertise profonde dans le développement stratégique, Ritesh Hemnani supervise la croissance et les partenariats du groupe, garantissant une cohérence sans faille entre vision et exécution à chaque étape de l'expansion de Cen21."
     },
     {
       "name": "Subrajeet Phookan",
       "role": "Chief Executive Officer",
-      "photo": "/home/ceo-profil.png"
+      "photo": "/home/ceo-profil.png",
+      "quote": "Chaque détail compte. C'est la somme des petits riens qui crée l'extraordinaire.",
+      "bio": "En tant que Directeur Général, Subrajeet Phookan orchestre le quotidien de nos établissements avec une rigueur opérationnelle et une passion pour l'hospitalité qui définissent l'identité Cen21. Il incarne l'exigence d'un groupe tourné vers l'avenir."
     }
   ]
 }

@@ -1,183 +1,150 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { motion, useInView, useReducedMotion } from "framer-motion";
-import { useRef } from "react";
+import { motion, AnimatePresence, useInView, useReducedMotion } from "framer-motion";
+import { useRef, useState, useCallback } from "react";
 
-import { Check, Play } from "@/lib/icons";
 import { dynalight } from "@/lib/fonts";
 import { DURATION_S, EASE } from "@/lib/motion";
+import type { TeamMember } from "@/lib/types";
 
 import "@/styles/market-positioning.css";
-
-type Strength = { title: string; description: string };
-type Founder  = { name: string; role: string; photo: string };
 
 type Props = {
   eyebrow: string;
   title: string;
-  description: string;
-  strengths: [Strength, Strength];
-  founder: Founder;
-  image1: string;
-  image2: string;
-  image1Alt: string;
-  image2Alt: string;
-  videoUrl: string;
-  watchLabel: string;
-  watchSub: string;
+  description?: string;
+  team: TeamMember[];
 };
 
-function collageVariant(i: number) {
-  return {
-    hidden: { opacity: 0, y: 20, x: -16 },
-    visible: {
-      opacity: 1, y: 0, x: 0,
-      transition: { duration: DURATION_S.luxe, ease: EASE.luxury, delay: i * 0.08 },
-    },
-  };
-}
-
-function textVariant(i: number) {
-  return {
-    hidden: { opacity: 0, y: 14 },
-    visible: {
-      opacity: 1, y: 0,
-      transition: { duration: DURATION_S.luxe, ease: EASE.luxury, delay: i * 0.06 },
-    },
-  };
-}
-
-export function MarketPositioningSection({
-  eyebrow,
-  title,
-  description,
-  strengths,
-  founder,
-  image1,
-  image2,
-  image1Alt,
-  image2Alt,
-  videoUrl,
-  watchLabel,
-  watchSub,
-}: Props) {
+export function MarketPositioningSection({ eyebrow, title, description, team }: Props) {
   const reduced = useReducedMotion() ?? false;
-  const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px 0px" });
+  const sectionRef = useRef<HTMLElement>(null);
+  const trackOuterRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(sectionRef, { once: true, margin: "-80px 0px" });
+  const [hovered, setHovered] = useState<number | null>(null);
 
-  const animate = inView ? "visible" : "hidden";
+  const scrollBy = useCallback((dir: 1 | -1) => {
+    if (!trackOuterRef.current) return;
+    trackOuterRef.current.scrollBy({ left: dir * 360, behavior: "smooth" });
+  }, []);
 
   return (
-    <section className={`mp-section ${dynalight.variable}`} ref={ref} aria-labelledby="mp-title">
-      <div className="mp-inner">
+    <section className={`mp-section ${dynalight.variable}`} ref={sectionRef}>
+      <div className="mp-header">
+        <motion.span
+          className="mp-eyebrow"
+          initial={reduced ? false : { opacity: 0, y: 10 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+          transition={{ duration: DURATION_S.luxe, ease: EASE.luxury }}
+        >
+          {eyebrow}
+        </motion.span>
 
-        {/* ── Colonne gauche : collage ── */}
-        <div className="mp-collage" aria-hidden="true">
-          <motion.div
-            className="mp-photo mp-photo--1"
-            variants={reduced ? undefined : collageVariant(0)}
-            initial={reduced ? false : "hidden"}
-            animate={reduced ? undefined : animate}
-          >
-            <Image src={image1} alt={image1Alt} fill className="object-cover" sizes="(max-width:1023px) 60vw, 28vw" />
-          </motion.div>
+        <motion.h2
+          className="mp-title"
+          initial={reduced ? false : { opacity: 0, y: 14 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
+          transition={{ duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.06 }}
+        >
+          {title}
+        </motion.h2>
 
-          <motion.div
-            className="mp-photo mp-photo--2"
-            variants={reduced ? undefined : collageVariant(1)}
-            initial={reduced ? false : "hidden"}
-            animate={reduced ? undefined : animate}
-          >
-            <Image src={image2} alt={image2Alt} fill className="object-cover" sizes="(max-width:1023px) 55vw, 25vw" />
-          </motion.div>
-
-          {/* Bloc vidéo */}
-          <motion.div
-            className="mp-video-wrapper"
-            variants={reduced ? undefined : collageVariant(2)}
-            initial={reduced ? false : "hidden"}
-            animate={reduced ? undefined : animate}
-          >
-            <Link href={videoUrl} target="_blank" rel="noopener noreferrer" className="mp-video-block">
-              <div className="mp-video-block__play" aria-hidden>
-                <Play className="mp-video-block__play-icon" />
-              </div>
-              <div>
-                <span className="mp-video-block__label">{watchLabel}</span>
-                <span className="mp-video-block__sub">{watchSub}</span>
-              </div>
-            </Link>
-          </motion.div>
-        </div>
-
-        {/* ── Colonne droite : texte ── */}
-        <div className="mp-content">
-          <motion.span
-            className="mp-eyebrow"
-            variants={reduced ? undefined : textVariant(0)}
-            initial={reduced ? false : "hidden"}
-            animate={reduced ? undefined : animate}
-          >
-            {eyebrow}
-          </motion.span>
-
-          <motion.h2
-            id="mp-title"
-            className="mp-title"
-            variants={reduced ? undefined : textVariant(1)}
-            initial={reduced ? false : "hidden"}
-            animate={reduced ? undefined : animate}
-          >
-            {title}
-          </motion.h2>
-
+        {description && (
           <motion.p
             className="mp-description"
-            variants={reduced ? undefined : textVariant(2)}
-            initial={reduced ? false : "hidden"}
-            animate={reduced ? undefined : animate}
+            initial={reduced ? false : { opacity: 0, y: 12 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+            transition={{ duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.12 }}
           >
             {description}
           </motion.p>
+        )}
+      </div>
 
-          <motion.div
-            className="mp-strengths"
-            variants={reduced ? undefined : textVariant(3)}
-            initial={reduced ? false : "hidden"}
-            animate={reduced ? undefined : animate}
-          >
-            {strengths.map((s) => (
-              <div key={s.title} className="mp-strength">
-                <Check className="mp-strength__check" aria-hidden />
-                <h3 className="mp-strength__title">{s.title}</h3>
-                <p className="mp-strength__desc">{s.description}</p>
-              </div>
+      <div className="mp-carousel-wrapper">
+        <button
+          className="mp-nav mp-nav--prev"
+          onClick={() => scrollBy(-1)}
+          aria-label="Précédent"
+          type="button"
+        >
+          ‹
+        </button>
+
+        <div className="mp-track-outer" ref={trackOuterRef}>
+          <div className="mp-track">
+            {team.map((member, i) => (
+              <motion.div
+                key={member.name}
+                className="mp-card"
+                initial={reduced ? false : { opacity: 0, y: 40, scale: 0.96 }}
+                animate={inView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 40, scale: 0.96 }}
+                transition={{ duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.12 + i * 0.1 }}
+                onMouseEnter={() => setHovered(i)}
+                onMouseLeave={() => setHovered(null)}
+              >
+                {/* Portrait photo */}
+                <div className="mp-card__photo">
+                  {member.photo ? (
+                    <Image
+                      src={member.photo}
+                      alt={member.name}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 767px) 72vw, 340px"
+                    />
+                  ) : (
+                    <div className="mp-card__photo-placeholder" />
+                  )}
+                </div>
+
+                {/* Dark gradient overlay */}
+                <div className="mp-card__gradient" aria-hidden />
+
+                {/* Base info — always visible */}
+                <div className="mp-card__info">
+                  {member.quote && (
+                    <p className="mp-card__quote">&#8220;{member.quote}&#8221;</p>
+                  )}
+                  <span className="mp-card__name">{member.name}</span>
+                  <span className="mp-card__role">{member.role}</span>
+                </div>
+
+                {/* Hover floating card */}
+                <AnimatePresence>
+                  {hovered === i && (member.bio ?? member.quote) && (
+                    <motion.div
+                      className="mp-card__hover"
+                      initial={{ opacity: 0, y: 24 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 16 }}
+                      transition={{ duration: 0.22, ease: [0.25, 0.1, 0.25, 1] }}
+                    >
+                      <div className="mp-card__stars" aria-hidden>
+                        ★★★★★
+                      </div>
+                      <span className="mp-card__hover-name">{member.name}</span>
+                      <span className="mp-card__hover-role">{member.role}</span>
+                      {member.bio && (
+                        <p className="mp-card__hover-bio">{member.bio}</p>
+                      )}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             ))}
-          </motion.div>
-
-          <motion.div
-            className="mp-founder"
-            variants={reduced ? undefined : textVariant(4)}
-            initial={reduced ? false : "hidden"}
-            animate={reduced ? undefined : animate}
-          >
-            {founder.photo && (
-              <div className="mp-founder__avatar">
-                <Image src={founder.photo} alt={founder.name} fill className="object-cover" sizes="48px" />
-              </div>
-            )}
-            <div className="mp-founder__info">
-              <span className="mp-founder__name">{founder.name}</span>
-              <span className="mp-founder__role">{founder.role}</span>
-            </div>
-            <div className="mp-founder__signature" aria-hidden>
-              <span className="mp-founder__sig-text">{founder.name}</span>
-            </div>
-          </motion.div>
+          </div>
         </div>
 
+        <button
+          className="mp-nav mp-nav--next"
+          onClick={() => scrollBy(1)}
+          aria-label="Suivant"
+          type="button"
+        >
+          ›
+        </button>
       </div>
     </section>
   );

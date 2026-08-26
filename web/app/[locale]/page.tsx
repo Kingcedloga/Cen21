@@ -42,29 +42,6 @@ export default async function HomePage({ params }: Props) {
       ? site.heroSlides
       : [{ src: site.heroImage, alt: site.name }];
 
-  // Images pour le collage — deux premières slides hero
-  const collageImage1 = heroSlides[0]?.src ?? site.heroImage;
-  const collageImage2 = heroSlides[1]?.src ?? heroSlides[0]?.src ?? site.heroImage;
-
-  // Deux premières valeurs comme points forts
-  const strengths = about.values.slice(0, 2) as [
-    { title: string; description: string },
-    { title: string; description: string },
-  ];
-
-  // Fondateur — premier membre de l'équipe
-  const founder = about.team?.[0] ?? {
-    name: "Cedric Loga",
-    role: "Président-Directeur Général",
-    photo: "",
-  };
-
-  // Lien vidéo — YouTube du groupe
-  const videoUrl =
-    typeof site.experienceYoutubeId === "string" && site.experienceYoutubeId
-      ? site.experienceYoutubeId
-      : "https://youtu.be/cCRgd85KfxY";
-
   // Photo d'ambiance pour la section Expérience (fond du bouton play)
   const experienceImage = heroSlides[2]?.src ?? heroSlides[0]?.src ?? site.heroImage;
 
@@ -95,15 +72,7 @@ export default async function HomePage({ params }: Props) {
         eyebrow={t("marketEyebrow")}
         title={t("marketTitle")}
         description={about.positioning}
-        strengths={strengths}
-        founder={founder}
-        image1={collageImage1}
-        image2={collageImage2}
-        image1Alt={t("marketImage1Alt")}
-        image2Alt={t("marketImage2Alt")}
-        videoUrl={videoUrl}
-        watchLabel={t("marketWatchVideos")}
-        watchSub={t("marketWatchVideosSub")}
+        team={about.team ?? []}
       />
 
       <PageSection

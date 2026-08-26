@@ -422,6 +422,7 @@ export type ExperienceVideo = {
 export type TeamMember = {
   name: string;
   role: string;
+  quote?: string;
   bio?: string;
   photo: string;
   linkedin?: string;
