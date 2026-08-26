@@ -253,23 +253,26 @@
     padding-inline: 0;
   }
 
+  .mp-track-outer {
+    scroll-padding-inline-start: 1.25rem;
+  }
+
   .mp-track {
     justify-content: flex-start;
-    padding-inline: clamp(1.25rem, 5vw, 2rem);
+    padding-inline: 1.25rem;
+    gap: 1.25rem;
   }
 
   .mp-card {
-    width: clamp(220px, 70vw, 280px);
-    height: clamp(300px, 90vw, 400px);
+    /* Une seule carte occupe toute la largeur visible */
+    width: calc(100vw - 2.5rem);
+    height: clamp(420px, 120vw, 560px);
+    scroll-snap-align: start;
   }
 }
 
 @media (max-width: 479px) {
   .mp-header {
     text-align: left;
-  }
-
-  .mp-card {
-    width: clamp(200px, 75vw, 260px);
   }
 }
