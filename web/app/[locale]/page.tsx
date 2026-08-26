@@ -4,6 +4,7 @@ import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
 import { FeaturedSubsidiariesSlider } from "@/components/sections/FeaturedSubsidiariesSlider";
 import { HeroCinematic } from "@/components/sections/HeroCinematic";
 import { HomeExperienceSection } from "@/components/sections/HomeExperienceSection";
+import { HomePhilosophySection } from "@/components/sections/HomePhilosophySection";
 import { MarketPositioningSection } from "@/components/sections/MarketPositioningSection";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -71,8 +72,13 @@ export default async function HomePage({ params }: Props) {
       <MarketPositioningSection
         eyebrow={t("marketEyebrow")}
         title={t("marketTitle")}
-        description={about.positioning}
         team={about.team ?? []}
+      />
+
+      <HomePhilosophySection
+        eyebrow={t("philosophyEyebrow")}
+        statement={about.positioning}
+        values={about.values}
       />
 
       <PageSection
