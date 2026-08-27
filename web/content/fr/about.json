@@ -33,21 +33,35 @@
       "role": "Chairman",
       "photo": "/home/profil-chairman.png",
       "quote": "Construire le luxe africain de demain, c'est honorer la richesse de notre territoire.",
-      "bio": "Visionnaire et entrepreneur accompli, Kenny Rawtani a fondé Cen21 Hospitality avec la conviction que l'Afrique mérite ses propres références en matière d'expériences lifestyle premium. Son leadership incarne l'ambition d'un groupe en perpétuel mouvement."
+      "bio": "Cen21 incarne l'excellence de l'hospitalité congolaise — chaque établissement est une promesse d'expérience inoubliable. Notre ambition est de faire de Kinshasa une destination lifestyle de référence sur le continent africain, en restant fidèles à nos valeurs d'excellence et d'authenticité."
     },
     {
       "name": "Ritesh Hemnani",
       "role": "Vice Chairman",
       "photo": "/home/vice-chairman-profil.png",
       "quote": "L'excellence n'est pas un objectif, c'est une habitude cultivée chaque jour.",
-      "bio": "Avec une expertise profonde dans le développement stratégique, Ritesh Hemnani supervise la croissance et les partenariats du groupe, garantissant une cohérence sans faille entre vision et exécution à chaque étape de l'expansion de Cen21."
+      "bio": "Notre développement stratégique repose sur une vision à long terme : construire un portefeuille d'adresses complémentaires, chacune porteuse d'une identité forte, et créer des synergies qui renforcent durablement la puissance et la cohérence du groupe Cen21."
     },
     {
       "name": "Subrajeet Phookan",
       "role": "Chief Executive Officer",
       "photo": "/home/ceo-profil.png",
       "quote": "Chaque détail compte. C'est la somme des petits riens qui crée l'extraordinaire.",
-      "bio": "En tant que Directeur Général, Subrajeet Phookan orchestre le quotidien de nos établissements avec une rigueur opérationnelle et une passion pour l'hospitalité qui définissent l'identité Cen21. Il incarne l'exigence d'un groupe tourné vers l'avenir."
+      "bio": "La croissance de Cen21 est le fruit d'une discipline opérationnelle sans compromis. Nous investissons autant dans nos équipes que dans nos espaces — car c'est la qualité humaine qui fait la différence entre un bon restaurant et une expérience mémorable."
+    },
+    {
+      "name": "[COO — Opérations]",
+      "role": "Chief Operating Officer, Opérations",
+      "photo": "",
+      "quote": "L'excellence opérationnelle, c'est l'invisible qui rend tout possible.",
+      "bio": "L'excellence opérationnelle, c'est l'invisible qui rend tout possible. Chaque procédure, chaque standard, chaque formation contribue à la fluidité de l'expérience que nos clients vivent au quotidien dans chacun de nos établissements."
+    },
+    {
+      "name": "[COO — Expérience]",
+      "role": "Chief Operating Officer, Expérience Client",
+      "photo": "",
+      "quote": "Anticiper chaque besoin avant qu'il soit exprimé — c'est notre signature.",
+      "bio": "Créer une expérience client d'exception, c'est anticiper chaque besoin avant qu'il soit exprimé. Notre équipe s'assure que chaque visite — dîner, afterwork ou grande soirée — laisse une empreinte durable dans la mémoire de nos hôtes."
     }
   ]
 }

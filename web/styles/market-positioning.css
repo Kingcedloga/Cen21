@@ -1,9 +1,8 @@
-/* Section Équipe Dirigeante — homepage uniquement */
+/* Section Équipe — testimonials carousel — homepage uniquement */
 
 .mp-section {
   background: #e7d1bf;
   padding: clamp(4rem, 8vw, 7rem) 0;
-  overflow: hidden;
 }
 
 /* —— Header —— */
@@ -12,14 +11,14 @@
   max-width: 90rem;
   margin-inline: auto;
   padding-inline: clamp(1.25rem, 4.5vw, 3.5rem);
-  margin-bottom: clamp(2.5rem, 5vw, 4rem);
   text-align: center;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 
 .mp-eyebrow {
   display: block;
   font-family: var(--font-dynalight), cursive;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -34,245 +33,167 @@
   font-weight: 800;
   line-height: 1.08;
   letter-spacing: -0.025em;
-  color: #111111;
+  color: #1a1208;
 }
 
-.mp-description {
-  margin: 1rem auto 0;
-  font-size: clamp(0.9375rem, 1.2vw, 1.0625rem);
-  line-height: 1.75;
-  color: #5a5a5a;
-  max-width: 40rem;
-}
+/* —— Carousel outer ── */
 
-/* —— Carousel wrapper —— */
-
-.mp-carousel-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+.mp-carousel-outer {
   max-width: 90rem;
   margin-inline: auto;
-  padding-inline: clamp(1rem, 3vw, 2.5rem);
+  padding-inline: clamp(1.25rem, 4.5vw, 3.5rem);
 }
 
-/* —— Track outer — scrollable container —— */
-
 .mp-track-outer {
-  flex: 1;
   overflow-x: auto;
+  scroll-snap-type: x mandatory;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  /* Smooth momentum scroll on iOS */
   -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory;
+  width: 100%;
 }
 
 .mp-track-outer::-webkit-scrollbar {
   display: none;
 }
 
-/* —— Track — flex row of cards —— */
-
 .mp-track {
   display: flex;
-  gap: 1.25rem;
-  width: fit-content;
-  min-width: 100%;
-  justify-content: center;
-  padding-block: 0.5rem;
+  gap: 1.5rem;
+  align-items: stretch;
 }
 
-/* —— Card —— */
+/* —— Testimonial card ── */
 
 .mp-card {
-  position: relative;
-  flex-shrink: 0;
-  width: clamp(220px, 24vw, 320px);
-  height: clamp(320px, 34vw, 480px);
-  border-radius: 16px;
-  overflow: hidden;
+  /* CSS fallback before JS measures (3 visible desktop) */
+  flex: 0 0 calc((100% - 3rem) / 3);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
   scroll-snap-align: start;
-  cursor: default;
 }
 
-/* Portrait photo */
-.mp-card__photo {
-  position: absolute;
-  inset: 0;
+/* Rounded box — contient guillemet + message */
+.mp-card__box {
+  flex: 1;
+  background: #f2f2f2;
+  border-radius: 20px;
+  padding: clamp(1.75rem, 3vw, 2.25rem);
+  box-shadow: 0 8px 48px -18px rgba(26, 18, 8, 0.15);
+  display: flex;
+  flex-direction: column;
 }
 
-.mp-card__photo-placeholder {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(160deg, #2d261f 0%, #4a3c2d 100%);
+/* Giant opening quote mark */
+.mp-card__quote-mark {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 0.75;
+  color: #1a1208;
+  opacity: 0.2;
+  margin-bottom: 1.25rem;
+  user-select: none;
+  display: block;
 }
 
-/* Gradient overlay — dark at bottom */
-.mp-card__gradient {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.88) 0%,
-    rgba(0, 0, 0, 0.55) 35%,
-    rgba(0, 0, 0, 0.12) 60%,
-    transparent 80%
-  );
-  z-index: 1;
-}
-
-/* Base info — always visible over gradient */
-.mp-card__info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1.5rem 1.25rem 1.375rem;
-  z-index: 2;
-}
-
-.mp-card__quote {
-  margin: 0 0 0.625rem;
-  font-size: 0.8125rem;
-  font-style: italic;
-  line-height: 1.55;
-  color: rgba(255, 255, 255, 0.78);
+/* Message body */
+.mp-card__message {
+  flex: 1;
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: #1a1208;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* Identity — flotte EN DESSOUS de la carte grise, sur le fond de la section */
+.mp-card__identity {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0 0.25rem;
+  flex-shrink: 0;
+}
+
+.mp-card__avatar {
+  position: relative;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #d4c4b0;
+}
+
+.mp-card__avatar-placeholder {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #c8a96e 0%, #8b6a3a 100%);
+}
+
+.mp-card__id-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
 }
 
 .mp-card__name {
   display: block;
   font-family: var(--font-dm-sans), system-ui, sans-serif;
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: 700;
-  color: #ffffff;
-  line-height: 1.2;
+  color: #1a1208;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .mp-card__role {
   display: block;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: #c8a96e;
-  margin-top: 0.25rem;
-}
-
-/* —— Hover floating white card —— */
-
-.mp-card__hover {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #ffffff;
-  border-radius: 0 0 16px 16px;
-  padding: 1.25rem 1.25rem 1.5rem;
-  z-index: 10;
-  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.12);
-}
-
-.mp-card__stars {
-  font-size: 0.875rem;
-  letter-spacing: 0.06em;
-  color: #c8a96e;
-  margin-bottom: 0.75rem;
-  line-height: 1;
-}
-
-.mp-card__hover-name {
-  display: block;
-  font-family: var(--font-dm-sans), system-ui, sans-serif;
-  font-size: 0.9375rem;
-  font-weight: 700;
-  color: #111111;
-  line-height: 1.2;
-}
-
-.mp-card__hover-role {
-  display: block;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: #c8a96e;
-  margin-top: 0.2rem;
-  margin-bottom: 0.75rem;
-}
-
-.mp-card__hover-bio {
-  margin: 0;
   font-size: 0.8125rem;
-  line-height: 1.65;
-  color: #4a4a4a;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  color: #7a6a58;
+  line-height: 1.35;
 }
 
-/* —— Navigation arrows —— */
+/* —— Pagination dots ── */
 
-.mp-nav {
-  flex-shrink: 0;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  border: 1.5px solid rgba(0, 0, 0, 0.18);
-  background: #ffffff;
-  color: #111111;
+.mp-dots {
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 1.375rem;
-  line-height: 1;
+  align-items: center;
+  gap: 0.625rem;
+  margin-top: 2.25rem;
+}
+
+.mp-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: rgba(26, 18, 8, 0.2);
   cursor: pointer;
-  transition: background 220ms ease, border-color 220ms ease, color 220ms ease;
-  user-select: none;
+  transition: background 300ms ease, transform 280ms ease;
+  flex-shrink: 0;
 }
 
-.mp-nav:hover {
+.mp-dot--active {
   background: #b58e48;
-  border-color: #b58e48;
-  color: #ffffff;
+  transform: scale(1.3);
 }
 
-/* —— Responsive —— */
+/* —— Responsive ── */
 
 @media (max-width: 767px) {
-  .mp-nav {
-    display: none;
-  }
-
-  .mp-carousel-wrapper {
-    padding-inline: 0;
-  }
-
-  .mp-track-outer {
-    scroll-padding-inline-start: 1.25rem;
-  }
-
-  .mp-track {
-    justify-content: flex-start;
-    padding-inline: 1.25rem;
-    gap: 1.25rem;
-  }
-
   .mp-card {
-    /* Une seule carte occupe toute la largeur visible */
-    width: calc(100vw - 2.5rem);
-    height: clamp(420px, 120vw, 560px);
-    scroll-snap-align: start;
-  }
-}
-
-@media (max-width: 479px) {
-  .mp-header {
-    text-align: left;
+    /* CSS fallback before JS measures (1 visible mobile) */
+    flex: 0 0 100%;
   }
 }

@@ -1,151 +1,181 @@
 "use client";
 
 import Image from "next/image";
-import { motion, AnimatePresence, useInView, useReducedMotion } from "framer-motion";
-import { useRef, useState, useCallback } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { dynalight } from "@/lib/fonts";
-import { DURATION_S, EASE } from "@/lib/motion";
+import { EASE } from "@/lib/motion";
 import type { TeamMember } from "@/lib/types";
 
 import "@/styles/market-positioning.css";
 
+const GAP_PX = 24;
+
 type Props = {
   eyebrow: string;
   title: string;
-  description?: string;
   team: TeamMember[];
 };
 
-export function MarketPositioningSection({ eyebrow, title, description, team }: Props) {
+export function MarketPositioningSection({ eyebrow, title, team }: Props) {
   const reduced = useReducedMotion() ?? false;
   const sectionRef = useRef<HTMLElement>(null);
   const trackOuterRef = useRef<HTMLDivElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-80px 0px" });
-  const [hovered, setHovered] = useState<number | null>(null);
 
-  const scrollBy = useCallback((dir: 1 | -1) => {
-    if (!trackOuterRef.current) return;
-    trackOuterRef.current.scrollBy({ left: dir * 360, behavior: "smooth" });
+  const [mounted, setMounted] = useState(false);
+  const [containerWidth, setContainerWidth] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => { setMounted(true); }, []);
+
+  useEffect(() => {
+    const el = trackOuterRef.current;
+    if (!el) return;
+    const update = () => setContainerWidth(el.offsetWidth);
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
   }, []);
+
+  const visibleCount = !mounted ? 3 : containerWidth < 768 ? 1 : 3;
+  const cardWidth = mounted && containerWidth > 0
+    ? (containerWidth - GAP_PX * (visibleCount - 1)) / visibleCount
+    : 0;
+  const maxIndex = Math.max(team.length - visibleCount, 0);
+  const numDots = maxIndex + 1;
+
+  // Re-scroll when card dimensions change (resize)
+  useEffect(() => {
+    if (!trackOuterRef.current || cardWidth <= 0) return;
+    const clamped = Math.min(currentIndex, maxIndex);
+    if (clamped !== currentIndex) setCurrentIndex(clamped);
+    trackOuterRef.current.scrollLeft = clamped * (cardWidth + GAP_PX);
+  }, [cardWidth, maxIndex]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Sync dots with native scroll position
+  useEffect(() => {
+    const el = trackOuterRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      if (cardWidth <= 0) return;
+      const idx = Math.min(Math.round(el.scrollLeft / (cardWidth + GAP_PX)), maxIndex);
+      setCurrentIndex(idx);
+    };
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => el.removeEventListener("scroll", onScroll);
+  }, [cardWidth, maxIndex]);
+
+  const goTo = useCallback(
+    (i: number) => {
+      const clamped = Math.min(Math.max(i, 0), maxIndex);
+      setCurrentIndex(clamped);
+      trackOuterRef.current?.scrollTo({
+        left: clamped * (cardWidth + GAP_PX),
+        behavior: "smooth",
+      });
+    },
+    [maxIndex, cardWidth],
+  );
 
   return (
     <section className={`mp-section ${dynalight.variable}`} ref={sectionRef}>
+
+      {/* ── Header ── */}
       <div className="mp-header">
         <motion.span
           className="mp-eyebrow"
           initial={reduced ? false : { opacity: 0, y: 10 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-          transition={{ duration: DURATION_S.luxe, ease: EASE.luxury }}
+          transition={{ duration: 0.7, ease: EASE.luxury }}
         >
           {eyebrow}
         </motion.span>
 
         <motion.h2
           className="mp-title"
-          initial={reduced ? false : { opacity: 0, y: 14 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
-          transition={{ duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.06 }}
+          initial={reduced ? false : { opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+          transition={{ duration: 0.7, ease: EASE.luxury, delay: 0.07 }}
         >
           {title}
         </motion.h2>
-
-        {description && (
-          <motion.p
-            className="mp-description"
-            initial={reduced ? false : { opacity: 0, y: 12 }}
-            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
-            transition={{ duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.12 }}
-          >
-            {description}
-          </motion.p>
-        )}
       </div>
 
-      <div className="mp-carousel-wrapper">
-        <button
-          className="mp-nav mp-nav--prev"
-          onClick={() => scrollBy(-1)}
-          aria-label="Précédent"
-          type="button"
-        >
-          ‹
-        </button>
-
+      {/* ── Carousel ── */}
+      <div className="mp-carousel-outer">
         <div className="mp-track-outer" ref={trackOuterRef}>
           <div className="mp-track">
             {team.map((member, i) => (
               <motion.div
                 key={member.name}
                 className="mp-card"
-                initial={reduced ? false : { opacity: 0, y: 40, scale: 0.96 }}
-                animate={inView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 40, scale: 0.96 }}
-                transition={{ duration: DURATION_S.luxe, ease: EASE.luxury, delay: 0.12 + i * 0.1 }}
-                onMouseEnter={() => setHovered(i)}
-                onMouseLeave={() => setHovered(null)}
+                style={cardWidth > 0 ? { width: cardWidth } : undefined}
+                initial={reduced ? false : { opacity: 0, y: 28, scale: 0.97 }}
+                animate={inView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 28, scale: 0.97 }}
+                transition={{ duration: 0.7, ease: EASE.luxury, delay: 0.14 + i * 0.09 }}
               >
-                {/* Portrait photo */}
-                <div className="mp-card__photo">
-                  {member.photo ? (
-                    <Image
-                      src={member.photo}
-                      alt={member.name}
-                      fill
-                      className="object-cover object-top"
-                      sizes="(max-width: 767px) 72vw, 340px"
-                    />
-                  ) : (
-                    <div className="mp-card__photo-placeholder" />
-                  )}
+                {/* Rounded card box — quote mark + message */}
+                <div className="mp-card__box">
+                  <motion.div
+                    className="mp-card__quote-mark"
+                    aria-hidden
+                    initial={reduced ? false : { opacity: 0 }}
+                    animate={inView ? { opacity: 1 } : { opacity: 0 }}
+                    transition={{ duration: 0.6, ease: EASE.luxury, delay: 0.2 + i * 0.09 }}
+                  >
+                    &#8220;
+                  </motion.div>
+
+                  <p className="mp-card__message">
+                    {member.bio ?? member.quote ?? "—"}
+                  </p>
                 </div>
 
-                {/* Dark gradient overlay */}
-                <div className="mp-card__gradient" aria-hidden />
-
-                {/* Base info — always visible */}
-                <div className="mp-card__info">
-                  {member.quote && (
-                    <p className="mp-card__quote">&#8220;{member.quote}&#8221;</p>
-                  )}
-                  <span className="mp-card__name">{member.name}</span>
-                  <span className="mp-card__role">{member.role}</span>
+                {/* Identity — hors de la carte, flotte en dessous */}
+                <div className="mp-card__identity">
+                  <div className="mp-card__avatar">
+                    {member.photo ? (
+                      <Image
+                        src={member.photo}
+                        alt={member.name}
+                        fill
+                        className="object-cover object-top"
+                        sizes="56px"
+                      />
+                    ) : (
+                      <div className="mp-card__avatar-placeholder" />
+                    )}
+                  </div>
+                  <div className="mp-card__id-text">
+                    <span className="mp-card__name">{member.name}</span>
+                    <span className="mp-card__role">{member.role}</span>
+                  </div>
                 </div>
-
-                {/* Hover floating card */}
-                <AnimatePresence>
-                  {hovered === i && (member.bio ?? member.quote) && (
-                    <motion.div
-                      className="mp-card__hover"
-                      initial={{ opacity: 0, y: 24 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 16 }}
-                      transition={{ duration: 0.22, ease: [0.25, 0.1, 0.25, 1] }}
-                    >
-                      <div className="mp-card__stars" aria-hidden>
-                        ★★★★★
-                      </div>
-                      <span className="mp-card__hover-name">{member.name}</span>
-                      <span className="mp-card__hover-role">{member.role}</span>
-                      {member.bio && (
-                        <p className="mp-card__hover-bio">{member.bio}</p>
-                      )}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
               </motion.div>
             ))}
           </div>
         </div>
 
-        <button
-          className="mp-nav mp-nav--next"
-          onClick={() => scrollBy(1)}
-          aria-label="Suivant"
-          type="button"
-        >
-          ›
-        </button>
+        {/* ── Pagination dots ── */}
+        {mounted && numDots > 1 && (
+          <div className="mp-dots" role="tablist" aria-label="Navigation carrousel">
+            {Array.from({ length: numDots }, (_, i) => (
+              <button
+                key={i}
+                role="tab"
+                aria-selected={i === currentIndex}
+                aria-label={`Slide ${i + 1}`}
+                className={`mp-dot${i === currentIndex ? " mp-dot--active" : ""}`}
+                onClick={() => goTo(i)}
+              />
+            ))}
+          </div>
+        )}
       </div>
+
     </section>
   );
 }

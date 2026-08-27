@@ -141,7 +141,7 @@ export function HeroCinematic({ slides, siteName, className = "" }: HeroCinemati
           variants={reducedMotion ? undefined : heroStaggerVariants}
         >
           <motion.p
-            className="eyebrow text-[10.5px] font-bold uppercase text-gold sm:text-[11px] [font-family:var(--font-dynalight),cursive]"
+            className="eyebrow text-[14px] font-bold uppercase text-gold sm:text-[15px] [font-family:var(--font-dynalight),cursive]"
             variants={reducedMotion ? undefined : fadeUpVariants}
             transition={fadeUpTransition}
           >

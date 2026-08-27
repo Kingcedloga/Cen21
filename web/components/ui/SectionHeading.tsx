@@ -116,7 +116,7 @@ export function SectionHeading({
             {...diamondMotion}
           />
           <p
-            className={`eyebrow text-[10.5px] font-bold uppercase sm:text-[11px] [font-family:var(--font-dynalight),cursive] ${styles.eyebrow}`}
+            className={`eyebrow text-[14px] font-bold uppercase sm:text-[15px] [font-family:var(--font-dynalight),cursive] ${styles.eyebrow}`}
           >
             {eyebrow}
           </p>

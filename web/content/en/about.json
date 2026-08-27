@@ -33,21 +33,35 @@
       "role": "Chairman",
       "photo": "/home/profil-chairman.png",
       "quote": "Building tomorrow's African luxury means honoring the richness of our land.",
-      "bio": "Visionary entrepreneur, Kenny Rawtani founded Cen21 Hospitality with the conviction that Africa deserves its own benchmarks for premium lifestyle experiences. His leadership embodies the ambition of a group in constant motion."
+      "bio": "Cen21 embodies the excellence of Congolese hospitality — every venue is a promise of an unforgettable experience. Our ambition is to make Kinshasa a leading lifestyle destination on the African continent, staying true to our values of excellence and authenticity."
     },
     {
       "name": "Ritesh Hemnani",
       "role": "Vice Chairman",
       "photo": "/home/vice-chairman-profil.png",
       "quote": "Excellence is not a goal — it's a habit cultivated every single day.",
-      "bio": "With deep expertise in strategic development, Ritesh Hemnani oversees the group's growth and partnerships, ensuring seamless coherence between vision and execution at every step of Cen21's expansion."
+      "bio": "Our strategic development rests on a long-term vision: building a portfolio of complementary addresses, each with a strong identity, and creating synergies that lastingly reinforce the strength and coherence of the Cen21 group."
     },
     {
       "name": "Subrajeet Phookan",
       "role": "Chief Executive Officer",
       "photo": "/home/ceo-profil.png",
       "quote": "Every detail matters. It's the sum of small things that creates the extraordinary.",
-      "bio": "As Chief Executive Officer, Subrajeet Phookan orchestrates our venues' daily operations with operational rigor and a passion for hospitality that defines the Cen21 identity. He embodies the standards of a group built for the future."
+      "bio": "Cen21's growth is the result of uncompromising operational discipline. We invest as much in our teams as in our spaces — because it's the human quality that makes the difference between a good restaurant and a truly memorable experience."
+    },
+    {
+      "name": "[COO — Operations]",
+      "role": "Chief Operating Officer, Operations",
+      "photo": "",
+      "quote": "Operational excellence is the invisible force that makes everything possible.",
+      "bio": "Operational excellence is the invisible force that makes everything possible. Every process, every standard, every training session contributes to the seamless experience our guests enjoy daily across each one of our venues."
+    },
+    {
+      "name": "[COO — Experience]",
+      "role": "Chief Operating Officer, Guest Experience",
+      "photo": "",
+      "quote": "Anticipating every need before it's expressed — that is our signature.",
+      "bio": "Creating an exceptional guest experience means anticipating every need before it's expressed. Our team ensures that every visit — whether a dinner, an after-work, or an evening — leaves a lasting impression in the memory of our guests."
     }
   ]
 }
