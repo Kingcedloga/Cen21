@@ -55,6 +55,7 @@
 [data-subsidiary-theme="olive-verte"] .olive-reservation__form {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   margin: clamp(1.75rem, 3.5vw, 2.5rem) auto 0;
   max-width: 34rem;
 }
@@ -99,6 +100,10 @@
 
 [data-subsidiary-theme="olive-verte"] .olive-reservation__cta:hover {
   background: #5c6228;
+}
+
+[data-subsidiary-theme="olive-verte"] .olive-reservation__cta:only-child {
+  border-radius: 4px;
 }
 
 @media (max-width: 480px) {
