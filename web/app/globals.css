@@ -50,15 +50,17 @@
   --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-cinematic: cubic-bezier(0.77, 0, 0.175, 1);
 
   /* Durées — toujours pleines centaines pour un rythme régulier. */
   --duration-fine: 300ms;
   --duration-base: 500ms;
   --duration-luxe: 750ms;
   --duration-grand: 1100ms;
+  --duration-cinematic: 1400ms;
   /* Sémantiques — miroir lib/motion.ts DURATION_S */
   --duration-shimmer: 900ms;
-  --duration-hero-crossfade: 1000ms;
+  --duration-hero-crossfade: 1200ms;
 
   /* Ombres en couches — chaque ombre superpose une "près" (1-2px crédibilité)
      et une "loin" (24-48px diffusion). Inspiré direction artistique Cartier. */
@@ -75,10 +77,16 @@
   --shadow-gold-soft:
     inset 0 1px 0 0 rgb(255 255 255 / 0.04),
     0 18px 44px -18px rgb(var(--color-gold-rgb) / 0.32);
+  /* Ombre carte en lévitation (hover) */
+  --shadow-levitate:
+    0 2px 4px rgb(0 0 0 / 0.12),
+    0 24px 56px -16px rgb(0 0 0 / 0.4),
+    0 0 0 1px rgb(var(--color-gold-rgb) / 0.08);
 
-  /* Rythme vertical adaptatif — clamp pour respiration sur tous écrans. */
-  --space-section-y: clamp(5rem, 8vw, 8rem);
-  --space-section-y-loose: clamp(6rem, 10vw, 10rem);
+  /* Rythme vertical adaptatif — respiration luxe sur tous écrans. */
+  --space-section-y: clamp(6rem, 12vw, 10rem);
+  --space-section-y-loose: clamp(7rem, 14vw, 13rem);
+  --space-section-y-cinematic: clamp(8rem, 16vw, 16rem);
 }
 
 @theme inline {
@@ -161,16 +169,44 @@ h4 {
 }
 
 h1 {
-  letter-spacing: -0.028em;
+  letter-spacing: -0.032em;
 }
 h2 {
-  letter-spacing: -0.022em;
+  letter-spacing: -0.025em;
 }
 h3 {
-  letter-spacing: -0.016em;
+  letter-spacing: -0.018em;
 }
 h4 {
   letter-spacing: -0.012em;
+}
+
+/* === Display typography — titres cinématiques "statement" ============== */
+.display-xl {
+  font-family: var(--font-dm-sans);
+  font-weight: 700;
+  font-size: clamp(2.75rem, 6.5vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+.display-lg {
+  font-family: var(--font-dm-sans);
+  font-weight: 700;
+  font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+.display-md {
+  font-family: var(--font-dm-sans);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-feature-settings: "kern" 1, "liga" 1;
 }
 
 /* Eyebrow signature — case feature pour les majuscules optiquement parfaites */
@@ -351,9 +387,16 @@ h4 {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.04;
+  opacity: 0.025;
   mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Radial gradient mesh for cinematic dark sections */
+.gradient-mesh-dark {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgb(var(--color-gold-rgb) / 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 80% 80%, rgb(0 66 88 / 0.15) 0%, transparent 50%);
 }
 
 /* === Boutons — surface or #D4AD65 (212·173·101) ======================= */
@@ -465,6 +508,109 @@ h4 {
 
 .animate-scroll-cue {
   animation: scroll-cue 2200ms cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* === Clip-path reveal — entrée cinématique pour images ================ */
+@keyframes clip-reveal-up {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes clip-reveal-center {
+  from {
+    clip-path: inset(8% 8% 8% 8% round 1rem);
+    transform: scale(1.04);
+  }
+  to {
+    clip-path: inset(0 0 0 0 round 0);
+    transform: scale(1);
+  }
+}
+
+.animate-clip-reveal-up {
+  animation: clip-reveal-up var(--duration-cinematic) var(--ease-cinematic) both;
+}
+
+.animate-clip-reveal-center {
+  animation: clip-reveal-center var(--duration-cinematic) var(--ease-cinematic) both;
+}
+
+/* === Ken Burns — zoom lent pour hero slides =========================== */
+@keyframes ken-burns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.08);
+  }
+}
+
+.animate-ken-burns {
+  animation: ken-burns 12s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+/* === Glow pulse — pour play buttons et éléments accent ================ */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 0 rgb(var(--color-gold-rgb) / 0.4),
+      0 0 0 0 rgb(var(--color-gold-rgb) / 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 0 12px rgb(var(--color-gold-rgb) / 0),
+      0 0 0 24px rgb(var(--color-gold-rgb) / 0);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2.5s var(--ease-out-soft) infinite;
+}
+
+/* === Shimmer sweep — pour boutons CTA ================================= */
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-15deg);
+  }
+}
+
+/* === Hero scroll compress — hero se réduit au scroll ================== */
+.hero-scroll-compress {
+  will-change: transform, opacity;
+}
+
+/* === Card levitation — hover premium sur cartes ======================= */
+.card-levitate {
+  transition:
+    transform var(--duration-luxe) var(--ease-luxury),
+    box-shadow var(--duration-luxe) var(--ease-luxury),
+    border-color var(--duration-luxe) var(--ease-luxury);
+}
+
+.card-levitate:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-levitate);
+}
+
+.card-levitate:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+/* === Image reveal au scroll — inset progressif ======================== */
+.image-reveal {
+  clip-path: inset(6% round 0.75rem);
+  transition: clip-path var(--duration-cinematic) var(--ease-cinematic);
+}
+
+.image-reveal[data-in-view="true"] {
+  clip-path: inset(0 round 0);
 }
 
 @keyframes site-loader-blob-1 {

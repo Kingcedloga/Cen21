@@ -94,7 +94,7 @@ export function SectionHeading({
 
   return (
     <header
-      className={`max-w-3xl mb-10 md:mb-12 ${dynalight.variable} ${
+      className={`max-w-4xl mb-12 md:mb-16 ${dynalight.variable} ${
         isCenter ? "mx-auto text-center" : "text-left"
       } ${className}`}
     >
@@ -106,7 +106,7 @@ export function SectionHeading({
         >
           <motion.span
             aria-hidden
-            className={`block h-px w-7 shrink-0 sm:w-9 ornament-line-glow ${styles.line}`}
+            className={`block h-px w-8 shrink-0 sm:w-12 ornament-line-glow ${styles.line}`}
             style={{ transformOrigin: isCenter ? "right center" : "left center" }}
             {...lineMotion}
           />
@@ -129,7 +129,7 @@ export function SectionHeading({
               />
               <motion.span
                 aria-hidden
-                className={`block h-px w-7 shrink-0 bg-gradient-to-l from-transparent sm:w-9 ornament-line-glow ${
+                className={`block h-px w-8 shrink-0 bg-gradient-to-l from-transparent sm:w-12 ornament-line-glow ${
                   tone === "light" ? "to-gold-deep/75" : "to-gold/85"
                 }`}
                 style={{ transformOrigin: "left center" }}
@@ -145,13 +145,13 @@ export function SectionHeading({
       )}
       <Title
         id={titleId}
-        className={`font-[family-name:var(--font-dm-sans)] text-4xl md:text-5xl lg:text-[3.4rem] font-bold tracking-[-0.028em] leading-[1.05] ${styles.title}`}
+        className={`font-[family-name:var(--font-dm-sans)] text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-[-0.032em] leading-[1.04] ${styles.title}`}
       >
         {title}
       </Title>
       {subtitle && (
         <Subtitle
-          className={`mt-3 font-[family-name:var(--font-dm-sans)] text-2xl md:text-[1.85rem] italic font-bold tracking-[-0.012em] leading-[1.15] ${
+          className={`mt-3 font-[family-name:var(--font-dm-sans)] text-xl sm:text-2xl md:text-[1.85rem] italic font-bold tracking-[-0.015em] leading-[1.15] ${
             isCenter ? "mx-auto" : ""
           } ${styles.subtitle}`}
         >
@@ -160,7 +160,7 @@ export function SectionHeading({
       )}
       {description && (
         <p
-          className={`mt-5 text-[15px] md:text-base lg:text-lg leading-[1.75] tracking-[-0.005em] max-w-2xl ${
+          className={`mt-5 text-[15px] md:text-base lg:text-lg leading-[1.8] tracking-[-0.005em] max-w-2xl text-pretty ${
             isCenter ? "mx-auto" : ""
           } ${styles.description}`}
         >

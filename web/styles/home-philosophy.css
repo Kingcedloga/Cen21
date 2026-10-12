@@ -1,11 +1,25 @@
 /* Section Philosophie — homepage uniquement */
 
 .hphil-section {
-  background: #18110a;
-  padding: clamp(4rem, 8vw, 7rem) 0;
+  position: relative;
+  background: radial-gradient(ellipse 90% 60% at 50% 10%, #251b12 0%, #130d07 75%);
+  padding: clamp(6rem, 12vw, 10rem) 0;
+  overflow: hidden;
+}
+
+.hphil-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .hphil-inner {
+  position: relative;
+  z-index: 1;
   max-width: 90rem;
   margin-inline: auto;
   padding-inline: clamp(1.25rem, 4.5vw, 3.5rem);
@@ -15,45 +29,60 @@
 
 .hphil-statement-block {
   text-align: center;
-  max-width: 52rem;
+  max-width: 58rem;
   margin-inline: auto;
-  margin-bottom: clamp(3rem, 6vw, 5rem);
+  margin-bottom: clamp(3.5rem, 7vw, 6rem);
 }
 
 .hphil-eyebrow {
-  display: block;
+  display: inline-block;
   font-family: var(--font-dynalight), cursive;
-  font-size: 0.75rem;
+  font-size: 0.9375rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #c8a96e;
+  color: #d4ad65;
   margin-bottom: 1.5rem;
 }
 
 .hphil-statement {
   margin: 0;
   font-family: var(--font-dm-sans), system-ui, sans-serif;
-  font-size: clamp(1.125rem, 2.2vw, 1.625rem);
+  font-size: clamp(1.35rem, 2.6vw, 2.125rem);
   font-weight: 300;
-  line-height: 1.65;
-  letter-spacing: -0.01em;
-  color: #f0e6d3;
+  line-height: 1.55;
+  letter-spacing: -0.02em;
+  color: #f7ede0;
   font-style: italic;
+  text-wrap: balance;
 }
 
 /* —— Divider —— */
 
 .hphil-divider {
+  position: relative;
   height: 1px;
   background: linear-gradient(
     to right,
     transparent,
-    rgba(200, 169, 110, 0.5) 20%,
-    rgba(200, 169, 110, 0.5) 80%,
+    rgba(212, 173, 101, 0.4) 20%,
+    rgba(212, 173, 101, 0.8) 50%,
+    rgba(212, 173, 101, 0.4) 80%,
     transparent
   );
-  margin-bottom: clamp(3rem, 6vw, 5rem);
+  margin-bottom: clamp(3.5rem, 7vw, 6rem);
+}
+
+.hphil-divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 8px;
+  height: 8px;
+  background: #d4ad65;
+  box-shadow: 0 0 12px rgba(212, 173, 101, 0.8);
 }
 
 /* —— Values grid —— */
@@ -61,11 +90,17 @@
 .hphil-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
 }
 
 .hphil-value {
-  padding: 0 clamp(1.25rem, 2.5vw, 2.5rem);
-  border-right: 1px solid rgba(200, 169, 110, 0.15);
+  padding: 0 clamp(1rem, 2vw, 2.25rem);
+  border-right: 1px solid rgba(212, 173, 101, 0.15);
+  transition: transform 350ms var(--ease-luxury);
+}
+
+.hphil-value:hover {
+  transform: translateY(-4px);
 }
 
 .hphil-value:first-child {
@@ -77,94 +112,81 @@
   padding-right: 0;
 }
 
-/* Chiffre romain — décoration dorée */
+/* Chiffre romain — grande lettre éditoriale */
 .hphil-value__roman {
   display: block;
   font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-  font-size: 2.5rem;
+  font-size: clamp(3rem, 5vw, 4.25rem);
   font-style: italic;
-  font-weight: 300;
-  color: #c8a96e;
-  opacity: 0.55;
+  font-weight: 400;
+  color: #d4ad65;
+  opacity: 0.75;
   line-height: 1;
   margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.hphil-value:hover .hphil-value__roman {
+  opacity: 1;
+  transform: scale(1.05);
 }
 
 .hphil-value__title {
-  margin: 0 0 0.625rem;
+  margin: 0 0 0.75rem;
   font-family: var(--font-dm-sans), system-ui, sans-serif;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #f0e6d3;
-  line-height: 1.3;
+  color: #ffffff;
+  transition: color 300ms ease;
+}
+
+.hphil-value:hover .hphil-value__title {
+  color: #d4ad65;
 }
 
 .hphil-value__desc {
   margin: 0;
-  font-size: 0.875rem;
-  line-height: 1.7;
-  color: rgba(240, 230, 211, 0.5);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: rgba(240, 230, 211, 0.75);
 }
 
-/* —— Responsive —— */
+/* —— Responsive ── */
 
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
   .hphil-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem 0;
+    row-gap: 3rem;
   }
 
-  .hphil-value {
-    padding: 0 clamp(1rem, 3vw, 2rem);
-  }
-
-  .hphil-value:first-child {
-    padding-left: 0;
-  }
-
-  .hphil-value:nth-child(even) {
+  .hphil-value:nth-child(2) {
     border-right: none;
     padding-right: 0;
   }
 
-  .hphil-value:nth-child(odd):not(:first-child) {
+  .hphil-value:nth-child(3) {
     padding-left: 0;
-  }
-
-  .hphil-value:nth-child(3),
-  .hphil-value:nth-child(4) {
-    border-top: 1px solid rgba(200, 169, 110, 0.15);
-    padding-top: 2.5rem;
   }
 }
 
-@media (max-width: 599px) {
+@media (max-width: 640px) {
   .hphil-grid {
     grid-template-columns: 1fr;
-    gap: 0;
+    row-gap: 2.5rem;
   }
 
   .hphil-value {
     border-right: none;
-    border-bottom: 1px solid rgba(200, 169, 110, 0.15);
-    padding: 2rem 0;
-  }
-
-  .hphil-value:first-child {
-    padding-top: 0;
+    padding: 0;
+    border-bottom: 1px solid rgba(212, 173, 101, 0.15);
+    padding-bottom: 2rem;
   }
 
   .hphil-value:last-child {
     border-bottom: none;
     padding-bottom: 0;
-  }
-
-  /* Reset le border-top du breakpoint 1023px */
-  .hphil-value:nth-child(3),
-  .hphil-value:nth-child(4) {
-    border-top: none;
-    padding-top: 2rem;
   }
 }

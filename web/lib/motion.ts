@@ -14,8 +14,9 @@ export const DURATION_S = {
   base: 0.5,
   luxe: 0.75,
   grand: 1.1,
+  cinematic: 1.4,
   shimmer: 0.9,
-  heroCrossfade: 1,
+  heroCrossfade: 1.2,
 } as const;
 
 /** Courbes d'easing — miroir CSS */
@@ -23,6 +24,7 @@ export const EASE = {
   luxury: [0.16, 1, 0.3, 1] as const,
   outSoft: [0.22, 1, 0.36, 1] as const,
   spring: [0.34, 1.56, 0.64, 1] as const,
+  cinematic: [0.77, 0, 0.175, 1] as const,
 } as const;
 
 /** Stagger enfant — 100 ms */
@@ -70,6 +72,36 @@ export const slideInVariants: Variants = {
 
 export const slideInTransition: Transition = {
   duration: DURATION_S.luxe,
+  ease: EASE.luxury,
+};
+
+/* ── Variantes cinématiques (Phase 1 redesign) ────────────────────────── */
+
+/** Révélation d'image / panneau par clip-path vertical */
+export const clipRevealVariants: Variants = {
+  hidden: { clipPath: "inset(100% 0% 0% 0%)", opacity: 0 },
+  visible: { clipPath: "inset(0% 0% 0% 0%)", opacity: 1 },
+};
+
+export const clipRevealTransition: Transition = {
+  duration: DURATION_S.cinematic,
+  ease: EASE.cinematic,
+};
+
+/** Révélation d'image avec dézoom cinématique */
+export const clipRevealCenterVariants: Variants = {
+  hidden: { clipPath: "inset(8% 8% 8% 8% round 1rem)", scale: 1.05, opacity: 0 },
+  visible: { clipPath: "inset(0% 0% 0% 0% round 0rem)", scale: 1, opacity: 1 },
+};
+
+/** Titre avec glissement masqué (overflow-hidden wrapper requis) */
+export const textRevealVariants: Variants = {
+  hidden: { y: "110%", opacity: 0 },
+  visible: { y: "0%", opacity: 1 },
+};
+
+export const textRevealTransition: Transition = {
+  duration: DURATION_S.grand,
   ease: EASE.luxury,
 };
 

@@ -1,6 +1,8 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
+import Image from "next/image";
+import { Button } from "@/components/ui/Button";
 import { FeaturedSubsidiariesSlider } from "@/components/sections/FeaturedSubsidiariesSlider";
 import { HeroCinematic } from "@/components/sections/HeroCinematic";
 import { HomeExperienceSection } from "@/components/sections/HomeExperienceSection";
@@ -55,18 +57,55 @@ export default async function HomePage({ params }: Props) {
       <PageSection
         id="home-group"
         variant="default"
-        spacing="default"
+        spacing="loose"
         containerClassName="mx-auto max-w-[min(100%,1400px)]"
       >
-        <AnimateIn>
-          <SectionHeading
-            eyebrow={t("groupEyebrow")}
-            title={t("groupTitle")}
-            description={t("groupDescription")}
-            align="left"
-            className="mb-6 md:mb-8 max-w-2xl"
-          />
-        </AnimateIn>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="lg:col-span-7">
+            <AnimateIn>
+              <SectionHeading
+                eyebrow={t("groupEyebrow")}
+                title={t("groupTitle")}
+                description={t("groupDescription")}
+                align="left"
+                className="mb-8"
+              />
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Button href="/a-propos">
+                  {l === "fr" ? "Découvrir notre histoire" : "Discover our history"}
+                </Button>
+                <Button href="/filiales" variant="secondary">
+                  {t("viewMore")}
+                </Button>
+              </div>
+            </AnimateIn>
+          </div>
+
+          <div className="lg:col-span-5 relative">
+            <AnimateIn variant="fadeScale" delay={0.15}>
+              <div className="relative aspect-[4/5] w-full rounded-3xl overflow-hidden border border-gold/25 shadow-[0_24px_50px_-12px_rgba(0,0,0,0.6)] group">
+                <Image
+                  src={about.originsImage || heroSlides[0]?.src || site.heroImage}
+                  alt={site.name}
+                  fill
+                  className="object-cover transition-transform duration-grand ease-out group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-petrol/90 via-petrol/20 to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/10 bg-petrol/60 p-5 backdrop-blur-md">
+                  <p className="text-xs font-semibold uppercase tracking-widest text-gold">
+                    Kinshasa · RDC
+                  </p>
+                  <p className="mt-1 text-sm text-ivory/90 font-medium">
+                    {l === "fr"
+                      ? "L'art de l'hospitalité & de la haute gastronomie"
+                      : "The art of hospitality & fine dining"}
+                  </p>
+                </div>
+              </div>
+            </AnimateIn>
+          </div>
+        </div>
       </PageSection>
 
       <MarketPositioningSection
