@@ -75,7 +75,10 @@ export default async function AboutPage({ params }: Props) {
         <AboutTeamSection
           eyebrow={t("teamEyebrow")}
           title={t("teamTitle")}
+          description={t("teamDescription")}
+          subtitle={t("teamSubtitle")}
           members={about.team}
+          locale={locale}
         />
       )}
 

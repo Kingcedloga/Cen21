@@ -28,7 +28,7 @@ export function EventCard({ event }: { event: EventItem }) {
   const imageSrc = resolveEventImage(event, subsidiary?.coverImage);
 
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-sm border border-white/12 glass-panel shadow-[0_18px_40px_-22px_rgba(0,0,0,0.55)] transition-[transform,box-shadow,border-color] duration-luxe ease-out hover:-translate-y-1 hover:border-gold/45 hover:shadow-[0_26px_60px_-22px_rgba(212,173,101,0.32),0_18px_40px_-18px_rgba(0,0,0,0.65)]">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/12 bg-petrol/60 backdrop-blur-md shadow-[0_18px_40px_-22px_rgba(0,0,0,0.55)] transition-all duration-luxe ease-out hover:-translate-y-2 hover:border-gold/50 hover:shadow-[0_26px_60px_-16px_rgba(212,173,101,0.28)]">
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
           src={imageSrc}
@@ -39,6 +39,7 @@ export function EventCard({ event }: { event: EventItem }) {
           className="object-cover transition-transform duration-grand ease-out group-hover:scale-[1.06]"
           sizes="(max-width: 768px) 100vw, 50vw"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-petrol/85 via-petrol/20 to-transparent" />
       </div>
       <div className="p-6 flex flex-col flex-1">
         {subsidiary && (

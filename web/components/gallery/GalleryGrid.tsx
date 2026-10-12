@@ -121,7 +121,7 @@ export function GalleryGrid({
               viewport={defaultScrollViewport}
               variants={reduced ? undefined : fadeUpVariants}
               transition={{ ...fadeUpTransition, delay: index * 0.05 }}
-              className="relative block w-full break-inside-avoid overflow-hidden rounded-sm border border-gold/35 cursor-pointer group transition-colors duration-base hover:border-gold/55 focus-visible:outline-2 focus-visible:outline-gold active:scale-[0.99]"
+              className="relative block w-full break-inside-avoid overflow-hidden rounded-2xl border border-white/10 bg-petrol/40 cursor-pointer group transition-all duration-luxe hover:border-gold/50 hover:shadow-[0_20px_45px_-12px_rgba(212,173,101,0.25)] hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-gold active:scale-[0.99]"
               onClick={() => openLightbox(index)}
               aria-label={`Ouvrir : ${item.alt}`}
             >
@@ -133,8 +133,16 @@ export function GalleryGrid({
                 placeholder="blur"
                 blurDataURL={BLUR_PETROL}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="w-full h-auto object-cover transition-transform duration-base group-hover:scale-[1.02]"
+                className="w-full h-auto object-cover transition-transform duration-grand ease-out group-hover:scale-105"
               />
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-0 transition-opacity duration-base group-hover:opacity-100 flex items-end p-5 pointer-events-none"
+              >
+                <span className="text-xs font-medium text-white/95 line-clamp-1">
+                  {item.alt}
+                </span>
+              </div>
             </motion.button>
           ))}
         </div>
@@ -170,10 +178,10 @@ function FilterPill({
       role="tab"
       aria-selected={active}
       onClick={onClick}
-      className={`shrink-0 min-h-[44px] rounded-full border px-4 py-2 text-[13px] font-medium tracking-wide transition-[transform,color,background-color,border-color] duration-fine ease-out cursor-pointer focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2 active:scale-[0.97] ${
+      className={`shrink-0 min-h-[42px] rounded-full border px-5 py-2 text-xs font-semibold uppercase tracking-[0.12em] transition-all duration-fine ease-out cursor-pointer focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2 active:scale-[0.97] ${
         active
-          ? "border-gold bg-gold text-petrol shadow-[0_4px_18px_-6px_rgba(212,173,101,0.45)]"
-          : "border-white/18 bg-anthracite/35 text-ivory/85 hover:border-gold/45 hover:text-gold"
+          ? "border-gold bg-gold text-petrol shadow-[0_4px_20px_-4px_rgba(212,173,101,0.5)] font-bold"
+          : "border-white/15 bg-white/5 text-ivory/80 hover:border-gold/40 hover:text-gold hover:bg-white/10"
       }`}
     >
       {label}

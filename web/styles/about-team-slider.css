@@ -1,0 +1,410 @@
+/* About Page — Leadership Team Slider — Inspiré du design de la Homepage */
+
+.ats-section {
+  position: relative;
+  background: radial-gradient(ellipse 90% 60% at 50% 0%, #f0decb 0%, #e7d1bf 60%, #debfa6 100%);
+  padding: clamp(5rem, 9vw, 8rem) 0;
+  overflow: hidden;
+}
+
+.ats-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── Container ── */
+.ats-container {
+  position: relative;
+  z-index: 1;
+  max-width: 90rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4.5vw, 3.5rem);
+}
+
+/* ── Header ── */
+.ats-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.ats-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.ats-eyebrow {
+  font-family: var(--font-dynalight), cursive;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #a67c33;
+}
+
+.ats-divider-line {
+  height: 1px;
+  width: 2.5rem;
+  background: linear-gradient(90deg, transparent, #b58e48);
+}
+
+.ats-divider-line--rev {
+  background: linear-gradient(90deg, #b58e48, transparent);
+}
+
+.ats-title {
+  margin: 0;
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  font-size: clamp(2.25rem, 4.2vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #1a1208;
+}
+
+.ats-subtitle {
+  margin: 1rem 0 0 0;
+  font-size: clamp(1rem, 1.8vw, 1.1875rem);
+  line-height: 1.6;
+  color: #6e553f;
+  max-w: 42rem;
+  text-wrap: balance;
+}
+
+/* Header with controls row on desktop */
+.ats-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.ats-nav-btns {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ats-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(212, 173, 101, 0.4);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #1a1208;
+  cursor: pointer;
+  transition: all 300ms var(--ease-luxury);
+  box-shadow: 0 4px 12px -2px rgba(26, 18, 8, 0.06);
+}
+
+.ats-nav-btn:hover:not(:disabled) {
+  background: #b58e48;
+  color: #ffffff;
+  border-color: #b58e48;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px -4px rgba(181, 142, 72, 0.4);
+}
+
+.ats-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.ats-nav-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+/* ── Carousel Track ── */
+.ats-track-outer {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  padding: 0.5rem 0.25rem 1.5rem 0.25rem;
+}
+
+.ats-track-outer::-webkit-scrollbar {
+  display: none;
+}
+
+.ats-track {
+  display: flex;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* ── Card ── */
+.ats-card {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 26px;
+  padding: 1.25rem;
+  border: 1px solid rgba(212, 173, 101, 0.28);
+  box-shadow:
+    0 4px 6px -1px rgba(26, 18, 8, 0.04),
+    0 16px 36px -12px rgba(26, 18, 8, 0.1);
+  transition:
+    transform 400ms var(--ease-luxury),
+    box-shadow 400ms var(--ease-luxury),
+    border-color 400ms var(--ease-luxury);
+}
+
+.ats-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(212, 173, 101, 0.55);
+  box-shadow:
+    0 8px 16px -2px rgba(26, 18, 8, 0.08),
+    0 24px 50px -14px rgba(26, 18, 8, 0.18),
+    0 0 0 1px rgba(212, 173, 101, 0.35);
+}
+
+/* Portrait container inside card */
+.ats-portrait-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 4.75;
+  border-radius: 18px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #f7f3ed 0%, #ece1d3 100%);
+  border: 1px solid rgba(212, 173, 101, 0.22);
+}
+
+.ats-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.ats-card:hover .ats-portrait-img {
+  transform: scale(1.04);
+}
+
+/* Floating role badge */
+.ats-role-badge {
+  position: absolute;
+  top: 0.875rem;
+  left: 0.875rem;
+  z-index: 2;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(212, 173, 101, 0.35);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8c6721;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Soft bottom vignette inside portrait */
+.ats-portrait-scrim {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 25%;
+  background: linear-gradient(to top, rgba(26, 18, 8, 0.18) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Card details body */
+.ats-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-top: 1.25rem;
+}
+
+.ats-card-name {
+  margin: 0;
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #1a1208;
+}
+
+.ats-card-role {
+  margin: 0.25rem 0 0 0;
+  font-family: var(--font-dynalight), cursive;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #b58e48;
+}
+
+/* Quote box */
+.ats-quote-box {
+  margin-top: 0.875rem;
+  padding: 0.75rem 0.875rem;
+  border-radius: 12px;
+  background: rgba(246, 239, 230, 0.65);
+  border-left: 2.5px solid #b58e48;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.ats-quote-text {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  font-style: italic;
+  color: #52402e;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Card footer button */
+.ats-bio-btn {
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(212, 173, 101, 0.2);
+  background: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8c6721;
+  cursor: pointer;
+  transition: color 250ms ease;
+}
+
+.ats-bio-btn:hover {
+  color: #1a1208;
+}
+
+.ats-bio-btn svg {
+  transition: transform 250ms ease;
+}
+
+.ats-bio-btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* ── Pagination Dots (Signature Homepage) ── */
+.ats-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.ats-dot {
+  height: 6px;
+  width: 12px;
+  border-radius: 9999px;
+  border: none;
+  padding: 0;
+  background: rgba(26, 18, 8, 0.18);
+  cursor: pointer;
+  transition:
+    background 300ms ease,
+    width 300ms var(--ease-luxury),
+    transform 300ms ease;
+  flex-shrink: 0;
+}
+
+.ats-dot:hover {
+  background: rgba(26, 18, 8, 0.35);
+}
+
+.ats-dot--active {
+  width: 32px;
+  background: #b58e48;
+}
+
+/* ── Modal / Biography Dialog ── */
+.ats-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(16, 11, 5, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.ats-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 48rem;
+  background: #ffffff;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(212, 173, 101, 0.4);
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .ats-modal-content {
+    grid-template-columns: 2fr 3fr;
+  }
+}
+
+.ats-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(212, 173, 101, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a1208;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.ats-modal-close:hover {
+  background: #1a1208;
+  color: #ffffff;
+  transform: rotate(90deg);
+}

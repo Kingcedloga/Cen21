@@ -167,10 +167,10 @@ function FilterBtn({
       role="tab"
       aria-selected={active}
       onClick={onClick}
-      className={`min-h-[44px] rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-fine cursor-pointer focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2 ${
+      className={`min-h-[42px] rounded-full border px-5 py-2 text-xs font-semibold uppercase tracking-[0.12em] transition-all duration-fine cursor-pointer focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2 active:scale-[0.97] ${
         active
-          ? "border-gold bg-gold text-petrol"
-          : "border-white/20 text-ivory/80 hover:border-gold hover:text-gold"
+          ? "border-gold bg-gold text-petrol shadow-[0_4px_20px_-4px_rgba(212,173,101,0.5)] font-bold"
+          : "border-white/15 bg-white/5 text-ivory/80 hover:border-gold/40 hover:text-gold hover:bg-white/10"
       }`}
     >
       {label}

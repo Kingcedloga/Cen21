@@ -41,56 +41,100 @@ export default async function ContactPage({ params }: Props) {
         image="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=2400&q=85"
       />
 
-      <PageSection variant="default">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
-          <AnimateIn>
-            <SectionHeading
-              eyebrow={t("detailsEyebrow")}
-              title={t("detailsTitle")}
-              titleAs="h2"
-              align="left"
-              className="mb-8 max-w-md"
-            />
-            <ul className="space-y-6 text-taupe">
-              <li className="flex items-start gap-3">
-                <Icon name="location" size="md" className="mt-0.5 text-gold" />
-                {site.contact.address}
-              </li>
-              <li className="flex items-center gap-3">
-                <Icon name="phone" size="md" />
-                <a
-                  href={`tel:${site.contact.phone.replace(/\s/g, "")}`}
-                  className="cursor-pointer transition-colors hover:text-gold"
-                >
-                  {site.contact.phone}
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Icon name="mail" size="md" />
-                <a
-                  href={`mailto:${site.contact.email}`}
-                  className="cursor-pointer transition-colors hover:text-gold"
-                >
-                  {site.contact.email}
-                </a>
-              </li>
-            </ul>
+      <PageSection variant="default" spacing="loose">
+        <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-16 items-start">
+          {/* Colonne Coordonnées (5 cols) */}
+          <div className="lg:col-span-5">
+            <AnimateIn>
+              <SectionHeading
+                eyebrow={t("detailsEyebrow")}
+                title={t("detailsTitle")}
+                titleAs="h2"
+                align="left"
+                className="mb-8"
+              />
 
-            <SocialLinks social={site.social} label={t("socialLabel")} className="mt-10" />
-          </AnimateIn>
+              <div className="space-y-5">
+                {/* Adresse */}
+                <div className="group flex items-start gap-4 rounded-2xl border border-white/10 bg-petrol/50 p-5 backdrop-blur-md transition-all duration-base hover:border-gold/40 hover:bg-petrol/70 hover:-translate-y-1">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gold/30 bg-gold/10 text-gold shadow-[0_4px_16px_-4px_rgba(212,173,101,0.25)]">
+                    <Icon name="location" size="md" />
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
+                      {locale === "fr" ? "Notre Siège" : "Headquarters"}
+                    </p>
+                    <p className="mt-1 text-sm sm:text-base font-medium text-ivory/90 leading-relaxed">
+                      {site.contact.address}
+                    </p>
+                  </div>
+                </div>
 
-          <AnimateIn delay={0.1}>
-            <div className="glass-panel rounded-2xl p-8 ring-1 ring-inset ring-white/[0.06] md:p-10">
-              <h2 className="mb-6 font-[family-name:var(--font-dm-sans)] text-2xl text-ivory">
-                {t("formTitle")}
-              </h2>
-              <ContactForm />
-            </div>
-          </AnimateIn>
+                {/* Téléphone */}
+                <div className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-petrol/50 p-5 backdrop-blur-md transition-all duration-base hover:border-gold/40 hover:bg-petrol/70 hover:-translate-y-1">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gold/30 bg-gold/10 text-gold shadow-[0_4px_16px_-4px_rgba(212,173,101,0.25)]">
+                    <Icon name="phone" size="md" />
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
+                      {locale === "fr" ? "Ligne Directe" : "Direct Line"}
+                    </p>
+                    <a
+                      href={`tel:${site.contact.phone.replace(/\s/g, "")}`}
+                      className="mt-1 block text-sm sm:text-base font-medium text-ivory/90 hover:text-gold transition-colors"
+                    >
+                      {site.contact.phone}
+                    </a>
+                  </div>
+                </div>
+
+                {/* Email */}
+                <div className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-petrol/50 p-5 backdrop-blur-md transition-all duration-base hover:border-gold/40 hover:bg-petrol/70 hover:-translate-y-1">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gold/30 bg-gold/10 text-gold shadow-[0_4px_16px_-4px_rgba(212,173,101,0.25)]">
+                    <Icon name="mail" size="md" />
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
+                      {locale === "fr" ? "Correspondance" : "Inquiries"}
+                    </p>
+                    <a
+                      href={`mailto:${site.contact.email}`}
+                      className="mt-1 block text-sm sm:text-base font-medium text-ivory/90 hover:text-gold transition-colors"
+                    >
+                      {site.contact.email}
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <SocialLinks social={site.social} label={t("socialLabel")} className="mt-10" />
+            </AnimateIn>
+          </div>
+
+          {/* Colonne Formulaire (7 cols) */}
+          <div className="lg:col-span-7">
+            <AnimateIn delay={0.1}>
+              <div className="relative overflow-hidden rounded-3xl border border-gold/25 bg-gradient-to-br from-petrol/90 via-petrol/70 to-petrol/85 p-8 sm:p-10 md:p-12 shadow-[0_24px_60px_-16px_rgba(0,0,0,0.6)] backdrop-blur-xl">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-gold/10 blur-3xl"
+                />
+                <h2 className="mb-2 font-[family-name:var(--font-dm-sans)] text-2xl sm:text-3xl font-bold tracking-tight text-ivory">
+                  {t("formTitle")}
+                </h2>
+                <p className="mb-8 text-sm text-ivory/70">
+                  {locale === "fr"
+                    ? "Transmettez-nous votre demande et nos équipes vous répondront dans les plus brefs délais."
+                    : "Send us your request and our team will get back to you promptly."}
+                </p>
+                <ContactForm />
+              </div>
+            </AnimateIn>
+          </div>
         </div>
       </PageSection>
 
-      <PageSection variant="alt">
+      <PageSection variant="alt" spacing="loose">
         <AnimateIn>
           <SectionHeading
             eyebrow={t("locationEyebrow")}
@@ -102,7 +146,9 @@ export default async function ContactPage({ params }: Props) {
           />
         </AnimateIn>
         <AnimateIn delay={0.1}>
-          <MapEmbed query={site.contact.address} title={`${site.name}`} variant="banner" />
+          <div className="overflow-hidden rounded-3xl border border-gold/25 shadow-[0_24px_50px_-12px_rgba(0,0,0,0.35)]">
+            <MapEmbed query={site.contact.address} title={`${site.name}`} variant="banner" />
+          </div>
         </AnimateIn>
       </PageSection>
     </>

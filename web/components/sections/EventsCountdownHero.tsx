@@ -66,21 +66,23 @@ function CountdownDigit({ value, label }: { value: number; label: string }) {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="overflow-hidden text-5xl font-bold text-white md:text-6xl">
-        <AnimatePresence mode="popLayout" initial={false}>
-          <motion.span
-            key={value}
-            className="inline-block tabular-nums"
-            initial={reduced ? false : { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={reduced ? undefined : { opacity: 0, y: -10 }}
-            transition={{ duration: DURATION_S.fine, ease: EASE.luxury }}
-          >
-            {pad(value)}
-          </motion.span>
-        </AnimatePresence>
+      <div className="flex min-w-[4.5rem] sm:min-w-[5.25rem] md:min-w-[6rem] items-center justify-center rounded-2xl border border-gold/30 bg-black/45 px-3 py-3 sm:px-4 sm:py-4 backdrop-blur-md shadow-[0_12px_28px_-8px_rgba(212,173,101,0.25)]">
+        <div className="overflow-hidden font-[family-name:var(--font-dm-sans)] text-4xl sm:text-5xl md:text-6xl font-extrabold text-white">
+          <AnimatePresence mode="popLayout" initial={false}>
+            <motion.span
+              key={value}
+              className="inline-block tabular-nums text-ivory"
+              initial={reduced ? false : { opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={reduced ? undefined : { opacity: 0, y: -10 }}
+              transition={{ duration: DURATION_S.fine, ease: EASE.luxury }}
+            >
+              {pad(value)}
+            </motion.span>
+          </AnimatePresence>
+        </div>
       </div>
-      <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
+      <p className="mt-2.5 text-[11px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-gold/90">
         {label}
       </p>
     </div>
@@ -146,7 +148,7 @@ export function EventsCountdownHero({ events, fallbackImage, labels }: Props) {
   return (
     <section
       aria-label={title}
-      className="relative isolate flex h-screen min-h-[36rem] w-full items-center justify-center overflow-hidden bg-petrol"
+      className="relative isolate flex min-h-[42rem] h-[90vh] md:h-screen w-full items-center justify-center overflow-hidden bg-petrol"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -170,9 +172,10 @@ export function EventsCountdownHero({ events, fallbackImage, labels }: Props) {
         </motion.div>
       </AnimatePresence>
 
-      <div aria-hidden className="absolute inset-0 bg-[rgba(0,0,0,0.60)]" />
+      <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-petrol via-black/60 to-black/40" />
+      <div aria-hidden className="noise-overlay" />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center px-4 text-center">
+      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-6 text-center">
         <AnimatePresence mode="wait">
           <motion.h1
             key={`title-${activeIndex}`}
@@ -180,25 +183,25 @@ export function EventsCountdownHero({ events, fallbackImage, labels }: Props) {
             animate={{ opacity: 1, y: 0 }}
             exit={reduced ? undefined : { opacity: 0, y: -20 }}
             transition={{ duration: DURATION_S.base, ease: EASE.luxury }}
-            className="text-5xl font-extrabold leading-[1.05] text-white md:text-7xl"
+            className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[1.05] tracking-tight text-white max-w-3xl text-balance"
           >
             {title}
           </motion.h1>
         </AnimatePresence>
 
         {activeEvent && (
-          <div className="mt-8 flex items-start justify-center gap-4 md:gap-8">
+          <div className="mt-10 flex items-center justify-center gap-3 sm:gap-5 md:gap-7">
             <CountdownDigit value={remaining.days} label={labels.daysLabel} />
-            <span className="mt-1 text-4xl font-bold text-white md:text-5xl">:</span>
+            <span className="text-2xl sm:text-3xl font-bold text-gold/60 -mt-6">:</span>
             <CountdownDigit value={remaining.hours} label={labels.hoursLabel} />
-            <span className="mt-1 text-4xl font-bold text-white md:text-5xl">:</span>
+            <span className="text-2xl sm:text-3xl font-bold text-gold/60 -mt-6">:</span>
             <CountdownDigit value={remaining.minutes} label={labels.minutesLabel} />
-            <span className="mt-1 text-4xl font-bold text-white md:text-5xl">:</span>
+            <span className="text-2xl sm:text-3xl font-bold text-gold/60 -mt-6">:</span>
             <CountdownDigit value={remaining.seconds} label={labels.secondsLabel} />
           </div>
         )}
 
-        <div className="mt-8 h-px w-full max-w-md bg-white/30" />
+        <div className="mt-10 h-px w-full max-w-md bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
 
         <motion.div
           className="mt-8 w-full max-w-lg"
@@ -206,8 +209,8 @@ export function EventsCountdownHero({ events, fallbackImage, labels }: Props) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: DURATION_S.base, ease: EASE.luxury, delay: 0.2 }}
         >
-          <p className="text-white/80">{labels.subscribeText}</p>
-          <form onSubmit={handleSubscribe} className="mt-4 flex w-full flex-col gap-3 sm:flex-row">
+          <p className="text-sm text-ivory/80 font-medium">{labels.subscribeText}</p>
+          <form onSubmit={handleSubscribe} className="mt-5 flex w-full max-w-md mx-auto items-center rounded-full border border-gold/40 bg-black/50 p-1.5 backdrop-blur-xl shadow-2xl">
             <label htmlFor="events-newsletter-email" className="sr-only">
               {labels.emailPlaceholder}
             </label>
@@ -217,18 +220,18 @@ export function EventsCountdownHero({ events, fallbackImage, labels }: Props) {
               type="email"
               required
               placeholder={labels.emailPlaceholder}
-              className="min-w-0 flex-1 bg-white px-4 py-3 text-black placeholder:text-gray-500 focus:outline-none"
+              className="min-w-0 flex-1 bg-transparent px-5 py-2.5 text-sm sm:text-base text-ivory placeholder:text-ivory/50 focus:outline-none"
             />
             <button
               type="submit"
               disabled={status === "loading"}
-              className="shrink-0 bg-gold-mid px-6 py-3 font-semibold text-white transition-colors duration-fine ease-luxury hover:bg-gold-deep disabled:opacity-70"
+              className="shrink-0 rounded-full bg-gold px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-petrol transition-all duration-fine hover:bg-gold-deep hover:text-white disabled:opacity-70 shadow-md cursor-pointer"
             >
               {status === "loading" ? labels.subscribing : labels.subscribeCta}
             </button>
           </form>
           {status === "success" && (
-            <p className="mt-3 text-sm text-white/90">{labels.subscribeSuccess}</p>
+            <p className="mt-3 text-sm text-gold">{labels.subscribeSuccess}</p>
           )}
           {status === "error" && (
             <p className="mt-3 text-sm text-red-300">{labels.subscribeError}</p>
