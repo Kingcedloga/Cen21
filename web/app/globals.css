@@ -87,6 +87,22 @@
   --space-section-y: clamp(6rem, 12vw, 10rem);
   --space-section-y-loose: clamp(7rem, 14vw, 13rem);
   --space-section-y-cinematic: clamp(8rem, 16vw, 16rem);
+
+  /* === Tokens Orbix → Cen21 (rapport « Orbix × Cen21 », §10.5) ========== */
+  /* Chapitres : sombre (pétrole profond) et clair (sable). */
+  --surface-dark: var(--color-petrol-panel-4);
+  --surface-light: var(--color-neutral);
+  /* Balayage or sur ivoire — mot mis en valeur dans un titre (GradientSweep). */
+  --sweep-on-dark: linear-gradient(
+    90deg,
+    var(--color-neutral) 0 33%,
+    var(--color-gold) 44%,
+    var(--color-gold-deep) 52%,
+    var(--color-gold) 60%,
+    var(--color-neutral) 72% 100%
+  );
+  /* Distance entre la capsule de navigation et le bas de l'écran. */
+  --capsule-offset: 40px;
 }
 
 @theme inline {
@@ -108,6 +124,42 @@
   --color-stone: color-mix(in srgb, #e7d1bf 52%, #0d1d22);
   --font-heading: var(--font-dm-sans);
   --font-sans: var(--font-inter);
+
+  /* === Tokens Orbix → Cen21 (rapport « Orbix × Cen21 », §10.5) ========== */
+  /* Paliers larges : variantes `wide:` (1440) et `ultra:` (1920). */
+  --breakpoint-wide: 90rem;
+  --breakpoint-ultra: 120rem;
+
+  /* Rayons : `rounded-card-md|lg|xl`, `rounded-t-sheet`. */
+  --radius-card-md: 1.5rem; /* 24px — arc mobile */
+  --radius-card-lg: 2rem; /* 32px — carte menu, cartes valeurs */
+  --radius-card-xl: 2.5rem; /* 40px — arc, pile, bento */
+  --radius-sheet: 4.375rem; /* 70px — panneau bas des cartes empilées */
+
+  /* Échelle fluide calée sur Orbix (64/52/48 px → 36/34/30 px) :
+     `text-display`, `text-h2`, `text-h3`, `text-lead`. */
+  --text-display: clamp(2.25rem, 1.2rem + 3.6vw, 4rem);
+  --text-display--line-height: 1.1;
+  --text-display--letter-spacing: -0.02em;
+  --text-h2: clamp(2.125rem, 1.6rem + 1.9vw, 3.25rem);
+  --text-h2--line-height: 1.2;
+  --text-h2--letter-spacing: -0.01em;
+  --text-h3: clamp(1.875rem, 1.4rem + 1.7vw, 3rem);
+  --text-h3--line-height: 1.1;
+  --text-lead: clamp(1.125rem, 1.05rem + 0.25vw, 1.25rem);
+  --text-lead--line-height: 1.45;
+  --tracking-display: -0.02em; /* −1,25 px à 64 px */
+  --tracking-h2: -0.01em; /* −0,52 px à 52 px */
+
+  /* Ombre longue (Orbix : 16 couches, ici 7), teintée pétrole profond : `shadow-long`. */
+  --shadow-long:
+    -2px 2px 1px color-mix(in srgb, var(--color-petrol-panel-4) 2%, transparent),
+    -5px 5px 1px color-mix(in srgb, var(--color-petrol-panel-4) 3%, transparent),
+    -9px 10px 2px color-mix(in srgb, var(--color-petrol-panel-4) 3%, transparent),
+    -15px 16px 3px color-mix(in srgb, var(--color-petrol-panel-4) 3%, transparent),
+    -23px 25px 6px color-mix(in srgb, var(--color-petrol-panel-4) 4%, transparent),
+    -38px 42px 11px color-mix(in srgb, var(--color-petrol-panel-4) 4%, transparent),
+    -50px 55px 16px color-mix(in srgb, var(--color-petrol-panel-4) 4%, transparent);
 }
 
 html {
@@ -128,6 +180,28 @@ html {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* === Lenis (desktop uniquement) ==========================================
+   Classes posées sur <html> par components/motion/SmoothScroll.tsx.
+   Quand Lenis pilote le défilement, le lissage CSS natif est coupé : les
+   défilements programmés (navigation Next.js, resynchronisation) restent nets.
+   lenis.css n'est pas importé : sa règle `height: auto` sur html/body
+   casserait le `min-h-full` qui garde le footer en bas des pages courtes. */
+html.lenis {
+  scroll-behavior: auto !important;
+}
+
+html.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }
 
 body {

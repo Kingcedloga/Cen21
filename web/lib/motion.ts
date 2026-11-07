@@ -300,3 +300,49 @@ export const defaultScrollViewport = {
   once: true,
   margin: "-80px",
 } as const;
+
+/* ── Tokens Orbix → Cen21 (rapport « Orbix × Cen21 », §10.5) ─────────── */
+
+/** Courbes GSAP utilisées par Orbix, converties en cubic-bezier. */
+export const EASE_GSAP = {
+  /** power2.out = easeOutCubic */
+  power2Out: [0.33, 1, 0.68, 1] as const,
+  /** power3.out = easeOutQuart — aussi la glisse du slider en arc */
+  power3Out: [0.25, 1, 0.5, 1] as const,
+  /** power2.inOut = easeInOutCubic — pile de cartes qui se décolle */
+  power2InOut: [0.65, 0, 0.35, 1] as const,
+  /** expo.out — identique à EASE.luxury (ancres, capsule) */
+  expoOut: EASE.luxury,
+} as const;
+
+/** Ressorts approchant back.out(2) et elastic.out(1, .45) — à ajuster à l'œil. */
+export const SPRING = {
+  backOut: { type: "spring", stiffness: 420, damping: 18 },
+  elastic: { type: "spring", stiffness: 260, damping: 9 },
+} as const satisfies Record<string, Transition>;
+
+/**
+ * Spectre de révélation des titres (SpectrumText), en RGB :
+ * sable → or → or moyen → or profond (couleurs de la palette uniquement).
+ */
+export const SPECTRUM_GOLD = [
+  [231, 209, 191],
+  [212, 173, 101],
+  [181, 142, 72],
+  [161, 123, 53],
+] as const;
+
+/** Longueurs des pistes de scroll, en vh (valeurs relevées chez Orbix). */
+export const TRACK_VH = {
+  burst: 240,
+  universes: 500,
+  deckPerCard: 120,
+} as const;
+
+/** Réglages Lenis (components/motion/SmoothScroll.tsx). */
+export const LENIS_OPTIONS = {
+  /** Inertie : 0.1 sur Mac (trackpads), 0.08 ailleurs — comme Orbix. */
+  lerp: { mac: 0.1, other: 0.08 },
+  /** Défilement vers une ancre interne, en secondes (courbe expo.out). */
+  anchorDuration: 1.2,
+} as const;

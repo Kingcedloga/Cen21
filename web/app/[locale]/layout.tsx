@@ -9,6 +9,7 @@ import { Header } from "@/components/layout/Header";
 import { PhosphorProvider } from "@/components/layout/PhosphorProvider";
 import { RouteTransition } from "@/components/layout/RouteTransition";
 import { SiteLoader } from "@/components/layout/SiteLoader";
+import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { routing } from "@/i18n/routing";
 import { cormorant, inter } from "@/lib/fonts";
 import type { Locale } from "@/i18n/routing";
@@ -52,9 +53,13 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       className={`${inter.variable} ${cormorant.variable} h-full`}
+      // Next 16 : coupe le `scroll-behavior: smooth` global pendant les
+      // changements de route (remontée instantanée en haut de page).
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col antialiased leading-relaxed" suppressHydrationWarning>
+        <SmoothScroll />
         <NextIntlClientProvider messages={messages}>
           <PhosphorProvider>
           <SiteLoader />
