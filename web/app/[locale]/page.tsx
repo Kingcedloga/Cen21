@@ -290,6 +290,8 @@ export default async function HomePage({ params }: Props) {
       <PageSection
         variant="light"
         spacing="default"
+        // Retient l'éventail, qui déborde jusqu'aux bords de l'écran (SubsidiariesArc).
+        overflow="hidden"
         id="nos-filiales"
         ariaLabelledby="nos-filiales-title"
         containerClassName="mx-auto max-w-[min(100%,1400px)]"

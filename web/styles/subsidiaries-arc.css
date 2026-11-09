@@ -5,16 +5,37 @@
    les voisines s'inclinent de ±21° comme un éventail.
    ========================================================================= */
 
-/* `isolation` : les z-index des cartes restent dans la scène, le badge
+/* Fenêtre de la scène. Les voisines, inclinées autour d'un pivot lointain,
+   débordent de la scène sur les côtés et vers le bas : la découpe doit rester
+   invisible.
+   - Côtés : la fenêtre va d'un bord de l'écran à l'autre. La section
+     (`overflow="hidden"`) retient le surplus, barre de défilement comprise.
+   - Bas : la fenêtre descend sous la scène, jusque sous les commandes, sans
+     décaler la mise en page (marge négative). Les cartes s'y fondent dans le
+     fond de la section au lieu d'être tranchées net.
+   - Haut : la fenêtre remonte au-dessus de la scène pour que l'ombre de la
+     carte centrale (`--shadow-deep`, flou de 80 px) ne soit pas coupée.
+   `isolation` : les z-index des cartes restent dans la scène, le badge
    « Glisser » (fixe, hors scène) passe au-dessus. */
 .arc-viewport {
+  --arc-w: min(440px, 76vw);
+  --arc-h: calc(var(--arc-w) * 1.28);
+  /* Débords au-dessus et au-dessous de la scène, et hauteur du fondu final. */
+  --arc-bleed-top: 4rem;
+  --arc-bleed: calc(var(--arc-h) * 0.3);
+  --arc-fade: calc(var(--arc-h) * 0.14);
+  margin-inline: calc(50% - 50vw);
+  padding-top: var(--arc-bleed-top);
+  margin-top: calc(var(--arc-bleed-top) * -1);
+  padding-bottom: var(--arc-bleed);
+  margin-bottom: calc(var(--arc-bleed) * -1);
   overflow: clip;
   isolation: isolate;
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - var(--arc-fade)), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - var(--arc-fade)), transparent);
 }
 
 .arc-stage {
-  --arc-w: min(440px, 76vw);
-  --arc-h: calc(var(--arc-w) * 1.28);
   position: relative;
   height: calc(var(--arc-h) * 1.24);
   touch-action: pan-y;

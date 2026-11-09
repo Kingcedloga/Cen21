@@ -398,7 +398,7 @@ export function SubsidiariesArc({ items, labels }: { items: ArcItem[]; labels: A
       onKeyDown={onKeyDown}
       className="relative"
     >
-      <div className="arc-viewport -mx-4 md:-mx-6 lg:-mx-8">
+      <div className="arc-viewport">
         <div
           ref={stageRef}
           className="arc-stage"
@@ -429,7 +429,8 @@ export function SubsidiariesArc({ items, labels }: { items: ArcItem[]; labels: A
         </div>
       </div>
 
-      <div className="mt-6 flex items-center justify-center gap-3">
+      {/* Au-dessus de la fenêtre de la scène, qui descend jusque sous les commandes. */}
+      <div className="relative z-10 mt-6 flex items-center justify-center gap-3">
         <button
           type="button"
           onClick={() => shift(-1)}
