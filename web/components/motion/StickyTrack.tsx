@@ -74,11 +74,17 @@ export function StickyTrack({
   const reduced = useReducedMotionSafe();
   const below = useMediaQuery(staticBelow ? BELOW_QUERY[staticBelow] : "not all");
   const [overflowing, setOverflowing] = useState(false);
-  const isStatic = reduced || (staticBelow !== undefined && below) || overflowing;
+  const forcedStatic = reduced || (staticBelow !== undefined && below);
+  const isOverflowing = overflowing && !forcedStatic;
+  const isStatic = forcedStatic || isOverflowing;
 
   // Filet de sécurité : si le contenu de la scène dépasse la hauteur d'écran
   // (écran bas, texte long), la piste se désépingle plutôt que de rogner.
+  // Mesure seulement quand la piste peut s'épingler : en rendu statique imposé
+  // (mobile, reduced motion), le contenu empilé est plus haut que l'écran et
+  // l'état resterait figé au retour sur grand écran.
   useEffect(() => {
+    if (forcedStatic) return;
     const content = stageRef.current?.firstElementChild;
     if (!(content instanceof HTMLElement)) return;
     const check = () => setOverflowing(content.scrollHeight > window.innerHeight + 1);
@@ -89,7 +95,7 @@ export function StickyTrack({
       observer.disconnect();
       window.removeEventListener("resize", check);
     };
-  }, []);
+  }, [forcedStatic]);
 
   const value = useMemo(
     () => ({ progress: scrollYProgress, isStatic }),
@@ -99,7 +105,7 @@ export function StickyTrack({
   const classes = [
     "sticky-track",
     staticBelow ? `sticky-track--static-below-${staticBelow}` : "",
-    overflowing ? "sticky-track--overflow" : "",
+    isOverflowing ? "sticky-track--overflow" : "",
     className,
   ]
     .filter(Boolean)

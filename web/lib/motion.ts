@@ -339,6 +339,28 @@ export const TRACK_VH = {
   deckPerCard: 120,
 } as const;
 
+/**
+ * Keyframes linéaires par morceaux, comme les actions de scroll IX2 d'Orbix :
+ * `stops` croissants (part de la piste, 0 → 1), valeur tenue avant le premier
+ * et après le dernier. À appeler dans `useTransform(progress, (v) => …)` :
+ * une transformation en fonction n'est pas déléguée à l'animation native liée
+ * au scroll, dont l'opacité ne suit pas la piste.
+ */
+export function keyframes(value: number, stops: readonly number[], values: readonly number[]): number {
+  if (value <= stops[0]) return values[0];
+  const last = stops.length - 1;
+  if (value >= stops[last]) return values[last];
+  let i = 1;
+  while (value > stops[i]) i += 1;
+  const t = (value - stops[i - 1]) / (stops[i] - stops[i - 1]);
+  return values[i - 1] + (values[i] - values[i - 1]) * t;
+}
+
+/** easeInOutCubic (pile d'événements, courbe d'Orbix). */
+export function easeInOutCubic(t: number): number {
+  return t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2;
+}
+
 /** Réglages Lenis (components/motion/SmoothScroll.tsx). */
 export const LENIS_OPTIONS = {
   /** Inertie : 0.1 sur Mac (trackpads), 0.08 ailleurs — comme Orbix. */

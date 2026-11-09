@@ -1,0 +1,180 @@
+/* Accueil — agenda en pile (components/sections/home/HomeEventsDeck.tsx).
+   Mécanique reprise d'Orbix (études de cas empilées). */
+
+.events-deck {
+  position: relative;
+  height: 100%;
+}
+
+/* Cadre de découpe : les cartes du dessous ne débordent pas de la scène, et
+   la carte qui s'envole passe par-dessus le titre avant de sortir du cadre. */
+.events-deck__frame {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-top: clamp(4.5rem, 11vh, 7rem);
+}
+
+.events-deck__head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  width: min(72rem, 100% - 2rem);
+  margin-inline: auto;
+}
+
+.events-deck__counter {
+  font-family: var(--font-dm-sans);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.12em;
+}
+
+/* La pile laisse de la place sous les cartes pour les rangs empilés et pour
+   la capsule de navigation fixe en bas d'écran. */
+.events-deck__pile {
+  position: relative;
+  z-index: 2;
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: clamp(1.5rem, 4vh, 2.5rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.deck-card {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  width: min(68rem, 100% - 2rem);
+  height: clamp(18rem, calc(100% - 6.5rem - var(--capsule-offset)), 34rem);
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: 2rem;
+  background-color: var(--color-ivory);
+  color: var(--color-petrol-panel-4);
+  transform-origin: 50% 100%;
+}
+
+.deck-card__media {
+  position: relative;
+  min-height: 0;
+  background-color: var(--color-petrol-panel-3);
+}
+
+.deck-card__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.75rem;
+  min-width: 0;
+  padding: clamp(1.5rem, 3.5vw, 3rem);
+}
+
+.deck-card__status {
+  align-self: flex-start;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.deck-card__status--upcoming {
+  background-color: var(--color-petrol);
+  color: var(--color-ivory);
+}
+
+.deck-card__status--past {
+  border: 1px solid color-mix(in srgb, var(--color-petrol-panel-4) 25%, transparent);
+  color: color-mix(in srgb, var(--color-petrol-panel-4) 80%, transparent);
+}
+
+.deck-card__date {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-gold-deep);
+}
+
+.deck-card__location {
+  font-size: 0.875rem;
+  color: color-mix(in srgb, var(--color-petrol-panel-4) 70%, transparent);
+}
+
+.deck-card__excerpt {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--color-petrol-panel-4) 82%, transparent);
+}
+
+/* --- Rendu statique ------------------------------------------------------
+   Mobile et reduced motion dès le HTML serveur ; après hydratation, aussi
+   quand la scène dépasse la hauteur d'écran ([data-static]). */
+@media (max-width: 767.98px), (prefers-reduced-motion: reduce) {
+  .events-deck {
+    height: auto;
+  }
+  .events-deck__frame {
+    position: relative;
+    inset: auto;
+    overflow: visible;
+    padding-block: 6rem 5rem;
+  }
+  .events-deck__pile {
+    display: grid;
+    gap: 1rem;
+    width: min(72rem, 100% - 2rem);
+    margin: 2.5rem auto 0;
+  }
+  .deck-card {
+    position: relative;
+    width: auto;
+    height: auto;
+  }
+  .deck-card__media {
+    min-height: 14rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .deck-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .deck-card__media {
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+  }
+}
+
+.events-deck[data-static] {
+  height: auto;
+}
+.events-deck[data-static] .events-deck__frame {
+  position: relative;
+  inset: auto;
+  overflow: visible;
+  padding-block: 6rem 5rem;
+}
+.events-deck[data-static] .events-deck__pile {
+  display: grid;
+  gap: 1rem;
+  width: min(72rem, 100% - 2rem);
+  margin: 2.5rem auto 0;
+}
+.events-deck[data-static] .deck-card {
+  position: relative;
+  width: auto;
+  height: auto;
+}
+.events-deck[data-static] .deck-card__media {
+  min-height: 14rem;
+}

@@ -1,0 +1,233 @@
+/* Accueil — « Nos univers » (components/sections/home/HomeUniversesScrub.tsx).
+   Géométrie reprise d'Orbix (« approach-section ») : cartes de 80 vh de large
+   au ratio 720/900, sur toute la hauteur de l'écran, piste partant de 100vw. */
+
+.universes {
+  --card-w: min(80vh, 85vw);
+  position: relative;
+  height: 100%;
+}
+
+@supports (height: 1svh) {
+  .universes {
+    --card-w: min(80svh, 85vw);
+  }
+}
+
+.universes__frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.universes__underlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 1rem;
+  pointer-events: none;
+}
+
+.universes__badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding-inline: 1rem;
+  border: 1px solid color-mix(in srgb, var(--color-gold) 40%, transparent);
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.universes__track {
+  position: relative;
+  left: 100vw;
+  z-index: 2;
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.universes-tail {
+  height: clamp(4.5rem, 8vw, 7rem);
+  background-color: var(--color-petrol-panel-4);
+}
+
+/* --- Carte -------------------------------------------------------------- */
+.universe-card {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.5rem, 5vh, 3.5rem);
+  width: var(--card-w);
+  height: 100%;
+  padding: clamp(3rem, 11vh, 6.25rem) clamp(1.5rem, 3vw, 2.5rem);
+  /* En bas, le texte dégage la capsule de navigation fixe. */
+  padding-bottom: max(clamp(3rem, 11vh, 6.25rem), calc(var(--capsule-offset) + 4.75rem));
+  overflow: hidden;
+  text-align: center;
+}
+
+.universe-card:first-child {
+  transform-origin: 100% 100%;
+}
+
+.universe-card--light {
+  background-color: var(--color-ivory);
+  color: var(--color-petrol-panel-4);
+}
+
+.universe-card--dark {
+  background-color: var(--color-petrol);
+  color: var(--color-ivory);
+}
+
+.universe-card__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 27rem;
+}
+
+.universe-card__body {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.universe-card--light .universe-card__body {
+  color: color-mix(in srgb, var(--color-petrol-panel-4) 78%, transparent);
+}
+
+.universe-card--dark .universe-card__body {
+  color: color-mix(in srgb, var(--color-ivory) 80%, transparent);
+}
+
+.universe-card__venues {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.375rem;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.universe-card__venues li {
+  padding: 0.3rem 0.75rem;
+  border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.universe-card__media {
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 31.25rem;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 2rem;
+  background-color: var(--color-petrol-panel-3);
+}
+
+.universe-card--media-first .universe-card__media {
+  order: -1;
+}
+
+/* --- Rendu statique ------------------------------------------------------
+   Mobile et reduced motion dès le HTML serveur ; après hydratation, aussi
+   quand la scène dépasse la hauteur d'écran ([data-static]). Titre puis
+   cartes empilées (une colonne, deux à partir de 768 px). */
+@media (max-width: 767.98px), (prefers-reduced-motion: reduce) {
+  .universes-tail {
+    display: none;
+  }
+  .universes {
+    height: auto;
+    padding-block: 6rem 5rem;
+  }
+  .universes__frame,
+  .universes__underlay {
+    position: relative;
+    inset: auto;
+    overflow: visible;
+  }
+  .universes__underlay {
+    padding-inline: 1rem;
+  }
+  .universes__track {
+    left: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    height: auto;
+    max-width: 72rem;
+    margin: 3rem auto 0;
+    padding-inline: 1rem;
+  }
+  .universe-card {
+    width: auto;
+    height: auto;
+    padding: 2rem 1.5rem;
+    border-radius: 2rem;
+  }
+  .universe-card__media {
+    flex: none;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.universes[data-static] {
+  height: auto;
+  padding-block: 6rem 5rem;
+}
+.universes[data-static] .universes__frame,
+.universes[data-static] .universes__underlay {
+  position: relative;
+  inset: auto;
+  overflow: visible;
+}
+.universes[data-static] .universes__track {
+  left: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  height: auto;
+  max-width: 72rem;
+  margin: 3rem auto 0;
+  padding-inline: 1rem;
+}
+.universes[data-static] .universe-card {
+  width: auto;
+  height: auto;
+  padding: 2rem 1.5rem;
+  border-radius: 2rem;
+}
+.universes[data-static] .universe-card__media {
+  flex: none;
+  aspect-ratio: 4 / 3;
+}
+
+/* Deux colonnes dès 768 px : quatre univers en 2 × 2. */
+@media (min-width: 768px) and (prefers-reduced-motion: reduce) {
+  .universes__track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 768px) {
+  .universes[data-static] .universes__track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

@@ -24,6 +24,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
   -webkit-mask-image: linear-gradient(
     to bottom,
     transparent 0,
@@ -67,6 +68,34 @@
   transform: scale(1.06);
 }
 
+/* Showreel à la souris : toute la section ouvre la vidéo. */
+.home-experience--reel {
+  cursor: pointer;
+}
+
+/* Étiquette « Voir le film » qui suit le curseur (desktop, pointeur fin).
+   Sous le bouton play (z-index 2, placée avant lui dans le DOM). */
+.home-experience__label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.125rem;
+  border-radius: 9999px;
+  background-color: var(--color-gold);
+  color: var(--color-petrol-panel-4);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  pointer-events: none;
+  translate: -50% -50%;
+  box-shadow: 0 12px 28px -10px color-mix(in srgb, var(--color-petrol-panel-4) 70%, transparent);
+}
+
 .home-experience__overlay {
   position: absolute;
   inset: 0;
@@ -84,6 +113,8 @@
   text-transform: uppercase;
   letter-spacing: 0.18em;
   color: #ffffff;
+  /* Opacité de repos (reduced motion : pas d'animation pour la poser). */
+  opacity: 0.1;
   white-space: nowrap;
   pointer-events: none;
   user-select: none;

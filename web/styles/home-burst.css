@@ -1,0 +1,66 @@
+/* Accueil — « Un groupe, dix univers » (components/sections/home/HomeUniverseBurst.tsx).
+   Géométrie reprise d'Orbix (« hero_canvas_3d », « hero_shuttle »). */
+
+/* Découpe : les photos projetées ne débordent pas de la scène (sinon la
+   piste les compterait comme contenu trop haut et se désépinglerait). */
+.burst-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Position, largeur et ratio : en ligne (HomeUniverseBurst, tableau CARDS). */
+.burst-card {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  background-color: var(--color-petrol-panel-3);
+}
+
+/* Tablette : une photo de moins (Orbix masque la deuxième sous 992 px). */
+@media (max-width: 1023.98px) {
+  .burst-card--wide-only {
+    display: none;
+  }
+}
+
+/* Mobile et reduced motion : pas de scène, dès le HTML serveur. */
+@media (max-width: 767.98px), (prefers-reduced-motion: reduce) {
+  .burst-canvas {
+    display: none;
+  }
+}
+
+/* Message central : un disque de la couleur de la section voile les photos
+   qui passent derrière (Orbix : dégradé radial 46 % → 70 %). */
+.burst-shuttle {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 52rem;
+  min-height: min(44rem, 88svh);
+  margin: auto;
+  padding-inline: 1rem;
+  text-align: center;
+  background-image: radial-gradient(
+    circle farthest-corner at 50% 50%,
+    var(--color-petrol-panel-4) 46%,
+    color-mix(in srgb, var(--color-petrol-panel-4) 0%, transparent) 70%
+  );
+}
+
+.burst-social [role="list"] {
+  justify-content: center;
+}
+
+@media (max-width: 767.98px), (prefers-reduced-motion: reduce) {
+  .burst-shuttle {
+    min-height: 0;
+  }
+}
