@@ -334,7 +334,8 @@ export const SPECTRUM_GOLD = [
 
 /** Longueurs des pistes de scroll, en vh (valeurs relevées chez Orbix). */
 export const TRACK_VH = {
-  burst: 240,
+  /** Orbix : 240. Allongée pour ralentir l'explosion (HomeUniverseBurst). */
+  burst: 280,
   universes: 500,
   deckPerCard: 120,
 } as const;
