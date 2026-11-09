@@ -22,6 +22,12 @@ import { LENIS_OPTIONS } from "@/lib/motion";
  * - Les ancres internes (`#…`) défilent via Lenis, respectent le
  *   `scroll-margin-top` de la cible, puis lui donnent le focus si elle peut
  *   le recevoir (lien d'évitement vers #main-content).
+ * - Lenis borne le défilement à une limite qu'il ne recalcule que quand
+ *   `<html>` change de taille. Ici `<html>` est en `h-full` : sa boîte reste à
+ *   la hauteur de l'écran quelle que soit la longueur de la page. La limite
+ *   resterait donc celle du premier rendu (fallback `loading.tsx`, page
+ *   précédente après une navigation client) et le scroll s'arrêterait en
+ *   pleine page. On observe `<body>`, qui grandit avec le contenu.
  *
  * Seul point d'entrée de Lenis dans le projet : lire l'instance avec `useLenis()`.
  */
@@ -122,6 +128,7 @@ export function SmoothScroll() {
     const reducedQuery = window.matchMedia(REDUCED_MOTION_QUERY);
     let instance: Lenis | null = null;
     let lockObserver: MutationObserver | null = null;
+    let contentObserver: ResizeObserver | null = null;
 
     const tick = ({ timestamp }: FrameData) => {
       instance?.raf(timestamp);
@@ -150,6 +157,9 @@ export function SmoothScroll() {
       window.addEventListener("click", onClick, true);
       lockObserver = new MutationObserver(syncScrollLock);
       lockObserver.observe(document.body, { attributes: true, attributeFilter: ["style"] });
+      // `dimensions.resize()` et non `resize()` : ce dernier coupe l'inertie en cours.
+      contentObserver = new ResizeObserver(() => instance?.dimensions.resize());
+      contentObserver.observe(document.body);
       syncScrollLock();
       setCurrent(instance);
     };
@@ -160,6 +170,8 @@ export function SmoothScroll() {
       window.removeEventListener("click", onClick, true);
       lockObserver?.disconnect();
       lockObserver = null;
+      contentObserver?.disconnect();
+      contentObserver = null;
       instance.destroy();
       instance = null;
       setCurrent(null);
