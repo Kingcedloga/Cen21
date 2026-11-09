@@ -654,7 +654,8 @@ h4 {
     border-color var(--duration-luxe) var(--ease-luxury),
     background-color var(--duration-luxe) var(--ease-luxury),
     box-shadow var(--duration-luxe) var(--ease-luxury),
-    color var(--duration-luxe) var(--ease-luxury);
+    color var(--duration-luxe) var(--ease-luxury),
+    transform var(--duration-fine) var(--ease-luxury);
 }
 
 .btn-secondary:hover {
@@ -669,6 +670,17 @@ h4 {
 .btn-secondary:active {
   transform: scale(0.97);
   background: rgb(var(--color-gold-rgb) / 0.06);
+}
+
+/* Retour au toucher (phase 4 bis) : légère compression à l'appui, sur les
+   écrans tactiles seulement (à la souris, survol et effet magnétique). */
+@media (hover: none) and (prefers-reduced-motion: no-preference) {
+  .tap-press {
+    transition: transform var(--duration-fine) var(--ease-luxury);
+  }
+  .tap-press:active {
+    transform: scale(0.97);
+  }
 }
 
 /* === Utilitaires durée / easing (miroir lib/motion.ts) ================ */

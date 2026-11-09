@@ -28,7 +28,7 @@ type Props = {
 /** Showreel (Orbix « showreel-on-scroll ») : l'image passe de 80 % × 90 % à
  *  plein cadre entre l'entrée de la section et son milieu (0 → 50 %). */
 const REEL_GROW = [0, 0.5] as const;
-/** Desktop seulement (le zoom et l'étiquette ne servent pas au doigt). */
+/** L'étiquette qui suit le curseur : desktop à la souris seulement. */
 const DESKTOP_QUERY = "(min-width: 768px)";
 
 /**
@@ -38,6 +38,8 @@ const DESKTOP_QUERY = "(min-width: 768px)";
  * Phase 4 (rapport « Orbix × Cen21 ») : l'image s'agrandit au scroll, l'anneau
  * tourne avec le défilement (plus de rotation infinie) et, à la souris, une
  * étiquette « Voir le film » suit le curseur ; un clic ouvre la vidéo.
+ * Phase 4 bis : le zoom joue aussi sur mobile ; au doigt, le bouton play reste
+ * la seule commande.
  */
 export function HomeExperienceSection({ backgroundImage, videoId }: Props) {
   const reduced = useReducedMotion();
@@ -48,8 +50,8 @@ export function HomeExperienceSection({ backgroundImage, videoId }: Props) {
   const sectionRef = useRef<HTMLElement>(null);
   const desktop = useMediaQuery(DESKTOP_QUERY);
   const finePointer = useMediaQuery(FINE_POINTER_QUERY);
-  const animated = !reduced && desktop;
-  const followLabel = animated && finePointer && Boolean(videoId);
+  const animated = !reduced;
+  const followLabel = animated && desktop && finePointer && Boolean(videoId);
 
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
   const mediaScaleX = useTransform(scrollYProgress, (v) => keyframes(v, REEL_GROW, [0.8, 1]));

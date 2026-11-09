@@ -4,10 +4,10 @@
    ========================================================================= */
 
 /* --- Rideau --------------------------------------------------------------
-   Desktop (≥ 1024 px) et animations autorisées : le hero reste collé en haut
-   pendant que la section suivante monte par-dessus, avec un bord en fondu
-   (Orbix : section des logos, 400 px de marge haute en dégradé). Ailleurs,
-   enchaînement classique. */
+   Animations autorisées, toutes largeurs (mobile depuis la phase 4 bis) : le
+   hero reste collé en haut pendant que la section suivante monte par-dessus,
+   avec un bord en fondu (Orbix : section des logos, 400 px de marge haute en
+   dégradé). Reduced motion : enchaînement classique avec séparateur fondu. */
 .hero-curtain {
   position: relative;
 }
@@ -18,20 +18,27 @@
   background-color: var(--color-petrol-panel-4);
 }
 
-@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) {
+  .hero-curtain {
+    /* Hauteur du bord en fondu : plus court sur mobile et tablette. */
+    --curtain-fade: 9rem;
+  }
+
+  /* Un hero plus haut que l'écran (téléphones bas) colle par son bas :
+     --hero-fit-top (≤ 0) est mesuré par HeroCinematic. */
   .hero-curtain > .hero-curtain__hero {
     position: sticky;
-    top: 0;
+    top: var(--hero-fit-top, 0px);
   }
 
   .hero-curtain > .hero-curtain__cover {
-    padding-top: 16rem;
+    padding-top: calc(var(--curtain-fade) + 2rem);
     background-color: transparent;
     background-image: linear-gradient(
       to bottom,
       transparent 0,
-      color-mix(in srgb, var(--color-petrol-panel-4) 80%, transparent) 8rem,
-      var(--color-petrol-panel-4) 14rem
+      color-mix(in srgb, var(--color-petrol-panel-4) 80%, transparent) calc(var(--curtain-fade) * 0.57),
+      var(--color-petrol-panel-4) var(--curtain-fade)
     );
   }
 
@@ -43,7 +50,7 @@
     inset-inline: 0;
     top: 0;
     z-index: -1;
-    height: 14rem;
+    height: var(--curtain-fade);
     pointer-events: none;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
@@ -54,6 +61,12 @@
   /* Le rideau fait office de séparateur : la bande générique est inutile. */
   .hero-curtain > .section-blend {
     display: none;
+  }
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .hero-curtain {
+    --curtain-fade: 14rem;
   }
 }
 

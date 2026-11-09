@@ -22,6 +22,14 @@
   overflow: hidden;
 }
 
+/* Piste épinglée aussi sur mobile, plus courte (prop `mobileLengthVh`).
+   Avant les règles de rendu statique, qui doivent l'emporter. */
+@media (max-width: 767.98px) {
+  .sticky-track {
+    height: calc(var(--track-vh-sm, var(--track-vh, 200)) * 1vh);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .sticky-track {
     height: auto;

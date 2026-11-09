@@ -73,6 +73,24 @@ export function HeroCinematic({ slides, siteName, pills = [], className = "" }: 
     return () => window.clearInterval(timer);
   }, [reducedMotion, len, next]);
 
+  // Rideau de l'accueil (.hero-curtain, sticky) : un hero plus haut que
+  // l'écran colle par son bas, sinon ses boutons passeraient sous le rideau.
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const update = () => {
+      el.style.setProperty("--hero-fit-top", `${Math.min(0, window.innerHeight - el.offsetHeight)}px`);
+    };
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(el);
+    window.addEventListener("resize", update);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
   if (len === 0) {
     return (
       <section className="relative flex min-h-screen items-end bg-petrol px-6 pb-24 pt-36 md:pt-40">

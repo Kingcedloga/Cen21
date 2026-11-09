@@ -63,7 +63,7 @@ export function HomeHousesSection({
               <Link
                 href={`/filiales/${item.slug}`}
                 aria-label={item.ariaLabel}
-                className="house-card cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+                className="house-card tap-press cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
               >
                 <span className="house-card__inner">
                   <span className="house-card__face border border-ivory/10 bg-petrol-panel-3/70">

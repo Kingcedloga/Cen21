@@ -1,12 +1,13 @@
 "use client";
 
-import { motion, useSpring, useTransform, type MotionValue } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform, type MotionValue } from "framer-motion";
+import { useRef, type Ref } from "react";
 
 import { SpectrumText } from "@/components/motion/SpectrumText";
 import { StickyTrack, useStickyTrack } from "@/components/motion/StickyTrack";
 import { StatCountUp } from "@/components/sections/StatCountUp";
-import { SPRING } from "@/lib/motion";
-import { FINE_POINTER_QUERY, useMediaQuery } from "@/lib/use-media-query";
+import { MOBILE_QUERY, SPRING } from "@/lib/motion";
+import { FINE_POINTER_QUERY, useMediaQuery, useReducedMotionSafe } from "@/lib/use-media-query";
 
 type Value = { title: string; description: string };
 type Stat = { value: string; label: string };
@@ -17,30 +18,45 @@ type Stat = { value: string; label: string };
 const PILL_AT = [0.18, 0.27, 0.36, 0.45, 0.54, 0.63] as const;
 const PILL_ROTATE = [-2.5, 3, -2, 2.5, -3, 2] as const;
 const PILL_FADE = 0.06;
+/** Mobile : la pastille apparaît quand son haut passe de 95 % à 65 % de l'écran. */
+const PILL_REVEAL_OFFSET = ["start 0.95", "start 0.65"] as const;
 
 function ValuePill({
   value,
   index,
   progress,
+  from,
+  to,
   isStatic,
+  tracked = true,
+  ref,
 }: {
   value: Value;
   index: number;
   progress: MotionValue<number>;
+  /** Fenêtre d'apparition dans `progress`. */
+  from: number;
+  to: number;
   isStatic: boolean;
+  /** Animée par la piste : neutralisée par la CSS quand celle-ci est statique. */
+  tracked?: boolean;
+  ref?: Ref<HTMLLIElement>;
 }) {
   const finePointer = useMediaQuery(FINE_POINTER_QUERY);
-  const at = PILL_AT[index % PILL_AT.length];
   // Transformation en fonction (et non en plage) : Framer ne la délègue pas à
   // l'animation native liée au scroll, dont l'opacité ne suit pas la piste.
-  const appear = useTransform(progress, (value) => Math.min(1, Math.max(0, (value - at) / PILL_FADE)));
+  const appear = useTransform(progress, (value) => Math.min(1, Math.max(0, (value - from) / (to - from))));
   // Ressort ≈ back.out(2) : léger dépassement à l'arrivée.
   const settle = useSpring(appear, { stiffness: SPRING.backOut.stiffness, damping: SPRING.backOut.damping });
   const scale = useTransform(settle, (value) => 0.5 + value * 0.5);
   const y = useTransform(settle, (value) => 28 * (1 - value));
 
   return (
-    <motion.li data-track-motion="" style={isStatic ? undefined : { opacity: appear, scale, y }}>
+    <motion.li
+      ref={ref}
+      data-track-motion={tracked ? "" : undefined}
+      style={isStatic ? undefined : { opacity: appear, scale, y }}
+    >
       {/* Déplaçable à la souris, retour élastique (Orbix : elastic.out(1, .45)). */}
       <motion.div
         drag={finePointer && !isStatic}
@@ -60,6 +76,27 @@ function ValuePill({
   );
 }
 
+/**
+ * Mobile (phase 4 bis) : la piste n'est pas épinglée ; chaque pastille suit
+ * sa propre entrée dans l'écran, avec le même ressort que sur desktop.
+ */
+function RevealPill({ value, index }: { value: Value; index: number }) {
+  const ref = useRef<HTMLLIElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: [...PILL_REVEAL_OFFSET] });
+  return (
+    <ValuePill
+      ref={ref}
+      value={value}
+      index={index}
+      progress={scrollYProgress}
+      from={0}
+      to={1}
+      isStatic={false}
+      tracked={false}
+    />
+  );
+}
+
 function ManifestoStage({
   eyebrow,
   statement,
@@ -73,6 +110,10 @@ function ManifestoStage({
 }) {
   const { progress, isStatic } = useStickyTrack();
   const textProgress = useTransform(progress, [0.04, 0.7], [0, 1]);
+  const mobile = useMediaQuery(MOBILE_QUERY);
+  const reduced = useReducedMotionSafe();
+  // Après hydratation seulement : le HTML serveur garde les pastilles visibles.
+  const reveal = mobile && !reduced;
 
   return (
     // Non épinglé (mobile, reduced motion) : marge haute plus grande, au-delà
@@ -107,9 +148,21 @@ function ManifestoStage({
           aria-label={valuesLabel}
           className="mt-8 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2 md:mt-10 lg:grid-cols-3 lg:gap-x-5"
         >
-          {values.map((value, index) => (
-            <ValuePill key={value.title} value={value} index={index} progress={progress} isStatic={isStatic} />
-          ))}
+          {values.map((value, index) => {
+            if (reveal) return <RevealPill key={value.title} value={value} index={index} />;
+            const at = PILL_AT[index % PILL_AT.length];
+            return (
+              <ValuePill
+                key={value.title}
+                value={value}
+                index={index}
+                progress={progress}
+                from={at}
+                to={at + PILL_FADE}
+                isStatic={isStatic}
+              />
+            );
+          })}
         </ul>
       </div>
     </div>
@@ -121,7 +174,8 @@ function ManifestoStage({
  * positionnement du groupe se révèle lettre à lettre au fil du défilement et
  * les valeurs arrivent en pastilles inclinées. Les chiffres clés suivent,
  * hors de la zone épinglée (la scène tient ainsi sur les écrans bas).
- * Mobile, reduced motion ou écran trop bas : section ordinaire.
+ * Mobile : section ordinaire, les pastilles arrivent au défilement.
+ * Reduced motion ou écran trop bas : section ordinaire, tout est affiché.
  */
 export function HomeManifesto({
   eyebrow,

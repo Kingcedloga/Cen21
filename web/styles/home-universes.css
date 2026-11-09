@@ -4,6 +4,8 @@
 
 .universes {
   --card-w: min(80vh, 85vw);
+  /* Décalage de la piste : 0 sur desktop, centre la carte active sur mobile. */
+  --track-shift: 0px;
   position: relative;
   height: 100%;
 }
@@ -146,11 +148,49 @@
   order: -1;
 }
 
+/* --- Mobile (< 768 px) ---------------------------------------------------
+   Même défilement horizontal : cartes de 88vw centrées (6vw de chaque côté
+   laissent voir les voisines), arrondies et séparées par une bordure
+   transparente, au-dessus de la capsule de navigation. */
+@media (max-width: 767.98px) {
+  .universes {
+    --card-w: 88vw;
+    --track-shift: 6vw;
+  }
+  .universes__track {
+    padding-block: max(1rem, env(safe-area-inset-top, 0px))
+      calc(var(--capsule-offset) + 5rem + env(safe-area-inset-bottom, 0px));
+  }
+  .universe-card {
+    gap: 1rem;
+    padding: 1.75rem 1.25rem 1.25rem;
+    border-inline: 0.375rem solid transparent;
+    border-radius: 1.75rem;
+    background-clip: padding-box;
+  }
+  .universe-card__text {
+    gap: 0.75rem;
+  }
+  .universe-card__body {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+  .universe-card__venues li {
+    padding: 0.25rem 0.625rem;
+    font-size: 0.6875rem;
+  }
+  .universe-card__media {
+    max-width: none;
+    min-height: 5rem;
+    border-radius: 1.25rem;
+  }
+}
+
 /* --- Rendu statique ------------------------------------------------------
-   Mobile et reduced motion dès le HTML serveur ; après hydratation, aussi
-   quand la scène dépasse la hauteur d'écran ([data-static]). Titre puis
-   cartes empilées (une colonne, deux à partir de 768 px). */
-@media (max-width: 767.98px), (prefers-reduced-motion: reduce) {
+   Reduced motion dès le HTML serveur ; après hydratation, aussi quand la
+   scène dépasse la hauteur d'écran ([data-static]). Titre puis cartes
+   empilées (une colonne, deux à partir de 768 px). */
+@media (prefers-reduced-motion: reduce) {
   .universes-tail {
     display: none;
   }
@@ -175,12 +215,14 @@
     height: auto;
     max-width: 72rem;
     margin: 3rem auto 0;
+    padding-block: 0;
     padding-inline: 1rem;
   }
   .universe-card {
     width: auto;
     height: auto;
     padding: 2rem 1.5rem;
+    border: 0;
     border-radius: 2rem;
   }
   .universe-card__media {
@@ -207,12 +249,14 @@
   height: auto;
   max-width: 72rem;
   margin: 3rem auto 0;
+  padding-block: 0;
   padding-inline: 1rem;
 }
 .universes[data-static] .universe-card {
   width: auto;
   height: auto;
   padding: 2rem 1.5rem;
+  border: 0;
   border-radius: 2rem;
 }
 .universes[data-static] .universe-card__media {

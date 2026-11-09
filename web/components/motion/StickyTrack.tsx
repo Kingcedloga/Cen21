@@ -51,6 +51,7 @@ const BELOW_QUERY: Record<StaticBelow, string> = {
  */
 export function StickyTrack({
   lengthVh,
+  mobileLengthVh,
   staticBelow,
   surface,
   id,
@@ -60,6 +61,8 @@ export function StickyTrack({
   children,
 }: {
   lengthVh: number;
+  /** Longueur sous 768 px, pour une piste qui reste épinglée sur mobile (sans `staticBelow`). */
+  mobileLengthVh?: number;
   staticBelow?: StaticBelow;
   surface?: "dark" | "light";
   id?: string;
@@ -118,7 +121,12 @@ export function StickyTrack({
       aria-labelledby={ariaLabelledby}
       data-surface={surface}
       className={classes}
-      style={{ "--track-vh": lengthVh } as CSSProperties}
+      style={
+        {
+          "--track-vh": lengthVh,
+          ...(mobileLengthVh !== undefined && { "--track-vh-sm": mobileLengthVh }),
+        } as CSSProperties
+      }
     >
       <div ref={stageRef} className={`sticky-track__stage ${stageClassName}`}>
         <StickyTrackContext.Provider value={value}>{children}</StickyTrackContext.Provider>

@@ -90,7 +90,11 @@ function UniversesStage({
 }) {
   const { progress, isStatic } = useStickyTrack();
   const { stops, values } = trackStops(cards.length);
-  const trackX = useTransform(progress, (v) => `calc(var(--card-w) * ${-keyframes(v, stops, values)})`);
+  // Mobile : --track-shift centre la carte active (bords des voisines visibles).
+  const trackX = useTransform(
+    progress,
+    (v) => `calc(var(--card-w) * ${-keyframes(v, stops, values)} - var(--track-shift))`,
+  );
   const underlay = useTransform(progress, (v) => keyframes(v, UNDERLAY_OUT, [1, 0]));
 
   return (
@@ -133,7 +137,8 @@ function UniversesStage({
 /**
  * « Nos univers » : quatre cartes alternées sable et pétrole qui défilent à
  * l'horizontale pendant que la page descend (Orbix : section « approach »).
- * Mobile, reduced motion ou écran trop bas : titre puis cartes empilées.
+ * Mobile (phase 4 bis) : même chorégraphie, cartes centrées à 88vw et piste
+ * plus courte. Reduced motion ou écran trop bas : titre puis cartes empilées.
  */
 export function HomeUniversesScrub(props: {
   badge: string;
@@ -145,7 +150,7 @@ export function HomeUniversesScrub(props: {
     <>
       <StickyTrack
         lengthVh={TRACK_VH.universes}
-        staticBelow="md"
+        mobileLengthVh={TRACK_VH.universesMobile}
         surface="dark"
         ariaLabelledby="home-universes-title"
         className="bg-petrol-panel-4"

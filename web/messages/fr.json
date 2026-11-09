@@ -95,7 +95,11 @@
     "eventsTitlePastSweep": "rendez-vous",
     "eventsStatusUpcoming": "À venir",
     "eventsStatusPast": "Édition passée",
-    "reelLabel": "Voir le film"
+    "reelLabel": "Voir le film",
+    "eventsPrev": "Événement précédent",
+    "eventsNext": "Événement suivant",
+    "eventsPosition": "Événement {current} sur {total}",
+    "eventsSwipeHint": "Glissez pour parcourir"
   },
   "hero": {
     "tagline": "L'art de l'exception",

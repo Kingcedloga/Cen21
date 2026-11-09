@@ -178,3 +178,75 @@
 .events-deck[data-static] .deck-card__media {
   min-height: 14rem;
 }
+
+/* --- Mobile : pile qu'on balaie du doigt (phase 4 bis) -------------------
+   Rendu après hydratation, sous 768 px et animations autorisées
+   (HomeEventsDeck → DeckSwipe). Les règles mobiles ci-dessus (une colonne,
+   photo 16/10) s'appliquent aussi. Les cartes partagent une même cellule de
+   grille : la pile prend la hauteur de la plus haute, sans hauteur fixe. */
+.events-swipe {
+  overflow-x: clip;
+  padding-block: 6rem 5rem;
+}
+
+.events-swipe__pile {
+  display: grid;
+  width: min(72rem, 100% - 2rem);
+  margin: 2.5rem auto 0;
+  /* Place des deux bords de cartes visibles sous la carte du dessus. */
+  padding: 0 0 1.75rem;
+  list-style: none;
+}
+
+.deck-card--swipe {
+  grid-area: 1 / 1;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.deck-card--swipe img {
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+.deck-card--swipe .deck-card__excerpt {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+
+.events-swipe__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+}
+
+.events-swipe__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid color-mix(in srgb, var(--color-gold) 40%, transparent);
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, var(--color-gold) 6%, transparent);
+  color: var(--color-gold);
+}
+
+.events-swipe__button:focus-visible {
+  outline: 1px solid var(--color-ivory);
+  outline-offset: 3px;
+}
+
+.events-swipe__hint {
+  margin-top: 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-align: center;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-ivory) 55%, transparent);
+}

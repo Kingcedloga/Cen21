@@ -95,7 +95,11 @@
     "eventsTitlePastSweep": "gatherings",
     "eventsStatusUpcoming": "Upcoming",
     "eventsStatusPast": "Past edition",
-    "reelLabel": "Watch the film"
+    "reelLabel": "Watch the film",
+    "eventsPrev": "Previous event",
+    "eventsNext": "Next event",
+    "eventsPosition": "Event {current} of {total}",
+    "eventsSwipeHint": "Swipe to browse"
   },
   "hero": {
     "tagline": "The art of exceptional living",

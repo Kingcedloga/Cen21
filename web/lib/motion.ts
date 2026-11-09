@@ -337,8 +337,13 @@ export const TRACK_VH = {
   /** Orbix : 240. Allongée pour ralentir l'explosion (HomeUniverseBurst). */
   burst: 280,
   universes: 500,
+  /** Mobile : même chorégraphie sur une piste plus courte (moins de défilement au pouce). */
+  universesMobile: 340,
   deckPerCard: 120,
 } as const;
+
+/** Mobile au sens du brief (< 768 px) — miroir des @media max-width: 767.98px. */
+export const MOBILE_QUERY = "(max-width: 767.98px)";
 
 /**
  * Keyframes linéaires par morceaux, comme les actions de scroll IX2 d'Orbix :

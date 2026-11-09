@@ -170,7 +170,7 @@ export default async function HomePage({ params }: Props) {
     <>
       <OrganizationJsonLd locale={l} />
 
-      {/* Rideau (desktop) : le hero reste collé, « Nos maisons » monte par-dessus. */}
+      {/* Rideau : le hero reste collé, « Nos maisons » monte par-dessus. */}
       <div className="hero-curtain">
         <HeroCinematic
           slides={heroSlides}
@@ -178,7 +178,7 @@ export default async function HomePage({ params }: Props) {
           pills={heroPills}
           className="hero-curtain__hero"
         />
-        {/* Mobile, tablette, reduced motion : pas de rideau, séparateur fondu. */}
+        {/* Reduced motion : pas de rideau, séparateur fondu. */}
         <SectionBlend from="var(--color-petrol)" to="var(--color-petrol-panel-4)" />
         <HomeHousesSection
           eyebrow={t("housesEyebrow")}
