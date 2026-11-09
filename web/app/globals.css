@@ -112,6 +112,13 @@
   );
   /* Distance entre la capsule de navigation et le bas de l'écran. */
   --capsule-offset: 40px;
+
+  /* Titres Orbix → Cen21 — graisse retenue après le test 700/600/500 du
+     laboratoire (phase 1). Source unique, lue par .title-display,
+     .title-section et les utilitaires `tracking-display` / `tracking-h2`. */
+  --font-weight-display: 600;
+  --letter-spacing-display: -0.02em; /* −1,25 px à 64 px */
+  --letter-spacing-section: -0.01em; /* −0,52 px à 52 px */
 }
 
 @theme inline {
@@ -149,16 +156,17 @@
      `text-display`, `text-h2`, `text-h3`, `text-lead`. */
   --text-display: clamp(2.25rem, 1.2rem + 3.6vw, 4rem);
   --text-display--line-height: 1.1;
-  --text-display--letter-spacing: -0.02em;
+  --text-display--letter-spacing: var(--letter-spacing-display);
   --text-h2: clamp(2.125rem, 1.6rem + 1.9vw, 3.25rem);
   --text-h2--line-height: 1.2;
-  --text-h2--letter-spacing: -0.01em;
+  --text-h2--letter-spacing: var(--letter-spacing-section);
   --text-h3: clamp(1.875rem, 1.4rem + 1.7vw, 3rem);
   --text-h3--line-height: 1.1;
   --text-lead: clamp(1.125rem, 1.05rem + 0.25vw, 1.25rem);
   --text-lead--line-height: 1.45;
-  --tracking-display: -0.02em; /* −1,25 px à 64 px */
-  --tracking-h2: -0.01em; /* −0,52 px à 52 px */
+  /* Valeurs dans :root (--letter-spacing-*), partagées avec .title-*. */
+  --tracking-display: var(--letter-spacing-display);
+  --tracking-h2: var(--letter-spacing-section);
 
   /* Ombre longue (Orbix : 16 couches, ici 7), teintée pétrole profond : `shadow-long`. */
   --shadow-long:
@@ -262,6 +270,28 @@ h3 {
 }
 h4 {
   letter-spacing: -0.012em;
+}
+
+/* === Titres Orbix → Cen21 (rapport « Orbix × Cen21 ») ===================
+   Les règles h1–h4 ci-dessus sont hors couche Tailwind : elles l'emportent
+   sur les utilitaires `font-*` et `tracking-*` posés sur un titre. Ces
+   classes, hors couche elles aussi, gagnent par spécificité (classe >
+   élément) sans rien changer aux titres existants. Taille et interlignage :
+   utilitaires `text-display`, `text-h2`, `text-h3`, non concernés.
+   - .title-display : titre de hero, grands titres « statement » ;
+   - .title-section : titres de section (h2, h3). */
+.title-display,
+.title-section {
+  font-family: var(--font-dm-sans);
+  font-weight: var(--font-weight-display);
+}
+
+.title-display {
+  letter-spacing: var(--letter-spacing-display);
+}
+
+.title-section {
+  letter-spacing: var(--letter-spacing-section);
 }
 
 /* === Display typography — titres cinématiques "statement" ============== */

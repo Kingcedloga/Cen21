@@ -12,7 +12,7 @@ function TrackStage({ title, body, cardLabel }: { title: string; body: string; c
   return (
     <div className="flex h-full flex-col justify-center gap-12 px-4 py-20 md:px-8">
       <div className="mx-auto w-full max-w-6xl">
-        <h2 className="text-h2 font-semibold tracking-h2 text-ivory">{title}</h2>
+        <h2 className="title-section text-h2 text-ivory">{title}</h2>
         <p className="mt-4 max-w-xl text-ivory/70">{body}</p>
         <div className="mt-8 h-1 w-full overflow-hidden rounded-full bg-ivory/15">
           <motion.div

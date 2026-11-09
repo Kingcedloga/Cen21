@@ -78,7 +78,7 @@ export default async function MotionLabPage({ params }: Props) {
           tone="light"
           text={t("lightTitle")}
           sweep={t("lightTitleSweep")}
-          className="max-w-4xl text-h2 font-semibold tracking-h2 text-petrol"
+          className="title-section max-w-4xl text-h2 text-petrol"
         />
         <p className="mt-8 max-w-2xl text-lead text-petrol/80">
           {t.rich("lightBody", {
@@ -93,7 +93,7 @@ export default async function MotionLabPage({ params }: Props) {
           mode="scroll"
           text={t("darkTitle")}
           sweep={t("darkTitleSweep")}
-          className="max-w-4xl text-h2 font-semibold tracking-h2 text-ivory"
+          className="title-section max-w-4xl text-h2 text-ivory"
         />
 
         <div className="mt-16 grid gap-12 md:grid-cols-2">
@@ -126,7 +126,7 @@ export default async function MotionLabPage({ params }: Props) {
       <TrackDemo title={t("trackHeading")} body={t("trackBody")} cardLabel={t("trackCard")} />
 
       <PageSection variant="light" spacing="loose">
-        <p className="text-h3 font-semibold tracking-h2 text-petrol">{t("end")}</p>
+        <p className="title-section text-h3 text-petrol">{t("end")}</p>
       </PageSection>
 
       <ScrollReadout label={t("readout")} dark={t("surfaceDark")} light={t("surfaceLight")} />
