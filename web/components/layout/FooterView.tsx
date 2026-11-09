@@ -11,6 +11,7 @@ import {
 import type { SiteConfig } from "@/lib/types";
 
 import { Logo } from "@/components/brand/Logo";
+import { SectionBlend } from "@/components/layout/SectionBlend";
 import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import {
@@ -92,6 +93,9 @@ export function FooterView({
   const defaultPattern = `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L35 25 L55 30 L35 35 L30 55 L25 35 L5 30 L25 25 Z' fill='none' stroke='%23D4AD65' stroke-width='0.35' opacity='0.5'/%3E%3C/svg%3E")`;
 
   return (
+    <>
+    {/* Pages groupe : séparateur fondu au-dessus du pied de page. */}
+    {!isThemed && <SectionBlend to="var(--color-anthracite)" />}
     <footer
       data-subsidiary-footer={isThemed ? "" : undefined}
       className={
@@ -403,5 +407,6 @@ export function FooterView({
         </div>
       </div>
     </footer>
+    </>
   );
 }

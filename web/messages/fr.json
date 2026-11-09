@@ -60,14 +60,29 @@
     "marketWatchVideos": "Voir nos vidéos",
     "marketWatchVideosSub": "Expériences",
     "marketImage1Alt": "Salle de restaurant gastronomique Cen21",
-    "marketImage2Alt": "Bar à cocktails, ambiance Cen21"
+    "marketImage2Alt": "Bar à cocktails, ambiance Cen21",
+    "housesEyebrow": "Nos maisons",
+    "housesTitle": "{count} maisons, une même exigence.",
+    "housesTitleSweep": "une même exigence",
+    "manifestoValues": "Nos valeurs",
+    "manifestoStats": "Le groupe en chiffres",
+    "arcRegion": "Nos filiales",
+    "arcRoledescription": "carrousel",
+    "arcPrev": "Filiale précédente",
+    "arcNext": "Filiale suivante",
+    "arcDrag": "Glisser",
+    "arcDiscover": "Découvrir",
+    "arcPosition": "{index} sur {total} : {name}"
   },
   "hero": {
     "tagline": "L'art de l'exception",
     "ctaSubsidiaries": "Découvrir nos filiales",
     "ctaContact": "Nous contacter",
     "scroll": "Découvrir",
-    "scrollAria": "Faire défiler vers la section suivante"
+    "scrollAria": "Faire défiler vers la section suivante",
+    "pillHouses": "{count} maisons, un seul groupe",
+    "pillSectors": "Restauration · Lounges · Nuit",
+    "pillCity": "Kinshasa · RDC"
   },
   "cta": {
     "eyebrow": "Expérience",

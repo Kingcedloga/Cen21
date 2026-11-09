@@ -4,8 +4,10 @@ import { useScroll, type MotionValue } from "framer-motion";
 import {
   createContext,
   useContext,
+  useEffect,
   useMemo,
   useRef,
+  useState,
   type CSSProperties,
   type ReactNode,
 } from "react";
@@ -67,10 +69,27 @@ export function StickyTrack({
   children: ReactNode;
 }) {
   const ref = useRef<HTMLElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
   const reduced = useReducedMotionSafe();
   const below = useMediaQuery(staticBelow ? BELOW_QUERY[staticBelow] : "not all");
-  const isStatic = reduced || (staticBelow !== undefined && below);
+  const [overflowing, setOverflowing] = useState(false);
+  const isStatic = reduced || (staticBelow !== undefined && below) || overflowing;
+
+  // Filet de sécurité : si le contenu de la scène dépasse la hauteur d'écran
+  // (écran bas, texte long), la piste se désépingle plutôt que de rogner.
+  useEffect(() => {
+    const content = stageRef.current?.firstElementChild;
+    if (!(content instanceof HTMLElement)) return;
+    const check = () => setOverflowing(content.scrollHeight > window.innerHeight + 1);
+    const observer = new ResizeObserver(check);
+    observer.observe(content);
+    window.addEventListener("resize", check);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", check);
+    };
+  }, []);
 
   const value = useMemo(
     () => ({ progress: scrollYProgress, isStatic }),
@@ -80,6 +99,7 @@ export function StickyTrack({
   const classes = [
     "sticky-track",
     staticBelow ? `sticky-track--static-below-${staticBelow}` : "",
+    overflowing ? "sticky-track--overflow" : "",
     className,
   ]
     .filter(Boolean)
@@ -94,7 +114,7 @@ export function StickyTrack({
       className={classes}
       style={{ "--track-vh": lengthVh } as CSSProperties}
     >
-      <div className={`sticky-track__stage ${stageClassName}`}>
+      <div ref={stageRef} className={`sticky-track__stage ${stageClassName}`}>
         <StickyTrackContext.Provider value={value}>{children}</StickyTrackContext.Provider>
       </div>
     </section>

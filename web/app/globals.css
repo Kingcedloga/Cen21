@@ -110,6 +110,20 @@
     var(--color-gold-deep) 60%,
     var(--color-petrol) 72% 100%
   );
+  /* Balayage or sur or — mot d'accent déjà doré (hero « Hospitality ») :
+     au repos, la fenêtre visible garde un dégradé or ; un reflet sable passe. */
+  --sweep-gold: linear-gradient(
+    90deg,
+    var(--color-gold-mid) 0%,
+    var(--color-gold) 13%,
+    var(--color-gold-mid) 26%,
+    var(--color-neutral) 44%,
+    var(--color-gold) 52%,
+    var(--color-neutral) 58%,
+    var(--color-gold) 74%,
+    var(--color-gold-mid) 87%,
+    var(--color-gold) 100%
+  );
   /* Distance entre la capsule de navigation et le bas de l'écran. */
   --capsule-offset: 40px;
 
@@ -288,6 +302,88 @@ h4 {
 
 .title-display {
   letter-spacing: var(--letter-spacing-display);
+}
+
+/* === Séparateur fondu entre sections (components/layout/SectionBlend) ====
+   Reprend le rideau hero → « Nos maisons » : long fondu adouci et flou.
+
+   Mode espace (from + to) — l'élément occupe un vrai espace (--blend-space)
+   et déborde de --blend-reach dans les marges des deux sections (marges
+   négatives), au-dessus d'elles. Couche haute : `from` qui s'efface en
+   courbe douce ; couche basse : `to` (couleur ou dégradé). Le masque estompe
+   les deux débords. Courbe ease-in-out (11 paliers). Transition visible
+   ≈ 20 rem à 1440 px, comme le rideau, sans voiler de contenu.
+
+   Pas de flou d'arrière-plan : entre deux fonds unis il n'apporte rien et
+   dessine des liserés au bord de la zone floutée. Une section à photo fond
+   sa propre image dans sa couleur (masque sur l'image) : voir
+   .home-experience__media. */
+.section-blend {
+  --blend-space: clamp(6rem, 14vw, 10rem);
+  --blend-reach: clamp(2.5rem, 5vw, 5rem);
+  position: relative;
+  z-index: 15;
+  height: calc(var(--blend-space) + 2 * var(--blend-reach));
+  margin-block: calc(var(--blend-reach) * -1);
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to bottom,
+      var(--blend-from) 0,
+      var(--blend-from) var(--blend-reach),
+      color-mix(in srgb, var(--blend-from) 97%, transparent) calc(var(--blend-reach) + var(--blend-space) * 0.1),
+      color-mix(in srgb, var(--blend-from) 90%, transparent) calc(var(--blend-reach) + var(--blend-space) * 0.2),
+      color-mix(in srgb, var(--blend-from) 79%, transparent) calc(var(--blend-reach) + var(--blend-space) * 0.3),
+      color-mix(in srgb, var(--blend-from) 65%, transparent) calc(var(--blend-reach) + var(--blend-space) * 0.4),
+      color-mix(in srgb, var(--blend-from) 50%, transparent) calc(var(--blend-reach) + var(--blend-space) * 0.5),
+      color-mix(in srgb, var(--blend-from) 35%, transparent) calc(var(--blend-reach) + var(--blend-space) * 0.6),
+      color-mix(in srgb, var(--blend-from) 21%, transparent) calc(var(--blend-reach) + var(--blend-space) * 0.7),
+      color-mix(in srgb, var(--blend-from) 10%, transparent) calc(var(--blend-reach) + var(--blend-space) * 0.8),
+      color-mix(in srgb, var(--blend-from) 3%, transparent) calc(var(--blend-reach) + var(--blend-space) * 0.9),
+      transparent calc(var(--blend-reach) + var(--blend-space))
+    ),
+    var(--blend-to);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    rgb(0 0 0 / 0.55) calc(var(--blend-reach) * 0.5),
+    #000 var(--blend-reach),
+    #000 calc(100% - var(--blend-reach)),
+    rgb(0 0 0 / 0.55) calc(100% - var(--blend-reach) * 0.5),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    rgb(0 0 0 / 0.55) calc(var(--blend-reach) * 0.5),
+    #000 var(--blend-reach),
+    #000 calc(100% - var(--blend-reach)),
+    rgb(0 0 0 / 0.55) calc(100% - var(--blend-reach) * 0.5),
+    transparent 100%
+  );
+}
+
+/* Mode recouvrement (to seul) — section précédente inconnue (pied de page) :
+   bande posée sur son bas, qui la fond vers `to` quelle que soit sa couleur.
+   Hauteur bornée par les marges basses des sections. */
+.section-blend--overlay {
+  --blend-size: clamp(3.5rem, 7vw, 6.5rem);
+  height: 0;
+  margin-block: 0;
+  background: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.section-blend--overlay::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: var(--blend-size);
+  background: var(--blend-to);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.3) 35%, rgb(0 0 0 / 0.75) 70%, #000 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.3) 35%, rgb(0 0 0 / 0.75) 70%, #000 100%);
 }
 
 .title-section {

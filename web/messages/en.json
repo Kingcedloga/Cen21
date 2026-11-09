@@ -60,14 +60,29 @@
     "marketWatchVideos": "Watch our videos",
     "marketWatchVideosSub": "Experiences",
     "marketImage1Alt": "Cen21 fine dining room",
-    "marketImage2Alt": "Cocktail bar, Cen21 atmosphere"
+    "marketImage2Alt": "Cocktail bar, Cen21 atmosphere",
+    "housesEyebrow": "Our houses",
+    "housesTitle": "{count} houses, one standard.",
+    "housesTitleSweep": "one standard",
+    "manifestoValues": "Our values",
+    "manifestoStats": "The group in figures",
+    "arcRegion": "Our subsidiaries",
+    "arcRoledescription": "carousel",
+    "arcPrev": "Previous subsidiary",
+    "arcNext": "Next subsidiary",
+    "arcDrag": "Drag",
+    "arcDiscover": "Discover",
+    "arcPosition": "{index} of {total}: {name}"
   },
   "hero": {
     "tagline": "The art of exceptional living",
     "ctaSubsidiaries": "Discover our subsidiaries",
     "ctaContact": "Contact us",
     "scroll": "Discover",
-    "scrollAria": "Scroll to the next section"
+    "scrollAria": "Scroll to the next section",
+    "pillHouses": "{count} houses, one group",
+    "pillSectors": "Dining · Lounges · Nightlife",
+    "pillCity": "Kinshasa · DRC"
   },
   "cta": {
     "eyebrow": "Experience",

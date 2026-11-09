@@ -1,5 +1,10 @@
 /* Home — section Expérience : photo de fond + bouton play + texte circulaire rotatif */
 
+/* Teinte de la section, partagée avec le séparateur SectionBlend qui la précède. */
+:root {
+  --experience-surface: #001f2b;
+}
+
 .home-experience {
   position: relative;
   isolation: isolate;
@@ -8,13 +13,47 @@
   align-items: center;
   justify-content: center;
   min-height: clamp(28rem, 50vw, 42rem);
-  background-color: #001f2b;
+  background-color: var(--experience-surface);
 }
 
+/* Photo incrustée : elle se dissout en haut et en bas dans la couleur de la
+   section (--experience-surface), que reprennent les séparateurs voisins.
+   Aucun calque posé dessus, donc ni liseré ni palier au raccord. */
 .home-experience__media {
+  --experience-feather: clamp(4rem, 12vw, 10rem);
   position: absolute;
   inset: 0;
   z-index: 0;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    rgb(0 0 0 / 0.1) calc(var(--experience-feather) * 0.2),
+    rgb(0 0 0 / 0.35) calc(var(--experience-feather) * 0.4),
+    rgb(0 0 0 / 0.65) calc(var(--experience-feather) * 0.6),
+    rgb(0 0 0 / 0.9) calc(var(--experience-feather) * 0.8),
+    #000 var(--experience-feather),
+    #000 calc(100% - var(--experience-feather)),
+    rgb(0 0 0 / 0.9) calc(100% - var(--experience-feather) * 0.8),
+    rgb(0 0 0 / 0.65) calc(100% - var(--experience-feather) * 0.6),
+    rgb(0 0 0 / 0.35) calc(100% - var(--experience-feather) * 0.4),
+    rgb(0 0 0 / 0.1) calc(100% - var(--experience-feather) * 0.2),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    rgb(0 0 0 / 0.1) calc(var(--experience-feather) * 0.2),
+    rgb(0 0 0 / 0.35) calc(var(--experience-feather) * 0.4),
+    rgb(0 0 0 / 0.65) calc(var(--experience-feather) * 0.6),
+    rgb(0 0 0 / 0.9) calc(var(--experience-feather) * 0.8),
+    #000 var(--experience-feather),
+    #000 calc(100% - var(--experience-feather)),
+    rgb(0 0 0 / 0.9) calc(100% - var(--experience-feather) * 0.8),
+    rgb(0 0 0 / 0.65) calc(100% - var(--experience-feather) * 0.6),
+    rgb(0 0 0 / 0.35) calc(100% - var(--experience-feather) * 0.4),
+    rgb(0 0 0 / 0.1) calc(100% - var(--experience-feather) * 0.2),
+    transparent 100%
+  );
 }
 
 .home-experience__image {

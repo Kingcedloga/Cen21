@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "@/lib/icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { useTranslations } from "next-intl";
 
+import { SpectrumText } from "@/components/motion/SpectrumText";
 import { Button } from "@/components/ui/Button";
 import { dynalight } from "@/lib/fonts";
 import { BLUR_PETROL } from "@/lib/image-blur";
@@ -26,12 +27,14 @@ export type HeroSlide = {
 type HeroCinematicProps = {
   slides: HeroSlide[];
   siteName: string;
+  /** Messages de la pastille rotative, synchronisée avec le diaporama. */
+  pills?: string[];
   className?: string;
 };
 
 const AUTO_MS = 7500;
 
-export function HeroCinematic({ slides, siteName, className = "" }: HeroCinematicProps) {
+export function HeroCinematic({ slides, siteName, pills = [], className = "" }: HeroCinematicProps) {
   const t = useTranslations("hero");
   const tHome = useTranslations("home");
   const list = slides;
@@ -53,6 +56,8 @@ export function HeroCinematic({ slides, siteName, className = "" }: HeroCinemati
 
   const len = list.length;
   const safeIndex = len ? index % len : 0;
+  /** « Cen21 Hospitality » → « Hospitality » : mot d'accent en cursive dorée. */
+  const titleAccent = siteName.split(" ").slice(1).join(" ");
 
   const next = useCallback(() => {
     setIndex((i) => (len ? (i + 1) % len : 0));
@@ -164,7 +169,8 @@ export function HeroCinematic({ slides, siteName, className = "" }: HeroCinemati
       )}
 
       {/* ── Contenu Principal Hero ── */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 md:px-12 pb-20 sm:pb-24 md:pb-28 pt-36 md:pt-48">
+      {/* pb-32 sur mobile : les boutons dégagent la capsule de navigation basse. */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 md:px-12 pb-32 sm:pb-24 md:pb-28 pt-36 md:pt-48">
         <motion.div
           className="flex flex-col gap-6 md:gap-8 max-w-4xl"
           style={reducedMotion ? undefined : { y: contentY, opacity: contentOpacity }}
@@ -180,22 +186,39 @@ export function HeroCinematic({ slides, siteName, className = "" }: HeroCinemati
           >
             <span aria-hidden className="block h-px w-8 bg-gradient-to-r from-transparent to-gold" />
             <span aria-hidden className="inline-flex h-1.5 w-1.5 rotate-45 bg-gold shadow-[0_0_8px_rgba(212,173,101,0.6)]" />
-            <p className="eyebrow text-xs sm:text-sm font-bold tracking-[0.22em] uppercase text-gold [font-family:var(--font-dynalight),cursive]">
-              {t("tagline")}
-            </p>
+            {/* Pastille rotative (Orbix) : un message par diapositive, pas de boucle propre. */}
+            <span className="inline-flex min-h-8 items-center overflow-hidden rounded-full border border-gold/30 bg-petrol/45 px-4 backdrop-blur-md">
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.span
+                  key={pills.length ? pills[safeIndex % pills.length] : t("tagline")}
+                  className="eyebrow text-[11px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-gold"
+                  initial={reducedMotion ? false : { opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={reducedMotion ? undefined : { opacity: 0, y: -8 }}
+                  transition={{ duration: 0.3, ease: EASE.outSoft }}
+                >
+                  {pills.length ? pills[safeIndex % pills.length] : t("tagline")}
+                </motion.span>
+              </AnimatePresence>
+            </span>
           </motion.div>
 
-          {/* Statement Headline */}
+          {/* Statement Headline — révélé lettre à lettre quand le loader s'efface ;
+              « Hospitality » (cursive) d'un bloc, puis balayé d'un reflet. */}
           <motion.div
             variants={reducedMotion ? undefined : fadeUpVariants}
             transition={{ ...fadeUpTransition, delay: 0.08 }}
           >
-            <h1 className="font-[family-name:var(--font-dm-sans)] text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] font-bold tracking-[-0.035em] leading-[1.02] text-ivory text-balance">
-              Cen21{" "}
-              <span className="text-gradient-gold italic font-normal [font-family:var(--font-dynalight),cursive] text-[1.12em] ml-1 sm:ml-2">
-                Hospitality
-              </span>
-            </h1>
+            <SpectrumText
+              as="h1"
+              mode="load"
+              text={siteName}
+              sweep={titleAccent || undefined}
+              tone="gold"
+              sweepWhole
+              sweepClassName="italic font-normal [font-family:var(--font-dynalight),cursive] text-[1.12em] ml-1 sm:ml-2"
+              className="title-display text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] leading-[1.02] text-ivory text-balance"
+            />
             <p className="mt-4 sm:mt-5 text-base sm:text-lg md:text-xl text-ivory/80 max-w-2xl leading-relaxed font-normal">
               {tHome("metaDescription")}
             </p>
@@ -222,7 +245,8 @@ export function HeroCinematic({ slides, siteName, className = "" }: HeroCinemati
 
       {/* ── Indicateur de Diaporama Élégant (Bottom-Right) ── */}
       {len > 1 && (
-        <div className="absolute right-6 sm:right-10 md:right-14 bottom-8 sm:bottom-10 z-20 hidden sm:flex items-center gap-3 rounded-full border border-white/10 bg-petrol/40 px-4 py-2 backdrop-blur-md">
+        // Au-dessus du débord du séparateur fondu qui suit le hero (≤ 5 rem).
+        <div className="absolute right-6 sm:right-10 md:right-14 bottom-8 sm:bottom-24 md:bottom-28 z-20 hidden sm:flex items-center gap-3 rounded-full border border-white/10 bg-petrol/40 px-4 py-2 backdrop-blur-md">
           <span className="font-mono text-xs font-semibold text-gold tracking-widest">
             {String(safeIndex + 1).padStart(2, "0")}
           </span>
@@ -241,29 +265,8 @@ export function HeroCinematic({ slides, siteName, className = "" }: HeroCinemati
         </div>
       )}
 
-      {/* ── Scroll Cue Centré ── */}
-      <button
-        type="button"
-        onClick={() => {
-          const target = document.getElementById("home-group") ?? document.getElementById("nos-filiales");
-          target?.scrollIntoView({
-            behavior: reducedMotion ? "auto" : "smooth",
-            block: "start",
-          });
-        }}
-        aria-label={t("scrollAria")}
-        className="absolute bottom-6 sm:bottom-8 left-1/2 z-20 -translate-x-1/2 flex flex-col items-center gap-2 text-ivory/70 transition-all duration-fine hover:text-gold focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-4 cursor-pointer group"
-      >
-        <span className="text-[11px] font-medium tracking-[0.24em] uppercase text-ivory/60 group-hover:text-gold transition-colors">
-          {t("scroll")}
-        </span>
-        <span
-          aria-hidden
-          className="relative flex h-10 w-6 items-center justify-center rounded-full border border-ivory/25 group-hover:border-gold/50 transition-colors"
-        >
-          <span className="animate-scroll-cue absolute top-1.5 h-2 w-1 rounded-full bg-gold" />
-        </span>
-      </button>
+      {/* L'indicateur « Découvrir » a été retiré : la capsule de navigation
+          occupe désormais le bas de l'écran (rapport « Orbix × Cen21 », phase 3). */}
     </section>
   );
 }

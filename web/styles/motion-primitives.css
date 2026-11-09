@@ -38,6 +38,21 @@
   }
 }
 
+/* Contenu plus haut que l'écran : piste désépinglée (StickyTrack). */
+.sticky-track--overflow {
+  height: auto;
+}
+.sticky-track--overflow > .sticky-track__stage {
+  position: relative;
+  height: auto;
+  overflow: visible;
+}
+.sticky-track--overflow [data-track-motion] {
+  transform: none !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
 @media (max-width: 767.98px) {
   .sticky-track--static-below-md {
     height: auto;
@@ -83,6 +98,8 @@
 /* --- GradientSweep ---------------------------------------------------------- */
 /* Au repos, le dégradé est calé sur sa couleur de base : le texte reste lisible. */
 .gradient-sweep {
+  /* Couleur de repos, lue par SpectrumText pour finir la révélation sans saut. */
+  --sweep-rest: var(--color-neutral);
   display: inline-block;
   background-image: var(--sweep-on-dark);
   background-size: 380% 100%;
@@ -94,7 +111,13 @@
 }
 
 .gradient-sweep--light {
+  --sweep-rest: var(--color-petrol);
   background-image: var(--sweep-on-light);
+}
+
+.gradient-sweep--gold {
+  --sweep-rest: var(--color-gold);
+  background-image: var(--sweep-gold);
 }
 
 /* Pendant la révélation lettre à lettre, chaque lettre porte sa propre couleur. */

@@ -3,18 +3,27 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
-import { FeaturedSubsidiariesSlider } from "@/components/sections/FeaturedSubsidiariesSlider";
+import { SubsidiariesArc, type ArcItem } from "@/components/filiales/SubsidiariesArc";
 import { HeroCinematic } from "@/components/sections/HeroCinematic";
 import { HomeExperienceSection } from "@/components/sections/HomeExperienceSection";
-import { HomePhilosophySection } from "@/components/sections/HomePhilosophySection";
+import { HomeHousesSection, type HouseItem } from "@/components/sections/home/HomeHousesSection";
+import { HomeManifesto } from "@/components/sections/home/HomeManifesto";
 import { MarketPositioningSection } from "@/components/sections/MarketPositioningSection";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { StatsBanner } from "@/components/sections/StatsBanner";
 import { PageSection } from "@/components/layout/PageSection";
-import { getSubsidiaries, getSiteConfig, getExperienceVideoId, getAboutContent } from "@/lib/content";
+import { SectionBlend } from "@/components/layout/SectionBlend";
+import {
+  getAboutContent,
+  getExperienceVideoId,
+  getSectorLabel,
+  getSiteConfig,
+  getStatsContent,
+  getSubsidiaries,
+} from "@/lib/content";
 import type { Locale } from "@/i18n/routing";
 import { resolvePageMetadata } from "@/lib/seo";
+import { brandSurface } from "@/lib/subsidiary-brand";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -38,7 +47,41 @@ export default async function HomePage({ params }: Props) {
   const site = getSiteConfig(l);
   const subsidiaries = getSubsidiaries(l);
   const about = getAboutContent(l);
+  const stats = getStatsContent(l).items.map(({ value, label }) => ({ value, label }));
   const t = await getTranslations("home");
+  const tHero = await getTranslations("hero");
+  const tCommon = await getTranslations("common");
+  const count = subsidiaries.length;
+
+  // Pastille rotative du hero : un message par diapositive.
+  const heroPills = [
+    tHero("tagline"),
+    tHero("pillHouses", { count }),
+    tHero("pillSectors"),
+    tHero("pillCity"),
+  ];
+
+  const houses: HouseItem[] = subsidiaries
+    .filter((s) => s.brandLogo)
+    .map((s) => ({
+      slug: s.slug,
+      name: s.name,
+      logo: s.brandLogo as string,
+      brandColor: brandSurface(s.slug, s.accentColor),
+      ariaLabel: tCommon("discover", { name: s.name }),
+    }));
+
+  const arcItems: ArcItem[] = subsidiaries.map((s, index) => ({
+    slug: s.slug,
+    name: s.name,
+    sector: getSectorLabel(l, s.sector),
+    tagline: s.tagline,
+    cover: s.coverImage,
+    logo: s.brandLogo,
+    brandColor: brandSurface(s.slug, s.accentColor),
+    ariaLabel: tCommon("discover", { name: s.name }),
+    positionLabel: t("arcPosition", { index: index + 1, total: count, name: s.name }),
+  }));
 
   const heroSlides =
     site.heroSlides && site.heroSlides.length > 0
@@ -52,7 +95,27 @@ export default async function HomePage({ params }: Props) {
     <>
       <OrganizationJsonLd locale={l} />
 
-      <HeroCinematic slides={heroSlides} siteName={site.name} />
+      {/* Rideau (desktop) : le hero reste collé, « Nos maisons » monte par-dessus. */}
+      <div className="hero-curtain">
+        <HeroCinematic
+          slides={heroSlides}
+          siteName={site.name}
+          pills={heroPills}
+          className="hero-curtain__hero"
+        />
+        {/* Mobile, tablette, reduced motion : pas de rideau, séparateur fondu. */}
+        <SectionBlend from="var(--color-petrol)" to="var(--color-petrol-panel-4)" />
+        <HomeHousesSection
+          eyebrow={t("housesEyebrow")}
+          title={t("housesTitle", { count })}
+          titleSweep={t("housesTitleSweep")}
+          items={houses}
+          className="hero-curtain__cover"
+        />
+      </div>
+
+      {/* Séparateurs fondus : du bas de la section précédente (from) au haut de la suivante (to). */}
+      <SectionBlend from="var(--color-petrol-panel-4)" to="var(--color-petrol)" />
 
       <PageSection
         id="home-group"
@@ -108,17 +171,26 @@ export default async function HomePage({ params }: Props) {
         </div>
       </PageSection>
 
+      <SectionBlend from="var(--color-petrol)" to="var(--market-top-field)" />
+
       <MarketPositioningSection
         eyebrow={t("marketEyebrow")}
         title={t("marketTitle")}
         team={about.team ?? []}
       />
 
-      <HomePhilosophySection
+      <SectionBlend from="var(--market-bottom-edge)" to="var(--color-petrol-panel-4)" />
+
+      <HomeManifesto
         eyebrow={t("philosophyEyebrow")}
         statement={about.positioning}
         values={about.values}
+        stats={stats}
+        valuesLabel={t("manifestoValues")}
+        statsLabel={t("manifestoStats")}
       />
+
+      <SectionBlend from="var(--color-petrol-panel-4)" to="var(--color-ivory)" />
 
       <PageSection
         variant="light"
@@ -126,7 +198,6 @@ export default async function HomePage({ params }: Props) {
         id="nos-filiales"
         ariaLabelledby="nos-filiales-title"
         containerClassName="mx-auto max-w-[min(100%,1400px)]"
-        className="!pb-0"
       >
         <div className="relative isolate flex flex-col items-stretch gap-0">
           <div className="relative z-[60] shrink-0 max-w-2xl pr-6 md:pr-8">
@@ -144,13 +215,24 @@ export default async function HomePage({ params }: Props) {
             </AnimateIn>
           </div>
 
-          <div className="relative z-10 mt-14 w-full max-sm:mt-32 sm:mt-16 md:mt-20 lg:mt-24 xl:mt-28">
-            <FeaturedSubsidiariesSlider subsidiaries={subsidiaries} />
+          <div className="relative z-10 mt-12 w-full md:mt-16">
+            <SubsidiariesArc
+              items={arcItems}
+              labels={{
+                region: t("arcRegion"),
+                roledescription: t("arcRoledescription"),
+                prev: t("arcPrev"),
+                next: t("arcNext"),
+                drag: t("arcDrag"),
+                discover: t("arcDiscover"),
+              }}
+            />
           </div>
         </div>
       </PageSection>
 
-      <StatsBanner />
+      {/* Section à photo : le débord fondu et flouté couvre la lisière de l'image. */}
+      <SectionBlend from="var(--color-ivory)" to="var(--experience-surface)" />
 
       <HomeExperienceSection backgroundImage={experienceImage} videoId={getExperienceVideoId(l)} />
     </>

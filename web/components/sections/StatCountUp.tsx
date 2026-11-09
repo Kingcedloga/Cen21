@@ -36,7 +36,9 @@ export function StatCountUp({
   className?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  // Marge verticale seulement : une marge sur les côtés empêchait de démarrer
+  // les compteurs placés à moins de 60 px du bord (colonne gauche sur mobile).
+  const inView = useInView(ref, { once: true, margin: "-60px 0px" });
   const reduced = useReducedMotion();
   const parsed = useMemo(() => parseStatValue(value), [value]);
   const [display, setDisplay] = useState(() =>

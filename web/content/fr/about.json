@@ -22,8 +22,16 @@
       "description": "Des lieux avec une âme, ancrés dans leur territoire et leur communauté."
     },
     {
-      "title": "Discretion",
+      "title": "Discrétion",
       "description": "Un luxe contemporain, élégant et sans ostentation."
+    },
+    {
+      "title": "Hospitalité",
+      "description": "Un accueil chaleureux et attentif, où chaque hôte se sent attendu."
+    },
+    {
+      "title": "Partage",
+      "description": "Des moments vécus ensemble, autour d'une table comme sur la piste."
     }
   ],
   "positioning": "Cen21 Hospitality incarne le luxe moderne : minimalisme éditorial, profondeur cinématographique et expériences nocturnes d'exception, inspirées des hôtels de palace et de la scène lifestyle internationale.",

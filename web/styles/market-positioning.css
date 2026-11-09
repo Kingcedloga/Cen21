@@ -1,5 +1,14 @@
 /* Section Équipe — testimonials carousel — homepage uniquement */
 
+/* Lisière haute de .mp-section, pour le séparateur SectionBlend qui la
+   précède : même dégradé, centré sur le bas de la bande (même profil
+   horizontal que le haut de la section). */
+:root {
+  --market-top-field: radial-gradient(ellipse 90% 60% at 50% 100%, #f0decb 0%, #e7d1bf 60%, #debfa6 100%);
+  /* Lisière basse (dernier arrêt du dégradé), pour le séparateur qui suit. */
+  --market-bottom-edge: #debfa6;
+}
+
 .mp-section {
   position: relative;
   background: radial-gradient(ellipse 90% 60% at 50% 0%, #f0decb 0%, #e7d1bf 60%, #debfa6 100%);

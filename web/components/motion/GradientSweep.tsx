@@ -8,13 +8,18 @@ import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 import "@/styles/motion-primitives.css";
 
-export type SweepTone = "dark" | "light";
+export type SweepTone = "dark" | "light" | "gold";
 
 const running = new WeakMap<HTMLElement, AnimationPlaybackControls>();
 
-/** Classes d'un élément balayé (fond sombre : or sur ivoire ; fond clair : or sur pétrole). */
+/**
+ * Classes d'un élément balayé : `dark` (or sur ivoire, fonds sombres),
+ * `light` (or sur pétrole, fonds clairs), `gold` (reflet sable sur un mot doré).
+ */
 export function sweepClassName(tone: SweepTone = "dark") {
-  return tone === "light" ? "gradient-sweep gradient-sweep--light" : "gradient-sweep";
+  if (tone === "light") return "gradient-sweep gradient-sweep--light";
+  if (tone === "gold") return "gradient-sweep gradient-sweep--gold";
+  return "gradient-sweep";
 }
 
 /**

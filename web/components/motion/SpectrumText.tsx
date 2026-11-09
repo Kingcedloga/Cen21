@@ -6,8 +6,9 @@ import {
   useMotionValueEvent,
   useScroll,
   type AnimationPlaybackControls,
+  type MotionValue,
 } from "framer-motion";
-import { useRef, type ReactNode } from "react";
+import { useRef, type ReactNode, type RefObject } from "react";
 
 import { playSweep, sweepClassName, type SweepTone } from "@/components/motion/GradientSweep";
 import { SPECTRUM_GOLD } from "@/lib/motion";
@@ -16,12 +17,12 @@ import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 import "@/styles/motion-primitives.css";
 
-type HeadingTag = "h1" | "h2" | "h3" | "h4";
+type TextTag = "h1" | "h2" | "h3" | "h4" | "p";
 type RGB = readonly [number, number, number];
 
 /** Durée de la révélation au chargement (Orbix : 1 250 ms). */
 const LOAD_DURATION_S = 1.25;
-/** Plage de scroll : de « haut du titre à 92 % de l'écran » à « haut du titre à 42 % ». */
+/** Plage de scroll : de « haut du texte à 92 % de l'écran » à « haut du texte à 42 % ». */
 const SCROLL_OFFSET: ["start 0.92", "start 0.42"] = ["start 0.92", "start 0.42"];
 /** Lettre fantôme de départ : sable (première couleur du spectre). */
 const GHOST: RGB = SPECTRUM_GOLD[0];
@@ -40,9 +41,16 @@ function spectrumAt(position: number): RGB {
   return mix(SPECTRUM_GOLD[index], SPECTRUM_GOLD[index + 1], scaled - index);
 }
 
-function parseRgb(color: string): RGB {
-  const [r = 0, g = 0, b = 0] = (color.match(/[\d.]+/g) ?? []).map(Number);
-  return [r, g, b];
+/** `rgb(…)`, `rgba(…)`, `#rgb` ou `#rrggbb` → RGB. */
+function parseColor(color: string): RGB | null {
+  const value = color.trim();
+  const hex = value.match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i);
+  if (hex) {
+    const digits = hex[1].length === 3 ? hex[1].replace(/./g, "$&$&") : hex[1];
+    return [0, 2, 4].map((offset) => parseInt(digits.slice(offset, offset + 2), 16)) as unknown as RGB;
+  }
+  const channels = value.match(/^rgba?\(([^)]+)\)$/i)?.[1].split(/[\s,/]+/).filter(Boolean).map(Number);
+  return channels && channels.length >= 3 ? [channels[0], channels[1], channels[2]] : null;
 }
 
 function rgb([r, g, b]: RGB) {
@@ -80,70 +88,86 @@ function splitOnSweep(text: string, sweep?: string) {
 }
 
 /**
- * Titre révélé lettre par lettre (signature d'Orbix, palette Cen21) :
- * chaque lettre passe du flou (8 px) à une couleur du spectre or, puis à la
- * couleur finale du titre, avec une fenêtre glissante de gauche à droite.
+ * Texte révélé lettre par lettre (signature d'Orbix, palette Cen21) :
+ * chaque lettre passe du flou (8 px) à une couleur du spectre or, puis à sa
+ * couleur finale, avec une fenêtre glissante de gauche à droite.
  *
+ * Pilotage :
  * - `mode="load"` : joue une fois (1,25 s) quand le loader du site s'efface,
  *   après `delay` secondes. Pour le titre du hero.
- * - `mode="scroll"` : suit la position du titre dans l'écran, dans les deux sens.
- * - `sweep` : portion du texte balayée en or à la fin de la révélation.
+ * - `mode="scroll"` : suit la position du texte dans l'écran, dans les deux sens.
+ * - `progress` : progression externe 0 → 1 (piste épinglée) ; prioritaire.
  *
- * Accessibilité : `aria-label` porte le texte, les lettres sont `aria-hidden`.
- * Le HTML serveur affiche le titre fini ; en reduced motion, rien n'est animé.
+ * Mot d'accent (`sweep`) : balayé en or à la fin de la révélation.
+ * `sweepWhole` le révèle d'un bloc (écriture cursive dont les lettres se lient),
+ * `sweepClassName` lui ajoute ses propres classes.
+ *
+ * Accessibilité : titres → `aria-label` ; paragraphe → copie `sr-only` (un
+ * aria-label sur <p> n'est pas annoncé). Les lettres sont `aria-hidden`.
+ * Le HTML serveur affiche le texte fini ; en reduced motion, rien n'est animé.
  */
 export function SpectrumText({
   text,
   as: Tag = "h2",
   mode = "scroll",
+  progress,
   sweep,
   tone = "dark",
+  sweepClassName: sweepExtraClassName = "",
+  sweepWhole = false,
   delay = 0,
   id,
   className = "",
 }: {
   text: string;
-  as?: HeadingTag;
+  as?: TextTag;
   mode?: "load" | "scroll";
+  progress?: MotionValue<number>;
   sweep?: string;
   tone?: SweepTone;
+  sweepClassName?: string;
+  sweepWhole?: boolean;
   delay?: number;
   id?: string;
   className?: string;
 }) {
-  const ref = useRef<HTMLHeadingElement>(null);
-  const paintRef = useRef<((progress: number) => void) | null>(null);
+  const ref = useRef<HTMLElement>(null);
+  const paintRef = useRef<((value: number) => void) | null>(null);
   const reduced = useReducedMotionSafe();
   const { scrollYProgress } = useScroll({ target: ref, offset: SCROLL_OFFSET });
+  const driver = progress ? "external" : mode;
 
-  useMotionValueEvent(scrollYProgress, "change", (progress) => {
-    if (mode === "scroll") paintRef.current?.(progress);
+  useMotionValueEvent(progress ?? scrollYProgress, "change", (value) => {
+    if (driver !== "load") paintRef.current?.(value);
   });
 
   useIsomorphicLayoutEffect(() => {
     const root = ref.current;
     if (!root || reduced) return;
 
-    const chars = Array.from(root.querySelectorAll<HTMLElement>("[data-ch]"));
-    const count = chars.length;
+    const units = Array.from(root.querySelectorAll<HTMLElement>("[data-ch]"));
+    const count = units.length;
     if (!count) return;
 
     const sweepHost = root.querySelector<HTMLElement>("[data-sweep]");
-    const inSweep = chars.map((char) => (sweepHost ? sweepHost.contains(char) : false));
-    const accents = chars.map((_, index) => spectrumAt(index / Math.max(1, count - 1)));
-    const finalColor = parseRgb(getComputedStyle(root).color);
+    const inSweep = units.map((unit) => (sweepHost ? sweepHost.contains(unit) : false));
+    const accents = units.map((_, index) => spectrumAt(index / Math.max(1, count - 1)));
+    const rootColor = parseColor(getComputedStyle(root).color) ?? GHOST;
+    const sweepRest = sweepHost
+      ? (parseColor(getComputedStyle(sweepHost).getPropertyValue("--sweep-rest")) ?? rootColor)
+      : rootColor;
     const last = new Float32Array(count).fill(-1);
     let sweepRevealing = false;
 
-    const paint = (progress: number) => {
+    const paint = (value: number) => {
       let sweepIncomplete = false;
       for (let index = 0; index < count; index += 1) {
-        const t = clamp01((progress * 1.16 - index / count) / 0.16);
+        const t = clamp01((value * 1.16 - index / count) / 0.16);
         if (inSweep[index] && t < 1) sweepIncomplete = true;
         if (t === last[index]) continue;
         last[index] = t;
 
-        const style = chars[index].style;
+        const style = units[index].style;
         if (t >= 1) {
           style.removeProperty("color");
           style.removeProperty("opacity");
@@ -151,6 +175,7 @@ export function SpectrumText({
           continue;
         }
 
+        const finalColor = inSweep[index] ? sweepRest : rootColor;
         let color: RGB = GHOST;
         let opacity = 1;
         let blur = 0;
@@ -182,15 +207,24 @@ export function SpectrumText({
     };
 
     const reset = () => {
-      chars.forEach((char) => {
-        char.style.removeProperty("color");
-        char.style.removeProperty("opacity");
-        char.style.removeProperty("filter");
+      units.forEach((unit) => {
+        unit.style.removeProperty("color");
+        unit.style.removeProperty("opacity");
+        unit.style.removeProperty("filter");
       });
       sweepHost?.removeAttribute("data-revealing");
     };
 
-    if (mode === "scroll") {
+    if (driver === "external" && progress) {
+      paintRef.current = paint;
+      paint(progress.get());
+      return () => {
+        paintRef.current = null;
+        reset();
+      };
+    }
+
+    if (driver === "scroll") {
       paintRef.current = paint;
       const rect = root.getBoundingClientRect();
       const viewport = window.innerHeight;
@@ -217,21 +251,43 @@ export function SpectrumText({
       controls?.stop();
       reset();
     };
-  }, [text, sweep, mode, delay, reduced]);
+  }, [text, sweep, driver, progress, delay, reduced]);
+
+  const sweepClasses = `${sweepClassName(tone)} ${sweepExtraClassName}`;
+  const visual = splitOnSweep(text, sweep).map((segment, index) => {
+    if (!segment.sweep) {
+      return (
+        <span key={index} aria-hidden="true">
+          {renderWords(segment.text, `s${index}`)}
+        </span>
+      );
+    }
+    if (sweepWhole) {
+      return (
+        <span key={index} className={sweepClasses} data-sweep="" data-ch="" aria-hidden="true">
+          {segment.text}
+        </span>
+      );
+    }
+    return (
+      <span key={index} className={sweepClasses} data-sweep="" aria-hidden="true">
+        {renderWords(segment.text, `s${index}`)}
+      </span>
+    );
+  });
+
+  if (Tag === "p") {
+    return (
+      <p ref={ref as RefObject<HTMLParagraphElement>} id={id} className={className}>
+        <span className="sr-only">{text}</span>
+        {visual}
+      </p>
+    );
+  }
 
   return (
-    <Tag ref={ref} id={id} className={className} aria-label={text}>
-      {splitOnSweep(text, sweep).map((segment, index) =>
-        segment.sweep ? (
-          <span key={index} className={sweepClassName(tone)} data-sweep="" aria-hidden="true">
-            {renderWords(segment.text, `s${index}`)}
-          </span>
-        ) : (
-          <span key={index} aria-hidden="true">
-            {renderWords(segment.text, `s${index}`)}
-          </span>
-        ),
-      )}
+    <Tag ref={ref as RefObject<HTMLHeadingElement>} id={id} className={className} aria-label={text}>
+      {visual}
     </Tag>
   );
 }

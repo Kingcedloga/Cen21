@@ -1,0 +1,138 @@
+/* =========================================================================
+   Accueil — rideau sur le hero + grille des 10 maisons
+   (rapport « Orbix × Cen21 », phase 3)
+   ========================================================================= */
+
+/* --- Rideau --------------------------------------------------------------
+   Desktop (≥ 1024 px) et animations autorisées : le hero reste collé en haut
+   pendant que la section suivante monte par-dessus, avec un bord en fondu
+   (Orbix : section des logos, 400 px de marge haute en dégradé). Ailleurs,
+   enchaînement classique. */
+.hero-curtain {
+  position: relative;
+}
+
+.hero-curtain__cover {
+  position: relative;
+  z-index: 10;
+  background-color: var(--color-petrol-panel-4);
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .hero-curtain > .hero-curtain__hero {
+    position: sticky;
+    top: 0;
+  }
+
+  .hero-curtain > .hero-curtain__cover {
+    padding-top: 16rem;
+    background-color: transparent;
+    background-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      color-mix(in srgb, var(--color-petrol-panel-4) 80%, transparent) 8rem,
+      var(--color-petrol-panel-4) 14rem
+    );
+  }
+
+  /* Flou progressif du hero sous le bord du rideau (même effet que les
+     séparateurs SectionBlend). */
+  .hero-curtain > .hero-curtain__cover::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    z-index: -1;
+    height: 14rem;
+    pointer-events: none;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.5) 45%, #000 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.5) 45%, #000 100%);
+  }
+
+  /* Le rideau fait office de séparateur : la bande générique est inutile. */
+  .hero-curtain > .section-blend {
+    display: none;
+  }
+}
+
+/* --- Cartes recto / verso -----------------------------------------------
+   Recto : logo blanc sur pétrole. Verso : couleur de la marque.
+   À l'entrée dans l'écran, une vague unique fait pivoter les cartes
+   (Orbix : boucle infinie — ici une seule fois, MASTER.md). Au survol ou au
+   focus clavier, la carte se retourne. */
+.house-card {
+  display: block;
+  aspect-ratio: 4 / 3;
+  perspective: 900px;
+  border-radius: 1rem;
+}
+
+.house-card__inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s var(--ease-luxury);
+}
+
+.house-card__face {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.house-card__face--back {
+  transform: rotateY(180deg);
+}
+
+/* Remplissage « backwards » : la vague ne fige pas la carte après coup,
+   le survol reste libre. */
+.houses-grid[data-wave] .house-card__inner {
+  animation: house-wave 1.3s var(--ease-luxury) calc(var(--i, 0) * 90ms) backwards;
+}
+
+@keyframes house-wave {
+  0% {
+    transform: rotateY(0deg);
+  }
+  45%,
+  55% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .house-card:hover .house-card__inner {
+    transform: rotateY(180deg);
+  }
+}
+
+.house-card:focus-visible .house-card__inner {
+  transform: rotateY(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .house-card__inner,
+  .house-card:hover .house-card__inner,
+  .house-card:focus-visible .house-card__inner {
+    transform: none;
+    animation: none !important;
+  }
+  .house-card__face--back {
+    transform: none;
+    opacity: 0;
+  }
+  .house-card:is(:hover, :focus-visible) .house-card__face--back {
+    opacity: 1;
+  }
+}
