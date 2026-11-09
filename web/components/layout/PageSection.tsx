@@ -44,6 +44,8 @@ export function PageSection({
     <section
       id={id}
       aria-labelledby={ariaLabelledby}
+      // Lu par useSurfaceContrast (inversion de la capsule de navigation).
+      data-surface={variant === "light" ? "light" : "dark"}
       className={`relative ${overflow === "hidden" ? "overflow-hidden" : "overflow-visible"} px-4 md:px-6 lg:px-8 ${spacingClass[spacing]} ${variantBg[variant]} ${className}`}
     >
       <div className={containerClassName}>{children}</div>

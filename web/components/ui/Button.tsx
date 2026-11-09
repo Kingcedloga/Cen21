@@ -1,3 +1,4 @@
+import { Magnetic } from "@/components/motion/Magnetic";
 import { Link } from "@/i18n/navigation";
 import type { ReactNode } from "react";
 
@@ -15,6 +16,9 @@ type Size = "sm" | "md" | "lg";
  *  - ghost    : minimaliste, hover ivoire clair uniquement.
  *
  * Sizes : sm (40px), md (44px — défaut, conforme tap-target Apple), lg (52px).
+ *
+ * `magnetic` : le bouton suit légèrement la souris au survol (effet aimant
+ * d'Orbix, ±10 px). Réservé aux CTA en ligne, pas aux boutons pleine largeur.
  */
 const variants: Record<Variant, string> = {
   primary: "btn-primary",
@@ -40,6 +44,7 @@ export function Button({
   disabled,
   external,
   ariaLabel,
+  magnetic = false,
 }: {
   href?: string;
   children: ReactNode;
@@ -51,6 +56,7 @@ export function Button({
   disabled?: boolean;
   external?: boolean;
   ariaLabel?: string;
+  magnetic?: boolean;
 }) {
   const base =
     "group/btn relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl font-medium tracking-[0.005em] transition-all duration-luxe ease-luxury cursor-pointer focus-visible:outline-1 focus-visible:outline-ivory focus-visible:outline-offset-[3px] disabled:pointer-events-none disabled:opacity-45 disabled:cursor-not-allowed";
@@ -65,40 +71,44 @@ export function Button({
           className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.22] to-transparent transition-transform duration-shimmer ease-luxury group-hover/btn:translate-x-full"
         />
       )}
-      <span className="relative inline-flex items-center gap-2">{children}</span>
+      <span className={`relative inline-flex items-center gap-2 ${magnetic ? "magnetic__content" : ""}`}>
+        {children}
+      </span>
     </>
   );
 
-  if (href) {
-    if (external) {
-      return (
-        <a
-          href={href}
-          className={classes}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={ariaLabel}
-        >
-          {content}
-        </a>
-      );
-    }
-    return (
+  let element: ReactNode;
+  if (href && external) {
+    element = (
+      <a
+        href={href}
+        className={classes}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={ariaLabel}
+      >
+        {content}
+      </a>
+    );
+  } else if (href) {
+    element = (
       <Link href={href} className={classes} aria-label={ariaLabel}>
         {content}
       </Link>
     );
+  } else {
+    element = (
+      <button
+        type={type}
+        className={classes}
+        onClick={onClick}
+        disabled={disabled}
+        aria-label={ariaLabel}
+      >
+        {content}
+      </button>
+    );
   }
 
-  return (
-    <button
-      type={type}
-      className={classes}
-      onClick={onClick}
-      disabled={disabled}
-      aria-label={ariaLabel}
-    >
-      {content}
-    </button>
-  );
+  return magnetic ? <Magnetic>{element}</Magnetic> : element;
 }

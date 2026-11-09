@@ -101,6 +101,15 @@
     var(--color-gold) 60%,
     var(--color-neutral) 72% 100%
   );
+  /* Balayage or sur pétrole — chapitres sable (PageSection variant="light"). */
+  --sweep-on-light: linear-gradient(
+    90deg,
+    var(--color-petrol) 0 33%,
+    var(--color-gold-deep) 44%,
+    var(--color-gold-mid) 52%,
+    var(--color-gold-deep) 60%,
+    var(--color-petrol) 72% 100%
+  );
   /* Distance entre la capsule de navigation et le bas de l'écran. */
   --capsule-offset: 40px;
 }

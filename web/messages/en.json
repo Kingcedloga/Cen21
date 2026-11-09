@@ -523,5 +523,30 @@
       "analytics": "Analytics",
       "choices": "Your choices"
     }
+  },
+  "motionLab": {
+    "metaTitle": "Motion lab",
+    "eyebrow": "Lab · phase 1",
+    "intro": "Unlisted working page: motion primitives and display-heading weight test.",
+    "weightHeading": "Display heading weight",
+    "weightCurrent": "Weight {weight} (current)",
+    "weight": "Weight {weight}",
+    "replay": "Replay the reveal",
+    "title": "The art of hosting, across ten addresses.",
+    "titleSweep": "across ten addresses",
+    "lightTitle": "Ten houses, one standard.",
+    "lightTitleSweep": "one standard",
+    "lightBody": "Scroll slowly: each letter moves from blur to gold, then to its final colour. The highlight then sweeps across <sweep>a chosen word</sweep> as it crosses the middle of the screen.",
+    "darkTitle": "From dawn to night, Kinshasa at the table.",
+    "darkTitleSweep": "Kinshasa at the table",
+    "linksHeading": "Rolling-letter links",
+    "buttonsHeading": "Magnetic buttons",
+    "trackHeading": "Sticky track",
+    "trackBody": "The stage stays pinned for 200vh of scrolling; the card and the bar follow the progress.",
+    "trackCard": "Track progress",
+    "end": "End of the lab",
+    "readout": "Reading",
+    "surfaceDark": "dark surface",
+    "surfaceLight": "light surface"
   }
 }

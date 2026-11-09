@@ -1,0 +1,154 @@
+/* =========================================================================
+   Primitives de mouvement — rapport « Orbix × Cen21 », phase 1
+   (components/motion/*)
+
+   Les règles @media assurent un rendu statique lisible AVANT l'hydratation :
+   reduced motion partout, et sous le palier choisi pour les pistes marquées
+   `sticky-track--static-below-*`. Les éléments animés par une piste portent
+   `data-track-motion` pour que leurs transformations soient neutralisées.
+   ========================================================================= */
+
+/* --- StickyTrack ---------------------------------------------------------- */
+.sticky-track {
+  position: relative;
+  height: calc(var(--track-vh, 200) * 1vh);
+}
+
+.sticky-track__stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sticky-track {
+    height: auto;
+  }
+  .sticky-track > .sticky-track__stage {
+    position: relative;
+    height: auto;
+    overflow: visible;
+  }
+  .sticky-track [data-track-motion] {
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .sticky-track--static-below-md {
+    height: auto;
+  }
+  .sticky-track--static-below-md > .sticky-track__stage {
+    position: relative;
+    height: auto;
+    overflow: visible;
+  }
+  .sticky-track--static-below-md [data-track-motion] {
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+}
+
+@media (max-width: 1023.98px) {
+  .sticky-track--static-below-lg {
+    height: auto;
+  }
+  .sticky-track--static-below-lg > .sticky-track__stage {
+    position: relative;
+    height: auto;
+    overflow: visible;
+  }
+  .sticky-track--static-below-lg [data-track-motion] {
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+}
+
+/* --- SpectrumText ----------------------------------------------------------- */
+.spectrum-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.spectrum-char {
+  display: inline-block;
+}
+
+/* --- GradientSweep ---------------------------------------------------------- */
+/* Au repos, le dégradé est calé sur sa couleur de base : le texte reste lisible. */
+.gradient-sweep {
+  display: inline-block;
+  background-image: var(--sweep-on-dark);
+  background-size: 380% 100%;
+  background-position: 100% 0%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.gradient-sweep--light {
+  background-image: var(--sweep-on-light);
+}
+
+/* Pendant la révélation lettre à lettre, chaque lettre porte sa propre couleur. */
+.gradient-sweep[data-revealing] {
+  background-image: none;
+  -webkit-text-fill-color: currentColor;
+  color: inherit;
+}
+
+/* --- RollingText ------------------------------------------------------------ */
+.rolling-text {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.rolling-text__line {
+  display: block;
+  white-space: nowrap;
+}
+
+.rolling-text__line + .rolling-text__line {
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
+.rolling-text__char {
+  display: inline-block;
+  transition: transform 0.26s cubic-bezier(0.65, 0, 0.35, 1);
+  transition-delay: calc(var(--i, 0) * 15ms);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :is(a, button, [role="button"], .rolling-trigger):is(:hover, :focus-visible) .rolling-text__char {
+    transform: translateY(-100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rolling-text__char {
+    transition: none;
+  }
+  :is(a, button, [role="button"], .rolling-trigger):is(:hover, :focus-visible) .rolling-text__char {
+    transform: none;
+  }
+}
+
+/* --- Magnetic --------------------------------------------------------------- */
+.magnetic {
+  display: inline-flex;
+}
+
+.magnetic__content {
+  transform: translate3d(var(--magnet-x, 0px), var(--magnet-y, 0px), 0);
+}

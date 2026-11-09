@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 import { LoaderGraphic } from "@/components/brand/LoaderGraphic";
+import { markSiteReady } from "@/lib/site-ready";
 
 const MIN_VISIBLE_MS = 700;
 const FADE_MS = 480;
@@ -26,11 +27,13 @@ export function SiteLoader() {
       minTimer = setTimeout(() => {
         if (reduced) {
           setPhase("hidden");
+          markSiteReady();
           return;
         }
         setPhase("converging");
         convergeTimer = setTimeout(() => {
           setPhase("fading");
+          markSiteReady();
           hideTimer = setTimeout(() => setPhase("hidden"), FADE_MS);
         }, 320);
       }, delay);

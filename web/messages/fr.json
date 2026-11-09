@@ -558,5 +558,30 @@
       "contactBody": "Questions sur cette politique :",
       "contactUs": "nous contacter"
     }
+  },
+  "motionLab": {
+    "metaTitle": "Laboratoire de mouvement",
+    "eyebrow": "Laboratoire · phase 1",
+    "intro": "Page de travail non référencée : primitives de mouvement et test de graisse des titres d’affichage.",
+    "weightHeading": "Graisse des titres d’affichage",
+    "weightCurrent": "Graisse {weight} (actuelle)",
+    "weight": "Graisse {weight}",
+    "replay": "Rejouer la révélation",
+    "title": "L’art de recevoir, en dix adresses.",
+    "titleSweep": "en dix adresses",
+    "lightTitle": "Dix maisons, une même exigence.",
+    "lightTitleSweep": "une même exigence",
+    "lightBody": "Faites défiler doucement : chaque lettre passe du flou à l’or, puis à sa couleur finale. Le reflet traverse ensuite <sweep>un mot choisi</sweep> quand il croise le centre de l’écran.",
+    "darkTitle": "De l’aube à la nuit, Kinshasa à table.",
+    "darkTitleSweep": "Kinshasa à table",
+    "linksHeading": "Liens à lettres roulantes",
+    "buttonsHeading": "Boutons magnétiques",
+    "trackHeading": "Piste collante",
+    "trackBody": "La scène reste fixe pendant 200vh de défilement ; la carte et la barre suivent la progression.",
+    "trackCard": "Progression de la piste",
+    "end": "Fin du laboratoire",
+    "readout": "Lecture",
+    "surfaceDark": "fond sombre",
+    "surfaceLight": "fond clair"
   }
 }
