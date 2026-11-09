@@ -9,7 +9,6 @@ import { SpectrumText } from "@/components/motion/SpectrumText";
 import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 
-import { ScrollReadout } from "./_components/ScrollReadout";
 import { TrackDemo } from "./_components/TrackDemo";
 import { WeightComparison } from "./_components/WeightComparison";
 
@@ -128,8 +127,6 @@ export default async function MotionLabPage({ params }: Props) {
       <PageSection variant="light" spacing="loose">
         <p className="title-section text-h3 text-petrol">{t("end")}</p>
       </PageSection>
-
-      <ScrollReadout label={t("readout")} dark={t("surfaceDark")} light={t("surfaceLight")} />
     </>
   );
 }

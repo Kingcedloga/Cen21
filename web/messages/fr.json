@@ -30,7 +30,9 @@
     "subsidiaries": "Filiales",
     "events": "Événements",
     "gallery": "Galerie",
-    "contact": "Contact"
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Fermer"
   },
   "footer": {
     "contact": "Contact",
@@ -579,9 +581,6 @@
     "trackHeading": "Piste collante",
     "trackBody": "La scène reste fixe pendant 200vh de défilement ; la carte et la barre suivent la progression.",
     "trackCard": "Progression de la piste",
-    "end": "Fin du laboratoire",
-    "readout": "Lecture",
-    "surfaceDark": "fond sombre",
-    "surfaceLight": "fond clair"
+    "end": "Fin du laboratoire"
   }
 }

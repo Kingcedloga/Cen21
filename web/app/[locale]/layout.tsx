@@ -5,12 +5,13 @@ import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 
 import { Footer } from "@/components/layout/Footer";
-import { Header } from "@/components/layout/Header";
 import { PhosphorProvider } from "@/components/layout/PhosphorProvider";
 import { RouteTransition } from "@/components/layout/RouteTransition";
 import { SiteLoader } from "@/components/layout/SiteLoader";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
+import { SiteNavigation } from "@/components/navigation/SiteNavigation";
 import { routing } from "@/i18n/routing";
+import { getSiteConfig, getSubsidiaries } from "@/lib/content";
 import { cormorant, inter } from "@/lib/fonts";
 import type { Locale } from "@/i18n/routing";
 import { createDefaultMetadata, siteViewport } from "@/lib/seo";
@@ -48,6 +49,8 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
   const messages = await getMessages();
   const t = await getTranslations("common");
+  const site = getSiteConfig(locale as Locale);
+  const subsidiariesCount = getSubsidiaries(locale as Locale).length;
 
   return (
     <html
@@ -69,7 +72,11 @@ export default async function LocaleLayout({
           >
             {t("skipToContent")}
           </a>
-          <Header />
+          <SiteNavigation
+            contact={{ email: site.contact.email, phone: site.contact.phone }}
+            social={site.social}
+            subsidiariesCount={subsidiariesCount}
+          />
           <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
             <RouteTransition>{children}</RouteTransition>
           </main>

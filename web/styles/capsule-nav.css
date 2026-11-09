@@ -1,0 +1,46 @@
+/* =========================================================================
+   Capsule de navigation — pages groupe (rapport « Orbix × Cen21 », phase 2)
+   components/navigation/BottomCapsuleNav.tsx et CapsuleMenu.tsx
+   ========================================================================= */
+
+/* Le pied de page dégage la capsule (liens légaux en bas de page).
+   :has() agit dès le HTML serveur, sans attendre l'hydratation. */
+body:has(> [data-capsule-nav]) > footer {
+  padding-bottom: calc(var(--capsule-offset) + 72px + env(safe-area-inset-bottom, 0px));
+}
+
+/* Icône deux traits → croix (Orbix : ±45°, ±4 px, 500 ms). */
+.capsule-burger {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 10px;
+}
+
+.capsule-burger::before,
+.capsule-burger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  border-radius: 1px;
+  background-color: currentColor;
+  transition: transform 0.5s var(--ease-luxury);
+}
+
+.capsule-burger::before {
+  top: 0;
+}
+
+.capsule-burger::after {
+  bottom: 0;
+}
+
+[aria-expanded="true"] > .capsule-burger::before {
+  transform: translateY(4.25px) rotate(45deg);
+}
+
+[aria-expanded="true"] > .capsule-burger::after {
+  transform: translateY(-4.25px) rotate(-45deg);
+}

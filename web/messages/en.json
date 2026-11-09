@@ -30,7 +30,9 @@
     "subsidiaries": "Subsidiaries",
     "events": "Events",
     "gallery": "Gallery",
-    "contact": "Contact"
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close"
   },
   "footer": {
     "contact": "Contact",
@@ -544,9 +546,6 @@
     "trackHeading": "Sticky track",
     "trackBody": "The stage stays pinned for 200vh of scrolling; the card and the bar follow the progress.",
     "trackCard": "Track progress",
-    "end": "End of the lab",
-    "readout": "Reading",
-    "surfaceDark": "dark surface",
-    "surfaceLight": "light surface"
+    "end": "End of the lab"
   }
 }

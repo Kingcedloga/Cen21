@@ -171,6 +171,7 @@ export function AboutTeamSection({
   return (
     <section
       aria-labelledby="about-team-title"
+      data-surface="light"
       className={`ats-section ${dynalight.variable}`}
       ref={sectionRef}
     >

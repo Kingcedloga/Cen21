@@ -81,7 +81,7 @@ export function MarketPositioningSection({ eyebrow, title, team }: Props) {
   );
 
   return (
-    <section className={`mp-section ${dynalight.variable}`} ref={sectionRef}>
+    <section className={`mp-section ${dynalight.variable}`} ref={sectionRef} data-surface="light">
 
       {/* ── Header ── */}
       <div className="mp-header">
