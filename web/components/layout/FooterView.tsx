@@ -11,6 +11,7 @@ import {
 import type { SiteConfig } from "@/lib/types";
 
 import { Logo } from "@/components/brand/Logo";
+import { RollingText } from "@/components/motion/RollingText";
 import { SectionBlend } from "@/components/layout/SectionBlend";
 import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
@@ -64,7 +65,7 @@ function SocialRow({
           : "text-ivory/90 hover:text-gold"
       }`}
     >
-      <span>{label}</span>
+      <RollingText text={label} />
       <ArrowUpRight
         className={`subsidiary-footer__social-icon h-4 w-4 shrink-0 ${
           themed ? "" : "text-gold/70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -318,7 +319,7 @@ export function FooterView({
                           : "text-ivory/75 hover:text-gold"
                       }`}
                     >
-                      {labels.nav[key]}
+                      <RollingText text={labels.nav[key]} />
                     </Link>
                   </li>
                 ))}
@@ -334,7 +335,7 @@ export function FooterView({
                           : "text-ivory/75 hover:text-gold"
                       }`}
                     >
-                      {labels.nav[key]}
+                      <RollingText text={labels.nav[key]} />
                     </Link>
                   </li>
                 ))}
@@ -369,7 +370,7 @@ export function FooterView({
                   : "hover:text-gold"
               }`}
             >
-              {labels.legalNotice}
+              <RollingText text={labels.legalNotice} />
             </Link>
             <span
               className={isThemed ? "subsidiary-footer__legal-sep" : "text-white/20"}
@@ -385,7 +386,7 @@ export function FooterView({
                   : "hover:text-gold"
               }`}
             >
-              {labels.privacy}
+              <RollingText text={labels.privacy} />
             </Link>
             <span
               className={isThemed ? "subsidiary-footer__legal-sep" : "text-white/20"}
@@ -401,7 +402,7 @@ export function FooterView({
                   : "hover:text-gold"
               }`}
             >
-              {labels.cookies}
+              <RollingText text={labels.cookies} />
             </Link>
           </nav>
         </div>

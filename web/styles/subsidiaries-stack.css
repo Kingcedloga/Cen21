@@ -1,0 +1,271 @@
+/* /filiales — dix cartes empilées aux chartes des filiales
+   (components/filiales/SubsidiariesStack.tsx, rapport « Orbix × Cen21 », phase 5).
+   Orbix : cartes de services plein écran, sticky, la sortante recule en 3D.
+   Couleurs : --stack-* posées par carte (charte de la filiale, contraste vérifié
+   par brandCardPalette) ; les dérivés passent par color-mix. */
+
+.subsidiaries-stack {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: var(--color-petrol-panel-4);
+  /* Les cartes inclinées (rotateY) débordent sur les côtés : on coupe sans
+     créer de conteneur de défilement, l'épinglage reste actif. */
+  overflow-x: clip;
+}
+
+/* Toutes les cartes collent en haut : chacune monte par-dessus la précédente
+   et reste en place jusqu'à la fin de la liste. */
+.stack-card {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  perspective: 1400px;
+}
+
+.stack-card__panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  /* --radius-card-xl */
+  border-radius: 2.5rem 2.5rem 0 0;
+  padding: clamp(1.5rem, 4.5vh, 3rem) clamp(1.25rem, 5vw, 5rem) 0;
+  background-color: var(--stack-bg);
+  color: var(--stack-body);
+  /* Ombre de pile (Orbix : 0 −17px 44px), renforcée sur fond sombre. */
+  box-shadow: 0 -17px 44px color-mix(in srgb, var(--color-petrol-panel-4) 40%, transparent);
+  transform-origin: 50% 0%;
+}
+
+.stack-card__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: clamp(0.875rem, 2.5vh, 1.75rem);
+  border-bottom: 1px solid color-mix(in srgb, var(--stack-accent) 35%, transparent);
+}
+
+.stack-card__number {
+  font-family: var(--font-dm-sans);
+  font-size: clamp(2.5rem, 1.6rem + 4vw, 5.5rem);
+  font-weight: var(--font-weight-display);
+  font-variant-numeric: tabular-nums;
+  line-height: 0.9;
+  letter-spacing: var(--letter-spacing-display);
+  color: var(--stack-accent);
+}
+
+.stack-card__sector {
+  padding: 0.3rem 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--stack-accent) 50%, transparent);
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--stack-body);
+}
+
+.stack-card__body {
+  display: grid;
+  flex: 1 1 auto;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  min-height: 0;
+  padding-top: clamp(1.25rem, 4vh, 2.5rem);
+}
+
+/* La colonne de texte s'arrête au-dessus de la capsule de navigation. */
+.stack-card__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  min-height: 0;
+  padding-bottom: calc(var(--capsule-offset) + 5.5rem);
+}
+
+.stack-card__logo {
+  position: relative;
+  flex: none;
+  width: 4rem;
+  height: 4rem;
+  overflow: hidden;
+  border-radius: 9999px;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--stack-accent) 30%, transparent);
+}
+
+.stack-card__name {
+  font-size: clamp(2.25rem, 1.3rem + 3.4vw, 4.5rem);
+  line-height: 1.04;
+  color: var(--stack-title);
+}
+
+.stack-card__tagline {
+  max-width: 30rem;
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.25rem);
+  line-height: 1.45;
+  color: var(--stack-muted);
+}
+
+.stack-card__facts {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0.25rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+.stack-card__facts dt {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--stack-muted);
+}
+
+.stack-card__facts dd {
+  margin: 0.125rem 0 0;
+  color: var(--stack-body);
+}
+
+.stack-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  margin-top: 0.5rem;
+  padding: 0 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--stack-accent) 60%, transparent);
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--stack-title);
+  transition: background-color var(--duration-fine) var(--ease-luxury);
+}
+
+.stack-card__cta:hover {
+  background-color: color-mix(in srgb, var(--stack-accent) 14%, transparent);
+}
+
+.stack-card__cta:focus-visible {
+  outline: 2px solid var(--stack-title);
+  outline-offset: 3px;
+}
+
+/* Feuille basse (--radius-sheet : 70 px), voile clair → transparent. */
+.stack-card__sheet {
+  align-self: end;
+  height: 100%;
+  min-height: 0;
+  padding: 0.75rem 0.75rem 0;
+  border-radius: 4.375rem 4.375rem 0 0;
+  background-image: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--stack-body) 20%, transparent),
+    transparent 85%
+  );
+}
+
+.stack-card__media {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 3.625rem 3.625rem 0 0;
+  background-color: color-mix(in srgb, var(--stack-body) 12%, var(--stack-bg));
+}
+
+/* Voile qui assombrit la carte recouverte. */
+.stack-card__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-color: var(--color-petrol-panel-4);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* --- Mobile : une colonne, la photo remplit le bas de la carte (sous la
+   capsule) ; pas de logo, pour laisser la place au texte. ------------------- */
+@media (max-width: 767.98px) {
+  .stack-card__panel {
+    border-radius: 1.75rem 1.75rem 0 0;
+    padding-inline: 1.25rem;
+  }
+  .stack-card__body {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+  .stack-card__text {
+    gap: 0.75rem;
+    padding-bottom: 0;
+  }
+  .stack-card__logo {
+    display: none;
+  }
+  .stack-card__facts {
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+  .stack-card__sheet {
+    padding: 0.5rem 0.5rem 0;
+    border-radius: 2.5rem 2.5rem 0 0;
+  }
+  .stack-card__media {
+    border-radius: 2rem 2rem 0 0;
+  }
+}
+
+/* Téléphones bas : l'accroche cède la place à la photo. */
+@media (max-width: 767.98px) and (max-height: 640px) {
+  .stack-card__tagline {
+    display: none;
+  }
+}
+
+/* --- Reduced motion : liste de cartes, sans épinglage ni recul. ------------- */
+@media (prefers-reduced-motion: reduce) {
+  .subsidiaries-stack {
+    display: grid;
+    gap: 1rem;
+    padding: 0 1rem 5rem;
+  }
+  .stack-card {
+    position: relative;
+    height: auto;
+  }
+  .stack-card__panel {
+    max-width: 80rem;
+    margin-inline: auto;
+    width: 100%;
+    border-radius: 2rem;
+    padding-bottom: clamp(1.25rem, 3vw, 2.5rem);
+    box-shadow: none;
+  }
+  .stack-card__body {
+    grid-template-rows: none;
+  }
+  .stack-card__text {
+    padding-bottom: 0;
+  }
+  .stack-card__tagline {
+    display: block;
+  }
+  .stack-card__sheet {
+    align-self: start;
+    height: auto;
+    border-radius: 1.75rem;
+    padding: 0.5rem;
+  }
+  .stack-card__media {
+    height: auto;
+    aspect-ratio: 16 / 10;
+    border-radius: 1.25rem;
+  }
+}

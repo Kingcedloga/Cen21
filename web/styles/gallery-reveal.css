@@ -1,0 +1,28 @@
+/* Galerie — reflet doré après la révélation (components/gallery/GalleryGrid.tsx).
+   Orbix : pseudo-élément incliné à 25°, translateY −120 % → 120 % en 1,15 s,
+   une seule fois. Rien en reduced motion (l'élément n'est pas rendu). */
+.gallery-sheen {
+  position: absolute;
+  inset-block: 0;
+  inset-inline: -50%;
+  z-index: 1;
+  rotate: 25deg;
+  pointer-events: none;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 38%,
+    color-mix(in srgb, var(--color-gold) 30%, transparent) 50%,
+    transparent 62%
+  );
+  transform: translateY(-120%);
+}
+
+/* Le HTML serveur part de l'état « hidden » (flou, opacité .2) : en reduced
+   motion, les photos s'affichent nettes dès le premier rendu. */
+@media (prefers-reduced-motion: reduce) {
+  .gallery-reveal {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+  }
+}

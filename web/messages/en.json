@@ -164,7 +164,30 @@
     "formTitle": "Form",
     "locationEyebrow": "Location",
     "locationTitle": "Find us",
-    "locationDescription": "Interactive map — click “Enlarge map” for directions in Google Maps."
+    "locationDescription": "Interactive map — click “Enlarge map” for directions in Google Maps.",
+    "faqEyebrow": "FAQ",
+    "faqTitle": "Your questions, answered",
+    "faqIntro": "Bookings, opening hours, private events: what you need to plan your visit.",
+    "faqCardTitle": "Another question?",
+    "faqCardText": "Write to us: our team replies within 48 hours.",
+    "faqCardCta": "Write to the team",
+    "faqBookingQ": "How do I book a table?",
+    "faqBookingA": "Go through the page of the house you have in mind: you'll find its booking form or its phone number there. All our venues are on the <link>Subsidiaries</link> page. For a group, or a request covering several houses, write to us through the <form>contact form</form>.",
+    "faqHoursQ": "What are your opening hours?",
+    "faqHoursA": "Each house keeps its own hours:",
+    "faqCitiesQ": "Which cities are you in?",
+    "faqCitiesA": "All {count} of our houses are in Kinshasa.",
+    "faqCitiesExtra": "{names} also {n, plural, one {welcomes} other {welcome}} you in {city}.",
+    "faqCitiesLink": "Every address is on the <link>Subsidiaries</link> page.",
+    "faqPrivateQ": "Can we book a venue for a private event?",
+    "faqPrivateA": "Yes, our venues also host private events. Describe your project (date, number of guests, preferred house) in the <form>contact form</form> and our team will reply within 48 hours.",
+    "faqEventsQ": "How can I keep up with your events?",
+    "faqEventsA": "The calendar for all our houses is on the <link>Events</link> page. Each house also announces its nights on its social accounts, gathered just below.",
+    "tilesEyebrow": "Social",
+    "tilesTitle": "Our houses on social media",
+    "tilesDescription": "Nights, news and behind-the-scenes from each venue, day by day.",
+    "tilesLabel": "Our houses' social accounts",
+    "newTab": "new tab"
   },
   "form": {
     "name": "Name",
@@ -231,7 +254,7 @@
     "description": "Distinct worlds, one standard — a curated editorial view of our ten addresses.",
     "selectionEyebrow": "Selection",
     "selectionTitle": "Ten addresses, ten worlds",
-    "selectionDescription": "Each block highlights an iconic address with a complementary selection — instant reading, no filters, like a signed address book.",
+    "selectionDescription": "Scroll through: each house appears in its own colours, with its hours and address. Or go straight to the one you have in mind.",
     "address": "Address",
     "hours": "Hours",
     "phone": "Phone",
@@ -529,7 +552,10 @@
       "nextSlide": "Next testimonial",
       "goToSlide": "Go to testimonial {index}",
       "ratingLabel": "{rating} out of 5"
-    }
+    },
+    "stackLabel": "The group's houses",
+    "indexLabel": "Go straight to a house",
+    "newTab": "new tab"
   },
   "notFound": {
     "code": "404",

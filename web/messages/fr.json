@@ -164,7 +164,30 @@
     "formTitle": "Formulaire",
     "locationEyebrow": "Localisation",
     "locationTitle": "Nous trouver",
-    "locationDescription": "Carte interactive — cliquez sur « Agrandir la carte » pour l'itinéraire dans Google Maps."
+    "locationDescription": "Carte interactive — cliquez sur « Agrandir la carte » pour l'itinéraire dans Google Maps.",
+    "faqEyebrow": "Questions fréquentes",
+    "faqTitle": "Vos questions, nos réponses",
+    "faqIntro": "Réservations, horaires, privatisations : l'essentiel pour préparer votre venue.",
+    "faqCardTitle": "Une autre question ?",
+    "faqCardText": "Écrivez-nous : notre équipe vous répond sous 48 h.",
+    "faqCardCta": "Écrire à l'équipe",
+    "faqBookingQ": "Comment réserver une table ?",
+    "faqBookingA": "Passez par la page de la maison qui vous tente : vous y trouverez son formulaire de réservation ou son numéro. Toutes nos adresses sont sur la page <link>Filiales</link>. Pour un groupe, ou une demande qui concerne plusieurs maisons, écrivez-nous via le <form>formulaire de contact</form>.",
+    "faqHoursQ": "Quels sont vos horaires d'ouverture ?",
+    "faqHoursA": "Chaque maison a ses propres horaires :",
+    "faqCitiesQ": "Dans quelles villes êtes-vous présents ?",
+    "faqCitiesA": "Nos {count} maisons sont à Kinshasa.",
+    "faqCitiesExtra": "{n, plural, one {{names} vous accueille} other {{names} vous accueillent}} aussi à {city}.",
+    "faqCitiesLink": "Toutes les adresses sont sur la page <link>Filiales</link>.",
+    "faqPrivateQ": "Peut-on privatiser un lieu pour un événement ?",
+    "faqPrivateA": "Oui, nos adresses accueillent aussi des privatisations. Décrivez votre projet (date, nombre d'invités, maison souhaitée) dans le <form>formulaire de contact</form> : notre équipe vous répond sous 48 h.",
+    "faqEventsQ": "Comment suivre vos événements ?",
+    "faqEventsA": "L'agenda de toutes nos maisons est sur la page <link>Événements</link>. Chaque maison annonce aussi ses soirées sur ses réseaux, réunis juste en dessous.",
+    "tilesEyebrow": "Réseaux",
+    "tilesTitle": "Nos maisons sur les réseaux",
+    "tilesDescription": "Les soirées, les nouveautés et les coulisses de chaque adresse, au jour le jour.",
+    "tilesLabel": "Réseaux sociaux des maisons",
+    "newTab": "nouvel onglet"
   },
   "form": {
     "name": "Nom",
@@ -235,7 +258,7 @@
     "description": "Des univers distincts, une même exigence — une vue éditoriale curatée de nos dix adresses.",
     "selectionEyebrow": "Sélection",
     "selectionTitle": "Dix adresses, dix univers",
-    "selectionDescription": "Chaque bloc met en vedette une adresse iconique, accompagnée d'une sélection complémentaire — une lecture immédiate, sans filtre, comme un cahier d'adresses signé.",
+    "selectionDescription": "Faites défiler : chaque maison apparaît dans sa propre charte, avec ses horaires et son adresse. Ou rendez-vous directement chez celle de votre choix.",
     "address": "Adresse",
     "hours": "Horaires",
     "phone": "Téléphone",
@@ -534,7 +557,10 @@
       "nextSlide": "Témoignage suivant",
       "goToSlide": "Aller au témoignage {index}",
       "ratingLabel": "{rating} sur 5"
-    }
+    },
+    "stackLabel": "Les maisons du groupe",
+    "indexLabel": "Accès direct aux maisons",
+    "newTab": "nouvel onglet"
   },
   "notFound": {
     "code": "404",

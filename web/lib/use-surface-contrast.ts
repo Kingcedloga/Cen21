@@ -35,7 +35,14 @@ export function useSurfaceContrast(offsetFromBottom = 64, fallback: Surface = "d
       let bestDepth = -1;
       hits.forEach((element) => {
         const depth = depths.get(element) ?? 0;
-        if (depth > bestDepth) {
+        // À profondeur égale, la surface placée plus loin dans le document
+        // l'emporte : c'est elle qui passe par-dessus (rideau du hero, cartes
+        // empilées de /filiales).
+        const later =
+          best !== null &&
+          depth === bestDepth &&
+          Boolean((best as Element).compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING);
+        if (depth > bestDepth || later) {
           best = element;
           bestDepth = depth;
         }
