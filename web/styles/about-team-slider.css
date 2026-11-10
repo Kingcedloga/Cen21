@@ -2,7 +2,7 @@
 
 .ats-section {
   position: relative;
-  background: radial-gradient(ellipse 90% 60% at 50% 0%, #f0decb 0%, #e7d1bf 60%, #debfa6 100%);
+  background: radial-gradient(ellipse 90% 60% at 50% 0%, var(--about-team-top, #f0decb) 0%, #e7d1bf 60%, #debfa6 100%);
   padding: clamp(5rem, 9vw, 8rem) 0;
   overflow: hidden;
 }

@@ -47,6 +47,7 @@ export function InnerHero({
   breadcrumb,
   actions,
   children,
+  compact = false,
   titleId = "inner-hero-title",
   className = "",
 }: {
@@ -62,6 +63,8 @@ export function InnerHero({
   actions?: ReactNode;
   /** Bloc libre sous les actions (compte à rebours, formulaire…). */
   children?: ReactNode;
+  /** Bandeau photo moins haut (pages utilitaires : contact). */
+  compact?: boolean;
   titleId?: string;
   className?: string;
 }) {
@@ -86,7 +89,7 @@ export function InnerHero({
       ref={sectionRef}
       data-surface="dark"
       aria-labelledby={titleId}
-      className={`inner-hero ${image ? "inner-hero--media" : ""} ${className}`}
+      className={`inner-hero ${image ? "inner-hero--media" : ""} ${compact ? "inner-hero--compact" : ""} ${className}`}
     >
       <div className="inner-hero__intro">
         {breadcrumb && (

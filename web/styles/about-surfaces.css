@@ -1,0 +1,7 @@
+/* À propos — teintes actuelles des sections, partagées avec les séparateurs
+   fondus (app/[locale]/a-propos/page.tsx). Couleurs d'origine, reprises dans
+   la palette lors de la refonte de la page (R2). */
+:root {
+  --about-vision-surface: #faf7f2;
+  --about-team-top: #f0decb;
+}

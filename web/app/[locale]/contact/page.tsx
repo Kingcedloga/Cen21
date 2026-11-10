@@ -1,23 +1,28 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { ReactNode } from "react";
 
-import { ContactForm } from "@/components/contact/ContactForm";
+import { ContactAddresses, type AddressEntry } from "@/components/contact/ContactAddresses";
+import { ContactForm, type ContactHouse } from "@/components/contact/ContactForm";
 import { FaqAccordion, type FaqItem } from "@/components/contact/FaqAccordion";
 import { SocialTiles, type SocialTile } from "@/components/contact/SocialTiles";
 import { HeroCurtain } from "@/components/layout/HeroCurtain";
-import { PageSection } from "@/components/layout/PageSection";
+import { PageSection, SECTION_SURFACE } from "@/components/layout/PageSection";
+import { SectionBlend } from "@/components/layout/SectionBlend";
 import { InnerHero } from "@/components/sections/InnerHero";
 import { PageOutro } from "@/components/sections/PageOutro";
 import { AnimateIn } from "@/components/ui/AnimateIn";
-import { Icon } from "@/components/ui/Icon";
-import { MapEmbed } from "@/components/maps/MapEmbed";
+import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SocialLinks } from "@/components/ui/SocialLinks";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
+import type { ContactNeed } from "@/lib/contact-schema";
 import { getSiteConfig, getSubsidiaries } from "@/lib/content";
+import { ExternalLink, Mail, MapPin, Phone } from "@/lib/icons";
+import { googleMapsExternalUrl } from "@/lib/map";
 import { resolvePageMetadata } from "@/lib/seo";
 import { brandSurface } from "@/lib/subsidiary-brand";
+import { getSubsidiaryHref, isSubsidiaryExternalLink } from "@/lib/subsidiary-links";
 import type { Subsidiary } from "@/lib/types";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -54,8 +59,20 @@ function pageLink(href: string) {
   };
 }
 
-function formLink(chunks: ReactNode) {
-  return <a href="#contact-form">{chunks}</a>;
+/** Lien vers le formulaire, qui coche le besoin au passage (ContactForm). */
+function formLink(need: ContactNeed) {
+  return function FormLink(chunks: ReactNode) {
+    return (
+      <a href="#contact-form" data-contact-need={need}>
+        {chunks}
+      </a>
+    );
+  };
+}
+
+/** Adresse précise (pas seulement la ville) : la carte peut s'y placer. */
+function isPreciseAddress(address: string | undefined, city = "Kinshasa"): address is string {
+  return Boolean(address?.trim()) && address!.trim().toLowerCase() !== city.toLowerCase();
 }
 
 const FAQ_CTA =
@@ -97,7 +114,7 @@ export default async function ContactPage({ params }: Props) {
     {
       id: "booking",
       question: t("faqBookingQ"),
-      answer: <p>{t.rich("faqBookingA", { link: pageLink("/filiales"), form: formLink })}</p>,
+      answer: <p>{t.rich("faqBookingA", { link: pageLink("/filiales"), form: formLink("reservation") })}</p>,
     },
     {
       id: "hours",
@@ -134,7 +151,7 @@ export default async function ContactPage({ params }: Props) {
     {
       id: "private",
       question: t("faqPrivateQ"),
-      answer: <p>{t.rich("faqPrivateA", { form: formLink })}</p>,
+      answer: <p>{t.rich("faqPrivateA", { form: formLink("privatisation") })}</p>,
     },
     {
       id: "events",
@@ -143,11 +160,62 @@ export default async function ContactPage({ params }: Props) {
     },
   ];
   const tiles = subsidiaries.map(socialTile).filter((tile): tile is SocialTile => tile !== null);
+  const tSub = await getTranslations("subsidiaries");
+
+  // Formulaire : pastilles des maisons.
+  const houses: ContactHouse[] = subsidiaries.map((s) => ({
+    slug: s.slug,
+    name: s.name,
+    logo: s.brandLogo,
+    logoSurface: brandSurface(s.slug, s.accentColor),
+  }));
+
+  // « Nos adresses » : le siège, puis chaque adresse précise des maisons
+  // (une par implantation : Kinshasa d'abord, les autres villes ensuite).
+  const phoneHref = `tel:${site.contact.phone.replace(/\s/g, "")}`;
+  const houseEntries: AddressEntry[] = subsidiaries.flatMap((s) => {
+    const page = {
+      href: getSubsidiaryHref(s),
+      external: isSubsidiaryExternalLink(s),
+      label: tCommon("discover", { name: s.name }),
+    };
+    const places = s.practicalInfo.locations?.length
+      ? s.practicalInfo.locations
+      : [{ city: "Kinshasa", address: s.practicalInfo.address ?? "", phone: s.practicalInfo.phone ?? "" }];
+    return places
+      .filter((place) => isPreciseAddress(place.address, place.city))
+      .map((place) => ({
+        id: `${s.slug}-${place.city.toLowerCase()}`,
+        name: s.name,
+        city: place.city === "Kinshasa" ? undefined : place.city,
+        address: place.address,
+        phone: place.phone || undefined,
+        hours: place.city === "Kinshasa" ? s.practicalInfo.hours : undefined,
+        logo: s.brandLogo,
+        logoSurface: brandSurface(s.slug, s.accentColor),
+        page,
+        mapTitle: tSub("mapTitle", { name: s.name }),
+      }));
+  });
+  const addresses: AddressEntry[] = [
+    {
+      id: "siege",
+      name: site.name,
+      city: t("officeTag"),
+      address: site.contact.address,
+      phone: site.contact.phone,
+      logo: "/logo.png",
+      logoSurface: "var(--color-petrol)",
+      mapTitle: tSub("mapTitle", { name: site.name }),
+    },
+    // Tri stable : Kinshasa (sans étiquette de ville) d'abord.
+    ...houseEntries.sort((a, b) => Number(Boolean(a.city)) - Number(Boolean(b.city))),
+  ];
 
   return (
     <>
       <HeroCurtain
-        surface="var(--color-petrol)"
+        surface={SECTION_SURFACE.light}
         hero={
           <InnerHero
             className="hero-curtain__hero"
@@ -156,129 +224,123 @@ export default async function ContactPage({ params }: Props) {
             description={t("description")}
             image="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=2400&q=85"
             breadcrumb={{ label: tCommon("breadcrumb"), home: tNav("home"), current: tNav("contact") }}
+            actions={
+              <>
+                <Button href="#contact-form" native magnetic>
+                  {t("faqCardCta")}
+                </Button>
+                <Button href={phoneHref} native variant="secondary">
+                  <Phone size={16} aria-hidden="true" />
+                  {tCommon("call")}
+                </Button>
+                <Button href={googleMapsExternalUrl(site.contact.address)} external variant="secondary">
+                  {tCommon("directions")}
+                  <ExternalLink size={16} aria-hidden="true" />
+                  <span className="sr-only"> ({t("newTab")})</span>
+                </Button>
+              </>
+            }
           />
         }
       >
-        <PageSection variant="default" spacing="loose">
-          <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-16 items-start">
-            {/* Colonne Coordonnées (5 cols) */}
-            <div className="lg:col-span-5">
-              <AnimateIn>
+        {/* Carte de contact (Orbix : carte de prise de rendez-vous). Carte
+            sombre sur fond sable, comme la carte de la FAQ. */}
+        <PageSection variant="light" spacing="loose" containerClassName="mx-auto max-w-[min(100%,1400px)]">
+          <AnimateIn>
+            {/* Surface sombre dans la section sable : la capsule de navigation
+                reste claire au-dessus de la carte (useSurfaceContrast). */}
+            <div id="contact-form" className="contact-card" data-surface="dark">
+              <div>
                 <SectionHeading
                   look="editorial"
                   eyebrow={t("detailsEyebrow")}
                   title={t("detailsTitle")}
                   titleAs="h2"
+                  description={t("cardText")}
                   align="left"
-                  className="mb-8"
+                  className="mb-8!"
                 />
-
-                <div className="space-y-5">
-                  {/* Adresse */}
-                  <div className="group flex items-start gap-4 rounded-2xl border border-white/10 bg-petrol/50 p-5 backdrop-blur-md transition-all duration-base hover:border-gold/40 hover:bg-petrol/70 hover:-translate-y-1">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gold/30 bg-gold/10 text-gold shadow-[0_4px_16px_-4px_rgba(212,173,101,0.25)]">
-                      <Icon name="location" size="md" />
-                    </div>
-                    <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
-                        {locale === "fr" ? "Notre Siège" : "Headquarters"}
-                      </p>
-                      <p className="mt-1 text-sm sm:text-base font-medium text-ivory/90 leading-relaxed">
-                        {site.contact.address}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Téléphone */}
-                  <div className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-petrol/50 p-5 backdrop-blur-md transition-all duration-base hover:border-gold/40 hover:bg-petrol/70 hover:-translate-y-1">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gold/30 bg-gold/10 text-gold shadow-[0_4px_16px_-4px_rgba(212,173,101,0.25)]">
-                      <Icon name="phone" size="md" />
-                    </div>
-                    <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
-                        {locale === "fr" ? "Ligne Directe" : "Direct Line"}
-                      </p>
-                      <a
-                        href={`tel:${site.contact.phone.replace(/\s/g, "")}`}
-                        className="mt-1 block text-sm sm:text-base font-medium text-ivory/90 hover:text-gold transition-colors"
-                      >
+                <ul className="contact-card__facts">
+                  <li>
+                    <MapPin size={18} aria-hidden="true" />
+                    <span>
+                      <span className="contact-card__fact-label">{t("officeLabel")}</span>
+                      <span className="contact-card__fact-value">{site.contact.address}</span>
+                    </span>
+                  </li>
+                  <li>
+                    <Phone size={18} aria-hidden="true" />
+                    <span>
+                      <span className="contact-card__fact-label">{t("phoneLabel")}</span>
+                      <a href={phoneHref} className="contact-card__fact-value">
                         {site.contact.phone}
                       </a>
-                    </div>
-                  </div>
-
-                  {/* Email */}
-                  <div className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-petrol/50 p-5 backdrop-blur-md transition-all duration-base hover:border-gold/40 hover:bg-petrol/70 hover:-translate-y-1">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gold/30 bg-gold/10 text-gold shadow-[0_4px_16px_-4px_rgba(212,173,101,0.25)]">
-                      <Icon name="mail" size="md" />
-                    </div>
-                    <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
-                        {locale === "fr" ? "Correspondance" : "Inquiries"}
-                      </p>
-                      <a
-                        href={`mailto:${site.contact.email}`}
-                        className="mt-1 block text-sm sm:text-base font-medium text-ivory/90 hover:text-gold transition-colors"
-                      >
+                    </span>
+                  </li>
+                  <li>
+                    <Mail size={18} aria-hidden="true" />
+                    <span>
+                      <span className="contact-card__fact-label">{t("emailLabel")}</span>
+                      <a href={`mailto:${site.contact.email}`} className="contact-card__fact-value">
                         {site.contact.email}
                       </a>
-                    </div>
-                  </div>
-                </div>
-
-                <SocialLinks social={site.social} label={t("socialLabel")} className="mt-10" />
-              </AnimateIn>
+                    </span>
+                  </li>
+                </ul>
+                <SocialLinks social={site.social} label={t("socialLabel")} className="mt-8" />
+              </div>
+              <div className="contact-card__form">
+                <ContactForm houses={houses} />
+              </div>
             </div>
-
-            {/* Colonne Formulaire (7 cols) */}
-            <div className="lg:col-span-7">
-              <AnimateIn delay={0.1}>
-                <div id="contact-form" className="relative scroll-mt-8 overflow-hidden rounded-3xl border border-gold/25 bg-gradient-to-br from-petrol/90 via-petrol/70 to-petrol/85 p-8 sm:p-10 md:p-12 shadow-[0_24px_60px_-16px_rgba(0,0,0,0.6)] backdrop-blur-xl">
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-gold/10 blur-3xl"
-                  />
-                  <h2 className="mb-2 font-[family-name:var(--font-dm-sans)] text-2xl sm:text-3xl font-bold tracking-tight text-ivory">
-                    {t("formTitle")}
-                  </h2>
-                  <p className="mb-8 text-sm text-ivory/70">
-                    {locale === "fr"
-                      ? "Transmettez-nous votre demande et nos équipes vous répondront dans les plus brefs délais."
-                      : "Send us your request and our team will get back to you promptly."}
-                  </p>
-                  <ContactForm />
-                </div>
-              </AnimateIn>
-            </div>
-          </div>
+          </AnimateIn>
         </PageSection>
       </HeroCurtain>
 
-      <PageSection variant="alt" spacing="loose">
-        <AnimateIn>
-          <SectionHeading
-            look="editorial"
-            eyebrow={t("locationEyebrow")}
-            title={t("locationTitle")}
-            titleAs="h2"
-            description={t("locationDescription")}
-            align="left"
-            className="mb-10 max-w-2xl"
-          />
-        </AnimateIn>
-        <AnimateIn delay={0.1}>
-          <div className="overflow-hidden rounded-3xl border border-gold/25 shadow-[0_24px_50px_-12px_rgba(0,0,0,0.35)]">
-            <MapEmbed query={site.contact.address} title={`${site.name}`} variant="banner" />
-          </div>
-        </AnimateIn>
+      {/* Séparateurs fondus entre sections de couleurs différentes (comme sur l'accueil). */}
+      <SectionBlend from={SECTION_SURFACE.light} to={SECTION_SURFACE.alt} />
+
+      {/* Nos adresses : le siège et les maisons, carte qui se place sur l'adresse choisie. */}
+      <PageSection
+        variant="alt"
+        spacing="loose"
+        id="adresses"
+        ariaLabelledby="addresses-title"
+        containerClassName="mx-auto max-w-[min(100%,1400px)]"
+      >
+        <SectionHeading
+          look="editorial"
+          eyebrow={t("locationEyebrow")}
+          title={t("addressesTitle")}
+          sweep={t("addressesSweep")}
+          titleAs="h2"
+          titleId="addresses-title"
+          description={t("addressesIntro")}
+          align="left"
+          className="mb-10 max-w-2xl"
+        />
+        <ContactAddresses
+          entries={addresses}
+          labels={{
+            list: t("addressesList"),
+            directions: tCommon("directions"),
+            call: tCommon("call"),
+            newTab: t("newTab"),
+            hours: tSub("hours"),
+          }}
+        />
       </PageSection>
 
-      {/* FAQ (Orbix : colonne gauche collante, accordéon à droite). */}
-      <PageSection variant="default" spacing="loose" id="faq" ariaLabelledby="faq-title">
+      <SectionBlend from={SECTION_SURFACE.alt} to={SECTION_SURFACE.light} />
+
+      {/* FAQ (Orbix : colonne gauche collante, accordéon à droite). Chapitre
+          sable : casse l'enchaînement de fonds pétrole de la page. */}
+      <PageSection variant="light" spacing="loose" id="faq" ariaLabelledby="faq-title">
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:sticky lg:top-24 lg:col-span-5">
             <SectionHeading
               look="editorial"
+              tone="light"
               eyebrow={t("faqEyebrow")}
               title={t("faqTitle")}
               sweep={t("faqTitleSweep")}
@@ -288,7 +350,8 @@ export default async function ContactPage({ params }: Props) {
               align="left"
               className="mb-8"
             />
-            <div className="rounded-3xl border border-gold/25 bg-petrol-panel-3/60 p-6 md:p-8">
+            {/* Carte pétrole pleine : contraste franc sur le sable. */}
+            <div className="rounded-3xl border border-gold/25 bg-petrol p-6 shadow-long md:p-8">
               <p className="font-[family-name:var(--font-dm-sans)] text-lg font-semibold text-ivory">
                 {t("faqCardTitle")}
               </p>
@@ -311,6 +374,8 @@ export default async function ContactPage({ params }: Props) {
           </div>
         </div>
       </PageSection>
+
+      <SectionBlend from={SECTION_SURFACE.light} to={SECTION_SURFACE.dark} />
 
       {/* Réseaux des maisons (Orbix : tuiles « plateformes »). */}
       <PageSection variant="dark" spacing="default" id="reseaux" ariaLabelledby="tiles-title">

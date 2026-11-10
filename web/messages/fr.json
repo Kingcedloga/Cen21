@@ -163,10 +163,7 @@
     "detailsEyebrow": "Coordonnées",
     "detailsTitle": "Nous joindre",
     "socialLabel": "Réseaux sociaux",
-    "formTitle": "Formulaire",
     "locationEyebrow": "Localisation",
-    "locationTitle": "Nous trouver",
-    "locationDescription": "Carte interactive — cliquez sur « Agrandir la carte » pour l'itinéraire dans Google Maps.",
     "faqEyebrow": "Questions fréquentes",
     "faqTitle": "Vos questions, nos réponses",
     "faqIntro": "Réservations, horaires, privatisations : l'essentiel pour préparer votre venue.",
@@ -191,7 +188,16 @@
     "tilesLabel": "Réseaux sociaux des maisons",
     "newTab": "nouvel onglet",
     "faqTitleSweep": "nos réponses",
-    "tilesTitleSweep": "sur les réseaux"
+    "tilesTitleSweep": "sur les réseaux",
+    "cardText": "Une table, une soirée privée, un partenariat : dites-nous l'essentiel, nous revenons vers vous sous 48 h.",
+    "officeLabel": "Siège du groupe",
+    "officeTag": "Siège",
+    "phoneLabel": "Ligne directe",
+    "emailLabel": "Courriel",
+    "addressesTitle": "Nos adresses",
+    "addressesSweep": "adresses",
+    "addressesIntro": "Le siège du groupe et ses maisons. Choisissez une adresse : la carte s'y place.",
+    "addressesList": "Choisir une adresse"
   },
   "form": {
     "name": "Nom",
@@ -212,7 +218,16 @@
       "email": "Email invalide",
       "subject": "Sujet requis",
       "message": "Message requis (10 caractères minimum)"
-    }
+    },
+    "needLegend": "Votre demande",
+    "needs": {"reservation": "Réservation", "privatisation": "Privatisation", "entreprise": "Événement d'entreprise", "partenariat": "Partenariat", "presse": "Presse", "autre": "Autre"},
+    "houseLegend": "Maison concernée",
+    "houseGroup": "Le groupe",
+    "date": "Date souhaitée",
+    "guests": "Nombre de personnes",
+    "optional": "facultatif",
+    "defaultSubject": "Demande de contact",
+    "detailLine": "{label} : {value}"
   },
   "events": {
     "metaTitle": "Événements",

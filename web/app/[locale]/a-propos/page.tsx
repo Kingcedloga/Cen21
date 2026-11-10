@@ -11,6 +11,8 @@ import type { Locale } from "@/i18n/routing";
 import { getAboutContent, getSubsidiaries } from "@/lib/content";
 import { resolvePageMetadata } from "@/lib/seo";
 
+import "@/styles/about-surfaces.css";
+
 const FALLBACK_HERO =
   "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=2400&q=85";
 const FALLBACK_ORIGINS_IMAGE =
@@ -72,6 +74,9 @@ export default async function AboutPage({ params }: Props) {
         />
       </HeroCurtain>
 
+      {/* Séparateurs fondus : le bas de la section précédente se fond dans la suivante. */}
+      <SectionBlend to="var(--about-vision-surface)" />
+
       <AboutVisionSection
         eyebrow={t("visionEyebrow")}
         title={t("visionTitle")}
@@ -85,14 +90,17 @@ export default async function AboutPage({ params }: Props) {
       />
 
       {about.team && about.team.length > 0 && (
-        <AboutTeamSection
-          eyebrow={t("teamEyebrow")}
-          title={t("teamTitle")}
-          description={t("teamDescription")}
-          subtitle={t("teamSubtitle")}
-          members={about.team}
-          locale={locale}
-        />
+        <>
+          <SectionBlend to="var(--about-team-top)" />
+          <AboutTeamSection
+            eyebrow={t("teamEyebrow")}
+            title={t("teamTitle")}
+            description={t("teamDescription")}
+            subtitle={t("teamSubtitle")}
+            members={about.team}
+            locale={locale}
+          />
+        </>
       )}
 
       <SectionBlend to="var(--color-anthracite)" />

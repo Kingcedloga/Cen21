@@ -29,7 +29,7 @@ export function AboutVisionSection({ eyebrow, title, description, cta, images }:
     <section
       aria-labelledby="about-vision-title"
       data-surface="light"
-      className={`relative overflow-hidden bg-[#faf7f2] px-6 py-24 md:px-10 md:py-32 ${dynalight.variable}`}
+      className={`relative overflow-hidden bg-[var(--about-vision-surface)] px-6 py-24 md:px-10 md:py-32 ${dynalight.variable}`}
     >
       <div aria-hidden className="noise-overlay" />
 

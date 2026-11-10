@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useSyncExternalStore } from "react";
 
 import { LENIS_OPTIONS } from "@/lib/motion";
+import { onSiteReady } from "@/lib/site-ready";
 
 /**
  * Défilement lissé (Lenis) — desktop uniquement.
@@ -75,6 +76,29 @@ function isDialog(node: HTMLElement) {
 
 function isScrollLocked() {
   return document.body.style.overflow === "hidden";
+}
+
+/**
+ * Arrivée sur une ancre (`/contact?besoin=…#contact-form`) : la page arrive en
+ * streaming, après la tentative du navigateur de s'y placer. On s'y place une
+ * fois le site prêt (loader levé), sans animation.
+ */
+function scrollToInitialHash(getLenis: () => Lenis | null): () => void {
+  const hash = window.location.hash;
+  if (hash.length < 2) return () => {};
+  return onSiteReady(() => {
+    let target: HTMLElement | null = null;
+    try {
+      target = document.getElementById(decodeURIComponent(hash.slice(1)));
+    } catch {
+      return;
+    }
+    if (!target) return;
+    const margin = Number.parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+    const top = target.getBoundingClientRect().top + window.scrollY - margin;
+    window.scrollTo({ top, behavior: "instant" });
+    getLenis()?.scrollTo(top, { immediate: true, force: true });
+  });
 }
 
 function scrollToAnchor(lenis: Lenis, event: MouseEvent) {
@@ -186,8 +210,10 @@ export function SmoothScroll() {
     update();
     enableQuery.addEventListener("change", update);
     reducedQuery.addEventListener("change", update);
+    const cancelHash = scrollToInitialHash(() => instance);
 
     return () => {
+      cancelHash();
       enableQuery.removeEventListener("change", update);
       reducedQuery.removeEventListener("change", update);
       stop();

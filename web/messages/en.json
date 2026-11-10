@@ -163,10 +163,7 @@
     "detailsEyebrow": "Details",
     "detailsTitle": "Get in touch",
     "socialLabel": "Social media",
-    "formTitle": "Form",
     "locationEyebrow": "Location",
-    "locationTitle": "Find us",
-    "locationDescription": "Interactive map — click “Enlarge map” for directions in Google Maps.",
     "faqEyebrow": "FAQ",
     "faqTitle": "Your questions, answered",
     "faqIntro": "Bookings, opening hours, private events: what you need to plan your visit.",
@@ -191,7 +188,16 @@
     "tilesLabel": "Our houses' social accounts",
     "newTab": "new tab",
     "faqTitleSweep": "answered",
-    "tilesTitleSweep": "on social media"
+    "tilesTitleSweep": "on social media",
+    "cardText": "A table, a private evening, a partnership: tell us the essentials and we will get back to you within 48 hours.",
+    "officeLabel": "Group head office",
+    "officeTag": "Head office",
+    "phoneLabel": "Direct line",
+    "emailLabel": "Email",
+    "addressesTitle": "Our addresses",
+    "addressesSweep": "addresses",
+    "addressesIntro": "The group head office and its houses. Choose an address and the map moves to it.",
+    "addressesList": "Choose an address"
   },
   "form": {
     "name": "Name",
@@ -212,7 +218,16 @@
       "email": "Invalid email",
       "subject": "Subject required",
       "message": "Message required (minimum 10 characters)"
-    }
+    },
+    "needLegend": "Your request",
+    "needs": {"reservation": "Reservation", "privatisation": "Private hire", "entreprise": "Corporate event", "partenariat": "Partnership", "presse": "Press", "autre": "Other"},
+    "houseLegend": "House",
+    "houseGroup": "The group",
+    "date": "Preferred date",
+    "guests": "Number of guests",
+    "optional": "optional",
+    "defaultSubject": "Contact request",
+    "detailLine": "{label}: {value}"
   },
   "events": {
     "metaTitle": "Events",

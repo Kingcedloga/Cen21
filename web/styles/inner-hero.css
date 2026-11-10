@@ -170,3 +170,14 @@
     height: min(78svh, 56vw);
   }
 }
+
+/* Version compacte : un bandeau plutôt qu'un panneau (contact). */
+.inner-hero--compact .inner-hero__media {
+  height: min(36svh, 16rem);
+}
+
+@media (min-width: 768px) {
+  .inner-hero--compact .inner-hero__media {
+    height: min(46svh, 24rem);
+  }
+}

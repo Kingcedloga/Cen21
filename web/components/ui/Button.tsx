@@ -19,6 +19,9 @@ type Size = "sm" | "md" | "lg";
  *
  * `magnetic` : le bouton suit légèrement la souris au survol (effet aimant
  * d'Orbix, ±10 px). Réservé aux CTA en ligne, pas aux boutons pleine largeur.
+ *
+ * `native` : lien <a> simple, hors routeur (ancre `#…` défilée par Lenis,
+ * `tel:`, `mailto:`), dans le même onglet.
  */
 const variants: Record<Variant, string> = {
   primary: "btn-primary",
@@ -43,6 +46,7 @@ export function Button({
   type = "button",
   disabled,
   external,
+  native = false,
   ariaLabel,
   magnetic = false,
 }: {
@@ -55,6 +59,7 @@ export function Button({
   type?: "button" | "submit";
   disabled?: boolean;
   external?: boolean;
+  native?: boolean;
   ariaLabel?: string;
   magnetic?: boolean;
 }) {
@@ -87,6 +92,12 @@ export function Button({
         rel="noopener noreferrer"
         aria-label={ariaLabel}
       >
+        {content}
+      </a>
+    );
+  } else if (href && native) {
+    element = (
+      <a href={href} className={classes} aria-label={ariaLabel}>
         {content}
       </a>
     );

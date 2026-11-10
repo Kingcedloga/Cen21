@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { SubsidiariesStack, type StackItem } from "@/components/filiales/SubsidiariesStack";
 import { HeroCurtain } from "@/components/layout/HeroCurtain";
 import { PageSection } from "@/components/layout/PageSection";
+import { SectionBlend } from "@/components/layout/SectionBlend";
 import { RollingText } from "@/components/motion/RollingText";
 import { InnerHero } from "@/components/sections/InnerHero";
 import { PageOutro } from "@/components/sections/PageOutro";
@@ -140,6 +141,9 @@ export default async function SubsidiariesPage({ params }: Props) {
         items={stackItems}
         labels={{ list: t("stackLabel"), hours: t("hours"), address: t("address"), newTab: t("newTab") }}
       />
+
+      {/* La dernière carte (charte de la maison) se fond dans la bande de clôture. */}
+      <SectionBlend to="var(--color-anthracite)" />
 
       <PageOutro
         eyebrow={tOutro("eyebrow")}

@@ -41,7 +41,8 @@ const toneStyles: Record<
     eyebrow: "text-gold-deep",
     title: "text-petrol",
     subtitle: "text-gradient-petrol-gold",
-    description: "text-taupe",
+    // Pétrole à 80 % : 4,8:1 sur le sable (le taupe n'y atteignait que 1,6:1).
+    description: "text-petrol/80",
   },
 };
 

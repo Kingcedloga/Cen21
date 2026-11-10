@@ -10,6 +10,17 @@ const variantBg: Record<Variant, string> = {
   light: "bg-ivory text-petrol",
 };
 
+/**
+ * Couleur vue de chaque variante (pour les séparateurs fondus SectionBlend) :
+ * `alt` est un voile à 40 % posé sur le fond pétrole de la page.
+ */
+export const SECTION_SURFACE: Record<Variant, string> = {
+  default: "var(--color-petrol)",
+  alt: "color-mix(in srgb, var(--color-petrol-panel-2) 40%, var(--color-petrol))",
+  dark: "var(--color-petrol-panel-4)",
+  light: "var(--color-ivory)",
+};
+
 const spacingClass: Record<Spacing, string> = {
   compact: "py-16 md:py-20",
   default: "py-20 md:py-28",
