@@ -71,5 +71,83 @@
       "quote": "Anticipating every need before it's expressed — that is our signature.",
       "bio": "Creating an exceptional guest experience means anticipating every need before it's expressed. Our team ensures that every visit — whether a dinner, an after-work, or an evening — leaves a lasting impression in the memory of our guests."
     }
-  ]
+  ],
+  "milestones": [
+    {
+      "id": "boulevard-30-juin",
+      "title": "Kinshasa, Boulevard du 30 Juin",
+      "description": "The capital's main avenue is home to four of the group's houses: L'Olive Verte's sports bar, K Lounge's rooftop, the nights of Millionaire Club and Café Muzik's patio.",
+      "subsidiarySlugs": [
+        "filiale-01",
+        "filiale-03",
+        "filiale-04",
+        "filiale-05"
+      ]
+    },
+    {
+      "id": "gombe-tables",
+      "title": "La Gombe, at the table",
+      "description": "Asian cuisine on Wabi Sabi's rooftop, Mexican flavours on the 9th floor of Matrix Tower, coffee and pastries at Premier Mall: the group broadens its menu.",
+      "subsidiarySlugs": [
+        "filiale-02",
+        "filiale-07",
+        "filiale-06"
+      ]
+    },
+    {
+      "id": "lubumbashi",
+      "title": "Heading to Lubumbashi",
+      "description": "Wabi Sabi and K Lounge open a second address in Lubumbashi, on Boulevard du 30 Juin. The group is now present in two cities.",
+      "subsidiarySlugs": [
+        "filiale-02",
+        "filiale-03"
+      ]
+    },
+    {
+      "id": "enseignes-internationales",
+      "title": "International brands",
+      "description": "Pinkberry and Le Pain Quotidien join the portfolio: two brands known worldwide, run in Kinshasa to the group's standards.",
+      "subsidiarySlugs": [
+        "filiale-09",
+        "filiale-10"
+      ]
+    },
+    {
+      "id": "papa-johns",
+      "year": "2025",
+      "title": "Papa John's comes to Central Africa",
+      "description": "Central Africa's first Papa John's opens on Avenue de la Gombe: fresh dough, house sauces, delivery and dine-in.",
+      "subsidiarySlugs": [
+        "filiale-08"
+      ]
+    },
+    {
+      "id": "aujourd-hui",
+      "year": "2026",
+      "title": "Ten houses, two cities",
+      "description": "Restaurants, lounges, rooftops and a nightclub: ten addresses in Kinshasa and Lubumbashi, one shared standard of hospitality.",
+      "subsidiarySlugs": []
+    }
+  ],
+  "partners": [
+    {
+      "name": "Papa John's",
+      "role": "International franchise — pizza",
+      "url": "https://www.papajohnsrdc.com/",
+      "subsidiarySlug": "filiale-08"
+    },
+    {
+      "name": "Pinkberry",
+      "role": "International franchise — frozen yogurt",
+      "url": "https://www.pinkberry.com/",
+      "subsidiarySlug": "filiale-09"
+    },
+    {
+      "name": "Le Pain Quotidien",
+      "role": "International franchise — bakery & restaurant",
+      "url": "https://www.lepainquotidien.com/cd/en/",
+      "subsidiarySlug": "filiale-10"
+    }
+  ],
+  "distinctions": []
 }

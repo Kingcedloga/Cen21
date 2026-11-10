@@ -7,7 +7,7 @@ export const SUBSIDIARY_CONTACT_IMAGES: Record<string, string> = {
   "filiale-03": "/filiales/photos/filiale-03/gallery/05-dsc01050.webp",
   "filiale-04": "/filiales/photos/filiale-04/gallery/08-dsc-6684-modifier.webp",
   "filiale-05":
-    "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1600&q=80",
+    "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=1600&q=80",
   "filiale-06":
     "https://images.unsplash.com/photo-1509048199710-4ce6f31643b1?w=1600&q=80",
   "filiale-07":

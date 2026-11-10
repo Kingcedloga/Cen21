@@ -428,6 +428,36 @@ export type TeamMember = {
   linkedin?: string;
 };
 
+/** Étape de la frise « À propos ». */
+export type AboutMilestone = {
+  id: string;
+  /** Année affichée — absente tant qu'elle n'est pas confirmée par le groupe. */
+  year?: string;
+  title: string;
+  description: string;
+  /** Maisons concernées (liens vers /filiales/[slug]). */
+  subsidiarySlugs?: string[];
+};
+
+/** Marque partenaire (franchises internationales opérées par le groupe). */
+export type AboutPartner = {
+  name: string;
+  role: string;
+  url?: string;
+  /** Filiale qui opère la marque — logo via `brandLogo`. */
+  subsidiarySlug?: string;
+};
+
+/** Distinction ou prix — n'ajouter que des distinctions vérifiables. */
+export type AboutDistinction = {
+  id: string;
+  year: string;
+  title: string;
+  issuer: string;
+  subsidiarySlug?: string;
+  url?: string;
+};
+
 export type AboutContent = {
   history: string;
   vision: string;
@@ -437,4 +467,20 @@ export type AboutContent = {
   originsImage?: string;
   visionImages?: string[];
   team?: TeamMember[];
+  milestones?: AboutMilestone[];
+  partners?: AboutPartner[];
+  distinctions?: AboutDistinction[];
+};
+
+export type SubsidiaryFaqTopic = "dress-code" | "privatisation" | "age";
+
+/** Question fréquente propre à une maison (dress code, privatisation, âge minimum). */
+export type SubsidiaryFaqItem = {
+  id: SubsidiaryFaqTopic;
+  question: string;
+  answer: string;
+};
+
+export type SubsidiaryFaqContent = {
+  houses: Record<string, SubsidiaryFaqItem[]>;
 };

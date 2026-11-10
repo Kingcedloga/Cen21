@@ -1,0 +1,123 @@
+{
+  "houses": {
+    "filiale-01": [
+      {
+        "id": "dress-code",
+        "question": "Is there a dress code?",
+        "answer": "Casual. Swimwear is for the pool area only; smart casual clothing is expected in the restaurant and lounge."
+      },
+      {
+        "id": "privatisation",
+        "question": "Can L'Olive Verte be booked for a private event?",
+        "answer": "Yes, in part or in full: the lounge area, the poolside or a match night with friends. Share the date, number of guests and format by phone or through the contact form."
+      },
+      {
+        "id": "age",
+        "question": "What is the minimum age?",
+        "answer": "Families are welcome during the day; minors remain under the responsibility of an adult. Alcohol is only served to guests aged 18 and over."
+      }
+    ],
+    "filiale-02": [
+      {
+        "id": "dress-code",
+        "question": "Is there a dress code?",
+        "answer": "Smart casual. Please avoid sportswear and flip-flops, especially in the evening on the rooftop."
+      },
+      {
+        "id": "privatisation",
+        "question": "Can Wabi Sabi be booked for a private event?",
+        "answer": "Yes: business dinners, birthdays or receptions, with a tailor-made menu. Available in both Kinshasa and Lubumbashi — contact the relevant address or use the contact form."
+      },
+      {
+        "id": "age",
+        "question": "What is the minimum age?",
+        "answer": "Children are welcome with an adult. Alcohol is only served to guests aged 18 and over."
+      }
+    ],
+    "filiale-03": [
+      {
+        "id": "dress-code",
+        "question": "Is there a dress code?",
+        "answer": "Smart, elegant attire is required in the evening. Sportswear, shorts and flip-flops are not accepted."
+      },
+      {
+        "id": "privatisation",
+        "question": "Can K Lounge be booked for a private event?",
+        "answer": "Yes, the rooftop can be booked for parties, launches or birthdays, in Kinshasa (RR House) and in Lubumbashi. Tell us about your project by phone or through the contact form."
+      },
+      {
+        "id": "age",
+        "question": "What is the minimum age?",
+        "answer": "Evening entry is for guests aged 18 and over; ID may be requested."
+      }
+    ],
+    "filiale-04": [
+      {
+        "id": "dress-code",
+        "question": "Is there a dress code?",
+        "answer": "Smart attire required. Trainers, shorts, caps and flip-flops may be refused at the door. For themed nights, the dress code is announced on our social media."
+      },
+      {
+        "id": "privatisation",
+        "question": "Can Millionaire Club be booked for a private event?",
+        "answer": "Yes: VIP tables and booths by reservation, and full private hire of the club outside scheduled nights. Contact us by phone or through the contact form."
+      },
+      {
+        "id": "age",
+        "question": "What is the minimum age?",
+        "answer": "Entry is for guests aged 18 and over. ID is required at the door."
+      }
+    ],
+    "filiale-05": [
+      {
+        "id": "dress-code",
+        "question": "Is there a dress code?",
+        "answer": "No dress code: come as you are, neatly dressed."
+      },
+      {
+        "id": "privatisation",
+        "question": "Can Café Muzik be booked for a private event?",
+        "answer": "Yes, the patio can be booked for birthdays, afterworks or karaoke nights with friends, with live music or a DJ as you wish. Write to us or call the house."
+      },
+      {
+        "id": "age",
+        "question": "What is the minimum age?",
+        "answer": "Minors are welcome with an adult. On DJ nights, entry may be limited to guests aged 18 and over; alcohol is only served to adults."
+      }
+    ],
+    "filiale-06": [
+      {
+        "id": "dress-code",
+        "question": "Is there a dress code?",
+        "answer": "No dress code: Moka & More welcomes you from breakfast to dinner, simply as you are."
+      },
+      {
+        "id": "privatisation",
+        "question": "Can Moka & More be booked for a private event?",
+        "answer": "Yes, the terrace or part of the dining room can be booked for a team breakfast, a birthday or a meeting. Share the date and number of guests through the contact form."
+      },
+      {
+        "id": "age",
+        "question": "What is the minimum age?",
+        "answer": "All ages are welcome. Alcohol is only served to guests aged 18 and over."
+      }
+    ],
+    "filiale-07": [
+      {
+        "id": "dress-code",
+        "question": "Is there a dress code?",
+        "answer": "Smart casual."
+      },
+      {
+        "id": "privatisation",
+        "question": "Can Gourmet Mexicana be booked for a private event?",
+        "answer": "Yes, the 9th-floor dining room at Matrix Tower hosts private dinners, birthdays and corporate meals. Tell us about your project through the contact form."
+      },
+      {
+        "id": "age",
+        "question": "What is the minimum age?",
+        "answer": "Families are welcome, with spicy and mild dishes. Alcohol is only served to guests aged 18 and over."
+      }
+    ]
+  }
+}

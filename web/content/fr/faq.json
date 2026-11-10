@@ -1,0 +1,123 @@
+{
+  "houses": {
+    "filiale-01": [
+      {
+        "id": "dress-code",
+        "question": "Y a-t-il un dress code ?",
+        "answer": "Tenue décontractée. Les maillots de bain sont réservés à l'espace piscine ; pour le restaurant et le lounge, une tenue de ville est demandée."
+      },
+      {
+        "id": "privatisation",
+        "question": "Peut-on privatiser L'Olive Verte ?",
+        "answer": "Oui, en partie ou en totalité : espace lounge, abords de la piscine ou soirée match entre amis. Indiquez la date, le nombre d'invités et le format souhaité par téléphone ou via le formulaire de contact."
+      },
+      {
+        "id": "age",
+        "question": "Quel est l'âge minimum ?",
+        "answer": "Les familles sont les bienvenues en journée ; les mineurs restent sous la responsabilité d'un adulte. L'alcool n'est servi qu'aux plus de 18 ans."
+      }
+    ],
+    "filiale-02": [
+      {
+        "id": "dress-code",
+        "question": "Y a-t-il un dress code ?",
+        "answer": "Élégant décontracté. Évitez les tenues de sport et les tongs, surtout le soir sur le rooftop."
+      },
+      {
+        "id": "privatisation",
+        "question": "Peut-on privatiser Wabi Sabi ?",
+        "answer": "Oui : dîners d'affaires, anniversaires ou réceptions, avec un menu composé sur mesure. Possible à Kinshasa comme à Lubumbashi — contactez l'adresse concernée ou passez par le formulaire de contact."
+      },
+      {
+        "id": "age",
+        "question": "Quel est l'âge minimum ?",
+        "answer": "Les enfants sont les bienvenus accompagnés d'un adulte. L'alcool n'est servi qu'aux plus de 18 ans."
+      }
+    ],
+    "filiale-03": [
+      {
+        "id": "dress-code",
+        "question": "Y a-t-il un dress code ?",
+        "answer": "Tenue chic exigée en soirée. Les tenues de sport, shorts et tongs ne sont pas acceptés."
+      },
+      {
+        "id": "privatisation",
+        "question": "Peut-on privatiser K Lounge ?",
+        "answer": "Oui, le rooftop se privatise pour vos soirées, lancements ou anniversaires, à Kinshasa (RR House) comme à Lubumbashi. Décrivez votre projet par téléphone ou via le formulaire de contact."
+      },
+      {
+        "id": "age",
+        "question": "Quel est l'âge minimum ?",
+        "answer": "L'accès en soirée est réservé aux plus de 18 ans ; une pièce d'identité peut être demandée."
+      }
+    ],
+    "filiale-04": [
+      {
+        "id": "dress-code",
+        "question": "Y a-t-il un dress code ?",
+        "answer": "Tenue chic exigée. Baskets de sport, shorts, casquettes et tongs peuvent être refusés à l'entrée. Pour les soirées à thème, le dress code est annoncé sur nos réseaux."
+      },
+      {
+        "id": "privatisation",
+        "question": "Peut-on privatiser le Millionaire Club ?",
+        "answer": "Oui : carrés et tables VIP sur réservation, et privatisation complète du club en dehors des soirées programmées. Contactez-nous par téléphone ou via le formulaire de contact."
+      },
+      {
+        "id": "age",
+        "question": "Quel est l'âge minimum ?",
+        "answer": "Entrée réservée aux plus de 18 ans. Une pièce d'identité est demandée à l'entrée."
+      }
+    ],
+    "filiale-05": [
+      {
+        "id": "dress-code",
+        "question": "Y a-t-il un dress code ?",
+        "answer": "Pas de dress code : venez comme vous êtes, dans une tenue correcte."
+      },
+      {
+        "id": "privatisation",
+        "question": "Peut-on privatiser Café Muzik ?",
+        "answer": "Oui, le patio se privatise pour anniversaires, afterworks ou soirées karaoké entre amis, avec live ou DJ selon vos envies. Écrivez-nous ou appelez la maison."
+      },
+      {
+        "id": "age",
+        "question": "Quel est l'âge minimum ?",
+        "answer": "Les mineurs sont les bienvenus accompagnés d'un adulte. Lors des soirées DJ, l'accès peut être réservé aux plus de 18 ans ; l'alcool n'est servi qu'aux majeurs."
+      }
+    ],
+    "filiale-06": [
+      {
+        "id": "dress-code",
+        "question": "Y a-t-il un dress code ?",
+        "answer": "Aucun dress code : Moka & More vous accueille du petit-déjeuner au dîner, en toute simplicité."
+      },
+      {
+        "id": "privatisation",
+        "question": "Peut-on privatiser Moka & More ?",
+        "answer": "Oui, la terrasse ou une partie de la salle peuvent être réservées pour un petit-déjeuner d'équipe, un anniversaire ou une réunion. Indiquez la date et le nombre d'invités via le formulaire de contact."
+      },
+      {
+        "id": "age",
+        "question": "Quel est l'âge minimum ?",
+        "answer": "Tous les âges sont les bienvenus. L'alcool n'est servi qu'aux plus de 18 ans."
+      }
+    ],
+    "filiale-07": [
+      {
+        "id": "dress-code",
+        "question": "Y a-t-il un dress code ?",
+        "answer": "Élégant décontracté."
+      },
+      {
+        "id": "privatisation",
+        "question": "Peut-on privatiser Gourmet Mexicana ?",
+        "answer": "Oui, la salle du 9e étage de la Matrix Tower accueille dîners privés, anniversaires et repas d'entreprise. Décrivez votre projet via le formulaire de contact."
+      },
+      {
+        "id": "age",
+        "question": "Quel est l'âge minimum ?",
+        "answer": "Les familles sont les bienvenues, avec des plats épicés et non épicés. L'alcool n'est servi qu'aux plus de 18 ans."
+      }
+    ]
+  }
+}

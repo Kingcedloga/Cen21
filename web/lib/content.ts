@@ -10,6 +10,8 @@ import eventsEn from "@/content/en/events.json";
 import eventsFr from "@/content/fr/events.json";
 import galleryEn from "@/content/en/gallery.json";
 import galleryFr from "@/content/fr/gallery.json";
+import faqEn from "@/content/en/faq.json";
+import faqFr from "@/content/fr/faq.json";
 
 import type { Locale } from "@/i18n/routing";
 import type {
@@ -20,6 +22,8 @@ import type {
   SiteConfig,
   StatsContent,
   Subsidiary,
+  SubsidiaryFaqContent,
+  SubsidiaryFaqItem,
 } from "./types";
 import { parseYoutubeId } from "./youtube";
 
@@ -40,6 +44,10 @@ const EVENTS: Record<Locale, EventItem[]> = {
 const GALLERY: Record<Locale, GalleryItem[]> = {
   en: galleryEn.items as GalleryItem[],
   fr: galleryFr.items as GalleryItem[],
+};
+const FAQ: Record<Locale, SubsidiaryFaqContent> = {
+  en: faqEn as SubsidiaryFaqContent,
+  fr: faqFr as SubsidiaryFaqContent,
 };
 
 export function getSiteConfig(locale: Locale): SiteConfig {
@@ -155,6 +163,14 @@ export function getGalleryBySubsidiary(
   slug: string,
 ): GalleryItem[] {
   return getGalleryItems(locale).filter((i) => i.subsidiarySlug === slug);
+}
+
+/** FAQ d'une maison (dress code, privatisation, âge minimum) — vide si non renseignée. */
+export function getSubsidiaryFaq(
+  locale: Locale,
+  slug: string,
+): SubsidiaryFaqItem[] {
+  return FAQ[locale].houses[slug] ?? [];
 }
 
 export type SectorKey =

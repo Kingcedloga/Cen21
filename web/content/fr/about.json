@@ -71,5 +71,83 @@
       "quote": "Anticiper chaque besoin avant qu'il soit exprimé — c'est notre signature.",
       "bio": "Créer une expérience client d'exception, c'est anticiper chaque besoin avant qu'il soit exprimé. Notre équipe s'assure que chaque visite — dîner, afterwork ou grande soirée — laisse une empreinte durable dans la mémoire de nos hôtes."
     }
-  ]
+  ],
+  "milestones": [
+    {
+      "id": "boulevard-30-juin",
+      "title": "Kinshasa, Boulevard du 30 Juin",
+      "description": "La grande artère de la capitale réunit quatre maisons du groupe : le bar sportif de L'Olive Verte, le rooftop du K Lounge, les nuits du Millionaire Club et le patio du Café Muzik.",
+      "subsidiarySlugs": [
+        "filiale-01",
+        "filiale-03",
+        "filiale-04",
+        "filiale-05"
+      ]
+    },
+    {
+      "id": "gombe-tables",
+      "title": "La Gombe, côté table",
+      "description": "Cuisine asiatique en rooftop chez Wabi Sabi, saveurs mexicaines au 9e étage de la Matrix Tower, café et pâtisseries au Premier Mall : le groupe élargit sa carte.",
+      "subsidiarySlugs": [
+        "filiale-02",
+        "filiale-07",
+        "filiale-06"
+      ]
+    },
+    {
+      "id": "lubumbashi",
+      "title": "Cap sur Lubumbashi",
+      "description": "Wabi Sabi et K Lounge ouvrent une seconde adresse à Lubumbashi, sur le Boulevard du 30 Juin. Le groupe devient présent dans deux villes.",
+      "subsidiarySlugs": [
+        "filiale-02",
+        "filiale-03"
+      ]
+    },
+    {
+      "id": "enseignes-internationales",
+      "title": "Des enseignes internationales",
+      "description": "Pinkberry et Le Pain Quotidien rejoignent le portefeuille : deux marques reconnues dans le monde, opérées à Kinshasa avec les standards du groupe.",
+      "subsidiarySlugs": [
+        "filiale-09",
+        "filiale-10"
+      ]
+    },
+    {
+      "id": "papa-johns",
+      "year": "2025",
+      "title": "Papa John's arrive en Afrique centrale",
+      "description": "Le premier établissement Papa John's d'Afrique centrale ouvre sur l'Avenue de la Gombe : pâte fraîche, sauces maison, livraison et service à table.",
+      "subsidiarySlugs": [
+        "filiale-08"
+      ]
+    },
+    {
+      "id": "aujourd-hui",
+      "year": "2026",
+      "title": "Dix maisons, deux villes",
+      "description": "Restaurants, lounges, rooftops et night-club : dix adresses à Kinshasa et Lubumbashi, une même exigence d'accueil.",
+      "subsidiarySlugs": []
+    }
+  ],
+  "partners": [
+    {
+      "name": "Papa John's",
+      "role": "Franchise internationale — pizza",
+      "url": "https://www.papajohnsrdc.com/",
+      "subsidiarySlug": "filiale-08"
+    },
+    {
+      "name": "Pinkberry",
+      "role": "Franchise internationale — yaourt glacé",
+      "url": "https://www.pinkberry.com/",
+      "subsidiarySlug": "filiale-09"
+    },
+    {
+      "name": "Le Pain Quotidien",
+      "role": "Franchise internationale — boulangerie & restaurant",
+      "url": "https://www.lepainquotidien.com/cd/en/",
+      "subsidiarySlug": "filiale-10"
+    }
+  ],
+  "distinctions": []
 }
