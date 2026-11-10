@@ -3,15 +3,16 @@
 import {
   motion,
   useMotionValueEvent,
-  useReducedMotion,
   useScroll,
   useSpring,
 } from "framer-motion";
 import { useState } from "react";
 
+import { useReducedMotionSafe } from "@/lib/use-media-query";
+
 export function ReadingProgress({ barClassName }: { barClassName?: string }) {
   const { scrollYProgress, scrollY } = useScroll();
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const [visible, setVisible] = useState(false);
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 220,

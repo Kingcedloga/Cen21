@@ -1,12 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useState } from "react";
 
+import { reveal } from "@/components/motion/Reveal";
 import { Play, X } from "@/lib/icons";
 import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 import "@/styles/moka-more-video-section.css";
 
@@ -48,7 +50,7 @@ type Props = {
 };
 
 export function MokaMoreVideoSection({ backgroundImage }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const t = useTranslations("subsidiaries");
   const [isOpen, setIsOpen] = useState(false);
 
@@ -90,7 +92,7 @@ export function MokaMoreVideoSection({ backgroundImage }: Props) {
         <span className="moka-video__overlay" />
       </div>
 
-      <motion.span
+      <reveal.span
         className="moka-video__watermark"
         aria-hidden="true"
         initial={reduced ? false : { opacity: 0 }}
@@ -99,10 +101,10 @@ export function MokaMoreVideoSection({ backgroundImage }: Props) {
         transition={{ duration: DURATION_S.grand, ease: EASE.luxury }}
       >
         {t("mokaMoreVideo.watermark")}
-      </motion.span>
+      </reveal.span>
 
       <div className="moka-video__center">
-        <motion.svg
+        <reveal.svg
           className="moka-video__ring"
           viewBox="0 0 220 220"
           aria-hidden="true"
@@ -129,9 +131,9 @@ export function MokaMoreVideoSection({ backgroundImage }: Props) {
               {repeatedText}
             </textPath>
           </text>
-        </motion.svg>
+        </reveal.svg>
 
-        <motion.button
+        <reveal.button
           type="button"
           className="moka-video__play"
           aria-label={t("mokaMoreVideo.playAria")}
@@ -143,7 +145,7 @@ export function MokaMoreVideoSection({ backgroundImage }: Props) {
           transition={{ duration: DURATION_S.base, ease: EASE.spring, delay: 0.2 }}
         >
           <Play size={22} weight="fill" aria-hidden="true" />
-        </motion.button>
+        </reveal.button>
       </div>
 
       <AnimatePresence>

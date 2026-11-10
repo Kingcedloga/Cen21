@@ -1,13 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
 
 import { Link } from "@/i18n/navigation";
 import { cormorant } from "@/lib/fonts";
 import { BLUR_PETROL } from "@/lib/image-blur";
 import { defaultScrollViewport, fadeUpTransition, fadeUpVariants } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import { PhoneLocationPicker, type PhoneLocation } from "@/components/filiales/PhoneLocationPicker";
+import { reveal } from "@/components/motion/Reveal";
 
 import "@/styles/k-lounge-reservation-banner.css";
 
@@ -28,7 +29,7 @@ export function KLoungeReservationBanner({
   ctaHref,
   locations,
 }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   return (
     <section
@@ -40,7 +41,6 @@ export function KLoungeReservationBanner({
           src={backgroundImage}
           alt=""
           fill
-          priority={false}
           placeholder="blur"
           blurDataURL={BLUR_PETROL}
           className="klounge-reservation__image"
@@ -50,7 +50,7 @@ export function KLoungeReservationBanner({
         <span className="klounge-reservation__overlay" />
       </div>
 
-      <motion.div
+      <reveal.div
         className="klounge-reservation__content"
         initial={reduced ? false : "hidden"}
         whileInView={reduced ? undefined : "visible"}
@@ -78,7 +78,7 @@ export function KLoungeReservationBanner({
             {ctaLabel}
           </Link>
         )}
-      </motion.div>
+      </reveal.div>
     </section>
   );
 }

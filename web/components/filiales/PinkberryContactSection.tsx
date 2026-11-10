@@ -1,16 +1,17 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 
+import { reveal } from "@/components/motion/Reveal";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { IconFacebook, IconInstagram, IconLinkedin } from "@/components/ui/SocialLinks";
 import { Toast, ToastViewport } from "@/components/ui/Toast";
 import { getContactSchema, type ContactFormData } from "@/lib/contact-schema";
 import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { SocialLinks as SocialLinksType, SubsidiaryContactSection } from "@/lib/types";
 
 import "@/styles/pinkberry-contact-section.css";
@@ -37,7 +38,7 @@ export function PinkberryContactSection({
   social: SocialLinksType;
   backgroundImage?: string;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const t = useTranslations("form");
 
   const schema = useMemo(
@@ -122,7 +123,7 @@ export function PinkberryContactSection({
       </AnimateIn>
 
       <div className="pinkberry-contact__grid">
-        <motion.div className="pinkberry-contact__card" {...cardMotion(0)}>
+        <reveal.div className="pinkberry-contact__card" {...cardMotion(0)}>
           <div className="pinkberry-contact__block">
             <h3 className="pinkberry-contact__block-title">{content.hoursTitle}</h3>
             {hours && <p className="pinkberry-contact__line">{hours}</p>}
@@ -154,9 +155,9 @@ export function PinkberryContactSection({
               </div>
             </div>
           )}
-        </motion.div>
+        </reveal.div>
 
-        <motion.div className="pinkberry-contact__card" {...cardMotion(1)}>
+        <reveal.div className="pinkberry-contact__card" {...cardMotion(1)}>
           <h3 className="pinkberry-contact__form-title">{content.formTitle}</h3>
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
             <div className="hidden" aria-hidden="true">
@@ -257,7 +258,7 @@ export function PinkberryContactSection({
               {isSubmitting ? t("submitting") : content.submitLabel}
             </button>
           </form>
-        </motion.div>
+        </reveal.div>
       </div>
 
       <ToastViewport>

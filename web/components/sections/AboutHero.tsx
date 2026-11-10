@@ -46,7 +46,8 @@ export function AboutHero({
             src={image}
             alt={imageAlt}
             fill
-            priority
+            loading="eager"
+            fetchPriority="high"
             placeholder="blur"
             blurDataURL={BLUR_PETROL}
             sizes="100vw"

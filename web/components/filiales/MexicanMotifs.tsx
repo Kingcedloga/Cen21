@@ -1,9 +1,11 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useScroll, useTransform } from "framer-motion";
 import { useRef, type ReactNode } from "react";
 
+import { reveal } from "@/components/motion/Reveal";
 import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 import "@/styles/mexican-motifs.css";
 
@@ -28,7 +30,7 @@ function FadeInMotif({
   parallax?: boolean;
   children: ReactNode;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -37,7 +39,7 @@ function FadeInMotif({
   const y = useTransform(scrollYProgress, [0, 1], parallax ? [-18, 18] : [0, 0]);
 
   return (
-    <motion.div
+    <reveal.div
       ref={ref}
       className={className}
       style={reduced || !parallax ? undefined : { y }}
@@ -47,7 +49,7 @@ function FadeInMotif({
       transition={{ duration: DURATION_S.grand + 0.2, ease: EASE.luxury }}
     >
       {children}
-    </motion.div>
+    </reveal.div>
   );
 }
 

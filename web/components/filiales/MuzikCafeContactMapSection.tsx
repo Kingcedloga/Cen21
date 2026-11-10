@@ -1,9 +1,10 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 
+import { reveal } from "@/components/motion/Reveal";
 import { googleMapsEmbedUrl } from "@/lib/map";
 import { defaultScrollViewport, fadeUpTransition, fadeUpVariants } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 import "@/styles/muzik-cafe-contact-map.css";
 
@@ -13,12 +14,12 @@ type Props = {
 };
 
 export function MuzikCafeContactMapSection({ mapQuery, subsidiaryName }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const embedUrl = googleMapsEmbedUrl(mapQuery);
 
   return (
     <section className="muzik-contact-map">
-      <motion.div
+      <reveal.div
         className="muzik-contact-map__map-clip"
         initial={reduced ? false : "hidden"}
         whileInView={reduced ? undefined : "visible"}
@@ -35,7 +36,7 @@ export function MuzikCafeContactMapSection({ mapQuery, subsidiaryName }: Props) 
           allowFullScreen
           aria-hidden="true"
         />
-      </motion.div>
+      </reveal.div>
     </section>
   );
 }

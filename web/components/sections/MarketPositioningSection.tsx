@@ -25,11 +25,8 @@ export function MarketPositioningSection({ eyebrow, title, team }: Props) {
   const trackOuterRef = useRef<HTMLDivElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-80px 0px" });
 
-  const [mounted, setMounted] = useState(false);
   const [containerWidth, setContainerWidth] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
     const el = trackOuterRef.current;
@@ -41,19 +38,21 @@ export function MarketPositioningSection({ eyebrow, title, team }: Props) {
     return () => ro.disconnect();
   }, []);
 
+  // Largeur mesurée (après le montage) : avant, rendu identique au HTML serveur.
+  const mounted = containerWidth > 0;
   const visibleCount = !mounted ? 3 : containerWidth < 768 ? 1 : 3;
   const cardWidth = mounted && containerWidth > 0
     ? (containerWidth - GAP_PX * (visibleCount - 1)) / visibleCount
     : 0;
   const maxIndex = Math.max(team.length - visibleCount, 0);
   const numDots = maxIndex + 1;
+  // Borné au rendu : après un redimensionnement, l'index peut dépasser le maximum.
+  const activeIndex = Math.min(currentIndex, maxIndex);
 
   // Re-scroll when card dimensions change (resize)
   useEffect(() => {
     if (!trackOuterRef.current || cardWidth <= 0) return;
-    const clamped = Math.min(currentIndex, maxIndex);
-    if (clamped !== currentIndex) setCurrentIndex(clamped);
-    trackOuterRef.current.scrollLeft = clamped * (cardWidth + GAP_PX);
+    trackOuterRef.current.scrollLeft = activeIndex * (cardWidth + GAP_PX);
   }, [cardWidth, maxIndex]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Sync dots with native scroll position
@@ -167,9 +166,9 @@ export function MarketPositioningSection({ eyebrow, title, team }: Props) {
               <button
                 key={i}
                 role="tab"
-                aria-selected={i === currentIndex}
+                aria-selected={i === activeIndex}
                 aria-label={`Slide ${i + 1}`}
-                className={`mp-dot${i === currentIndex ? " mp-dot--active" : ""}`}
+                className={`mp-dot${i === activeIndex ? " mp-dot--active" : ""}`}
                 onClick={() => goTo(i)}
               />
             ))}

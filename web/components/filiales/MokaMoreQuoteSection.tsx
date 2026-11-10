@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
+import { reveal } from "@/components/motion/Reveal";
 import { Star } from "@/lib/icons";
 import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 import "@/styles/moka-more-quote-section.css";
 
@@ -15,7 +16,7 @@ type Props = {
 };
 
 export function MokaMoreQuoteSection({ leftImage, rightImage }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const t = useTranslations("subsidiaries");
 
   const lineMotion = (i: number) =>
@@ -30,7 +31,7 @@ export function MokaMoreQuoteSection({ leftImage, rightImage }: Props) {
 
   return (
     <section className="moka-quote">
-      <motion.div
+      <reveal.div
         className="moka-quote__photo moka-quote__photo--left"
         aria-hidden="true"
         initial={reduced ? false : { opacity: 0, x: -40 }}
@@ -39,9 +40,9 @@ export function MokaMoreQuoteSection({ leftImage, rightImage }: Props) {
         transition={{ duration: DURATION_S.luxe, ease: EASE.luxury }}
       >
         <Image src={leftImage} alt="" fill className="moka-quote__photo-img" sizes="22vw" />
-      </motion.div>
+      </reveal.div>
 
-      <motion.div
+      <reveal.div
         className="moka-quote__photo moka-quote__photo--right"
         aria-hidden="true"
         initial={reduced ? false : { opacity: 0, x: 40 }}
@@ -50,7 +51,7 @@ export function MokaMoreQuoteSection({ leftImage, rightImage }: Props) {
         transition={{ duration: DURATION_S.luxe, ease: EASE.luxury }}
       >
         <Image src={rightImage} alt="" fill className="moka-quote__photo-img" sizes="22vw" />
-      </motion.div>
+      </reveal.div>
 
       <div className="moka-quote__content">
         <p className="moka-quote__date-line">
@@ -60,7 +61,7 @@ export function MokaMoreQuoteSection({ leftImage, rightImage }: Props) {
           <span aria-hidden="true">·</span>
         </p>
 
-        <motion.svg
+        <reveal.svg
           className="moka-quote__ornament"
           viewBox="0 0 300 40"
           fill="none"
@@ -79,18 +80,18 @@ export function MokaMoreQuoteSection({ leftImage, rightImage }: Props) {
           />
           <line x1="180" y1="20" x2="263" y2="20" stroke="currentColor" strokeWidth="1" />
           <path d="M272 20c0-9-9-9-9 0s9 9 9 0" stroke="currentColor" strokeWidth="1.2" />
-        </motion.svg>
+        </reveal.svg>
 
         <h2 className="moka-quote__title">
-          <motion.span className="moka-quote__line moka-quote__line--strong" {...lineMotion(0)}>
+          <reveal.span className="moka-quote__line moka-quote__line--strong" {...lineMotion(0)}>
             {t("mokaMoreQuote.line1")}
-          </motion.span>
-          <motion.span className="moka-quote__line moka-quote__line--soft" {...lineMotion(1)}>
+          </reveal.span>
+          <reveal.span className="moka-quote__line moka-quote__line--soft" {...lineMotion(1)}>
             {t("mokaMoreQuote.line2")}
-          </motion.span>
-          <motion.span className="moka-quote__line moka-quote__line--strong" {...lineMotion(2)}>
+          </reveal.span>
+          <reveal.span className="moka-quote__line moka-quote__line--strong" {...lineMotion(2)}>
             {t("mokaMoreQuote.line3")}
-          </motion.span>
+          </reveal.span>
         </h2>
       </div>
     </section>

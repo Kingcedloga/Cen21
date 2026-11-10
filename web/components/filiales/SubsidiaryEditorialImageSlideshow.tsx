@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useReducedMotion } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
+
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 export type EditorialSlide = {
   src: string;
@@ -24,7 +25,7 @@ export function SubsidiaryEditorialImageSlideshow({
   const list = slides.filter((s) => s.src);
   const len = list.length;
   const [index, setIndex] = useState(0);
-  const reduced = useReducedMotion() ?? false;
+  const reduced = useReducedMotionSafe();
   const safeIndex = len ? index % len : 0;
 
   const next = useCallback(() => {
@@ -63,7 +64,6 @@ export function SubsidiaryEditorialImageSlideshow({
             className="subsidiary-editorial-about__image"
             sizes={sizes}
             quality={90}
-            priority={i === 0}
           />
         </div>
       ))}

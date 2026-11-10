@@ -61,7 +61,10 @@ export function AnimateIn({
     const element = ref.current;
     if (!element || window.matchMedia(REDUCED_MOTION_QUERY).matches) return;
     if (element.getBoundingClientRect().top > window.innerHeight) {
-      controls.set("hidden");
+      // Animation instantanée et non `controls.set` : une valeur que Framer
+      // ne suivait pas encore est enregistrée sans redessiner l'élément, qui
+      // resterait visible puis disparaîtrait d'un coup avant sa révélation.
+      void controls.start("hidden", { duration: 0 });
       armed.current = true;
     }
   }, [controls]);

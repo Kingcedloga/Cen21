@@ -1,14 +1,10 @@
 "use client";
 
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import { useMemo, useRef, useState, type ReactNode } from "react";
 
+import { reveal } from "@/components/motion/Reveal";
 import { Icon } from "@/components/ui/Icon";
 import {
   EASE,
@@ -17,6 +13,7 @@ import {
   fadeUpVariants,
 } from "@/lib/motion";
 import { buildHoursSchedule } from "@/lib/subsidiary-hours";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 const HOURS_STAGGER_S = 0.06;
 
@@ -47,7 +44,7 @@ export function SubsidiaryContactBand({
   variant = "immersive",
 }: Props) {
   const sectionRef = useRef<HTMLElement>(null);
-  const reduced = useReducedMotion() ?? false;
+  const reduced = useReducedMotionSafe();
   const isStatic = variant === "static";
 
   const { scrollYProgress } = useScroll({
@@ -68,7 +65,7 @@ export function SubsidiaryContactBand({
   const phoneHref = phone ? `tel:${phone.replace(/\s/g, "")}` : undefined;
 
   const contactColumns = (
-    <motion.div
+    <reveal.div
       initial={reduced ? false : "hidden"}
       whileInView={reduced ? undefined : "visible"}
       viewport={defaultScrollViewport}
@@ -86,7 +83,7 @@ export function SubsidiaryContactBand({
         mapsUrl={mapsUrl}
         themed={themed}
       />
-    </motion.div>
+    </reveal.div>
   );
 
   return (
@@ -262,7 +259,7 @@ function HoursRevealColumn({
 }) {
   const locale = useLocale();
   const t = useTranslations("subsidiaries.contactBand");
-  const reduced = useReducedMotion() ?? false;
+  const reduced = useReducedMotionSafe();
   const hoverVisitsRef = useRef(0);
   const [expanded, setExpanded] = useState(false);
   const [animationKey, setAnimationKey] = useState(0);

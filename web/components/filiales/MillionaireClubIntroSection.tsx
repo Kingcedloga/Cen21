@@ -39,7 +39,6 @@ export function MillionaireClubIntroSection({
                 width={280}
                 height={80}
                 className="millionaire-intro__logo"
-                priority
                 sizes="(max-width: 767px) 52vw, 200px"
                 style={{
                   filter: `drop-shadow(0 4px 28px ${accentColor}44)`,

@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useCallback, type FormEvent } from "react";
 
+import { reveal } from "@/components/motion/Reveal";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Toast, ToastViewport } from "@/components/ui/Toast";
 import { Calendar, Clock, Mail, Phone, User, Users } from "@/lib/icons";
@@ -75,7 +75,7 @@ export function MuzikCafeReservationSection({ backgroundImage, subsidiaryName, p
               const Icon = field.icon;
               const label = t(`muzikCafeReservation.${field.key}`);
               return (
-                <motion.div
+                <reveal.div
                   key={field.key}
                   className="muzik-reservation__field"
                   initial={{ opacity: 0, y: 24 }}
@@ -92,13 +92,13 @@ export function MuzikCafeReservationSection({ backgroundImage, subsidiaryName, p
                     aria-label={label}
                     className="muzik-reservation__input"
                   />
-                </motion.div>
+                </reveal.div>
               );
             })}
           </div>
 
           {phone ? (
-            <motion.a
+            <reveal.a
               href={`tel:${phone.replace(/\s/g, "")}`}
               className="muzik-reservation__cta"
               initial={{ opacity: 0, y: 24, scale: 0.96 }}
@@ -107,9 +107,9 @@ export function MuzikCafeReservationSection({ backgroundImage, subsidiaryName, p
               transition={{ duration: DURATION_S.luxe, ease: EASE.spring, delay: 0.3 }}
             >
               {t("muzikCafeReservation.cta")}
-            </motion.a>
+            </reveal.a>
           ) : (
-            <motion.button
+            <reveal.button
               type="submit"
               className="muzik-reservation__cta"
               disabled={isSubmitting}
@@ -119,7 +119,7 @@ export function MuzikCafeReservationSection({ backgroundImage, subsidiaryName, p
               transition={{ duration: DURATION_S.luxe, ease: EASE.spring, delay: 0.3 }}
             >
               {isSubmitting ? tForm("submitting") : t("muzikCafeReservation.cta")}
-            </motion.button>
+            </reveal.button>
           )}
         </form>
       </div>

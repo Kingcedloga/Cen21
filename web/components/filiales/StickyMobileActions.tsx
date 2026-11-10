@@ -1,11 +1,13 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
+
 import { Icon } from "@/components/ui/Icon";
 import { ICON_STROKE } from "@/lib/icons";
 import { panelEnterTransition, fadeUpVariants } from "@/lib/motion";
-import { useEffect, useState } from "react";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 const SHOW_AFTER_PX = 480;
 
@@ -22,7 +24,7 @@ export function StickyMobileActions({
 }) {
   const t = useTranslations("common");
   const [visible, setVisible] = useState(false);
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   useEffect(() => {
     let ticking = false;

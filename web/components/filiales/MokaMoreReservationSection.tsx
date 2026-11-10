@@ -1,15 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useCallback, type FormEvent } from "react";
 
+import { reveal } from "@/components/motion/Reveal";
 import { Toast, ToastViewport } from "@/components/ui/Toast";
 import { IconFacebook, IconInstagram, IconLinkedin } from "@/components/ui/SocialLinks";
 import { Calendar, Clock, Mail, User, Users } from "@/lib/icons";
 import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
 import { useReservationForm } from "@/lib/use-reservation-form";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { Subsidiary } from "@/lib/types";
 
 import "@/styles/moka-more-reservation-section.css";
@@ -26,7 +27,7 @@ const FIELDS = [
 ] as const;
 
 export function MokaMoreReservationSection({ subsidiary }: { subsidiary: Subsidiary }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const t = useTranslations("subsidiaries");
   const tForm = useTranslations("form");
   const { isSubmitting, toast, setToast, submit } = useReservationForm(
@@ -57,7 +58,7 @@ export function MokaMoreReservationSection({ subsidiary }: { subsidiary: Subsidi
   return (
     <>
       <section className="moka-reservation">
-        <motion.span
+        <reveal.span
         className="moka-reservation__watermark"
         aria-hidden="true"
         initial={reduced ? false : { opacity: 0 }}
@@ -66,10 +67,10 @@ export function MokaMoreReservationSection({ subsidiary }: { subsidiary: Subsidi
         transition={{ duration: DURATION_S.grand, ease: EASE.luxury, delay: 0.1 }}
       >
         {t("mokaMoreReservation.watermark")}
-      </motion.span>
+      </reveal.span>
 
       <div className="moka-reservation__grid">
-        <motion.div
+        <reveal.div
           className="moka-reservation__form-col"
           initial={reduced ? false : { opacity: 0, x: -40 }}
           whileInView={reduced ? undefined : { opacity: 1, x: 0 }}
@@ -90,7 +91,7 @@ export function MokaMoreReservationSection({ subsidiary }: { subsidiary: Subsidi
               const Icon = field.icon;
               const label = t(`mokaMoreReservation.${field.key}Field`);
               return (
-                <motion.div
+                <reveal.div
                   key={field.key}
                   className="moka-reservation__field"
                   initial={reduced ? false : { opacity: 0, y: 16 }}
@@ -107,16 +108,16 @@ export function MokaMoreReservationSection({ subsidiary }: { subsidiary: Subsidi
                     aria-label={label}
                     className="moka-reservation__input"
                   />
-                </motion.div>
+                </reveal.div>
               );
             })}
             <button type="submit" className="moka-reservation__submit" disabled={isSubmitting}>
               {isSubmitting ? tForm("submitting") : t("mokaMoreReservation.submitLabel")}
             </button>
           </form>
-        </motion.div>
+        </reveal.div>
 
-        <motion.div
+        <reveal.div
           className="moka-reservation__photo-col"
           initial={reduced ? false : { opacity: 0, scale: 0.95 }}
           whileInView={reduced ? undefined : { opacity: 1, scale: 1 }}
@@ -130,9 +131,9 @@ export function MokaMoreReservationSection({ subsidiary }: { subsidiary: Subsidi
             className="moka-reservation__photo"
             sizes="(max-width: 899px) 90vw, 30vw"
           />
-        </motion.div>
+        </reveal.div>
 
-        <motion.div
+        <reveal.div
           className="moka-reservation__location-col"
           initial={reduced ? false : { opacity: 0, x: 40 }}
           whileInView={reduced ? undefined : { opacity: 1, x: 0 }}
@@ -178,7 +179,7 @@ export function MokaMoreReservationSection({ subsidiary }: { subsidiary: Subsidi
               sizes="(max-width: 899px) 60vw, 16rem"
             />
           </div>
-        </motion.div>
+        </reveal.div>
       </div>
       </section>
 

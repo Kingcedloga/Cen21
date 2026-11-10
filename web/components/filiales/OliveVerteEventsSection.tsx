@@ -2,12 +2,13 @@
 
 import Image from "next/image";
 import { useState, useCallback } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { resolveEventImage } from "@/lib/event-images";
 import { EASE, DURATION_S } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { EventItem } from "@/lib/types";
 
 import "@/styles/olive-verte-events-section.css";
@@ -62,7 +63,7 @@ type Props = {
 };
 
 export function OliveVerteEventsSection({ events, fallbackImage }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const locale = useLocale() as Locale;
   const t = useTranslations("subsidiaries");
   const [page, setPage] = useState(0);

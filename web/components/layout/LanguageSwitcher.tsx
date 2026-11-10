@@ -28,7 +28,7 @@ export function LanguageSwitcher({
     if (next === locale || pending) return;
     setPending(true);
     const target = getPathname({ href: pathname, locale: next });
-    window.location.href = target;
+    window.location.assign(target);
   };
 
   const isBrand = navbarTheme !== null;

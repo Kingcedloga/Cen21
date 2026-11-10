@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState, type TouchEvent } from "react";
 
 import { cormorant } from "@/lib/fonts";
 import { BLUR_PETROL } from "@/lib/image-blur";
 import { fadeUpTransition, fadeUpVariants } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { SubsidiaryAboutSlide, SubsidiaryHeroSection } from "@/lib/types";
 
 import "@/styles/wabi-sabi-hero.css";
@@ -31,7 +32,7 @@ function resolveSlides(hero: SubsidiaryHeroSection): SubsidiaryAboutSlide[] {
 }
 
 export function WabiSabiHero({ name, hero, backgroundVideo }: Props) {
-  const reduced = useReducedMotion() ?? false;
+  const reduced = useReducedMotionSafe();
   const slides = resolveSlides(hero);
   const intervalMs = hero.slideIntervalMs ?? DEFAULT_INTERVAL_MS;
   const [index, setIndex] = useState(0);
@@ -147,7 +148,8 @@ export function WabiSabiHero({ name, hero, backgroundVideo }: Props) {
                       src={slide.src}
                       alt={slide.alt}
                       fill
-                      priority={slideIndex === 0}
+                      loading={slideIndex === 0 ? "eager" : "lazy"}
+                      fetchPriority={slideIndex === 0 ? "high" : "auto"}
                       placeholder="blur"
                       blurDataURL={BLUR_PETROL}
                       className="wabi-sabi-hero__media"

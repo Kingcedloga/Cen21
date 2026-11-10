@@ -1,15 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useCallback, useRef, useState } from "react";
 
 import { Link } from "@/i18n/navigation";
 import { MexicanMotifs } from "@/components/filiales/MexicanMotifs";
+import { reveal } from "@/components/motion/Reveal";
 import { ArrowUpRight } from "@/lib/icons";
 import { galleryEntrySrc } from "@/lib/gallery-categories";
 import { DURATION_S, EASE } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { Subsidiary } from "@/lib/types";
 
 import "@/styles/gourmet-mexicana-hero.css";
@@ -18,7 +20,7 @@ const EXTRA_DISH_PHOTO =
   "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=800&q=80";
 
 export function GourmetMexicanaHero({ subsidiary }: { subsidiary: Subsidiary }) {
-  const reduced = useReducedMotion() ?? false;
+  const reduced = useReducedMotionSafe();
   const t = useTranslations("subsidiaries");
   const sectionRef = useRef<HTMLElement>(null);
   const [activeIndex, setActiveIndex] = useState(2);
@@ -77,7 +79,7 @@ export function GourmetMexicanaHero({ subsidiary }: { subsidiary: Subsidiary }) 
 
           <div className="mex-hero__thumbnails">
             {thumbnails.map((src, i) => (
-              <motion.button
+              <reveal.button
                 key={i}
                 type="button"
                 className={`mex-hero__thumb${i === activeIndex ? " mex-hero__thumb--active" : ""}`}
@@ -90,7 +92,7 @@ export function GourmetMexicanaHero({ subsidiary }: { subsidiary: Subsidiary }) 
                 transition={{ duration: DURATION_S.base, ease: EASE.luxury, delay: i * 0.1 }}
               >
                 <Image src={src} alt="" fill sizes="4rem" className="mex-hero__thumb-photo" />
-              </motion.button>
+              </reveal.button>
             ))}
           </div>
         </div>
@@ -122,7 +124,8 @@ export function GourmetMexicanaHero({ subsidiary }: { subsidiary: Subsidiary }) 
                 src={thumbnails[activeIndex]}
                 alt={subsidiary.name}
                 fill
-                priority
+                loading="eager"
+                fetchPriority="high"
                 className="mex-hero__circle-photo"
                 sizes="(max-width: 899px) 80vw, 40vw"
               />

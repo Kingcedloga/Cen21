@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { Ticket } from "@/lib/icons";
 import { useLocale } from "next-intl";
 import { useRef, useState } from "react";
 
+import { reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
@@ -87,7 +87,7 @@ export function SubsidiaryEventShowcase({ events, labels, desktopColumns }: Prop
           const imageSrc = resolveEventImage(event, subsidiary?.coverImage);
 
           return (
-            <motion.article
+            <reveal.article
               key={event.id}
               className={`subsidiary-event-showcase__card${isActive ? " is-active" : ""}`}
               onMouseEnter={() => setActiveId(event.id)}
@@ -149,7 +149,7 @@ export function SubsidiaryEventShowcase({ events, labels, desktopColumns }: Prop
                 <p className="subsidiary-event-showcase__weekday">{parts.weekday}</p>
                 <p className="subsidiary-event-showcase__time">{parts.time}</p>
               </div>
-            </motion.article>
+            </reveal.article>
           );
         })}
       </div>

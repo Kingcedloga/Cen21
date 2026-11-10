@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useReducedMotion } from "framer-motion";
 import { useMemo, type CSSProperties } from "react";
 
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { SubsidiaryHrefLink } from "@/components/navigation/SubsidiaryHrefLink";
 import { cormorant } from "@/lib/fonts";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { SubsidiaryLinkTarget } from "@/lib/subsidiary-links";
 
 import "@/styles/wabi-sabi-beige-band.css";
@@ -73,7 +73,7 @@ export function WabiSabiEstablishmentsSection({
   variant = "wabi-sabi",
   decorativeSlot,
 }: Props) {
-  const reduced = useReducedMotion() ?? false;
+  const reduced = useReducedMotionSafe();
   const list = subsidiaries.filter((s) => s.brandLogo);
 
   const durationSeconds = useMemo(

@@ -1,13 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { reveal } from "@/components/motion/Reveal";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { ArrowLeft, ArrowRight, X } from "@/lib/icons";
 import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 import "@/styles/moka-more-gallery-section.css";
 
@@ -19,7 +21,7 @@ type Props = {
 };
 
 export function MokaMoreGallerySection({ photos }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const t = useTranslations("subsidiaries");
   const trackRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -91,7 +93,7 @@ export function MokaMoreGallerySection({ photos }: Props) {
         <p className="moka-gallery__description">{t("mokaMoreGallery.description")}</p>
       </AnimateIn>
 
-      <motion.span
+      <reveal.span
         className="moka-gallery__watermark"
         aria-hidden="true"
         initial={reduced ? false : { opacity: 0 }}
@@ -100,7 +102,7 @@ export function MokaMoreGallerySection({ photos }: Props) {
         transition={{ duration: DURATION_S.grand, ease: EASE.luxury, delay: 0.1 }}
       >
         {t("mokaMoreGallery.watermark")}
-      </motion.span>
+      </reveal.span>
 
       <div
         className="moka-gallery__track"
@@ -111,7 +113,7 @@ export function MokaMoreGallerySection({ photos }: Props) {
         onBlur={startAutoScroll}
       >
         {photos.map((photo, i) => (
-          <motion.div
+          <reveal.div
             key={photo + i}
             className={`moka-gallery__item moka-gallery__item--${i % 4}`}
             role="button"
@@ -132,7 +134,7 @@ export function MokaMoreGallerySection({ photos }: Props) {
               sizes="(max-width: 767px) 60vw, 22vw"
             />
             <span className="moka-gallery__overlay" aria-hidden="true" />
-          </motion.div>
+          </reveal.div>
         ))}
       </div>
 
@@ -165,7 +167,7 @@ export function MokaMoreGallerySection({ photos }: Props) {
                   fill
                   className="moka-lightbox__image"
                   sizes="(max-width: 767px) 95vw, 70vw"
-                  priority
+                  loading="eager"
                 />
               </div>
             </motion.div>

@@ -105,17 +105,6 @@ export function KLoungeMarqueeGallery({ items, title, description, eyebrow }: Pr
     };
   }, [openId]);
 
-  // Escape key closes lightbox
-  useEffect(() => {
-    if (!openId) return;
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") handleClose();
-    };
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [openId]);
-
   const handleOpen = useCallback((item: GalleryItem, id: string) => {
     setOpenId(id);
     setOpenItem(item);
@@ -127,6 +116,16 @@ export function KLoungeMarqueeGallery({ items, title, description, eyebrow }: Pr
     setOpenItem(null);
     isOpenRef.current = false;
   }, []);
+
+  // Escape key closes lightbox
+  useEffect(() => {
+    if (!openId) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") handleClose();
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [openId, handleClose]);
 
   // JS-driven auto-scroll — skipped in static mode (mobile or reduced-motion)
   useEffect(() => {
@@ -327,7 +326,7 @@ export function KLoungeMarqueeGallery({ items, title, description, eyebrow }: Pr
                 fill
                 className="object-cover"
                 sizes="(max-width: 639px) 90vw, 28rem"
-                priority
+                loading="eager"
               />
             </motion.figure>
           </motion.div>

@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useCallback, useRef, useState } from "react";
 
 import { ChevronLeft, ChevronRight } from "@/lib/icons";
 import { DURATION_S, EASE } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { Subsidiary } from "@/lib/types";
 
 import "@/styles/pinkberry-hero.css";
@@ -46,7 +47,7 @@ const MOTIF_POSITIONS = [
 ] as const;
 
 export function PinkberryHero({ subsidiary }: { subsidiary: Subsidiary }) {
-  const reduced = useReducedMotion() ?? false;
+  const reduced = useReducedMotionSafe();
   const t = useTranslations("subsidiaries");
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -171,7 +172,8 @@ export function PinkberryHero({ subsidiary }: { subsidiary: Subsidiary }) {
                 src={images[active]}
                 alt={subsidiary.name}
                 fill
-                priority={active === 0}
+                loading="eager"
+                fetchPriority={active === 0 ? "high" : "auto"}
                 className="pinkberry-hero__image"
                 sizes="(max-width: 767px) 78vw, (max-width: 1023px) 50vw, 40rem"
               />

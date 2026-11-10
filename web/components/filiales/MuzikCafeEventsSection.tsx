@@ -1,17 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useRef } from "react";
 
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
+import { reveal } from "@/components/motion/Reveal";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { ArrowLeft, ArrowRight, Calendar, ChatCircle } from "@/lib/icons";
 import { resolveEventImage } from "@/lib/event-images";
 import { cormorant } from "@/lib/fonts";
 import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { EventItem } from "@/lib/types";
 
 import "@/styles/muzik-cafe-events-section.css";
@@ -41,7 +42,7 @@ type Props = {
 };
 
 export function MuzikCafeEventsSection({ events, title, ctaLabel, fallbackImage }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const locale = useLocale() as Locale;
   const t = useTranslations("subsidiaries");
   const trackRef = useRef<HTMLDivElement>(null);
@@ -78,7 +79,7 @@ export function MuzikCafeEventsSection({ events, title, ctaLabel, fallbackImage 
 
         <div className="muzik-events__track" ref={trackRef}>
           {events.map((event, i) => (
-            <motion.article
+            <reveal.article
               key={event.id}
               className="muzik-events__card"
               initial={reduced ? false : { opacity: 0, y: 24 }}
@@ -112,7 +113,7 @@ export function MuzikCafeEventsSection({ events, title, ctaLabel, fallbackImage 
                   {ctaLabel}
                 </Link>
               </div>
-            </motion.article>
+            </reveal.article>
           ))}
         </div>
 

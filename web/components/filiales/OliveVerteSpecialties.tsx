@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import type { SubsidiarySpecialtiesSection } from "@/lib/types";
 import { defaultScrollViewport, DURATION_S, EASE } from "@/lib/motion";
 import { OliveMotifs } from "@/components/filiales/OliveMotifs";
+import { reveal } from "@/components/motion/Reveal";
 import "@/styles/olive-verte-specialties.css";
 
 const MOTIFS = [
@@ -66,7 +67,7 @@ export function OliveVerteSpecialties({ content }: Props) {
       </div>
 
       {/* En-tête */}
-      <motion.div
+      <reveal.div
         className="olive-specialties__header"
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -76,7 +77,7 @@ export function OliveVerteSpecialties({ content }: Props) {
         <p className="olive-specialties__eyebrow">{content.eyebrow}</p>
         <h2 className="olive-specialties__title">{content.title}</h2>
         <p className="olive-specialties__description">{content.description}</p>
-      </motion.div>
+      </reveal.div>
 
       {/* Blocs alternés */}
       <div className="olive-specialties__rows">
@@ -91,7 +92,7 @@ export function OliveVerteSpecialties({ content }: Props) {
               className={`olive-specialties__row${isReverse ? " olive-specialties__row--reverse" : ""}`}
             >
               {/* Photo */}
-              <motion.div
+              <reveal.div
                 className="olive-specialties__image-wrap"
                 initial={{ opacity: 0, x: imageX }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -105,10 +106,10 @@ export function OliveVerteSpecialties({ content }: Props) {
                   className="olive-specialties__image"
                   sizes="(max-width: 767px) 100vw, 500px"
                 />
-              </motion.div>
+              </reveal.div>
 
               {/* Texte */}
-              <motion.div
+              <reveal.div
                 className="olive-specialties__text"
                 initial={{ opacity: 0, x: textX }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -117,7 +118,7 @@ export function OliveVerteSpecialties({ content }: Props) {
               >
                 <h3 className="olive-specialties__row-title">{row.title}</h3>
                 <p className="olive-specialties__row-description">{row.description}</p>
-              </motion.div>
+              </reveal.div>
             </div>
           );
         })}

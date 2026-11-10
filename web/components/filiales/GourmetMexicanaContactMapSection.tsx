@@ -1,12 +1,13 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
+import { reveal } from "@/components/motion/Reveal";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { MapPin } from "@/lib/icons";
 import { googleMapsEmbedUrl } from "@/lib/map";
 import { defaultScrollViewport, fadeUpTransition, fadeUpVariants } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 import "@/styles/gourmet-mexicana-contact-map.css";
 
@@ -16,7 +17,7 @@ type Props = {
 };
 
 export function GourmetMexicanaContactMapSection({ mapQuery, mapsUrl }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const t = useTranslations("subsidiaries");
   const embedUrl = googleMapsEmbedUrl(mapQuery);
 
@@ -39,7 +40,7 @@ export function GourmetMexicanaContactMapSection({ mapQuery, mapsUrl }: Props) {
           </a>
         </AnimateIn>
 
-        <motion.div
+        <reveal.div
           className="mex-map__clip"
           initial={reduced ? false : "hidden"}
           whileInView={reduced ? undefined : "visible"}
@@ -56,7 +57,7 @@ export function GourmetMexicanaContactMapSection({ mapQuery, mapsUrl }: Props) {
             allowFullScreen
             aria-hidden="true"
           />
-        </motion.div>
+        </reveal.div>
       </div>
     </section>
   );

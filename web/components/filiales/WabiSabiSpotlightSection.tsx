@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
 
+import { reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
 import { cormorant } from "@/lib/fonts";
 import { BLUR_PETROL } from "@/lib/image-blur";
 import { fadeUpTransition, fadeUpVariants } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { SubsidiarySpotlightSection } from "@/lib/types";
 
 import "@/styles/wabi-sabi-spotlight.css";
@@ -16,7 +17,7 @@ type Props = {
 };
 
 export function WabiSabiSpotlightSection({ content }: Props) {
-  const reduced = useReducedMotion() ?? false;
+  const reduced = useReducedMotionSafe();
   const { title, description, cta, image, imageAlt } = content;
 
   const motionProps = reduced
@@ -43,7 +44,7 @@ export function WabiSabiSpotlightSection({ content }: Props) {
 
       <div className="wabi-spotlight__inner">
         <div className="wabi-spotlight__grid">
-          <motion.div className="wabi-spotlight__content" {...motionProps}>
+          <reveal.div className="wabi-spotlight__content" {...motionProps}>
             <h2 id="wabi-spotlight-title" className="wabi-spotlight__title">
               {title}
             </h2>
@@ -59,9 +60,9 @@ export function WabiSabiSpotlightSection({ content }: Props) {
             >
               {cta.label}
             </Button>
-          </motion.div>
+          </reveal.div>
 
-          <motion.div
+          <reveal.div
             className="wabi-spotlight__visual"
             {...motionProps}
             transition={{ ...fadeUpTransition, delay: reduced ? 0 : 0.1 }}
@@ -78,7 +79,7 @@ export function WabiSabiSpotlightSection({ content }: Props) {
                 blurDataURL={BLUR_PETROL}
               />
             </figure>
-          </motion.div>
+          </reveal.div>
         </div>
       </div>
     </section>

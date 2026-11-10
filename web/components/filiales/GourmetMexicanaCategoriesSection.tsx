@@ -1,14 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useCallback, useRef, useState } from "react";
 
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { MexicanMotifs } from "@/components/filiales/MexicanMotifs";
+import { reveal } from "@/components/motion/Reveal";
 import { ArrowLeft, ArrowRight } from "@/lib/icons";
 import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 import "@/styles/gourmet-mexicana-categories.css";
 
@@ -23,7 +24,7 @@ const CATEGORIES = [
 ] as const;
 
 export function GourmetMexicanaCategoriesSection() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const t = useTranslations("subsidiaries");
   const trackRef = useRef<HTMLDivElement>(null);
   const [activeKey, setActiveKey] = useState<string | null>(null);
@@ -57,7 +58,7 @@ export function GourmetMexicanaCategoriesSection() {
 
           <div className="mex-categories__track" ref={trackRef}>
             {CATEGORIES.map((cat, i) => (
-              <motion.button
+              <reveal.button
                 key={cat.key}
                 type="button"
                 className={`mex-categories__card${activeKey === cat.key ? " mex-categories__card--active" : ""}`}
@@ -89,7 +90,7 @@ export function GourmetMexicanaCategoriesSection() {
                     />
                   </svg>
                 </span>
-              </motion.button>
+              </reveal.button>
             ))}
           </div>
 

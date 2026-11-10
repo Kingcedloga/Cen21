@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { toastIcons, X } from "@/lib/icons";
 import { useEffect } from "react";
 
@@ -8,6 +8,7 @@ import {
   toastEnterTransition,
   toastVariants,
 } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 export type ToastVariant = "success" | "error";
 
@@ -40,7 +41,7 @@ export function Toast({
   onClose: () => void;
   duration?: number;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const { ring, icon: Icon, iconClass } = VARIANT_STYLES[variant];
 
   useEffect(() => {

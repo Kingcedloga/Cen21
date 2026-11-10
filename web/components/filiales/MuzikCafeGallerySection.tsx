@@ -1,14 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { reveal } from "@/components/motion/Reveal";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { ArrowLeft, ArrowRight, ShoppingCart, X } from "@/lib/icons";
 import { cormorant } from "@/lib/fonts";
 import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { SubsidiaryMuzikGallerySection } from "@/lib/types";
 
 import "@/styles/muzik-cafe-gallery-section.css";
@@ -20,7 +22,7 @@ type Props = {
 };
 
 export function MuzikCafeGallerySection({ content }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const t = useTranslations("subsidiaries");
   const trackRef = useRef<HTMLDivElement>(null);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -86,7 +88,7 @@ export function MuzikCafeGallerySection({ content }: Props) {
 
         <div className="muzik-gallery__track" ref={trackRef}>
           {content.items.map((item, i) => (
-            <motion.div
+            <reveal.div
               key={item.name}
               className="muzik-gallery__card"
               initial={reduced ? false : { opacity: 0, y: 24 }}
@@ -114,7 +116,7 @@ export function MuzikCafeGallerySection({ content }: Props) {
               >
                 <ShoppingCart size={16} weight="fill" aria-hidden="true" />
               </button>
-            </motion.div>
+            </reveal.div>
           ))}
         </div>
 
@@ -161,7 +163,7 @@ export function MuzikCafeGallerySection({ content }: Props) {
                   fill
                   className="muzik-lightbox__image"
                   sizes="(max-width: 767px) 95vw, 70vw"
-                  priority
+                  loading="eager"
                 />
               </div>
               <div className="muzik-lightbox__meta">

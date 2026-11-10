@@ -1,14 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 
+import { reveal } from "@/components/motion/Reveal";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { resolveEventImage } from "@/lib/event-images";
 import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { EventItem } from "@/lib/types";
 
 import "@/styles/pinkberry-news-section.css";
@@ -28,7 +29,7 @@ type Props = {
 };
 
 export function PinkberryEventsSection({ events, backgroundImage, fallbackImage }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const locale = useLocale() as Locale;
   const t = useTranslations("subsidiaries");
 
@@ -54,7 +55,7 @@ export function PinkberryEventsSection({ events, backgroundImage, fallbackImage 
 
       <div className="pinkberry-news__grid">
         {events.map((event, i) => (
-          <motion.article
+          <reveal.article
             key={event.id}
             className="pinkberry-news__card"
             initial={reduced ? false : { opacity: 0, y: 24 }}
@@ -67,7 +68,7 @@ export function PinkberryEventsSection({ events, backgroundImage, fallbackImage 
             }}
           >
             <div className="pinkberry-news__card-image-wrap">
-              <motion.span
+              <reveal.span
                 className="pinkberry-news__badge"
                 initial={reduced ? false : { opacity: 0, scale: 0.9 }}
                 whileInView={reduced ? undefined : { opacity: 1, scale: 1 }}
@@ -79,7 +80,7 @@ export function PinkberryEventsSection({ events, backgroundImage, fallbackImage 
                 }}
               >
                 {t("pinkberryEvents.badgeLabel")}
-              </motion.span>
+              </reveal.span>
               <Image
                 src={resolveEventImage(event, fallbackImage)}
                 alt={event.title}
@@ -98,7 +99,7 @@ export function PinkberryEventsSection({ events, backgroundImage, fallbackImage 
                 {t("pinkberryEvents.ctaLabel")}
               </Link>
             </div>
-          </motion.article>
+          </reveal.article>
         ))}
       </div>
     </section>

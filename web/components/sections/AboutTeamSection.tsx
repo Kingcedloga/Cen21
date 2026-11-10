@@ -56,14 +56,9 @@ export function AboutTeamSection({
   const trackOuterRef = useRef<HTMLDivElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-60px 0px" });
 
-  const [mounted, setMounted] = useState(false);
   const [containerWidth, setContainerWidth] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeBioMember, setActiveBioMember] = useState<TeamMember | null>(null);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Mesure réactive de la largeur du container
   useEffect(() => {
@@ -75,6 +70,9 @@ export function AboutTeamSection({
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
+
+  // Largeur mesurée (après le montage) : avant, rendu identique au HTML serveur.
+  const mounted = containerWidth > 0;
 
   // Détermination du nombre de cartes visibles selon le breakpoint
   const isMobile = mounted && containerWidth < 640;
@@ -91,13 +89,13 @@ export function AboutTeamSection({
 
   const maxIndex = Math.max(members.length - visibleCount, 0);
   const numDots = maxIndex + 1;
+  // Borné au rendu : après un redimensionnement, l'index peut dépasser le maximum.
+  const activeIndex = Math.min(currentIndex, maxIndex);
 
   // Recale le défilement au redimensionnement
   useEffect(() => {
     if (!trackOuterRef.current || cardWidth <= 0) return;
-    const clamped = Math.min(currentIndex, maxIndex);
-    if (clamped !== currentIndex) setCurrentIndex(clamped);
-    trackOuterRef.current.scrollLeft = clamped * (cardWidth + GAP_PX);
+    trackOuterRef.current.scrollLeft = activeIndex * (cardWidth + GAP_PX);
   }, [cardWidth, maxIndex]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Synchronisation de l'index actif lors du scroll natif / swipe
@@ -219,7 +217,7 @@ export function AboutTeamSection({
             transition={{ duration: 0.7, ease: EASE.luxury, delay: 0.2 }}
           >
             <div className="hidden sm:flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-[#8c6721]">
-              <span>{String(currentIndex + 1).padStart(2, "0")}</span>
+              <span>{String(activeIndex + 1).padStart(2, "0")}</span>
               <span className="text-[#a67c33]/40">/</span>
               <span>{String(members.length).padStart(2, "0")}</span>
             </div>
@@ -227,8 +225,8 @@ export function AboutTeamSection({
             <div className="ats-nav-btns ml-auto">
               <button
                 type="button"
-                onClick={() => goTo(currentIndex - 1)}
-                disabled={currentIndex === 0}
+                onClick={() => goTo(activeIndex - 1)}
+                disabled={activeIndex === 0}
                 aria-label={isFrench ? "Dirigeant précédent" : "Previous leader"}
                 className="ats-nav-btn"
               >
@@ -236,8 +234,8 @@ export function AboutTeamSection({
               </button>
               <button
                 type="button"
-                onClick={() => goTo(currentIndex + 1)}
-                disabled={currentIndex >= maxIndex}
+                onClick={() => goTo(activeIndex + 1)}
+                disabled={activeIndex >= maxIndex}
                 aria-label={isFrench ? "Dirigeant suivant" : "Next leader"}
                 className="ats-nav-btn"
               >
@@ -337,9 +335,9 @@ export function AboutTeamSection({
                 key={i}
                 type="button"
                 role="tab"
-                aria-selected={i === currentIndex}
+                aria-selected={i === activeIndex}
                 aria-label={`Slide ${i + 1}`}
-                className={`ats-dot${i === currentIndex ? " ats-dot--active" : ""}`}
+                className={`ats-dot${i === activeIndex ? " ats-dot--active" : ""}`}
                 onClick={() => goTo(i)}
               />
             ))}

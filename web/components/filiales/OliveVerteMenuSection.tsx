@@ -10,6 +10,7 @@ import { defaultScrollViewport, DURATION_S, EASE } from "@/lib/motion";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import type { SubsidiaryMenuCategoriesSection } from "@/lib/types";
 import { OliveMotifs } from "@/components/filiales/OliveMotifs";
+import { reveal } from "@/components/motion/Reveal";
 
 import "@/styles/olive-verte-menu-section.css";
 
@@ -59,7 +60,7 @@ export function OliveVerteMenuSection({ content }: Props) {
             {content.categories.map((category, i) => {
               const isActive = category.id === activeCategory.id;
               return (
-                <motion.button
+                <reveal.button
                   key={category.id}
                   type="button"
                   className={`olive-menu__category${isActive ? " olive-menu__category--active" : ""}`}
@@ -72,7 +73,7 @@ export function OliveVerteMenuSection({ content }: Props) {
                 >
                   <span>{category.label}</span>
                   <ChevronRight size={16} aria-hidden="true" />
-                </motion.button>
+                </reveal.button>
               );
             })}
           </nav>

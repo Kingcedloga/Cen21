@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
 
+import { reveal } from "@/components/motion/Reveal";
 import { cormorant } from "@/lib/fonts";
 import { fadeUpTransition, fadeUpVariants } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { SubsidiaryPhilosophySection } from "@/lib/types";
 
 import "@/styles/wabi-sabi-philosophy.css";
@@ -22,7 +23,7 @@ export function WabiSabiPhilosophySection({
   content,
   sectionLabel,
 }: Props) {
-  const reduced = useReducedMotion() ?? false;
+  const reduced = useReducedMotionSafe();
   const { quote, attribution } = content;
 
   const motionProps = reduced
@@ -45,7 +46,7 @@ export function WabiSabiPhilosophySection({
         <span className="wabi-sabi-philosophy__grain" />
       </div>
 
-      <motion.div className="wabi-sabi-philosophy__inner" {...motionProps}>
+      <reveal.div className="wabi-sabi-philosophy__inner" {...motionProps}>
         <h2 id="wabi-sabi-philosophy-title" className="sr-only">
           {sectionLabel}
         </h2>
@@ -73,7 +74,7 @@ export function WabiSabiPhilosophySection({
         <p className="wabi-sabi-philosophy__signature">{attribution}</p>
 
         <span className="wabi-sabi-philosophy__divider" aria-hidden />
-      </motion.div>
+      </reveal.div>
     </section>
   );
 }

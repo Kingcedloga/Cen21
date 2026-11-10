@@ -1,8 +1,9 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { DURATION_S } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 const SHAPES = ["circle", "dot", "wave"] as const;
 
@@ -26,7 +27,7 @@ const POSITIONS = [
 
 /** Motifs décoratifs du hero L'Olive Verte — réutilise les classes CSS existantes. */
 export function OliveVerteMotifs() {
-  const reduced = useReducedMotion() ?? false;
+  const reduced = useReducedMotionSafe();
 
   return (
     <div className="olive-hero__motifs" aria-hidden="true">

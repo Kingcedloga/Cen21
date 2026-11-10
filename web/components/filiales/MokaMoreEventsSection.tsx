@@ -1,16 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useRef } from "react";
 
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
+import { reveal } from "@/components/motion/Reveal";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { ArrowLeft, ArrowRight, Calendar, Eye } from "@/lib/icons";
 import { resolveEventImage } from "@/lib/event-images";
 import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { EventItem } from "@/lib/types";
 
 import "@/styles/moka-more-events-section.css";
@@ -37,7 +38,7 @@ type Props = {
 };
 
 export function MokaMoreEventsSection({ events, fallbackImage }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const locale = useLocale() as Locale;
   const t = useTranslations("subsidiaries");
   const trackRef = useRef<HTMLDivElement>(null);
@@ -53,7 +54,7 @@ export function MokaMoreEventsSection({ events, fallbackImage }: Props) {
 
   return (
     <section className="moka-events">
-      <motion.span
+      <reveal.span
         className="moka-events__watermark"
         aria-hidden="true"
         initial={reduced ? false : { opacity: 0 }}
@@ -62,7 +63,7 @@ export function MokaMoreEventsSection({ events, fallbackImage }: Props) {
         transition={{ duration: DURATION_S.grand, ease: EASE.luxury, delay: 0.1 }}
       >
         {t("mokaMoreEvents.watermark")}
-      </motion.span>
+      </reveal.span>
 
       {/* Ligne courbe calligraphique — coin haut gauche */}
       <div className="moka-events__motif-curve" aria-hidden="true">
@@ -99,7 +100,7 @@ export function MokaMoreEventsSection({ events, fallbackImage }: Props) {
 
           <div className="moka-events__track" ref={trackRef}>
             {events.map((event, i) => (
-              <motion.article
+              <reveal.article
                 key={event.id}
                 className="moka-events__card"
                 initial={reduced ? false : { opacity: 0, y: 24 }}
@@ -115,7 +116,7 @@ export function MokaMoreEventsSection({ events, fallbackImage }: Props) {
                     className="moka-events__photo"
                     sizes="(max-width: 767px) 40vw, 16rem"
                   />
-                  <motion.span
+                  <reveal.span
                     className="moka-events__badge"
                     initial={reduced ? false : { opacity: 0, scale: 0.9 }}
                     whileInView={reduced ? undefined : { opacity: 1, scale: 1 }}
@@ -123,7 +124,7 @@ export function MokaMoreEventsSection({ events, fallbackImage }: Props) {
                     transition={{ duration: DURATION_S.base, ease: EASE.spring, delay: i * 0.08 + 0.1 }}
                   >
                     {t("mokaMoreEvents.badgeLabel")}
-                  </motion.span>
+                  </reveal.span>
                 </div>
                 <div className="moka-events__content">
                   <div className="moka-events__meta">
@@ -142,7 +143,7 @@ export function MokaMoreEventsSection({ events, fallbackImage }: Props) {
                     {t("mokaMoreEvents.ctaLabel")}
                   </Link>
                 </div>
-              </motion.article>
+              </reveal.article>
             ))}
           </div>
 

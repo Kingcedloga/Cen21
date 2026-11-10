@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   useCallback,
   useEffect,
@@ -14,6 +14,7 @@ import { AnimateIn } from "@/components/ui/AnimateIn";
 import { cormorant } from "@/lib/fonts";
 import { X } from "@/lib/icons";
 import { DURATION_S, EASE } from "@/lib/motion";
+import { useMediaQuery, useReducedMotionSafe } from "@/lib/use-media-query";
 import type { GalleryItem } from "@/lib/types";
 
 import "@/styles/filial-marquee-gallery.css";
@@ -75,20 +76,13 @@ export function FilialMarqueeGallery({
   sectionId,
   extraClassName = "",
 }: Props) {
-  const reduced = useReducedMotion() ?? false;
+  // Hooks sûrs pour l'hydratation (faux au serveur et pendant l'hydratation) :
+  // lire window.innerWidth dans l'état initial faisait différer le HTML
+  // serveur et le premier rendu mobile (erreur React #418), comme dans
+  // KLoungeMarqueeGallery.
+  const reduced = useReducedMotionSafe();
+  const isMobile = useMediaQuery("(max-width: 767px)");
   const list = items.filter((item) => item.src);
-
-  const [isMobile, setIsMobile] = useState<boolean>(
-    () => typeof window !== "undefined" && window.innerWidth < 768,
-  );
-
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 767px)");
-    setIsMobile(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
 
   // Static (scrollable) mode on mobile or when reduced-motion is requested
   const useStatic = reduced || isMobile;
@@ -121,17 +115,6 @@ export function FilialMarqueeGallery({
     };
   }, [openId]);
 
-  // Escape key closes lightbox
-  useEffect(() => {
-    if (!openId) return;
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") handleClose();
-    };
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [openId]);
-
   const handleOpen = useCallback((item: GalleryItem, id: string) => {
     setOpenId(id);
     setOpenItem(item);
@@ -143,6 +126,16 @@ export function FilialMarqueeGallery({
     setOpenItem(null);
     isOpenRef.current = false;
   }, []);
+
+  // Escape key closes lightbox
+  useEffect(() => {
+    if (!openId) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") handleClose();
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [openId, handleClose]);
 
   // JS-driven auto-scroll — skipped in static mode (mobile or reduced-motion)
   useEffect(() => {
@@ -342,7 +335,7 @@ export function FilialMarqueeGallery({
                 fill
                 className="object-cover"
                 sizes="(max-width: 639px) 90vw, 28rem"
-                priority
+                loading="eager"
               />
             </motion.figure>
           </motion.div>

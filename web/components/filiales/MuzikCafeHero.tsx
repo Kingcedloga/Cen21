@@ -1,13 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useCallback, useRef } from "react";
 
 import { ShoppingCart } from "@/lib/icons";
 import { cormorant } from "@/lib/fonts";
 import { DURATION_S, EASE } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { Subsidiary } from "@/lib/types";
 
 import "@/styles/muzik-cafe-hero.css";
@@ -15,7 +16,7 @@ import "@/styles/muzik-cafe-hero.css";
 const HERO_IMAGE = "/filiales/photos/filiale-05/herosectio-img.png";
 
 export function MuzikCafeHero({ subsidiary }: { subsidiary: Subsidiary }) {
-  const reduced = useReducedMotion() ?? false;
+  const reduced = useReducedMotionSafe();
   const t = useTranslations("subsidiaries");
   const sectionRef = useRef<HTMLElement>(null);
   const scrollToNext = useCallback(() => {
@@ -102,7 +103,8 @@ export function MuzikCafeHero({ subsidiary }: { subsidiary: Subsidiary }) {
             src={HERO_IMAGE}
             alt={subsidiary.name}
             fill
-            priority
+            loading="eager"
+            fetchPriority="high"
             className="muzik-hero__photo"
             sizes="(max-width: 767px) 90vw, 45vw"
           />

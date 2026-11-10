@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
 
+import { reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
 import { cormorant } from "@/lib/fonts";
 import { BLUR_PETROL } from "@/lib/image-blur";
 import { fadeUpTransition, fadeUpVariants } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { SubsidiaryBarSection } from "@/lib/types";
 
 import "@/styles/wabi-sabi-bar-showcase.css";
@@ -16,8 +17,9 @@ type Props = {
 };
 
 export function WabiSabiBarShowcase({ content }: Props) {
-  const reduced = useReducedMotion() ?? false;
-  const { title, paragraphs, cta, image, imageAlt } = content;
+  const reduced = useReducedMotionSafe();
+  // Image décorative (alt vide, conteneur aria-hidden) : `imageAlt` n'est pas utilisé.
+  const { title, paragraphs, cta, image } = content;
 
   const motionProps = reduced
     ? {}
@@ -41,7 +43,6 @@ export function WabiSabiBarShowcase({ content }: Props) {
           src={image}
           alt=""
           fill
-          priority={false}
           placeholder="blur"
           blurDataURL={BLUR_PETROL}
           className="wabi-bar-showcase__image"
@@ -52,7 +53,7 @@ export function WabiSabiBarShowcase({ content }: Props) {
       </div>
 
       <div className="wabi-bar-showcase__inner">
-        <motion.div className="wabi-bar-showcase__content" {...motionProps}>
+        <reveal.div className="wabi-bar-showcase__content" {...motionProps}>
           <h2 id="wabi-bar-showcase-title" className="wabi-bar-showcase__title">
             {title}
           </h2>
@@ -72,7 +73,7 @@ export function WabiSabiBarShowcase({ content }: Props) {
           >
             {cta.label}
           </Button>
-        </motion.div>
+        </reveal.div>
       </div>
     </section>
   );

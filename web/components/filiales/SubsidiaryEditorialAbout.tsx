@@ -148,7 +148,6 @@ export function SubsidiaryEditorialAbout({
                       className="subsidiary-editorial-about__image"
                       sizes={imageSizes}
                       quality={90}
-                      priority={!useSlideshow}
                     />
                   )}
                 </div>

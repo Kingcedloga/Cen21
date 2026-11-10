@@ -1,13 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
 import { MexicanMotifs } from "@/components/filiales/MexicanMotifs";
+import { reveal } from "@/components/motion/Reveal";
 import { ArrowUpRight, Check } from "@/lib/icons";
 import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { Subsidiary } from "@/lib/types";
 
 import "@/styles/gourmet-mexicana-about.css";
@@ -22,7 +23,7 @@ const DISH_PHOTO =
 const HIGHLIGHT_KEYS = ["tacos", "ceviches", "meats", "salsas", "guacamole", "desserts"] as const;
 
 export function GourmetMexicanaAboutSection({ subsidiary }: { subsidiary: Subsidiary }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const t = useTranslations("subsidiaries");
 
   const staggerMotion = (i: number) =>
@@ -40,7 +41,7 @@ export function GourmetMexicanaAboutSection({ subsidiary }: { subsidiary: Subsid
       <MexicanMotifs variant="about" />
 
       <div className="mex-about__inner">
-        <motion.div
+        <reveal.div
           className="mex-about__photo-wrap"
           initial={reduced ? false : { opacity: 0, x: -40 }}
           whileInView={reduced ? undefined : { opacity: 1, x: 0 }}
@@ -54,22 +55,22 @@ export function GourmetMexicanaAboutSection({ subsidiary }: { subsidiary: Subsid
             className="mex-about__photo"
             sizes="(max-width: 1023px) 90vw, 30vw"
           />
-        </motion.div>
+        </reveal.div>
 
         <div className="mex-about__content">
-          <motion.p className="mex-about__eyebrow" {...staggerMotion(0)}>
+          <reveal.p className="mex-about__eyebrow" {...staggerMotion(0)}>
             {t("gourmetMexicanaAbout.eyebrow")}
-          </motion.p>
-          <motion.h2 className="mex-about__title" {...staggerMotion(1)}>
+          </reveal.p>
+          <reveal.h2 className="mex-about__title" {...staggerMotion(1)}>
             <span>{t("gourmetMexicanaAbout.titleLine1")}</span>
             <span>{t("gourmetMexicanaAbout.titleLine2")}</span>
             <span>{t("gourmetMexicanaAbout.titleLine3")}</span>
-          </motion.h2>
-          <motion.p className="mex-about__description" {...staggerMotion(2)}>
+          </reveal.h2>
+          <reveal.p className="mex-about__description" {...staggerMotion(2)}>
             {t("gourmetMexicanaAbout.description")}
-          </motion.p>
+          </reveal.p>
 
-          <motion.ul className="mex-about__list" {...staggerMotion(3)}>
+          <reveal.ul className="mex-about__list" {...staggerMotion(3)}>
             {HIGHLIGHT_KEYS.map((key) => (
               <li key={key} className="mex-about__list-item">
                 <span className="mex-about__checkbox" aria-hidden="true">
@@ -78,18 +79,18 @@ export function GourmetMexicanaAboutSection({ subsidiary }: { subsidiary: Subsid
                 <span>{t(`gourmetMexicanaAbout.highlights.${key}`)}</span>
               </li>
             ))}
-          </motion.ul>
+          </reveal.ul>
 
-          <motion.div {...staggerMotion(4)}>
+          <reveal.div {...staggerMotion(4)}>
             <Link href="/contact" className="mex-about__cta">
               {t("gourmetMexicanaAbout.ctaLabel")}
               <ArrowUpRight size={16} aria-hidden="true" />
             </Link>
-          </motion.div>
+          </reveal.div>
         </div>
 
         <div className="mex-about__floating">
-          <motion.div
+          <reveal.div
             className="mex-about__ingredient"
             initial={reduced ? false : { opacity: 0, y: -20 }}
             whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
@@ -105,9 +106,9 @@ export function GourmetMexicanaAboutSection({ subsidiary }: { subsidiary: Subsid
                 sizes="(max-width: 1023px) 40vw, 12rem"
               />
             </div>
-          </motion.div>
+          </reveal.div>
 
-          <motion.div
+          <reveal.div
             className="mex-about__circle-wrap"
             initial={reduced ? false : { opacity: 0, scale: 0.9 }}
             whileInView={reduced ? undefined : { opacity: 1, scale: 1 }}
@@ -126,7 +127,7 @@ export function GourmetMexicanaAboutSection({ subsidiary }: { subsidiary: Subsid
                 sizes="(max-width: 1023px) 40vw, 12rem"
               />
             </div>
-          </motion.div>
+          </reveal.div>
         </div>
       </div>
     </section>

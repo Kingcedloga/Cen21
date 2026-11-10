@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useCallback, type FormEvent } from "react";
 
+import { reveal } from "@/components/motion/Reveal";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Toast, ToastViewport } from "@/components/ui/Toast";
 import { DURATION_S, EASE } from "@/lib/motion";
@@ -62,7 +62,7 @@ export function OliveVerteReservationSection({ backgroundImage, subsidiaryName, 
           </p>
         </AnimateIn>
         {phone ? (
-          <motion.div
+          <reveal.div
             className="olive-reservation__form"
             initial={{ opacity: 0, y: 24, scale: 0.96 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -72,9 +72,9 @@ export function OliveVerteReservationSection({ backgroundImage, subsidiaryName, 
             <a href={`tel:${phone.replace(/\s/g, "")}`} className="olive-reservation__cta">
               {t("oliveVerteReservation.cta")}
             </a>
-          </motion.div>
+          </reveal.div>
         ) : (
-          <motion.form
+          <reveal.form
             className="olive-reservation__form"
             onSubmit={handleSubmit}
             initial={{ opacity: 0, y: 24, scale: 0.96 }}
@@ -105,7 +105,7 @@ export function OliveVerteReservationSection({ backgroundImage, subsidiaryName, 
             <button type="submit" className="olive-reservation__cta" disabled={isSubmitting}>
               {isSubmitting ? tForm("submitting") : t("oliveVerteReservation.cta")}
             </button>
-          </motion.form>
+          </reveal.form>
         )}
       </div>
     </section>

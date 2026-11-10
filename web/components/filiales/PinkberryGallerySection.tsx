@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useCallback, useRef, useState } from "react";
 
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { ChevronLeft, ChevronRight } from "@/lib/icons";
 import { DURATION_S, EASE } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { SubsidiaryProductGallerySection } from "@/lib/types";
 
 import "@/styles/pinkberry-gallery-section.css";
@@ -18,7 +19,7 @@ export function PinkberryGallerySection({
 }: {
   content: SubsidiaryProductGallerySection;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const trackRef = useRef<HTMLDivElement>(null);
   const [activeCategory, setActiveCategory] = useState(
     content.categories[0]?.id ?? "",

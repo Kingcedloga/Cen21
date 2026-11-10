@@ -4,12 +4,12 @@ import Image from "next/image";
 import { useRef } from "react";
 import {
   motion,
-  useReducedMotion,
   useScroll,
   useTransform,
   type Variants,
 } from "framer-motion";
 
+import { reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
 import { cormorant } from "@/lib/fonts";
 import {
@@ -18,6 +18,7 @@ import {
   fadeUpTransition,
   fadeUpVariants,
 } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { SubsidiaryIntroSection } from "@/lib/types";
 
 import "@/styles/k-lounge-intro-section.css";
@@ -65,7 +66,7 @@ const viewport = {
 
 export function KLoungeIntroSection({ content }: Props) {
   const sectionRef = useRef<HTMLElement>(null);
-  const reduced = useReducedMotion() ?? false;
+  const reduced = useReducedMotionSafe();
   const { title, paragraphs, cta, primaryImage, secondaryImage } = content;
   const ctaExternal = cta.href.startsWith("http");
 
@@ -123,7 +124,7 @@ export function KLoungeIntroSection({ content }: Props) {
       <div className="klounge-intro__inner">
         <div className="klounge-intro__grid">
           <div className="klounge-intro__content">
-            <motion.div className="klounge-intro__copy" {...contentMotion}>
+            <reveal.div className="klounge-intro__copy" {...contentMotion}>
               <h2 id="klounge-intro-title" className="klounge-intro__title">
                 {title}
               </h2>
@@ -143,9 +144,9 @@ export function KLoungeIntroSection({ content }: Props) {
               >
                 {cta.label}
               </Button>
-            </motion.div>
+            </reveal.div>
 
-            <motion.div
+            <reveal.div
               className="klounge-intro__inset"
               {...insetMotion}
               style={reduced ? undefined : { y: insetParallaxY }}
@@ -160,10 +161,10 @@ export function KLoungeIntroSection({ content }: Props) {
                   sizes="(max-width: 1023px) 88vw, 28vw"
                 />
               </div>
-            </motion.div>
+            </reveal.div>
           </div>
 
-          <motion.div className="klounge-intro__visual" {...primaryFrameMotion}>
+          <reveal.div className="klounge-intro__visual" {...primaryFrameMotion}>
             <div className="klounge-intro__primary-frame">
               <motion.div
                 className="klounge-intro__primary-parallax"
@@ -176,12 +177,11 @@ export function KLoungeIntroSection({ content }: Props) {
                     fill
                     className="klounge-intro__primary-image"
                     sizes="(max-width: 1023px) 92vw, 46vw"
-                    priority
                   />
                 </div>
               </motion.div>
             </div>
-          </motion.div>
+          </reveal.div>
         </div>
       </div>
     </section>

@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useCallback, useRef } from "react";
 
 import { Play } from "@/lib/icons";
 import { DURATION_S, EASE } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { Subsidiary } from "@/lib/types";
 import "@/styles/olive-verte-hero.css";
 
@@ -33,7 +34,7 @@ const MOTIF_POSITIONS = [
 ] as const;
 
 export function OliveVerteHero({ subsidiary }: { subsidiary: Subsidiary }) {
-  const reduced = useReducedMotion() ?? false;
+  const reduced = useReducedMotionSafe();
   const t = useTranslations("subsidiaries");
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -132,7 +133,8 @@ export function OliveVerteHero({ subsidiary }: { subsidiary: Subsidiary }) {
             src={PHOTO_SRC}
             alt={subsidiary.name}
             fill
-            priority
+            loading="eager"
+            fetchPriority="high"
             className="olive-hero__photo"
             sizes="(max-width: 767px) 90vw, 50vw"
           />

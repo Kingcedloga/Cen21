@@ -1,10 +1,11 @@
 "use client";
 
-import { ExternalLink } from "@/lib/icons";
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useRef } from "react";
 
+import { reveal } from "@/components/motion/Reveal";
+import { ExternalLink } from "@/lib/icons";
 import {
   defaultScrollViewport,
   fadeInTransition,
@@ -49,7 +50,7 @@ export function MapEmbed({
   const banner = variant === "banner";
 
   return (
-    <motion.div
+    <reveal.div
       className={`glass-panel overflow-hidden border border-white/10 ${
         banner ? "rounded-t-2xl" : "rounded-2xl"
       } ${compact ? "max-w-3xl" : ""} ${className}`}
@@ -100,6 +101,6 @@ export function MapEmbed({
           <ExternalLink className={compact ? "h-3.5 w-3.5" : "h-4 w-4"} aria-hidden />
         </a>
       </div>
-    </motion.div>
+    </reveal.div>
   );
 }

@@ -52,9 +52,12 @@ export function Header() {
     };
   }, []);
 
-  useEffect(() => {
+  // Changement de page : le menu se referme (état ajusté au rendu, pas dans un effet).
+  const [menuPath, setMenuPath] = useState(pathname);
+  if (pathname !== menuPath) {
+    setMenuPath(pathname);
     setOpen(false);
-  }, [pathname]);
+  }
 
   const dense = isBrand ? reveal > 0.35 || open : scrolled || open;
 

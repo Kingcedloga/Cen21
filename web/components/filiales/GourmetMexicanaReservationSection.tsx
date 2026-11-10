@@ -1,15 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useCallback, type FormEvent } from "react";
 
 import { MexicanMotifs } from "@/components/filiales/MexicanMotifs";
+import { reveal } from "@/components/motion/Reveal";
 import { Toast, ToastViewport } from "@/components/ui/Toast";
 import { ArrowUpRight, Mail, Phone, User, Users } from "@/lib/icons";
 import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
 import { useReservationForm } from "@/lib/use-reservation-form";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 import "@/styles/gourmet-mexicana-reservation.css";
 
@@ -23,7 +24,7 @@ const FIELDS = [
 ] as const;
 
 export function GourmetMexicanaReservationSection() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const t = useTranslations("subsidiaries");
   const tForm = useTranslations("form");
   const { isSubmitting, toast, setToast, submit } = useReservationForm(
@@ -60,18 +61,18 @@ export function GourmetMexicanaReservationSection() {
 
       <div className="mex-reservation__inner">
         <div className="mex-reservation__form-col">
-          <motion.p className="mex-reservation__eyebrow" {...staggerMotion(0)}>
+          <reveal.p className="mex-reservation__eyebrow" {...staggerMotion(0)}>
             {t("gourmetMexicanaReservation.eyebrow")}
-          </motion.p>
-          <motion.h2 className="mex-reservation__title" {...staggerMotion(1)}>
+          </reveal.p>
+          <reveal.h2 className="mex-reservation__title" {...staggerMotion(1)}>
             <span>{t("gourmetMexicanaReservation.titleLine1")}</span>
             <span>{t("gourmetMexicanaReservation.titleLine2")}</span>
-          </motion.h2>
-          <motion.p className="mex-reservation__note" {...staggerMotion(2)}>
+          </reveal.h2>
+          <reveal.p className="mex-reservation__note" {...staggerMotion(2)}>
             {t("gourmetMexicanaReservation.note")}
-          </motion.p>
+          </reveal.p>
 
-          <motion.form className="mex-reservation__form" onSubmit={handleSubmit} {...staggerMotion(3)}>
+          <reveal.form className="mex-reservation__form" onSubmit={handleSubmit} {...staggerMotion(3)}>
             <div className="hidden" aria-hidden="true">
               <label htmlFor="mex-resa-website">{tForm("honeypot")}</label>
               <input id="mex-resa-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
@@ -97,7 +98,7 @@ export function GourmetMexicanaReservationSection() {
               })}
             </div>
 
-            <motion.button
+            <reveal.button
               type="submit"
               className="mex-reservation__submit"
               disabled={isSubmitting}
@@ -105,14 +106,14 @@ export function GourmetMexicanaReservationSection() {
             >
               {isSubmitting ? tForm("submitting") : t("gourmetMexicanaReservation.submitLabel")}
               <ArrowUpRight size={16} aria-hidden="true" />
-            </motion.button>
-          </motion.form>
+            </reveal.button>
+          </reveal.form>
 
           <p className="mex-reservation__footnote">{t("gourmetMexicanaReservation.footnote")}</p>
         </div>
 
         <div className="mex-reservation__visual">
-          <motion.div
+          <reveal.div
             className="mex-reservation__chef-wrap"
             initial={reduced ? false : { opacity: 0, x: 40 }}
             whileInView={reduced ? undefined : { opacity: 1, x: 0 }}
@@ -126,7 +127,7 @@ export function GourmetMexicanaReservationSection() {
               className="mex-reservation__chef-photo"
               sizes="(max-width: 1023px) 80vw, 26rem"
             />
-          </motion.div>
+          </reveal.div>
         </div>
       </div>
     </section>

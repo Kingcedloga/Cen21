@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "@/lib/icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -10,6 +10,7 @@ import { BLUR_PETROL } from "@/lib/image-blur";
 import { cormorant } from "@/lib/fonts";
 import { fadeUpTransition, fadeUpVariants, heroStaggerVariants } from "@/lib/motion";
 import { useHeroScrollProgress } from "@/lib/use-hero-scroll-progress";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { SubsidiaryHeroContent, SubsidiaryHeroLayout } from "@/lib/subsidiary-hero-layout";
 import type { SubsidiaryPageTheme } from "@/lib/subsidiary-themes";
 
@@ -49,7 +50,7 @@ export function SubsidiaryHero({
   const list = slides.filter((s) => s.src);
   const len = list.length;
   const [index, setIndex] = useState(0);
-  const reduced = useReducedMotion() ?? false;
+  const reduced = useReducedMotionSafe();
   const heroRef = useRef<HTMLElement>(null);
   const logoReveal = useHeroScrollProgress(heroRef);
   const isThemed = Boolean(theme);
@@ -147,7 +148,8 @@ export function SubsidiaryHero({
               src={slide.src}
               alt={slide.alt}
               fill
-              priority={i === 0}
+              loading={i === 0 ? "eager" : "lazy"}
+              fetchPriority={i === 0 ? "high" : "auto"}
               placeholder="blur"
               blurDataURL={theme?.hero.blurTint ?? BLUR_PETROL}
               className="object-cover"
@@ -164,7 +166,8 @@ export function SubsidiaryHero({
             src={posterSrc}
             alt=""
             fill
-            priority
+            loading="eager"
+            fetchPriority="high"
             placeholder="blur"
             blurDataURL={theme?.hero.blurTint ?? BLUR_PETROL}
             className="object-cover"

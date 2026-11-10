@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useCallback, useRef } from "react";
 
 import { DURATION_S, EASE } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { Subsidiary } from "@/lib/types";
 
 import "@/styles/moka-more-hero.css";
@@ -13,7 +14,7 @@ import "@/styles/moka-more-hero.css";
 const MAIN_PHOTO = "/filiales/photos/filiale-06/main-photo.png";
 
 export function MokaMoreHero({ subsidiary }: { subsidiary: Subsidiary }) {
-  const reduced = useReducedMotion() ?? false;
+  const reduced = useReducedMotionSafe();
   const t = useTranslations("subsidiaries");
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -111,7 +112,8 @@ export function MokaMoreHero({ subsidiary }: { subsidiary: Subsidiary }) {
                 src={MAIN_PHOTO}
                 alt={subsidiary.name}
                 fill
-                priority
+                loading="eager"
+                fetchPriority="high"
                 className="moka-hero__main-photo"
                 sizes="(max-width: 767px) 90vw, 48vw"
               />

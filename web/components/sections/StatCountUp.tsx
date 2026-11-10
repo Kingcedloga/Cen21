@@ -42,17 +42,12 @@ export function StatCountUp({
   const inView = useInView(ref, { once: true, margin: "-60px 0px" });
   const reduced = useReducedMotionSafe();
   const parsed = useMemo(() => parseStatValue(value), [value]);
-  const [display, setDisplay] = useState(() =>
-    reduced ? value : `${parsed.prefix}0${parsed.suffix}`,
-  );
+  const [count, setCount] = useState(`${parsed.prefix}0${parsed.suffix}`);
+  // Reduced motion : la valeur finale, sans décompte.
+  const display = reduced ? value : count;
 
   useEffect(() => {
-    if (reduced) {
-      setDisplay(value);
-      return;
-    }
-
-    if (!inView) return;
+    if (reduced || !inView) return;
 
     const duration = 1400;
     const start = performance.now();
@@ -61,7 +56,7 @@ export function StatCountUp({
     const tick = (now: number) => {
       const progress = Math.min((now - start) / duration, 1);
       const current = parsed.number * easeOutCubic(progress);
-      setDisplay(`${parsed.prefix}${formatCount(current, parsed.decimals)}${parsed.suffix}`);
+      setCount(`${parsed.prefix}${formatCount(current, parsed.decimals)}${parsed.suffix}`);
 
       if (progress < 1) {
         frame = requestAnimationFrame(tick);
@@ -70,7 +65,7 @@ export function StatCountUp({
 
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, [inView, parsed, reduced, value]);
+  }, [inView, parsed, reduced]);
 
   return (
     <span ref={ref} className={className} aria-label={value}>

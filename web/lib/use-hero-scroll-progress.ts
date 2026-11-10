@@ -1,21 +1,18 @@
 "use client";
 
-import { useReducedMotion } from "framer-motion";
 import { useEffect, useState, type RefObject } from "react";
 
 import { computeFilialeRevealProgress } from "./filiale-scroll-reveal";
+import { useReducedMotionSafe } from "./use-media-query";
 
 export function useHeroScrollProgress(
   sectionRef: RefObject<HTMLElement | null>,
 ): number {
-  const reduced = useReducedMotion() ?? false;
-  const [progress, setProgress] = useState(reduced ? 1 : 0);
+  const reduced = useReducedMotionSafe();
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    if (reduced) {
-      setProgress(1);
-      return;
-    }
+    if (reduced) return;
 
     const section = sectionRef.current;
     if (!section) return;
@@ -43,5 +40,6 @@ export function useHeroScrollProgress(
     };
   }, [reduced, sectionRef]);
 
-  return progress;
+  // Reduced motion : état final, sans suivre le défilement.
+  return reduced ? 1 : progress;
 }

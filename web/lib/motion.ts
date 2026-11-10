@@ -1,7 +1,6 @@
 "use client";
 
 import type { Transition, Variants } from "framer-motion";
-import { useReducedMotion } from "framer-motion";
 
 /**
  * Système motion centralisé — Cen21 Hospitality
@@ -36,10 +35,6 @@ export const STAGGER = {
 
 export function staggerDelay(index: number, step = STAGGER.default): number {
   return index * step;
-}
-
-export function usePrefersReducedMotion(): boolean {
-  return useReducedMotion() ?? false;
 }
 
 /* ── Variantes d'entrée scroll ───────────────────────────────────────── */

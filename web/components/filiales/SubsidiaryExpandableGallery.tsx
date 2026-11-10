@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useCallback, useState } from "react";
 
 import { BLUR_PETROL } from "@/lib/image-blur";
 import type { GalleryCategory } from "@/lib/gallery-categories";
 import { GALLERY_CATEGORIES } from "@/lib/gallery-categories";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { GalleryItem } from "@/lib/types";
 
 type SubsidiaryExpandableGalleryProps = {
@@ -36,7 +36,7 @@ export function SubsidiaryExpandableGallery({
   backgroundColor,
   themed = false,
 }: SubsidiaryExpandableGalleryProps) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const tCat = useTranslations("subsidiaries.galleryCategories");
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -105,7 +105,6 @@ export function SubsidiaryExpandableGallery({
                     ? "(max-width: 768px) 90vw, 960px"
                     : "80px"
                 }
-                priority={index === 0}
               />
 
               {/* Overlay inactif */}

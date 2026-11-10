@@ -66,7 +66,7 @@ export function SubsidiaryHeroLogo({
           alt={alt}
           width={imageWidth}
           height={imageHeight}
-          priority
+          loading="eager"
           className={`${sizeClass} ${objectClass}`}
           style={{
             opacity: p,
@@ -84,7 +84,7 @@ export function SubsidiaryHeroLogo({
           aria-hidden
           width={imageWidth}
           height={imageHeight}
-          priority
+          loading="eager"
           className={`pointer-events-none absolute inset-0 ${sizeClass} ${objectClass} brightness-0 invert`}
           style={{ opacity: ghostOpacity, transformOrigin: origin }}
         />

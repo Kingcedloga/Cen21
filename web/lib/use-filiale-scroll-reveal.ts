@@ -1,22 +1,17 @@
 "use client";
 
-import { useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 import { computeFilialeRevealProgress } from "./filiale-scroll-reveal";
+import { useReducedMotionSafe } from "./use-media-query";
 
 /** Progression 0→1 pour effets immersifs filiale (navbar, logo) */
 export function useFilialeScrollReveal(enabled: boolean): number {
-  const reduced = useReducedMotion() ?? false;
-  const [progress, setProgress] = useState(() =>
-    !enabled || reduced ? 1 : 0,
-  );
+  const reduced = useReducedMotionSafe();
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    if (!enabled || reduced) {
-      setProgress(1);
-      return;
-    }
+    if (!enabled || reduced) return;
 
     let frame = 0;
 
@@ -42,5 +37,6 @@ export function useFilialeScrollReveal(enabled: boolean): number {
     };
   }, [enabled, reduced]);
 
-  return enabled ? progress : 1;
+  // Hors filiale ou reduced motion : état final, sans suivre le défilement.
+  return enabled && !reduced ? progress : 1;
 }

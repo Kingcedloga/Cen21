@@ -12,7 +12,6 @@ import { Button } from "@/components/ui/Button";
 import { dynalight } from "@/lib/fonts";
 import { BLUR_PETROL } from "@/lib/image-blur";
 import {
-  DURATION_S,
   EASE,
   fadeUpTransition,
   fadeUpVariants,

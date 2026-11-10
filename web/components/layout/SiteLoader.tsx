@@ -1,11 +1,12 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 import { LoaderGraphic } from "@/components/brand/LoaderGraphic";
 import { markSiteReady } from "@/lib/site-ready";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 const MIN_VISIBLE_MS = 700;
 const FADE_MS = 480;
@@ -14,7 +15,7 @@ type Phase = "visible" | "converging" | "fading" | "hidden";
 
 export function SiteLoader() {
   const t = useTranslations("common");
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const [phase, setPhase] = useState<Phase>("visible");
 
   useEffect(() => {

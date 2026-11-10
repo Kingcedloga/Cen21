@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useRef } from "react";
 
@@ -9,9 +9,11 @@ import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { MexicanMotifs } from "@/components/filiales/MexicanMotifs";
+import { reveal } from "@/components/motion/Reveal";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Calendar, User } from "@/lib/icons";
 import { resolveEventImage } from "@/lib/event-images";
 import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { EventItem } from "@/lib/types";
 
 import "@/styles/gourmet-mexicana-events.css";
@@ -33,7 +35,7 @@ type Props = {
 };
 
 export function GourmetMexicanaEventsSection({ events, authorName, fallbackImage }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const locale = useLocale() as Locale;
   const t = useTranslations("subsidiaries");
   const trackRef = useRef<HTMLDivElement>(null);
@@ -81,7 +83,7 @@ export function GourmetMexicanaEventsSection({ events, authorName, fallbackImage
 
           <div className="mex-events__track" ref={trackRef}>
             {events.map((event, i) => (
-              <motion.article
+              <reveal.article
                 key={event.id}
                 className="mex-events__card"
                 initial={reduced ? false : { opacity: 0, y: 24, scale: 0.96 }}
@@ -118,7 +120,7 @@ export function GourmetMexicanaEventsSection({ events, authorName, fallbackImage
                     <ArrowRight size={14} aria-hidden="true" />
                   </Link>
                 </div>
-              </motion.article>
+              </reveal.article>
             ))}
           </div>
 

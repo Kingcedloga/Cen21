@@ -46,7 +46,6 @@ type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
-  const site = getSiteConfig(locale as Locale);
   const t = await getTranslations({ locale, namespace: "home" });
   return resolvePageMetadata({
     title: t("metaTitle"),

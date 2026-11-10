@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
+import { reveal } from "@/components/motion/Reveal";
 import { Link } from "@/i18n/navigation";
 import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 import "@/styles/gourmet-mexicana-promotions.css";
 
@@ -31,13 +32,13 @@ const PANELS = [
 ] as const;
 
 export function GourmetMexicanaPromotionsSection() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const t = useTranslations("subsidiaries");
 
   return (
     <section className="mex-promo">
       {PANELS.map((panel, i) => (
-        <motion.div
+        <reveal.div
           key={panel.key}
           className={`mex-promo__panel mex-promo__panel--${panel.color}`}
           initial={reduced ? false : { opacity: 0, y: 24, scale: 0.96 }}
@@ -49,7 +50,7 @@ export function GourmetMexicanaPromotionsSection() {
           <p className="mex-promo__subtitle">{t("gourmetMexicanaPromotions.subtitle")}</p>
           <h3 className="mex-promo__title">{t(`gourmetMexicanaPromotions.items.${panel.key}`)}</h3>
 
-          <motion.span
+          <reveal.span
             className="mex-promo__arrow"
             aria-hidden="true"
             initial={reduced ? false : { opacity: 0 }}
@@ -58,7 +59,7 @@ export function GourmetMexicanaPromotionsSection() {
             transition={{ duration: DURATION_S.base, ease: EASE.luxury, delay: 0.5 }}
           >
             <svg viewBox="0 0 60 60" fill="none">
-              <motion.path
+              <reveal.path
                 d="M4 8c14 2 24 12 26 32"
                 stroke="#ffffff"
                 strokeWidth="1.5"
@@ -70,9 +71,9 @@ export function GourmetMexicanaPromotionsSection() {
               />
               <path d="M22 36l8 4-2-9" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </motion.span>
+          </reveal.span>
 
-          <motion.span
+          <reveal.span
             className="mex-promo__badge"
             initial={reduced ? false : { scale: 0 }}
             whileInView={reduced ? undefined : { scale: 1 }}
@@ -81,9 +82,9 @@ export function GourmetMexicanaPromotionsSection() {
           >
             {panel.discount}%
             <span>{t("gourmetMexicanaPromotions.offLabel")}</span>
-          </motion.span>
+          </reveal.span>
 
-          <motion.div
+          <reveal.div
             className="mex-promo__photo-wrap"
             initial={reduced ? false : { opacity: 0, y: 20 }}
             whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
@@ -97,12 +98,12 @@ export function GourmetMexicanaPromotionsSection() {
               className="mex-promo__photo"
               sizes="(max-width: 899px) 60vw, 24rem"
             />
-          </motion.div>
+          </reveal.div>
 
           <Link href="/contact" className="mex-promo__cta">
             {t("gourmetMexicanaPromotions.ctaLabel")}
           </Link>
-        </motion.div>
+        </reveal.div>
       ))}
     </section>
   );

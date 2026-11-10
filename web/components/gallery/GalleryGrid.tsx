@@ -122,9 +122,11 @@ export function GalleryGrid({
   const openLightbox = useCallback((index: number) => setLightboxIndex(index), []);
   const closeLightbox = useCallback(() => setLightboxIndex(null), []);
 
-  useEffect(() => {
+  // Changer de filtre referme la visionneuse (son index vise l'ancienne liste).
+  const selectFilter = useCallback((next: string) => {
+    setFilter(next);
     setLightboxIndex(null);
-  }, [filter]);
+  }, []);
 
   useEffect(() => {
     if (lightboxIndex === null) return;
@@ -156,14 +158,14 @@ export function GalleryGrid({
           <div className="flex min-w-min gap-2">
             <FilterPill
               active={filter === "all"}
-              onClick={() => setFilter("all")}
+              onClick={() => selectFilter("all")}
               label={allLabel}
             />
             {filterOptions.map(({ slug, label }) => (
               <FilterPill
                 key={slug}
                 active={filter === slug}
-                onClick={() => setFilter(slug)}
+                onClick={() => selectFilter(slug)}
                 label={label}
               />
             ))}

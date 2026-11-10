@@ -153,7 +153,6 @@ function StackCard({
                 fill
                 sizes="(max-width: 767px) 100vw, 58vw"
                 className="object-cover"
-                priority={index === 0}
               />
             </div>
           </div>

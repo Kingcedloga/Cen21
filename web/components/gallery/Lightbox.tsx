@@ -81,7 +81,7 @@ export function Lightbox({
             fill
             className="object-contain"
             sizes="90vw"
-            priority
+            loading="eager"
           />
           <p className="absolute -bottom-10 left-0 right-0 text-center text-taupe text-sm">
             {item.alt}

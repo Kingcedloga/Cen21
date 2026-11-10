@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
 import { useCallback, useRef } from "react";
 
+import { reveal } from "@/components/motion/Reveal";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { ChevronLeft, ChevronRight, Star } from "@/lib/icons";
 import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { SubsidiaryMenuSection } from "@/lib/types";
 
 import "@/styles/pinkberry-menu-section.css";
@@ -20,7 +21,7 @@ export function PinkberryMenuSection({
   content: SubsidiaryMenuSection;
   backgroundImage: string;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const trackRef = useRef<HTMLDivElement>(null);
 
   const scroll = useCallback(
@@ -74,7 +75,7 @@ export function PinkberryMenuSection({
 
       <div className="pinkberry-menu__track" ref={trackRef}>
         {content.products.map((product, i) => (
-          <motion.div
+          <reveal.div
             key={product.name}
             className="pinkberry-menu__card"
             initial={reduced ? false : { opacity: 0, y: 24 }}
@@ -95,7 +96,7 @@ export function PinkberryMenuSection({
                 className="pinkberry-menu__photo"
                 sizes="10rem"
               />
-              <motion.span
+              <reveal.span
                 className="pinkberry-menu__price"
                 initial={reduced ? false : { opacity: 0, scale: 0.8 }}
                 whileInView={reduced ? undefined : { opacity: 1, scale: 1 }}
@@ -107,7 +108,7 @@ export function PinkberryMenuSection({
                 }}
               >
                 {product.price}
-              </motion.span>
+              </reveal.span>
             </div>
 
             <h3 className="pinkberry-menu__name">{product.name}</h3>
@@ -121,7 +122,7 @@ export function PinkberryMenuSection({
             <button type="button" className="pinkberry-menu__cta">
               {content.ctaLabel}
             </button>
-          </motion.div>
+          </reveal.div>
         ))}
       </div>
     </section>

@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
 
+import { reveal } from "@/components/motion/Reveal";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Link } from "@/i18n/navigation";
 import { Check } from "@/lib/icons";
 import { DURATION_S, EASE, STAGGER, defaultScrollViewport } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { SubsidiaryStorySection as SubsidiaryStorySectionContent } from "@/lib/types";
 
 import "@/styles/pinkberry-story-section.css";
@@ -22,7 +23,7 @@ export function PinkberryStorySection({
   productImage: string;
   name: string;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   const photoMotion = reduced
     ? {}
@@ -66,13 +67,13 @@ export function PinkberryStorySection({
       </AnimateIn>
 
       <div className="pinkberry-story__grid">
-        <motion.div {...columnMotion(0)}>
+        <reveal.div {...columnMotion(0)}>
           <h3 className="pinkberry-story__col-title">{content.aboutTitle}</h3>
           <p className="pinkberry-story__col-text">{content.aboutText}</p>
           <p className="pinkberry-story__signature">{content.signatureName}</p>
-        </motion.div>
+        </reveal.div>
 
-        <motion.div className="pinkberry-story__photo-wrap" {...photoMotion}>
+        <reveal.div className="pinkberry-story__photo-wrap" {...photoMotion}>
           <span className="pinkberry-story__photo-circle" aria-hidden="true" />
           <div className="pinkberry-story__photo-frame">
             <Image
@@ -83,9 +84,9 @@ export function PinkberryStorySection({
               sizes="(max-width: 899px) 80vw, 24rem"
             />
           </div>
-        </motion.div>
+        </reveal.div>
 
-        <motion.div {...columnMotion(2)}>
+        <reveal.div {...columnMotion(2)}>
           <h3 className="pinkberry-story__col-title">{content.overviewTitle}</h3>
           <p className="pinkberry-story__col-text">{content.overviewText}</p>
           <ul className="pinkberry-story__list">
@@ -96,7 +97,7 @@ export function PinkberryStorySection({
               </li>
             ))}
           </ul>
-        </motion.div>
+        </reveal.div>
       </div>
 
       <div className="pinkberry-story__cta-wrap">

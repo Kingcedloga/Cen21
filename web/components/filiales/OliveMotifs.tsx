@@ -1,8 +1,10 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 
+import { reveal } from "@/components/motion/Reveal";
 import { DURATION_S } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 export type OliveSection =
   | "specialties"
@@ -82,7 +84,7 @@ function OliveSvg() {
 }
 
 export function OliveMotifs({ section }: { section: OliveSection }) {
-  const reduced = useReducedMotion() ?? false;
+  const reduced = useReducedMotionSafe();
   const items = CONFIGS[section];
 
   return (
@@ -102,7 +104,7 @@ export function OliveMotifs({ section }: { section: OliveSection }) {
          *  – externe : opacity 0→0.15 via whileInView (scroll fade-in, once)
          *  – interne : rotate oscillation infinie sur les olives animées
          */
-        <motion.div
+        <reveal.div
           key={i}
           style={{
             position: "absolute",
@@ -134,7 +136,7 @@ export function OliveMotifs({ section }: { section: OliveSection }) {
           >
             <OliveSvg />
           </motion.div>
-        </motion.div>
+        </reveal.div>
       ))}
     </div>
   );

@@ -1,14 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useCallback, useRef } from "react";
 
+import { reveal } from "@/components/motion/Reveal";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { ChevronLeft, ChevronRight, Lightning, Music2, UtensilsCrossed } from "@/lib/icons";
 import { cormorant } from "@/lib/fonts";
 import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 import type { SubsidiaryMuzikMenuSection } from "@/lib/types";
 
 import "@/styles/muzik-cafe-menu-section.css";
@@ -21,7 +22,7 @@ type Props = {
 };
 
 export function MuzikCafeMenuSection({ content }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const t = useTranslations("subsidiaries");
   const trackRef = useRef<HTMLDivElement>(null);
 
@@ -79,7 +80,7 @@ export function MuzikCafeMenuSection({ content }: Props) {
 
       <div className="muzik-menu__track" ref={trackRef}>
         {content.items.map((item, i) => (
-          <motion.div
+          <reveal.div
             key={item.name}
             className="muzik-menu__card"
             initial={reduced ? false : { opacity: 0, y: 24 }}
@@ -116,7 +117,7 @@ export function MuzikCafeMenuSection({ content }: Props) {
                 +
               </button>
             </div>
-          </motion.div>
+          </reveal.div>
         ))}
       </div>
     </section>
