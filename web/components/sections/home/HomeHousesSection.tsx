@@ -29,12 +29,14 @@ export function HomeHousesSection({
   title,
   titleSweep,
   items,
+  titleId = "home-houses-title",
   className = "",
 }: {
   eyebrow: string;
   title: string;
   titleSweep?: string;
   items: HouseItem[];
+  titleId?: string;
   className?: string;
 }) {
   const gridRef = useRef<HTMLUListElement>(null);
@@ -43,14 +45,14 @@ export function HomeHousesSection({
   return (
     <section
       data-surface="dark"
-      aria-labelledby="home-houses-title"
+      aria-labelledby={titleId}
       className={`px-4 pb-24 pt-24 md:px-8 md:pb-32 md:pt-28 ${className}`}
     >
       <div className="mx-auto max-w-6xl">
         <p className="eyebrow text-xs font-semibold uppercase tracking-[0.2em] text-gold">{eyebrow}</p>
         <SpectrumText
           as="h2"
-          id="home-houses-title"
+          id={titleId}
           mode="scroll"
           text={title}
           sweep={titleSweep}

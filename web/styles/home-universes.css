@@ -101,6 +101,23 @@
   max-width: 27rem;
 }
 
+/* Ligne au-dessus du titre (frise d'À propos : « Chapitre 01 »). */
+.universe-card__eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Pétrole plutôt qu'or profond sur sable : contraste ≥ 4,5 pour un petit texte. */
+.universe-card--light .universe-card__eyebrow {
+  color: var(--color-petrol);
+}
+
+.universe-card--dark .universe-card__eyebrow {
+  color: var(--color-gold);
+}
+
 .universe-card__body {
   font-size: 1rem;
   line-height: 1.6;

@@ -116,11 +116,14 @@ export function SectionHeading({
       {subtitle}
     </Subtitle>
   );
+  // Éditorial sur fond sable : petits textes en pétrole (contraste ≥ 4,5 ;
+  // l'or profond et le taupe y restent sous le seuil).
+  const editorialLight = look === "editorial" && tone === "light";
   const descriptionBlock = description && (
     <p
       className={`mt-5 text-[15px] md:text-base lg:text-lg leading-[1.8] tracking-[-0.005em] max-w-2xl text-pretty ${
         isCenter ? "mx-auto" : ""
-      } ${styles.description}`}
+      } ${editorialLight ? "text-petrol-panel-4/80" : styles.description}`}
     >
       {description}
     </p>
@@ -130,7 +133,11 @@ export function SectionHeading({
     return (
       <header className={`max-w-4xl mb-12 md:mb-16 ${isCenter ? "mx-auto text-center" : "text-left"} ${className}`}>
         {eyebrow && (
-          <p className={`eyebrow text-xs font-semibold uppercase tracking-[0.2em] ${styles.eyebrow}`}>{eyebrow}</p>
+          <p
+            className={`eyebrow text-xs font-semibold uppercase tracking-[0.2em] ${editorialLight ? "text-petrol" : styles.eyebrow}`}
+          >
+            {eyebrow}
+          </p>
         )}
         <SpectrumText
           as={TitleTag}

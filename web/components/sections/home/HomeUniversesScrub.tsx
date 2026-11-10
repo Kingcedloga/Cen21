@@ -11,6 +11,8 @@ import "@/styles/home-universes.css";
 
 export type UniverseCard = {
   key: string;
+  /** Petite ligne au-dessus du titre (ex. « Chapitre 01 » sur À propos). */
+  eyebrow?: string;
   title: string;
   text: string;
   image: string;
@@ -60,6 +62,7 @@ function UniverseItem({
       style={entering ? { x, y, scale, rotate } : undefined}
     >
       <div className="universe-card__text">
+        {card.eyebrow && <p className="universe-card__eyebrow">{card.eyebrow}</p>}
         <h3 className="title-section text-h3">{card.title}</h3>
         <p className="universe-card__body">{card.text}</p>
         {card.venues && card.venues.names.length > 0 && (
@@ -81,11 +84,13 @@ function UniversesStage({
   badge,
   title,
   titleSweep,
+  titleId,
   cards,
 }: {
   badge: string;
   title: string;
   titleSweep?: string;
+  titleId: string;
   cards: UniverseCard[];
 }) {
   const { progress, isStatic } = useStickyTrack();
@@ -111,7 +116,7 @@ function UniversesStage({
             <p className="universes__badge">{badge}</p>
             <SpectrumText
               as="h2"
-              id="home-universes-title"
+              id={titleId}
               mode="scroll"
               text={title}
               sweep={titleSweep}
@@ -140,10 +145,15 @@ function UniversesStage({
  * Mobile (phase 4 bis) : même chorégraphie, cartes centrées à 88vw et piste
  * plus courte. Reduced motion ou écran trop bas : titre puis cartes empilées.
  */
-export function HomeUniversesScrub(props: {
+export function HomeUniversesScrub({
+  titleId = "home-universes-title",
+  ...props
+}: {
   badge: string;
   title: string;
   titleSweep?: string;
+  /** Plusieurs pistes sur le site : accueil (« Nos univers ») et À propos (frise). */
+  titleId?: string;
   cards: UniverseCard[];
 }) {
   return (
@@ -152,10 +162,10 @@ export function HomeUniversesScrub(props: {
         lengthVh={TRACK_VH.universes}
         mobileLengthVh={TRACK_VH.universesMobile}
         surface="dark"
-        ariaLabelledby="home-universes-title"
+        ariaLabelledby={titleId}
         className="bg-petrol-panel-4"
       >
-        <UniversesStage {...props} />
+        <UniversesStage {...props} titleId={titleId} />
       </StickyTrack>
       {/* Marge de fond : les cartes occupent toute la hauteur de la scène, le
           séparateur fondu qui suit se pose ici plutôt que sur leur bas. */}

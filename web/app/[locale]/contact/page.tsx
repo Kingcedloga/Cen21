@@ -23,6 +23,7 @@ import { googleMapsExternalUrl } from "@/lib/map";
 import { resolvePageMetadata } from "@/lib/seo";
 import { brandSurface } from "@/lib/subsidiary-brand";
 import { getSubsidiaryHref, isSubsidiaryExternalLink } from "@/lib/subsidiary-links";
+import { subsidiaryPlaces } from "@/lib/subsidiary-places";
 import type { Subsidiary } from "@/lib/types";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -68,11 +69,6 @@ function formLink(need: ContactNeed) {
       </a>
     );
   };
-}
-
-/** Adresse précise (pas seulement la ville) : la carte peut s'y placer. */
-function isPreciseAddress(address: string | undefined, city = "Kinshasa"): address is string {
-  return Boolean(address?.trim()) && address!.trim().toLowerCase() !== city.toLowerCase();
 }
 
 const FAQ_CTA =
@@ -173,30 +169,22 @@ export default async function ContactPage({ params }: Props) {
   // « Nos adresses » : le siège, puis chaque adresse précise des maisons
   // (une par implantation : Kinshasa d'abord, les autres villes ensuite).
   const phoneHref = `tel:${site.contact.phone.replace(/\s/g, "")}`;
-  const houseEntries: AddressEntry[] = subsidiaries.flatMap((s) => {
-    const page = {
+  const houseEntries: AddressEntry[] = subsidiaryPlaces(subsidiaries).map(({ subsidiary: s, ...place }) => ({
+    id: `${s.slug}-${place.city.toLowerCase()}`,
+    name: s.name,
+    city: place.main ? undefined : place.city,
+    address: place.address,
+    phone: place.phone,
+    hours: place.main ? s.practicalInfo.hours : undefined,
+    logo: s.brandLogo,
+    logoSurface: brandSurface(s.slug, s.accentColor),
+    page: {
       href: getSubsidiaryHref(s),
       external: isSubsidiaryExternalLink(s),
       label: tCommon("discover", { name: s.name }),
-    };
-    const places = s.practicalInfo.locations?.length
-      ? s.practicalInfo.locations
-      : [{ city: "Kinshasa", address: s.practicalInfo.address ?? "", phone: s.practicalInfo.phone ?? "" }];
-    return places
-      .filter((place) => isPreciseAddress(place.address, place.city))
-      .map((place) => ({
-        id: `${s.slug}-${place.city.toLowerCase()}`,
-        name: s.name,
-        city: place.city === "Kinshasa" ? undefined : place.city,
-        address: place.address,
-        phone: place.phone || undefined,
-        hours: place.city === "Kinshasa" ? s.practicalInfo.hours : undefined,
-        logo: s.brandLogo,
-        logoSurface: brandSurface(s.slug, s.accentColor),
-        page,
-        mapTitle: tSub("mapTitle", { name: s.name }),
-      }));
-  });
+    },
+    mapTitle: tSub("mapTitle", { name: s.name }),
+  }));
   const addresses: AddressEntry[] = [
     {
       id: "siege",
@@ -208,8 +196,7 @@ export default async function ContactPage({ params }: Props) {
       logoSurface: "var(--color-petrol)",
       mapTitle: tSub("mapTitle", { name: site.name }),
     },
-    // Tri stable : Kinshasa (sans étiquette de ville) d'abord.
-    ...houseEntries.sort((a, b) => Number(Boolean(a.city)) - Number(Boolean(b.city))),
+    ...houseEntries,
   ];
 
   return (

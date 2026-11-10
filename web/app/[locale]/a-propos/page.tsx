@@ -1,27 +1,45 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { HeroCurtain } from "@/components/layout/HeroCurtain";
+import { PageSection, SECTION_SURFACE } from "@/components/layout/PageSection";
 import { SectionBlend } from "@/components/layout/SectionBlend";
-import { AboutOriginsSection } from "@/components/sections/AboutOriginsSection";
-import { AboutTeamSection } from "@/components/sections/AboutTeamSection";
-import { AboutVisionSection } from "@/components/sections/AboutVisionSection";
+import { AboutFigures } from "@/components/sections/about/AboutFigures";
+import { AboutStory } from "@/components/sections/about/AboutStory";
+import { AboutTeamArc, type TeamMember } from "@/components/sections/about/AboutTeamArc";
+import { AboutValues } from "@/components/sections/about/AboutValues";
+import { HomeHousesSection, type HouseItem } from "@/components/sections/home/HomeHousesSection";
+import { HomeUniversesScrub, type UniverseCard } from "@/components/sections/home/HomeUniversesScrub";
 import { InnerHero } from "@/components/sections/InnerHero";
 import { PageOutro } from "@/components/sections/PageOutro";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { Locale } from "@/i18n/routing";
-import { getAboutContent, getSubsidiaries } from "@/lib/content";
+import { getAboutContent, getSectorLabel, getSiteConfig, getStatsContent, getSubsidiaries } from "@/lib/content";
 import { resolvePageMetadata } from "@/lib/seo";
-
-import "@/styles/about-surfaces.css";
+import { brandSurface } from "@/lib/subsidiary-brand";
+import { placeCities, subsidiaryPlaces } from "@/lib/subsidiary-places";
+import type { Subsidiary } from "@/lib/types";
 
 const FALLBACK_HERO =
   "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=2400&q=85";
 const FALLBACK_ORIGINS_IMAGE =
   "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=2400&q=85";
-const FALLBACK_VISION_IMAGES: [string, string, string] = [
-  "https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=1200&q=85",
-  "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=85",
-  "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=85",
-];
+const FALLBACK_VISION_IMAGE =
+  "https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=1200&q=85";
+
+/** Univers comptés dans les chiffres, avec leur message (pluriel ICU). */
+const SECTOR_FIGURES = [
+  ["restaurant", "figuresRestaurants"],
+  ["lounge", "figuresLounges"],
+  ["nightclub", "figuresClubs"],
+] as const;
+
+/** Photo locale de préférence (photos des filiales plutôt qu'images d'illustration). */
+function pickImage(candidates: string[], used: Set<string>, fallback: string): string {
+  const fresh = candidates.filter((src) => !used.has(src));
+  const image = fresh.find((src) => src.startsWith("/")) ?? fresh[0] ?? fallback;
+  used.add(image);
+  return image;
+}
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -41,17 +59,87 @@ export default async function AboutPage({ params }: Props) {
   setRequestLocale(locale);
   const l = locale as Locale;
   const about = getAboutContent(l);
+  const site = getSiteConfig(l);
+  const subsidiaries = getSubsidiaries(l);
+  const stats = getStatsContent(l).items;
   const t = await getTranslations("about");
   const tNav = await getTranslations("nav");
   const tCommon = await getTranslations("common");
+  const tHome = await getTranslations("home");
   const tOutro = await getTranslations("outro");
   const tCta = await getTranslations("cta");
 
+  const count = subsidiaries.length;
+  const places = subsidiaryPlaces(subsidiaries);
+  const cities = placeCities(places);
+  const list = new Intl.ListFormat(l, { style: "long", type: "conjunction" });
+  const countIn = (sector: Subsidiary["sector"]) => subsidiaries.filter((s) => s.sector === sector).length;
+  const chapter = (n: number) => t("chapterLabel", { n: String(n).padStart(2, "0") });
+
+  // Frise « Notre parcours » : quatre chapitres sans dates, tirés des données.
+  const used = new Set<string>();
+  const coversOf = (sector: Subsidiary["sector"]) =>
+    subsidiaries.filter((s) => s.sector === sector).map((s) => s.coverImage);
+  const chapters: UniverseCard[] = [
+    {
+      key: "idea",
+      eyebrow: chapter(1),
+      title: t("chapterIdeaTitle"),
+      text: t("chapterIdeaText"),
+      image: pickImage([about.originsImage ?? FALLBACK_ORIGINS_IMAGE], used, FALLBACK_ORIGINS_IMAGE),
+    },
+    {
+      key: "worlds",
+      eyebrow: chapter(2),
+      title: t("chapterWorldsTitle"),
+      text: t("chapterWorldsText"),
+      image: pickImage(coversOf("restaurant"), used, FALLBACK_ORIGINS_IMAGE),
+      venues: {
+        label: t("chapterWorldsList"),
+        names: [...new Set(subsidiaries.map((s) => s.sector))].map((sector) => getSectorLabel(l, sector)),
+      },
+    },
+    {
+      key: "cities",
+      eyebrow: chapter(3),
+      title: t("chapterCitiesTitle", { count: cities.length }),
+      text: t("chapterCitiesText", { cities: list.format(cities), office: site.contact.address }),
+      image: pickImage([...coversOf("lounge"), ...coversOf("nightclub")], used, FALLBACK_ORIGINS_IMAGE),
+      venues: { label: t("chapterCitiesList"), names: cities },
+    },
+    {
+      key: "tomorrow",
+      eyebrow: chapter(4),
+      title: t("chapterTomorrowTitle"),
+      text: about.vision,
+      image: pickImage([about.visionImages?.[0] ?? FALLBACK_VISION_IMAGE], used, FALLBACK_VISION_IMAGE),
+    },
+  ];
+
+  const team: TeamMember[] = (about.team ?? []).map((member, index, all) => ({
+    name: member.name,
+    role: member.role,
+    photo: member.photo,
+    quote: member.quote,
+    bio: member.bio,
+    positionLabel: t("teamPosition", { index: index + 1, total: all.length, name: member.name }),
+    discoverLabel: t("teamDiscoverAria", { name: member.name }),
+  }));
+
+  const houses: HouseItem[] = subsidiaries
+    .filter((s) => s.brandLogo)
+    .map((s) => ({
+      slug: s.slug,
+      name: s.name,
+      logo: s.brandLogo as string,
+      brandColor: brandSurface(s.slug, s.accentColor),
+      ariaLabel: tCommon("discover", { name: s.name }),
+    }));
+
   return (
     <>
-      {/* La progression de lecture est affichée par la capsule de navigation. */}
       <HeroCurtain
-        surface="var(--color-ivory)"
+        surface={SECTION_SURFACE.light}
         hero={
           <InnerHero
             className="hero-curtain__hero"
@@ -65,49 +153,106 @@ export default async function AboutPage({ params }: Props) {
           />
         }
       >
-        <AboutOriginsSection
-          eyebrow={t("originsEyebrow")}
-          title={t("originsTitle")}
-          description={about.history}
-          image={about.originsImage ?? FALLBACK_ORIGINS_IMAGE}
-          imageAlt={t("originsImageAlt")}
-        />
+        {/* La progression de lecture est affichée par la capsule de navigation. */}
+        <AboutStory eyebrow={t("originsEyebrow")} title={t("originsTitle")} statement={about.history} />
       </HeroCurtain>
 
-      {/* Séparateurs fondus : le bas de la section précédente se fond dans la suivante. */}
-      <SectionBlend to="var(--about-vision-surface)" />
+      {/* Séparateurs fondus entre sections de couleurs différentes. */}
+      <SectionBlend from={SECTION_SURFACE.light} to={SECTION_SURFACE.dark} />
 
-      <AboutVisionSection
-        eyebrow={t("visionEyebrow")}
-        title={t("visionTitle")}
-        description={about.vision}
-        cta={t("visionCta")}
-        images={[
-          about.visionImages?.[0] ?? FALLBACK_VISION_IMAGES[0],
-          about.visionImages?.[1] ?? FALLBACK_VISION_IMAGES[1],
-          about.visionImages?.[2] ?? FALLBACK_VISION_IMAGES[2],
-        ]}
+      <HomeUniversesScrub
+        titleId="about-journey-title"
+        badge={t("parcoursBadge")}
+        title={t("parcoursTitle")}
+        titleSweep={t("parcoursSweep")}
+        cards={chapters}
       />
 
-      {about.team && about.team.length > 0 && (
+      {team.length > 0 && (
         <>
-          <SectionBlend to="var(--about-team-top)" />
-          <AboutTeamSection
-            eyebrow={t("teamEyebrow")}
-            title={t("teamTitle")}
-            description={t("teamDescription")}
-            subtitle={t("teamSubtitle")}
-            members={about.team}
-            locale={locale}
-          />
+          <SectionBlend from={SECTION_SURFACE.dark} to={SECTION_SURFACE.light} />
+          <PageSection
+            variant="light"
+            spacing="default"
+            // Retient l'éventail, qui déborde jusqu'aux bords de l'écran.
+            overflow="hidden"
+            id="equipe"
+            ariaLabelledby="about-team-title"
+            containerClassName="mx-auto max-w-[min(100%,1400px)]"
+          >
+            <SectionHeading
+              look="editorial"
+              tone="light"
+              eyebrow={t("teamEyebrow")}
+              title={t("teamTitle")}
+              sweep={t("teamTitleSweep")}
+              description={t("teamDescription")}
+              titleAs="h2"
+              titleId="about-team-title"
+              align="left"
+              className="mb-0! max-w-2xl"
+            />
+            <div className="relative z-10 mt-12 w-full md:mt-16">
+              <AboutTeamArc
+                members={team}
+                labels={{
+                  region: t("teamRegion"),
+                  roledescription: tHome("arcRoledescription"),
+                  prev: t("teamPrev"),
+                  next: t("teamNext"),
+                  drag: tHome("arcDrag"),
+                  discover: t("teamDiscover"),
+                  close: t("teamClose"),
+                }}
+              />
+            </div>
+          </PageSection>
+          <SectionBlend from={SECTION_SURFACE.light} to={SECTION_SURFACE.default} />
         </>
       )}
+      {team.length === 0 && <SectionBlend from={SECTION_SURFACE.dark} to={SECTION_SURFACE.default} />}
 
-      <SectionBlend to="var(--color-anthracite)" />
+      <AboutFigures
+        heading={{ eyebrow: t("figuresEyebrow"), title: t("figuresTitle"), sweep: t("figuresSweep") }}
+        houses={{
+          label: t("figuresHousesLabel"),
+          count,
+          text: t("figuresHousesText"),
+          sectorsLabel: t("figuresSectors"),
+          sectors: SECTOR_FIGURES.filter(([sector]) => countIn(sector) > 0).map(([sector, key]) =>
+            t(key, { count: countIn(sector) }),
+          ),
+        }}
+        stats={{ label: t("figuresStats"), items: stats.map(({ value, label }) => ({ value, label })) }}
+        addresses={{
+          label: t("figuresAddressesLabel"),
+          count: places.length,
+          text: t("figuresAddressesText", { cities: list.format(cities) }),
+          cta: { href: "/contact#adresses", label: t("figuresMapCta") },
+        }}
+      />
+
+      <SectionBlend from={SECTION_SURFACE.default} to={SECTION_SURFACE.light} />
+
+      <AboutValues
+        heading={{ eyebrow: t("dnaEyebrow"), title: t("dnaTitle"), sweep: t("valuesTitleSweep"), intro: t("valuesIntro") }}
+        values={about.values}
+      />
+
+      <SectionBlend from={SECTION_SURFACE.light} to={SECTION_SURFACE.dark} />
+
+      <HomeHousesSection
+        titleId="about-houses-title"
+        eyebrow={tHome("housesEyebrow")}
+        title={t("housesTitle")}
+        titleSweep={t("housesSweep")}
+        items={houses}
+        className="bg-petrol-panel-4"
+      />
 
       <PageOutro
         eyebrow={tOutro("eyebrow")}
-        title={tOutro("aboutTitle", { count: getSubsidiaries(l).length })}
+        title={tOutro("aboutTitle", { count })}
         titleSweep={tOutro("aboutSweep")}
         primary={{ href: "/contact", label: tCta("contact") }}
         next={{ href: "/filiales", label: tOutro("next"), title: tNav("subsidiaries") }}

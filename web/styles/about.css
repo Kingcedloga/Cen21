@@ -1,0 +1,455 @@
+/* =========================================================================
+   À propos (refonte R2) — histoire épinglée, chiffres en bento, valeurs,
+   fiche de l'équipe. Couleurs : tokens de globals.css, dérivés en color-mix.
+   Sur fond sable, les petits textes passent en pétrole (contraste ≥ 4,5) ;
+   l'or reste réservé aux fonds sombres.
+   ========================================================================= */
+
+/* --- Histoire épinglée ------------------------------------------------- */
+.about-story {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3.5rem 1rem;
+  color: var(--color-petrol-panel-4);
+}
+
+.about-story--static {
+  padding-block: 6rem 4rem;
+}
+
+.about-story__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-petrol);
+}
+
+.about-story__eyebrow::before {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background-color: var(--color-gold-deep);
+}
+
+.about-story__title {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: color-mix(in srgb, var(--color-petrol-panel-4) 70%, transparent);
+}
+
+.about-story__statement {
+  margin-top: 1.5rem;
+  font-size: clamp(1.625rem, 1rem + 2.3vw, 3rem);
+  line-height: 1.18;
+  color: var(--color-petrol-panel-4);
+}
+
+@media (min-width: 768px) {
+  .about-story {
+    padding-inline: 2rem;
+  }
+}
+
+/* --- Chiffres : bento -------------------------------------------------- */
+.about-figures {
+  padding: clamp(5rem, 10vw, 8rem) 1rem;
+  background-color: var(--color-petrol);
+  color: var(--color-ivory);
+}
+
+.about-bento {
+  display: grid;
+  gap: 1rem;
+}
+
+.bento-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  min-width: 0;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border-radius: var(--radius-card-lg);
+}
+
+.bento-card__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.bento-card__figure {
+  font-size: clamp(4rem, 2.5rem + 6vw, 8.5rem);
+  line-height: 0.9;
+  font-variant-numeric: tabular-nums;
+}
+
+.bento-card__text {
+  max-width: 26rem;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.bento-card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: auto 0 0;
+  padding: 0.5rem 0 0;
+  list-style: none;
+}
+
+.bento-card__chips li {
+  padding: 0.375rem 0.875rem;
+  border: 1px solid color-mix(in srgb, var(--color-petrol-panel-4) 25%, transparent);
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Sable : maisons. */
+.bento-card--sand {
+  background-color: var(--color-ivory);
+  color: var(--color-petrol-panel-4);
+}
+
+.bento-card--sand .bento-card__label {
+  color: var(--color-petrol);
+}
+
+.bento-card--sand .bento-card__text {
+  color: color-mix(in srgb, var(--color-petrol-panel-4) 78%, transparent);
+}
+
+/* Pétrole profond : chiffres clés. */
+.bento-card--dark {
+  border: 1px solid color-mix(in srgb, var(--color-ivory) 10%, transparent);
+  background-color: var(--color-petrol-panel-4);
+}
+
+.bento-card__stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem 1.5rem;
+  margin: auto 0;
+}
+
+.bento-card__stats div {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-ivory) 12%, transparent);
+}
+
+.bento-card__stats dt {
+  font-size: 0.875rem;
+  color: color-mix(in srgb, var(--color-ivory) 68%, transparent);
+}
+
+.bento-card__stats dd {
+  font-size: var(--text-h3);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-gold);
+}
+
+/* Voile or sur pétrole : adresses. */
+.bento-card--petrol {
+  border: 1px solid color-mix(in srgb, var(--color-gold) 30%, transparent);
+  background-color: color-mix(in srgb, var(--color-gold) 10%, var(--color-petrol-panel-3));
+}
+
+.bento-card--petrol .bento-card__label,
+.bento-card--petrol .bento-card__figure,
+.bento-card--dark .bento-card__label {
+  color: var(--color-gold);
+}
+
+.bento-card--petrol .bento-card__text {
+  color: color-mix(in srgb, var(--color-ivory) 80%, transparent);
+}
+
+@media (min-width: 768px) {
+  .about-figures {
+    padding-inline: 2rem;
+  }
+  .bento-card__stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-bento {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-areas:
+      "houses stats"
+      "houses addresses";
+  }
+  .bento-card {
+    border-radius: var(--radius-card-xl);
+  }
+  .bento-card--houses {
+    grid-area: houses;
+    min-height: 30rem;
+  }
+  .bento-card--stats {
+    grid-area: stats;
+  }
+  .bento-card--addresses {
+    grid-area: addresses;
+  }
+  .bento-card__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .bento-card__stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* --- Valeurs ------------------------------------------------------------ */
+.about-values {
+  padding: clamp(5rem, 10vw, 8rem) 1rem;
+  background-color: var(--color-ivory);
+  color: var(--color-petrol-panel-4);
+}
+
+.values-grid {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.value-card {
+  position: relative;
+  display: flex;
+  height: 100%;
+  min-height: 14rem;
+  overflow: hidden;
+  padding: 1.75rem 1.75rem 2rem;
+  border: 1px solid color-mix(in srgb, var(--color-petrol-panel-4) 10%, transparent);
+  border-radius: var(--radius-card-lg);
+  background-color: color-mix(in srgb, var(--color-ivory) 90%, var(--color-petrol-panel-4));
+}
+
+.value-card__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: transform var(--duration-fine) var(--ease-luxury);
+}
+
+.value-card__index {
+  font-family: var(--font-dm-sans);
+  font-size: 2.25rem;
+  font-weight: var(--font-weight-display);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: color-mix(in srgb, var(--color-petrol) 55%, transparent);
+}
+
+.value-card__title {
+  margin-top: auto;
+  padding-top: 2rem;
+  font-size: clamp(1.375rem, 1.2rem + 0.6vw, 1.75rem);
+  line-height: 1.15;
+}
+
+.value-card__text {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--color-petrol-panel-4) 78%, transparent);
+}
+
+/* Filet or qui se déroule au survol (Orbix : élément interne qui glisse). */
+.value-card__line {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 3px;
+  background-color: var(--color-gold-deep);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--duration-luxe) var(--ease-luxury);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .value-card:hover .value-card__inner {
+    transform: translateY(-0.5rem);
+  }
+  .value-card:hover .value-card__line {
+    transform: scaleX(1);
+  }
+}
+
+@media (min-width: 640px) {
+  .values-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .about-values {
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .values-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+  .value-card {
+    min-height: 17rem;
+    padding: 2.25rem 2.25rem 2.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .value-card__inner,
+  .value-card__line {
+    transition: none;
+  }
+}
+
+/* --- Fiche d'un membre de l'équipe (<dialog>) --------------------------- */
+.team-dialog {
+  width: min(56rem, calc(100% - 2rem));
+  max-height: min(88svh, 44rem);
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-card-lg);
+  background-color: var(--color-ivory);
+  color: var(--color-petrol-panel-4);
+}
+
+.team-dialog::backdrop {
+  background-color: color-mix(in srgb, var(--color-petrol-panel-4) 72%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.team-dialog__panel {
+  position: relative;
+  display: grid;
+  max-height: min(88svh, 44rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.team-dialog__photo {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background-color: color-mix(in srgb, var(--color-ivory) 85%, var(--color-petrol-panel-4));
+}
+
+.team-dialog__body {
+  display: grid;
+  align-content: start;
+  gap: 0.875rem;
+  padding: 1.75rem 1.5rem 2rem;
+}
+
+.team-dialog__role {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-petrol);
+}
+
+.team-dialog__name {
+  font-size: clamp(1.75rem, 1.3rem + 1.5vw, 2.5rem);
+  line-height: 1.1;
+}
+
+.team-dialog__quote {
+  margin: 0.25rem 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--color-gold-deep);
+  font-style: italic;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--color-petrol-panel-4) 85%, transparent);
+}
+
+.team-dialog__bio {
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--color-petrol-panel-4) 80%, transparent);
+}
+
+.team-dialog__close {
+  position: absolute;
+  top: 0.875rem;
+  right: 0.875rem;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid color-mix(in srgb, var(--color-petrol-panel-4) 15%, transparent);
+  border-radius: 9999px;
+  background-color: var(--color-ivory);
+  color: var(--color-petrol-panel-4);
+  cursor: pointer;
+  transition: background-color var(--duration-fine) var(--ease-luxury);
+}
+
+.team-dialog__close:hover {
+  background-color: color-mix(in srgb, var(--color-ivory) 85%, var(--color-petrol-panel-4));
+}
+
+.team-dialog__close:focus-visible {
+  outline: 2px solid var(--color-petrol);
+  outline-offset: 2px;
+}
+
+@media (min-width: 768px) {
+  .team-dialog {
+    border-radius: var(--radius-card-xl);
+  }
+  .team-dialog__panel {
+    grid-template-columns: 20rem minmax(0, 1fr);
+  }
+  .team-dialog__photo {
+    aspect-ratio: auto;
+    min-height: 26rem;
+  }
+  .team-dialog__body {
+    padding: 3rem 3.5rem 3rem 2.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .team-dialog[open] {
+    animation: team-dialog-in 0.4s var(--ease-luxury);
+  }
+  .team-dialog[open]::backdrop {
+    animation: team-dialog-fade 0.35s var(--ease-luxury);
+  }
+}
+
+@keyframes team-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem) scale(0.98);
+  }
+}
+
+@keyframes team-dialog-fade {
+  from {
+    opacity: 0;
+  }
+}
