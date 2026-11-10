@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "@/lib/icons";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -18,6 +18,7 @@ import {
   fadeUpVariants,
   heroStaggerVariants,
 } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 export type HeroSlide = {
   src: string;
@@ -40,7 +41,7 @@ export function HeroCinematic({ slides, siteName, pills = [], className = "" }: 
   const list = slides;
 
   const [index, setIndex] = useState(0);
-  const reducedMotion = useReducedMotion() ?? false;
+  const reducedMotion = useReducedMotionSafe() ?? false;
 
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -130,7 +131,8 @@ export function HeroCinematic({ slides, siteName, pills = [], className = "" }: 
                   src={slide.src}
                   alt={slide.alt}
                   fill
-                  priority={i === 0}
+                  loading={i === 0 ? "eager" : "lazy"}
+                  fetchPriority={i === 0 ? "high" : "auto"}
                   placeholder="blur"
                   blurDataURL={BLUR_PETROL}
                   className="object-cover object-center"

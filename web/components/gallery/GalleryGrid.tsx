@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence, motion, useInView, useReducedMotion, type Variants } from "framer-motion";
+import { AnimatePresence, motion, useInView, type Variants } from "framer-motion";
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 
 import { BLUR_PETROL } from "@/lib/image-blur";
@@ -14,6 +14,7 @@ import type { GalleryItem } from "@/lib/types";
 import { Lightbox } from "./Lightbox";
 
 import "@/styles/gallery-reveal.css";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 /**
  * Révélation d'Orbix (galerie de travaux) : chaque photo passe du flou au net
@@ -93,7 +94,7 @@ export function GalleryGrid({
 }) {
   const [filter, setFilter] = useState<string>("all");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   const useCategoryFilters = Boolean(categoryLabels);
 

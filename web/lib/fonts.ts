@@ -11,11 +11,14 @@ export const inter = Inter({
   axes: ["opsz"],
 });
 
-/** Pinkberry page headings — rounded, friendly sans-serif. */
+/** Pinkberry page headings — rounded, friendly sans-serif.
+ *  Pas de préchargement : seule la page Pinkberry l'utilise ; préchargée, elle
+ *  retardait le premier affichage de toutes les pages en réseau lent. */
 export const nunito = Nunito({
   subsets: ["latin"],
   variable: "--font-nunito",
   display: "swap",
+  preload: false,
 });
 
 /** Gourmet Mexicana section labels — display cursive. */
@@ -32,4 +35,7 @@ export const cormorant = Cormorant_Garamond({
   weight: ["400", "500", "600", "700"],
   variable: "--font-cormorant",
   display: "swap",
+  // Pages filiales surtout : chargée quand un texte l'utilise, sans
+  // concurrencer la CSS du premier affichage (≈ 76 Ko en 4G lente).
+  preload: false,
 });

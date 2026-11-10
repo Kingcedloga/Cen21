@@ -8,7 +8,7 @@ import {
   type SubsidiaryNavbarTheme,
 } from "@/lib/navbar-theme";
 import { useFilialeScrollReveal } from "@/lib/use-filiale-scroll-reveal";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useEffect, useState, type CSSProperties } from "react";
 
@@ -18,6 +18,7 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { mobileNavItemVariants, mobileNavPanelVariants } from "@/lib/motion";
 
 import { NAV_PATHS } from "./nav-links";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 const SCROLL_THRESHOLD = 24;
 
@@ -28,7 +29,7 @@ export function Header() {
   const tCommon = useTranslations("common");
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const isBrand = subsidiaryTheme !== null;
   const scrollReveal = useFilialeScrollReveal(isBrand);
   const reveal = open ? 1 : scrollReveal;

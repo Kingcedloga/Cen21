@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ChevronRight, Home } from "@/lib/icons";
 
 import { breadcrumbTransition, breadcrumbVariants } from "@/lib/motion";
 
 import type { BreadcrumbItem } from "./Breadcrumb";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 export function BreadcrumbNav({
   items,
@@ -17,7 +18,7 @@ export function BreadcrumbNav({
   className?: string;
   animate?: boolean;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   if (!items.length) return null;
 

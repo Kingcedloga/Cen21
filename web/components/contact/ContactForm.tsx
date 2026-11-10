@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -14,6 +14,7 @@ import {
   fadeUpVariants,
   staggerContainerVariants,
 } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 type ToastState =
   | { variant: "success"; title: string; message?: string }
@@ -37,7 +38,7 @@ export function ContactForm() {
     "idle",
   );
   const [toast, setToast] = useState<ToastState>(null);
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   const {
     register,

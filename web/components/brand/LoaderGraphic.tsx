@@ -1,6 +1,6 @@
 "use client";
 
-import { useReducedMotion } from "framer-motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 type LoaderGraphicProps = {
   className?: string;
@@ -11,7 +11,10 @@ type LoaderGraphicProps = {
 const FILTER_ID = "cen21-loader-goo";
 
 export function LoaderGraphic({ className = "", size = 88 }: LoaderGraphicProps) {
-  const reduced = useReducedMotion();
+  // Sûr pour l'hydratation (faux côté serveur et pendant l'hydratation) : le
+  // hook de Framer lit la préférence tout de suite côté client, d'où l'erreur
+  // React #418 en reduced motion. La CSS @media fixe le visuel avant.
+  const reduced = useReducedMotionSafe();
 
   return (
     <div

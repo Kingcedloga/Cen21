@@ -237,7 +237,11 @@
       "subscribeSuccess": "Thank you! You're subscribed.",
       "subscribeError": "Something went wrong. Please try again.",
       "slidePagination": "Go to event {index}"
-    }
+    },
+    "emptyAgendaTitle": "The calendar is coming together",
+    "emptyAgendaBody": "Our next nights are on their way — stay tuned, or browse past editions.",
+    "emptyFilteredTitle": "No event scheduled",
+    "emptyFilteredBody": "This venue has not announced its next event yet."
   },
   "gallery": {
     "metaTitle": "Gallery",
@@ -555,7 +559,8 @@
     },
     "stackLabel": "The group's houses",
     "indexLabel": "Go straight to a house",
-    "newTab": "new tab"
+    "newTab": "new tab",
+    "discover": "Discover"
   },
   "notFound": {
     "code": "404",
@@ -573,7 +578,17 @@
       "publication": "Publication director",
       "hosting": "Hosting",
       "ip": "Intellectual property",
-      "contact": "Contact form"
+      "contact": "Contact form",
+      "eyebrow": "Information",
+      "description": "Transparency about the site's publisher, hosting and related rights.",
+      "editorBody": "The {name} website is published by {name}, company or entity to be specified (legal form, share capital, trade register number, registered office address).",
+      "publicationBody": "To be completed (legal representative or designated person).",
+      "hostingBody": "To be completed: name of the hosting provider, address and contact details.",
+      "ipBody": "The site's content (texts, images, structure, trademarks, logos) is the property of {name} or used under licence. Any unauthorised use is prohibited.",
+      "contactForm": "Contact form",
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email"
     },
     "privacy": {
       "metaTitle": "Privacy policy",
@@ -582,7 +597,16 @@
       "controller": "Data controller",
       "collected": "Data collected via the form",
       "rights": "Your rights (GDPR)",
-      "retention": "Retention"
+      "retention": "Retention",
+      "eyebrow": "Personal data",
+      "description": "How we handle your information when you use our site or contact us.",
+      "controllerBody": "The processing described below is carried out by {name}. To exercise your rights:",
+      "collectedBody": "When you send a message (name, email address, subject, content), we use this information solely to answer your request and for legitimate follow-up.",
+      "analytics": "Browsing and audience measurement",
+      "analyticsBody": "Depending on the site's final configuration, cookies or trackers may be used (see the cookie policy). To be adapted to your analytics solution, or its absence.",
+      "cookieLink": "cookie policy",
+      "rightsBody": "Under the conditions set by applicable regulations, you may request access to, rectification or erasure of your data, as well as restriction of processing, portability, or object to certain processing. You may lodge a complaint with the CNIL (cnil.fr).",
+      "retentionBody": "Contact messages are kept for as long as needed to handle the exchange, then archived or deleted in line with your legal and operational obligations."
     },
     "cookies": {
       "metaTitle": "Cookies",
@@ -591,7 +615,18 @@
       "what": "What is a cookie?",
       "necessary": "Essential",
       "analytics": "Analytics",
-      "choices": "Your choices"
+      "choices": "Your choices",
+      "eyebrow": "Cookies",
+      "description": "What you need to know about any trackers that may be set during your visit.",
+      "whatBody": "A cookie is a small file stored on your device when you visit a website. Depending on how the site is actually set up, it may serve a technical purpose (security, preferences) or audience measurement.",
+      "used": "Cookies that may be used",
+      "usedBody": "The current showcase site mainly uses cookies required for its technical operation. To be updated if you add third-party social networks, a Google Maps map, advertising, Matomo / GA4, etc.",
+      "necessaryBody": "Proper operation of the site (e.g. load balancing, language preferences).",
+      "analyticsBody": "Only after configuration and, unless exempt, consent (to be documented precisely).",
+      "choicesBody": "You can configure your browser to refuse all or some cookies. For a compliant consent banner (Tarteaucitron, Axeptio, etc.), plan a dedicated integration.",
+      "contact": "Contact",
+      "contactBody": "Questions about this policy:",
+      "contactUs": "contact us"
     }
   },
   "motionLab": {

@@ -1,15 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import {
-  AnimatePresence,
-  motion,
-  useMotionValue,
-  useReducedMotion,
-  useScroll,
-  useSpring,
-  useTransform,
-} from "framer-motion";
+import { AnimatePresence, motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState, type PointerEvent } from "react";
 
@@ -19,6 +11,7 @@ import { FINE_POINTER_QUERY, useMediaQuery } from "@/lib/use-media-query";
 import { youtubeEmbedUrl } from "@/lib/youtube";
 
 import "@/styles/home-experience-section.css";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 type Props = {
   backgroundImage: string;
@@ -42,7 +35,7 @@ const DESKTOP_QUERY = "(min-width: 768px)";
  * la seule commande.
  */
 export function HomeExperienceSection({ backgroundImage, videoId }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const tCta = useTranslations("cta");
   const tHero = useTranslations("hero");
   const tHome = useTranslations("home");

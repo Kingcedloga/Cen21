@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "@/lib/icons";
 import { useEffect, useRef } from "react";
 
@@ -10,6 +10,7 @@ import {
   lightboxImageVariants,
 } from "@/lib/motion";
 import type { GalleryItem } from "@/lib/types";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 export function Lightbox({
   items,
@@ -23,7 +24,7 @@ export function Lightbox({
   onNavigate: (index: number) => void;
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   useEffect(() => {
     closeRef.current?.focus();

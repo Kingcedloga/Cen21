@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { dynalight } from "@/lib/fonts";
@@ -9,6 +9,7 @@ import { EASE } from "@/lib/motion";
 import type { TeamMember } from "@/lib/types";
 
 import "@/styles/market-positioning.css";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 const GAP_PX = 24;
 
@@ -19,7 +20,7 @@ type Props = {
 };
 
 export function MarketPositioningSection({ eyebrow, title, team }: Props) {
-  const reduced = useReducedMotion() ?? false;
+  const reduced = useReducedMotionSafe() ?? false;
   const sectionRef = useRef<HTMLElement>(null);
   const trackOuterRef = useRef<HTMLDivElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-80px 0px" });

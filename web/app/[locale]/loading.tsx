@@ -7,7 +7,10 @@ export default async function Loading() {
 
   return (
     <div
-      className="flex min-h-[50vh] items-center justify-center bg-petrol py-24"
+      // Plein écran : au premier chargement, React révèle la page ~300 ms après
+      // cet état ; plus court, il laissait voir le pied de page, que la page
+      // repoussait ensuite (CLS 0,5 mesuré par Lighthouse).
+      className="flex min-h-svh items-center justify-center bg-petrol py-24"
       role="status"
       aria-live="polite"
       aria-busy="true"

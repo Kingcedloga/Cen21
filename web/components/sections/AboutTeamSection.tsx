@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence, motion, useInView, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { ChevronLeft, ChevronRight, ArrowRight, X } from "@/lib/icons";
@@ -11,6 +11,7 @@ import { DURATION_S, EASE } from "@/lib/motion";
 import type { TeamMember } from "@/lib/types";
 
 import "@/styles/about-team-slider.css";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 const GAP_PX = 24;
 
@@ -50,7 +51,7 @@ export function AboutTeamSection({
   locale = "fr",
 }: Props) {
   const isFrench = locale.startsWith("fr");
-  const reduced = useReducedMotion() ?? false;
+  const reduced = useReducedMotionSafe() ?? false;
   const sectionRef = useRef<HTMLElement>(null);
   const trackOuterRef = useRef<HTMLDivElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-60px 0px" });

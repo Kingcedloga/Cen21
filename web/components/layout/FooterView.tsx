@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { MotionConfig, motion } from "framer-motion";
 import { ArrowUpRight, Mail, MapPin, Phone } from "@/lib/icons";
 import { usePathname } from "@/i18n/navigation";
 import {
@@ -87,14 +87,16 @@ export function FooterView({
   const subsidiaryTheme = getSubsidiaryNavbarTheme(pathname);
   const isThemed = subsidiaryTheme !== null;
 
-  const reduced = useReducedMotion();
   const quickCol1 = NAV_PATHS.slice(0, 3);
   const quickCol2 = NAV_PATHS.slice(3);
 
   const defaultPattern = `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L35 25 L55 30 L35 35 L30 55 L25 35 L5 30 L25 25 Z' fill='none' stroke='%23D4AD65' stroke-width='0.35' opacity='0.5'/%3E%3C/svg%3E")`;
 
+  // Mêmes props au serveur et au client (un test de reduced motion dans le
+  // rendu provoquait l'erreur React #418). En reduced motion, MotionConfig
+  // supprime les déplacements et ne garde que le fondu.
   return (
-    <>
+    <MotionConfig reducedMotion="user">
     {/* Pages groupe : séparateur fondu au-dessus du pied de page. */}
     {!isThemed && <SectionBlend to="var(--color-anthracite)" />}
     <footer
@@ -121,10 +123,10 @@ export function FooterView({
       <div className="relative mx-auto max-w-7xl px-6 pb-12 pt-6 md:px-10 md:pb-16 md:pt-8">
         <motion.div
           className="subsidiary-footer__brand mb-12 text-center md:mb-14"
-          initial={reduced ? false : "hidden"}
-          whileInView={reduced ? undefined : "visible"}
+          initial="hidden"
+          whileInView="visible"
           viewport={defaultScrollViewport}
-          variants={reduced ? undefined : footerStaggerContainerVariants}
+          variants={footerStaggerContainerVariants}
         >
           <div className="subsidiary-footer__crest relative flex w-full items-center">
             <motion.span
@@ -133,14 +135,14 @@ export function FooterView({
               }`}
               aria-hidden
               style={{ transformOrigin: "right center" }}
-              variants={reduced ? undefined : ornamentLineVariants}
+              variants={ornamentLineVariants}
               transition={ornamentLineTransition}
             />
             <motion.div
               className={`subsidiary-footer__logo-badge relative z-[2] mx-6 flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-full border p-2 shadow-lg md:mx-8 md:h-24 md:w-24 md:p-2.5 ${
                 isThemed ? "" : "border-gold/40 bg-anthracite shadow-black/40"
               }`}
-              variants={reduced ? undefined : fadeScaleVariants}
+              variants={fadeScaleVariants}
               transition={fadeScaleTransition}
             >
               <Logo variant="footer" />
@@ -151,7 +153,7 @@ export function FooterView({
               }`}
               aria-hidden
               style={{ transformOrigin: "left center" }}
-              variants={reduced ? undefined : ornamentLineVariants}
+              variants={ornamentLineVariants}
               transition={ornamentLineTransition}
             />
           </div>
@@ -159,7 +161,7 @@ export function FooterView({
             className={`mt-6 font-[family-name:var(--font-dm-sans)] text-2xl font-bold tracking-wide md:mt-7 md:text-3xl ${
               isThemed ? "subsidiary-footer__brand-title" : ""
             }`}
-            variants={reduced ? undefined : fadeUpVariants}
+            variants={fadeUpVariants}
             transition={fadeUpTransition}
           >
             {site.name}
@@ -168,7 +170,7 @@ export function FooterView({
             className={`mx-auto mt-2 max-w-md text-sm italic ${
               isThemed ? "subsidiary-footer__brand-tagline" : "text-taupe"
             }`}
-            variants={reduced ? undefined : fadeUpVariants}
+            variants={fadeUpVariants}
             transition={fadeUpTransition}
           >
             {site.tagline}
@@ -179,14 +181,14 @@ export function FooterView({
           className={`grid grid-cols-1 gap-12 border-t pt-12 md:grid-cols-12 md:gap-10 md:pt-14 ${
             isThemed ? "subsidiary-footer__divider" : "border-white/10"
           }`}
-          initial={reduced ? false : "hidden"}
-          whileInView={reduced ? undefined : "visible"}
+          initial="hidden"
+          whileInView="visible"
           viewport={defaultScrollViewport}
-          variants={reduced ? undefined : footerStaggerContainerVariants}
+          variants={footerStaggerContainerVariants}
         >
           <motion.div
             className="md:col-span-4"
-            variants={reduced ? undefined : fadeUpVariants}
+            variants={fadeUpVariants}
             transition={fadeUpTransition}
           >
             <p
@@ -282,7 +284,7 @@ export function FooterView({
 
           <motion.div
             className="flex flex-col items-start justify-start gap-3 md:col-span-4 md:items-center md:pt-2"
-            variants={reduced ? undefined : fadeUpVariants}
+            variants={fadeUpVariants}
             transition={fadeUpTransition}
           >
             <Button href="/evenements">
@@ -297,7 +299,7 @@ export function FooterView({
 
           <motion.div
             className="md:col-span-4"
-            variants={reduced ? undefined : fadeUpVariants}
+            variants={fadeUpVariants}
             transition={fadeUpTransition}
           >
             <p
@@ -408,6 +410,6 @@ export function FooterView({
         </div>
       </div>
     </footer>
-    </>
+    </MotionConfig>
   );
 }

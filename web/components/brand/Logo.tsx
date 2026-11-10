@@ -52,7 +52,9 @@ export function Logo({ size = "md", className = "", variant = "default" }: LogoP
               : ""
         }`}
         style={isHeader || isFooter ? undefined : { width, height }}
-        priority
+        // Pas de priorité haute (le logo n'est jamais l'élément LCP) : préchargé,
+        // il concurrençait la CSS bloquante en réseau lent.
+        loading={isFooter ? "lazy" : "eager"}
       />
     </Link>
   );

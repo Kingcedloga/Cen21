@@ -1,13 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
 
 import { resolveEventImage } from "@/lib/event-images";
 import { DURATION_S, EASE } from "@/lib/motion";
 import type { EventItem } from "@/lib/types";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 const AUTOPLAY_MS = 6000;
 
@@ -62,7 +63,7 @@ function useCountdown(targetDate: string | null): Remaining {
 }
 
 function CountdownDigit({ value, label }: { value: number; label: string }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   return (
     <div className="flex flex-col items-center">
@@ -90,7 +91,7 @@ function CountdownDigit({ value, label }: { value: number; label: string }) {
 }
 
 export function EventsCountdownHero({ events, fallbackImage, labels }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const t = useTranslations("events");
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -152,7 +153,9 @@ export function EventsCountdownHero({ events, fallbackImage, labels }: Props) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <AnimatePresence mode="sync">
+      {/* initial={false} : la première photo est visible dès le HTML serveur
+          (élément LCP) ; les fondus ne jouent qu'aux changements de photo. */}
+      <AnimatePresence mode="sync" initial={false}>
         <motion.div
           key={activeIndex}
           className="absolute inset-0"
@@ -165,7 +168,8 @@ export function EventsCountdownHero({ events, fallbackImage, labels }: Props) {
             src={backgroundImage}
             alt=""
             fill
-            priority
+            loading="eager"
+            fetchPriority={activeIndex === 0 ? "high" : "auto"}
             sizes="100vw"
             className="object-cover object-center"
           />

@@ -1,8 +1,9 @@
 "use client";
 
 import { ExternalLink } from "@/lib/icons";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { useRef } from "react";
 
 import {
   defaultScrollViewport,
@@ -13,6 +14,7 @@ import {
   googleMapsEmbedUrl,
   googleMapsExternalUrl,
 } from "@/lib/map";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 type MapEmbedProps = {
   /** Adresse ou lieu à afficher */
@@ -32,8 +34,12 @@ export function MapEmbed({
   className = "",
   variant = "default",
 }: MapEmbedProps) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const t = useTranslations("subsidiaries");
+  // La carte Google (≈ 400 Ko de scripts) ne se charge qu'à l'approche de
+  // l'écran : `loading="lazy"` seul la déclenchait dès l'arrivée sur mobile.
+  const frameRef = useRef<HTMLDivElement>(null);
+  const near = useInView(frameRef, { once: true, margin: "400px 0px" });
 
   if (!query.trim()) return null;
 
@@ -54,6 +60,7 @@ export function MapEmbed({
       transition={fadeInTransition}
     >
       <div
+        ref={frameRef}
         className={`relative w-full ${
           banner
             ? "h-[clamp(300px,42vw,480px)]"
@@ -62,14 +69,16 @@ export function MapEmbed({
               : "aspect-[4/3] min-h-[220px] md:min-h-[280px]"
         }`}
       >
-        <iframe
-          title={title}
-          src={src}
-          className="absolute inset-0 h-full w-full border-0 grayscale-[0.15] contrast-[1.02]"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          allowFullScreen
-        />
+        {near && (
+          <iframe
+            title={title}
+            src={src}
+            className="absolute inset-0 h-full w-full border-0 grayscale-[0.15] contrast-[1.02]"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
+        )}
       </div>
       <div
         className={`flex items-center justify-between gap-4 border-t border-white/10 ${

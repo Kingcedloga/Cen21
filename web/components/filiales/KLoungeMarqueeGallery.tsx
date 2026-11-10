@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   useCallback,
   useEffect,
@@ -16,6 +16,7 @@ import { cormorant } from "@/lib/fonts";
 import { X } from "@/lib/icons";
 import { DURATION_S, EASE } from "@/lib/motion";
 import type { GalleryItem } from "@/lib/types";
+import { useMediaQuery, useReducedMotionSafe } from "@/lib/use-media-query";
 
 import "@/styles/k-lounge-marquee-gallery.css";
 
@@ -66,20 +67,12 @@ function PanelFigure({ item, layoutId, onOpen }: PanelProps) {
 }
 
 export function KLoungeMarqueeGallery({ items, title, description, eyebrow }: Props) {
-  const reduced = useReducedMotion() ?? false;
+  // Hooks sûrs pour l'hydratation (faux au serveur et pendant l'hydratation) :
+  // lire window.innerWidth dans l'état initial faisait différer le HTML
+  // serveur et le premier rendu mobile (erreur React #418).
+  const reduced = useReducedMotionSafe();
+  const isMobile = useMediaQuery("(max-width: 767px)");
   const list = items.filter((item) => item.src);
-
-  const [isMobile, setIsMobile] = useState<boolean>(
-    () => typeof window !== "undefined" && window.innerWidth < 768,
-  );
-
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 767px)");
-    setIsMobile(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
 
   // Static (scrollable) mode on mobile or when reduced-motion is requested
   const useStatic = reduced || isMobile;

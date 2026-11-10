@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { Link } from "@/i18n/navigation";
 import { dynalight } from "@/lib/fonts";
@@ -13,6 +13,7 @@ import {
   fadeUpVariants,
   heroStaggerVariants,
 } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 type PageHeroProps = {
   eyebrow?: string;
@@ -35,7 +36,7 @@ export function PageHero({
   homeLabel,
   currentPageLabel,
 }: PageHeroProps) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   if (image) {
     return (
@@ -55,7 +56,10 @@ export function PageHero({
               src={image}
               alt={imageAlt}
               fill
-              priority
+              // Image LCP : chargement immédiat et prioritaire (Next.js 16 :
+              // `priority` est déprécié au profit de loading / fetchPriority).
+              loading="eager"
+              fetchPriority="high"
               placeholder="blur"
               blurDataURL={BLUR_PETROL}
               sizes="100vw"

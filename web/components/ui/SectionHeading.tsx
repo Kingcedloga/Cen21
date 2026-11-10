@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import type { ElementType, ReactNode } from "react";
 
 import { dynalight } from "@/lib/fonts";
@@ -11,6 +11,7 @@ import {
   ornamentLineTransition,
   ornamentLineVariants,
 } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 type Tone = "dark" | "light";
 
@@ -66,7 +67,7 @@ export function SectionHeading({
   titleId?: string;
   className?: string;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const isCenter = align === "center";
   const Title = TitleTag as ElementType;
   const Subtitle = SubtitleTag as ElementType;

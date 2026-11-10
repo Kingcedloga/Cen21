@@ -1,7 +1,8 @@
 "use client";
 
-import { useInView, useReducedMotion } from "framer-motion";
+import { useInView } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 function parseStatValue(value: string) {
   const match = value.match(/^([^\d]*?)([\d,.]+)([^\d]*)$/);
@@ -39,7 +40,7 @@ export function StatCountUp({
   // Marge verticale seulement : une marge sur les côtés empêchait de démarrer
   // les compteurs placés à moins de 60 px du bord (colonne gauche sur mobile).
   const inView = useInView(ref, { once: true, margin: "-60px 0px" });
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const parsed = useMemo(() => parseStatValue(value), [value]);
   const [display, setDisplay] = useState(() =>
     reduced ? value : `${parsed.prefix}0${parsed.suffix}`,

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { Link } from "@/i18n/navigation";
 import { dynalight } from "@/lib/fonts";
@@ -13,6 +13,7 @@ import {
   fadeUpVariants,
   heroStaggerVariants,
 } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 export function AboutHero({
   title,
@@ -27,7 +28,7 @@ export function AboutHero({
   image: string;
   imageAlt?: string;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   return (
     <section

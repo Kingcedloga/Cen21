@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/Button";
 import { dynalight } from "@/lib/fonts";
 import { DURATION_S, EASE, defaultScrollViewport } from "@/lib/motion";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 type Props = {
   eyebrow: string;
@@ -22,7 +23,7 @@ const textTransition = (i: number) => ({
 });
 
 export function AboutVisionSection({ eyebrow, title, description, cta, images }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   return (
     <section

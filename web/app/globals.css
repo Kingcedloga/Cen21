@@ -2,7 +2,10 @@
 
 @font-face {
   font-family: "DM Sans";
-  src: url("/fonts/DMSans-VariableFont_opsz_wght.ttf") format("truetype");
+  /* WOFF2 (88 Ko au lieu de 239 Ko en TTF, mêmes glyphes) ; TTF en secours. */
+  src:
+    url("/fonts/DMSans-VariableFont_opsz_wght.woff2") format("woff2"),
+    url("/fonts/DMSans-VariableFont_opsz_wght.ttf") format("truetype");
   font-weight: 100 600;
   font-style: normal;
   font-display: swap;
@@ -10,7 +13,9 @@
 
 @font-face {
   font-family: "DM Sans";
-  src: url("/fonts/DMSans-Bold.ttf") format("truetype");
+  src:
+    url("/fonts/DMSans-Bold.woff2") format("woff2"),
+    url("/fonts/DMSans-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -933,6 +938,19 @@ h4 {
   .animate-scroll-cue,
   .loader-blob {
     animation: none !important;
+  }
+  /* Même pose fixe que .loader-blobs--static, dès le HTML serveur. */
+  .loader-blob {
+    opacity: 0.85;
+  }
+  .loader-blob--gold {
+    transform: translate(-6px, 0);
+  }
+  .loader-blob--cyan {
+    transform: translate(6px, -4px);
+  }
+  .loader-blob--magenta {
+    transform: translate(0, 6px);
   }
 }
 

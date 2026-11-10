@@ -49,10 +49,12 @@ export function createPageMetadata({
   return {
     title: fullTitle,
     description: desc,
-    themeColor: SITE_THEME_COLOR,
+    // themeColor : dans `siteViewport` (export `viewport` du layout), comme
+    // l'exige Next.js 16. Icônes légères dérivées de /logo.png (399 Ko,
+    // chargé en haute priorité quand il servait de favicon).
     icons: {
-      icon: "/logo.png",
-      apple: "/logo.png",
+      icon: { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      apple: { url: "/apple-icon-180.png", sizes: "180x180", type: "image/png" },
     },
     alternates: {
       canonical: pagePath,
