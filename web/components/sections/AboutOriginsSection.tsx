@@ -28,7 +28,7 @@ export function AboutOriginsSection({ eyebrow, title, description, image, imageA
     <section
       aria-labelledby="about-origins-title"
       data-surface="light"
-      className={`relative overflow-hidden bg-gradient-to-b from-[#efe0cf] via-[#e7d1bf] to-[#dfc8b3] px-6 py-24 md:px-10 md:py-32 ${dynalight.variable}`}
+      className={`relative overflow-hidden bg-gradient-to-b from-ivory via-ivory to-[#dfc8b3] px-6 py-24 md:px-10 md:py-32 ${dynalight.variable}`}
     >
       <div aria-hidden className="noise-overlay" />
 

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import type { ElementType, ReactNode } from "react";
 
+import { SpectrumText } from "@/components/motion/SpectrumText";
 import { dynalight } from "@/lib/fonts";
 import {
   defaultScrollViewport,
@@ -44,9 +45,19 @@ const toneStyles: Record<
   },
 };
 
+/**
+ * En-tête de section.
+ *
+ * `look="classic"` (défaut) : eyebrow cursive entre deux filets, titre fixe.
+ * `look="editorial"` (refonte R0, sections de l'accueil) : étiquette simple en
+ * capitales, titre révélé lettre à lettre au défilement (SpectrumText), avec
+ * `sweep`, la partie du titre balayée d'or à la fin de la révélation.
+ */
 export function SectionHeading({
   eyebrow,
   title,
+  look = "classic",
+  sweep,
   subtitle,
   description,
   align = "center",
@@ -58,6 +69,8 @@ export function SectionHeading({
 }: {
   eyebrow?: string;
   title: string;
+  look?: "classic" | "editorial";
+  sweep?: string;
   subtitle?: string;
   description?: string | ReactNode;
   align?: "left" | "center";
@@ -92,6 +105,46 @@ export function SectionHeading({
         variants: ornamentDiamondVariants,
         transition: { ...ornamentDiamondTransition, delay: 0.06 },
       };
+
+  const subtitleBlock = subtitle && (
+    <Subtitle
+      className={`mt-3 font-[family-name:var(--font-dm-sans)] text-xl sm:text-2xl md:text-[1.85rem] italic font-bold tracking-[-0.015em] leading-[1.15] ${
+        isCenter ? "mx-auto" : ""
+      } ${styles.subtitle}`}
+    >
+      {subtitle}
+    </Subtitle>
+  );
+  const descriptionBlock = description && (
+    <p
+      className={`mt-5 text-[15px] md:text-base lg:text-lg leading-[1.8] tracking-[-0.005em] max-w-2xl text-pretty ${
+        isCenter ? "mx-auto" : ""
+      } ${styles.description}`}
+    >
+      {description}
+    </p>
+  );
+
+  if (look === "editorial") {
+    return (
+      <header className={`max-w-4xl mb-12 md:mb-16 ${isCenter ? "mx-auto text-center" : "text-left"} ${className}`}>
+        {eyebrow && (
+          <p className={`eyebrow text-xs font-semibold uppercase tracking-[0.2em] ${styles.eyebrow}`}>{eyebrow}</p>
+        )}
+        <SpectrumText
+          as={TitleTag}
+          id={titleId}
+          mode="scroll"
+          text={title}
+          sweep={sweep}
+          tone={tone === "light" ? "light" : "dark"}
+          className={`title-section text-h2 text-balance ${eyebrow ? "mt-4" : ""} ${isCenter ? "mx-auto" : ""} ${styles.title}`}
+        />
+        {subtitleBlock}
+        {descriptionBlock}
+      </header>
+    );
+  }
 
   return (
     <header
@@ -150,24 +203,8 @@ export function SectionHeading({
       >
         {title}
       </Title>
-      {subtitle && (
-        <Subtitle
-          className={`mt-3 font-[family-name:var(--font-dm-sans)] text-xl sm:text-2xl md:text-[1.85rem] italic font-bold tracking-[-0.015em] leading-[1.15] ${
-            isCenter ? "mx-auto" : ""
-          } ${styles.subtitle}`}
-        >
-          {subtitle}
-        </Subtitle>
-      )}
-      {description && (
-        <p
-          className={`mt-5 text-[15px] md:text-base lg:text-lg leading-[1.8] tracking-[-0.005em] max-w-2xl text-pretty ${
-            isCenter ? "mx-auto" : ""
-          } ${styles.description}`}
-        >
-          {description}
-        </p>
-      )}
+      {subtitleBlock}
+      {descriptionBlock}
     </header>
   );
 }

@@ -22,6 +22,33 @@ export function markSiteReady() {
   callbacks.clear();
 }
 
+let navigated = false;
+/** Chemin du document chargé (le module est évalué à l'arrivée sur le site). */
+const initialPath = typeof window === "undefined" ? "" : window.location.pathname;
+
+/** Appelé par SiteLoader à chaque changement de page côté client. */
+export function markNavigated() {
+  navigated = true;
+}
+
+/**
+ * Révélation d'entrée manquée : sur la page d'arrivée, le titre est déjà
+ * visible quand son animation pourrait démarrer — le loader est parti
+ * (`ready`), ou son plafond CSS d'environ une seconde (globals.css) a
+ * commencé à l'effacer avant que le JavaScript ne prenne la main. Masquer le
+ * texte pour le rejouer ferait clignoter la page : on le laisse tel quel.
+ * Après une navigation interne, les révélations jouent normalement.
+ */
+export function introMissed(): boolean {
+  if (navigated || window.location.pathname !== initialPath) {
+    navigated = true;
+    return false;
+  }
+  if (ready) return true;
+  const loader = document.querySelector<HTMLElement>("[data-site-loader]:not([data-js])");
+  return loader !== null && parseFloat(getComputedStyle(loader).opacity) < 0.98;
+}
+
 /** Appelle `callback` dès que le site est prêt. Retourne une fonction d'annulation. */
 export function onSiteReady(callback: () => void): () => void {
   if (ready) {

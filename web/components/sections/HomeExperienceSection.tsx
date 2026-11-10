@@ -4,10 +4,11 @@ import Image from "next/image";
 import { AnimatePresence, motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState, type PointerEvent } from "react";
+import { createPortal } from "react-dom";
 
 import { Play, X } from "@/lib/icons";
 import { DURATION_S, EASE, defaultScrollViewport, keyframes } from "@/lib/motion";
-import { FINE_POINTER_QUERY, useMediaQuery } from "@/lib/use-media-query";
+import { FINE_POINTER_QUERY, useHydrated, useMediaQuery } from "@/lib/use-media-query";
 import { youtubeEmbedUrl } from "@/lib/youtube";
 
 import "@/styles/home-experience-section.css";
@@ -40,6 +41,7 @@ export function HomeExperienceSection({ backgroundImage, videoId }: Props) {
   const tHero = useTranslations("hero");
   const tHome = useTranslations("home");
   const [isOpen, setIsOpen] = useState(false);
+  const hydrated = useHydrated();
   const sectionRef = useRef<HTMLElement>(null);
   const desktop = useMediaQuery(DESKTOP_QUERY);
   const finePointer = useMediaQuery(FINE_POINTER_QUERY);
@@ -180,44 +182,50 @@ export function HomeExperienceSection({ backgroundImage, videoId }: Props) {
         )}
       </div>
 
-      <AnimatePresence>
-        {isOpen && videoId && (
-          <motion.div
-            className="home-experience__lightbox"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: reduced ? 0 : 0.3, ease: EASE.luxury }}
-            onClick={close}
-            role="dialog"
-            aria-modal="true"
-          >
-            <motion.div
-              className="home-experience__frame"
-              initial={reduced ? false : { scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={reduced ? undefined : { scale: 0.92, opacity: 0 }}
-              transition={{ duration: reduced ? 0 : 0.4, ease: EASE.luxury }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <iframe
-                src={youtubeEmbedUrl(videoId)}
-                title={tCta("videoTitle")}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-              <button
-                type="button"
-                className="home-experience__close"
+      {/* Portail vers <body> : la section isole son empilement (isolation:
+          isolate), la vidéo passerait sinon sous la capsule de navigation. */}
+      {hydrated &&
+        createPortal(
+          <AnimatePresence>
+            {isOpen && videoId && (
+              <motion.div
+                className="home-experience__lightbox"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: reduced ? 0 : 0.3, ease: EASE.luxury }}
                 onClick={close}
-                aria-label={tCta("closeVideoAria")}
+                role="dialog"
+                aria-modal="true"
               >
-                <X size={20} aria-hidden="true" />
-              </button>
-            </motion.div>
-          </motion.div>
+                <motion.div
+                  className="home-experience__frame"
+                  initial={reduced ? false : { scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={reduced ? undefined : { scale: 0.92, opacity: 0 }}
+                  transition={{ duration: reduced ? 0 : 0.4, ease: EASE.luxury }}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <iframe
+                    src={youtubeEmbedUrl(videoId)}
+                    title={tCta("videoTitle")}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+                  <button
+                    type="button"
+                    className="home-experience__close"
+                    onClick={close}
+                    aria-label={tCta("closeVideoAria")}
+                  >
+                    <X size={20} aria-hidden="true" />
+                  </button>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body,
         )}
-      </AnimatePresence>
     </section>
   );
 }

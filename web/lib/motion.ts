@@ -111,7 +111,7 @@ export const staggerContainerVariants: Variants = {
   },
 };
 
-/** Hero / PageHero — eyebrow → titre → description */
+/** Hero de l'accueil — eyebrow → titre → description */
 export const heroStaggerVariants: Variants = {
   hidden: {},
   visible: {

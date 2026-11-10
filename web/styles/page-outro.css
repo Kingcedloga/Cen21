@@ -1,0 +1,122 @@
+/* =========================================================================
+   Bande de clôture des pages intérieures (components/sections/PageOutro.tsx,
+   refonte R0). Même fond que le footer (--color-anthracite).
+   ========================================================================= */
+
+.page-outro {
+  position: relative;
+  padding: clamp(5rem, 10vw, 8rem) 1rem clamp(2.5rem, 5vw, 4rem);
+  background-color: var(--color-anthracite);
+  color: var(--color-ivory);
+}
+
+.page-outro__inner {
+  max-width: 82rem;
+  margin-inline: auto;
+}
+
+.page-outro__head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.page-outro__title {
+  max-width: 20ch;
+  margin-top: 1rem;
+  color: var(--color-ivory);
+}
+
+/* --- Lien vers la page suivante ----------------------------------------- */
+.page-outro__next {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "label arrow"
+    "title arrow";
+  align-items: end;
+  gap: 0.5rem 1.5rem;
+  margin-top: clamp(3rem, 7vw, 5.5rem);
+  padding-block: 1.75rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-ivory) 14%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-ivory) 14%, transparent);
+  color: var(--color-ivory);
+  transition: border-color var(--duration-luxe) var(--ease-luxury);
+}
+
+.page-outro__next-label {
+  grid-area: label;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-ivory) 60%, transparent);
+}
+
+.page-outro__next-title {
+  grid-area: title;
+  min-width: 0;
+  font-size: clamp(2.5rem, 1.2rem + 6vw, 6.5rem);
+  line-height: 1;
+}
+
+.page-outro__next-title .rolling-text {
+  /* Les lettres roulent dans une ligne un peu plus haute que le texte. */
+  padding-bottom: 0.08em;
+}
+
+/* Flèche (Orbix : icône −45° → 0° au survol) dans une pastille or. */
+.page-outro__next-arrow {
+  grid-area: arrow;
+  display: grid;
+  place-items: center;
+  width: clamp(3.5rem, 2.5rem + 3vw, 5.5rem);
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--color-gold) 45%, transparent);
+  border-radius: 9999px;
+  color: var(--color-gold);
+  transition:
+    background-color var(--duration-luxe) var(--ease-luxury),
+    color var(--duration-luxe) var(--ease-luxury);
+}
+
+.page-outro__next-arrow svg {
+  transition: transform var(--duration-luxe) var(--ease-luxury);
+}
+
+.page-outro__next:focus-visible {
+  outline: 1px solid var(--color-gold);
+  outline-offset: 6px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .page-outro__next:hover {
+    border-color: color-mix(in srgb, var(--color-gold) 40%, transparent);
+  }
+  .page-outro__next:hover .page-outro__next-arrow {
+    background-color: var(--color-gold);
+    color: var(--color-petrol-panel-4);
+  }
+  .page-outro__next:hover .page-outro__next-arrow svg {
+    transform: rotate(45deg);
+  }
+}
+
+@media (min-width: 768px) {
+  .page-outro {
+    padding-inline: 2rem;
+  }
+  .page-outro__head {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-outro__next-arrow,
+  .page-outro__next-arrow svg {
+    transition: none;
+  }
+}

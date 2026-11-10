@@ -16,7 +16,8 @@
     "allRights": "Tous droits réservés.",
     "loadingSite": "Chargement de Cen21 Hospitality",
     "call": "Appeler",
-    "directions": "Itinéraire"
+    "directions": "Itinéraire",
+    "breadcrumb": "Fil d'Ariane"
   },
   "language": {
     "label": "Langue",
@@ -150,7 +151,8 @@
     "teamTitle": "Notre équipe dirigeante",
     "teamDescription": "Des profils qui incarnent notre exigence d'excellence et notre rigueur opérationnelle.",
     "teamSubtitle": "Les architectes de notre vision",
-    "heroImageAlt": "Architecture intérieure d'un établissement Cen21 Hospitality"
+    "heroImageAlt": "Architecture intérieure d'un établissement Cen21 Hospitality",
+    "titleSweep": "notre vision"
   },
   "contact": {
     "metaTitle": "Contact",
@@ -187,7 +189,9 @@
     "tilesTitle": "Nos maisons sur les réseaux",
     "tilesDescription": "Les soirées, les nouveautés et les coulisses de chaque adresse, au jour le jour.",
     "tilesLabel": "Réseaux sociaux des maisons",
-    "newTab": "nouvel onglet"
+    "newTab": "nouvel onglet",
+    "faqTitleSweep": "nos réponses",
+    "tilesTitleSweep": "sur les réseaux"
   },
   "form": {
     "name": "Nom",
@@ -229,7 +233,6 @@
     "emptyFilteredBody": "Cet établissement n'a pas encore publié son prochain rendez-vous.",
     "emptyAgendaBody": "Nos prochaines soirées arrivent — restez à l'écoute, ou parcourez les éditions passées.",
     "hero": {
-      "comingSoonFallback": "Coming Soon",
       "daysLabel": "Jours",
       "hoursLabel": "Heures",
       "minutesLabel": "Minutes",
@@ -240,7 +243,8 @@
       "subscribing": "Envoi…",
       "subscribeSuccess": "Merci ! Vous êtes inscrit.",
       "subscribeError": "Une erreur est survenue. Réessayez.",
-      "slidePagination": "Aller à l'événement {index}"
+      "nextEyebrow": "Prochain rendez-vous",
+      "countdownLabel": "Temps restant avant l'événement"
     }
   },
   "gallery": {
@@ -560,7 +564,9 @@
     },
     "stackLabel": "Les maisons du groupe",
     "indexLabel": "Accès direct aux maisons",
-    "newTab": "nouvel onglet"
+    "newTab": "nouvel onglet",
+    "titleSweep": "filiales",
+    "selectionTitleSweep": "dix univers"
   },
   "notFound": {
     "code": "404",
@@ -650,5 +656,19 @@
     "trackBody": "La scène reste fixe pendant 200vh de défilement ; la carte et la barre suivent la progression.",
     "trackCard": "Progression de la piste",
     "end": "Fin du laboratoire"
+  },
+  "outro": {
+    "eyebrow": "Prochaine étape",
+    "next": "Page suivante",
+    "aboutTitle": "{count} maisons, une même exigence",
+    "aboutSweep": "une même exigence",
+    "subsidiariesTitle": "Chaque maison a ses soirées",
+    "subsidiariesSweep": "ses soirées",
+    "eventsTitle": "Revivez nos soirées en images",
+    "eventsSweep": "en images",
+    "galleryTitle": "Envie d'y être ?",
+    "gallerySweep": "d'y être",
+    "contactTitle": "Le groupe, de l'intérieur",
+    "contactSweep": "de l'intérieur"
   }
 }

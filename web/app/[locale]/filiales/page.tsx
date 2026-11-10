@@ -1,9 +1,11 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { SubsidiariesStack, type StackItem } from "@/components/filiales/SubsidiariesStack";
+import { HeroCurtain } from "@/components/layout/HeroCurtain";
 import { PageSection } from "@/components/layout/PageSection";
 import { RollingText } from "@/components/motion/RollingText";
-import { PageHero } from "@/components/sections/PageHero";
+import { InnerHero } from "@/components/sections/InnerHero";
+import { PageOutro } from "@/components/sections/PageOutro";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Link } from "@/i18n/navigation";
@@ -51,6 +53,8 @@ export default async function SubsidiariesPage({ params }: Props) {
   const t = await getTranslations("subsidiaries");
   const tNav = await getTranslations("nav");
   const tCommon = await getTranslations("common");
+  const tOutro = await getTranslations("outro");
+  const tCta = await getTranslations("cta");
 
   const stackItems: StackItem[] = subsidiaries.map((s) => ({
     slug: s.slug,
@@ -73,58 +77,76 @@ export default async function SubsidiariesPage({ params }: Props) {
 
   return (
     <>
-      <PageHero
-        title={t("title")}
-        homeLabel={tNav("home")}
-        currentPageLabel={tNav("subsidiaries")}
-        image="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=2400&q=85"
-      />
-
-      <PageSection
-        variant="dark"
-        spacing="default"
-        id="filiales-stack"
-        ariaLabelledby="filiales-stack-title"
-        className="pb-14! md:pb-20!"
-        containerClassName="mx-auto max-w-[min(100%,1400px)]"
-      >
-        <AnimateIn>
-          <SectionHeading
-            eyebrow={t("selectionEyebrow")}
-            title={t("selectionTitle")}
-            titleAs="h2"
-            subtitleAs="h3"
-            titleId="filiales-stack-title"
-            description={t("selectionDescription")}
-            align="left"
-            className="max-w-2xl"
+      <HeroCurtain
+        surface="var(--color-petrol-panel-4)"
+        hero={
+          <InnerHero
+            className="hero-curtain__hero"
+            eyebrow={t("eyebrow")}
+            title={t("title")}
+            titleSweep={t("titleSweep")}
+            description={t("description")}
+            image="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=2400&q=85"
+            breadcrumb={{ label: tCommon("breadcrumb"), home: tNav("home"), current: tNav("subsidiaries") }}
           />
-        </AnimateIn>
+        }
+      >
+        <PageSection
+          variant="dark"
+          spacing="default"
+          id="filiales-stack"
+          ariaLabelledby="filiales-stack-title"
+          className="pb-14! md:pb-20!"
+          containerClassName="mx-auto max-w-[min(100%,1400px)]"
+        >
+          <AnimateIn>
+            <SectionHeading
+              look="editorial"
+              eyebrow={t("selectionEyebrow")}
+              title={t("selectionTitle")}
+              sweep={t("selectionTitleSweep")}
+              titleAs="h2"
+              subtitleAs="h3"
+              titleId="filiales-stack-title"
+              description={t("selectionDescription")}
+              align="left"
+              className="max-w-2xl"
+            />
+          </AnimateIn>
 
-        {/* Accès direct : la pile fait dix écrans de haut. */}
-        <nav aria-label={t("indexLabel")} className="mt-10 md:mt-12">
-          <ul className="flex flex-wrap gap-2">
-            {stackItems.map((item) => (
-              <li key={item.slug}>
-                {item.external ? (
-                  <a href={item.href} target="_blank" rel="noopener noreferrer" className={INDEX_LINK}>
-                    <RollingText text={item.name} />
-                    <span className="sr-only"> ({t("newTab")})</span>
-                  </a>
-                ) : (
-                  <Link href={item.href} className={INDEX_LINK}>
-                    <RollingText text={item.name} />
-                  </Link>
-                )}
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </PageSection>
+          {/* Accès direct : la pile fait dix écrans de haut. */}
+          <nav aria-label={t("indexLabel")} className="mt-10 md:mt-12">
+            <ul className="flex flex-wrap gap-2">
+              {stackItems.map((item) => (
+                <li key={item.slug}>
+                  {item.external ? (
+                    <a href={item.href} target="_blank" rel="noopener noreferrer" className={INDEX_LINK}>
+                      <RollingText text={item.name} />
+                      <span className="sr-only"> ({t("newTab")})</span>
+                    </a>
+                  ) : (
+                    <Link href={item.href} className={INDEX_LINK}>
+                      <RollingText text={item.name} />
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </PageSection>
+      </HeroCurtain>
 
       <SubsidiariesStack
         items={stackItems}
         labels={{ list: t("stackLabel"), hours: t("hours"), address: t("address"), newTab: t("newTab") }}
+      />
+
+      <PageOutro
+        eyebrow={tOutro("eyebrow")}
+        title={tOutro("subsidiariesTitle")}
+        titleSweep={tOutro("subsidiariesSweep")}
+        primary={{ href: "/contact", label: tCta("contact") }}
+        next={{ href: "/evenements", label: tOutro("next"), title: tNav("events") }}
       />
     </>
   );

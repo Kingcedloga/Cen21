@@ -29,3 +29,18 @@ export function useMediaQuery(query: string): boolean {
 export function useReducedMotionSafe(): boolean {
   return useMediaQuery(REDUCED_MOTION_QUERY);
 }
+
+const noopSubscribe = () => () => {};
+
+/**
+ * `false` côté serveur et pendant l'hydratation, `true` ensuite. Pour ce qui
+ * ne peut pas être rendu à l'identique des deux côtés (heure courante, portail
+ * vers document.body…).
+ */
+export function useHydrated(): boolean {
+  return useSyncExternalStore(
+    noopSubscribe,
+    () => true,
+    () => false,
+  );
+}

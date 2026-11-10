@@ -12,7 +12,7 @@ import { useRef, type ReactNode, type RefObject } from "react";
 
 import { playSweep, sweepClassName, type SweepTone } from "@/components/motion/GradientSweep";
 import { SPECTRUM_GOLD } from "@/lib/motion";
-import { onSiteReady } from "@/lib/site-ready";
+import { introMissed, onSiteReady } from "@/lib/site-ready";
 import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 import "@/styles/motion-primitives.css";
@@ -29,6 +29,18 @@ const GHOST: RGB = SPECTRUM_GOLD[0];
 
 function clamp01(value: number) {
   return Math.min(1, Math.max(0, value));
+}
+
+/**
+ * Progression atteinte quand la page est défilée jusqu'en bas. Inférieure à 1
+ * pour un texte trop proche du bas de page (bande de clôture, dernière
+ * section) : la révélation est alors étirée pour finir au bas de la page.
+ */
+function reachableProgress(root: HTMLElement): number {
+  const viewport = window.innerHeight;
+  const maxScroll = document.documentElement.scrollHeight - viewport;
+  const topAtBottom = root.getBoundingClientRect().top + window.scrollY - maxScroll;
+  return clamp01((viewport * 0.92 - topAtBottom) / (viewport * 0.5));
 }
 
 function mix(from: RGB, to: RGB, k: number): RGB {
@@ -225,15 +237,31 @@ export function SpectrumText({
     }
 
     if (driver === "scroll") {
-      paintRef.current = paint;
+      // Mesure hors du défilement : à l'arrivée et quand la page change de taille.
+      let end = 1;
+      const measure = () => {
+        end = reachableProgress(root);
+      };
+      measure();
+      const observer = new ResizeObserver(measure);
+      observer.observe(document.documentElement);
+      window.addEventListener("resize", measure);
+      const paintReachable = (value: number) => paint(end > 0 && end < 1 ? clamp01(value / end) : value);
+
+      paintRef.current = paintReachable;
       const rect = root.getBoundingClientRect();
       const viewport = window.innerHeight;
-      paint(clamp01((viewport * 0.92 - rect.top) / (viewport * 0.5)));
+      paintReachable(clamp01((viewport * 0.92 - rect.top) / (viewport * 0.5)));
       return () => {
         paintRef.current = null;
+        observer.disconnect();
+        window.removeEventListener("resize", measure);
         reset();
       };
     }
+
+    // Loader déjà effacé par son plafond CSS : le titre est visible, on le laisse.
+    if (introMissed()) return;
 
     paint(0);
     let controls: AnimationPlaybackControls | undefined;

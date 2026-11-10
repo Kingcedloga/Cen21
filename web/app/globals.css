@@ -839,6 +839,26 @@ h4 {
   clip-path: inset(0 round 0);
 }
 
+/* Plafond du loader (refonte R0) : sans JavaScript à temps, le voile
+   s'efface seul une seconde après son affichage. SiteLoader pose `data-js`
+   dès qu'il prend la main. */
+@keyframes site-loader-cap {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+[data-site-loader]:not([data-js]) {
+  animation: site-loader-cap 0.4s var(--ease-out-soft) 1s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-site-loader]:not([data-js]) {
+    animation-duration: 0.01s;
+  }
+}
+
 @keyframes site-loader-blob-1 {
   0%,
   100% {

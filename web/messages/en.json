@@ -16,7 +16,8 @@
     "allRights": "All rights reserved.",
     "loadingSite": "Loading Cen21 Hospitality",
     "call": "Call",
-    "directions": "Directions"
+    "directions": "Directions",
+    "breadcrumb": "Breadcrumb"
   },
   "language": {
     "label": "Language",
@@ -150,7 +151,8 @@
     "teamTitle": "Our leadership team",
     "teamDescription": "Profiles that embody our standards of excellence and operational rigor.",
     "teamSubtitle": "The architects of our vision",
-    "heroImageAlt": "Interior architecture of a Cen21 Hospitality venue"
+    "heroImageAlt": "Interior architecture of a Cen21 Hospitality venue",
+    "titleSweep": "vision"
   },
   "contact": {
     "metaTitle": "Contact",
@@ -187,7 +189,9 @@
     "tilesTitle": "Our houses on social media",
     "tilesDescription": "Nights, news and behind-the-scenes from each venue, day by day.",
     "tilesLabel": "Our houses' social accounts",
-    "newTab": "new tab"
+    "newTab": "new tab",
+    "faqTitleSweep": "answered",
+    "tilesTitleSweep": "on social media"
   },
   "form": {
     "name": "Name",
@@ -225,7 +229,6 @@
     "viewArchives": "View archives",
     "notify": "Get notified",
     "hero": {
-      "comingSoonFallback": "Coming Soon",
       "daysLabel": "Days",
       "hoursLabel": "Hours",
       "minutesLabel": "Minutes",
@@ -236,7 +239,8 @@
       "subscribing": "Sending…",
       "subscribeSuccess": "Thank you! You're subscribed.",
       "subscribeError": "Something went wrong. Please try again.",
-      "slidePagination": "Go to event {index}"
+      "nextEyebrow": "Next event",
+      "countdownLabel": "Time left before the event"
     },
     "emptyAgendaTitle": "The calendar is coming together",
     "emptyAgendaBody": "Our next nights are on their way — stay tuned, or browse past editions.",
@@ -560,7 +564,9 @@
     "stackLabel": "The group's houses",
     "indexLabel": "Go straight to a house",
     "newTab": "new tab",
-    "discover": "Discover"
+    "discover": "Discover",
+    "titleSweep": "subsidiaries",
+    "selectionTitleSweep": "ten worlds"
   },
   "notFound": {
     "code": "404",
@@ -650,5 +656,19 @@
     "trackBody": "The stage stays pinned for 200vh of scrolling; the card and the bar follow the progress.",
     "trackCard": "Track progress",
     "end": "End of the lab"
+  },
+  "outro": {
+    "eyebrow": "Next step",
+    "next": "Next page",
+    "aboutTitle": "{count} houses, one standard",
+    "aboutSweep": "one standard",
+    "subsidiariesTitle": "Every house has its nights",
+    "subsidiariesSweep": "its nights",
+    "eventsTitle": "Relive our nights in pictures",
+    "eventsSweep": "in pictures",
+    "galleryTitle": "Want to be there?",
+    "gallerySweep": "be there",
+    "contactTitle": "The group, from the inside",
+    "contactSweep": "from the inside"
   }
 }
