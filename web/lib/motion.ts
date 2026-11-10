@@ -336,6 +336,8 @@ export const SPECTRUM_GOLD = [
 export const TRACK_VH = {
   /** Orbix : 240. Allongée pour ralentir l'explosion (HomeUniverseBurst). */
   burst: 280,
+  /** Mobile : scène compacte, même timeline sur une piste plus courte. */
+  burstMobile: 220,
   universes: 500,
   /** Mobile : même chorégraphie sur une piste plus courte (moins de défilement au pouce). */
   universesMobile: 340,

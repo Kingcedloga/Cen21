@@ -26,8 +26,8 @@
   }
 }
 
-/* Mobile et reduced motion : pas de scène, dès le HTML serveur. */
-@media (max-width: 767.98px), (prefers-reduced-motion: reduce) {
+/* Reduced motion : pas de scène, dès le HTML serveur. */
+@media (prefers-reduced-motion: reduce) {
   .burst-canvas {
     display: none;
   }
@@ -62,5 +62,34 @@
 @media (max-width: 767.98px), (prefers-reduced-motion: reduce) {
   .burst-shuttle {
     min-height: 0;
+  }
+}
+
+/* Mobile (scène compacte) : le message prend toute la largeur, un disque ne
+   le couvrirait pas. Le voile devient une bande de la couleur de la section,
+   fondue en haut et en bas, d'un bord de l'écran à l'autre : les photos
+   passent derrière le texte et ne se montrent qu'au-dessus et au-dessous. */
+@media (max-width: 767.98px) {
+  .burst-shuttle {
+    background-image: none;
+  }
+
+  .burst-shuttle::before {
+    content: "";
+    position: absolute;
+    inset: -3rem -1rem;
+    z-index: -1;
+    pointer-events: none;
+    background-image: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--color-petrol-panel-4) 0%, transparent),
+      var(--color-petrol-panel-4) 3rem,
+      var(--color-petrol-panel-4) calc(100% - 3rem),
+      color-mix(in srgb, var(--color-petrol-panel-4) 0%, transparent)
+    );
+  }
+
+  .burst-card {
+    border-radius: 0.875rem;
   }
 }
