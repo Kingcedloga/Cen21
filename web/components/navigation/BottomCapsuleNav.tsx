@@ -6,6 +6,7 @@ import { useEffect, useId, useRef, useState } from "react";
 
 import { CapsuleMenu, type CapsuleMenuProps } from "@/components/navigation/CapsuleMenu";
 import { Link, usePathname } from "@/i18n/navigation";
+import { CAPSULE_SLOT_ID } from "@/lib/capsule-slot";
 import { EASE } from "@/lib/motion";
 import { useScrollPercent } from "@/lib/use-scroll-percent";
 import { useSurfaceContrast } from "@/lib/use-surface-contrast";
@@ -116,7 +117,7 @@ export function BottomCapsuleNav(props: CapsuleMenuProps) {
           )}
         </AnimatePresence>
 
-        <div ref={wrapperRef} className="pointer-events-auto relative w-[min(100%,360px)]">
+        <div ref={wrapperRef} className="capsule-wrap pointer-events-auto relative w-[min(100%,360px)]">
           <AnimatePresence>
             {open && (
               <CapsuleMenu key="menu" id={menuId} {...props} onNavigate={() => close(false)} />
@@ -138,6 +139,10 @@ export function BottomCapsuleNav(props: CapsuleMenuProps) {
                 Cen21
               </span>
             </Link>
+
+            {/* Commandes propres à la page (ex. Grille / Liste sur /evenements),
+                rendues ici par portail : voir lib/capsule-slot.ts. */}
+            <div id={CAPSULE_SLOT_ID} className="capsule-slot" />
 
             <span
               aria-hidden="true"

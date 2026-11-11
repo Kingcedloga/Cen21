@@ -132,20 +132,20 @@
   "partners": [
     {
       "name": "Papa John's",
-      "role": "International franchise — pizza",
-      "url": "https://www.papajohnsrdc.com/",
+      "role": "Pizza",
+      "url": "https://www.papajohnsrdc.com",
       "subsidiarySlug": "filiale-08"
     },
     {
       "name": "Pinkberry",
-      "role": "International franchise — frozen yogurt",
-      "url": "https://www.pinkberry.com/",
+      "role": "Frozen yogurt",
+      "url": "https://www.pinkberry.com",
       "subsidiarySlug": "filiale-09"
     },
     {
       "name": "Le Pain Quotidien",
-      "role": "International franchise — bakery & restaurant",
-      "url": "https://www.lepainquotidien.com/cd/en/",
+      "role": "Bakery & restaurant",
+      "url": "https://www.lepainquotidien.com",
       "subsidiarySlug": "filiale-10"
     }
   ],

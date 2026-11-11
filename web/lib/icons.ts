@@ -40,6 +40,8 @@ import {
   Wine,
   X,
   Ticket,
+  SquaresFour as LayoutGrid,
+  Rows as LayoutList,
 } from "@phosphor-icons/react/ssr";
 
 import type { Icon as LucideIcon, IconWeight } from "@phosphor-icons/react";
@@ -157,4 +159,6 @@ export {
   Wine,
   X,
   Ticket,
+  LayoutGrid,
+  LayoutList,
 };

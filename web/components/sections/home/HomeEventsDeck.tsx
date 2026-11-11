@@ -39,8 +39,11 @@ type DeckProps = {
   title: string;
   titleSweep?: string;
   statusLabels: { upcoming: string; past: string };
-  cta: { href: string; label: string };
+  /** `native` : ancre de la même page (`#agenda`), défilée par Lenis. */
+  cta: { href: string; label: string; native?: boolean };
   events: DeckEvent[];
+  /** Accueil par défaut ; /evenements a son propre identifiant. */
+  titleId?: string;
 };
 
 /** Pause de chaque carte avant qu'elle se décolle (Orbix : 18 %). */
@@ -57,15 +60,16 @@ function DeckHead({
   title,
   titleSweep,
   cta,
+  titleId,
   aside,
-}: Pick<DeckProps, "eyebrow" | "title" | "titleSweep" | "cta"> & { aside?: ReactNode }) {
+}: Pick<DeckProps, "eyebrow" | "title" | "titleSweep" | "cta"> & { titleId: string; aside?: ReactNode }) {
   return (
     <div className="events-deck__head">
       <div>
         <p className="eyebrow text-xs font-semibold uppercase tracking-[0.2em] text-gold">{eyebrow}</p>
         <SpectrumText
           as="h2"
-          id="home-events-title"
+          id={titleId}
           mode="scroll"
           text={title}
           sweep={titleSweep}
@@ -74,7 +78,7 @@ function DeckHead({
       </div>
       <div className="flex items-center gap-6">
         {aside}
-        <Button href={cta.href} variant="secondary" magnetic>
+        <Button href={cta.href} native={cta.native} variant="secondary" magnetic>
           {cta.label}
         </Button>
       </div>
@@ -158,7 +162,7 @@ function DeckCard({
   );
 }
 
-function DeckStage({ eyebrow, title, titleSweep, statusLabels, cta, events }: DeckProps) {
+function DeckStage({ eyebrow, title, titleSweep, statusLabels, cta, events, titleId }: DeckProps & { titleId: string }) {
   const { progress, isStatic } = useStickyTrack();
   const count = events.length;
   const [active, setActive] = useState(0);
@@ -178,6 +182,7 @@ function DeckStage({ eyebrow, title, titleSweep, statusLabels, cta, events }: De
           title={title}
           titleSweep={titleSweep}
           cta={cta}
+          titleId={titleId}
           aside={
             !isStatic &&
             count > 1 && (
@@ -266,7 +271,7 @@ function SwipeCard({
   );
 }
 
-function DeckSwipe({ eyebrow, title, titleSweep, statusLabels, cta, events }: DeckProps) {
+function DeckSwipe({ eyebrow, title, titleSweep, statusLabels, cta, events, titleId }: DeckProps & { titleId: string }) {
   const t = useTranslations("home");
   const count = events.length;
   const [active, setActive] = useState(0);
@@ -309,10 +314,10 @@ function DeckSwipe({ eyebrow, title, titleSweep, statusLabels, cta, events }: De
   };
 
   return (
-    <section aria-labelledby="home-events-title" data-surface="dark" className="events-swipe bg-petrol">
-      <DeckHead eyebrow={eyebrow} title={title} titleSweep={titleSweep} cta={cta} />
+    <section aria-labelledby={titleId} data-surface="dark" className="events-swipe bg-petrol">
+      <DeckHead eyebrow={eyebrow} title={title} titleSweep={titleSweep} cta={cta} titleId={titleId} />
 
-      <ol ref={pileRef} id="home-events-pile" className="events-swipe__pile">
+      <ol ref={pileRef} id={`${titleId}-pile`} className="events-swipe__pile">
         {events.map((event, index) => (
           <SwipeCard
             key={event.id}
@@ -334,7 +339,7 @@ function DeckSwipe({ eyebrow, title, titleSweep, statusLabels, cta, events }: De
               type="button"
               className="events-swipe__button tap-press"
               aria-label={t("eventsPrev")}
-              aria-controls="home-events-pile"
+              aria-controls={`${titleId}-pile`}
               onClick={goPrevious}
             >
               <ArrowLeft size={18} aria-hidden="true" />
@@ -347,7 +352,7 @@ function DeckSwipe({ eyebrow, title, titleSweep, statusLabels, cta, events }: De
               type="button"
               className="events-swipe__button tap-press"
               aria-label={t("eventsNext")}
-              aria-controls="home-events-pile"
+              aria-controls={`${titleId}-pile`}
               onClick={() => goNext(-1)}
             >
               <ArrowRight size={18} aria-hidden="true" />
@@ -372,7 +377,7 @@ function DeckSwipe({ eyebrow, title, titleSweep, statusLabels, cta, events }: De
  * Précédent / Suivant pour le clavier et les lecteurs d'écran.
  * Reduced motion ou écran trop bas : liste de cartes.
  */
-export function HomeEventsDeck(props: DeckProps) {
+export function HomeEventsDeck({ titleId = "home-events-title", ...props }: DeckProps) {
   const mobile = useMediaQuery(MOBILE_QUERY);
   const reduced = useReducedMotionSafe();
   const count = props.events.length;
@@ -380,17 +385,17 @@ export function HomeEventsDeck(props: DeckProps) {
 
   // Après hydratation seulement : le HTML serveur rend la piste, déjà
   // repliée en liste sous 768 px par la CSS.
-  if (mobile && !reduced) return <DeckSwipe {...props} />;
+  if (mobile && !reduced) return <DeckSwipe {...props} titleId={titleId} />;
 
   return (
     <StickyTrack
       lengthVh={Math.round((count - 1 + HOLD) * TRACK_VH.deckPerCard + 100)}
       staticBelow="md"
       surface="dark"
-      ariaLabelledby="home-events-title"
+      ariaLabelledby={titleId}
       className="bg-petrol"
     >
-      <DeckStage {...props} />
+      <DeckStage {...props} titleId={titleId} />
     </StickyTrack>
   );
 }

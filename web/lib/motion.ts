@@ -336,6 +336,9 @@ export const TRACK_VH = {
   universes: 500,
   /** Mobile : même chorégraphie sur une piste plus courte (moins de défilement au pouce). */
   universesMobile: 340,
+  /** Par carte au-delà de quatre (frise d'À propos) : chaque carte garde son temps d'écran. */
+  universesExtraCard: 90,
+  universesMobileExtraCard: 60,
   deckPerCard: 120,
 } as const;
 

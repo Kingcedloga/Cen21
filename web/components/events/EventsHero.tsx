@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useEffect, useState } from "react";
 
+import { EventsNewsletter, type NewsletterLabels } from "@/components/events/EventsNewsletter";
 import { InnerHero, type InnerHeroBreadcrumb } from "@/components/sections/InnerHero";
+import { Button } from "@/components/ui/Button";
 import { useHydrated } from "@/lib/use-media-query";
 
 export type HeroEvent = {
@@ -11,24 +13,21 @@ export type HeroEvent = {
   details: string;
   dateTime: string;
   image: string;
+  /** Réservation préremplie (`/contact?besoin=reservation&maison=…`). */
+  reserve: { href: string; label: string };
 };
 
-type Labels = {
+type Labels = NewsletterLabels & {
   eyebrow: string;
   nextEyebrow: string;
-  title: string;
-  description: string;
+  /** Sans rendez-vous à venir : « L'agenda se prépare ». */
+  emptyTitle: string;
+  emptyDescription: string;
   countdownLabel: string;
   daysLabel: string;
   hoursLabel: string;
   minutesLabel: string;
   secondsLabel: string;
-  subscribeText: string;
-  emailPlaceholder: string;
-  subscribeCta: string;
-  subscribing: string;
-  subscribeSuccess: string;
-  subscribeError: string;
 };
 
 function remainingParts(target: string) {
@@ -75,74 +74,12 @@ function Countdown({ target, labels }: { target: string; labels: Labels }) {
   );
 }
 
-function Subscribe({ labels }: { labels: Labels }) {
-  const emailRef = useRef<HTMLInputElement>(null);
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-
-  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const form = event.currentTarget;
-    const email = emailRef.current?.value.trim();
-    if (!email) return;
-    setStatus("loading");
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: "Newsletter",
-          email,
-          subject: "Newsletter — Événements",
-          message: "Nouvelle inscription à la newsletter événements.",
-          website: "",
-        }),
-      });
-      if (!res.ok) throw new Error();
-      setStatus("success");
-      form.reset();
-    } catch {
-      setStatus("error");
-    }
-  };
-
-  return (
-    <div className="max-w-md">
-      <p className="text-sm font-medium text-ivory/80">{labels.subscribeText}</p>
-      <form
-        onSubmit={onSubmit}
-        className="mt-3 flex items-center rounded-full border border-gold/35 bg-petrol-panel-3/70 p-1.5 focus-within:border-gold/70"
-      >
-        <label htmlFor="events-newsletter-email" className="sr-only">
-          {labels.emailPlaceholder}
-        </label>
-        <input
-          ref={emailRef}
-          id="events-newsletter-email"
-          type="email"
-          required
-          autoComplete="email"
-          placeholder={labels.emailPlaceholder}
-          className="min-w-0 flex-1 bg-transparent px-4 py-2.5 text-sm text-ivory placeholder:text-ivory/50 focus:outline-none sm:text-base"
-        />
-        <button
-          type="submit"
-          disabled={status === "loading"}
-          className="btn-primary min-h-11 shrink-0 cursor-pointer px-5 text-xs font-bold uppercase tracking-wider disabled:opacity-70"
-        >
-          {status === "loading" ? labels.subscribing : labels.subscribeCta}
-        </button>
-      </form>
-      <p aria-live="polite" className="mt-3 min-h-5 text-sm text-gold">
-        {status === "success" ? labels.subscribeSuccess : status === "error" ? labels.subscribeError : ""}
-      </p>
-    </div>
-  );
-}
-
 /**
- * Hero de /evenements (refonte R0) : gabarit des pages intérieures. S'il y a
- * un rendez-vous à venir, il passe à l'affiche avec son compte à rebours ;
- * sinon, le titre de la page. Inscription à la newsletter dans les deux cas.
+ * Hero de /evenements (refontes R0 et R3) : gabarit des pages intérieures.
+ * S'il y a un rendez-vous à venir, il passe à l'affiche avec son compte à
+ * rebours et « Réserver » (formulaire de contact prérempli) ; l'inscription
+ * à l'agenda est alors en bas de page. Sinon : « L'agenda se prépare » et
+ * l'inscription.
  */
 export function EventsHero({
   nextEvent,
@@ -161,15 +98,22 @@ export function EventsHero({
     <InnerHero
       className={className}
       eyebrow={nextEvent ? labels.nextEyebrow : labels.eyebrow}
-      title={nextEvent?.title ?? labels.title}
-      description={nextEvent?.details ?? labels.description}
+      title={nextEvent?.title ?? labels.emptyTitle}
+      description={nextEvent?.details ?? labels.emptyDescription}
       image={nextEvent?.image ?? fallbackImage}
       breadcrumb={breadcrumb}
     >
-      <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
-        {nextEvent && <Countdown target={nextEvent.dateTime} labels={labels} />}
-        <Subscribe labels={labels} />
-      </div>
+      {nextEvent ? (
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-10">
+          <Countdown target={nextEvent.dateTime} labels={labels} />
+          <Button href={nextEvent.reserve.href} magnetic className="self-start lg:self-auto">
+            {nextEvent.reserve.label}
+            <span aria-hidden="true">→</span>
+          </Button>
+        </div>
+      ) : (
+        <EventsNewsletter labels={labels} />
+      )}
     </InnerHero>
   );
 }

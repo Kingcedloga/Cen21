@@ -4,6 +4,7 @@ import { HeroCurtain } from "@/components/layout/HeroCurtain";
 import { PageSection, SECTION_SURFACE } from "@/components/layout/PageSection";
 import { SectionBlend } from "@/components/layout/SectionBlend";
 import { AboutFigures } from "@/components/sections/about/AboutFigures";
+import { AboutPartners, type DistinctionRow, type PartnerCard } from "@/components/sections/about/AboutPartners";
 import { AboutStory } from "@/components/sections/about/AboutStory";
 import { AboutTeamArc, type TeamMember } from "@/components/sections/about/AboutTeamArc";
 import { AboutValues } from "@/components/sections/about/AboutValues";
@@ -13,9 +14,11 @@ import { InnerHero } from "@/components/sections/InnerHero";
 import { PageOutro } from "@/components/sections/PageOutro";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { Locale } from "@/i18n/routing";
-import { getAboutContent, getSectorLabel, getSiteConfig, getStatsContent, getSubsidiaries } from "@/lib/content";
+import { getAboutContent, getStatsContent, getSubsidiaries } from "@/lib/content";
+import { galleryEntrySrc } from "@/lib/gallery-categories";
 import { resolvePageMetadata } from "@/lib/seo";
-import { brandSurface } from "@/lib/subsidiary-brand";
+import { brandSurface, contrastRatio } from "@/lib/subsidiary-brand";
+import { resolveSubsidiaryHeroImage } from "@/lib/subsidiary-hero-layout";
 import { placeCities, subsidiaryPlaces } from "@/lib/subsidiary-places";
 import type { Subsidiary } from "@/lib/types";
 
@@ -59,7 +62,6 @@ export default async function AboutPage({ params }: Props) {
   setRequestLocale(locale);
   const l = locale as Locale;
   const about = getAboutContent(l);
-  const site = getSiteConfig(l);
   const subsidiaries = getSubsidiaries(l);
   const stats = getStatsContent(l).items;
   const t = await getTranslations("about");
@@ -74,47 +76,59 @@ export default async function AboutPage({ params }: Props) {
   const cities = placeCities(places);
   const list = new Intl.ListFormat(l, { style: "long", type: "conjunction" });
   const countIn = (sector: Subsidiary["sector"]) => subsidiaries.filter((s) => s.sector === sector).length;
-  const chapter = (n: number) => t("chapterLabel", { n: String(n).padStart(2, "0") });
+  const bySlug = new Map(subsidiaries.map((s) => [s.slug, s]));
+  const housesOf = (slugs: string[] = []) =>
+    slugs.map((slug) => bySlug.get(slug)).filter((s): s is Subsidiary => s != null);
 
-  // Frise « Notre parcours » : quatre chapitres sans dates, tirés des données.
+  // Frise « Notre parcours » : les jalons d'about.json. L'année s'ajoute à
+  // l'étiquette dès qu'elle est renseignée ; les pastilles nomment les maisons.
   const used = new Set<string>();
-  const coversOf = (sector: Subsidiary["sector"]) =>
-    subsidiaries.filter((s) => s.sector === sector).map((s) => s.coverImage);
-  const chapters: UniverseCard[] = [
-    {
-      key: "idea",
-      eyebrow: chapter(1),
-      title: t("chapterIdeaTitle"),
-      text: t("chapterIdeaText"),
-      image: pickImage([about.originsImage ?? FALLBACK_ORIGINS_IMAGE], used, FALLBACK_ORIGINS_IMAGE),
-    },
-    {
-      key: "worlds",
-      eyebrow: chapter(2),
-      title: t("chapterWorldsTitle"),
-      text: t("chapterWorldsText"),
-      image: pickImage(coversOf("restaurant"), used, FALLBACK_ORIGINS_IMAGE),
-      venues: {
-        label: t("chapterWorldsList"),
-        names: [...new Set(subsidiaries.map((s) => s.sector))].map((sector) => getSectorLabel(l, sector)),
-      },
-    },
-    {
-      key: "cities",
-      eyebrow: chapter(3),
-      title: t("chapterCitiesTitle", { count: cities.length }),
-      text: t("chapterCitiesText", { cities: list.format(cities), office: site.contact.address }),
-      image: pickImage([...coversOf("lounge"), ...coversOf("nightclub")], used, FALLBACK_ORIGINS_IMAGE),
-      venues: { label: t("chapterCitiesList"), names: cities },
-    },
-    {
-      key: "tomorrow",
-      eyebrow: chapter(4),
-      title: t("chapterTomorrowTitle"),
-      text: about.vision,
-      image: pickImage([about.visionImages?.[0] ?? FALLBACK_VISION_IMAGE], used, FALLBACK_VISION_IMAGE),
-    },
-  ];
+  const milestones: UniverseCard[] = (about.milestones ?? []).map((milestone, index) => {
+    const houses = housesOf(milestone.subsidiarySlugs);
+    const label = t("milestoneLabel", { n: String(index + 1).padStart(2, "0") });
+    // Photo d'une maison du jalon (visuel hero d'abord, puis galeries) ; sinon visuel du groupe.
+    const candidates = houses.length
+      ? [
+          ...houses.map((s) => resolveSubsidiaryHeroImage(s.slug, s.coverImage)),
+          ...houses.flatMap((s) => s.galleryImages.map(galleryEntrySrc)),
+          ...houses.map((s) => s.coverImage),
+        ]
+      : [about.visionImages?.[0] ?? FALLBACK_VISION_IMAGE, about.originsImage ?? FALLBACK_ORIGINS_IMAGE];
+    return {
+      key: milestone.id,
+      eyebrow: milestone.year ? t("milestoneWithYear", { label, year: milestone.year }) : label,
+      title: milestone.title,
+      text: milestone.description,
+      image: pickImage(candidates, used, FALLBACK_ORIGINS_IMAGE),
+      venues: houses.length ? { label: t("milestoneHouses"), names: houses.map((s) => s.name) } : undefined,
+    };
+  });
+
+  // Partenaires : logo et couleur repris de la filiale qui opère la marque.
+  const partners: PartnerCard[] = (about.partners ?? []).map((partner) => {
+    const house = partner.subsidiarySlug ? bySlug.get(partner.subsidiarySlug) : undefined;
+    const brandColor = house ? brandSurface(house.slug, house.accentColor) : "var(--color-petrol)";
+    return {
+      name: partner.name,
+      role: partner.role,
+      url: partner.url,
+      logo: house?.brandLogo,
+      brandColor,
+      // Logos blancs : contraste 3:1 minimum (élément graphique), sinon logo sombre.
+      logoOnLight: house != null && contrastRatio("#FFFFFF", brandColor) < 3,
+      visitAria: t("partnersVisitAria", { name: partner.name }),
+    };
+  });
+  // Distinctions : affichées dès que la liste d'about.json est remplie.
+  const distinctions: DistinctionRow[] = (about.distinctions ?? []).map((item) => ({
+    id: item.id,
+    year: item.year,
+    title: item.title,
+    issuer: item.issuer,
+    house: item.subsidiarySlug ? bySlug.get(item.subsidiarySlug)?.name : undefined,
+    url: item.url,
+  }));
+  const showPartners = partners.length > 0 || distinctions.length > 0;
 
   const team: TeamMember[] = (about.team ?? []).map((member, index, all) => ({
     name: member.name,
@@ -160,13 +174,15 @@ export default async function AboutPage({ params }: Props) {
       {/* Séparateurs fondus entre sections de couleurs différentes. */}
       <SectionBlend from={SECTION_SURFACE.light} to={SECTION_SURFACE.dark} />
 
-      <HomeUniversesScrub
-        titleId="about-journey-title"
-        badge={t("parcoursBadge")}
-        title={t("parcoursTitle")}
-        titleSweep={t("parcoursSweep")}
-        cards={chapters}
-      />
+      {milestones.length > 0 && (
+        <HomeUniversesScrub
+          titleId="about-journey-title"
+          badge={t("parcoursBadge")}
+          title={t("parcoursTitle", { count: milestones.length })}
+          titleSweep={t("parcoursSweep")}
+          cards={milestones}
+        />
+      )}
 
       {team.length > 0 && (
         <>
@@ -249,6 +265,24 @@ export default async function AboutPage({ params }: Props) {
         items={houses}
         className="bg-petrol-panel-4"
       />
+
+      {showPartners && (
+        <>
+          <SectionBlend from={SECTION_SURFACE.dark} to={SECTION_SURFACE.light} />
+          <AboutPartners
+            heading={{
+              eyebrow: t("partnersEyebrow"),
+              title: t("partnersTitle"),
+              sweep: t("partnersSweep"),
+              intro: t("partnersIntro"),
+            }}
+            partners={partners}
+            visitLabel={t("partnersVisit")}
+            distinctions={{ title: t("distinctionsTitle"), items: distinctions }}
+          />
+          <SectionBlend from={SECTION_SURFACE.light} to="var(--color-anthracite)" />
+        </>
+      )}
 
       <PageOutro
         eyebrow={tOutro("eyebrow")}

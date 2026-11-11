@@ -453,3 +453,222 @@
     opacity: 0;
   }
 }
+
+/* --- Partenaires & distinctions ---------------------------------------- */
+.about-partners {
+  padding: clamp(5rem, 10vw, 8rem) 1rem;
+  background-color: var(--color-ivory);
+  color: var(--color-petrol-panel-4);
+}
+
+.partners-grid {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Mobile : rangée logo + texte ; ≥ 768 px : carte verticale. */
+.partner-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  align-items: center;
+  gap: 1.25rem;
+  height: 100%;
+  overflow: hidden;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--color-petrol-panel-4) 10%, transparent);
+  border-radius: var(--radius-card-lg);
+  background-color: color-mix(in srgb, var(--color-ivory) 90%, var(--color-petrol-panel-4));
+  color: inherit;
+  text-decoration: none;
+}
+
+.partner-card__logo {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--radius-card-md);
+  background-color: var(--partner-brand);
+}
+
+.partner-card__logo img {
+  transition: transform var(--duration-luxe) var(--ease-luxury);
+}
+
+/* Logo blanc illisible sur une couleur claire : on le passe en sombre. */
+.partner-card__logo--on-light img {
+  filter: brightness(0);
+  opacity: 0.82;
+}
+
+.partner-card__logo--on-light .partner-card__monogram {
+  color: var(--color-petrol-panel-4);
+}
+
+.partner-card__monogram {
+  padding: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--color-ivory);
+}
+
+.partner-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.partner-card__role {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-petrol);
+}
+
+.partner-card__name {
+  font-size: clamp(1.375rem, 1.2rem + 0.6vw, 1.75rem);
+  line-height: 1.15;
+}
+
+.partner-card__visit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: color-mix(in srgb, var(--color-petrol-panel-4) 78%, transparent);
+  transition: color var(--duration-fine) var(--ease-luxury);
+}
+
+.partner-card__visit svg {
+  transition: transform var(--duration-fine) var(--ease-luxury);
+}
+
+/* Filet or qui se déroule au survol, comme sur les cartes valeurs. */
+.partner-card__line {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 3px;
+  background-color: var(--color-gold-deep);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--duration-luxe) var(--ease-luxury);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .partner-card--link:hover .partner-card__logo img {
+    transform: scale(1.06);
+  }
+  .partner-card--link:hover .partner-card__visit {
+    color: var(--color-petrol-panel-4);
+  }
+  .partner-card--link:hover .partner-card__visit svg {
+    transform: translate(2px, -2px);
+  }
+  .partner-card--link:hover .partner-card__line {
+    transform: scaleX(1);
+  }
+}
+
+.partner-card--link:focus-visible .partner-card__line {
+  transform: scaleX(1);
+}
+
+/* Distinctions : liste éditoriale (année · titre · décerné par). */
+.about-distinctions {
+  margin-top: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.about-distinctions__title {
+  font-size: clamp(1.5rem, 1.25rem + 1vw, 2.25rem);
+  line-height: 1.1;
+}
+
+.distinctions-list {
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid color-mix(in srgb, var(--color-petrol-panel-4) 14%, transparent);
+}
+
+.distinction-row {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: 0.25rem 1rem;
+  padding-block: 1.25rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-petrol-panel-4) 14%, transparent);
+}
+
+.distinction-row__year {
+  grid-row: span 2;
+  font-family: var(--font-dm-sans);
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-display);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-petrol);
+}
+
+.distinction-row__title {
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.distinction-row__link {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+  text-underline-offset: 0.2em;
+}
+
+.distinction-row__meta {
+  font-size: 0.875rem;
+  color: color-mix(in srgb, var(--color-petrol-panel-4) 72%, transparent);
+}
+
+@media (min-width: 768px) {
+  .about-partners {
+    padding-inline: 2rem;
+  }
+  .partners-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+  .partner-card {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+    gap: 1.5rem;
+    padding: 1.25rem 1.25rem 2rem;
+  }
+  .partner-card__logo {
+    aspect-ratio: 4 / 3;
+  }
+  .partner-card__body {
+    padding-inline: 0.75rem;
+  }
+  .distinction-row {
+    grid-template-columns: 6rem minmax(0, 1fr) minmax(0, 18rem);
+    align-items: baseline;
+  }
+  .distinction-row__year {
+    grid-row: auto;
+  }
+  .distinction-row__meta {
+    text-align: right;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partner-card__logo img,
+  .partner-card__visit,
+  .partner-card__visit svg,
+  .partner-card__line {
+    transition: none;
+  }
+}

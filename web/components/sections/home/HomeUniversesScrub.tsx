@@ -11,7 +11,7 @@ import "@/styles/home-universes.css";
 
 export type UniverseCard = {
   key: string;
-  /** Petite ligne au-dessus du titre (ex. « Chapitre 01 » sur À propos). */
+  /** Petite ligne au-dessus du titre (ex. « Étape 05 · 2025 » sur À propos). */
   eyebrow?: string;
   title: string;
   text: string;
@@ -156,11 +156,13 @@ export function HomeUniversesScrub({
   titleId?: string;
   cards: UniverseCard[];
 }) {
+  // Piste calibrée pour quatre cartes ; on l'allonge pour chaque carte en plus.
+  const extra = Math.max(0, props.cards.length - 4);
   return (
     <>
       <StickyTrack
-        lengthVh={TRACK_VH.universes}
-        mobileLengthVh={TRACK_VH.universesMobile}
+        lengthVh={TRACK_VH.universes + extra * TRACK_VH.universesExtraCard}
+        mobileLengthVh={TRACK_VH.universesMobile + extra * TRACK_VH.universesMobileExtraCard}
         surface="dark"
         ariaLabelledby={titleId}
         className="bg-petrol-panel-4"
