@@ -48,6 +48,7 @@ export function InnerHero({
   actions,
   children,
   compact = false,
+  media,
   titleId = "inner-hero-title",
   className = "",
 }: {
@@ -65,6 +66,8 @@ export function InnerHero({
   children?: ReactNode;
   /** Bandeau photo moins haut (pages utilitaires : contact). */
   compact?: boolean;
+  /** Bloc visuel à la place du panneau photo (mosaïque de la galerie). */
+  media?: ReactNode;
   titleId?: string;
   className?: string;
 }) {
@@ -89,7 +92,7 @@ export function InnerHero({
       ref={sectionRef}
       data-surface="dark"
       aria-labelledby={titleId}
-      className={`inner-hero ${image ? "inner-hero--media" : ""} ${compact ? "inner-hero--compact" : ""} ${className}`}
+      className={`inner-hero ${image || media ? "inner-hero--media" : ""} ${compact ? "inner-hero--compact" : ""} ${className}`}
     >
       <div className="inner-hero__intro">
         {breadcrumb && (
@@ -119,7 +122,9 @@ export function InnerHero({
         {children && <div className="inner-hero__extra">{children}</div>}
       </div>
 
-      {image && (
+      {media && <div className="inner-hero__custom">{media}</div>}
+
+      {image && !media && (
         <motion.div
           className="inner-hero__media"
           style={{ clipPath: reduced ? CLIP_CLOSED : clipPath }}

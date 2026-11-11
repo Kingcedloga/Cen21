@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { ContactAddresses, type AddressEntry } from "@/components/contact/ContactAddresses";
 import { ContactForm, type ContactHouse } from "@/components/contact/ContactForm";
 import { FaqAccordion, type FaqItem } from "@/components/contact/FaqAccordion";
-import { SocialTiles, type SocialTile } from "@/components/contact/SocialTiles";
+import { SocialTiles } from "@/components/contact/SocialTiles";
 import { HeroCurtain } from "@/components/layout/HeroCurtain";
 import { PageSection, SECTION_SURFACE } from "@/components/layout/PageSection";
 import { SectionBlend } from "@/components/layout/SectionBlend";
@@ -23,35 +23,10 @@ import { googleMapsExternalUrl } from "@/lib/map";
 import { resolvePageMetadata } from "@/lib/seo";
 import { brandSurface } from "@/lib/subsidiary-brand";
 import { getSubsidiaryHref, isSubsidiaryExternalLink } from "@/lib/subsidiary-links";
+import { socialTiles } from "@/lib/social-tiles";
 import { subsidiaryPlaces } from "@/lib/subsidiary-places";
-import type { Subsidiary } from "@/lib/types";
 
 type Props = { params: Promise<{ locale: string }> };
-
-/** Tuile réseau d'une filiale : Instagram, Facebook à défaut. */
-function socialTile(s: Subsidiary): SocialTile | null {
-  const instagram = s.social.instagram;
-  const href = instagram ?? s.social.facebook;
-  if (!href) return null;
-  let handle = s.name;
-  if (instagram) {
-    try {
-      const account = new URL(instagram).pathname.split("/").filter(Boolean)[0];
-      if (account) handle = `@${account}`;
-    } catch {
-      // adresse invalide : on garde le nom de la maison
-    }
-  }
-  return {
-    slug: s.slug,
-    name: s.name,
-    network: instagram ? "Instagram" : "Facebook",
-    href,
-    handle,
-    logo: s.brandLogo,
-    logoSurface: brandSurface(s.slug, s.accentColor),
-  };
-}
 
 /** Balises des réponses de la FAQ (`t.rich`) : lien vers une page, vers le formulaire. */
 function pageLink(href: string) {
@@ -155,7 +130,7 @@ export default async function ContactPage({ params }: Props) {
       answer: <p>{t.rich("faqEventsA", { link: pageLink("/evenements") })}</p>,
     },
   ];
-  const tiles = subsidiaries.map(socialTile).filter((tile): tile is SocialTile => tile !== null);
+  const tiles = socialTiles(subsidiaries);
   const tSub = await getTranslations("subsidiaries");
 
   // Formulaire : pastilles des maisons.

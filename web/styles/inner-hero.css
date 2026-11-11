@@ -181,3 +181,10 @@
     height: min(46svh, 24rem);
   }
 }
+
+/* Bloc visuel libre (prop `media`) : aligné sur la colonne de texte. */
+.inner-hero__custom {
+  max-width: calc(var(--inner-hero-column) + 2 * var(--inner-hero-gutter));
+  margin-inline: auto;
+  padding: 0 var(--inner-hero-gutter) 3rem;
+}
