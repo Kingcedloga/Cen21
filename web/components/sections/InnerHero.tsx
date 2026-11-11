@@ -22,6 +22,8 @@ export type InnerHeroBreadcrumb = {
   /** Nom accessible du fil d'Ariane. */
   label: string;
   home: string;
+  /** Niveau intermédiaire (ex. Filiales sur une fiche). */
+  parent?: { label: string; href: string };
   current: string;
 };
 
@@ -101,6 +103,11 @@ export function InnerHero({
               <li>
                 <Link href="/">{breadcrumb.home}</Link>
               </li>
+              {breadcrumb.parent && (
+                <li>
+                  <Link href={breadcrumb.parent.href}>{breadcrumb.parent.label}</Link>
+                </li>
+              )}
               <li aria-current="page">{breadcrumb.current}</li>
             </ol>
           </nav>

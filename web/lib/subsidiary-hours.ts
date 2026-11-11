@@ -36,7 +36,7 @@ export function extractTimeRange(summary: string): string {
   return parts.length > 1 ? parts.slice(1).join(" ") : normalized;
 }
 
-function weekdayLabel(locale: string, dayIndex: number): string {
+export function weekdayLabel(locale: string, dayIndex: number): string {
   const monday = new Date(2024, 0, 1 + dayIndex);
   return new Intl.DateTimeFormat(locale, { weekday: "short" }).format(monday);
 }

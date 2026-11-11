@@ -16,6 +16,7 @@ import {
   getContactFormSchema,
   isContactNeed,
   type ContactFormValues,
+  type ContactNeed,
 } from "@/lib/contact-schema";
 
 import "@/styles/contact-extras.css";
@@ -47,13 +48,23 @@ function knownHouse(value: string | null | undefined, houses: ContactHouse[]): s
  * Envoi à /api/contact : sujet composé (besoin — maison), détails en tête du
  * message, champs structurés transmis au webhook.
  */
-export function ContactForm({ houses }: { houses: ContactHouse[] }) {
+export function ContactForm({
+  houses,
+  fixedHouse,
+  needs = CONTACT_NEEDS,
+}: {
+  houses: ContactHouse[];
+  /** Fiche d'une maison : la maison est fixée, ses pastilles disparaissent. */
+  fixedHouse?: string;
+  /** Besoins proposés (par défaut, tous). */
+  needs?: readonly ContactNeed[];
+}) {
   const t = useTranslations("form");
   const params = useSearchParams();
 
   const besoin = params.get("besoin");
   const paramNeed = isContactNeed(besoin) ? besoin : "";
-  const paramHouse = knownHouse(params.get("maison"), houses);
+  const paramHouse = fixedHouse ?? knownHouse(params.get("maison"), houses);
 
   const schema = useMemo(
     () =>
@@ -141,7 +152,7 @@ export function ContactForm({ houses }: { houses: ContactHouse[] }) {
       if (!res.ok) throw new Error(typeof json.error === "string" ? json.error : t("errorBody"));
       setStatus("success");
       setToast({ variant: "success", title: t("successTitle"), message: t("successBody") });
-      reset({ need: "", house: "", name: "", email: "", phone: "", date: "", guests: "", message: "", website: "" });
+      reset({ need: "", house: fixedHouse ?? "", name: "", email: "", phone: "", date: "", guests: "", message: "", website: "" });
     } catch (e) {
       setStatus("error");
       setToast({
@@ -165,7 +176,7 @@ export function ContactForm({ houses }: { houses: ContactHouse[] }) {
             {t("needLegend")} <span>({t("optional")})</span>
           </legend>
           <div className="contact-form__pills">
-            {CONTACT_NEEDS.map((value) => (
+            {needs.map((value) => (
               <label key={value} className="choice-pill tap-press">
                 <input type="radio" value={value} className="choice-pill__input" {...register("need")} />
                 <span>{t(`needs.${value}`)}</span>
@@ -196,24 +207,28 @@ export function ContactForm({ houses }: { houses: ContactHouse[] }) {
           </div>
         </div>
 
-        <fieldset className="contact-form__group">
-          <legend className="contact-form__legend">
-            {t("houseLegend")} <span>({t("optional")})</span>
-          </legend>
-          <div className="contact-form__pills">
-            {[{ slug: CONTACT_GROUP, name: t("houseGroup"), logo: "/logo.png", logoSurface: "var(--color-petrol)" }, ...houses].map(
-              (house) => (
-                <label key={house.slug} className="choice-pill choice-pill--house tap-press">
-                  <input type="radio" value={house.slug} className="choice-pill__input" {...register("house")} />
-                  <span className="choice-pill__logo" style={{ backgroundColor: house.logoSurface }}>
-                    {house.logo && <Image src={house.logo} alt="" fill sizes="24px" className="object-contain p-0.5" />}
-                  </span>
-                  <span>{house.name}</span>
-                </label>
-              ),
+        {fixedHouse ? (
+          <input type="hidden" value={fixedHouse} {...register("house")} />
+        ) : (
+          <fieldset className="contact-form__group">
+            <legend className="contact-form__legend">
+              {t("houseLegend")} <span>({t("optional")})</span>
+            </legend>
+            <div className="contact-form__pills">
+              {[{ slug: CONTACT_GROUP, name: t("houseGroup"), logo: "/logo.png", logoSurface: "var(--color-petrol)" }, ...houses].map(
+                (house) => (
+                  <label key={house.slug} className="choice-pill choice-pill--house tap-press">
+                    <input type="radio" value={house.slug} className="choice-pill__input" {...register("house")} />
+                    <span className="choice-pill__logo" style={{ backgroundColor: house.logoSurface }}>
+                      {house.logo && <Image src={house.logo} alt="" fill sizes="24px" className="object-contain p-0.5" />}
+                    </span>
+                    <span>{house.name}</span>
+                  </label>
+                ),
             )}
           </div>
         </fieldset>
+        )}
 
         <div className="grid gap-5 sm:grid-cols-2">
           <Field label={t("name")} inputId="contact-name" error={errors.name?.message}>

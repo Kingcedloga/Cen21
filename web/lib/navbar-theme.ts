@@ -1,3 +1,4 @@
+import { isMigratedFiliale } from "@/lib/filiale-migration";
 import type { CSSProperties } from "react";
 
 /** Charte navbar par filiale (fond, textes/icônes, accent). */
@@ -75,7 +76,8 @@ export function getSubsidiaryNavbarTheme(
   pathname: string | null,
 ): SubsidiaryNavbarTheme | null {
   const slug = getSubsidiarySlugFromPathname(pathname);
-  if (!slug) return null;
+  // Fiche migrée : capsule et footer du groupe, aux couleurs de la maison.
+  if (!slug || isMigratedFiliale(slug)) return null;
   return SUBSIDIARY_NAVBAR_THEMES[slug] ?? null;
 }
 

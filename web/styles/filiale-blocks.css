@@ -1,0 +1,577 @@
+/* =========================================================================
+   Fiches filiales — blocs du socle (refonte R5) : état d'ouverture,
+   spécialités, carte, bande de photos, avis, infos pratiques.
+   Couleurs : tokens de globals.css uniquement, remappés aux couleurs de la
+   maison par lib/filiale-brand.ts ; dérivés en color-mix. Aplats portant du
+   texte : --brand-fill / --brand-on-accent (repli : rosé et pétrole du groupe).
+   ========================================================================= */
+
+/* --- État d'ouverture (FilialeOpenStatus) ------------------------------- */
+.filiale-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding: 0.375rem 0.875rem;
+  border: 1px solid color-mix(in srgb, var(--color-ivory) 16%, transparent);
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--color-ivory);
+  background-color: color-mix(in srgb, var(--color-petrol-panel-4) 55%, transparent);
+}
+
+/* Dans la description du hero : sur sa propre ligne. */
+p > .filiale-status {
+  display: flex;
+  width: fit-content;
+}
+
+.filiale-status__dot {
+  flex: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, var(--color-ivory) 45%, transparent);
+}
+
+.filiale-status[data-state="open"] .filiale-status__dot {
+  background-color: var(--color-rose);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-rose) 25%, transparent);
+}
+
+.filiale-status[data-state="closed"] .filiale-status__dot {
+  background-color: transparent;
+  border: 1.5px solid color-mix(in srgb, var(--color-ivory) 60%, transparent);
+}
+
+/* --- Spécialités en pastilles (FilialeSpecialties) ---------------------- */
+.filiale-specialties {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.filiale-specialties__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.filiale-pill {
+  max-width: 22rem;
+  padding: 1rem 1.375rem;
+  border: 1px solid color-mix(in srgb, var(--color-ivory) 12%, transparent);
+  border-radius: var(--radius-card-md);
+  background-color: var(--color-petrol-panel-3);
+  box-shadow: 0 18px 36px -24px color-mix(in srgb, var(--color-petrol-panel-4) 90%, transparent);
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.filiale-pill__title {
+  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+  line-height: 1.2;
+  color: var(--color-ivory);
+}
+
+.filiale-pill__text {
+  margin-top: 0.375rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--color-ivory) 70%, transparent);
+}
+
+/* Une pastille sur trois à l'accent de la maison. */
+.filiale-specialties__list > li:nth-child(3n + 2) .filiale-pill {
+  border-color: transparent;
+  background-color: var(--brand-fill, var(--color-rose));
+}
+
+.filiale-specialties__list > li:nth-child(3n + 2) .filiale-pill__title,
+.filiale-specialties__list > li:nth-child(3n + 2) .filiale-pill__text {
+  color: var(--brand-on-accent, var(--color-petrol-panel-4));
+}
+
+.filiale-specialties__hint {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-ivory) 55%, transparent);
+}
+
+/* --- Carte en onglets (FilialeMenu) ------------------------------------- */
+.filiale-menu__tabs {
+  display: flex;
+  gap: 0.25rem;
+  width: fit-content;
+  max-width: 100%;
+  margin-bottom: 2rem;
+  padding: 0.3125rem;
+  overflow-x: auto;
+  border: 1px solid color-mix(in srgb, var(--color-ivory) 12%, transparent);
+  border-radius: 9999px;
+  background-color: var(--color-petrol-panel-3);
+  scrollbar-width: none;
+}
+
+.filiale-menu__tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.filiale-menu__tab {
+  position: relative;
+  flex: none;
+  min-height: 2.75rem;
+  padding: 0 1.125rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: color-mix(in srgb, var(--color-ivory) 72%, transparent);
+  transition: color var(--duration-fine, 200ms) var(--ease-luxury);
+}
+
+.filiale-menu__tab:hover,
+.filiale-menu__tab[aria-selected="true"] {
+  color: var(--color-ivory);
+}
+
+.filiale-menu__tab[aria-selected="true"] {
+  color: var(--brand-on-accent, var(--color-petrol-panel-4));
+}
+
+.filiale-menu__tab:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 2px;
+}
+
+.filiale-menu__pill {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background-color: var(--brand-fill, var(--color-rose));
+}
+
+.filiale-menu__panel {
+  border-radius: var(--radius-card-lg);
+}
+
+.filiale-menu__panel:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 6px;
+}
+
+.filiale-menu__items {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.filiale-menu__item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.125rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-ivory) 10%, transparent);
+}
+
+.filiale-menu__image {
+  position: relative;
+  flex: none;
+  width: 4.5rem;
+  height: 4.5rem;
+  overflow: hidden;
+  border-radius: 1rem;
+  background-color: var(--color-petrol-panel-3);
+}
+
+.filiale-menu__text {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+  gap: 0.25rem;
+}
+
+.filiale-menu__line {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.filiale-menu__name {
+  font-family: var(--font-dm-sans);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--color-ivory);
+}
+
+.filiale-menu__leader {
+  flex: 1;
+  min-width: 1.5rem;
+  border-bottom: 1px dotted color-mix(in srgb, var(--color-ivory) 30%, transparent);
+  translate: 0 -0.3em;
+}
+
+.filiale-menu__price {
+  flex: none;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--color-rose);
+}
+
+.filiale-menu__description {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--color-ivory) 68%, transparent);
+}
+
+@media (min-width: 1024px) {
+  .filiale-menu__items {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(2.5rem, 5vw, 5rem);
+  }
+  .filiale-menu__image {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+}
+
+/* --- Bande de photos (FilialeGalleryStrip) ------------------------------ */
+.filiale-strip__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.filiale-strip__arrows {
+  display: none;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .filiale-strip__arrows {
+    display: flex;
+  }
+}
+
+.filiale-round {
+  display: inline-grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid color-mix(in srgb, var(--color-ivory) 22%, transparent);
+  border-radius: 9999px;
+  color: var(--color-ivory);
+  transition:
+    background-color var(--duration-fine, 200ms) var(--ease-luxury),
+    border-color var(--duration-fine, 200ms) var(--ease-luxury),
+    color var(--duration-fine, 200ms) var(--ease-luxury);
+}
+
+.filiale-round:hover {
+  border-color: var(--brand-fill, var(--color-rose));
+  background-color: var(--brand-fill, var(--color-rose));
+  color: var(--brand-on-accent, var(--color-petrol-panel-4));
+}
+
+.filiale-round:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 3px;
+}
+
+.filiale-strip__track {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0 0 1rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 0;
+  list-style: none;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--color-ivory) 25%, transparent) transparent;
+  cursor: grab;
+}
+
+.filiale-strip__track:active {
+  cursor: grabbing;
+}
+
+.filiale-strip__item {
+  flex: none;
+  width: 72vw;
+  scroll-snap-align: start;
+}
+
+@media (min-width: 768px) {
+  .filiale-strip__track {
+    gap: 1.5rem;
+  }
+  .filiale-strip__item {
+    width: clamp(18rem, 28vw, 26rem);
+  }
+}
+
+.filiale-strip__card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-card-md);
+  background-color: var(--color-petrol-panel-3);
+}
+
+.filiale-strip__button {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+.filiale-strip__button img {
+  transition: scale var(--duration-luxe, 600ms) var(--ease-luxury);
+}
+
+@media (hover: hover) {
+  .filiale-strip__button:hover img {
+    scale: 1.04;
+  }
+}
+
+.filiale-strip__button:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: -4px;
+}
+
+@media (min-width: 768px) {
+  .filiale-strip__card {
+    border-radius: var(--radius-card-lg);
+  }
+}
+
+/* --- Avis (FilialeTestimonials) ----------------------------------------- */
+.filiale-testimonials__list {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .filiale-testimonials__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+/* Trois colonnes, sauf pour 2 ou 4 avis (pas de carte seule en bout de grille). */
+@media (min-width: 1024px) {
+  .filiale-testimonials__list:not([data-count="2"], [data-count="4"]) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.filiale-quote {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  gap: 1.25rem;
+  height: 100%;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 1px solid color-mix(in srgb, var(--color-ivory) 10%, transparent);
+  border-radius: var(--radius-card-lg);
+  background-color: var(--color-petrol-panel-3);
+}
+
+.filiale-quote__rating {
+  letter-spacing: 0.2em;
+  color: var(--color-rose);
+}
+
+.filiale-quote__text {
+  flex: 1;
+  font-family: var(--font-dm-sans);
+  font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+  line-height: 1.55;
+  color: var(--color-ivory);
+}
+
+.filiale-quote__author {
+  display: grid;
+  gap: 0.125rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-ivory);
+}
+
+.filiale-quote__author span {
+  font-weight: 400;
+  color: color-mix(in srgb, var(--color-ivory) 60%, transparent);
+}
+
+/* --- Infos pratiques en bento (FilialePractical) ------------------------ */
+.filiale-bento {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .filiale-bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  .filiale-bento__card--map {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .filiale-bento {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 4fr);
+  }
+  .filiale-bento__card--map {
+    grid-column: auto;
+  }
+}
+
+.filiale-bento__card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 1px solid color-mix(in srgb, var(--color-ivory) 10%, transparent);
+  border-radius: var(--radius-card-lg);
+  background-color: var(--color-petrol-panel-3);
+}
+
+@media (min-width: 1024px) {
+  .filiale-bento__card {
+    border-radius: var(--radius-card-xl);
+  }
+}
+
+.filiale-bento__label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-rose);
+}
+
+.filiale-bento__card .filiale-status {
+  margin-top: 0;
+  width: fit-content;
+}
+
+.filiale-hours {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.filiale-hours li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-ivory) 10%, transparent);
+  font-size: 0.9375rem;
+  color: color-mix(in srgb, var(--color-ivory) 80%, transparent);
+}
+
+.filiale-hours li > span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.filiale-hours li[data-closed] {
+  color: color-mix(in srgb, var(--color-ivory) 50%, transparent);
+}
+
+.filiale-hours li[data-today] {
+  color: var(--color-ivory);
+}
+
+.filiale-hours__today {
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-on-accent, var(--color-petrol-panel-4));
+  background-color: var(--brand-fill, var(--color-rose));
+}
+
+.filiale-bento__line {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--color-ivory);
+}
+
+.filiale-bento__line svg {
+  flex: none;
+  margin-top: 0.1875rem;
+  color: var(--color-rose);
+}
+
+.filiale-bento__phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: fit-content;
+  font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+  line-height: 1.2;
+  color: var(--color-ivory);
+  transition: color var(--duration-fine, 200ms) var(--ease-luxury);
+}
+
+.filiale-bento__phone svg {
+  color: var(--color-rose);
+}
+
+.filiale-bento__phone:hover {
+  color: var(--color-rose);
+}
+
+.filiale-bento__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* --- Reduced motion : rien ne bouge -------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .filiale-strip__button img,
+  .filiale-round,
+  .filiale-menu__tab,
+  .filiale-bento__phone {
+    transition: none;
+  }
+  .filiale-strip__button:hover img {
+    scale: 1;
+  }
+  .filiale-strip__track {
+    scroll-behavior: auto;
+  }
+}

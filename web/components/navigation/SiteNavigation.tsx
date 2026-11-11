@@ -5,17 +5,20 @@ import { BottomCapsuleNav } from "@/components/navigation/BottomCapsuleNav";
 import type { CapsuleMenuProps } from "@/components/navigation/CapsuleMenu";
 import { GroupTopBar } from "@/components/navigation/GroupTopBar";
 import { usePathname } from "@/i18n/navigation";
+import { isMigratedFiliale } from "@/lib/filiale-migration";
 
-const SUBSIDIARY_PAGE = /^\/filiales\/[^/]+/;
+const SUBSIDIARY_PAGE = /^\/filiales\/([^/]+)/;
 
 /**
- * Pages filiales (/filiales/[slug]) : en-tête à charte inchangé.
- * Pages groupe : barre haute non fixe + capsule de navigation basse.
+ * Pages groupe et fiches migrées (lib/filiale-migration.ts) : barre haute non
+ * fixe + capsule de navigation basse (aux couleurs de la maison sur une fiche).
+ * Autres fiches : en-tête à charte inchangé, jusqu'à leur refonte.
  */
 export function SiteNavigation(props: CapsuleMenuProps) {
   const pathname = usePathname();
 
-  if (SUBSIDIARY_PAGE.test(pathname)) return <Header />;
+  const filiale = SUBSIDIARY_PAGE.exec(pathname)?.[1];
+  if (filiale && !isMigratedFiliale(filiale)) return <Header />;
 
   return (
     <>

@@ -23,10 +23,10 @@ export function brandSurface(slug: string, accentColor: string): string {
 
 /* --- Cartes aux chartes des filiales (/filiales, phase 5) ------------------ */
 
-type Rgb = [number, number, number];
+export type Rgb = [number, number, number];
 
 /** #rgb, #rrggbb, rgb() ou rgba() → canaux 0–255 et opacité. */
-function parseColor(color: string): { rgb: Rgb; alpha: number } | null {
+export function parseColor(color: string): { rgb: Rgb; alpha: number } | null {
   const value = color.trim();
   const hex = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(value)?.[1];
   if (hex) {
@@ -40,7 +40,7 @@ function parseColor(color: string): { rgb: Rgb; alpha: number } | null {
   return { rgb: [parts[0], parts[1], parts[2]], alpha: parts[3] ?? 1 };
 }
 
-function relativeLuminance([r, g, b]: Rgb): number {
+export function relativeLuminance([r, g, b]: Rgb): number {
   const channel = (c: number) => {
     const v = c / 255;
     return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;

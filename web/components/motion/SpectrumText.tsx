@@ -24,8 +24,20 @@ type RGB = readonly [number, number, number];
 const LOAD_DURATION_S = 1.25;
 /** Plage de scroll : de « haut du texte à 92 % de l'écran » à « haut du texte à 42 % ». */
 const SCROLL_OFFSET: ["start 0.92", "start 0.42"] = ["start 0.92", "start 0.42"];
-/** Lettre fantôme de départ : sable (première couleur du spectre). */
-const GHOST: RGB = SPECTRUM_ROSE[0];
+/**
+ * Spectre : `--spectrum-stops` (« r g b, r g b, … ») posé par la palette d'une
+ * maison (lib/filiale-brand.ts), sinon le Refined Rosé de la charte CEN21.
+ * La lettre fantôme de départ est la première couleur du spectre.
+ */
+function readSpectrum(element: HTMLElement): readonly RGB[] {
+  const raw = getComputedStyle(element).getPropertyValue("--spectrum-stops").trim();
+  const stops = raw
+    ? raw.split(",").map((stop) => stop.trim().split(/\s+/).map(Number) as unknown as RGB)
+    : [];
+  return stops.length >= 2 && stops.every((stop) => stop.length === 3 && stop.every((c) => Number.isFinite(c)))
+    ? stops
+    : SPECTRUM_ROSE;
+}
 
 function clamp01(value: number) {
   return Math.min(1, Math.max(0, value));
@@ -47,10 +59,10 @@ function mix(from: RGB, to: RGB, k: number): RGB {
   return [from[0] + (to[0] - from[0]) * k, from[1] + (to[1] - from[1]) * k, from[2] + (to[2] - from[2]) * k];
 }
 
-function spectrumAt(position: number): RGB {
-  const scaled = clamp01(position) * (SPECTRUM_ROSE.length - 1);
-  const index = Math.min(SPECTRUM_ROSE.length - 2, Math.floor(scaled));
-  return mix(SPECTRUM_ROSE[index], SPECTRUM_ROSE[index + 1], scaled - index);
+function spectrumAt(spectrum: readonly RGB[], position: number): RGB {
+  const scaled = clamp01(position) * (spectrum.length - 1);
+  const index = Math.min(spectrum.length - 2, Math.floor(scaled));
+  return mix(spectrum[index], spectrum[index + 1], scaled - index);
 }
 
 /** `rgb(…)`, `rgba(…)`, `#rgb` ou `#rrggbb` → RGB. */
@@ -163,7 +175,9 @@ export function SpectrumText({
 
     const sweepHost = root.querySelector<HTMLElement>("[data-sweep]");
     const inSweep = units.map((unit) => (sweepHost ? sweepHost.contains(unit) : false));
-    const accents = units.map((_, index) => spectrumAt(index / Math.max(1, count - 1)));
+    const spectrum = readSpectrum(root);
+    const GHOST = spectrum[0];
+    const accents = units.map((_, index) => spectrumAt(spectrum, index / Math.max(1, count - 1)));
     const rootColor = parseColor(getComputedStyle(root).color) ?? GHOST;
     const sweepRest = sweepHost
       ? (parseColor(getComputedStyle(sweepHost).getPropertyValue("--sweep-rest")) ?? rootColor)

@@ -57,6 +57,27 @@
   }
 }
 
+/* Variante sombre (fiches filiales) : fond et texte de la maison. */
+.about-story--dark {
+  color: var(--color-ivory);
+}
+
+.about-story--dark .about-story__eyebrow {
+  color: var(--color-rose);
+}
+
+.about-story--dark .about-story__eyebrow::before {
+  background-color: var(--color-rose);
+}
+
+.about-story--dark .about-story__title {
+  color: color-mix(in srgb, var(--color-ivory) 70%, transparent);
+}
+
+.about-story--dark .about-story__statement {
+  color: var(--color-ivory);
+}
+
 /* --- Chiffres : bento -------------------------------------------------- */
 .about-figures {
   padding: clamp(5rem, 10vw, 8rem) 1rem;

@@ -161,9 +161,11 @@
   --letter-spacing-section: -0.01em; /* −0,52 px à 52 px */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+/* Couleurs de la palette, hors `inline` : les utilitaires (`text-ivory`,
+   `bg-rose/10`…) lisent `var(--color-*)`. Une fiche filiale peut ainsi
+   redéfinir la palette dans son périmètre (styles/filiale-brand.css) et
+   tous les composants suivent. Valeurs reprises de :root. */
+@theme {
   --color-petrol: #004258;
   --color-petrol-panel-1: #0c272e;
   --color-petrol-panel-2: #16262b;
@@ -185,6 +187,11 @@
   --color-anthracite: #091a1f;
   --color-taupe: color-mix(in srgb, #e7d1bf 72%, #004258);
   --color-stone: color-mix(in srgb, #e7d1bf 52%, #0d1d22);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
   --font-heading: var(--font-dm-sans);
   --font-sans: var(--font-inter);
 
@@ -726,20 +733,25 @@ body:has(> [data-capsule-nav]) :is(.btn-primary, .btn-secondary) {
 
 body:has(> [data-capsule-nav]) .btn-primary {
   border: 1px solid transparent;
-  background-color: var(--color-rose);
-  background-image: linear-gradient(
-    100deg,
-    var(--color-rose-light) 0%,
-    var(--color-rose) 40%,
-    var(--color-rose-light) 72%,
-    var(--color-rose) 100%
+  /* Fiche migrée : aplat, dégradé et texte de la maison (lib/filiale-brand.ts,
+     contraste du texte ≥ 4,5:1 sur tout le dégradé). Repli : charte CEN21. */
+  background-color: var(--brand-fill, var(--color-rose));
+  background-image: var(
+    --brand-button,
+    linear-gradient(
+      100deg,
+      var(--color-rose-light) 0%,
+      var(--color-rose) 40%,
+      var(--color-rose-light) 72%,
+      var(--color-rose) 100%
+    )
   );
   background-size: 220% 100%;
   background-position: 100% 0;
-  color: var(--color-petrol);
+  color: var(--brand-on-accent, var(--color-petrol));
   box-shadow:
     inset 0 1px 0 color-mix(in srgb, var(--color-rose-light) 70%, transparent),
-    0 12px 28px -14px rgb(var(--color-rose-rgb) / 0.55);
+    0 12px 28px -14px rgb(var(--brand-fill-rgb, var(--color-rose-rgb)) / 0.55);
   transition:
     background-position var(--duration-luxe) var(--ease-luxury),
     box-shadow var(--duration-luxe) var(--ease-luxury),
@@ -751,7 +763,7 @@ body:has(> [data-capsule-nav]) .btn-primary:hover {
   background-position: 0 0;
   box-shadow:
     inset 0 1px 0 color-mix(in srgb, var(--color-rose-light) 70%, transparent),
-    0 18px 38px -14px rgb(var(--color-rose-rgb) / 0.7);
+    0 18px 38px -14px rgb(var(--brand-fill-rgb, var(--color-rose-rgb)) / 0.7);
 }
 
 body:has(> [data-capsule-nav]) :is(.btn-primary, .btn-secondary):active {
