@@ -28,19 +28,19 @@ const toneStyles: Record<
   }
 > = {
   dark: {
-    line: "bg-gradient-to-r from-transparent to-gold/85",
-    diamond: "bg-gold/85 shadow-[0_0_10px_rgba(212,173,101,0.55)]",
-    eyebrow: "text-gold",
+    line: "bg-gradient-to-r from-transparent to-rose/85",
+    diamond: "bg-rose/85 shadow-[0_0_10px_rgba(212,160,135,0.55)]",
+    eyebrow: "text-rose",
     title: "text-ivory",
-    subtitle: "text-gradient-gold opacity-95",
+    subtitle: "text-gradient-rose opacity-95",
     description: "text-ivory/80",
   },
   light: {
-    line: "bg-gradient-to-r from-transparent to-gold-deep/75",
-    diamond: "bg-gold-deep/90 shadow-[0_0_8px_rgba(161,123,53,0.35)]",
-    eyebrow: "text-gold-deep",
+    line: "bg-gradient-to-r from-transparent to-rose-deep/75",
+    diamond: "bg-rose-deep/90 shadow-[0_0_8px_rgba(161,123,53,0.35)]",
+    eyebrow: "text-rose-deep",
     title: "text-petrol",
-    subtitle: "text-gradient-petrol-gold",
+    subtitle: "text-gradient-petrol-rose",
     // Pétrole à 80 % : 4,8:1 sur le sable (le taupe n'y atteignait que 1,6:1).
     description: "text-petrol/80",
   },
@@ -192,7 +192,7 @@ export function SectionHeading({
               <motion.span
                 aria-hidden
                 className={`block h-px w-8 shrink-0 bg-gradient-to-l from-transparent sm:w-12 ornament-line-glow ${
-                  tone === "light" ? "to-gold-deep/75" : "to-gold/85"
+                  tone === "light" ? "to-rose-deep/75" : "to-rose/85"
                 }`}
                 style={{ transformOrigin: "left center" }}
                 initial={reduced ? false : "hidden"}

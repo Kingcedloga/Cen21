@@ -33,7 +33,7 @@ function stackImage(s: Subsidiary): string {
 }
 
 const INDEX_LINK =
-  "tap-press inline-flex min-h-[2.75rem] items-center gap-2 rounded-full border border-ivory/15 px-4 text-sm text-ivory/85 transition-colors duration-fine hover:border-gold/50 hover:text-gold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold";
+  "tap-press inline-flex min-h-[2.75rem] items-center gap-2 rounded-full border border-ivory/15 px-4 text-sm text-ivory/85 transition-colors duration-fine hover:border-rose/50 hover:text-rose focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose";
 
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;

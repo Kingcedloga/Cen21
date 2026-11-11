@@ -85,7 +85,7 @@
   gap: 0.5rem;
   padding: 0.625rem 1.125rem;
   border-radius: 9999px;
-  background-color: var(--color-gold);
+  background-color: var(--color-rose);
   color: var(--color-petrol-panel-4);
   font-size: 0.8125rem;
   font-weight: 600;
@@ -112,7 +112,7 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: #ffffff;
+  color: var(--color-neutral);
   /* Opacité de repos (reduced motion : pas d'animation pour la poser). */
   opacity: 0.1;
   white-space: nowrap;
@@ -139,7 +139,7 @@
 }
 
 .home-experience__ring-text {
-  fill: #d4ad65;
+  fill: var(--color-rose);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -155,15 +155,15 @@
   justify-content: center;
   width: clamp(5rem, 9vw, 6.25rem);
   height: clamp(5rem, 9vw, 6.25rem);
-  border: 2px solid rgba(212, 173, 101, 0.7);
+  border: 2px solid rgba(212,160,135, 0.7);
   border-radius: 50%;
   background: rgba(0, 42, 56, 0.75);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  color: #d4ad65;
+  color: var(--color-rose);
   cursor: pointer;
   box-shadow:
-    0 0 0 8px rgba(212, 173, 101, 0.15),
+    0 0 0 8px rgba(212,160,135, 0.15),
     0 16px 36px -8px rgba(0, 0, 0, 0.6);
   transition:
     transform 350ms var(--ease-luxury),
@@ -174,11 +174,11 @@
 
 .home-experience__play:hover {
   transform: scale(1.08);
-  border-color: #d4ad65;
+  border-color: var(--color-rose);
   background: rgba(0, 66, 88, 0.9);
-  color: #ffffff;
+  color: var(--color-neutral);
   box-shadow:
-    0 0 0 14px rgba(212, 173, 101, 0.25),
+    0 0 0 14px rgba(212,160,135, 0.25),
     0 24px 48px -10px rgba(0, 0, 0, 0.7);
 }
 
@@ -209,8 +209,8 @@
   overflow: hidden;
   box-shadow:
     0 32px 64px -16px rgba(0, 0, 0, 0.8),
-    0 0 0 1px rgba(212, 173, 101, 0.3);
-  background: #000000;
+    0 0 0 1px rgba(212,160,135, 0.3);
+  background: var(--color-petrol-panel-4);
 }
 
 .home-experience__frame iframe {
@@ -233,7 +233,7 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: rgba(0, 42, 56, 0.6);
   backdrop-filter: blur(12px);
-  color: #ffffff;
+  color: var(--color-neutral);
   cursor: pointer;
   transition:
     transform 200ms ease,
@@ -243,8 +243,8 @@
 
 .home-experience__close:hover {
   transform: scale(1.08);
-  background: rgba(212, 173, 101, 0.3);
-  border-color: #d4ad65;
+  background: rgba(212,160,135, 0.3);
+  border-color: var(--color-rose);
 }
 
 @media (max-width: 640px) {

@@ -28,7 +28,7 @@ export function EventCard({ event }: { event: EventItem }) {
   const imageSrc = resolveEventImage(event, subsidiary?.coverImage);
 
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/12 bg-petrol/60 backdrop-blur-md shadow-[0_18px_40px_-22px_rgba(0,0,0,0.55)] transition-all duration-luxe ease-out hover:-translate-y-2 hover:border-gold/50 hover:shadow-[0_26px_60px_-16px_rgba(212,173,101,0.28)]">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/12 bg-petrol/60 backdrop-blur-md shadow-[0_18px_40px_-22px_rgba(0,0,0,0.55)] transition-all duration-luxe ease-out hover:-translate-y-2 hover:border-rose/50 hover:shadow-[0_26px_60px_-16px_rgba(212,160,135,0.28)]">
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
           src={imageSrc}
@@ -45,7 +45,7 @@ export function EventCard({ event }: { event: EventItem }) {
         {subsidiary && (
           <SubsidiaryHrefLink
             subsidiary={subsidiary}
-            className="text-gold text-xs tracking-[0.15em] uppercase mb-2 hover:underline cursor-pointer"
+            className="text-rose text-xs tracking-[0.15em] uppercase mb-2 hover:underline cursor-pointer"
           >
             {subsidiary.name}
           </SubsidiaryHrefLink>

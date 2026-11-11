@@ -33,7 +33,7 @@
 
 .faq-item__question:hover,
 .faq-item__question[aria-expanded="true"] {
-  color: var(--color-gold);
+  color: var(--color-rose);
 }
 
 .faq-item__question:focus-visible {
@@ -87,9 +87,9 @@
 }
 
 .faq-item__answer a {
-  color: var(--color-gold);
+  color: var(--color-rose);
   text-decoration: underline;
-  text-decoration-color: color-mix(in srgb, var(--color-gold) 45%, transparent);
+  text-decoration-color: color-mix(in srgb, var(--color-rose) 45%, transparent);
   text-underline-offset: 3px;
 }
 
@@ -136,7 +136,7 @@
 
 [data-surface="light"] .faq-item__question:hover .faq-item__icon,
 [data-surface="light"] .faq-item__question[aria-expanded="true"] .faq-item__icon {
-  color: var(--color-gold-deep);
+  color: var(--color-rose-deep);
 }
 
 [data-surface="light"] .faq-item__question:focus-visible {
@@ -151,7 +151,7 @@
 [data-surface="light"] .faq-item__answer a {
   color: var(--color-petrol);
   font-weight: 500;
-  text-decoration-color: var(--color-gold-deep);
+  text-decoration-color: var(--color-rose-deep);
 }
 
 [data-surface="light"] .faq-hours li {
@@ -196,12 +196,12 @@
 }
 
 .social-tile:hover {
-  border-color: color-mix(in srgb, var(--color-gold) 45%, transparent);
-  background-color: color-mix(in srgb, var(--color-petrol-panel-3) 94%, var(--color-gold));
+  border-color: color-mix(in srgb, var(--color-rose) 45%, transparent);
+  background-color: color-mix(in srgb, var(--color-petrol-panel-3) 94%, var(--color-rose));
 }
 
 .social-tile:focus-visible {
-  outline: 1px solid var(--color-gold);
+  outline: 1px solid var(--color-rose);
   outline-offset: 3px;
 }
 
@@ -242,7 +242,7 @@
 
 .social-tile__arrow {
   flex: none;
-  color: var(--color-gold);
+  color: var(--color-rose);
   transition: translate var(--duration-fine) var(--ease-luxury);
 }
 
@@ -287,7 +287,7 @@
 .contact-card__facts svg {
   flex: none;
   margin-top: 0.125rem;
-  color: var(--color-gold);
+  color: var(--color-rose);
 }
 
 .contact-card__fact-label {
@@ -307,7 +307,7 @@
 }
 
 a.contact-card__fact-value:hover {
-  color: var(--color-gold);
+  color: var(--color-rose);
 }
 
 @media (min-width: 1024px) {
@@ -343,7 +343,7 @@ a.contact-card__fact-value:hover {
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-rose);
 }
 
 .contact-form__label {
@@ -406,13 +406,13 @@ a.contact-card__fact-value:hover {
 }
 
 .choice-pill:hover {
-  border-color: color-mix(in srgb, var(--color-gold) 50%, transparent);
+  border-color: color-mix(in srgb, var(--color-rose) 50%, transparent);
   color: var(--color-ivory);
 }
 
 .choice-pill:has(:checked) {
-  border-color: var(--color-gold);
-  background-color: var(--color-gold);
+  border-color: var(--color-rose);
+  background-color: var(--color-rose);
   color: var(--color-petrol-panel-4);
 }
 
@@ -496,16 +496,16 @@ a.contact-card__fact-value:hover {
 }
 
 .address-choice:hover {
-  border-color: color-mix(in srgb, var(--color-gold) 50%, transparent);
+  border-color: color-mix(in srgb, var(--color-rose) 50%, transparent);
 }
 
 .address-choice[aria-pressed="true"] {
-  border-color: var(--color-gold);
-  background-color: color-mix(in srgb, var(--color-gold) 14%, transparent);
+  border-color: var(--color-rose);
+  background-color: color-mix(in srgb, var(--color-rose) 14%, transparent);
 }
 
 .address-choice:focus-visible {
-  outline: 2px solid var(--color-gold);
+  outline: 2px solid var(--color-rose);
   outline-offset: 2px;
 }
 
@@ -535,13 +535,13 @@ a.contact-card__fact-value:hover {
 
 .address-choice__city {
   padding: 0.0625rem 0.5rem;
-  border: 1px solid color-mix(in srgb, var(--color-gold) 45%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-rose) 45%, transparent);
   border-radius: 9999px;
   font-size: 0.625rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-rose);
 }
 
 /* L'adresse complète n'apparaît que dans la liste desktop. */
@@ -571,7 +571,7 @@ a.contact-card__fact-value:hover {
   top: 50%;
   left: 50%;
   translate: -50% -50%;
-  color: color-mix(in srgb, var(--color-gold) 45%, transparent);
+  color: color-mix(in srgb, var(--color-rose) 45%, transparent);
 }
 
 .contact-addresses__map iframe {
@@ -615,7 +615,7 @@ a.contact-card__fact-value:hover {
 .contact-addresses__card-line svg {
   flex: none;
   margin-top: 0.2rem;
-  color: var(--color-gold);
+  color: var(--color-rose);
 }
 
 .contact-addresses__dot {
@@ -624,7 +624,7 @@ a.contact-card__fact-value:hover {
   height: 0.5rem;
   margin: 0.5rem 0.25rem 0 0.25rem;
   border-radius: 9999px;
-  background-color: var(--color-gold);
+  background-color: var(--color-rose);
 }
 
 .contact-addresses__actions {
@@ -640,7 +640,7 @@ a.contact-card__fact-value:hover {
   gap: 0.5rem;
   min-height: 2.75rem;
   padding: 0 1rem;
-  border: 1px solid color-mix(in srgb, var(--color-gold) 45%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-rose) 45%, transparent);
   border-radius: 9999px;
   font-size: 0.8125rem;
   font-weight: 600;
@@ -649,15 +649,15 @@ a.contact-card__fact-value:hover {
 }
 
 .address-action svg {
-  color: var(--color-gold);
+  color: var(--color-rose);
 }
 
 .address-action:hover {
-  background-color: color-mix(in srgb, var(--color-gold) 14%, transparent);
+  background-color: color-mix(in srgb, var(--color-rose) 14%, transparent);
 }
 
 .address-action:focus-visible {
-  outline: 2px solid var(--color-gold);
+  outline: 2px solid var(--color-rose);
   outline-offset: 2px;
 }
 

@@ -50,7 +50,7 @@ export function BreadcrumbNav({
               {item.href && !isLast ? (
                 <Link
                   href={item.href}
-                  className="inline-flex items-center gap-1.5 rounded-md px-1.5 py-0.5 text-ivory/75 transition-colors duration-fine hover:text-gold focus-visible:outline-2 focus-visible:outline-gold cursor-pointer"
+                  className="inline-flex items-center gap-1.5 rounded-md px-1.5 py-0.5 text-ivory/75 transition-colors duration-fine hover:text-rose focus-visible:outline-2 focus-visible:outline-rose cursor-pointer"
                 >
                   {isFirst && <Home className="h-3.5 w-3.5" aria-hidden />}
                   <span>{item.label}</span>
@@ -59,7 +59,7 @@ export function BreadcrumbNav({
                 <span
                   aria-current={isLast ? "page" : undefined}
                   className={`inline-flex items-center gap-1.5 px-1.5 py-0.5 ${
-                    isLast ? "font-medium text-gold" : "text-ivory/75"
+                    isLast ? "font-medium text-rose" : "text-ivory/75"
                   }`}
                 >
                   {isFirst && <Home className="h-3.5 w-3.5" aria-hidden />}

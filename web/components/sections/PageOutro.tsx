@@ -35,7 +35,7 @@ export function PageOutro({
       <div className="page-outro__inner">
         <div className="page-outro__head">
           <div>
-            <p className="eyebrow text-xs font-semibold uppercase tracking-[0.2em] text-gold">{eyebrow}</p>
+            <p className="eyebrow text-xs font-semibold uppercase tracking-[0.2em] text-rose">{eyebrow}</p>
             <SpectrumText
               as="h2"
               id="page-outro-title"

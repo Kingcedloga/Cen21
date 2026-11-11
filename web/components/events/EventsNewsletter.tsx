@@ -51,7 +51,7 @@ export function EventsNewsletter({ labels, className = "" }: { labels: Newslette
       <p className="text-sm font-medium text-ivory/80">{labels.subscribeText}</p>
       <form
         onSubmit={onSubmit}
-        className="mt-3 flex items-center rounded-full border border-gold/35 bg-petrol-panel-3/70 p-1.5 focus-within:border-gold/70"
+        className="mt-3 flex items-center rounded-full border border-rose/35 bg-petrol-panel-3/70 p-1.5 focus-within:border-rose/70"
       >
         <label htmlFor={inputId} className="sr-only">
           {labels.emailPlaceholder}
@@ -68,12 +68,13 @@ export function EventsNewsletter({ labels, className = "" }: { labels: Newslette
         <button
           type="submit"
           disabled={status === "loading"}
-          className="btn-primary min-h-11 shrink-0 cursor-pointer px-5 text-xs font-bold uppercase tracking-wider disabled:opacity-70"
+          // Pilule dans la pilule : `.btn-primary` ne fixe pas d'arrondi.
+          className="btn-primary min-h-11 shrink-0 cursor-pointer rounded-full px-5 text-xs font-bold uppercase tracking-wider disabled:opacity-70"
         >
           {status === "loading" ? labels.subscribing : labels.subscribeCta}
         </button>
       </form>
-      <p aria-live="polite" className="mt-3 min-h-5 text-sm text-gold">
+      <p aria-live="polite" className="mt-3 min-h-5 text-sm text-rose">
         {status === "success" ? labels.subscribeSuccess : status === "error" ? labels.subscribeError : ""}
       </p>
     </div>

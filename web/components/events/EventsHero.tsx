@@ -60,12 +60,12 @@ function Countdown({ target, labels }: { target: string; labels: Labels }) {
       {units.map((unit, index) => (
         <div
           key={unit}
-          className="flex min-w-0 flex-col items-center rounded-card-md border border-gold/25 bg-petrol-panel-3/70 px-1 py-3"
+          className="flex min-w-0 flex-col items-center rounded-card-md border border-rose/25 bg-petrol-panel-3/70 px-1 py-3"
         >
           <span className="title-display text-3xl tabular-nums text-ivory sm:text-4xl">
             {parts ? String(parts[index]).padStart(2, "0") : "––"}
           </span>
-          <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-gold sm:text-[11px] sm:tracking-[0.18em]">
+          <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-rose sm:text-[11px] sm:tracking-[0.18em]">
             {unit}
           </span>
         </div>

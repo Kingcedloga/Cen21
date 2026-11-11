@@ -39,7 +39,7 @@ export function SocialLinks({
 }: Props) {
   const iconClass = size === "sm" ? "w-4 h-4" : "w-5 h-5";
   const btnClass =
-    "inline-flex h-11 w-11 items-center justify-center rounded-full text-ivory/85 hover:text-gold hover:bg-white/5 transition-colors duration-fine cursor-pointer focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2";
+    "inline-flex h-11 w-11 items-center justify-center rounded-full text-ivory/85 hover:text-rose hover:bg-white/5 transition-colors duration-fine cursor-pointer focus-visible:outline-2 focus-visible:outline-rose focus-visible:outline-offset-2";
 
   const links = [
     { key: "instagram" as const, href: social.instagram, Icon: IconInstagram, name: "Instagram" },
@@ -52,7 +52,7 @@ export function SocialLinks({
   return (
     <div className={className}>
       {label && (
-        <p className="text-gold text-xs tracking-[0.15em] uppercase mb-3">{label}</p>
+        <p className="text-rose text-xs tracking-[0.15em] uppercase mb-3">{label}</p>
       )}
       <div className="flex flex-wrap gap-1" role="list">
         {links.map(({ key, href, Icon, name }) => (

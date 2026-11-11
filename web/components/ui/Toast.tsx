@@ -17,9 +17,9 @@ const VARIANT_STYLES: Record<
   { ring: string; icon: (typeof toastIcons)["success"]; iconClass: string }
 > = {
   success: {
-    ring: "ring-gold/40",
+    ring: "ring-rose/40",
     icon: toastIcons.success,
-    iconClass: "text-gold",
+    iconClass: "text-rose",
   },
   error: {
     ring: "ring-red-400/45",

@@ -70,7 +70,7 @@ export function AboutTeamArc({ members, labels }: { members: TeamMember[]; label
               className="absolute inset-0 bg-gradient-to-t from-petrol-panel-4 from-15% via-petrol-panel-4/70 via-45% to-transparent to-75%"
             />
             <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-2 px-6 pb-7 text-center md:px-8">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">{member.role}</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-rose">{member.role}</p>
               <h3 className="title-section text-2xl text-ivory md:text-[1.75rem]">{member.name}</h3>
               {member.quote && (
                 <p className="line-clamp-3 max-w-[22rem] text-sm italic text-ivory/80">« {member.quote} »</p>

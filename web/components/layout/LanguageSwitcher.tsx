@@ -83,10 +83,10 @@ export function LanguageSwitcher({
             disabled={pending}
             aria-pressed={active}
             aria-label={t("switchTo", { language: label })}
-            className={`${BTN_BASE} focus-visible:outline-gold ${
+            className={`${BTN_BASE} focus-visible:outline-rose ${
               active
-                ? "bg-gold text-petrol shadow-sm"
-                : "text-ivory/75 hover:text-gold"
+                ? "bg-rose text-petrol shadow-sm"
+                : "text-ivory/75 hover:text-rose"
             }`}
           >
             {code}

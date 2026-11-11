@@ -128,11 +128,11 @@ function ManifestoStage({
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 70% 50% at 50% 30%, color-mix(in srgb, var(--color-gold) 9%, transparent), transparent 70%)",
+            "radial-gradient(ellipse 70% 50% at 50% 30%, color-mix(in srgb, var(--color-rose) 9%, transparent), transparent 70%)",
         }}
       />
       <div className="relative mx-auto w-full max-w-5xl">
-        <p id="home-manifesto-title" className="eyebrow text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+        <p id="home-manifesto-title" className="eyebrow text-xs font-semibold uppercase tracking-[0.2em] text-rose">
           {eyebrow}
         </p>
         <SpectrumText
@@ -212,7 +212,7 @@ export function HomeManifesto({
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col-reverse gap-1">
               <dt className="text-sm text-ivory/65">{stat.label}</dt>
-              <dd className="title-section text-h3 tabular-nums text-gold">
+              <dd className="title-section text-h3 tabular-nums text-rose">
                 <StatCountUp value={stat.value} />
               </dd>
             </div>

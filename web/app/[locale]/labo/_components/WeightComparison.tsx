@@ -30,7 +30,7 @@ export function WeightComparison({
     <div className="mt-14 flex flex-col gap-14">
       {WEIGHTS.map((weight, index) => (
         <figure key={weight.value} className="flex flex-col gap-3" data-weight={weight.value}>
-          <figcaption className="font-mono text-xs uppercase tracking-[0.12em] text-gold">
+          <figcaption className="font-mono text-xs uppercase tracking-[0.12em] text-rose">
             {labels[weight.value]}
           </figcaption>
           <SpectrumText

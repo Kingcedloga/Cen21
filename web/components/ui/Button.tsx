@@ -6,13 +6,14 @@ type Variant = "primary" | "secondary" | "ghost";
 type Size = "sm" | "md" | "lg";
 
 /**
- * Boutons ultra-premium — design system Cen21 Hospitality.
+ * Boutons — charte Cen21 (Cen21_Logo-Final) : pilules, styles dans
+ * app/globals.css.
  *
  * Variants :
- *  - primary  : surface or #D4AD65, texte pétrole #004258, relief
- *               intérieur + halo doré diffus.
- *  - secondary: hairline or + voile sombre + glassmorphism léger.
- *               Au survol : bord et lueur #D4AD65.
+ *  - primary  : dégradé Refined Rosé (champagne ↔ rosé cuivré) qui glisse au
+ *               survol, texte Dark Teal. Sur fond Quartz : Dark Teal, texte Quartz.
+ *  - secondary: transparent, filet et texte Quartz ; au survol filet et voile
+ *               rosés. Sur fond Quartz : filet et texte Dark Teal.
  *  - ghost    : minimaliste, hover ivoire clair uniquement.
  *
  * Sizes : sm (40px), md (44px — défaut, conforme tap-target Apple), lg (52px).
@@ -70,12 +71,6 @@ export function Button({
 
   const content = (
     <>
-      {variant === "primary" && (
-        <span
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/[0.22] to-transparent transition-transform duration-shimmer ease-luxury group-hover/btn:translate-x-full"
-        />
-      )}
       <span className={`relative inline-flex items-center gap-2 ${magnetic ? "magnetic__content" : ""}`}>
         {children}
       </span>

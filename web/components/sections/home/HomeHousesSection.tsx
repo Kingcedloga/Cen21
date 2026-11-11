@@ -49,7 +49,7 @@ export function HomeHousesSection({
       className={`px-4 pb-24 pt-24 md:px-8 md:pb-32 md:pt-28 ${className}`}
     >
       <div className="mx-auto max-w-6xl">
-        <p className="eyebrow text-xs font-semibold uppercase tracking-[0.2em] text-gold">{eyebrow}</p>
+        <p className="eyebrow text-xs font-semibold uppercase tracking-[0.2em] text-rose">{eyebrow}</p>
         <SpectrumText
           as="h2"
           id={titleId}
@@ -65,7 +65,7 @@ export function HomeHousesSection({
               <Link
                 href={`/filiales/${item.slug}`}
                 aria-label={item.ariaLabel}
-                className="house-card tap-press cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+                className="house-card tap-press cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rose"
               >
                 <span className="house-card__inner">
                   <span className="house-card__face border border-ivory/10 bg-petrol-panel-3/70">

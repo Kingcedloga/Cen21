@@ -107,7 +107,7 @@ export function CapsuleMenu({
                 >
                   <span
                     aria-hidden="true"
-                    className={`h-1.5 w-1.5 shrink-0 rounded-full ${active ? "bg-gold-deep" : "bg-transparent"}`}
+                    className={`h-1.5 w-1.5 shrink-0 rounded-full ${active ? "bg-rose-deep" : "bg-transparent"}`}
                   />
                   <RollingText text={t(key)} />
                   {key === "subsidiaries" && (

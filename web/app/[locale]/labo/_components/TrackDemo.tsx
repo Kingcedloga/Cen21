@@ -17,7 +17,7 @@ function TrackStage({ title, body, cardLabel }: { title: string; body: string; c
         <div className="mt-8 h-1 w-full overflow-hidden rounded-full bg-ivory/15">
           <motion.div
             data-track-motion=""
-            className="h-full origin-left bg-gold"
+            className="h-full origin-left bg-rose"
             style={isStatic ? undefined : { scaleX: progress }}
           />
         </div>

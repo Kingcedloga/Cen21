@@ -102,7 +102,7 @@
 .deck-card__date {
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--color-gold-deep);
+  color: var(--color-rose-deep);
 }
 
 .deck-card__location {
@@ -230,10 +230,10 @@
   justify-content: center;
   width: 3rem;
   height: 3rem;
-  border: 1px solid color-mix(in srgb, var(--color-gold) 40%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-rose) 40%, transparent);
   border-radius: 9999px;
-  background-color: color-mix(in srgb, var(--color-gold) 6%, transparent);
-  color: var(--color-gold);
+  background-color: color-mix(in srgb, var(--color-rose) 6%, transparent);
+  color: var(--color-rose);
 }
 
 .events-swipe__button:focus-visible {

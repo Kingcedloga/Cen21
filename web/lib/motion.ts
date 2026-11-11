@@ -317,14 +317,15 @@ export const SPRING = {
 } as const satisfies Record<string, Transition>;
 
 /**
- * Spectre de révélation des titres (SpectrumText), en RGB :
- * sable → or → or moyen → or profond (couleurs de la palette uniquement).
+ * Spectre de révélation des titres (SpectrumText), en RGB : Quartz →
+ * champagne → rosé cuivré → cuivre profond, le dégradé Refined Rosé de la
+ * charte (couleurs de la palette uniquement).
  */
-export const SPECTRUM_GOLD = [
+export const SPECTRUM_ROSE = [
   [231, 209, 191],
-  [212, 173, 101],
-  [181, 142, 72],
-  [161, 123, 53],
+  [236, 208, 187],
+  [212, 160, 135],
+  [140, 93, 77],
 ] as const;
 
 /** Longueurs des pistes de scroll, en vh (valeurs relevées chez Orbix). */

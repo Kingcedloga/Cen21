@@ -41,9 +41,9 @@ export function LoaderGraphic({ className = "", size = 88 }: LoaderGraphicProps)
         className={`loader-blobs relative h-full w-full ${reduced ? "loader-blobs--static" : ""}`}
         style={{ filter: `url(#${FILTER_ID})` }}
       >
-        <span className="loader-blob loader-blob--gold" />
-        <span className="loader-blob loader-blob--cyan" />
-        <span className="loader-blob loader-blob--magenta" />
+        <span className="loader-blob loader-blob--rose" />
+        <span className="loader-blob loader-blob--quartz" />
+        <span className="loader-blob loader-blob--deep" />
       </div>
     </div>
   );

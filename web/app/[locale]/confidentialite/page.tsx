@@ -41,7 +41,7 @@ export default async function ConfidentialitePage({ params }: Props) {
               {t("controllerBody", { name: site.name })}{" "}
               <a
                 href={`mailto:${site.contact.email}`}
-                className="text-gold hover:text-ivory underline-offset-4 hover:underline"
+                className="text-rose hover:text-ivory underline-offset-4 hover:underline"
               >
                 {site.contact.email}
               </a>
@@ -62,7 +62,7 @@ export default async function ConfidentialitePage({ params }: Props) {
             <LegalH2>{t("analytics")}</LegalH2>
             <LegalP>
               {t("analyticsBody")}{" "}
-              <Link href="/cookies" className="text-gold hover:text-ivory hover:underline underline-offset-4">
+              <Link href="/cookies" className="text-rose hover:text-ivory hover:underline underline-offset-4">
                 {t("cookieLink")}
               </Link>
               .

@@ -360,7 +360,7 @@ function BurstStage({
 
       <div className="burst-shuttle">
         <div className="flex flex-col items-center gap-6 md:gap-8">
-          <p className="eyebrow text-xs font-semibold uppercase tracking-[0.2em] text-gold">{eyebrow}</p>
+          <p className="eyebrow text-xs font-semibold uppercase tracking-[0.2em] text-rose">{eyebrow}</p>
           <SpectrumText
             as="h2"
             id="home-burst-title"

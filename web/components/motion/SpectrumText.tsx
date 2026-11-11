@@ -11,7 +11,7 @@ import {
 import { useRef, type ReactNode, type RefObject } from "react";
 
 import { playSweep, sweepClassName, type SweepTone } from "@/components/motion/GradientSweep";
-import { SPECTRUM_GOLD } from "@/lib/motion";
+import { SPECTRUM_ROSE } from "@/lib/motion";
 import { introMissed, onSiteReady } from "@/lib/site-ready";
 import { useReducedMotionSafe } from "@/lib/use-media-query";
 
@@ -25,7 +25,7 @@ const LOAD_DURATION_S = 1.25;
 /** Plage de scroll : de « haut du texte à 92 % de l'écran » à « haut du texte à 42 % ». */
 const SCROLL_OFFSET: ["start 0.92", "start 0.42"] = ["start 0.92", "start 0.42"];
 /** Lettre fantôme de départ : sable (première couleur du spectre). */
-const GHOST: RGB = SPECTRUM_GOLD[0];
+const GHOST: RGB = SPECTRUM_ROSE[0];
 
 function clamp01(value: number) {
   return Math.min(1, Math.max(0, value));
@@ -48,9 +48,9 @@ function mix(from: RGB, to: RGB, k: number): RGB {
 }
 
 function spectrumAt(position: number): RGB {
-  const scaled = clamp01(position) * (SPECTRUM_GOLD.length - 1);
-  const index = Math.min(SPECTRUM_GOLD.length - 2, Math.floor(scaled));
-  return mix(SPECTRUM_GOLD[index], SPECTRUM_GOLD[index + 1], scaled - index);
+  const scaled = clamp01(position) * (SPECTRUM_ROSE.length - 1);
+  const index = Math.min(SPECTRUM_ROSE.length - 2, Math.floor(scaled));
+  return mix(SPECTRUM_ROSE[index], SPECTRUM_ROSE[index + 1], scaled - index);
 }
 
 /** `rgb(…)`, `rgba(…)`, `#rgb` ou `#rrggbb` → RGB. */

@@ -123,9 +123,9 @@
   background-image: var(--sweep-on-light);
 }
 
-.gradient-sweep--gold {
-  --sweep-rest: var(--color-gold);
-  background-image: var(--sweep-gold);
+.gradient-sweep--rose {
+  --sweep-rest: var(--color-rose);
+  background-image: var(--sweep-rose);
 }
 
 /* Pendant la révélation lettre à lettre, chaque lettre porte sa propre couleur. */

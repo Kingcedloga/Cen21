@@ -313,7 +313,7 @@ export default async function ContactPage({ params }: Props) {
               className="mb-8"
             />
             {/* Carte pétrole pleine : contraste franc sur le sable. */}
-            <div className="rounded-3xl border border-gold/25 bg-petrol p-6 shadow-long md:p-8">
+            <div className="rounded-3xl border border-rose/25 bg-petrol p-6 shadow-long md:p-8">
               <p className="font-[family-name:var(--font-dm-sans)] text-lg font-semibold text-ivory">
                 {t("faqCardTitle")}
               </p>
@@ -324,7 +324,7 @@ export default async function ContactPage({ params }: Props) {
                 </a>
                 <a
                   href={`tel:${site.contact.phone.replace(/\s/g, "")}`}
-                  className="text-sm font-medium text-gold underline decoration-gold/40 underline-offset-4 hover:decoration-gold"
+                  className="text-sm font-medium text-rose underline decoration-rose/40 underline-offset-4 hover:decoration-rose"
                 >
                   {tCommon("call")} · {site.contact.phone}
                 </a>

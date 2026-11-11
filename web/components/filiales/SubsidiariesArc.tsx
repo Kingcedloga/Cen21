@@ -63,7 +63,7 @@ export function SubsidiariesArc({ items, labels }: { items: ArcItem[]; labels: A
                 <Image src={item.logo} alt="" fill draggable={false} sizes="176px" className="object-contain" />
               </span>
             )}
-            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">{item.sector}</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-rose">{item.sector}</p>
             <h3 className="title-section text-2xl text-ivory md:text-[1.75rem]">{item.name}</h3>
             <p className="line-clamp-2 max-w-[22rem] text-sm text-ivory/80">{item.tagline}</p>
           </div>

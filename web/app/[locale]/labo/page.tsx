@@ -52,7 +52,7 @@ export default async function MotionLabPage({ params }: Props) {
     <>
       <section data-surface="dark" className="bg-petrol-panel-4 px-4 pb-28 pt-36 md:px-8">
         <div className="mx-auto max-w-6xl">
-          <p className="eyebrow text-xs uppercase tracking-[0.18em] text-gold">{t("eyebrow")}</p>
+          <p className="eyebrow text-xs uppercase tracking-[0.18em] text-rose">{t("eyebrow")}</p>
           <p className="mt-3 max-w-2xl text-ivory/70">{t("intro")}</p>
           <h2 className="mt-12 font-mono text-sm font-normal uppercase tracking-[0.12em] text-ivory/60">
             {t("weightHeading")}
@@ -97,11 +97,11 @@ export default async function MotionLabPage({ params }: Props) {
 
         <div className="mt-16 grid gap-12 md:grid-cols-2">
           <div>
-            <h3 className="text-sm font-medium uppercase tracking-[0.12em] text-gold">{t("linksHeading")}</h3>
+            <h3 className="text-sm font-medium uppercase tracking-[0.12em] text-rose">{t("linksHeading")}</h3>
             <ul className="mt-6 flex flex-col gap-3 text-lg text-ivory/85">
               {NAV_KEYS.map((key) => (
                 <li key={key}>
-                  <Link href={NAV_HREFS[key]} className="hover:text-gold focus-visible:outline-2 focus-visible:outline-gold">
+                  <Link href={NAV_HREFS[key]} className="hover:text-rose focus-visible:outline-2 focus-visible:outline-rose">
                     <RollingText text={tNav(key)} />
                   </Link>
                 </li>
@@ -109,7 +109,7 @@ export default async function MotionLabPage({ params }: Props) {
             </ul>
           </div>
           <div>
-            <h3 className="text-sm font-medium uppercase tracking-[0.12em] text-gold">{t("buttonsHeading")}</h3>
+            <h3 className="text-sm font-medium uppercase tracking-[0.12em] text-rose">{t("buttonsHeading")}</h3>
             <div className="mt-6 flex flex-wrap gap-4">
               <Button href="/filiales" magnetic>
                 {tHero("ctaSubsidiaries")}

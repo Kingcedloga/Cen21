@@ -79,7 +79,7 @@ export default async function MentionsLegalesPage({ params }: Props) {
             <LegalP>
               <Link
                 href="/contact"
-                className="text-gold underline-offset-4 hover:text-ivory hover:underline cursor-pointer"
+                className="text-rose underline-offset-4 hover:text-ivory hover:underline cursor-pointer"
               >
                 {t("contactForm")}
               </Link>

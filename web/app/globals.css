@@ -24,18 +24,37 @@
 :root {
   --font-dm-sans: "DM Sans", var(--font-inter), system-ui, sans-serif;
 
-  /* === Palette Cen21 — base #004258 ===================================== */
+  /* === Palette Cen21 — charte officielle (Cen21_Logo-Final, 11/08/2023) ==
+     Dark Teal #004258 « Culturally Curious », Quartz #E7D1BF « Hospitality »,
+     Refined Rosé « Opulence » : dégradé cuivre → champagne → rosé (logo et
+     monogramme sur Dark Teal). Plus d'or : la charte n'en prévoit pas. */
   --color-petrol: #004258;
   --color-petrol-panel-1: #0c272e;
   --color-petrol-panel-2: #16262b;
   --color-petrol-panel-3: #0d1d22;
   --color-petrol-panel-4: #091a1f;
 
+  /* Refined Rosé : points du dégradé de la charte, relevés sur le PDF.
+     Sur Dark Teal, le texte rosé tient le contraste AA (4,8:1) ; le cuivre
+     profond ne sert qu'aux grands éléments et aux fonds clairs. */
+  --color-rose-deep: #8c5d4d; /* cuivre profond : départ du dégradé */
+  --color-rose-mid: #b98a74;
+  --color-rose: #d4a087; /* rosé cuivré : accent sur fond sombre */
+  --color-rose-light: #ecd0bb; /* reflet champagne : milieu du dégradé */
+  --color-rose-rgb: 212 160 135;
+  /* Héritage : or des premières maquettes, conservé pour les boutons de
+     repli des fiches filiales jusqu'à leur refonte (R5 et suivantes). */
   --color-gold: #d4ad65;
-  --color-gold-mid: #b58e48;
   --color-gold-deep: #a17b35;
   --color-gold-border: #9d7c39;
   --color-gold-rgb: 212 173 101;
+  /* Dégradé de la charte, tel que sur le logo (gauche → droite). */
+  --gradient-rose: linear-gradient(
+    100deg,
+    var(--color-rose-deep) 0%,
+    var(--color-rose-light) 45%,
+    var(--color-rose) 100%
+  );
 
   --color-neutral: #e7d1bf;
   --color-neutral-rgb: 232 209 191;
@@ -79,14 +98,14 @@
   --shadow-deep:
     0 2px 4px rgb(0 0 0 / 0.28),
     0 32px 80px -22px rgb(0 0 0 / 0.55);
-  --shadow-gold-soft:
+  --shadow-rose-soft:
     inset 0 1px 0 0 rgb(255 255 255 / 0.04),
-    0 18px 44px -18px rgb(var(--color-gold-rgb) / 0.32);
+    0 18px 44px -18px rgb(var(--color-rose-rgb) / 0.32);
   /* Ombre carte en lévitation (hover) */
   --shadow-levitate:
     0 2px 4px rgb(0 0 0 / 0.12),
     0 24px 56px -16px rgb(0 0 0 / 0.4),
-    0 0 0 1px rgb(var(--color-gold-rgb) / 0.08);
+    0 0 0 1px rgb(var(--color-rose-rgb) / 0.08);
 
   /* Rythme vertical adaptatif — respiration luxe sur tous écrans. */
   --space-section-y: clamp(6rem, 12vw, 10rem);
@@ -97,37 +116,39 @@
   /* Chapitres : sombre (pétrole profond) et clair (sable). */
   --surface-dark: var(--color-petrol-panel-4);
   --surface-light: var(--color-neutral);
-  /* Balayage or sur ivoire — mot mis en valeur dans un titre (GradientSweep). */
+  /* Balayage rosé sur Quartz — mot mis en valeur dans un titre (GradientSweep) :
+     le reflet passe par le rosé cuivré et le champagne de la charte. */
   --sweep-on-dark: linear-gradient(
     90deg,
     var(--color-neutral) 0 33%,
-    var(--color-gold) 44%,
-    var(--color-gold-deep) 52%,
-    var(--color-gold) 60%,
-    var(--color-neutral) 72% 100%
+    var(--color-rose) 43%,
+    var(--color-rose-light) 51%,
+    var(--color-rose) 59%,
+    var(--color-neutral) 70% 100%
   );
-  /* Balayage or sur pétrole — chapitres sable (PageSection variant="light"). */
+  /* Balayage cuivre sur Dark Teal — chapitres Quartz (PageSection variant="light"). */
   --sweep-on-light: linear-gradient(
     90deg,
     var(--color-petrol) 0 33%,
-    var(--color-gold-deep) 44%,
-    var(--color-gold-mid) 52%,
-    var(--color-gold-deep) 60%,
+    var(--color-rose-deep) 44%,
+    var(--color-rose-mid) 52%,
+    var(--color-rose-deep) 60%,
     var(--color-petrol) 72% 100%
   );
-  /* Balayage or sur or — mot d'accent déjà doré (hero « Hospitality ») :
-     au repos, la fenêtre visible garde un dégradé or ; un reflet sable passe. */
-  --sweep-gold: linear-gradient(
+  /* Mot d'accent déjà rosé (hero « Hospitality ») : au repos, la fenêtre
+     visible montre le dégradé du logo (cuivre → champagne → rosé) ; un reflet
+     Quartz la traverse. */
+  --sweep-rose: linear-gradient(
     90deg,
-    var(--color-gold-mid) 0%,
-    var(--color-gold) 13%,
-    var(--color-gold-mid) 26%,
+    var(--color-rose) 0%,
+    var(--color-rose-light) 13%,
+    var(--color-rose) 26%,
     var(--color-neutral) 44%,
-    var(--color-gold) 52%,
+    var(--color-rose-light) 52%,
     var(--color-neutral) 58%,
-    var(--color-gold) 74%,
-    var(--color-gold-mid) 87%,
-    var(--color-gold) 100%
+    var(--color-rose-deep) 74%,
+    var(--color-rose-light) 87%,
+    var(--color-rose) 100%
   );
   /* Distance entre la capsule de navigation et le bas de l'écran. */
   --capsule-offset: 40px;
@@ -148,10 +169,17 @@
   --color-petrol-panel-2: #16262b;
   --color-petrol-panel-3: #0d1d22;
   --color-petrol-panel-4: #091a1f;
+  /* Refined Rosé (charte) : `text-rose`, `bg-rose-light`, `border-rose-deep`…
+     À ne pas confondre avec l'échelle `rose-50 … rose-950` de Tailwind. */
+  --color-rose: #d4a087;
+  --color-rose-mid: #b98a74;
+  --color-rose-deep: #8c5d4d;
+  --color-rose-light: #ecd0bb;
+  /* Héritage : or des premières maquettes, lu seulement par les replis non
+     thématisés des fiches filiales (refonte R5 et suivantes). */
   --color-gold: #d4ad65;
   --color-gold-mid: #b58e48;
   --color-gold-deep: #a17b35;
-  --color-gold-border: #9d7c39;
   --color-neutral: #e7d1bf;
   --color-ivory: #e7d1bf;
   --color-anthracite: #091a1f;
@@ -261,7 +289,7 @@ body {
 }
 
 ::selection {
-  background-color: rgb(var(--color-gold-rgb) / 0.35);
+  background-color: rgb(var(--color-rose-rgb) / 0.35);
   color: var(--color-neutral);
 }
 
@@ -436,10 +464,10 @@ h4 {
   box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.04);
 }
 
-.hairline-gold {
-  border: 1px solid rgb(var(--color-gold-rgb) / 0.18);
+.hairline-rose {
+  border: 1px solid rgb(var(--color-rose-rgb) / 0.18);
   box-shadow:
-    inset 0 1px 0 0 rgb(var(--color-gold-rgb) / 0.08),
+    inset 0 1px 0 0 rgb(var(--color-rose-rgb) / 0.08),
     inset 0 -1px 0 0 rgb(0 0 0 / 0.18);
 }
 
@@ -467,40 +495,40 @@ h4 {
 }
 
 .glass-panel:hover {
-  border-color: rgb(var(--color-gold-rgb) / 0.22);
+  border-color: rgb(var(--color-rose-rgb) / 0.22);
   box-shadow:
     inset 0 1px 0 0 rgb(255 255 255 / 0.08),
     inset 0 -1px 0 0 rgb(0 0 0 / 0.18),
     0 18px 44px -12px rgb(0 0 0 / 0.45),
-    0 0 0 1px rgb(var(--color-gold-rgb) / 0.12);
+    0 0 0 1px rgb(var(--color-rose-rgb) / 0.12);
 }
 
-/* === Accents dorés — lueur diffuse sans bruit ========================== */
-.gold-glow {
+/* === Accents rosés (charte) — lueur diffuse sans bruit ================= */
+.rose-glow {
   box-shadow:
     inset 0 1px 0 0 rgb(255 255 255 / 0.18),
-    0 0 0 1px rgb(var(--color-gold-rgb) / 0.4),
-    0 12px 32px -10px rgb(var(--color-gold-rgb) / 0.45);
+    0 0 0 1px rgb(var(--color-rose-rgb) / 0.4),
+    0 12px 32px -10px rgb(var(--color-rose-rgb) / 0.45);
 }
 
-.gold-glow-soft {
+.rose-glow-soft {
   box-shadow:
     inset 0 1px 0 0 rgb(255 255 255 / 0.06),
-    0 14px 40px -16px rgb(var(--color-gold-rgb) / 0.4);
+    0 14px 40px -16px rgb(var(--color-rose-rgb) / 0.4);
 }
 
-.text-gradient-gold {
-  background: linear-gradient(135deg, var(--color-neutral) 0%, var(--color-gold) 100%);
+.text-gradient-rose {
+  background: linear-gradient(135deg, var(--color-neutral) 0%, var(--color-rose) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.text-gradient-gold-vertical {
+.text-gradient-rose-vertical {
   background: linear-gradient(
     180deg,
-    var(--color-gold) 0%,
-    var(--color-gold-mid) 42%,
+    var(--color-rose) 0%,
+    var(--color-rose-mid) 42%,
     var(--color-neutral) 100%
   );
   -webkit-background-clip: text;
@@ -508,11 +536,11 @@ h4 {
   background-clip: text;
 }
 
-.text-gradient-petrol-gold {
+.text-gradient-petrol-rose {
   background: linear-gradient(
     135deg,
     var(--color-petrol) 0%,
-    var(--color-gold-deep) 100%
+    var(--color-rose-deep) 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -523,7 +551,7 @@ h4 {
   background:
     radial-gradient(
       ellipse 85% 65% at 50% 38%,
-      rgb(var(--color-gold-rgb) / 0.14) 0%,
+      rgb(var(--color-rose-rgb) / 0.14) 0%,
       transparent 52%
     ),
     linear-gradient(
@@ -534,7 +562,7 @@ h4 {
     );
   box-shadow:
     0 32px 80px -28px rgb(0 0 0 / 0.72),
-    0 0 0 1px rgb(var(--color-gold-rgb) / 0.14),
+    0 0 0 1px rgb(var(--color-rose-rgb) / 0.14),
     inset 0 1px 0 0 rgb(255 255 255 / 0.06);
 }
 
@@ -542,9 +570,9 @@ h4 {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgb(var(--color-gold-rgb) / 0.15) 38%,
-    rgb(var(--color-gold-rgb) / 0.85) 50%,
-    rgb(var(--color-gold-rgb) / 0.15) 62%,
+    rgb(var(--color-rose-rgb) / 0.15) 38%,
+    rgb(var(--color-rose-rgb) / 0.85) 50%,
+    rgb(var(--color-rose-rgb) / 0.15) 62%,
     transparent 100%
   );
   height: 1px;
@@ -556,9 +584,9 @@ h4 {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    color-mix(in srgb, var(--color-gold-deep) 25%, transparent) 38%,
-    var(--color-gold-deep) 50%,
-    color-mix(in srgb, var(--color-gold-deep) 25%, transparent) 62%,
+    color-mix(in srgb, var(--color-rose-deep) 25%, transparent) 38%,
+    var(--color-rose-deep) 50%,
+    color-mix(in srgb, var(--color-rose-deep) 25%, transparent) 62%,
     transparent 100%
   );
   height: 1px;
@@ -580,13 +608,13 @@ h4 {
   max-width: 11rem;
 }
 
-.divider-gold {
+.divider-rose {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgb(var(--color-gold-rgb) / 0.4) 35%,
-    rgb(var(--color-gold-rgb) / 0.7) 50%,
-    rgb(var(--color-gold-rgb) / 0.4) 65%,
+    rgb(var(--color-rose-rgb) / 0.4) 35%,
+    rgb(var(--color-rose-rgb) / 0.7) 50%,
+    rgb(var(--color-rose-rgb) / 0.4) 65%,
     transparent 100%
   );
   height: 1px;
@@ -609,11 +637,15 @@ h4 {
 /* Radial gradient mesh for cinematic dark sections */
 .gradient-mesh-dark {
   background:
-    radial-gradient(ellipse 80% 60% at 20% 10%, rgb(var(--color-gold-rgb) / 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgb(var(--color-rose-rgb) / 0.04) 0%, transparent 50%),
     radial-gradient(ellipse 50% 40% at 80% 80%, rgb(0 66 88 / 0.15) 0%, transparent 50%);
 }
 
-/* === Boutons — surface or #D4AD65 (212·173·101) ======================= */
+/* === Boutons ==========================================================
+   Pages CEN21 (pages groupe, celles qui ont la capsule de navigation) :
+   boutons de la charte, plus bas. Fiches filiales : bouton or d'origine,
+   que chaque thème redéfinit à sa charte (styles/subsidiary-themes), en
+   attendant leur refonte (R5 et suivantes). */
 .btn-primary {
   background: linear-gradient(
     180deg,
@@ -675,6 +707,127 @@ h4 {
 .btn-secondary:active {
   transform: scale(0.97);
   background: rgb(var(--color-gold-rgb) / 0.06);
+}
+
+/* --- Pages CEN21 : boutons de la charte (Cen21_Logo-Final) ---------------
+   Pilules, comme les commandes d'Orbix.
+   - Primaire : dégradé Refined Rosé (champagne ↔ rosé cuivré, sans le
+     cuivre profond, trop sombre sous le texte), texte Dark Teal (contraste
+     4,8:1). Au survol, le dégradé glisse (Orbix : fond qui glisse).
+   - Secondaire : transparent, filet et texte Quartz ; au survol, filet
+     rosé et voile rosé.
+   - Sur fond Quartz (`data-surface="light"`) : primaire Dark Teal / texte
+     Quartz, secondaire filet Dark Teal — les deux versions du logo. */
+body:has(> [data-capsule-nav]) :is(.btn-primary, .btn-secondary) {
+  border-radius: 9999px;
+  box-shadow: none;
+  filter: none;
+}
+
+body:has(> [data-capsule-nav]) .btn-primary {
+  border: 1px solid transparent;
+  background-color: var(--color-rose);
+  background-image: linear-gradient(
+    100deg,
+    var(--color-rose-light) 0%,
+    var(--color-rose) 40%,
+    var(--color-rose-light) 72%,
+    var(--color-rose) 100%
+  );
+  background-size: 220% 100%;
+  background-position: 100% 0;
+  color: var(--color-petrol);
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--color-rose-light) 70%, transparent),
+    0 12px 28px -14px rgb(var(--color-rose-rgb) / 0.55);
+  transition:
+    background-position var(--duration-luxe) var(--ease-luxury),
+    box-shadow var(--duration-luxe) var(--ease-luxury),
+    transform var(--duration-fine) var(--ease-luxury);
+}
+
+body:has(> [data-capsule-nav]) .btn-primary:hover {
+  filter: none;
+  background-position: 0 0;
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--color-rose-light) 70%, transparent),
+    0 18px 38px -14px rgb(var(--color-rose-rgb) / 0.7);
+}
+
+body:has(> [data-capsule-nav]) :is(.btn-primary, .btn-secondary):active {
+  transform: scale(0.97);
+}
+
+body:has(> [data-capsule-nav]) .btn-secondary {
+  border: 1px solid color-mix(in srgb, var(--color-neutral) 35%, transparent);
+  background: color-mix(in srgb, var(--color-neutral) 4%, transparent);
+  color: var(--color-neutral);
+  transition:
+    border-color var(--duration-luxe) var(--ease-luxury),
+    background-color var(--duration-luxe) var(--ease-luxury),
+    color var(--duration-luxe) var(--ease-luxury),
+    transform var(--duration-fine) var(--ease-luxury);
+}
+
+body:has(> [data-capsule-nav]) .btn-secondary:hover {
+  border-color: var(--color-rose);
+  background: rgb(var(--color-rose-rgb) / 0.12);
+  color: var(--color-rose-light);
+  box-shadow: none;
+}
+
+/* Fond Quartz : versions Dark Teal (une carte sombre posée dessus repasse
+   en version rosé). */
+body:has(> [data-capsule-nav]) [data-surface="light"] .btn-primary {
+  background-color: var(--color-petrol);
+  background-image: linear-gradient(
+    100deg,
+    var(--color-petrol) 0%,
+    color-mix(in srgb, var(--color-petrol) 82%, var(--color-rose)) 50%,
+    var(--color-petrol) 100%
+  );
+  color: var(--color-neutral);
+  box-shadow: 0 12px 28px -16px color-mix(in srgb, var(--color-petrol) 70%, transparent);
+}
+
+body:has(> [data-capsule-nav]) [data-surface="light"] .btn-secondary {
+  border-color: color-mix(in srgb, var(--color-petrol) 40%, transparent);
+  background: transparent;
+  color: var(--color-petrol);
+}
+
+body:has(> [data-capsule-nav]) [data-surface="light"] .btn-secondary:hover {
+  border-color: var(--color-rose-deep);
+  background: rgb(var(--color-rose-rgb) / 0.16);
+  color: var(--color-petrol);
+}
+
+body:has(> [data-capsule-nav]) [data-surface="light"] :is(.btn-primary, .btn-secondary):focus-visible {
+  outline-color: var(--color-petrol);
+}
+
+body:has(> [data-capsule-nav]) [data-surface="light"] [data-surface="dark"] .btn-primary {
+  background-color: var(--color-rose);
+  background-image: linear-gradient(
+    100deg,
+    var(--color-rose-light) 0%,
+    var(--color-rose) 40%,
+    var(--color-rose-light) 72%,
+    var(--color-rose) 100%
+  );
+  color: var(--color-petrol);
+}
+
+body:has(> [data-capsule-nav]) [data-surface="light"] [data-surface="dark"] .btn-secondary {
+  border-color: color-mix(in srgb, var(--color-neutral) 35%, transparent);
+  color: var(--color-neutral);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary,
+  .btn-secondary {
+    transition: none !important;
+  }
 }
 
 /* Retour au toucher (phase 4 bis) : légère compression à l'appui, sur les
@@ -783,13 +936,13 @@ h4 {
 @keyframes glow-pulse {
   0%, 100% {
     box-shadow:
-      0 0 0 0 rgb(var(--color-gold-rgb) / 0.4),
-      0 0 0 0 rgb(var(--color-gold-rgb) / 0.2);
+      0 0 0 0 rgb(var(--color-rose-rgb) / 0.4),
+      0 0 0 0 rgb(var(--color-rose-rgb) / 0.2);
   }
   50% {
     box-shadow:
-      0 0 0 12px rgb(var(--color-gold-rgb) / 0),
-      0 0 0 24px rgb(var(--color-gold-rgb) / 0);
+      0 0 0 12px rgb(var(--color-rose-rgb) / 0),
+      0 0 0 24px rgb(var(--color-rose-rgb) / 0);
   }
 }
 
@@ -920,19 +1073,19 @@ h4 {
   will-change: transform;
 }
 
-.loader-blob--gold {
-  background: rgb(var(--color-gold-rgb));
+.loader-blob--rose {
+  background: rgb(var(--color-rose-rgb));
   animation: site-loader-blob-1 2.8s var(--ease-out-soft) infinite;
 }
 
-.loader-blob--cyan {
-  background: #6ec4e8;
+.loader-blob--quartz {
+  background: var(--color-neutral);
   animation: site-loader-blob-2 2.8s var(--ease-out-soft) infinite;
   animation-delay: -0.9s;
 }
 
-.loader-blob--magenta {
-  background: #d946a8;
+.loader-blob--deep {
+  background: var(--color-rose-deep);
   animation: site-loader-blob-3 2.8s var(--ease-out-soft) infinite;
   animation-delay: -1.8s;
 }
@@ -942,15 +1095,15 @@ h4 {
   opacity: 0.85;
 }
 
-.loader-blobs--static .loader-blob--gold {
+.loader-blobs--static .loader-blob--rose {
   transform: translate(-6px, 0);
 }
 
-.loader-blobs--static .loader-blob--cyan {
+.loader-blobs--static .loader-blob--quartz {
   transform: translate(6px, -4px);
 }
 
-.loader-blobs--static .loader-blob--magenta {
+.loader-blobs--static .loader-blob--deep {
   transform: translate(0, 6px);
 }
 
@@ -963,13 +1116,13 @@ h4 {
   .loader-blob {
     opacity: 0.85;
   }
-  .loader-blob--gold {
+  .loader-blob--rose {
     transform: translate(-6px, 0);
   }
-  .loader-blob--cyan {
+  .loader-blob--quartz {
     transform: translate(6px, -4px);
   }
-  .loader-blob--magenta {
+  .loader-blob--deep {
     transform: translate(0, 6px);
   }
 }
@@ -1014,7 +1167,7 @@ h4 {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgb(var(--color-gold-rgb) / 0.85) 50%,
+    rgb(var(--color-rose-rgb) / 0.85) 50%,
     transparent 100%
   );
   transform: translateX(-100%);
@@ -1038,9 +1191,9 @@ h4 {
   }
 }
 
-/* === Focus visible — fil doré net, non agressif ======================== */
+/* === Focus visible — fil rosé net, non agressif ======================== */
 :focus-visible {
-  outline: 1px solid var(--color-gold);
+  outline: 1px solid var(--color-rose);
   outline-offset: 3px;
   border-radius: 4px;
 }

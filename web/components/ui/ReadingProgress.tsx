@@ -33,7 +33,7 @@ export function ReadingProgress({ barClassName }: { barClassName?: string }) {
       transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
       className={
         barClassName ??
-        "fixed left-0 right-0 top-0 z-[55] h-[2px] origin-left bg-gradient-to-r from-gold via-gold/85 to-gold/55"
+        "fixed left-0 right-0 top-0 z-[55] h-[2px] origin-left bg-gradient-to-r from-rose via-rose/85 to-rose/55"
       }
     />
   );

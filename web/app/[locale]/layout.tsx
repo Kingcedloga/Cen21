@@ -68,7 +68,7 @@ export default async function LocaleLayout({
           <SiteLoader />
           <a
             href="#main-content"
-            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-gold focus:px-4 focus:py-2 focus:text-petrol focus:font-semibold focus:shadow-lg focus:shadow-black/40 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-petrol"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-rose focus:px-4 focus:py-2 focus:text-petrol focus:font-semibold focus:shadow-lg focus:shadow-black/40 focus:outline-none focus:ring-2 focus:ring-rose focus:ring-offset-2 focus:ring-offset-petrol"
           >
             {t("skipToContent")}
           </a>

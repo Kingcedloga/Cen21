@@ -68,13 +68,13 @@ export default async function CookiesPage({ params }: Props) {
             <LegalH2>{t("contact")}</LegalH2>
             <LegalP>
               {t("contactBody")}{" "}
-              <Link href="/contact" className="text-gold hover:text-ivory hover:underline underline-offset-4">
+              <Link href="/contact" className="text-rose hover:text-ivory hover:underline underline-offset-4">
                 {t("contactUs")}
               </Link>{" "}
               {locale === "fr" ? "ou" : "or"}{" "}
               <a
                 href={`mailto:${site.contact.email}`}
-                className="text-gold hover:text-ivory hover:underline underline-offset-4"
+                className="text-rose hover:text-ivory hover:underline underline-offset-4"
               >
                 {site.contact.email}
               </a>

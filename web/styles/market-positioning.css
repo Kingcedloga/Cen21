@@ -4,14 +4,16 @@
    précède : même dégradé, centré sur le bas de la bande (même profil
    horizontal que le haut de la section). */
 :root {
-  --market-top-field: radial-gradient(ellipse 90% 60% at 50% 100%, #f0decb 0%, #e7d1bf 60%, #debfa6 100%);
+  /* Lisière sablée plus soutenue : Quartz teinté de cuivre (charte). */
+  --market-edge: color-mix(in srgb, var(--color-neutral) 82%, var(--color-rose-deep));
+  --market-top-field: radial-gradient(ellipse 90% 60% at 50% 100%, var(--color-rose-light) 0%, var(--color-neutral) 60%, var(--market-edge) 100%);
   /* Lisière basse (dernier arrêt du dégradé), pour le séparateur qui suit. */
-  --market-bottom-edge: #debfa6;
+  --market-bottom-edge: var(--market-edge);
 }
 
 .mp-section {
   position: relative;
-  background: radial-gradient(ellipse 90% 60% at 50% 0%, #f0decb 0%, #e7d1bf 60%, #debfa6 100%);
+  background: radial-gradient(ellipse 90% 60% at 50% 0%, var(--color-rose-light) 0%, var(--color-neutral) 60%, var(--market-edge) 100%);
   padding: clamp(5rem, 10vw, 8.5rem) 0;
   overflow: hidden;
 }
@@ -45,7 +47,7 @@
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #a67c33;
+  color: var(--color-petrol);
   margin-bottom: 0.75rem;
 }
 
@@ -56,7 +58,7 @@
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.03em;
-  color: #1a1208;
+  color: var(--color-petrol-panel-4);
 }
 
 /* —— Carousel outer ── */
@@ -107,10 +109,10 @@
   -webkit-backdrop-filter: blur(16px);
   border-radius: 24px;
   padding: clamp(2rem, 3.2vw, 2.75rem);
-  border: 1px solid rgba(212, 173, 101, 0.28);
+  border: 1px solid rgb(var(--color-rose-rgb) / 0.28);
   box-shadow:
-    0 4px 6px -1px rgba(26, 18, 8, 0.05),
-    0 16px 36px -12px rgba(26, 18, 8, 0.12);
+    0 4px 6px -1px color-mix(in srgb, var(--color-petrol-panel-4) 5%, transparent),
+    0 16px 36px -12px color-mix(in srgb, var(--color-petrol-panel-4) 12%, transparent);
   display: flex;
   flex-direction: column;
   transition:
@@ -121,11 +123,11 @@
 
 .mp-card:hover .mp-card__box {
   transform: translateY(-8px);
-  border-color: rgba(212, 173, 101, 0.55);
+  border-color: rgb(var(--color-rose-rgb) / 0.55);
   box-shadow:
-    0 6px 12px -2px rgba(26, 18, 8, 0.08),
-    0 24px 52px -16px rgba(26, 18, 8, 0.2),
-    0 0 0 1px rgba(212, 173, 101, 0.35);
+    0 6px 12px -2px color-mix(in srgb, var(--color-petrol-panel-4) 8%, transparent),
+    0 24px 52px -16px color-mix(in srgb, var(--color-petrol-panel-4) 20%, transparent),
+    0 0 0 1px rgb(var(--color-rose-rgb) / 0.35);
 }
 
 /* Giant opening quote mark */
@@ -134,7 +136,7 @@
   font-size: 68px;
   font-weight: 700;
   line-height: 0.75;
-  color: #b58e48;
+  color: var(--color-rose-deep);
   opacity: 0.35;
   margin-bottom: 1.25rem;
   user-select: none;
@@ -147,7 +149,7 @@
   margin: 0;
   font-size: 1.0625rem;
   line-height: 1.7;
-  color: #1a1208;
+  color: var(--color-petrol-panel-4);
   display: -webkit-box;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
@@ -171,21 +173,21 @@
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
-  background: #d4c4b0;
-  border: 2px solid rgba(212, 173, 101, 0.4);
-  box-shadow: 0 4px 12px -4px rgba(26, 18, 8, 0.15);
+  background: color-mix(in srgb, var(--color-neutral) 85%, var(--color-rose-deep));
+  border: 2px solid rgb(var(--color-rose-rgb) / 0.4);
+  box-shadow: 0 4px 12px -4px color-mix(in srgb, var(--color-petrol-panel-4) 15%, transparent);
   transition: transform 300ms var(--ease-luxury), border-color 300ms ease;
 }
 
 .mp-card:hover .mp-card__avatar {
   transform: scale(1.05);
-  border-color: #b58e48;
+  border-color: var(--color-rose-deep);
 }
 
 .mp-card__avatar-placeholder {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #c8a96e 0%, #8b6a3a 100%);
+  background: var(--gradient-rose);
 }
 
 .mp-card__id-text {
@@ -200,7 +202,7 @@
   font-family: var(--font-dm-sans), system-ui, sans-serif;
   font-size: 1rem;
   font-weight: 700;
-  color: #1a1208;
+  color: var(--color-petrol-panel-4);
   line-height: 1.25;
   white-space: nowrap;
   overflow: hidden;
@@ -211,7 +213,7 @@
   display: block;
   font-size: 0.8125rem;
   font-weight: 500;
-  color: #8c735c;
+  color: color-mix(in srgb, var(--color-petrol-panel-4) 70%, transparent);
   line-height: 1.35;
   letter-spacing: 0.02em;
 }
@@ -232,19 +234,19 @@
   border-radius: 9999px;
   border: none;
   padding: 0;
-  background: rgba(26, 18, 8, 0.18);
+  background: color-mix(in srgb, var(--color-petrol-panel-4) 18%, transparent);
   cursor: pointer;
   transition: background 300ms ease, width 300ms var(--ease-luxury), transform 300ms ease;
   flex-shrink: 0;
 }
 
 .mp-dot:hover {
-  background: rgba(26, 18, 8, 0.35);
+  background: color-mix(in srgb, var(--color-petrol-panel-4) 35%, transparent);
 }
 
 .mp-dot--active {
   width: 32px;
-  background: #b58e48;
+  background: var(--color-rose-deep);
 }
 
 /* —— Responsive ── */

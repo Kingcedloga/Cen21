@@ -21,11 +21,11 @@ export function SubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }) {
       onMouseEnter={onPrefetch}
       onFocus={onPrefetch}
       onTouchStart={onPrefetch}
-      className="group relative overflow-hidden rounded-2xl border border-white/12 bg-anthracite/45 shadow-[0_18px_40px_-22px_rgba(0,0,0,0.55)] transition-[transform,box-shadow,border-color] duration-luxe ease-out hover:-translate-y-1 hover:border-gold/45 hover:shadow-[0_26px_60px_-22px_rgba(212,173,101,0.32),0_18px_40px_-18px_rgba(0,0,0,0.65)]"
+      className="group relative overflow-hidden rounded-2xl border border-white/12 bg-anthracite/45 shadow-[0_18px_40px_-22px_rgba(0,0,0,0.55)] transition-[transform,box-shadow,border-color] duration-luxe ease-out hover:-translate-y-1 hover:border-rose/45 hover:shadow-[0_26px_60px_-22px_rgba(212,160,135,0.32),0_18px_40px_-18px_rgba(0,0,0,0.65)]"
     >
       <SubsidiaryHrefLink
         subsidiary={subsidiary}
-        className="absolute inset-0 z-20 cursor-pointer rounded-2xl focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-[-3px]"
+        className="absolute inset-0 z-20 cursor-pointer rounded-2xl focus-visible:outline-2 focus-visible:outline-rose focus-visible:outline-offset-[-3px]"
         aria-label={`Découvrir ${subsidiary.name}`}
       />
 
@@ -59,19 +59,19 @@ export function SubsidiaryCard({ subsidiary }: { subsidiary: Subsidiary }) {
         />
         <span
           aria-hidden
-          className="absolute left-0 top-0 h-full w-[3px] origin-top scale-y-0 bg-gold opacity-0 transition-all duration-grand group-hover:scale-y-100 group-hover:opacity-90"
+          className="absolute left-0 top-0 h-full w-[3px] origin-top scale-y-0 bg-rose opacity-0 transition-all duration-grand group-hover:scale-y-100 group-hover:opacity-90"
         />
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 z-10 flex flex-col gap-1.5 p-6">
-        <p className="text-[10.5px] font-semibold tracking-[0.24em] uppercase text-gold">
+        <p className="text-[10.5px] font-semibold tracking-[0.24em] uppercase text-rose">
           {sectorLabel}
         </p>
         <h3 className="font-[family-name:var(--font-dm-sans)] text-[1.55rem] md:text-2xl font-bold leading-[1.15] tracking-[-0.01em] text-ivory">
           <span className="inline-flex items-center gap-2">
             <span>{subsidiary.name}</span>
             <ArrowUpRight
-              className="h-4 w-4 -translate-x-1 text-gold opacity-0 transition-all duration-base group-hover:translate-x-0 group-hover:opacity-100"
+              className="h-4 w-4 -translate-x-1 text-rose opacity-0 transition-all duration-base group-hover:translate-x-0 group-hover:opacity-100"
               aria-hidden
             />
           </span>

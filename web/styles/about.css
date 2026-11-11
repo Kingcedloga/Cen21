@@ -34,7 +34,7 @@
   content: "";
   width: 2rem;
   height: 1px;
-  background-color: var(--color-gold-deep);
+  background-color: var(--color-rose-deep);
 }
 
 .about-story__title {
@@ -158,19 +158,19 @@
   font-size: var(--text-h3);
   line-height: 1;
   font-variant-numeric: tabular-nums;
-  color: var(--color-gold);
+  color: var(--color-rose);
 }
 
 /* Voile or sur pétrole : adresses. */
 .bento-card--petrol {
-  border: 1px solid color-mix(in srgb, var(--color-gold) 30%, transparent);
-  background-color: color-mix(in srgb, var(--color-gold) 10%, var(--color-petrol-panel-3));
+  border: 1px solid color-mix(in srgb, var(--color-rose) 30%, transparent);
+  background-color: color-mix(in srgb, var(--color-rose) 10%, var(--color-petrol-panel-3));
 }
 
 .bento-card--petrol .bento-card__label,
 .bento-card--petrol .bento-card__figure,
 .bento-card--dark .bento-card__label {
-  color: var(--color-gold);
+  color: var(--color-rose);
 }
 
 .bento-card--petrol .bento-card__text {
@@ -279,7 +279,7 @@
   inset-inline: 0;
   bottom: 0;
   height: 3px;
-  background-color: var(--color-gold-deep);
+  background-color: var(--color-rose-deep);
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform var(--duration-luxe) var(--ease-luxury);
@@ -380,7 +380,7 @@
 .team-dialog__quote {
   margin: 0.25rem 0;
   padding-left: 1rem;
-  border-left: 2px solid var(--color-gold-deep);
+  border-left: 2px solid var(--color-rose-deep);
   font-style: italic;
   line-height: 1.6;
   color: color-mix(in srgb, var(--color-petrol-panel-4) 85%, transparent);
@@ -557,7 +557,7 @@
   inset-inline: 0;
   bottom: 0;
   height: 3px;
-  background-color: var(--color-gold-deep);
+  background-color: var(--color-rose-deep);
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform var(--duration-luxe) var(--ease-luxury);

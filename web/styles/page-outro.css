@@ -73,9 +73,9 @@
   place-items: center;
   width: clamp(3.5rem, 2.5rem + 3vw, 5.5rem);
   aspect-ratio: 1;
-  border: 1px solid color-mix(in srgb, var(--color-gold) 45%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-rose) 45%, transparent);
   border-radius: 9999px;
-  color: var(--color-gold);
+  color: var(--color-rose);
   transition:
     background-color var(--duration-luxe) var(--ease-luxury),
     color var(--duration-luxe) var(--ease-luxury);
@@ -86,16 +86,16 @@
 }
 
 .page-outro__next:focus-visible {
-  outline: 1px solid var(--color-gold);
+  outline: 1px solid var(--color-rose);
   outline-offset: 6px;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .page-outro__next:hover {
-    border-color: color-mix(in srgb, var(--color-gold) 40%, transparent);
+    border-color: color-mix(in srgb, var(--color-rose) 40%, transparent);
   }
   .page-outro__next:hover .page-outro__next-arrow {
-    background-color: var(--color-gold);
+    background-color: var(--color-rose);
     color: var(--color-petrol-panel-4);
   }
   .page-outro__next:hover .page-outro__next-arrow svg {

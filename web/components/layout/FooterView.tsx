@@ -62,13 +62,13 @@ function SocialRow({
       className={`subsidiary-footer__social group flex items-center justify-between gap-4 py-2 text-sm transition-colors cursor-pointer ${
         themed
           ? "subsidiary-footer__link"
-          : "text-ivory/90 hover:text-gold"
+          : "text-ivory/90 hover:text-rose"
       }`}
     >
       <RollingText text={label} />
       <ArrowUpRight
         className={`subsidiary-footer__social-icon h-4 w-4 shrink-0 ${
-          themed ? "" : "text-gold/70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          themed ? "" : "text-rose/70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
         }`}
         aria-hidden
       />
@@ -140,7 +140,7 @@ export function FooterView({
             />
             <motion.div
               className={`subsidiary-footer__logo-badge relative z-[2] mx-6 flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-full border p-2 shadow-lg md:mx-8 md:h-24 md:w-24 md:p-2.5 ${
-                isThemed ? "" : "border-gold/40 bg-anthracite shadow-black/40"
+                isThemed ? "" : "border-rose/40 bg-anthracite shadow-black/40"
               }`}
               variants={fadeScaleVariants}
               transition={fadeScaleTransition}
@@ -193,7 +193,7 @@ export function FooterView({
           >
             <p
               className={`mb-5 text-xs tracking-[0.25em] uppercase ${
-                isThemed ? "subsidiary-footer__heading" : "text-gold"
+                isThemed ? "subsidiary-footer__heading" : "text-rose"
               }`}
             >
               {labels.contact}
@@ -206,7 +206,7 @@ export function FooterView({
               <li className="flex gap-3">
                 <MapPin
                   className={`mt-0.5 h-4 w-4 shrink-0 ${
-                    isThemed ? "subsidiary-footer__icon" : "text-gold"
+                    isThemed ? "subsidiary-footer__icon" : "text-rose"
                   }`}
                   aria-hidden
                 />
@@ -215,7 +215,7 @@ export function FooterView({
               <li className="flex items-center gap-3">
                 <Phone
                   className={`h-4 w-4 shrink-0 ${
-                    isThemed ? "subsidiary-footer__icon" : "text-gold"
+                    isThemed ? "subsidiary-footer__icon" : "text-rose"
                   }`}
                   aria-hidden
                 />
@@ -224,7 +224,7 @@ export function FooterView({
                   className={`transition-colors cursor-pointer ${
                     isThemed
                       ? "subsidiary-footer__link"
-                      : "hover:text-gold"
+                      : "hover:text-rose"
                   }`}
                 >
                   {site.contact.phone}
@@ -233,7 +233,7 @@ export function FooterView({
               <li className="flex items-center gap-3">
                 <Mail
                   className={`h-4 w-4 shrink-0 ${
-                    isThemed ? "subsidiary-footer__icon" : "text-gold"
+                    isThemed ? "subsidiary-footer__icon" : "text-rose"
                   }`}
                   aria-hidden
                 />
@@ -242,7 +242,7 @@ export function FooterView({
                   className={`transition-colors cursor-pointer ${
                     isThemed
                       ? "subsidiary-footer__link"
-                      : "hover:text-gold"
+                      : "hover:text-rose"
                   }`}
                 >
                   {site.contact.email}
@@ -257,7 +257,7 @@ export function FooterView({
             >
               <p
                 className={`mb-3 text-xs tracking-[0.2em] uppercase ${
-                  isThemed ? "subsidiary-footer__heading" : "text-gold"
+                  isThemed ? "subsidiary-footer__heading" : "text-rose"
                 }`}
               >
                 {labels.networks}
@@ -304,7 +304,7 @@ export function FooterView({
           >
             <p
               className={`mb-5 text-xs tracking-[0.25em] uppercase ${
-                isThemed ? "subsidiary-footer__heading" : "text-gold"
+                isThemed ? "subsidiary-footer__heading" : "text-rose"
               }`}
             >
               {labels.quickAccess}
@@ -318,7 +318,7 @@ export function FooterView({
                       className={`cursor-pointer transition-colors ${
                         isThemed
                           ? "subsidiary-footer__link"
-                          : "text-ivory/75 hover:text-gold"
+                          : "text-ivory/75 hover:text-rose"
                       }`}
                     >
                       <RollingText text={labels.nav[key]} />
@@ -334,7 +334,7 @@ export function FooterView({
                       className={`cursor-pointer transition-colors ${
                         isThemed
                           ? "subsidiary-footer__link"
-                          : "text-ivory/75 hover:text-gold"
+                          : "text-ivory/75 hover:text-rose"
                       }`}
                     >
                       <RollingText text={labels.nav[key]} />
@@ -369,7 +369,7 @@ export function FooterView({
               className={`cursor-pointer transition-colors ${
                 isThemed
                   ? "subsidiary-footer__link"
-                  : "hover:text-gold"
+                  : "hover:text-rose"
               }`}
             >
               <RollingText text={labels.legalNotice} />
@@ -385,7 +385,7 @@ export function FooterView({
               className={`cursor-pointer transition-colors ${
                 isThemed
                   ? "subsidiary-footer__link"
-                  : "hover:text-gold"
+                  : "hover:text-rose"
               }`}
             >
               <RollingText text={labels.privacy} />
@@ -401,7 +401,7 @@ export function FooterView({
               className={`cursor-pointer transition-colors ${
                 isThemed
                   ? "subsidiary-footer__link"
-                  : "hover:text-gold"
+                  : "hover:text-rose"
               }`}
             >
               <RollingText text={labels.cookies} />

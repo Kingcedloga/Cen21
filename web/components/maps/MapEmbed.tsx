@@ -93,7 +93,7 @@ export function MapEmbed({
           href={external}
           target="_blank"
           rel="noopener noreferrer"
-          className={`inline-flex shrink-0 items-center gap-1.5 font-medium text-gold transition-colors hover:text-ivory cursor-pointer ${
+          className={`inline-flex shrink-0 items-center gap-1.5 font-medium text-rose transition-colors hover:text-ivory cursor-pointer ${
             compact ? "text-xs" : "text-sm"
           }`}
         >

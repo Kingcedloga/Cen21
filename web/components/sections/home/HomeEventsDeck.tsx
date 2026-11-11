@@ -66,7 +66,7 @@ function DeckHead({
   return (
     <div className="events-deck__head">
       <div>
-        <p className="eyebrow text-xs font-semibold uppercase tracking-[0.2em] text-gold">{eyebrow}</p>
+        <p className="eyebrow text-xs font-semibold uppercase tracking-[0.2em] text-rose">{eyebrow}</p>
         <SpectrumText
           as="h2"
           id={titleId}
@@ -187,7 +187,7 @@ function DeckStage({ eyebrow, title, titleSweep, statusLabels, cta, events, titl
             !isStatic &&
             count > 1 && (
               <p aria-hidden="true" className="events-deck__counter">
-                <span className="text-gold">{String(active + 1).padStart(2, "0")}</span>
+                <span className="text-rose">{String(active + 1).padStart(2, "0")}</span>
                 <span className="text-ivory/40"> / {String(count).padStart(2, "0")}</span>
               </p>
             )
@@ -345,7 +345,7 @@ function DeckSwipe({ eyebrow, title, titleSweep, statusLabels, cta, events, titl
               <ArrowLeft size={18} aria-hidden="true" />
             </button>
             <p aria-hidden="true" className="events-deck__counter">
-              <span className="text-gold">{String(active + 1).padStart(2, "0")}</span>
+              <span className="text-rose">{String(active + 1).padStart(2, "0")}</span>
               <span className="text-ivory/40"> / {String(count).padStart(2, "0")}</span>
             </p>
             <button

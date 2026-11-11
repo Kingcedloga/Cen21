@@ -38,13 +38,13 @@
   align-items: center;
   min-height: 2rem;
   padding-inline: 1rem;
-  border: 1px solid color-mix(in srgb, var(--color-gold) 40%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-rose) 40%, transparent);
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-rose);
 }
 
 .universes__track {
@@ -115,7 +115,7 @@
 }
 
 .universe-card--dark .universe-card__eyebrow {
-  color: var(--color-gold);
+  color: var(--color-rose);
 }
 
 .universe-card__body {

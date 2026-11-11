@@ -59,7 +59,7 @@ export function HeroCinematic({ slides, siteName, pills = [], className = "" }: 
 
   const len = list.length;
   const safeIndex = len ? index % len : 0;
-  /** « Cen21 Hospitality » → « Hospitality » : mot d'accent en cursive dorée. */
+  /** « Cen21 Hospitality » → « Hospitality » : mot d'accent en cursive, au dégradé Refined Rosé. */
   const titleAccent = siteName.split(" ").slice(1).join(" ");
 
   const next = useCallback(() => {
@@ -144,10 +144,10 @@ export function HeroCinematic({ slides, siteName, pills = [], className = "" }: 
         className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-petrol/85 via-petrol/35 to-transparent"
       />
 
-      {/* 3. Lueur dorée ambiante en coin inférieur gauche */}
+      {/* 3. Lueur rosée ambiante en coin inférieur gauche */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-24 -left-24 z-[1] h-96 w-96 rounded-full bg-gold/10 blur-3xl"
+        className="pointer-events-none absolute -bottom-24 -left-24 z-[1] h-96 w-96 rounded-full bg-rose/10 blur-3xl"
       />
 
       {/* 4. Texture subtile de film noise */}
@@ -159,7 +159,7 @@ export function HeroCinematic({ slides, siteName, pills = [], className = "" }: 
           <button
             type="button"
             onClick={prev}
-            className="absolute left-6 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/10 bg-petrol/40 p-3.5 text-ivory/80 backdrop-blur-md transition-all duration-fine hover:border-gold/40 hover:bg-petrol/80 hover:text-gold hover:scale-105 active:scale-95 cursor-pointer hidden md:flex items-center justify-center shadow-lg"
+            className="absolute left-6 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/10 bg-petrol/40 p-3.5 text-ivory/80 backdrop-blur-md transition-all duration-fine hover:border-rose/40 hover:bg-petrol/80 hover:text-rose hover:scale-105 active:scale-95 cursor-pointer hidden md:flex items-center justify-center shadow-lg"
             aria-label="Image précédente"
           >
             <ChevronLeft className="h-6 w-6" />
@@ -167,7 +167,7 @@ export function HeroCinematic({ slides, siteName, pills = [], className = "" }: 
           <button
             type="button"
             onClick={next}
-            className="absolute right-6 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/10 bg-petrol/40 p-3.5 text-ivory/80 backdrop-blur-md transition-all duration-fine hover:border-gold/40 hover:bg-petrol/80 hover:text-gold hover:scale-105 active:scale-95 cursor-pointer hidden md:flex items-center justify-center shadow-lg"
+            className="absolute right-6 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/10 bg-petrol/40 p-3.5 text-ivory/80 backdrop-blur-md transition-all duration-fine hover:border-rose/40 hover:bg-petrol/80 hover:text-rose hover:scale-105 active:scale-95 cursor-pointer hidden md:flex items-center justify-center shadow-lg"
             aria-label="Image suivante"
           >
             <ChevronRight className="h-6 w-6" />
@@ -191,14 +191,14 @@ export function HeroCinematic({ slides, siteName, pills = [], className = "" }: 
             variants={reducedMotion ? undefined : fadeUpVariants}
             transition={fadeUpTransition}
           >
-            <span aria-hidden className="block h-px w-8 bg-gradient-to-r from-transparent to-gold" />
-            <span aria-hidden className="inline-flex h-1.5 w-1.5 rotate-45 bg-gold shadow-[0_0_8px_rgba(212,173,101,0.6)]" />
+            <span aria-hidden className="block h-px w-8 bg-gradient-to-r from-transparent to-rose" />
+            <span aria-hidden className="inline-flex h-1.5 w-1.5 rotate-45 bg-rose shadow-[0_0_8px_rgba(212,160,135,0.6)]" />
             {/* Pastille rotative (Orbix) : un message par diapositive, pas de boucle propre. */}
-            <span className="inline-flex min-h-8 items-center overflow-hidden rounded-full border border-gold/30 bg-petrol/45 px-4 backdrop-blur-md">
+            <span className="inline-flex min-h-8 items-center overflow-hidden rounded-full border border-rose/30 bg-petrol/45 px-4 backdrop-blur-md">
               <AnimatePresence mode="wait" initial={false}>
                 <motion.span
                   key={pills.length ? pills[safeIndex % pills.length] : t("tagline")}
-                  className="eyebrow text-[11px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-gold"
+                  className="eyebrow text-[11px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-rose"
                   initial={reducedMotion ? false : { opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={reducedMotion ? undefined : { opacity: 0, y: -8 }}
@@ -221,7 +221,7 @@ export function HeroCinematic({ slides, siteName, pills = [], className = "" }: 
               mode="load"
               text={siteName}
               sweep={titleAccent || undefined}
-              tone="gold"
+              tone="rose"
               sweepWhole
               sweepClassName="italic font-normal [font-family:var(--font-dynalight),cursive] text-[1.12em] ml-1 sm:ml-2"
               className="title-display text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] leading-[1.02] text-ivory text-balance"
@@ -239,7 +239,7 @@ export function HeroCinematic({ slides, siteName, pills = [], className = "" }: 
           >
             <Button
               href="/filiales"
-              className="shadow-[0_12px_28px_-8px_rgba(212,173,101,0.35)] hover:shadow-[0_18px_36px_-6px_rgba(212,173,101,0.5)]"
+              className="shadow-[0_12px_28px_-8px_rgba(212,160,135,0.35)] hover:shadow-[0_18px_36px_-6px_rgba(212,160,135,0.5)]"
             >
               {t("ctaSubsidiaries")}
             </Button>
@@ -254,13 +254,13 @@ export function HeroCinematic({ slides, siteName, pills = [], className = "" }: 
       {len > 1 && (
         // Au-dessus du débord du séparateur fondu qui suit le hero (≤ 5 rem).
         <div className="absolute right-6 sm:right-10 md:right-14 bottom-8 sm:bottom-24 md:bottom-28 z-20 hidden sm:flex items-center gap-3 rounded-full border border-white/10 bg-petrol/40 px-4 py-2 backdrop-blur-md">
-          <span className="font-mono text-xs font-semibold text-gold tracking-widest">
+          <span className="font-mono text-xs font-semibold text-rose tracking-widest">
             {String(safeIndex + 1).padStart(2, "0")}
           </span>
           <div className="h-0.5 w-12 rounded-full bg-white/20 overflow-hidden">
             <motion.div
               key={safeIndex}
-              className="h-full bg-gold"
+              className="h-full bg-rose"
               initial={{ width: "0%" }}
               animate={{ width: "100%" }}
               transition={{ duration: AUTO_MS / 1000, ease: "linear" }}

@@ -16,7 +16,7 @@ type IconProps = {
 
 export function Icon({
   name,
-  className = "text-gold",
+  className = "text-rose",
   size = "md",
   weight = ICON_STROKE,
 }: IconProps) {

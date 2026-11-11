@@ -47,12 +47,12 @@
 }
 
 .view-toggle__button[aria-pressed="true"] {
-  background-color: var(--color-gold);
+  background-color: var(--color-rose);
   color: var(--color-petrol-panel-4);
 }
 
 .view-toggle__button:focus-visible {
-  outline: 2px solid var(--color-gold);
+  outline: 2px solid var(--color-rose);
   outline-offset: 2px;
 }
 
@@ -126,11 +126,11 @@
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  background-color: var(--color-gold);
+  background-color: var(--color-rose);
 }
 
 .agenda-filter:focus-visible {
-  outline: 2px solid var(--color-gold);
+  outline: 2px solid var(--color-rose);
   outline-offset: 2px;
 }
 
@@ -161,7 +161,7 @@
   font-size: 0.875rem;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
-  color: var(--color-gold);
+  color: var(--color-rose);
 }
 
 .agenda-block__empty {
@@ -214,7 +214,7 @@
 }
 
 .agenda-card__status--upcoming {
-  background-color: var(--color-gold);
+  background-color: var(--color-rose);
   color: var(--color-petrol-panel-4);
 }
 
@@ -235,7 +235,7 @@
 .agenda-card__date {
   font-size: 0.8125rem;
   font-weight: 500;
-  color: var(--color-gold);
+  color: var(--color-rose);
 }
 
 .agenda-card__title {
@@ -279,14 +279,14 @@
   display: inline-block;
   margin: 1.25rem 0 0.25rem;
   padding: 0.375rem 1rem;
-  border: 1px solid color-mix(in srgb, var(--color-gold) 35%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-rose) 35%, transparent);
   border-radius: 9999px;
   background-color: var(--color-petrol-panel-4);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-rose);
 }
 
 .agenda-rows {
@@ -333,7 +333,7 @@
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-rose);
 }
 
 .agenda-row__title {
@@ -354,7 +354,7 @@
   gap: 0.5rem;
   min-height: 2.75rem;
   padding: 0 1.125rem;
-  border: 1px solid color-mix(in srgb, var(--color-gold) 50%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-rose) 50%, transparent);
   border-radius: 9999px;
   font-size: 0.8125rem;
   font-weight: 600;
@@ -363,15 +363,15 @@
 }
 
 .agenda-action svg {
-  color: var(--color-gold);
+  color: var(--color-rose);
 }
 
 .agenda-action:hover {
-  background-color: color-mix(in srgb, var(--color-gold) 14%, transparent);
+  background-color: color-mix(in srgb, var(--color-rose) 14%, transparent);
 }
 
 .agenda-action:focus-visible {
-  outline: 2px solid var(--color-gold);
+  outline: 2px solid var(--color-rose);
   outline-offset: 2px;
 }
 
