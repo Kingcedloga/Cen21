@@ -19,6 +19,15 @@
   padding-block: 6rem 4rem;
 }
 
+.about-story__mark {
+  margin-bottom: clamp(1.5rem, 4vh, 2.5rem);
+  color: var(--color-rose-deep);
+}
+
+.about-story--dark .about-story__mark {
+  color: var(--color-rose);
+}
+
 .about-story__eyebrow {
   display: flex;
   align-items: center;

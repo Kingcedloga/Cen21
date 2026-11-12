@@ -336,7 +336,8 @@ h4 {
    - .title-section : titres de section (h2, h3). */
 .title-display,
 .title-section {
-  font-family: var(--font-dm-sans);
+  /* Fiche migrée : police de titre de la maison (lib/filiale-brand.ts). */
+  font-family: var(--brand-title-font, var(--font-dm-sans));
   font-weight: var(--font-weight-display);
 }
 

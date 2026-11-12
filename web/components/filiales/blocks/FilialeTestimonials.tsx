@@ -12,21 +12,25 @@ export async function FilialeTestimonials({
   eyebrow,
   title,
   items,
+  tone = "dark",
 }: {
   eyebrow: string;
   title: string;
   items: Testimonial[];
+  /** `light` : posés sur la surface claire de la maison. */
+  tone?: "dark" | "light";
 }) {
   const t = await getTranslations("filiale");
   if (items.length === 0) return null;
   return (
-    <div className="filiale-testimonials">
+    <div className={`filiale-testimonials ${tone === "light" ? "filiale-testimonials--light" : ""}`}>
       <SectionHeading
         look="editorial"
         eyebrow={eyebrow}
         title={title}
         titleAs="h2"
         titleId="filiale-testimonials-title"
+        tone={tone}
         align="left"
         className="mb-10! max-w-2xl"
       />

@@ -7,18 +7,19 @@ const variantBg: Record<Variant, string> = {
   default: "bg-petrol",
   alt: "bg-petrol-panel-2/40",
   dark: "bg-petrol-panel-4",
-  light: "bg-ivory text-petrol",
+  light: "bg-[var(--surface-light)] text-petrol",
 };
 
 /**
  * Couleur vue de chaque variante (pour les séparateurs fondus SectionBlend) :
- * `alt` est un voile à 40 % posé sur le fond pétrole de la page.
+ * `alt` est un voile à 40 % posé sur le fond pétrole de la page. `light` :
+ * Quartz sur les pages groupe, surface claire de la maison sur une fiche.
  */
 export const SECTION_SURFACE: Record<Variant, string> = {
   default: "var(--color-petrol)",
   alt: "color-mix(in srgb, var(--color-petrol-panel-2) 40%, var(--color-petrol))",
   dark: "var(--color-petrol-panel-4)",
-  light: "var(--color-ivory)",
+  light: "var(--surface-light)",
 };
 
 const spacingClass: Record<Spacing, string> = {

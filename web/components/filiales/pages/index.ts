@@ -17,7 +17,7 @@ export { buildFilialeContext, type FilialeContext } from "./context";
  * dans l'ordre. Migrer une maison vers les blocs du socle
  * (components/filiales/blocks) ne touche que son fichier.
  */
-const COMPOSITIONS: Record<string, (ctx: FilialeContext) => ReactNode> = {
+const COMPOSITIONS: Record<string, (ctx: FilialeContext) => ReactNode | Promise<ReactNode>> = {
   "filiale-01": OliveVertePage,
   "filiale-02": WabiSabiPage,
   "filiale-03": KLoungePage,
@@ -27,6 +27,6 @@ const COMPOSITIONS: Record<string, (ctx: FilialeContext) => ReactNode> = {
   "filiale-07": GourmetMexicanaPage,
 };
 
-export function renderFilialePage(ctx: FilialeContext): ReactNode {
+export function renderFilialePage(ctx: FilialeContext): ReactNode | Promise<ReactNode> {
   return (COMPOSITIONS[ctx.slug] ?? DefaultFilialePage)(ctx);
 }

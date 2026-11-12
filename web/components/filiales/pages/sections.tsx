@@ -11,7 +11,6 @@ import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Button } from "@/components/ui/Button";
 import { ReadingProgress } from "@/components/ui/ReadingProgress";
 import { getSectorLabel } from "@/lib/content";
-import { cormorant } from "@/lib/fonts";
 import { getSubsidiaryContactImage } from "@/lib/subsidiary-contact-images";
 import { getSubsidiaryHeroContent, getSubsidiaryHeroLayout } from "@/lib/subsidiary-hero-layout";
 
@@ -19,8 +18,6 @@ import type { FilialeContext } from "./context";
 
 import "@/styles/subsidiary-contact-band.css";
 import "@/styles/wabi-sabi-beige-band.css";
-import "@/styles/wabi-sabi-events-section.css";
-import "@/styles/wabi-sabi-intro-flow.css";
 
 /*
  * Sections partagées par les compositions des fiches (refonte R5), reprises
@@ -164,39 +161,6 @@ export function StandardEvents({ events, sectionHeadingClass, t }: FilialeContex
       <Button href="/evenements" variant="secondary">
         {t("allEvents")}
       </Button>
-    </section>
-  );
-}
-
-export function WabiEvents({ events, t }: FilialeContext) {
-  return (
-    <section
-      className={`wabi-sabi-beige-band wabi-sabi-events-section ${cormorant.variable}`}
-      aria-labelledby="wabi-sabi-events-title"
-    >
-      <div className="wabi-sabi-events-section__inner">
-        <AnimateIn>
-          <h2 id="wabi-sabi-events-title" className="wabi-sabi-beige-band__title wabi-sabi-events-section__title">
-            {t("upcomingEvents")}
-          </h2>
-        </AnimateIn>
-        {events.length === 0 ? (
-          <AnimateIn delay={0.05}>
-            <p className="wabi-sabi-events-section__empty">{t("noEventsScheduled")}</p>
-          </AnimateIn>
-        ) : (
-          <div className="wabi-sabi-events-section__grid">
-            {events.map((event, index) => (
-              <AnimateIn key={event.id} delay={index * 0.05}>
-                <EventCard event={event} />
-              </AnimateIn>
-            ))}
-          </div>
-        )}
-        <Button href="/evenements" variant="secondary">
-          {t("allEvents")}
-        </Button>
-      </div>
     </section>
   );
 }

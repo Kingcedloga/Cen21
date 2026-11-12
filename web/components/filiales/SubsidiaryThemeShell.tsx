@@ -11,7 +11,6 @@ import "@/styles/pinkberry-gallery-section.css";
 import "@/styles/pinkberry-news-section.css";
 import "@/styles/pinkberry-menu-section.css";
 import "@/styles/pinkberry-contact-section.css";
-import "@/styles/subsidiary-themes/wabi-sabi.css";
 import "@/styles/subsidiary-themes/millionaire-club.css";
 import "@/styles/subsidiary-themes/olive-verte.css";
 import "@/styles/subsidiary-themes/k-lounge.css";

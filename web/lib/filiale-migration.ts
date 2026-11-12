@@ -4,7 +4,9 @@
  * et footer du groupe aux couleurs de la maison. Les autres fiches gardent
  * leur en-tête et leur footer à charte jusqu'à leur refonte.
  */
-export const MIGRATED_FILIALES: ReadonlySet<string> = new Set<string>([]);
+export const MIGRATED_FILIALES: ReadonlySet<string> = new Set<string>([
+  "filiale-02", // Wabi Sabi — pilote (R6)
+]);
 
 export function isMigratedFiliale(slug: string | null | undefined): boolean {
   return Boolean(slug) && MIGRATED_FILIALES.has(slug as string);

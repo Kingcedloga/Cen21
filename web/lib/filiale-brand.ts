@@ -52,12 +52,28 @@ function shadeTo(color: Rgb, against: Rgb, target: number, max = 0.6): Rgb | nul
   return null;
 }
 
+/**
+ * Carte Google en mode nuit (fiche de lieu) : clarté inversée, teintes
+ * remises en place par la rotation, couleurs adoucies pour se fondre dans une
+ * charte sombre. Charte claire : la carte reste telle quelle.
+ */
+const NIGHT_MAP_FILTER = "invert(0.9) hue-rotate(180deg) saturate(0.55) brightness(0.92) contrast(0.92)";
+
 /** Contraste du texte courant (AAA : ses variantes à 70 % restent lisibles). */
 const TEXT_CONTRAST = 7;
 /** Texte d'accent (étiquettes, prix) et texte des boutons : AA. */
 const AA = 4.5;
 
-export function filialeBrand(theme: SubsidiaryPageTheme): FilialeBrand {
+/** Typographie propre à la maison (passée par sa composition). */
+export type FilialeBrandOptions = {
+  /** Famille des titres (`.title-display`, `.title-section`), ex. `cormorant.style.fontFamily`. */
+  titleFont?: string;
+  titleWeight?: number;
+  /** Interlettrage des titres d'affiche et de section (ex. `"-0.01em"`). */
+  titleTracking?: { display: string; section: string };
+};
+
+export function filialeBrand(theme: SubsidiaryPageTheme, options: FilialeBrandOptions = {}): FilialeBrand {
   const { colors } = theme;
   const bg = opaque(colors.bg, BLACK);
   const bgCss = toCss(bg);
@@ -101,6 +117,13 @@ export function filialeBrand(theme: SubsidiaryPageTheme): FilialeBrand {
 
   const lifted = mix(bg, text, 0.1);
 
+  // Surface claire (sections claires) : celle de la charte, sinon le texte
+  // (comme le Quartz des pages groupe). Le texte y est le pétrole relevé ;
+  // l'accent foncé (rose-deep) y est assombri jusqu'à 4,5:1.
+  const light = colors.light ? opaque(colors.light, bg) : text;
+  const accentDeep = mix(accent, bg, 0.35);
+  const accentDeepOnLight = shadeTo(accentDeep, light, AA) ?? accentDeep;
+
   const vars: Record<string, string> = {
     // Surfaces (pétrole profond = fond de la maison).
     "--color-petrol-panel-4": bgCss,
@@ -116,7 +139,7 @@ export function filialeBrand(theme: SubsidiaryPageTheme): FilialeBrand {
     "--color-rose-rgb": triple(accent),
     "--color-rose-light": toCss(mix(accent, text, 0.45)),
     "--color-rose-mid": toCss(mix(accent, bg, 0.15)),
-    "--color-rose-deep": toCss(mix(accent, bg, 0.35)),
+    "--color-rose-deep": toCss(accentDeepOnLight),
     // Aplats (boutons, onglet actif, pastilles) et leur texte.
     "--brand-fill": toCss(fill),
     "--brand-fill-rgb": triple(fill),
@@ -125,8 +148,16 @@ export function filialeBrand(theme: SubsidiaryPageTheme): FilialeBrand {
     // et sa teinte seulement.
     "--brand-button": `linear-gradient(100deg,${toCss(fillShade)} 0%,${toCss(fill)} 40%,${toCss(fillShade)} 72%,${toCss(fill)} 100%)`,
     // Spectre de révélation des titres (SpectrumText) : texte → accent.
-    "--spectrum-stops": [text, mix(text, accent, 0.5), accent, mix(accent, bg, 0.35)].map(triple).join(", "),
+    "--spectrum-stops": [text, mix(text, accent, 0.5), accent, accentDeep].map(triple).join(", "),
+    "--surface-light": toCss(light),
+    "--brand-map-filter": lighter(text, bg) ? NIGHT_MAP_FILTER : "none",
   };
+  if (options.titleFont) vars["--brand-title-font"] = options.titleFont;
+  if (options.titleWeight) vars["--font-weight-display"] = String(options.titleWeight);
+  if (options.titleTracking) {
+    vars["--letter-spacing-display"] = options.titleTracking.display;
+    vars["--letter-spacing-section"] = options.titleTracking.section;
+  }
 
   return { vars, accent: toCss(accent), fill: toCss(fill), onAccent: toCss(onAccent) };
 }
@@ -144,7 +175,6 @@ const DERIVED = [
   "--background:var(--color-petrol-panel-4)",
   "--foreground:var(--color-neutral)",
   "--surface-dark:var(--color-petrol-panel-4)",
-  "--surface-light:var(--color-neutral)",
   "--gradient-rose:linear-gradient(100deg,var(--color-rose-deep) 0%,var(--color-rose-light) 45%,var(--color-rose) 100%)",
   "--sweep-on-dark:linear-gradient(90deg,var(--color-neutral) 0 33%,var(--color-rose) 43%,var(--color-rose-light) 51%,var(--color-rose) 59%,var(--color-neutral) 70% 100%)",
   "--sweep-on-light:linear-gradient(90deg,var(--color-petrol) 0 33%,var(--color-rose-deep) 44%,var(--color-rose-mid) 52%,var(--color-rose-deep) 60%,var(--color-petrol) 72% 100%)",

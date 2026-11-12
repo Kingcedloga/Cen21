@@ -261,22 +261,23 @@
           "The lounge bar extends the experience with signature cocktails, curated wines, and a panoramic view over Kinshasa that turns every evening into a suspended moment.",
           "Whether for a business lunch, a romantic dinner, or an evening with friends, our team welcomes you in a refined setting where hospitality becomes a true celebration."
         ],
+        "highlights": ["Sushi", "Robatayaki", "Thai curry", "Szechuan cuisine"],
         "secondaryCta": {
           "label": "Browse the gallery",
-          "href": "#wabi-sabi-gallery"
+          "href": "#galerie"
         },
         "primaryCta": {
           "label": "Book a table",
-          "href": "tel:+243900000702"
+          "href": "#reservation"
         },
         "images": {
           "back": {
-            "src": "/filiales/photos/filiale-02/gallery/06-ao8a4510.webp",
-            "alt": "Wabi Sabi — refined sushi platter and Asian flavours"
+            "src": "/filiales/photos/filiale-02/gallery/03-ao8a4405.webp",
+            "alt": "Wabi Sabi — the dining room, tables set by the bay windows over Kinshasa"
           },
           "front": {
-            "src": "/filiales/photos/filiale-02/gallery/02-ao8a4372.webp",
-            "alt": "Wabi Sabi — signature dish and contemporary plating"
+            "src": "/filiales/photos/filiale-02/gallery/05-ao8a4494.webp",
+            "alt": "Wabi Sabi — a set table and velvet armchairs"
           }
         }
       },
@@ -286,12 +287,17 @@
           "The Wabi Sabi lounge bar is where mixology meets Japanese elegance. Our bartenders craft signature cocktails with Asian-inspired flavours, reimagined classics, and a curated selection of sake, whisky, and fine wines.",
           "Set in a contemporary space overlooking Kinshasa, the bar invites you to extend the experience after dinner — a moment of ease where every glass becomes an invitation to travel."
         ],
+        "highlights": ["Signature cocktails", "Sake", "Whisky", "Curated wines"],
         "cta": {
           "label": "About our bar",
-          "href": "#wabi-sabi-gallery"
+          "href": "#galerie"
         },
         "image": "/filiales/photos/filiale-02/gallery/08-ao8a4545.webp",
-        "imageAlt": "Wabi Sabi — contemporary bar, signature cocktails and lounge atmosphere"
+        "imageAlt": "Wabi Sabi — contemporary bar, signature cocktails and lounge atmosphere",
+        "inset": {
+          "src": "/filiales/photos/filiale-02/gallery/12-ao8a4565.webp",
+          "alt": "Wabi Sabi — smoked cocktail served under a cloche"
+        }
       },
       "spotlightSection": {
         "title": "The art of hospitality, between sky and skyline",

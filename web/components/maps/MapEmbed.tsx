@@ -22,8 +22,12 @@ type MapEmbedProps = {
   query: string;
   title?: string;
   className?: string;
-  /** "banner" : bandeau large, coins arrondis en haut uniquement (cf. carte Gourmet Mexicana) */
-  variant?: "default" | "compact" | "banner";
+  /**
+   * "banner" : bandeau large, coins arrondis en haut uniquement (cf. carte Gourmet Mexicana).
+   * "fill" : carte nue qui remplit son parent (sans cadre ni pied), le parent
+   * fixe la taille et les coins (fiche de lieu des filiales).
+   */
+  variant?: "default" | "compact" | "banner" | "fill";
 };
 
 /**
@@ -48,6 +52,30 @@ export function MapEmbed({
   const external = googleMapsExternalUrl(query);
   const compact = variant === "compact";
   const banner = variant === "banner";
+
+  if (variant === "fill") {
+    return (
+      <reveal.div
+        ref={frameRef}
+        className={`relative h-full w-full ${className}`}
+        initial={reduced ? false : { opacity: 0 }}
+        whileInView={reduced ? undefined : { opacity: 1 }}
+        viewport={defaultScrollViewport}
+        transition={fadeInTransition}
+      >
+        {near && (
+          <iframe
+            title={title}
+            src={src}
+            className="absolute inset-0 h-full w-full border-0"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
+        )}
+      </reveal.div>
+    );
+  }
 
   return (
     <reveal.div

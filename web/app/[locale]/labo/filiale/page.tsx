@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-import type { ContactHouse } from "@/components/contact/ContactForm";
+import { contactHouses, filialePhotos, ownHouses } from "@/components/filiales/blocks/data";
 import { FilialeBrandStyle } from "@/components/filiales/blocks/FilialeBrandStyle";
-import { FilialeEvents } from "@/components/filiales/blocks/FilialeEvents";
+import { FilialeEvents, filialeDeckEvents } from "@/components/filiales/blocks/FilialeEvents";
 import { FilialeFaq } from "@/components/filiales/blocks/FilialeFaq";
 import { FilialeGalleryStrip } from "@/components/filiales/blocks/FilialeGalleryStrip";
 import { FilialeHero } from "@/components/filiales/blocks/FilialeHero";
@@ -20,10 +20,7 @@ import { SectionBlend } from "@/components/layout/SectionBlend";
 import { AboutStory } from "@/components/sections/about/AboutStory";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
-import { getSubsidiaries, getSubsidiaryBySlug, getSubsidiaryFaq } from "@/lib/content";
-import { galleryEntrySrc } from "@/lib/gallery-categories";
-import type { GalleryPhoto } from "@/lib/gallery-photos";
-import { brandSurface } from "@/lib/subsidiary-brand";
+import { getSubsidiaryBySlug, getSubsidiaryFaq } from "@/lib/content";
 import type { Subsidiary } from "@/lib/types";
 
 /**
@@ -42,11 +39,6 @@ const DEFAULT_HOUSE = "filiale-02";
 
 function isLabEnabled() {
   return process.env.MOTION_LAB === "1";
-}
-
-/** Maisons dotées d'une fiche (les franchises redirigent vers leur site). */
-function ownHouses(locale: Locale) {
-  return getSubsidiaries(locale).filter((s) => !s.externalUrl);
 }
 
 function resolveHouse(locale: Locale, requested: string | string[] | undefined): Subsidiary | undefined {
@@ -113,18 +105,9 @@ export default async function FilialeLabPage({ params, searchParams }: Props) {
   const ctx = await buildFilialeContext(l, subsidiary);
   const { slug, name } = subsidiary;
 
-  const photos: GalleryPhoto[] = subsidiary.galleryImages.map((entry, index) => ({
-    id: `${slug}-${index}`,
-    src: galleryEntrySrc(entry),
-    alt: t("photoAlt", { name, n: index + 1 }),
-    houseSlug: slug,
-  }));
-  const houses: ContactHouse[] = ownHouses(l).map((s) => ({
-    slug: s.slug,
-    name: s.name,
-    logo: s.brandLogo,
-    logoSurface: brandSurface(s.slug, s.accentColor),
-  }));
+  const photos = filialePhotos(subsidiary, (n) => t("photoAlt", { name, n }));
+  const houses = contactHouses(l);
+  const events = filialeDeckEvents(l, slug);
   const menu = menuOf(subsidiary);
   const specialties = specialtiesOf(subsidiary);
   const testimonials = subsidiary.testimonialsSection;
@@ -166,7 +149,7 @@ export default async function FilialeLabPage({ params, searchParams }: Props) {
       </PageSection>
 
       <SectionBlend from={SECTION_SURFACE.dark} to={SECTION_SURFACE.default} />
-      <FilialeEvents slug={slug} name={name} locale={l} />
+      <FilialeEvents slug={slug} name={name} events={events} />
 
       {testimonials && (
         <PageSection ariaLabelledby="filiale-testimonials-title">

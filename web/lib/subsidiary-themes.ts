@@ -21,6 +21,8 @@ export type SubsidiaryPageTheme = {
     ochreRgb?: string;
     terracotta?: string;
     terracottaRgb?: string;
+    /** Surface claire de la charte (sections claires des fiches migrées). */
+    light?: string;
   };
   hero: {
     overlayGradient: string;
@@ -231,6 +233,8 @@ export const WABI_SABI_THEME: SubsidiaryPageTheme = {
     surfaceElevated: "rgba(225, 198, 118, 0.1)",
     border: "rgba(225, 198, 118, 0.24)",
     btn: "#e1c676",
+    // Beige des bandeaux Wabi Sabi (styles/wabi-sabi-beige-band.css).
+    light: "#f5f0e8",
   },
   hero: {
     overlayGradient: "transparent",

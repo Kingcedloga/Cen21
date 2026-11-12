@@ -24,10 +24,13 @@ export function FilialeGalleryStrip({
   name,
   photos,
   house,
+  tone = "dark",
 }: {
   name: string;
   photos: GalleryPhoto[];
   house: LightboxHouse & { slug: string };
+  /** `light` : posée sur la surface claire de la maison. */
+  tone?: "dark" | "light";
 }) {
   const t = useTranslations("filiale");
   const hydrated = useHydrated();
@@ -72,7 +75,7 @@ export function FilialeGalleryStrip({
   };
 
   return (
-    <div className="filiale-strip">
+    <div className={`filiale-strip ${tone === "light" ? "filiale-strip--light" : ""}`}>
       <div className="filiale-strip__head">
         <SectionHeading
           look="editorial"
@@ -81,6 +84,7 @@ export function FilialeGalleryStrip({
           sweep={name}
           titleAs="h2"
           titleId="filiale-gallery-title"
+          tone={tone}
           align="left"
           className="mb-0!"
         />

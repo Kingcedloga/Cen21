@@ -87,6 +87,8 @@ export type SubsidiaryPhilosophySection = {
 export type SubsidiaryDiningSection = {
   title: string;
   paragraphs: string[];
+  /** Spécialités citées dans le texte, en filet sous les paragraphes. */
+  highlights?: string[];
   primaryCta: { label: string; href: string };
   secondaryCta: { label: string; href: string };
   images: {
@@ -102,6 +104,9 @@ export type SubsidiaryBarSection = {
   cta: { label: string; href: string };
   image: string;
   imageAlt: string;
+  highlights?: string[];
+  /** Seconde photo, en médaillon. */
+  inset?: SubsidiaryAboutSlide;
 };
 
 /** Section éditoriale split — titre, texte, CTA + image (Wabi Sabi). */

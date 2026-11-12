@@ -9,6 +9,7 @@ import { SubsidiaryThemeShell } from "@/components/filiales/SubsidiaryThemeShell
 import { routing } from "@/i18n/routing";
 import type { Locale } from "@/i18n/routing";
 import { getAllSubsidiarySlugs, getSubsidiaryBySlug } from "@/lib/content";
+import { isMigratedFiliale } from "@/lib/filiale-migration";
 import { dynalight, nunito } from "@/lib/fonts";
 import { resolvePageMetadata } from "@/lib/seo";
 
@@ -35,8 +36,10 @@ export async function generateMetadata({ params }: Props) {
 
 /**
  * Fiche d'une filiale. Le contenu est composé maison par maison
- * (components/filiales/pages) dans le thème de la filiale. Les franchises
- * dotées d'un site officiel (`externalUrl`) y redirigent.
+ * (components/filiales/pages). Fiche migrée (refonte R6 et suivantes) : la
+ * composition pose elle-même la charte (FilialeBrandStyle) et la navigation
+ * du groupe ; sinon, ancien thème de la filiale. Les franchises dotées d'un
+ * site officiel (`externalUrl`) y redirigent.
  */
 export default async function SubsidiaryPage({ params }: Props) {
   const { locale, slug } = await params;
@@ -48,9 +51,9 @@ export default async function SubsidiaryPage({ params }: Props) {
   if (subsidiary.externalUrl) redirect(subsidiary.externalUrl);
 
   const ctx = await buildFilialeContext(l, subsidiary);
-  const content = renderFilialePage(ctx);
+  const content = await renderFilialePage(ctx);
 
-  if (ctx.pageTheme) {
+  if (ctx.pageTheme && !isMigratedFiliale(slug)) {
     return (
       <SubsidiaryThemeShell
         theme={ctx.pageTheme}

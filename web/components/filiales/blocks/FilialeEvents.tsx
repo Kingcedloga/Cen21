@@ -9,22 +9,16 @@ import type { EventItem } from "@/lib/types";
 const DECK_SIZE = 5;
 
 /**
- * Rendez-vous de la maison : la pile épinglée de l'accueil (à venir d'abord,
- * complétée par les plus récents passés), lien vers l'agenda filtré sur la
- * maison (`/evenements?maison=…`). Rien si la maison n'a aucun événement.
+ * Événements de la maison pour la pile : à venir d'abord, complétés par les
+ * plus récents passés. Vide si la maison n'en a aucun (la fiche saute alors
+ * la section et ses fondus).
  */
-export async function FilialeEvents({ slug, name, locale }: { slug: string; name: string; locale: Locale }) {
-  const t = await getTranslations("filiale");
-  const tHome = await getTranslations("home");
+export function filialeDeckEvents(locale: Locale, slug: string): DeckEvent[] {
   const ofHouse = (event: EventItem) => event.subsidiarySlug === slug;
-  const upcoming = getEvents(locale).filter(ofHouse);
-  const past = getPastEvents(locale).filter(ofHouse);
   const source = [
-    ...upcoming.map((event) => ({ event, status: "upcoming" as const })),
-    ...past.map((event) => ({ event, status: "past" as const })),
+    ...getEvents(locale).filter(ofHouse).map((event) => ({ event, status: "upcoming" as const })),
+    ...getPastEvents(locale).filter(ofHouse).map((event) => ({ event, status: "past" as const })),
   ].slice(0, DECK_SIZE);
-  if (source.length === 0) return null;
-
   const dateFormat = new Intl.DateTimeFormat(locale === "fr" ? "fr-FR" : "en-GB", {
     weekday: "long",
     day: "numeric",
@@ -33,7 +27,7 @@ export async function FilialeEvents({ slug, name, locale }: { slug: string; name
     hour: "2-digit",
     minute: "2-digit",
   });
-  const events: DeckEvent[] = source.map(({ event, status }) => ({
+  return source.map(({ event, status }) => ({
     id: event.id,
     title: event.displayTitle ?? event.title,
     dateLabel: dateFormat.format(new Date(event.date)),
@@ -43,7 +37,16 @@ export async function FilialeEvents({ slug, name, locale }: { slug: string; name
     image: event.image,
     status,
   }));
+}
 
+/**
+ * Rendez-vous de la maison : la pile épinglée de l'accueil, lien vers
+ * l'agenda filtré sur la maison (`/evenements?maison=…`).
+ */
+export async function FilialeEvents({ slug, name, events }: { slug: string; name: string; events: DeckEvent[] }) {
+  const t = await getTranslations("filiale");
+  const tHome = await getTranslations("home");
+  if (events.length === 0) return null;
   return (
     <HomeEventsDeck
       eyebrow={t("eventsEyebrow")}

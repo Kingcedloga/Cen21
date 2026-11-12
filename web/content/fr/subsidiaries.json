@@ -261,22 +261,23 @@
           "Le lounge bar prolonge l'expérience avec des cocktails signature, des vins sélectionnés et une vue panoramique sur Kinshasa qui transforme chaque soirée en moment suspendu.",
           "Que ce soit pour un déjeuner d'affaires, un dîner romantique ou une soirée entre amis, notre équipe vous accueille dans un cadre raffiné où l'art de recevoir devient une véritable célébration."
         ],
+        "highlights": ["Sushis", "Robatayaki", "Curry thaï", "Cuisine Schezwan"],
         "secondaryCta": {
           "label": "Découvrir la galerie",
-          "href": "#wabi-sabi-gallery"
+          "href": "#galerie"
         },
         "primaryCta": {
           "label": "Réserver une table",
-          "href": "tel:+243900000702"
+          "href": "#reservation"
         },
         "images": {
           "back": {
-            "src": "/filiales/photos/filiale-02/gallery/06-ao8a4510.webp",
-            "alt": "Wabi Sabi — plateau de sushis et saveurs asiatiques raffinées"
+            "src": "/filiales/photos/filiale-02/gallery/03-ao8a4405.webp",
+            "alt": "Wabi Sabi — la salle, tables dressées face aux baies vitrées sur Kinshasa"
           },
           "front": {
-            "src": "/filiales/photos/filiale-02/gallery/02-ao8a4372.webp",
-            "alt": "Wabi Sabi — assiette signature et dressage contemporain"
+            "src": "/filiales/photos/filiale-02/gallery/05-ao8a4494.webp",
+            "alt": "Wabi Sabi — table dressée et fauteuils de velours"
           }
         }
       },
@@ -286,12 +287,17 @@
           "Le lounge bar de Wabi Sabi est un espace où la mixologie rencontre l'élégance japonaise. Nos bartenders composent des cocktails signature aux saveurs asiatiques, des classiques revisités et une sélection de sakés, whiskys et vins soigneusement choisis.",
           "Installé dans un cadre contemporain avec vue sur Kinshasa, le bar invite à prolonger l'expérience après le dîner — un moment de détente où chaque verre devient une invitation au voyage."
         ],
+        "highlights": ["Cocktails signature", "Sakés", "Whiskys", "Vins choisis"],
         "cta": {
           "label": "Découvrir le lounge",
-          "href": "#wabi-sabi-gallery"
+          "href": "#galerie"
         },
         "image": "/filiales/photos/filiale-02/gallery/08-ao8a4545.webp",
-        "imageAlt": "Wabi Sabi — bar contemporain, cocktails signature et ambiance lounge"
+        "imageAlt": "Wabi Sabi — bar contemporain, cocktails signature et ambiance lounge",
+        "inset": {
+          "src": "/filiales/photos/filiale-02/gallery/12-ao8a4565.webp",
+          "alt": "Wabi Sabi — cocktail fumé servi sous cloche"
+        }
       },
       "spotlightSection": {
         "title": "L'art de recevoir, entre ciel et skyline",

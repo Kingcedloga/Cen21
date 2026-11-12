@@ -8,7 +8,20 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
  * maison fixée, besoins limités à ce qui se réserve. Même envoi
  * (/api/contact), même préremplissage par l'adresse.
  */
-export async function FilialeReservation({ slug, name, houses }: { slug: string; name: string; houses: ContactHouse[] }) {
+export async function FilialeReservation({
+  slug,
+  name,
+  houses,
+  title,
+  text,
+}: {
+  slug: string;
+  name: string;
+  houses: ContactHouse[];
+  /** Titre et texte propres à la maison (sinon « Réserver chez … »). */
+  title?: string;
+  text?: string;
+}) {
   const t = await getTranslations("filiale");
   return (
     <div id="reservation" className="contact-card scroll-mt-6" data-surface="dark">
@@ -16,9 +29,9 @@ export async function FilialeReservation({ slug, name, houses }: { slug: string;
         <SectionHeading
           look="editorial"
           eyebrow={t("reservationEyebrow")}
-          title={t("reservationTitle", { name })}
-          sweep={name}
-          description={t("reservationText")}
+          title={title ?? t("reservationTitle", { name })}
+          sweep={title ? undefined : name}
+          description={text ?? t("reservationText")}
           titleAs="h2"
           titleId="filiale-reservation-title"
           align="left"

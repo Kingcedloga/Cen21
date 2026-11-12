@@ -135,7 +135,13 @@ export function BottomCapsuleNav(props: CapsuleMenuProps) {
             >
               {/* Mot-symbole plutôt que le monogramme : ses traits fins disparaissent
                   sous ~48 px. À remplacer par une version pleine du monogramme (SVG). */}
-              <span aria-hidden="true" className="title-section text-[1.0625rem] leading-none">
+              {/* Police fixée : sur une fiche, les titres prennent la police de la
+                  maison, pas le mot-symbole du groupe. */}
+              <span
+                aria-hidden="true"
+                className="title-section text-[1.0625rem] leading-none"
+                style={{ fontFamily: "var(--font-dm-sans)" }}
+              >
                 Cen21
               </span>
             </Link>
