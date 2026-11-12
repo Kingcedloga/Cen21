@@ -4,9 +4,8 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
-import { reveal } from "@/components/motion/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { DURATION_S, EASE, defaultScrollViewport, fadeUpTransition } from "@/lib/motion";
+import { DURATION_S, EASE } from "@/lib/motion";
 import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 import "@/styles/filiale-blocks.css";
@@ -31,11 +30,12 @@ const OPEN = "inset(0% 0% 0% 0%)";
 const SHUT = "inset(100% 0% 0% 0%)";
 
 /**
- * Chapitres d'une maison en diptyque épinglé (Orbix : récit au défilement).
- * Dès 1024 px, la photo reste épinglée à gauche pendant que les chapitres
- * défilent à droite ; quand un chapitre passe au milieu de l'écran, sa photo
- * monte par-dessus la précédente (rideau), son médaillon suit, le compteur
- * change. En dessous de 1024 px, chaque chapitre porte sa propre photo.
+ * Chapitres d'une maison en diptyque épinglé (Orbix : récit au défilement) :
+ * la photo reste épinglée pendant que les chapitres défilent ; quand un
+ * chapitre passe au milieu de l'écran, sa photo monte par-dessus la
+ * précédente (rideau), son médaillon suit, le compteur change.
+ * Dès 1024 px : photo à gauche, textes à droite. En dessous : photo épinglée
+ * en haut de l'écran, les textes glissent dessous (mêmes animations).
  * Reduced motion : les photos changent sans transition.
  */
 export function FilialeChapters({ chapters, highlightsLabel }: { chapters: FilialeChapterItem[]; highlightsLabel: string }) {
@@ -65,7 +65,7 @@ export function FilialeChapters({ chapters, highlightsLabel }: { chapters: Filia
                     animate={{ scale: index === active || reduced ? 1 : 1.08 }}
                     transition={{ duration: reduced ? 0 : DURATION_S.cinematic * 1.4, ease: EASE.luxury }}
                   >
-                    <Image src={chapter.image.src} alt={chapter.image.alt} fill sizes="(min-width: 1024px) 56vw, 1px" className="object-cover" />
+                    <Image src={chapter.image.src} alt={chapter.image.alt} fill sizes="(min-width: 1024px) 56vw, 92vw" className="object-cover" />
                   </motion.div>
                 </motion.div>
               ))}
@@ -96,7 +96,7 @@ export function FilialeChapters({ chapters, highlightsLabel }: { chapters: Filia
                       animate={{ clipPath: index <= active ? OPEN : SHUT }}
                       transition={{ ...curtain, delay: reduced ? 0 : 0.12 }}
                     >
-                      <Image src={chapter.inset.src} alt={chapter.inset.alt} fill sizes="(min-width: 1024px) 18vw, 1px" className="object-cover" />
+                      <Image src={chapter.inset.src} alt={chapter.inset.alt} fill sizes="(min-width: 1024px) 18vw, 26vw" className="object-cover" />
                     </motion.div>
                   ) : null,
                 )}
@@ -108,7 +108,7 @@ export function FilialeChapters({ chapters, highlightsLabel }: { chapters: Filia
 
       <div className="filiale-chapters__list">
         {chapters.map((chapter, index) => (
-          <ChapterText key={chapter.id} chapter={chapter} index={index} highlightsLabel={highlightsLabel} reduced={reduced} onActive={setActive} />
+          <ChapterText key={chapter.id} chapter={chapter} index={index} highlightsLabel={highlightsLabel} onActive={setActive} />
         ))}
       </div>
     </div>
@@ -119,13 +119,11 @@ function ChapterText({
   chapter,
   index,
   highlightsLabel,
-  reduced,
   onActive,
 }: {
   chapter: FilialeChapterItem;
   index: number;
   highlightsLabel: string;
-  reduced: boolean;
   onActive: (index: number) => void;
 }) {
   const ref = useRef<HTMLElement>(null);
@@ -139,16 +137,6 @@ function ChapterText({
 
   return (
     <article ref={ref} aria-labelledby={chapter.titleId} className="filiale-chapters__item">
-      <reveal.figure
-        className="filiale-chapters__inline"
-        initial={reduced ? false : { opacity: 0, y: 24 }}
-        whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
-        viewport={defaultScrollViewport}
-        transition={fadeUpTransition}
-      >
-        <Image src={chapter.image.src} alt={chapter.image.alt} fill sizes="(max-width: 1023px) 92vw, 1px" className="object-cover" />
-      </reveal.figure>
-
       <p className="filiale-chapters__kicker">
         <span className="filiale-chapters__kicker-num">{pad(index + 1)}</span>
         <span aria-hidden="true" className="filiale-chapters__kicker-line" />

@@ -702,37 +702,113 @@ p > .filiale-status {
 }
 
 /* --- Chapitres en diptyque épinglé (FilialeChapters) -------------------- */
+/* Mobile et tablette : la photo est épinglée en haut de l'écran (bloc et non
+   grille : un élément de grille ne colle que dans sa propre case), les
+   textes glissent dessous et s'effacent dans le fondu. */
 .filiale-chapters {
-  display: grid;
+  display: block;
 }
 
-/* Photo épinglée : dès 1024 px seulement (en dessous, photo par chapitre). */
 .filiale-chapters__media {
-  display: none;
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  padding: 0.75rem 0 1.75rem;
+  background-color: var(--color-petrol-panel-4);
+}
+
+.filiale-chapters__media::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  height: 2.25rem;
+  background: linear-gradient(var(--color-petrol-panel-4), transparent);
+  pointer-events: none;
+}
+
+.filiale-chapters__stage {
+  position: relative;
+  height: clamp(13rem, 36svh, 20rem);
+}
+
+.filiale-chapters__frame {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: var(--radius-card-md);
+  background-color: var(--color-petrol-panel-3);
+}
+
+.filiale-chapters__slide {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.filiale-chapters__counter {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 10;
+  display: flex;
+  align-items: baseline;
+  gap: 0.3125rem;
+  padding: 0.375rem 0.875rem;
+  border: 1px solid color-mix(in srgb, var(--color-ivory) 14%, transparent);
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, var(--color-petrol-panel-4) 72%, transparent);
+  backdrop-filter: blur(10px);
+  color: var(--color-ivory);
+}
+
+.filiale-chapters__counter-num {
+  font-family: var(--brand-title-font, var(--font-dm-sans));
+  font-size: 1.0625rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--color-rose);
+}
+
+.filiale-chapters__counter-total {
+  font-size: 0.75rem;
+  color: color-mix(in srgb, var(--color-ivory) 60%, transparent);
+}
+
+.filiale-chapters__counter-label {
+  margin-left: 0.375rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Médaillon : en bas à gauche, à cheval sur le bord du cadre. */
+.filiale-chapters__inset {
+  position: absolute;
+  bottom: -1.25rem;
+  left: 0.75rem;
+  z-index: 2;
+  width: 24%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  isolation: isolate;
+  border: 4px solid var(--color-petrol-panel-4);
+  border-radius: 1rem;
+  background-color: var(--color-petrol-panel-3);
+  box-shadow: 0 24px 48px -24px color-mix(in srgb, var(--color-petrol-panel-4) 95%, transparent);
 }
 
 .filiale-chapters__list {
   display: grid;
   gap: clamp(4.5rem, 12vw, 6.5rem);
+  padding-top: 1.5rem;
 }
 
 .filiale-chapters__item {
   min-width: 0;
-}
-
-.filiale-chapters__inline {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  margin: 0 0 2.25rem;
-  overflow: hidden;
-  border-radius: var(--radius-card-md);
-  background-color: var(--color-petrol-panel-3);
-}
-
-@media (min-width: 640px) {
-  .filiale-chapters__inline {
-    aspect-ratio: 3 / 2;
-  }
 }
 
 .filiale-chapters__kicker {
@@ -824,18 +900,42 @@ p > .filiale-status {
   margin-top: 2rem;
 }
 
+@media (min-width: 640px) {
+  .filiale-chapters__stage {
+    height: clamp(16rem, 40svh, 26rem);
+  }
+  .filiale-chapters__counter {
+    top: 1rem;
+    left: 1rem;
+  }
+  .filiale-chapters__inset {
+    left: 1rem;
+    width: 20%;
+  }
+}
+
+/* Dès 1024 px : photo à gauche, épinglée sur toute la hauteur de l'écran,
+   textes à droite (un écran par chapitre). */
 @media (min-width: 1024px) {
   .filiale-chapters {
+    display: grid;
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
     gap: clamp(3rem, 6vw, 6rem);
   }
 
   .filiale-chapters__media {
-    display: block;
     position: relative;
+    top: auto;
+    z-index: auto;
+    padding: 0;
+    background-color: transparent;
   }
 
-  /* Épinglée sur toute la hauteur de l'écran ; marge basse pour la capsule. */
+  .filiale-chapters__media::after {
+    content: none;
+  }
+
+  /* Marge basse pour la capsule de navigation. */
   .filiale-chapters__sticky {
     position: sticky;
     top: 0;
@@ -846,95 +946,56 @@ p > .filiale-status {
   }
 
   .filiale-chapters__stage {
-    position: relative;
     width: 100%;
     height: 100%;
     max-height: 46rem;
   }
 
   .filiale-chapters__frame {
-    position: relative;
-    height: 100%;
-    overflow: hidden;
-    isolation: isolate;
     border-radius: var(--radius-card-lg);
-    background-color: var(--color-petrol-panel-3);
-  }
-
-  .filiale-chapters__slide {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
   }
 
   .filiale-chapters__counter {
-    position: absolute;
     top: 1.25rem;
     left: 1.25rem;
-    z-index: 10;
-    display: flex;
-    align-items: baseline;
     gap: 0.375rem;
     padding: 0.5rem 1.125rem;
-    border: 1px solid color-mix(in srgb, var(--color-ivory) 14%, transparent);
-    border-radius: 9999px;
-    background-color: color-mix(in srgb, var(--color-petrol-panel-4) 72%, transparent);
-    backdrop-filter: blur(10px);
-    color: var(--color-ivory);
   }
 
   .filiale-chapters__counter-num {
-    font-family: var(--brand-title-font, var(--font-dm-sans));
     font-size: 1.25rem;
-    font-weight: 500;
-    line-height: 1;
-    color: var(--color-rose);
   }
 
   .filiale-chapters__counter-total {
     font-size: 0.8125rem;
-    color: color-mix(in srgb, var(--color-ivory) 60%, transparent);
   }
 
   .filiale-chapters__counter-label {
     margin-left: 0.5rem;
     font-size: 0.6875rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
   }
 
-  /* Médaillon : en bas à gauche, à cheval sur le cadre (la capsule est au centre). */
+  /* La capsule est au centre : le médaillon déborde à gauche du cadre. */
   .filiale-chapters__inset {
-    position: absolute;
     bottom: -2rem;
     left: -1.5rem;
-    z-index: 2;
     width: 30%;
-    aspect-ratio: 3 / 4;
-    overflow: hidden;
-    isolation: isolate;
-    border: 6px solid var(--color-petrol-panel-4);
+    border-width: 6px;
     border-radius: var(--radius-card-md);
-    background-color: var(--color-petrol-panel-3);
     box-shadow: 0 30px 60px -28px color-mix(in srgb, var(--color-petrol-panel-4) 95%, transparent);
   }
 
   .filiale-chapters__list {
     gap: 0;
+    padding-top: 0;
   }
 
-  /* Un écran par chapitre : le texte passe devant la photo épinglée. */
   .filiale-chapters__item {
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-height: 100svh;
     padding-block: 4rem;
-  }
-
-  .filiale-chapters__inline {
-    display: none;
   }
 
   .filiale-chapters__paragraph {
