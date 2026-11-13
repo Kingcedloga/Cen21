@@ -226,9 +226,10 @@ export const WABI_SABI_THEME: SubsidiaryPageTheme = {
     bg: "#0b2F49",
     gold: "#e1c676",
     goldRgb: "225 198 118",
-    text: "rgba(225, 198, 118, 0.94)",
-    textMuted: "rgba(225, 198, 118, 0.72)",
-    textSubtle: "rgba(225, 198, 118, 0.52)",
+    // Texte crème, l'or réservé aux accents (habillage luxe, styles/filiale-luxe.css).
+    text: "#f2ead8",
+    textMuted: "rgba(242, 234, 216, 0.74)",
+    textSubtle: "rgba(242, 234, 216, 0.54)",
     surface: "rgba(225, 198, 118, 0.06)",
     surfaceElevated: "rgba(225, 198, 118, 0.1)",
     border: "rgba(225, 198, 118, 0.24)",

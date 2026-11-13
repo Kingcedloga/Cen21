@@ -33,6 +33,8 @@ export const dynalight = Dynalight({
 export const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  // Italique : citations des fiches (avis Wabi Sabi), chargée à l'usage.
+  style: ["normal", "italic"],
   variable: "--font-cormorant",
   display: "swap",
   // Pages filiales surtout : chargée quand un texte l'utilise, sans

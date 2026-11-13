@@ -1,0 +1,276 @@
+/* =========================================================================
+   Habillage « luxe » d'une fiche (Wabi Sabi) : posé par la composition de la
+   maison via un marqueur `[data-filiale-luxe]`, il ne touche que cette page.
+
+   Angles nets, filets dorés fins, photos encadrées d'un passe-partout doré,
+   boutons rectangulaires en capitales espacées, surtitres encadrés d'un
+   filet et d'un losange, citations en italique, champs soulignés, motif
+   seigaiha (vagues japonaises) à peine visible sur les sections sombres.
+   Couleurs : tokens de la maison uniquement (lib/filiale-brand.ts).
+   ========================================================================= */
+
+html body:has([data-filiale-luxe]) {
+  /* Angles nets partout où les blocs lisent les jetons de rayon. */
+  --radius-card-md: 2px;
+  --radius-card-lg: 3px;
+  --radius-card-xl: 4px;
+  --luxe-line: color-mix(in srgb, var(--color-rose) 55%, transparent);
+  --luxe-hair: color-mix(in srgb, var(--color-rose) 24%, transparent);
+
+  /* --- Boutons : rectangles, capitales espacées ------------------------ */
+  & :is(.btn-primary, .btn-secondary) {
+    min-height: 3.25rem;
+    padding-inline: 2rem;
+    border-radius: 0;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+
+  & .btn-primary {
+    border: 1px solid var(--color-rose);
+    background-image: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--brand-fill, var(--color-rose)) 82%, white) 0%,
+      var(--brand-fill, var(--color-rose)) 55%,
+      color-mix(in srgb, var(--brand-fill, var(--color-rose)) 88%, black) 100%
+    );
+    background-size: 100% 100%;
+    box-shadow: none;
+  }
+
+  /* Survol : l'or se retire, le contour reste (inversion sobre). */
+  & .btn-primary:hover {
+    background-image: none;
+    background-color: transparent;
+    color: var(--color-rose);
+    box-shadow: none;
+  }
+
+  & .btn-secondary {
+    border-color: var(--luxe-line);
+    background: transparent;
+    color: var(--color-ivory);
+  }
+
+  & .btn-secondary:hover {
+    border-color: var(--color-rose);
+    background: transparent;
+    color: var(--color-rose);
+  }
+
+  & [data-surface="light"] .btn-primary {
+    border-color: var(--color-petrol);
+  }
+
+  & [data-surface="light"] .btn-primary:hover {
+    background-color: transparent;
+    color: var(--color-petrol);
+  }
+
+  & [data-surface="light"] .btn-secondary {
+    border-color: color-mix(in srgb, var(--color-petrol) 40%, transparent);
+    color: var(--color-petrol);
+  }
+
+  /* --- Surtitres : filet, capitales très espacées, losange ------------- */
+  & .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.875rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.42em;
+  }
+
+  & .eyebrow::before {
+    content: "";
+    flex: none;
+    width: 2.5rem;
+    height: 1px;
+    background-color: currentColor;
+    opacity: 0.6;
+  }
+
+  & .eyebrow::after {
+    content: "";
+    flex: none;
+    width: 5px;
+    height: 5px;
+    border: 1px solid currentColor;
+    rotate: 45deg;
+  }
+
+  /* Pastille du hero : même traitement que les surtitres. */
+  & .inner-hero__pill {
+    gap: 0.875rem;
+    min-height: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    font-weight: 500;
+    letter-spacing: 0.42em;
+  }
+
+  & .inner-hero__pill::before {
+    content: "";
+    width: 2.5rem;
+    height: 1px;
+    background-color: currentColor;
+    opacity: 0.6;
+  }
+
+  & :is(.filiale-status, .inner-hero__crumbs) {
+    border-radius: 0;
+  }
+
+  /* --- Photos : passe-partout doré ------------------------------------ */
+  & :is(.inner-hero__media, .filiale-chapters__frame, .filiale-strip__button, .deck-card__media)::after {
+    content: "";
+    position: absolute;
+    inset: clamp(8px, 1.2vw, 14px);
+    z-index: 20;
+    border: 1px solid var(--luxe-line);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  & .filiale-strip__card {
+    border-radius: 0;
+  }
+
+  & .filiale-strip__button {
+    border-radius: 0;
+  }
+
+  & .filiale-round {
+    border-radius: 0;
+  }
+
+  /* Rayons écrits en dur dans les blocs partagés. */
+  & :is(.deck-card, .deck-card__status, .filiale-switch, .filiale-switch__button, .filiale-switch__pill, .events-swipe__button, .filiale-chapters__counter) {
+    border-radius: 3px;
+  }
+
+  /* Cartes : filet doré au lieu de la bordure claire. */
+  & :is(.filiale-place, .contact-card, .deck-card) {
+    border: 1px solid var(--luxe-hair);
+  }
+
+  & .contact-card {
+    box-shadow: none;
+  }
+
+  /* --- Avis : citations en italique, sans boîtes ---------------------- */
+  & .filiale-quote {
+    gap: 1rem;
+    padding: 2rem 0 0;
+    border: 0;
+    border-top: 1px solid var(--luxe-line);
+    border-radius: 0;
+    background: transparent;
+  }
+
+  & .filiale-quote__text {
+    font-family: var(--brand-title-font, var(--font-dm-sans));
+    font-size: clamp(1.375rem, 2vw, 1.75rem);
+    font-style: italic;
+    line-height: 1.35;
+  }
+
+  & .filiale-quote__rating {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+  }
+
+  & .filiale-quote__author {
+    font-size: 0.6875rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+
+  & .filiale-quote__author span {
+    letter-spacing: 0.08em;
+    text-transform: none;
+  }
+
+  /* --- FAQ : questions en Cormorant ----------------------------------- */
+  & .faq-item__question {
+    font-family: var(--brand-title-font, var(--font-dm-sans));
+    font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+    font-weight: 500;
+  }
+
+  /* --- Formulaire : champs soulignés, pastilles rectangulaires --------- */
+  & .contact-form :is(input:not([type="radio"], [type="checkbox"]), textarea, select) {
+    padding-inline: 0;
+    border-width: 0 0 1px;
+    border-radius: 0;
+    border-color: var(--luxe-hair);
+    background: transparent;
+    box-shadow: none;
+  }
+
+  & .contact-form :is(input:not([type="radio"], [type="checkbox"]), textarea, select):focus {
+    border-color: var(--color-rose);
+    box-shadow: 0 1px 0 var(--color-rose);
+  }
+
+  & .choice-pill {
+    border-radius: 0;
+    letter-spacing: 0.06em;
+  }
+
+  /* --- Chapitres : arche au-dessus de la photo épinglée --------------- */
+  & .filiale-chapters__kicker-num {
+    font-style: italic;
+  }
+
+  & .filiale-chapters__highlights {
+    border-color: var(--luxe-line);
+  }
+
+  /* --- Motif seigaiha sur les sections sombres ------------------------ */
+  & section.bg-petrol-panel-4 {
+    isolation: isolate;
+  }
+
+  & section.bg-petrol-panel-4::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: var(--color-rose);
+    opacity: 0.05;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='28' viewBox='0 0 56 28'%3E%3Cg fill='none' stroke='black' stroke-width='1'%3E%3Cpath d='M0 28a28 28 0 0 1 56 0M7 28a21 21 0 0 1 42 0M14 28a14 14 0 0 1 28 0M21 28a7 7 0 0 1 14 0'/%3E%3Cpath d='M-28 14a28 28 0 0 1 56 0M-21 14a21 21 0 0 1 42 0M-14 14a14 14 0 0 1 28 0M-7 14a7 7 0 0 1 14 0M28 14a28 28 0 0 1 56 0M35 14a21 21 0 0 1 42 0M42 14a14 14 0 0 1 28 0M49 14a7 7 0 0 1 14 0'/%3E%3C/g%3E%3C/svg%3E") repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='28' viewBox='0 0 56 28'%3E%3Cg fill='none' stroke='black' stroke-width='1'%3E%3Cpath d='M0 28a28 28 0 0 1 56 0M7 28a21 21 0 0 1 42 0M14 28a14 14 0 0 1 28 0M21 28a7 7 0 0 1 14 0'/%3E%3Cpath d='M-28 14a28 28 0 0 1 56 0M-21 14a21 21 0 0 1 42 0M-14 14a14 14 0 0 1 28 0M-7 14a7 7 0 0 1 14 0M28 14a28 28 0 0 1 56 0M35 14a21 21 0 0 1 42 0M42 14a14 14 0 0 1 28 0M49 14a7 7 0 0 1 14 0'/%3E%3C/g%3E%3C/svg%3E") repeat;
+    -webkit-mask-size: 56px 28px;
+    mask-size: 56px 28px;
+    pointer-events: none;
+  }
+}
+
+/* Arche (photo épinglée et médaillon des chapitres), à partir de 1024 px :
+   en dessous, la photo est un bandeau, l'arche s'écraserait. */
+@media (min-width: 1024px) {
+  html body:has([data-filiale-luxe]) {
+    & .filiale-chapters__frame {
+      border-radius: 50% 50% 3px 3px / 26% 26% 3px 3px;
+    }
+
+    & .filiale-chapters__inset {
+      border-radius: 999px 999px 3px 3px;
+    }
+
+    /* L'arche couperait le compteur en haut à gauche : en bas, centré. */
+    & .filiale-chapters__counter {
+      top: auto;
+      bottom: 1.75rem;
+      left: 50%;
+      border-radius: 0;
+      translate: -50% 0;
+    }
+  }
+}

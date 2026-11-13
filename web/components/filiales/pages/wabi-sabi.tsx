@@ -22,13 +22,15 @@ import { cormorant } from "@/lib/fonts";
 
 import type { FilialeContext } from "./context";
 
+import "@/styles/filiale-luxe.css";
+
 /** Proportions du logo (public/filiales/logos/filiale-02.png, 1024 × 654). */
 const LOGO_RATIO = 1024 / 654;
 
 /**
  * Wabi Sabi (filiale-02) — pilote de la refonte des fiches (R6) : les blocs
- * du socle aux couleurs de la maison (marine et or, titres en Cormorant,
- * surface beige des anciens bandeaux).
+ * du socle aux couleurs de la maison (marine, crème et or, titres en
+ * Cormorant, surface beige des anciens bandeaux), en habillage luxe.
  *
  * Hero → philosophie épinglée → la table et le bar en diptyque épinglé →
  * photos et avis sur beige → rendez-vous → infos pratiques (Kinshasa,
@@ -97,6 +99,8 @@ export async function WabiSabiPage({ locale, subsidiary, pageTheme, mapQuery, ma
           }}
         />
       )}
+      {/* Habillage luxe de la maison (styles/filiale-luxe.css), limité à cette page. */}
+      <div hidden data-filiale-luxe="" />
       <FilialeCapsuleAction label={t("reserve")} heroSelector='[aria-labelledby="filiale-hero-title"]' />
 
       <FilialeHero
