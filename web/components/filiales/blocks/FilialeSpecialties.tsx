@@ -15,14 +15,17 @@ const ROTATE = [-2.5, 2, -1.5, 2.5, -2, 1.5] as const;
  * Spécialités en pastilles inclinées (manifeste de l'accueil, Orbix :
  * pastilles déplaçables) : à la souris, on les déplace, elles reviennent
  * avec un rebond élastique. Au doigt et en reduced motion : pastilles fixes.
+ * `align="center"` : titre et pastilles centrés (section courte, pleine largeur).
  */
 export function FilialeSpecialties({
   items,
   heading,
+  align = "left",
 }: {
   items: { title: string; description?: string }[];
   /** Titre de section, si la maison en a un (sinon la liste seule, étiquetée). */
   heading?: { eyebrow: string; title: string; description?: string };
+  align?: "left" | "center";
 }) {
   const t = useTranslations("filiale");
   const finePointer = useMediaQuery(FINE_POINTER_QUERY);
@@ -31,7 +34,7 @@ export function FilialeSpecialties({
   if (items.length === 0) return null;
 
   return (
-    <div className="filiale-specialties">
+    <div className={align === "center" ? "filiale-specialties filiale-specialties--center" : "filiale-specialties"}>
       {heading && (
         <SectionHeading
           look="editorial"
@@ -40,8 +43,8 @@ export function FilialeSpecialties({
           description={heading.description}
           titleAs="h2"
           titleId="filiale-specialties-title"
-          align="left"
-          className="mb-6! max-w-2xl"
+          align={align}
+          className={align === "center" ? "mx-auto mb-6! max-w-2xl" : "mb-6! max-w-2xl"}
         />
       )}
       <ul aria-label={t("specialtiesLabel")} className="filiale-specialties__list">

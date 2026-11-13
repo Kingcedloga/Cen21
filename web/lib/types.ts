@@ -100,6 +100,14 @@ export type SubsidiaryDiningSection = {
 };
 
 /** Vitrine immersive bar / lounge (Wabi Sabi). */
+/** Étape de la nuit (Millionaire Club) : heure, titre, texte, photo. */
+export type SubsidiaryNightStep = {
+  hour: string;
+  title: string;
+  text: string;
+  image: SubsidiaryAboutSlide;
+};
+
 export type SubsidiaryBarSection = {
   title: string;
   paragraphs: string[];
@@ -157,6 +165,8 @@ export type Subsidiary = {
   philosophySection?: SubsidiaryPhilosophySection;
   /** Vitrine culinaire éditoriale (Wabi Sabi). */
   diningSection?: SubsidiaryDiningSection;
+  /** La nuit heure par heure (Millionaire Club) : étapes de 18h à 06h. */
+  nightTimeline?: SubsidiaryNightStep[];
   /** Vitrine bar / lounge immersive (Wabi Sabi). */
   barSection?: SubsidiaryBarSection;
   /** Mise en avant éditoriale split (Wabi Sabi). */

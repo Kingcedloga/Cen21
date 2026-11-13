@@ -565,6 +565,13 @@
           "category": "guests"
         }
       ],
+      "nightTimeline": [
+        { "hour": "6pm", "title": "Doors open", "text": "First drinks at the bar as the room slowly fills up.", "image": { "src": "/filiales/photos/filiale-04/gallery/08-dsc-6684-modifier.webp", "alt": "Millionaire Club — at the bar, bottle in hand" } },
+        { "hour": "11pm", "title": "Kick-off", "text": "Theme nights begin and the DJ takes over the decks.", "image": { "src": "/filiales/photos/filiale-04/gallery/15-dsc-9599-modifier.webp", "alt": "Millionaire Club — artist on stage under the lights" } },
+        { "hour": "12am", "title": "The VIP area", "text": "Reserved tables, bottles served under sparklers.", "image": { "src": "/filiales/photos/filiale-04/gallery/06-dsc-5179-modifier.webp", "alt": "Millionaire Club — bottle presented in the VIP area" } },
+        { "hour": "2am", "title": "The show", "text": "Artists, performances and a full dance floor: the heart of the night.", "image": { "src": "/filiales/photos/filiale-04/gallery/11-dsc-7329-modifier.webp", "alt": "Millionaire Club — fire performance on the dance floor" } },
+        { "hour": "6am", "title": "Last dance", "text": "The club closes its doors. See you tonight, from 6pm.", "image": { "src": "/filiales/photos/filiale-04/gallery/09-dsc-6797-modifier.webp", "alt": "Millionaire Club — last dance in front of the screen" } }
+      ],
       "aboutSection": {
         "eyebrow": "Premium nightlife",
         "subtitle": "Themed nights & electric evenings",
