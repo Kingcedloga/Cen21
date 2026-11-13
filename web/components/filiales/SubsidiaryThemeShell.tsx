@@ -12,7 +12,6 @@ import "@/styles/pinkberry-news-section.css";
 import "@/styles/pinkberry-menu-section.css";
 import "@/styles/pinkberry-contact-section.css";
 import "@/styles/subsidiary-themes/olive-verte.css";
-import "@/styles/subsidiary-themes/moka-more.css";
 import "@/styles/subsidiary-themes/pain-quotidien.css";
 import "@/styles/subsidiary-themes/papa-johns.css";
 import "@/styles/subsidiary-themes/gourmet-mexicana.css";

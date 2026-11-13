@@ -496,73 +496,6 @@
       "ctaLabel": "Get Directions",
       "iframeTitle": "Gourmet Mexicana Map"
     },
-    "mokaMoreHero": {
-      "eyebrow": "Dine. Delight. Discover.",
-      "title": "Café, Lounge & Flavours In Kinshasa",
-      "ctaLabel": "Reserve a Table"
-    },
-    "mokaMoreQuote": {
-      "dateLabel": "Moka & More",
-      "line1": "Every dish at Moka & More tells a story of passion",
-      "line2": "and precision — from sourcing the finest seasonal",
-      "line3": "ingredients to perfecting each technique."
-    },
-    "mokaMoreAbout": {
-      "watermark": "About Us",
-      "titlePrefix": "Welcome To",
-      "titleScript": "Moka & More",
-      "description": "We offer a warm café and lounge experience designed to brighten your day — freshly baked pastries, specialty coffee, hearty breakfasts, burgers, and a full bar on our outdoor terrace.",
-      "featuresTitleLine1": "Some Features Of",
-      "featuresTitleLine2": "Our Establishment",
-      "featuresDescription": "A place built on warmth, quality, and attentive service, at any time of day.",
-      "feature1Label": "Exceptional cuisine,",
-      "feature1Detail": "prepared with care and passion",
-      "feature2Label": "Warm atmosphere,",
-      "feature2Detail": "ideal for relaxed mornings or evenings",
-      "feature3Label": "Personalized service,",
-      "feature3Detail": "where every guest is valued",
-      "feature4Label": "Fresh, seasonal ingredients,",
-      "feature4Detail": "sourced with care"
-    },
-    "mokaMoreReservation": {
-      "watermark": "Reach Out To Us",
-      "formEyebrow": "Reservation Table",
-      "formTitle": "Book A Table",
-      "formNote": "*reservations recommended",
-      "nameField": "Type your name",
-      "emailField": "Email address",
-      "peopleField": "Number of guests",
-      "dateField": "Select date",
-      "timeField": "Select time",
-      "submitLabel": "Book Now",
-      "locationEyebrow": "Restaurant Location",
-      "locationTitle": "Visit Our Restaurant"
-    },
-    "mokaMoreVideo": {
-      "watermark": "Watch Video",
-      "circularText": "Book private dining & banquet rooms",
-      "playAria": "Play video",
-      "closeAria": "Close video"
-    },
-    "mokaMoreGallery": {
-      "watermark": "Gallery",
-      "titlePrefix": "Our Gallery",
-      "titleScript": "Moments",
-      "description": "A glimpse of the flavours and moments shared at Moka & More.",
-      "viewAria": "View photo",
-      "prev": "Previous photo",
-      "next": "Next photo",
-      "close": "Close"
-    },
-    "mokaMoreEvents": {
-      "watermark": "Events",
-      "eyebrow": "Don't Miss Out",
-      "title": "Our Events",
-      "badgeLabel": "Event",
-      "ctaLabel": "Read More",
-      "previous": "Previous event",
-      "next": "Next event"
-    },
     "muzikCafeMenu": {
       "regularPrice": "Regular Price",
       "addToOrder": "Add {name} to order",
@@ -773,6 +706,39 @@
     "rule-age": "18 and over",
     "rule-privatisation": "Private hire",
     "listTitle": "Put my name on the list"
+  },
+  "moka": {
+    "heroEyebrow": "Dine. Delight. Discover.",
+    "heroScript": "Lounge Bar",
+    "heroMenu": "See the menu",
+    "heroImageAlt": "Moka & More — the evening lounge, green wall and armchairs",
+    "badge": "Book private dining & banquet rooms",
+    "manifestoLabel": "The house",
+    "manifesto": "Every dish at Moka & More tells a story of passion and precision — from sourcing the finest seasonal ingredients to perfecting each technique.",
+    "menuEyebrow": "The menu",
+    "menuTitle": "From morning to night",
+    "menuScript": "any time of day",
+    "menuLead": "Pastries, breakfasts, burgers, a full bar and a terrace: gourmet moments from 7am to 11pm.",
+    "featuresTitle": "What makes the house",
+    "featuresText": "A place built on warmth, quality and attentive service, at any time of day.",
+    "feature1": "Exceptional cuisine",
+    "feature1Detail": "prepared with care",
+    "feature2": "Warm atmosphere",
+    "feature2Detail": "ideal for relaxed mornings or evenings",
+    "feature3": "Personalised service",
+    "feature3Detail": "where every guest is valued",
+    "feature4": "Fresh, seasonal ingredients",
+    "feature4Detail": "sourced with care",
+    "tourEyebrow": "The venue",
+    "tourTitle": "Step inside Moka & More",
+    "tourHint": "Scroll to look around",
+    "agendaEyebrow": "Don't miss out",
+    "agendaTitle": "Our events",
+    "agendaBook": "Book for {title}",
+    "agendaBookShort": "Book",
+    "agendaAll": "All the house's events",
+    "reservationTitle": "Book a table",
+    "reservationText": "Tell us the date, the number of guests and what you have in mind. Private rooms and banquets on request."
   },
   "filiale": {
     "statusOpen": "Open · closes at {time}",

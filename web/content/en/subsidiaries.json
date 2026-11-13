@@ -773,6 +773,18 @@
         "/filiales/photos/filiale-06/gallery/dsc09730.jpg",
         "/filiales/photos/filiale-06/gallery/dsc09734.jpg"
       ],
+      "menuMoments": [
+        { "hour": "7am", "title": "The café", "text": "Specialty coffee, freshly baked pastries and hearty breakfasts to open the day.", "image": { "src": "/filiales/photos/filiale-06/gallery/dsc09727.jpg", "alt": "Moka & More — bright café corner, round tables and light armchairs" } },
+        { "hour": "12pm", "title": "The kitchen", "text": "Burgers, wraps and generous plates, made with fresh, seasonal ingredients.", "image": { "src": "/filiales/photos/filiale-06/about-mokomore1.png", "alt": "Moka & More — grilled wraps filled with beef and vegetables" } },
+        { "hour": "6pm", "title": "The bar", "text": "Full bar, cocktails and lounge until 11pm, indoors or on the terrace.", "image": { "src": "/filiales/photos/filiale-06/terrasse-moka.png", "alt": "Moka & More — evening lounge under golden pendant lights" } }
+      ],
+      "venueTour": [
+        { "label": "The entrance", "image": { "src": "/filiales/photos/filiale-06/gallery/dsc09734.jpg", "alt": "Moka & More — the entrance and its steps, at Premier Mall" } },
+        { "label": "The lounge", "image": { "src": "/filiales/photos/filiale-06/gallery/dsc09712.jpg", "alt": "Moka & More — the lounge, sofas and green wall" } },
+        { "label": "The bar", "image": { "src": "/filiales/photos/filiale-06/gallery/dsc09719.jpg", "alt": "Moka & More — the bar and its stools" } },
+        { "label": "The dining room", "image": { "src": "/filiales/photos/filiale-06/gallery/dsc09717.jpg", "alt": "Moka & More — the dining room and its big screen" } },
+        { "label": "The terrace", "image": { "src": "/filiales/photos/filiale-06/terrasse-moka1.png", "alt": "Moka & More — the open-air terrace with flowers" } }
+      ],
       "featured": false
     },
     {

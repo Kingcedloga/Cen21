@@ -497,73 +497,6 @@
       "ctaLabel": "Itinéraire",
       "iframeTitle": "Carte Gourmet Mexicana"
     },
-    "mokaMoreHero": {
-      "eyebrow": "Savourez. Dégustez. Découvrez.",
-      "title": "Café, Lounge & Saveurs À Kinshasa",
-      "ctaLabel": "Réserver une Table"
-    },
-    "mokaMoreQuote": {
-      "dateLabel": "Moka & More",
-      "line1": "Chaque plat chez Moka & More raconte une histoire",
-      "line2": "de passion et de précision — du choix des meilleurs",
-      "line3": "ingrédients de saison à la maîtrise de chaque geste."
-    },
-    "mokaMoreAbout": {
-      "watermark": "About Us",
-      "titlePrefix": "Bienvenue Chez",
-      "titleScript": "Moka & More",
-      "description": "Nous offrons une expérience café et lounge chaleureuse pensée pour illuminer votre journée — pâtisseries fraîches, café de spécialité, petits-déjeuners généreux, burgers et bar complet sur notre terrasse extérieure.",
-      "featuresTitleLine1": "Quelques Atouts",
-      "featuresTitleLine2": "De Notre Établissement",
-      "featuresDescription": "Un lieu fondé sur la chaleur, la qualité et un service attentionné, à toute heure.",
-      "feature1Label": "Cuisine raffinée,",
-      "feature1Detail": "présentée avec soin",
-      "feature2Label": "Ambiance chaleureuse,",
-      "feature2Detail": "idéale pour vos matins ou soirées",
-      "feature3Label": "Service personnalisé,",
-      "feature3Detail": "où chaque client est choyé",
-      "feature4Label": "Ingrédients frais et de saison,",
-      "feature4Detail": "sélectionnés avec soin"
-    },
-    "mokaMoreReservation": {
-      "watermark": "Contactez-nous",
-      "formEyebrow": "Réservation",
-      "formTitle": "Réserver Une Table",
-      "formNote": "*réservations recommandées",
-      "nameField": "Votre nom",
-      "emailField": "Adresse email",
-      "peopleField": "Nombre de personnes",
-      "dateField": "Choisir une date",
-      "timeField": "Choisir une heure",
-      "submitLabel": "Réserver",
-      "locationEyebrow": "Localisation",
-      "locationTitle": "Visitez Notre Établissement"
-    },
-    "mokaMoreVideo": {
-      "watermark": "Regarder La Vidéo",
-      "circularText": "Réservez nos salles privées & banquets",
-      "playAria": "Lire la vidéo",
-      "closeAria": "Fermer la vidéo"
-    },
-    "mokaMoreGallery": {
-      "watermark": "Galerie",
-      "titlePrefix": "Notre Galerie",
-      "titleScript": "Moments",
-      "description": "Un aperçu des saveurs et des moments partagés chez Moka & More.",
-      "viewAria": "Voir la photo",
-      "prev": "Photo précédente",
-      "next": "Photo suivante",
-      "close": "Fermer"
-    },
-    "mokaMoreEvents": {
-      "watermark": "Événements",
-      "eyebrow": "À Ne Pas Manquer",
-      "title": "Nos Événements",
-      "badgeLabel": "Événement",
-      "ctaLabel": "Lire plus",
-      "previous": "Événement précédent",
-      "next": "Événement suivant"
-    },
     "muzikCafeMenu": {
       "regularPrice": "Prix régulier",
       "addToOrder": "Ajouter {name} à la commande",
@@ -773,6 +706,39 @@
     "rule-age": "18 ans et plus",
     "rule-privatisation": "Privatisation",
     "listTitle": "Mettre mon nom sur la liste"
+  },
+  "moka": {
+    "heroEyebrow": "Savourez. Dégustez. Découvrez.",
+    "heroScript": "Lounge Bar",
+    "heroMenu": "Voir la carte",
+    "heroImageAlt": "Moka & More — le lounge du soir, mur végétal et fauteuils",
+    "badge": "Réservez nos salles privées & banquets",
+    "manifestoLabel": "La maison",
+    "manifesto": "Chaque plat chez Moka & More raconte une histoire de passion et de précision — du choix des meilleurs ingrédients de saison à la maîtrise de chaque geste.",
+    "menuEyebrow": "La carte",
+    "menuTitle": "Du matin au soir",
+    "menuScript": "à toute heure",
+    "menuLead": "Pâtisseries, petits-déjeuners, burgers, bar complet et terrasse : des moments gourmands de 7h à 23h.",
+    "featuresTitle": "Quelques atouts de la maison",
+    "featuresText": "Un lieu fondé sur la chaleur, la qualité et un service attentionné, à toute heure.",
+    "feature1": "Cuisine raffinée",
+    "feature1Detail": "présentée avec soin",
+    "feature2": "Ambiance chaleureuse",
+    "feature2Detail": "idéale pour vos matins ou vos soirées",
+    "feature3": "Service personnalisé",
+    "feature3Detail": "où chaque client est choyé",
+    "feature4": "Ingrédients frais et de saison",
+    "feature4Detail": "sélectionnés avec soin",
+    "tourEyebrow": "Le lieu",
+    "tourTitle": "Entrez chez Moka & More",
+    "tourHint": "Défilez pour visiter",
+    "agendaEyebrow": "À ne pas manquer",
+    "agendaTitle": "Nos événements",
+    "agendaBook": "Réserver pour {title}",
+    "agendaBookShort": "Réserver",
+    "agendaAll": "Tout l'agenda de la maison",
+    "reservationTitle": "Réserver une table",
+    "reservationText": "Indiquez la date, le nombre de personnes et vos envies. Salles privées et banquets sur demande."
   },
   "filiale": {
     "statusOpen": "Ouvert · ferme à {time}",

@@ -108,6 +108,20 @@ export type SubsidiaryNightStep = {
   image: SubsidiaryAboutSlide;
 };
 
+/** Moment de la carte (Moka & More) : heure, titre, texte, photo. */
+export type SubsidiaryMenuMoment = {
+  hour: string;
+  title: string;
+  text: string;
+  image: SubsidiaryAboutSlide;
+};
+
+/** Étape de la visite du lieu (Moka & More) : nom de l'espace et photo. */
+export type SubsidiaryTourStop = {
+  label: string;
+  image: SubsidiaryAboutSlide;
+};
+
 export type SubsidiaryBarSection = {
   title: string;
   paragraphs: string[];
@@ -167,6 +181,10 @@ export type Subsidiary = {
   diningSection?: SubsidiaryDiningSection;
   /** La nuit heure par heure (Millionaire Club) : étapes de 18h à 06h. */
   nightTimeline?: SubsidiaryNightStep[];
+  /** La carte du matin au soir (Moka & More) : café, cuisine, bar. */
+  menuMoments?: SubsidiaryMenuMoment[];
+  /** Visite du lieu (Moka & More) : les espaces, de l'entrée à la terrasse. */
+  venueTour?: SubsidiaryTourStop[];
   /** Vitrine bar / lounge immersive (Wabi Sabi). */
   barSection?: SubsidiaryBarSection;
   /** Mise en avant éditoriale split (Wabi Sabi). */
