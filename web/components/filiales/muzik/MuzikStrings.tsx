@@ -1,7 +1,11 @@
 "use client";
 
 import { animate, motion, useMotionValue, useScroll, useSpring, useTransform, useVelocity, type MotionValue } from "framer-motion";
-import { useEffect, useRef, type PointerEvent } from "react";
+import { useTranslations } from "next-intl";
+import { useEffect, useRef, useState, type PointerEvent } from "react";
+
+import { disableGuitar, enableGuitar, pluck } from "@/lib/guitar-sound";
+import { Volume2, VolumeX } from "@/lib/icons";
 
 import { FINE_POINTER_QUERY, useMediaQuery, useReducedMotionSafe } from "@/lib/use-media-query";
 
@@ -21,15 +25,27 @@ const PHASE = [1, -0.8, 0.9, -1, 0.85, -0.95];
 
 type Pluckable = { bend: MotionValue<number>; at: MotionValue<number> };
 
+/** Délai minimal entre deux notes d'une même corde (ms) : pas de crépitement. */
+const RETRIGGER_MS = 70;
+/** Déplacement vertical (px par mouvement) qui donne une note à plein volume. */
+const FULL_STRENGTH_PX = 28;
+
 /**
  * Les six cordes de la guitare du logo, tendues sur toute la largeur.
  * Défilement : la vitesse de la page tend les cordes ; quand le défilement
  * s'arrête, un ressort peu amorti les fait vibrer puis se poser (rien ne
  * bouge seul). À la souris, passer sur une corde la pince : elle vibre au
- * point touché. Décoratif. Reduced motion : cordes droites, immobiles.
+ * point touché et, son activé, joue sa note (mi4 → mi2, lib/guitar-sound.ts),
+ * plus fort si le geste est rapide, à gauche ou à droite selon l'endroit.
+ * Le son ne démarre qu'au clic sur « Son des cordes » (les navigateurs
+ * interdisent l'audio au survol) et reste coupé par défaut.
+ * Reduced motion : cordes droites, immobiles, sans son.
  */
 export function MuzikStrings({ className = "" }: { className?: string }) {
+  const t = useTranslations("muzik");
   const reduced = useReducedMotionSafe();
+  const [sound, setSound] = useState(false);
+  const lastPluck = useRef<number[]>(STRINGS.map(() => 0));
   const finePointer = useMediaQuery(FINE_POINTER_QUERY);
   const svgRef = useRef<SVGSVGElement>(null);
   const strings = useRef<(Pluckable | null)[]>([]);
@@ -56,34 +72,66 @@ export function MuzikStrings({ className = "" }: { className?: string }) {
       const target = strings.current[index];
       if (!crossed || !target) return;
       target.at.set(Math.max(80, Math.min(920, x)));
+      const now = performance.now();
+      if (sound && now - lastPluck.current[index] > RETRIGGER_MS) {
+        lastPluck.current[index] = now;
+        pluck(index, Math.abs(y - previous) / FULL_STRENGTH_PX, x / 500 - 1);
+      }
       animate(target.bend, 0, { type: "spring", velocity: Math.sign(y - previous) * 520, stiffness: 520, damping: 7 });
     });
   };
 
+  const toggleSound = async () => {
+    if (sound) {
+      disableGuitar();
+      setSound(false);
+      return;
+    }
+    setSound(await enableGuitar());
+  };
+
+  const playable = finePointer && !reduced;
+
   return (
-    <svg
-      ref={svgRef}
-      aria-hidden="true"
-      className={`muzik-strings ${className}`}
-      viewBox={`0 0 1000 ${BAND}`}
-      preserveAspectRatio="none"
-      onPointerMove={finePointer && !reduced ? onPointerMove : undefined}
-      onPointerLeave={() => {
-        lastY.current = null;
-      }}
-    >
-      {STRINGS.map((index) => (
-        <GuitarString
-          key={index}
-          index={index}
-          swing={swing}
-          still={reduced}
-          register={(value) => {
-            strings.current[index] = value;
-          }}
-        />
-      ))}
-    </svg>
+    <div className="muzik-strings-wrap">
+      {playable && (
+        <div className="muzik-strings__sound">
+          <button
+            type="button"
+            className="muzik-strings__toggle tap-press"
+            aria-pressed={sound}
+            aria-label={sound ? t("stringsSoundOff") : t("stringsSoundOn")}
+            onClick={toggleSound}
+          >
+            {sound ? <Volume2 size={16} aria-hidden="true" /> : <VolumeX size={16} aria-hidden="true" />}
+            <span aria-hidden="true">{t("stringsSound")}</span>
+          </button>
+        </div>
+      )}
+      <svg
+        ref={svgRef}
+        aria-hidden="true"
+        className={`muzik-strings ${className}`}
+        viewBox={`0 0 1000 ${BAND}`}
+        preserveAspectRatio="none"
+        onPointerMove={playable ? onPointerMove : undefined}
+        onPointerLeave={() => {
+          lastY.current = null;
+        }}
+      >
+        {STRINGS.map((index) => (
+          <GuitarString
+            key={index}
+            index={index}
+            swing={swing}
+            still={reduced}
+            register={(value) => {
+              strings.current[index] = value;
+            }}
+          />
+        ))}
+      </svg>
+    </div>
   );
 }
 

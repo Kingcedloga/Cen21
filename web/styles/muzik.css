@@ -185,6 +185,54 @@
   background-repeat: repeat-x;
 }
 
+/* Bouton « Son des cordes » : discret, au-dessus des cordes, à droite. */
+.muzik-strings__sound {
+  display: flex;
+  justify-content: flex-end;
+  padding-inline: clamp(1rem, 4vw, 3rem);
+  margin-bottom: 0.5rem;
+}
+
+.muzik-strings__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border: 1px solid color-mix(in srgb, var(--color-ivory) 28%, transparent);
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-ivory);
+  transition:
+    background-color var(--duration-fine) var(--ease-luxury),
+    border-color var(--duration-fine) var(--ease-luxury),
+    color var(--duration-fine) var(--ease-luxury);
+}
+
+.muzik-strings__toggle:hover {
+  border-color: var(--brand-fill);
+}
+
+.muzik-strings__toggle[aria-pressed="true"] {
+  border-color: transparent;
+  background-color: var(--brand-fill);
+  color: var(--brand-on-accent);
+}
+
+.muzik-strings__toggle:focus-visible {
+  outline: 2px solid var(--color-ivory);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .muzik-strings__toggle {
+    transition: none;
+  }
+}
+
 .muzik-strings__string {
   fill: none;
   stroke: color-mix(in srgb, var(--color-ivory) 72%, transparent);

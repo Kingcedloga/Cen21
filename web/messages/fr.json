@@ -702,6 +702,9 @@
     "reservationText": "Indiquez la date, le nombre de personnes et vos envies. Salles privées et banquets sur demande."
   },
   "muzik": {
+    "stringsSound": "Son des cordes",
+    "stringsSoundOn": "Activer le son des cordes de guitare",
+    "stringsSoundOff": "Couper le son des cordes de guitare",
     "heroEyebrow": "Musique & saveurs",
     "heroMenu": "Voir la carte",
     "lyricsLabel": "Le refrain de la maison",

@@ -702,6 +702,9 @@
     "reservationText": "Tell us the date, the number of guests and what you have in mind. Private rooms and banquets on request."
   },
   "muzik": {
+    "stringsSound": "String sound",
+    "stringsSoundOn": "Turn on the guitar string sound",
+    "stringsSoundOff": "Turn off the guitar string sound",
     "heroEyebrow": "Music & flavours",
     "heroMenu": "See the menu",
     "lyricsLabel": "The house chorus",
