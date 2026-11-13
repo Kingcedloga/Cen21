@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { getSectorLabel } from "@/lib/content";
 import { ExternalLink, Phone } from "@/lib/icons";
 import type { Locale } from "@/i18n/routing";
-import type { Subsidiary } from "@/lib/types";
+import type { HeroVideo, Subsidiary } from "@/lib/types";
 
 import { FilialeOpenStatus } from "./FilialeOpenStatus";
 
@@ -13,19 +13,23 @@ import { FilialeOpenStatus } from "./FilialeOpenStatus";
  * Hero d'une fiche (socle R5) : le hero des pages intérieures aux couleurs de
  * la maison — secteur, nom révélé lettre à lettre, accroche et état
  * d'ouverture, photo qui s'ouvre au défilement. Actions : réserver (formulaire
- * de la fiche), itinéraire, appeler. Dans un <HeroCurtain>, passer
+ * de la fiche), itinéraire, appeler. Avec `video` : hero vidéo plein écran,
+ * `image` en affiche. Dans un <HeroCurtain>, passer
  * `className="hero-curtain__hero"`.
  */
 export async function FilialeHero({
   subsidiary,
   locale,
   image,
+  video,
   mapsUrl,
   className,
 }: {
   subsidiary: Subsidiary;
   locale: Locale;
   image: string;
+  /** Vidéo de la maison (hero immersif). */
+  video?: HeroVideo;
   mapsUrl: string;
   className?: string;
 }) {
@@ -48,6 +52,7 @@ export async function FilialeHero({
         </>
       }
       image={image}
+      video={video}
       breadcrumb={{
         label: tCommon("breadcrumb"),
         home: tNav("home"),

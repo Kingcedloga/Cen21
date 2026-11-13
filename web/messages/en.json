@@ -17,7 +17,9 @@
     "loadingSite": "Loading Cen21 Hospitality",
     "call": "Call",
     "directions": "Directions",
-    "breadcrumb": "Breadcrumb"
+    "breadcrumb": "Breadcrumb",
+    "videoPause": "Pause the video",
+    "videoPlay": "Play the video"
   },
   "language": {
     "label": "Language",
@@ -756,6 +758,7 @@
     "menuEyebrow": "The menu",
     "diningEyebrow": "Dining",
     "barEyebrow": "Bar",
+    "galleryCta": "See the gallery",
     "menuTabs": "Menu categories",
     "galleryEyebrow": "In pictures",
     "galleryTitle": "Inside {name}",

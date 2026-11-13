@@ -17,7 +17,9 @@
     "loadingSite": "Chargement de Cen21 Hospitality",
     "call": "Appeler",
     "directions": "Itinéraire",
-    "breadcrumb": "Fil d'Ariane"
+    "breadcrumb": "Fil d'Ariane",
+    "videoPause": "Mettre la vidéo en pause",
+    "videoPlay": "Lire la vidéo"
   },
   "language": {
     "label": "Langue",
@@ -756,6 +758,7 @@
     "menuEyebrow": "La carte",
     "diningEyebrow": "La table",
     "barEyebrow": "Le bar",
+    "galleryCta": "Voir la galerie",
     "menuTabs": "Catégories de la carte",
     "galleryEyebrow": "En images",
     "galleryTitle": "L'ambiance de {name}",

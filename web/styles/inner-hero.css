@@ -188,3 +188,143 @@
   margin-inline: auto;
   padding: 0 var(--inner-hero-gutter) 3rem;
 }
+
+/* --- Hero vidéo (prop `video`, InnerHeroVideo) -------------------------
+   La vidéo occupe tout l'écran dans un cadre fin aux coins arrondis, qui
+   s'ouvre jusqu'aux bords au défilement. Le texte se pose en bas, sur un
+   voile du fond de la maison qui raccorde le hero à la section suivante.
+   Bouton pause / lecture en haut à droite, sous la barre de navigation. */
+.inner-hero--video {
+  --inner-hero-frame: clamp(0.5rem, 1.1vw, 1rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 100svh;
+}
+
+.inner-hero--video::before {
+  content: none;
+}
+
+/* Bas : la capsule de navigation (fixe, en bas d'écran) ne couvre pas les
+   boutons du hero. */
+.inner-hero--video .inner-hero__intro {
+  width: 100%;
+  padding-top: 9rem;
+  padding-bottom: calc(var(--capsule-offset) + 5.25rem + env(safe-area-inset-bottom, 0px));
+}
+
+.inner-hero__video {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  clip-path: inset(var(--inner-hero-frame) round var(--inner-hero-radius));
+  background-color: var(--color-petrol-panel-3);
+}
+
+.inner-hero__video-media {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 45%;
+}
+
+.inner-hero__video-el {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--duration-grand) var(--ease-luxury);
+}
+
+.inner-hero__video-el.is-shown {
+  opacity: 1;
+}
+
+/* Voile : en bas sous le texte (fondu vers la section suivante), en haut
+   sous la barre de navigation. */
+.inner-hero__video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to top,
+      var(--color-petrol-panel-4) 0%,
+      color-mix(in srgb, var(--color-petrol-panel-4) 84%, transparent) 30%,
+      color-mix(in srgb, var(--color-petrol-panel-4) 40%, transparent) 60%,
+      transparent 80%
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--color-petrol-panel-4) 62%, transparent) 0%,
+      transparent 26%
+    );
+  pointer-events: none;
+}
+
+.inner-hero__video-toggle {
+  position: absolute;
+  top: 5.75rem;
+  right: var(--inner-hero-inset);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid color-mix(in srgb, var(--color-ivory) 32%, transparent);
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, var(--color-petrol-panel-4) 45%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: var(--color-ivory);
+  transition:
+    border-color var(--duration-fine) var(--ease-luxury),
+    background-color var(--duration-fine) var(--ease-luxury);
+}
+
+.inner-hero__video-toggle:hover {
+  border-color: var(--color-rose);
+  background-color: color-mix(in srgb, var(--color-petrol-panel-4) 70%, transparent);
+}
+
+.inner-hero__video-toggle:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 3px;
+}
+
+@media (min-width: 768px) {
+  .inner-hero--video .inner-hero__intro {
+    padding-top: 10rem;
+  }
+  .inner-hero__video-toggle {
+    top: 7rem;
+  }
+}
+
+/* Texte aligné à gauche : le voile se renforce de ce côté. */
+@media (min-width: 1024px) {
+  .inner-hero__video::after {
+    background:
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--color-petrol-panel-4) 64%, transparent) 0%,
+        transparent 60%
+      ),
+      linear-gradient(
+        to top,
+        var(--color-petrol-panel-4) 0%,
+        color-mix(in srgb, var(--color-petrol-panel-4) 78%, transparent) 26%,
+        color-mix(in srgb, var(--color-petrol-panel-4) 30%, transparent) 56%,
+        transparent 76%
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--color-petrol-panel-4) 62%, transparent) 0%,
+        transparent 26%
+      );
+  }
+}

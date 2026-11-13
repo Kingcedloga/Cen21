@@ -472,7 +472,7 @@
         }
       },
       "aboutSection": {
-        "eyebrow": "À propos",
+        "eyebrow": "Le rooftop",
         "title": "L'expérience K Lounge réinventée",
         "description": "Au sommet du RR House, K Lounge réunit gastronomie internationale, mixologie créative et une atmosphère nocturne raffinée. Un rooftop où l'élégance rencontre l'énergie — pour des soirées aussi mémorables que la vue sur Kinshasa.",
         "ctaLabel": "Découvrir K Lounge",
@@ -483,17 +483,20 @@
           {
             "icon": "cocktail",
             "title": "Expériences signature",
-            "description": "Cocktails créatifs & rooftop panoramique"
+            "description": "Cocktails créatifs & rooftop panoramique",
+            "image": { "src": "/filiales/photos/filiale-03/gallery/05-dsc01050.webp", "alt": "K Lounge — cocktails trinqués devant une chicha, lumières de la ville en arrière-plan" }
           },
           {
             "icon": "rating",
             "title": "Excellence premium",
-            "description": "Service attentif & cuisine internationale"
+            "description": "Service attentif & cuisine internationale",
+            "image": { "src": "/filiales/photos/filiale-03/gallery/12-dsc01387.webp", "alt": "K Lounge — assiette signature et légumes grillés" }
           },
           {
             "icon": "music",
             "title": "Soirées exclusives",
-            "description": "Ambiance lounge & DJ sets sélectionnés"
+            "description": "Ambiance lounge & DJ sets sélectionnés",
+            "image": { "src": "/filiales/photos/filiale-03/gallery/17-dsc09845.webp", "alt": "K Lounge — chichas lumineuses dans la fumée" }
           }
         ]
       },

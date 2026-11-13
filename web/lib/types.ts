@@ -41,6 +41,8 @@ export type SubsidiaryAboutHighlight = {
   icon: SubsidiaryAboutHighlightIcon;
   title: string;
   description: string;
+  /** Photo du point fort (triptyque K Lounge). */
+  image?: SubsidiaryAboutSlide;
 };
 
 export type SubsidiaryAboutSlide = {

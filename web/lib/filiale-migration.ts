@@ -6,6 +6,7 @@
  */
 export const MIGRATED_FILIALES: ReadonlySet<string> = new Set<string>([
   "filiale-02", // Wabi Sabi — pilote (R6)
+  "filiale-03", // K Lounge (R7)
 ]);
 
 export function isMigratedFiliale(slug: string | null | undefined): boolean {

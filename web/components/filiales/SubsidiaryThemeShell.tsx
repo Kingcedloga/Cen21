@@ -13,7 +13,6 @@ import "@/styles/pinkberry-menu-section.css";
 import "@/styles/pinkberry-contact-section.css";
 import "@/styles/subsidiary-themes/millionaire-club.css";
 import "@/styles/subsidiary-themes/olive-verte.css";
-import "@/styles/subsidiary-themes/k-lounge.css";
 import "@/styles/subsidiary-themes/moka-more.css";
 import "@/styles/subsidiary-themes/pain-quotidien.css";
 import "@/styles/subsidiary-themes/papa-johns.css";

@@ -36,12 +36,14 @@ const SHUT = "inset(100% 0% 0% 0%)";
  * précédente (rideau), son médaillon suit, le compteur change.
  * Dès 1024 px : photo à gauche, textes à droite. En dessous : photo épinglée
  * en haut de l'écran, les textes glissent dessous (mêmes animations).
+ * Un seul chapitre : ni compteur ni numéro (photo épinglée et texte).
  * Reduced motion : les photos changent sans transition.
  */
 export function FilialeChapters({ chapters, highlightsLabel }: { chapters: FilialeChapterItem[]; highlightsLabel: string }) {
   const reduced = useReducedMotionSafe();
   const [active, setActive] = useState(0);
   const current = chapters[active];
+  const single = chapters.length === 1;
   const curtain = { duration: reduced ? 0 : DURATION_S.cinematic, ease: EASE.cinematic };
 
   return (
@@ -69,19 +71,21 @@ export function FilialeChapters({ chapters, highlightsLabel }: { chapters: Filia
                   </motion.div>
                 </motion.div>
               ))}
-              <p className="filiale-chapters__counter" aria-hidden="true">
-                <span className="filiale-chapters__counter-num">{pad(active + 1)}</span>
-                <span className="filiale-chapters__counter-total">/ {pad(chapters.length)}</span>
-                <motion.span
-                  key={current.id}
-                  className="filiale-chapters__counter-label"
-                  initial={reduced ? false : { opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: reduced ? 0 : DURATION_S.base, ease: EASE.luxury }}
-                >
-                  {current.label}
-                </motion.span>
-              </p>
+              {!single && (
+                <p className="filiale-chapters__counter" aria-hidden="true">
+                  <span className="filiale-chapters__counter-num">{pad(active + 1)}</span>
+                  <span className="filiale-chapters__counter-total">/ {pad(chapters.length)}</span>
+                  <motion.span
+                    key={current.id}
+                    className="filiale-chapters__counter-label"
+                    initial={reduced ? false : { opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: reduced ? 0 : DURATION_S.base, ease: EASE.luxury }}
+                  >
+                    {current.label}
+                  </motion.span>
+                </p>
+              )}
             </div>
 
             {chapters.some((chapter) => chapter.inset) && (
@@ -108,7 +112,13 @@ export function FilialeChapters({ chapters, highlightsLabel }: { chapters: Filia
 
       <div className="filiale-chapters__list">
         {chapters.map((chapter, index) => (
-          <ChapterText key={chapter.id} chapter={chapter} index={index} highlightsLabel={highlightsLabel} onActive={setActive} />
+          <ChapterText
+            key={chapter.id}
+            chapter={chapter}
+            index={single ? undefined : index}
+            highlightsLabel={highlightsLabel}
+            onActive={setActive}
+          />
         ))}
       </div>
     </div>
@@ -122,7 +132,8 @@ function ChapterText({
   onActive,
 }: {
   chapter: FilialeChapterItem;
-  index: number;
+  /** Rang du chapitre (absent quand il est seul). */
+  index?: number;
   highlightsLabel: string;
   onActive: (index: number) => void;
 }) {
@@ -130,7 +141,7 @@ function ChapterText({
   // Bande au milieu de l'écran : le chapitre qui la traverse est le chapitre courant.
   const centered = useInView(ref, { margin: "-48% 0px -48% 0px" });
   useEffect(() => {
-    if (centered) onActive(index);
+    if (centered && index !== undefined) onActive(index);
   }, [centered, index, onActive]);
 
   const [lead, ...rest] = chapter.paragraphs;
@@ -138,8 +149,12 @@ function ChapterText({
   return (
     <article ref={ref} aria-labelledby={chapter.titleId} className="filiale-chapters__item">
       <p className="filiale-chapters__kicker">
-        <span className="filiale-chapters__kicker-num">{pad(index + 1)}</span>
-        <span aria-hidden="true" className="filiale-chapters__kicker-line" />
+        {index !== undefined && (
+          <>
+            <span className="filiale-chapters__kicker-num">{pad(index + 1)}</span>
+            <span aria-hidden="true" className="filiale-chapters__kicker-line" />
+          </>
+        )}
         <span>{chapter.label}</span>
       </p>
       <SectionHeading look="editorial" title={chapter.title} titleAs="h2" titleId={chapter.titleId} align="left" className="mb-6!" />
