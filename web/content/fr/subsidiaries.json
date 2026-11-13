@@ -261,7 +261,12 @@
           "Le lounge bar prolonge l'expérience avec des cocktails signature, des vins sélectionnés et une vue panoramique sur Kinshasa qui transforme chaque soirée en moment suspendu.",
           "Que ce soit pour un déjeuner d'affaires, un dîner romantique ou une soirée entre amis, notre équipe vous accueille dans un cadre raffiné où l'art de recevoir devient une véritable célébration."
         ],
-        "highlights": ["Sushis", "Robatayaki", "Curry thaï", "Cuisine Schezwan"],
+        "highlights": [
+          "Sushis",
+          "Robatayaki",
+          "Curry thaï",
+          "Cuisine Schezwan"
+        ],
         "secondaryCta": {
           "label": "Découvrir la galerie",
           "href": "#galerie"
@@ -287,7 +292,12 @@
           "Le lounge bar de Wabi Sabi est un espace où la mixologie rencontre l'élégance japonaise. Nos bartenders composent des cocktails signature aux saveurs asiatiques, des classiques revisités et une sélection de sakés, whiskys et vins soigneusement choisis.",
           "Installé dans un cadre contemporain avec vue sur Kinshasa, le bar invite à prolonger l'expérience après le dîner — un moment de détente où chaque verre devient une invitation au voyage."
         ],
-        "highlights": ["Cocktails signature", "Sakés", "Whiskys", "Vins choisis"],
+        "highlights": [
+          "Cocktails signature",
+          "Sakés",
+          "Whiskys",
+          "Vins choisis"
+        ],
         "cta": {
           "label": "Découvrir le lounge",
           "href": "#galerie"
@@ -310,21 +320,66 @@
         "imageAlt": "Wabi Sabi — ambiance lounge rooftop et vue sur Kinshasa"
       },
       "galleryImages": [
-        { "src": "/filiales/photos/filiale-02/gallery/01-ao8a4357.webp", "category": "interior" },
-        { "src": "/filiales/photos/filiale-02/gallery/02-ao8a4372.webp", "category": "food" },
-        { "src": "/filiales/photos/filiale-02/gallery/03-ao8a4405.webp", "category": "food" },
-        { "src": "/filiales/photos/filiale-02/gallery/04-ao8a4408.webp", "category": "drinks" },
-        { "src": "/filiales/photos/filiale-02/gallery/05-ao8a4494.webp", "category": "ambiance" },
-        { "src": "/filiales/photos/filiale-02/gallery/06-ao8a4510.webp", "category": "food" },
-        { "src": "/filiales/photos/filiale-02/gallery/07-ao8a4522.webp", "category": "drinks" },
-        { "src": "/filiales/photos/filiale-02/gallery/08-ao8a4545.webp", "category": "drinks" },
-        { "src": "/filiales/photos/filiale-02/gallery/09-ao8a4546.webp", "category": "interior" },
-        { "src": "/filiales/photos/filiale-02/gallery/10-ao8a4549.webp", "category": "guests" },
-        { "src": "/filiales/photos/filiale-02/gallery/11-ao8a4550.webp", "category": "vibes" },
-        { "src": "/filiales/photos/filiale-02/gallery/12-ao8a4565.webp", "category": "ambiance" },
-        { "src": "/filiales/photos/filiale-02/gallery/13-ao8a4567.webp", "category": "interior" },
-        { "src": "/filiales/photos/filiale-02/gallery/14-ao8a4577.webp", "category": "ambiance" },
-        { "src": "/filiales/photos/filiale-02/gallery/15-ao8a4584.webp", "category": "food" }
+        {
+          "src": "/filiales/photos/filiale-02/gallery/01-ao8a4357.webp",
+          "category": "interior"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/02-ao8a4372.webp",
+          "category": "food"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/03-ao8a4405.webp",
+          "category": "food"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/04-ao8a4408.webp",
+          "category": "drinks"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/05-ao8a4494.webp",
+          "category": "ambiance"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/06-ao8a4510.webp",
+          "category": "food"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/07-ao8a4522.webp",
+          "category": "drinks"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/08-ao8a4545.webp",
+          "category": "drinks"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/09-ao8a4546.webp",
+          "category": "interior"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/10-ao8a4549.webp",
+          "category": "guests"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/11-ao8a4550.webp",
+          "category": "vibes"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/12-ao8a4565.webp",
+          "category": "ambiance"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/13-ao8a4567.webp",
+          "category": "interior"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/14-ao8a4577.webp",
+          "category": "ambiance"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/15-ao8a4584.webp",
+          "category": "food"
+        }
       ],
       "aboutSection": {
         "eyebrow": "About Wabi Sabi",
@@ -484,19 +539,28 @@
             "icon": "cocktail",
             "title": "Expériences signature",
             "description": "Cocktails créatifs & rooftop panoramique",
-            "image": { "src": "/filiales/photos/filiale-03/gallery/05-dsc01050.webp", "alt": "K Lounge — cocktails trinqués devant une chicha, lumières de la ville en arrière-plan" }
+            "image": {
+              "src": "/filiales/photos/filiale-03/gallery/05-dsc01050.webp",
+              "alt": "K Lounge — cocktails trinqués devant une chicha, lumières de la ville en arrière-plan"
+            }
           },
           {
             "icon": "rating",
             "title": "Excellence premium",
             "description": "Service attentif & cuisine internationale",
-            "image": { "src": "/filiales/photos/filiale-03/gallery/12-dsc01387.webp", "alt": "K Lounge — assiette signature et légumes grillés" }
+            "image": {
+              "src": "/filiales/photos/filiale-03/gallery/12-dsc01387.webp",
+              "alt": "K Lounge — assiette signature et légumes grillés"
+            }
           },
           {
             "icon": "music",
             "title": "Soirées exclusives",
             "description": "Ambiance lounge & DJ sets sélectionnés",
-            "image": { "src": "/filiales/photos/filiale-03/gallery/17-dsc09845.webp", "alt": "K Lounge — chichas lumineuses dans la fumée" }
+            "image": {
+              "src": "/filiales/photos/filiale-03/gallery/17-dsc09845.webp",
+              "alt": "K Lounge — chichas lumineuses dans la fumée"
+            }
           }
         ]
       },
@@ -566,11 +630,51 @@
         }
       ],
       "nightTimeline": [
-        { "hour": "18h", "title": "Les portes s'ouvrent", "text": "Premiers verres au bar, la salle se remplit doucement.", "image": { "src": "/filiales/photos/filiale-04/gallery/08-dsc-6684-modifier.webp", "alt": "Millionaire Club — au bar, bouteille en main" } },
-        { "hour": "23h", "title": "Le coup d'envoi", "text": "Les soirées à thème démarrent, le DJ prend les platines.", "image": { "src": "/filiales/photos/filiale-04/gallery/15-dsc-9599-modifier.webp", "alt": "Millionaire Club — artiste sur scène sous les projecteurs" } },
-        { "hour": "00h", "title": "Le carré VIP", "text": "Tables réservées, bouteilles servies sous les étincelles.", "image": { "src": "/filiales/photos/filiale-04/gallery/06-dsc-5179-modifier.webp", "alt": "Millionaire Club — bouteille présentée en carré VIP" } },
-        { "hour": "02h", "title": "Le show", "text": "Artistes, performances et piste pleine : le cœur de la nuit.", "image": { "src": "/filiales/photos/filiale-04/gallery/11-dsc-7329-modifier.webp", "alt": "Millionaire Club — performance de feu sur la piste" } },
-        { "hour": "06h", "title": "Dernière danse", "text": "Le club ferme ses portes. Rendez-vous ce soir, dès 18h.", "image": { "src": "/filiales/photos/filiale-04/gallery/09-dsc-6797-modifier.webp", "alt": "Millionaire Club — dernière danse devant l'écran" } }
+        {
+          "hour": "18h",
+          "title": "Les portes s'ouvrent",
+          "text": "Premiers verres au bar, la salle se remplit doucement.",
+          "image": {
+            "src": "/filiales/photos/filiale-04/gallery/08-dsc-6684-modifier.webp",
+            "alt": "Millionaire Club — au bar, bouteille en main"
+          }
+        },
+        {
+          "hour": "23h",
+          "title": "Le coup d'envoi",
+          "text": "Les soirées à thème démarrent, le DJ prend les platines.",
+          "image": {
+            "src": "/filiales/photos/filiale-04/gallery/15-dsc-9599-modifier.webp",
+            "alt": "Millionaire Club — artiste sur scène sous les projecteurs"
+          }
+        },
+        {
+          "hour": "00h",
+          "title": "Le carré VIP",
+          "text": "Tables réservées, bouteilles servies sous les étincelles.",
+          "image": {
+            "src": "/filiales/photos/filiale-04/gallery/06-dsc-5179-modifier.webp",
+            "alt": "Millionaire Club — bouteille présentée en carré VIP"
+          }
+        },
+        {
+          "hour": "02h",
+          "title": "Le show",
+          "text": "Artistes, performances et piste pleine : le cœur de la nuit.",
+          "image": {
+            "src": "/filiales/photos/filiale-04/gallery/11-dsc-7329-modifier.webp",
+            "alt": "Millionaire Club — performance de feu sur la piste"
+          }
+        },
+        {
+          "hour": "06h",
+          "title": "Dernière danse",
+          "text": "Le club ferme ses portes. Rendez-vous ce soir, dès 18h.",
+          "image": {
+            "src": "/filiales/photos/filiale-04/gallery/09-dsc-6797-modifier.webp",
+            "alt": "Millionaire Club — dernière danse devant l'écran"
+          }
+        }
       ],
       "aboutSection": {
         "eyebrow": "Nightlife premium",
@@ -747,8 +851,8 @@
       "slug": "filiale-06",
       "name": "Moka & More",
       "sector": "restaurant",
-      "tagline": "Café, lounge & restaurant — Le Premier Mai",
-      "description": "Café et restaurant au Le Premier Mai, Gombe. Pâtisseries, petits-déjeuners, burgers, bar complet et terrasse extérieure pour des moments gourmands à toute heure.",
+      "tagline": "Café, lounge & restaurant — Le Premier Shopping Mall",
+      "description": "Café et restaurant au Le Premier Shopping Mall, Gombe. Pâtisseries, petits-déjeuners, burgers, bar complet et terrasse extérieure pour des moments gourmands à toute heure.",
       "practicalInfo": {
         "address": "6133 Avenue Lukusa, Gombe, Kinshasa — Premier Mall",
         "hours": "Tous les jours 07h–23h"
@@ -774,16 +878,70 @@
         "/filiales/photos/filiale-06/gallery/dsc09734.jpg"
       ],
       "menuMoments": [
-        { "hour": "07h", "title": "Le café", "text": "Café de spécialité, pâtisseries fraîches et petits-déjeuners généreux pour ouvrir la journée.", "image": { "src": "/filiales/photos/filiale-06/gallery/dsc09727.jpg", "alt": "Moka & More — coin café lumineux, tables rondes et fauteuils clairs" } },
-        { "hour": "12h", "title": "La cuisine", "text": "Burgers, wraps et assiettes généreuses, préparés avec des ingrédients frais et de saison.", "image": { "src": "/filiales/photos/filiale-06/about-mokomore1.png", "alt": "Moka & More — wraps grillés garnis de bœuf et de légumes" } },
-        { "hour": "18h", "title": "Le bar", "text": "Bar complet, cocktails et lounge jusqu'à 23h, en salle comme en terrasse.", "image": { "src": "/filiales/photos/filiale-06/terrasse-moka.png", "alt": "Moka & More — lounge du soir sous les suspensions dorées" } }
+        {
+          "hour": "07h",
+          "title": "Le café",
+          "text": "Café de spécialité, pâtisseries fraîches et petits-déjeuners généreux pour ouvrir la journée.",
+          "image": {
+            "src": "/filiales/photos/filiale-06/gallery/dsc09727.jpg",
+            "alt": "Moka & More — coin café lumineux, tables rondes et fauteuils clairs"
+          }
+        },
+        {
+          "hour": "12h",
+          "title": "La cuisine",
+          "text": "Burgers, wraps et assiettes généreuses, préparés avec des ingrédients frais et de saison.",
+          "image": {
+            "src": "/filiales/photos/filiale-06/about-mokomore1.png",
+            "alt": "Moka & More — wraps grillés garnis de bœuf et de légumes"
+          }
+        },
+        {
+          "hour": "18h",
+          "title": "Le bar",
+          "text": "Bar complet, cocktails et lounge jusqu'à 23h, en salle comme en terrasse.",
+          "image": {
+            "src": "/filiales/photos/filiale-06/terrasse-moka.png",
+            "alt": "Moka & More — lounge du soir sous les suspensions dorées"
+          }
+        }
       ],
       "venueTour": [
-        { "label": "L'entrée", "image": { "src": "/filiales/photos/filiale-06/gallery/dsc09734.jpg", "alt": "Moka & More — l'entrée et ses marches, au Premier Mall" } },
-        { "label": "Le lounge", "image": { "src": "/filiales/photos/filiale-06/gallery/dsc09712.jpg", "alt": "Moka & More — le lounge, canapés et mur végétal" } },
-        { "label": "Le bar", "image": { "src": "/filiales/photos/filiale-06/gallery/dsc09719.jpg", "alt": "Moka & More — le bar et ses tabourets" } },
-        { "label": "La salle", "image": { "src": "/filiales/photos/filiale-06/gallery/dsc09717.jpg", "alt": "Moka & More — la salle et son grand écran" } },
-        { "label": "La terrasse", "image": { "src": "/filiales/photos/filiale-06/terrasse-moka1.png", "alt": "Moka & More — la terrasse fleurie en plein air" } }
+        {
+          "label": "L'entrée",
+          "image": {
+            "src": "/filiales/photos/filiale-06/gallery/dsc09734.jpg",
+            "alt": "Moka & More — l'entrée et ses marches, au Premier Mall"
+          }
+        },
+        {
+          "label": "Le lounge",
+          "image": {
+            "src": "/filiales/photos/filiale-06/gallery/dsc09712.jpg",
+            "alt": "Moka & More — le lounge, canapés et mur végétal"
+          }
+        },
+        {
+          "label": "Le bar",
+          "image": {
+            "src": "/filiales/photos/filiale-06/gallery/dsc09719.jpg",
+            "alt": "Moka & More — le bar et ses tabourets"
+          }
+        },
+        {
+          "label": "La salle",
+          "image": {
+            "src": "/filiales/photos/filiale-06/gallery/dsc09717.jpg",
+            "alt": "Moka & More — la salle et son grand écran"
+          }
+        },
+        {
+          "label": "La terrasse",
+          "image": {
+            "src": "/filiales/photos/filiale-06/terrasse-moka1.png",
+            "alt": "Moka & More — la terrasse fleurie en plein air"
+          }
+        }
       ],
       "featured": false
     },
@@ -887,61 +1045,103 @@
         "title": "Découvrez notre galerie",
         "description": "Un aperçu de nos yaourts glacés, toppings et créations signature.",
         "categories": [
-          { "id": "frozen-yogurt", "label": "Yaourt glacé" },
-          { "id": "toppings", "label": "Toppings" },
-          { "id": "smoothies", "label": "Smoothies" },
-          { "id": "specials", "label": "Spécialités" }
+          {
+            "id": "frozen-yogurt",
+            "label": "Yaourt glacé"
+          },
+          {
+            "id": "toppings",
+            "label": "Toppings"
+          },
+          {
+            "id": "smoothies",
+            "label": "Smoothies"
+          },
+          {
+            "id": "specials",
+            "label": "Spécialités"
+          }
         ],
         "photos": [
           {
             "src": "/filiales/photos/filiale-09/PB_Chocolate-Naked.png",
             "alt": "Yaourt glacé chocolat nature — Pinkberry",
-            "categoryIds": ["frozen-yogurt", "specials"]
+            "categoryIds": [
+              "frozen-yogurt",
+              "specials"
+            ]
           },
           {
             "src": "/filiales/photos/filiale-09/PB_PinkTeas_01.png",
             "alt": "Pink teas — Pinkberry",
-            "categoryIds": ["smoothies"]
+            "categoryIds": [
+              "smoothies"
+            ]
           },
           {
             "src": "/filiales/photos/filiale-09/PB_PinkTeas_StrawberryPoppingSoda-WStrawberry.png",
             "alt": "Soda pétillant fraise — Pinkberry",
-            "categoryIds": ["smoothies", "specials"]
+            "categoryIds": [
+              "smoothies",
+              "specials"
+            ]
           },
           {
             "src": "/filiales/photos/filiale-09/PB_StrawberryCrunch.png",
             "alt": "Crunch fraise — Pinkberry",
-            "categoryIds": ["frozen-yogurt", "toppings"]
+            "categoryIds": [
+              "frozen-yogurt",
+              "toppings"
+            ]
           },
           {
             "src": "/filiales/photos/filiale-09/PB_TaroMilkTeaWithTapioca.png",
             "alt": "Milk tea taro avec tapioca — Pinkberry",
-            "categoryIds": ["smoothies"]
+            "categoryIds": [
+              "smoothies"
+            ]
           },
           {
             "src": "/filiales/photos/filiale-09/PB_WaffleBowl.png",
             "alt": "Bol gaufre — Pinkberry",
-            "categoryIds": ["frozen-yogurt", "toppings", "specials"]
+            "categoryIds": [
+              "frozen-yogurt",
+              "toppings",
+              "specials"
+            ]
           },
           {
             "src": "/filiales/photos/filiale-09/PB_WildBlueberry_Topped.png",
             "alt": "Yaourt glacé myrtille sauvage garni — Pinkberry",
-            "categoryIds": ["frozen-yogurt", "toppings"]
+            "categoryIds": [
+              "frozen-yogurt",
+              "toppings"
+            ]
           },
           {
             "src": "/filiales/photos/filiale-09/PBCoconut_ToppingsStrawberryAlmonds_72dpiRGB.png",
             "alt": "Noix de coco, fraise & amandes — Pinkberry",
-            "categoryIds": ["toppings", "specials"]
+            "categoryIds": [
+              "toppings",
+              "specials"
+            ]
           },
           {
             "src": "/filiales/photos/filiale-09/PBRY_Original_Logo_MilkPour.png",
             "alt": "Lait versé original — Pinkberry",
-            "categoryIds": ["frozen-yogurt", "smoothies", "specials"]
+            "categoryIds": [
+              "frozen-yogurt",
+              "smoothies",
+              "specials"
+            ]
           },
           {
             "src": "/filiales/photos/filiale-09/PBRY_Topped_Guapa.png",
             "alt": "Guapa garnie — Pinkberry",
-            "categoryIds": ["toppings", "specials"]
+            "categoryIds": [
+              "toppings",
+              "specials"
+            ]
           }
         ]
       },
@@ -979,7 +1179,6 @@
           }
         ]
       },
-
       "menuSection": {
         "eyebrow": "Notre menu",
         "title": "Nos délices à déguster",
