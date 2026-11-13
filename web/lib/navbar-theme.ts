@@ -31,8 +31,8 @@ export const SUBSIDIARY_NAVBAR_THEMES: Record<string, SubsidiaryNavbarTheme> = {
     accent: "#C9A84C",
   },
   "filiale-05": {
-    background: "#0033A0",
-    foreground: "#FFFFFF",
+    background: "#FFFFFF",
+    foreground: "#161616",
     accent: "#EF3340",
   },
   "filiale-06": {

@@ -168,28 +168,33 @@ export const GOURMET_MEXICANA_THEME: SubsidiaryPageTheme = {
   },
 };
 
-/** Café Muzik — café musical bleu, rouge & blanc (festif & vibrant). */
+/**
+ * Café Muzik — café musical rouge & blanc (festif & vibrant). Depuis le
+ * 2026-11-13, le bleu #0033A0 n'est plus le fond : fond blanc, rouge en
+ * accent, texte presque noir (le blanc ne se lit pas sur blanc). Le bleu
+ * reste en touche, sur la section du refrain (styles/muzik.css).
+ */
 export const MUZIK_CAFE_THEME: SubsidiaryPageTheme = {
   id: "muzik-cafe",
   slug: "filiale-05",
   colors: {
-    bg: "#0033A0",
+    bg: "#FFFFFF",
     gold: "#EF3340",
     goldRgb: "239 51 64",
-    text: "#FFFFFF",
-    textMuted: "rgba(255, 255, 255, 0.78)",
-    textSubtle: "rgba(255, 255, 255, 0.55)",
-    surface: "rgba(255, 255, 255, 0.08)",
-    surfaceElevated: "rgba(255, 255, 255, 0.12)",
-    border: "rgba(255, 255, 255, 0.22)",
+    text: "#161616",
+    textMuted: "rgba(22, 22, 22, 0.74)",
+    textSubtle: "rgba(22, 22, 22, 0.56)",
+    surface: "rgba(22, 22, 22, 0.04)",
+    surfaceElevated: "rgba(22, 22, 22, 0.07)",
+    border: "rgba(22, 22, 22, 0.14)",
     btn: "#EF3340",
     red: "#EF3340",
     redRgb: "239 51 64",
   },
   hero: {
     overlayGradient:
-      "linear-gradient(to top, #0033A0 0%, rgba(0,51,160,0.92) 40%, rgba(0,51,160,0.4) 68%, transparent 100%), linear-gradient(90deg, rgba(0,38,120,0.88) 0%, transparent 48%), radial-gradient(ellipse 88% 64% at 50% 100%, rgba(239,51,64,0.24) 0%, transparent 58%), radial-gradient(ellipse 48% 38% at 12% 22%, rgba(255,255,255,0.08) 0%, transparent 52%)",
-    blurTint: "#0033A0",
+      "linear-gradient(to top, #FFFFFF 0%, rgba(255,255,255,0.9) 40%, rgba(255,255,255,0.36) 68%, transparent 100%), linear-gradient(90deg, rgba(255,255,255,0.85) 0%, transparent 48%), radial-gradient(ellipse 88% 64% at 50% 100%, rgba(239,51,64,0.16) 0%, transparent 58%)",
+    blurTint: "#FFFFFF",
   },
 };
 

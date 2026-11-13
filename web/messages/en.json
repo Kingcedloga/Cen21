@@ -407,18 +407,6 @@
       "placeholder": "Your email",
       "cta": "Book Now"
     },
-    "muzikCafeHero": {
-      "eyebrow": "Music & Flavours",
-      "title": "We believe Good Music Offer Great Vibes",
-      "ctaPrimary": "Book a Table",
-      "ctaSecondary": "View More",
-      "dishName": "Chicken Skewers",
-      "dishDescription": "Grilled skewers, fresh herbs and a smoky marinade.",
-      "dishRatingAria": "5 out of 5",
-      "previousVisual": "Previous visual",
-      "nextVisual": "Next visual",
-      "goToVisual": "Go to visual {index}"
-    },
     "gourmetMexicanaHero": {
       "titleLine1": "Contemporary Mexican",
       "titleLine2": "Fine Dining in Kinshasa",
@@ -495,33 +483,6 @@
       "title": "Maps & Directions",
       "ctaLabel": "Get Directions",
       "iframeTitle": "Gourmet Mexicana Map"
-    },
-    "muzikCafeMenu": {
-      "regularPrice": "Regular Price",
-      "addToOrder": "Add {name} to order",
-      "previousDishes": "Previous dishes",
-      "nextDishes": "Next dishes"
-    },
-    "muzikCafeGallery": {
-      "previousDishes": "Previous dishes",
-      "nextDishes": "Next dishes",
-      "addToOrder": "Add {name} to order"
-    },
-    "muzikCafeReservation": {
-      "title": "Reservation",
-      "name": "Your Name",
-      "phone": "Phone Number",
-      "email": "Your Email",
-      "people": "Number Of People",
-      "date": "Date",
-      "time": "Time",
-      "cta": "Book a Table"
-    },
-    "muzikCafeEvents": {
-      "title": "News & Events",
-      "ctaLabel": "Read More",
-      "previous": "Previous event",
-      "next": "Next event"
     },
     "pinkberryHero": {
       "eyebrow": "Fresh & Gourmet",
@@ -739,6 +700,34 @@
     "agendaAll": "All the house's events",
     "reservationTitle": "Book a table",
     "reservationText": "Tell us the date, the number of guests and what you have in mind. Private rooms and banquets on request."
+  },
+  "muzik": {
+    "heroEyebrow": "Music & flavours",
+    "heroMenu": "See the menu",
+    "lyricsLabel": "The house chorus",
+    "lyrics": ["We believe", "good music", "makes a great", "atmosphere."],
+    "lyricsNote": "Live music, karaoke and DJ sets, on the patio on Boulevard du 30 Juin.",
+    "menuEyebrow": "The menu",
+    "menuTitle": "Side A: the kitchen",
+    "menuLead": "Pizza, Indian and Moroccan dishes: a menu as varied as the playlist.",
+    "menuNow": "Now playing",
+    "creditsTitle": "Liner notes",
+    "coversEyebrow": "In pictures",
+    "coversTitle": "The patio vibe",
+    "teaserCaption": "An evening on the patio, in pictures and music: the Café Muzik teaser.",
+    "teaserSticker": "Teaser",
+    "teaserLabel": "Café Muzik video teaser",
+    "teaserPlay": "Play the video",
+    "teaserPause": "Pause the video",
+    "teaserSoundOn": "Turn the sound on",
+    "teaserSoundOff": "Mute the sound",
+    "datesEyebrow": "On stage",
+    "datesTitle": "Upcoming dates",
+    "datesBook": "Book for {title}",
+    "datesBookShort": "Book",
+    "datesAll": "All the house's events",
+    "reservationTitle": "Book a table",
+    "reservationText": "Dinner, a birthday or a karaoke night with friends: tell us the date and the number of guests."
   },
   "filiale": {
     "statusOpen": "Open · closes at {time}",

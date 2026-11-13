@@ -8,6 +8,7 @@ export const MIGRATED_FILIALES: ReadonlySet<string> = new Set<string>([
   "filiale-02", // Wabi Sabi — pilote (R6)
   "filiale-03", // K Lounge (R7)
   "filiale-04", // Millionaire Club (R8)
+  "filiale-05", // Café Muzik (R10)
   "filiale-06", // Moka & More (R9)
 ]);
 

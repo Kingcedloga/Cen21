@@ -15,7 +15,6 @@ import "@/styles/subsidiary-themes/olive-verte.css";
 import "@/styles/subsidiary-themes/pain-quotidien.css";
 import "@/styles/subsidiary-themes/papa-johns.css";
 import "@/styles/subsidiary-themes/gourmet-mexicana.css";
-import "@/styles/subsidiary-themes/muzik-cafe.css";
 import "@/styles/subsidiary-contact-band.css";
 
 type Props = {

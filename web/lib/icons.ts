@@ -43,6 +43,8 @@ import {
   Ticket,
   SquaresFour as LayoutGrid,
   Rows as LayoutList,
+  SpeakerHigh as Volume2,
+  SpeakerSlash as VolumeX,
 } from "@phosphor-icons/react/ssr";
 
 import type { Icon as LucideIcon, IconWeight } from "@phosphor-icons/react";
@@ -163,4 +165,6 @@ export {
   Ticket,
   LayoutGrid,
   LayoutList,
+  Volume2,
+  VolumeX,
 };

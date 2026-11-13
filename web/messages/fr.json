@@ -408,18 +408,6 @@
       "placeholder": "Votre email",
       "cta": "Réserver"
     },
-    "muzikCafeHero": {
-      "eyebrow": "Musique & Saveurs",
-      "title": "On croit qu'une bonne musique offre une super ambiance",
-      "ctaPrimary": "Réserver une table",
-      "ctaSecondary": "Voir plus",
-      "dishName": "Brochettes de poulet",
-      "dishDescription": "Brochettes grillées, herbes fraîches et marinade fumée.",
-      "dishRatingAria": "5 sur 5",
-      "previousVisual": "Visuel précédent",
-      "nextVisual": "Visuel suivant",
-      "goToVisual": "Aller au visuel {index}"
-    },
     "gourmetMexicanaHero": {
       "titleLine1": "Gastronomie Mexicaine",
       "titleLine2": "Contemporaine à Kinshasa",
@@ -496,33 +484,6 @@
       "title": "Maps & Directions",
       "ctaLabel": "Itinéraire",
       "iframeTitle": "Carte Gourmet Mexicana"
-    },
-    "muzikCafeMenu": {
-      "regularPrice": "Prix régulier",
-      "addToOrder": "Ajouter {name} à la commande",
-      "previousDishes": "Plats précédents",
-      "nextDishes": "Plats suivants"
-    },
-    "muzikCafeGallery": {
-      "previousDishes": "Plats précédents",
-      "nextDishes": "Plats suivants",
-      "addToOrder": "Ajouter {name} à la commande"
-    },
-    "muzikCafeReservation": {
-      "title": "Réservation",
-      "name": "Votre nom",
-      "phone": "Numéro de téléphone",
-      "email": "Votre email",
-      "people": "Nombre de personnes",
-      "date": "Date",
-      "time": "Heure",
-      "cta": "Réserver une table"
-    },
-    "muzikCafeEvents": {
-      "title": "News & Événements",
-      "ctaLabel": "Lire plus",
-      "previous": "Événement précédent",
-      "next": "Événement suivant"
     },
     "pinkberryHero": {
       "eyebrow": "Frais & Gourmand",
@@ -739,6 +700,34 @@
     "agendaAll": "Tout l'agenda de la maison",
     "reservationTitle": "Réserver une table",
     "reservationText": "Indiquez la date, le nombre de personnes et vos envies. Salles privées et banquets sur demande."
+  },
+  "muzik": {
+    "heroEyebrow": "Musique & saveurs",
+    "heroMenu": "Voir la carte",
+    "lyricsLabel": "Le refrain de la maison",
+    "lyrics": ["On croit qu'une", "bonne musique", "offre une super", "ambiance."],
+    "lyricsNote": "Musique live, karaoké et DJ sets, sur le patio du Boulevard du 30 Juin.",
+    "menuEyebrow": "La carte",
+    "menuTitle": "Face A : la cuisine",
+    "menuLead": "Pizza, plats indiens et marocains : une carte aussi variée que la playlist.",
+    "menuNow": "En lecture",
+    "creditsTitle": "Notes de pochette",
+    "coversEyebrow": "En images",
+    "coversTitle": "L'ambiance du patio",
+    "teaserCaption": "Une soirée sur le patio, en images et en musique : le teaser du Café Muzik.",
+    "teaserSticker": "Teaser",
+    "teaserLabel": "Teaser vidéo du Café Muzik",
+    "teaserPlay": "Lire la vidéo",
+    "teaserPause": "Mettre la vidéo en pause",
+    "teaserSoundOn": "Activer le son",
+    "teaserSoundOff": "Couper le son",
+    "datesEyebrow": "Sur scène",
+    "datesTitle": "Les prochaines dates",
+    "datesBook": "Réserver pour {title}",
+    "datesBookShort": "Réserver",
+    "datesAll": "Tout l'agenda de la maison",
+    "reservationTitle": "Réserver une table",
+    "reservationText": "Un dîner, un anniversaire ou une soirée karaoké entre amis : indiquez la date et le nombre de personnes."
   },
   "filiale": {
     "statusOpen": "Ouvert · ferme à {time}",

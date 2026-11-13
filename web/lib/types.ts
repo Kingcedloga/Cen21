@@ -173,6 +173,8 @@ export type Subsidiary = {
   featured?: boolean;
   /** Vidéo locale en fond du hero (autoplay muet). */
   heroVideo?: HeroVideo;
+  /** Vidéo teaser de la maison (Café Muzik : section « L'ambiance du patio »). */
+  teaserVideo?: HeroVideo;
   /** Hero éditorial dédié (Wabi Sabi). */
   heroSection?: SubsidiaryHeroSection;
   /** Philosophie de la marque (Wabi Sabi). */
