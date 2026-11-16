@@ -115,4 +115,7 @@ export async function createDefaultMetadata(locale: Locale): Promise<Metadata> {
 /** Barre d’adresse / overscroll mobile — même teinte que le fond global. */
 export const siteViewport: Viewport = {
   themeColor: SITE_THEME_COLOR,
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover", // Safe Areas iOS (notch, home indicator)
 };

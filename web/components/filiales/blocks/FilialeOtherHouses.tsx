@@ -25,7 +25,7 @@ export async function FilialeOtherHouses({ slug, locale }: { slug: string; local
   }));
 
   return (
-    <div className="relative isolate">
+    <div className="relative isolate overflow-x-clip">
       <SectionHeading
         look="editorial"
         eyebrow={t("othersEyebrow")}

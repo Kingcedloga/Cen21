@@ -237,6 +237,9 @@ html {
   scroll-behavior: smooth;
   /* Même fond que body — évite un flash / overscroll incohérent (rebond iOS, Safari). */
   background-color: var(--background);
+  /* Bloque le défilement horizontal au niveau racine — `clip` préféré à `hidden`
+     pour ne pas créer de scroll container (position:sticky reste fonctionnel). */
+  overflow-x: clip;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1215,6 +1215,11 @@ p > .filiale-status {
 
 /* --- Galerie en rangées croisées (FilialeGalleryDrift, K Lounge) -------- */
 /* Rangées d'un bord à l'autre de l'écran (la section coupe le débord). */
+.filiale-drift {
+  /* Contient le débordement horizontal des rangées full-bleed. */
+  overflow-x: clip;
+}
+
 .filiale-drift__rows {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
