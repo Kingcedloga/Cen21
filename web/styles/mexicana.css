@@ -924,15 +924,27 @@
   position: relative;
 }
 
+/* Posée sur le bord haut de la carte de réservation : le bas de sa
+   fenêtre (qui la coupe pendant qu'elle monte) affleure la carte, après la
+   marge haute de la section (py-20, md:py-28). Au-dessus des fondus
+   (SectionBlend, z-index 15), qui la masquaient. */
 .mx-mascot {
+  /* Téléphone : 9 × 11rem au moins (la mascotte se lit d'un coup d'œil). */
+  --mx-mascot-h: clamp(11rem, 17vw, 13.5rem);
   position: absolute;
-  top: -7.5rem;
-  right: clamp(1rem, 6vw, 6rem);
-  z-index: 2;
-  width: clamp(7rem, 14vw, 11rem);
-  height: clamp(8.5rem, 17vw, 13.5rem);
+  top: calc(5rem - var(--mx-mascot-h) + 0.5rem);
+  right: clamp(1.5rem, 8vw, 7rem);
+  z-index: 16;
+  width: clamp(9rem, 14vw, 11rem);
+  height: var(--mx-mascot-h);
   overflow: hidden;
   pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .mx-mascot {
+    top: calc(7rem - var(--mx-mascot-h) + 0.5rem);
+  }
 }
 
 .mx-mascot__figure {

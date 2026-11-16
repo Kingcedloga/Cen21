@@ -20,7 +20,10 @@ const STILL = { y: "0%", rotate: -6 };
 export function MexicanaMascot({ src, children }: { src: string; children: ReactNode }) {
   const reduced = useReducedMotionSafe();
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "start 0.35"] });
+  // Montée terminée quand la section atteint le milieu de l'écran (et non le
+  // tiers haut) : sur téléphone, la mascotte ne reste pas basse, à moitié
+  // cachée derrière la capsule de navigation qui occupe le bas de l'écran.
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.95", "start 0.55"] });
   const y = useTransform(scrollYProgress, [0, 1], ["70%", "0%"]);
   const rotate = useTransform(scrollYProgress, [0, 1], [8, -6]);
 
@@ -28,7 +31,7 @@ export function MexicanaMascot({ src, children }: { src: string; children: React
     <div ref={ref} className="mx-mascot-wrap">
       <div aria-hidden="true" className="mx-mascot">
         <motion.div className="mx-mascot__figure" style={reduced ? STILL : { y, rotate }}>
-          <Image src={src} alt="" fill sizes="12rem" className="object-contain object-bottom" />
+          <Image src={src} alt="" fill sizes="(max-width: 767px) 9rem, 12rem" className="object-contain object-bottom" />
         </motion.div>
       </div>
       {children}
