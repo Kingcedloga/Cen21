@@ -47,7 +47,7 @@ export async function GourmetMexicanaPage({ locale, subsidiary, pageTheme, mapQu
   const { slug, name, teaserVideo } = subsidiary;
   const photos = filialePhotos(subsidiary, (n) => t("photoAlt", { name, n }));
   const house = { slug, name, href: `/filiales/${slug}`, external: false };
-  const events = getEvents(locale)
+  const events = (await getEvents(locale))
     .filter((event) => event.subsidiarySlug === slug)
     .slice(0, FIESTAS_SIZE);
   const faq = getSubsidiaryFaq(locale, slug);

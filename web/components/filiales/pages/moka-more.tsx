@@ -45,7 +45,7 @@ export async function MokaMorePage({ locale, subsidiary, pageTheme, mapQuery, ma
   const tMoka = await getTranslations("moka");
   const { slug, name } = subsidiary;
   const photos = filialePhotos(subsidiary, (n) => t("photoAlt", { name, n }));
-  const events = getEvents(locale)
+  const events = (await getEvents(locale))
     .filter((event) => event.subsidiarySlug === slug)
     .slice(0, AGENDA_SIZE);
   const faq = getSubsidiaryFaq(locale, slug);

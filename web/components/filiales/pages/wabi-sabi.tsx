@@ -46,7 +46,7 @@ export async function WabiSabiPage({ locale, subsidiary, pageTheme, mapQuery, ma
   const { slug, name, philosophySection, diningSection, barSection, spotlightSection, testimonialsSection, teaserVideo } =
     subsidiary;
   const photos = filialePhotos(subsidiary, (n) => t("photoAlt", { name, n }));
-  const events = filialeDeckEvents(locale, slug);
+  const events = await filialeDeckEvents(locale, slug);
   const faq = getSubsidiaryFaq(locale, slug);
 
   // La table puis le bar, en diptyque épinglé (photo fixe, textes qui défilent).

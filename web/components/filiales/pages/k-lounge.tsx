@@ -40,7 +40,7 @@ export async function KLoungePage({ locale, subsidiary, pageTheme, heroVideo, ma
   const tSub = await getTranslations("subsidiaries");
   const { slug, name, introSection, aboutSection } = subsidiary;
   const photos = filialePhotos(subsidiary, (n) => t("photoAlt", { name, n }));
-  const events = filialeDeckEvents(locale, slug);
+  const events = await filialeDeckEvents(locale, slug);
   const faq = getSubsidiaryFaq(locale, slug);
 
   // Le rooftop : ses trois points forts, chacun avec sa photo (triptyque).

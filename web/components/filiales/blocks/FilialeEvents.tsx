@@ -13,11 +13,11 @@ const DECK_SIZE = 5;
  * plus récents passés. Vide si la maison n'en a aucun (la fiche saute alors
  * la section et ses fondus).
  */
-export function filialeDeckEvents(locale: Locale, slug: string): DeckEvent[] {
+export async function filialeDeckEvents(locale: Locale, slug: string): Promise<DeckEvent[]> {
   const ofHouse = (event: EventItem) => event.subsidiarySlug === slug;
   const source = [
-    ...getEvents(locale).filter(ofHouse).map((event) => ({ event, status: "upcoming" as const })),
-    ...getPastEvents(locale).filter(ofHouse).map((event) => ({ event, status: "past" as const })),
+    ...(await getEvents(locale)).filter(ofHouse).map((event) => ({ event, status: "upcoming" as const })),
+    ...(await getPastEvents(locale)).filter(ofHouse).map((event) => ({ event, status: "past" as const })),
   ].slice(0, DECK_SIZE);
   const dateFormat = new Intl.DateTimeFormat(locale === "fr" ? "fr-FR" : "en-GB", {
     weekday: "long",

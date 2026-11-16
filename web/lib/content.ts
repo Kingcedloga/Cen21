@@ -25,6 +25,7 @@ import type {
   SubsidiaryFaqContent,
   SubsidiaryFaqItem,
 } from "./types";
+import { EVENTS_TAG, eventsFromCsv } from "./events-sheet";
 import { parseYoutubeId } from "./youtube";
 
 const SITE: Record<Locale, SiteConfig> = { en: siteEn, fr: siteFr };
@@ -140,9 +141,45 @@ export function getAllSubsidiarySlugs(locale: Locale): string[] {
   return getSubsidiaries(locale).map((s) => s.slug);
 }
 
-export function getEvents(locale: Locale, includePast = false): EventItem[] {
+/** Fréquence de relecture de la feuille d'agenda (secondes). */
+const EVENTS_REVALIDATE = 600;
+
+/**
+ * Agenda : la feuille Google Sheets si EVENTS_SHEET_CSV_URL est renseignée
+ * (relue au plus toutes les 10 min, ou tout de suite via
+ * /api/evenements/publier), sinon content/{fr,en}/events.json.
+ *
+ * Feuille injoignable ou illisible : le site ne tombe pas en erreur ; il
+ * reprend le dernier agenda lu avec succès par ce serveur, à défaut le JSON.
+ */
+const lastGoodEvents: Partial<Record<Locale, EventItem[]>> = {};
+
+async function loadEvents(locale: Locale): Promise<EventItem[]> {
+  const url = process.env.EVENTS_SHEET_CSV_URL?.trim();
+  if (!url) return EVENTS[locale];
+  try {
+    const response = await fetch(url, { next: { revalidate: EVENTS_REVALIDATE, tags: [EVENTS_TAG] } });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const text = await response.text();
+    if (/^\s*</.test(text)) throw new Error("réponse HTML : la feuille est-elle publiée en CSV ?");
+    const { events, skipped } = eventsFromCsv(text, SUBSIDIARIES);
+    if (skipped.length) console.warn(`[agenda] ${skipped.length} remarque(s) :\n- ${skipped.join("\n- ")}`);
+    lastGoodEvents.fr = events.fr;
+    lastGoodEvents.en = events.en;
+    return events[locale];
+  } catch (error) {
+    const fallback = lastGoodEvents[locale];
+    console.error(
+      `[agenda] feuille Google Sheets illisible : ${error instanceof Error ? error.message : error} — ` +
+        (fallback ? "dernier agenda lu conservé" : `repli sur content/${locale}/events.json`),
+    );
+    return fallback ?? EVENTS[locale];
+  }
+}
+
+export async function getEvents(locale: Locale, includePast = false): Promise<EventItem[]> {
   const now = Date.now();
-  const events = EVENTS[locale];
+  const events = await loadEvents(locale);
   const sorted = [...events].sort(
     (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
   );
@@ -150,9 +187,9 @@ export function getEvents(locale: Locale, includePast = false): EventItem[] {
   return sorted.filter((e) => new Date(e.date).getTime() >= now);
 }
 
-export function getPastEvents(locale: Locale): EventItem[] {
+export async function getPastEvents(locale: Locale): Promise<EventItem[]> {
   const now = Date.now();
-  return EVENTS[locale]
+  return (await loadEvents(locale))
     .filter((e) => new Date(e.date).getTime() < now)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }

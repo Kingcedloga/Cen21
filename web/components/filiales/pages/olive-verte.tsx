@@ -57,7 +57,7 @@ export async function OliveVertePage({ locale, subsidiary, pageTheme, mapQuery, 
     (photo): photo is GalleryPhoto => Boolean(photo),
   );
   const house = { slug, name, href: `/filiales/${slug}`, external: false };
-  const next = getEvents(locale).find((event) => event.subsidiarySlug === slug);
+  const next = (await getEvents(locale)).find((event) => event.subsidiarySlug === slug);
   const faq = getSubsidiaryFaq(locale, slug);
 
   return (

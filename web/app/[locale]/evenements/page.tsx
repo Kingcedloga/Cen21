@@ -51,8 +51,8 @@ export default async function EventsPage({ params }: Props) {
   const tContact = await getTranslations("contact");
   const tOutro = await getTranslations("outro");
   const tCta = await getTranslations("cta");
-  const upcoming = getEvents(l, false);
-  const past = getPastEvents(l);
+  const upcoming = await getEvents(l, false);
+  const past = await getPastEvents(l);
   const subsidiaries = getSubsidiaries(l);
   const houseOf = (slug: string) => subsidiaries.find((s) => s.slug === slug);
 

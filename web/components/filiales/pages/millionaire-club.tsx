@@ -67,7 +67,7 @@ export async function MillionaireClubPage({ locale, subsidiary, pageTheme, heroV
   const intl = locale === "fr" ? "fr-FR" : "en-GB";
   const part = (date: Date, options: Intl.DateTimeFormatOptions) =>
     new Intl.DateTimeFormat(intl, options).format(date).replace(/\./g, "").toUpperCase();
-  const nights: LineupNight[] = getEvents(locale)
+  const nights: LineupNight[] = (await getEvents(locale))
     .filter((event) => event.subsidiarySlug === slug)
     .slice(0, LINEUP_SIZE)
     .map((event) => {

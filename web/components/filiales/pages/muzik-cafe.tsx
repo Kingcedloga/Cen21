@@ -44,7 +44,7 @@ export async function MuzikCafePage({ locale, subsidiary, pageTheme, mapQuery, m
   const t = await getTranslations("filiale");
   const tMuzik = await getTranslations("muzik");
   const { slug, name, muzikMenuSection, muzikGallerySection } = subsidiary;
-  const events = getEvents(locale)
+  const events = (await getEvents(locale))
     .filter((event) => event.subsidiarySlug === slug)
     .slice(0, DATES_SIZE);
   const faq = getSubsidiaryFaq(locale, slug);

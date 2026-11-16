@@ -116,10 +116,10 @@ export default async function HomePage({ params }: Props) {
   const countIn = (sector: Subsidiary["sector"]) => subsidiaries.filter((s) => s.sector === sector).length;
 
   // Pile d'événements : à venir d'abord, complétée par les plus récents passés.
-  const upcomingEvents = getEvents(l);
+  const upcomingEvents = await getEvents(l);
   const deckSource: { event: EventItem; status: DeckEvent["status"] }[] = [
     ...upcomingEvents.map((event) => ({ event, status: "upcoming" as const })),
-    ...getPastEvents(l).map((event) => ({ event, status: "past" as const })),
+    ...(await getPastEvents(l)).map((event) => ({ event, status: "past" as const })),
   ].slice(0, DECK_SIZE);
   const dateFormat = new Intl.DateTimeFormat(l === "fr" ? "fr-FR" : "en-GB", {
     weekday: "long",

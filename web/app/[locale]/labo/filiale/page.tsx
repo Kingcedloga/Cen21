@@ -107,7 +107,7 @@ export default async function FilialeLabPage({ params, searchParams }: Props) {
 
   const photos = filialePhotos(subsidiary, (n) => t("photoAlt", { name, n }));
   const houses = contactHouses(l);
-  const events = filialeDeckEvents(l, slug);
+  const events = await filialeDeckEvents(l, slug);
   const menu = menuOf(subsidiary);
   const specialties = specialtiesOf(subsidiary);
   const testimonials = subsidiary.testimonialsSection;
