@@ -370,8 +370,8 @@ export function easeInOutCubic(t: number): number {
 
 /** Réglages Lenis (components/motion/SmoothScroll.tsx). */
 export const LENIS_OPTIONS = {
-  /** Inertie : 0.1 sur Mac (trackpads), 0.08 ailleurs — comme Orbix. */
-  lerp: { mac: 0.1, other: 0.08 },
+  /** Inertie : 0.12 sur Mac (trackpads), 0.10 ailleurs — légèrement plus réactif. */
+  lerp: { mac: 0.12, other: 0.10 },
   /** Défilement vers une ancre interne, en secondes (courbe expo.out). */
-  anchorDuration: 1.2,
+  anchorDuration: 1.0,
 } as const;

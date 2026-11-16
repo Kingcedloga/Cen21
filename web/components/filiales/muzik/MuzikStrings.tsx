@@ -53,7 +53,8 @@ export function MuzikStrings({ className = "" }: { className?: string }) {
 
   const { scrollY } = useScroll();
   const velocity = useVelocity(scrollY);
-  const push = useTransform(velocity, (v) => Math.max(-1, Math.min(1, v / 2600)));
+  // Sur mobile (pas de pointeur fin), on fixe push à 0 pour éviter le jank
+  const push = useTransform(velocity, (v) => finePointer ? Math.max(-1, Math.min(1, v / 2600)) : 0);
   const swing = useSpring(push, { stiffness: 320, damping: 6, mass: 0.6 });
 
   // Pincer : la corde franchie par le pointeur part dans le sens du geste.

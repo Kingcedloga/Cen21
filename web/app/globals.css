@@ -276,6 +276,7 @@ html.lenis.lenis-stopped {
 }
 
 body {
+  overflow-x: clip; /* Empêche le débordement horizontal (arc-viewport, filiale-drift__rows) */
   background: var(--color-petrol);
   color: var(--color-ivory);
   font-family: var(--font-inter), system-ui, sans-serif;

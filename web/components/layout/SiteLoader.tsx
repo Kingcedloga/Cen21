@@ -21,8 +21,8 @@ import { useReducedMotionSafe } from "@/lib/use-media-query";
  * seconde après son affichage. Le JavaScript, s'il arrive avant, annule ce
  * fondu (`data-js`) et prend la main.
  */
-const FONTS_MAX_WAIT_MS = 1000;
-const MIN_VISIBLE_MS = 350;
+const FONTS_MAX_WAIT_MS = 600;
+const MIN_VISIBLE_MS = 200;
 const CONVERGE_MS = 240;
 const FADE_MS = 400;
 
