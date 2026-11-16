@@ -11,6 +11,7 @@ export const MIGRATED_FILIALES: ReadonlySet<string> = new Set<string>([
   "filiale-04", // Millionaire Club (R8)
   "filiale-05", // Café Muzik (R10)
   "filiale-06", // Moka & More (R9)
+  "filiale-07", // Gourmet Mexicana (R12)
 ]);
 
 export function isMigratedFiliale(slug: string | null | undefined): boolean {

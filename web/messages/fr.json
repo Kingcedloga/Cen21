@@ -388,83 +388,6 @@
     "kLoungeGallery": {
       "description": "Plats signature, cocktails créatifs et ambiance nocturne — une immersion visuelle au cœur de l'expérience K Lounge."
     },
-    "gourmetMexicanaHero": {
-      "titleLine1": "Gastronomie Mexicaine",
-      "titleLine2": "Contemporaine à Kinshasa",
-      "description": "Ingrédients nobles et présentation épurée, dans l'esprit des tables fines de Mexico.",
-      "ctaPrimaryLabel": "Commander",
-      "ctaSecondaryLabel": "Nous contacter",
-      "thumbnailAlt": "Plat Gourmet Mexicana {index}"
-    },
-    "gourmetMexicanaCategories": {
-      "eyebrow": "Catégorie culinaire",
-      "title": "Nos Catégories Mexicaines",
-      "previous": "Catégorie précédente",
-      "next": "Catégorie suivante",
-      "items": {
-        "tacos": { "name": "Tacos & Tostadas" },
-        "ceviches": { "name": "Ceviches" },
-        "grilledMeats": { "name": "Viandes Grillées" },
-        "desserts": { "name": "Desserts" },
-        "cocktails": { "name": "Cocktails Mexicains" }
-      }
-    },
-    "gourmetMexicanaAbout": {
-      "eyebrow": "À propos de nous",
-      "titleLine1": "Où l'authenticité",
-      "titleLine2": "rencontre l'art",
-      "titleLine3": "de la gastronomie",
-      "description": "Une cuisine mexicaine fine et sincère, portée par des ingrédients nobles et un savoir-faire artisanal, au cœur de Kinshasa.",
-      "ctaLabel": "Découvrir notre restaurant",
-      "highlights": {
-        "tacos": "Tacos artisanaux",
-        "ceviches": "Ceviches frais",
-        "meats": "Viandes marinées",
-        "salsas": "Salsas maison",
-        "guacamole": "Guacamole traditionnel",
-        "desserts": "Desserts mexicains"
-      }
-    },
-    "gourmetMexicanaGallery": {
-      "eyebrow": "Instants gourmands",
-      "description": "Un aperçu de nos plats, de notre cuisine et de l'ambiance de Gourmet Mexicana."
-    },
-    "gourmetMexicanaReservation": {
-      "eyebrow": "Réservation",
-      "titleLine1": "Réservez Votre",
-      "titleLine2": "Table Dès Maintenant",
-      "note": "*réservations recommandées",
-      "nameField": "Votre nom",
-      "phoneField": "Téléphone",
-      "emailField": "Votre email",
-      "guestsField": "Nombre de personnes",
-      "submitLabel": "Réserver maintenant",
-      "footnote": "*Expérience gastronomique mexicaine authentique"
-    },
-    "gourmetMexicanaEvents": {
-      "eyebrow": "Actualités",
-      "title": "Actualités & Événements",
-      "allEventsLabel": "Tous les événements",
-      "readMoreLabel": "Lire plus",
-      "previous": "Événement précédent",
-      "next": "Événement suivant"
-    },
-    "gourmetMexicanaPromotions": {
-      "subtitle": "Spécialité du moment",
-      "offLabel": "off",
-      "ctaLabel": "Commander",
-      "items": {
-        "tacos": "Tacos El Fuego",
-        "enchiladas": "Enchiladas Supremas",
-        "ceviche": "Ceviche Royal"
-      }
-    },
-    "gourmetMexicanaMap": {
-      "eyebrow": "Nous Trouver",
-      "title": "Maps & Directions",
-      "ctaLabel": "Itinéraire",
-      "iframeTitle": "Carte Gourmet Mexicana"
-    },
     "pinkberryHero": {
       "eyebrow": "Frais & Gourmand",
       "title": "L'excellent goût du bon vieux temps.",
@@ -727,6 +650,33 @@
     "board": ["Grands écrans", "Football", "Piscine", "Cocktails", "Karaoké", "Lounge"],
     "reservationTitle": "Réserver une table",
     "reservationText": "Déjeuner, soirée match ou abords de la piscine : indiquez la date, le nombre de personnes et vos envies."
+  },
+  "mexicana": {
+    "heroEyebrow": "Cuisine mexicaine authentique",
+    "heroMenu": "Voir la carte",
+    "heroPosterAlt": "Gourmet Mexicana — la niche au crâne de néon",
+    "elevatorEyebrow": "Matrix Tower",
+    "elevatorTitle": "Au 9ᵉ étage",
+    "elevatorFloor": "Étage",
+    "elevatorHint": "Défilez pour monter",
+    "elevatorText": "Une salle vitrée au-dessus du Boulevard du 30 Juin, entre fresques, guitares et papel picado.",
+    "elevatorAlt": "Gourmet Mexicana — la salle vitrée du 9ᵉ étage",
+    "loteriaEyebrow": "La carte",
+    "loteriaTitle": "La lotería de la casa",
+    "loteriaLead": "Plats épicés et non épicés, salsas maison et cocktails : chaque carte retournée est une envie.",
+    "loteriaCards": ["Tacos & tostadas", "Ceviches", "Viandes grillées", "Salsas maison", "Guacamole traditionnel", "Desserts", "Cocktails mexicains"],
+    "specialsLabel": "Spécialités du moment",
+    "specials": ["Tacos El Fuego", "Enchiladas Supremas", "Ceviche Royal"],
+    "casaEyebrow": "En images",
+    "casaTitle": "La casa",
+    "casaLead": "Fresques, guitares et couleurs du Mexique, au cœur de Kinshasa.",
+    "fiestasEyebrow": "Fiestas",
+    "fiestasTitle": "Les prochaines fiestas",
+    "fiestasBook": "Réserver pour {title}",
+    "fiestasBookShort": "Réserver",
+    "fiestasAll": "Tout l'agenda de la maison",
+    "reservationTitle": "Réservez votre table",
+    "reservationText": "Dîner entre amis, en famille ou repas d'entreprise au 9ᵉ étage : indiquez la date et le nombre de personnes."
   },
   "filiale": {
     "statusOpen": "Ouvert · ferme à {time}",

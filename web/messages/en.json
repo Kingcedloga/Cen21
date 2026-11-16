@@ -387,83 +387,6 @@
     "kLoungeGallery": {
       "description": "Signature dishes, creative cocktails, and nightlife atmosphere — a visual immersion at the heart of the K Lounge experience."
     },
-    "gourmetMexicanaHero": {
-      "titleLine1": "Contemporary Mexican",
-      "titleLine2": "Fine Dining in Kinshasa",
-      "description": "Noble ingredients and refined presentation, in the spirit of Mexico City's fine tables.",
-      "ctaPrimaryLabel": "Order Now",
-      "ctaSecondaryLabel": "Contact Us",
-      "thumbnailAlt": "Gourmet Mexicana dish {index}"
-    },
-    "gourmetMexicanaCategories": {
-      "eyebrow": "Culinary Category",
-      "title": "Our Mexican Categories",
-      "previous": "Previous category",
-      "next": "Next category",
-      "items": {
-        "tacos": { "name": "Tacos & Tostadas" },
-        "ceviches": { "name": "Ceviches" },
-        "grilledMeats": { "name": "Grilled Meats" },
-        "desserts": { "name": "Desserts" },
-        "cocktails": { "name": "Mexican Cocktails" }
-      }
-    },
-    "gourmetMexicanaAbout": {
-      "eyebrow": "About Us",
-      "titleLine1": "Where Authenticity",
-      "titleLine2": "Meets The Art",
-      "titleLine3": "Of Fine Dining",
-      "description": "Fine, sincere Mexican cuisine, built on noble ingredients and artisanal craft, in the heart of Kinshasa.",
-      "ctaLabel": "Discover Our Restaurant",
-      "highlights": {
-        "tacos": "Artisanal Tacos",
-        "ceviches": "Fresh Ceviches",
-        "meats": "Marinated Meats",
-        "salsas": "Homemade Salsas",
-        "guacamole": "Traditional Guacamole",
-        "desserts": "Mexican Desserts"
-      }
-    },
-    "gourmetMexicanaGallery": {
-      "eyebrow": "Gourmet Moments",
-      "description": "A glimpse of our dishes, our kitchen, and the atmosphere at Gourmet Mexicana."
-    },
-    "gourmetMexicanaReservation": {
-      "eyebrow": "Reservation",
-      "titleLine1": "Reserve Your",
-      "titleLine2": "Table Now",
-      "note": "*reservations recommended",
-      "nameField": "Your name",
-      "phoneField": "Phone number",
-      "emailField": "Your email",
-      "guestsField": "Number of guests",
-      "submitLabel": "Reserve Now",
-      "footnote": "*Authentic Mexican fine-dining experience"
-    },
-    "gourmetMexicanaEvents": {
-      "eyebrow": "Latest News",
-      "title": "News & Events",
-      "allEventsLabel": "All Events",
-      "readMoreLabel": "Read More",
-      "previous": "Previous event",
-      "next": "Next event"
-    },
-    "gourmetMexicanaPromotions": {
-      "subtitle": "Special Of The Moment",
-      "offLabel": "off",
-      "ctaLabel": "Order Now",
-      "items": {
-        "tacos": "Tacos El Fuego",
-        "enchiladas": "Enchiladas Supremas",
-        "ceviche": "Ceviche Royal"
-      }
-    },
-    "gourmetMexicanaMap": {
-      "eyebrow": "Find Us",
-      "title": "Maps & Directions",
-      "ctaLabel": "Get Directions",
-      "iframeTitle": "Gourmet Mexicana Map"
-    },
     "pinkberryHero": {
       "eyebrow": "Fresh & Gourmet",
       "title": "Taste From The Good Old Days.",
@@ -727,6 +650,33 @@
     "board": ["Big screens", "Football", "Pool", "Cocktails", "Karaoke", "Lounge"],
     "reservationTitle": "Book a table",
     "reservationText": "Lunch, a match night or by the pool: tell us the date, the number of guests and what you have in mind."
+  },
+  "mexicana": {
+    "heroEyebrow": "Authentic Mexican cuisine",
+    "heroMenu": "See the menu",
+    "heroPosterAlt": "Gourmet Mexicana — the neon skull niche",
+    "elevatorEyebrow": "Matrix Tower",
+    "elevatorTitle": "On the 9th floor",
+    "elevatorFloor": "Floor",
+    "elevatorHint": "Scroll to go up",
+    "elevatorText": "A glass-walled room above Boulevard du 30 Juin, among murals, guitars and papel picado.",
+    "elevatorAlt": "Gourmet Mexicana — the glass-walled room on the 9th floor",
+    "loteriaEyebrow": "The menu",
+    "loteriaTitle": "The house lotería",
+    "loteriaLead": "Spicy and mild dishes, house salsas and cocktails: every card you turn is a craving.",
+    "loteriaCards": ["Tacos & tostadas", "Ceviches", "Grilled meats", "House salsas", "Traditional guacamole", "Desserts", "Mexican cocktails"],
+    "specialsLabel": "Current specials",
+    "specials": ["Tacos El Fuego", "Enchiladas Supremas", "Ceviche Royal"],
+    "casaEyebrow": "In pictures",
+    "casaTitle": "La casa",
+    "casaLead": "Murals, guitars and the colours of Mexico, in the heart of Kinshasa.",
+    "fiestasEyebrow": "Fiestas",
+    "fiestasTitle": "Upcoming fiestas",
+    "fiestasBook": "Book for {title}",
+    "fiestasBookShort": "Book",
+    "fiestasAll": "All the house's events",
+    "reservationTitle": "Book your table",
+    "reservationText": "Dinner with friends, family or a company meal on the 9th floor: tell us the date and the number of guests."
   },
   "filiale": {
     "statusOpen": "Open · closes at {time}",

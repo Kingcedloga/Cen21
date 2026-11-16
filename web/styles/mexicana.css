@@ -1,0 +1,950 @@
+/* =========================================================================
+   Gourmet Mexicana — cuisine mexicaine au 9ᵉ étage de la Matrix Tower
+   (components/filiales/mexicana).
+
+   Identité tirée du lieu et du logo : papel picado (guirlandes de papier
+   découpé), carreaux aux calaveras (public/filiales/photos/filiale-07/
+   motif-tile.jpg, tirée de motifmexican.png), cartes de lotería, niches
+   peintes (retablo), l'ascenseur de la tour ; titres en Cormorant italique,
+   « Mexicana » à la main (Dynalight : --mx-script, posée par la composition).
+
+   Couleurs : tokens remappés par lib/filiale-brand.ts (brun profond =
+   --color-petrol-panel-4, crème = --color-ivory, ocre lisible =
+   --color-rose, rouge = --brand-fill, crème sur rouge = --brand-on-accent)
+   et les deux couleurs de charte que la palette n'a pas, posées par la
+   composition depuis le thème de la maison : --mx-green, --mx-ochre.
+   ========================================================================= */
+
+.mx-script {
+  font-family: var(--mx-script, cursive);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.mx-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-rose);
+}
+
+/* Trois points rouge, ocre, vert : le drapeau en miniature. */
+.mx-eyebrow::before {
+  content: "";
+  width: 1.5rem;
+  height: 0.375rem;
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    var(--mx-green, var(--color-rose)) 0 33%,
+    var(--color-ivory) 33% 66%,
+    var(--brand-fill) 66% 100%
+  );
+}
+
+.mx-title {
+  margin-top: 0.875rem;
+  font-family: var(--brand-title-font, var(--font-dm-sans));
+  font-size: clamp(2.5rem, 1.2rem + 4.4vw, 5.5rem);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+/* --- Papel picado (MexicanaPapel) --------------------------------------- */
+.mx-papel {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.25rem;
+  padding: 0 0.5rem;
+  pointer-events: none;
+}
+
+/* Le fil. */
+.mx-papel::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background-color: color-mix(in srgb, var(--color-ivory) 50%, transparent);
+}
+
+.mx-papel__flag {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 4.5rem;
+  height: auto;
+  aspect-ratio: 60 / 76;
+  transform-origin: 50% 0;
+}
+
+.mx-papel__flag--0 {
+  fill: var(--brand-fill);
+}
+
+.mx-papel__flag--1 {
+  fill: var(--mx-ochre, var(--color-rose));
+}
+
+.mx-papel__flag--2 {
+  fill: var(--mx-green, var(--color-rose));
+}
+
+.mx-papel__flag--3 {
+  fill: var(--color-ivory);
+}
+
+/* Téléphone : huit drapeaux par guirlande, à leur taille. */
+@media (max-width: 639.98px) {
+  .mx-papel__flag:nth-of-type(n + 10) {
+    display: none;
+  }
+}
+
+/* --- La une (MexicanaHero) ----------------------------------------------- */
+.mx-hero {
+  --mx-gutter: clamp(1rem, 4vw, 3rem);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--color-petrol-panel-4);
+  color: var(--color-ivory);
+}
+
+.mx-hero::before {
+  content: "";
+  position: absolute;
+  right: -10rem;
+  bottom: -14rem;
+  z-index: -1;
+  width: 50rem;
+  height: 50rem;
+  border-radius: 9999px;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--brand-fill) 24%, transparent), transparent);
+  pointer-events: none;
+}
+
+/* Deux guirlandes sous la barre de navigation, la seconde en retrait. */
+.mx-hero__papel {
+  position: absolute;
+  top: 5.25rem;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Fanions du hero plus petits que ceux des autres guirlandes (4,5rem). */
+.mx-hero__papel .mx-papel__flag {
+  max-width: clamp(2.25rem, 3.4vw, 3.25rem);
+}
+
+.mx-hero__papel--back {
+  top: 6.75rem;
+  z-index: 0;
+  padding-inline: 2.5rem;
+  opacity: 0.55;
+  transform: scale(0.82);
+}
+
+.mx-hero__inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 3.5rem;
+  max-width: calc(82rem + 2 * var(--mx-gutter));
+  margin-inline: auto;
+  padding: 11rem var(--mx-gutter) 4.5rem;
+}
+
+.mx-crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.8125rem;
+  color: color-mix(in srgb, var(--color-ivory) 72%, transparent);
+}
+
+.mx-crumbs li + li::before {
+  content: "";
+  display: inline-block;
+  width: 0.3rem;
+  height: 0.3rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  border-radius: 9999px;
+  background-color: var(--brand-fill);
+}
+
+.mx-crumbs a {
+  transition: color var(--duration-fine) var(--ease-luxury);
+}
+
+.mx-crumbs a:hover {
+  color: var(--color-rose);
+}
+
+.mx-crumbs a:focus-visible {
+  outline: 1px solid var(--color-rose);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.mx-crumbs [aria-current] {
+  color: var(--color-ivory);
+}
+
+.mx-hero .mx-eyebrow {
+  margin-top: 2rem;
+}
+
+/* « GOURMET » en capitales, « Mexicana » à la main, comme sur le logo. */
+.mx-hero__title {
+  margin-top: 1rem;
+  line-height: 0.9;
+  color: var(--color-ivory);
+}
+
+.mx-hero__word {
+  display: block;
+  font-family: var(--font-dm-sans);
+  font-size: clamp(2.75rem, 1rem + 6.4vw, 6.25rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Rouge sur le brun : glyphes géants (contraste ≥ 3:1). */
+.mx-hero__script {
+  display: block;
+  margin: -0.12em 0 0 0.12em;
+  font-size: clamp(4rem, 1.6rem + 9vw, 9.25rem);
+  line-height: 1;
+  color: var(--brand-fill);
+  transform: rotate(-4deg);
+  transform-origin: left center;
+}
+
+.mx-hero__lead {
+  max-width: 32rem;
+  margin-top: 1.5rem;
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
+  color: color-mix(in srgb, var(--color-ivory) 84%, transparent);
+}
+
+.mx-hero__status {
+  margin-top: 1rem;
+}
+
+.mx-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+/* Cadre de carreaux aux calaveras, écran du teaser à l'intérieur. */
+.mx-hero__frame {
+  position: relative;
+  justify-self: center;
+  width: min(94%, 28rem);
+  padding: 1rem;
+  border-radius: 1.25rem;
+  background: url("/filiales/photos/filiale-07/motif-tile.jpg") center / 9rem auto repeat;
+  box-shadow:
+    0 0 0 3px var(--brand-fill),
+    0 40px 70px -36px color-mix(in srgb, var(--color-petrol-panel-4) 60%, black);
+}
+
+.mx-hero__screen {
+  position: relative;
+  aspect-ratio: 9 / 14;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 0.625rem;
+  background-color: var(--color-petrol-panel-3);
+  box-shadow: 0 0 0 3px var(--color-petrol-panel-4);
+}
+
+.mx-hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--duration-grand) var(--ease-luxury);
+}
+
+.mx-hero__video.is-playing {
+  opacity: 1;
+}
+
+.mx-hero__toggle {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 9999px;
+  background-color: var(--brand-fill);
+  color: var(--brand-on-accent);
+}
+
+.mx-hero__toggle:focus-visible {
+  outline: 2px solid var(--color-ivory);
+  outline-offset: 3px;
+}
+
+@media (min-width: 1024px) {
+  .mx-hero__inner {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: center;
+    gap: 4rem;
+    min-height: 100svh;
+    padding-top: 11.5rem;
+    padding-bottom: calc(var(--capsule-offset) + 4.5rem);
+  }
+  /* Carte du teaser agrandie (24rem auparavant). */
+  .mx-hero__frame {
+    justify-self: end;
+    width: min(100%, 30rem);
+  }
+}
+
+/* --- Au 9ᵉ étage (MexicanaElevator) ------------------------------------- */
+.mx-elevator {
+  --mx-gutter: clamp(1rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  min-height: 34rem;
+  padding: 5.5rem var(--mx-gutter) calc(var(--capsule-offset) + 4.5rem);
+  overflow: hidden;
+  background-color: var(--color-petrol-panel-4);
+  color: var(--color-ivory);
+}
+
+.mx-elevator__head {
+  width: 100%;
+  max-width: 82rem;
+  margin-inline: auto;
+}
+
+.mx-elevator__car {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 64rem;
+  min-height: 0;
+  margin: 1.25rem auto 0;
+}
+
+/* Indicateur d'étage : cadran de laiton au-dessus des portes. */
+.mx-elevator__dial {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1.25rem;
+  border: 2px solid var(--mx-ochre, var(--color-rose));
+  border-radius: 9999px 9999px 0.5rem 0.5rem;
+  background-color: color-mix(in srgb, var(--color-petrol-panel-4) 70%, black);
+  font-variant-numeric: tabular-nums;
+}
+
+.mx-elevator__dial-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-rose);
+}
+
+.mx-elevator__dial-num {
+  min-width: 1.5ch;
+  font-family: var(--font-dm-sans);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  color: var(--brand-on-accent);
+  text-shadow: 0 0 12px color-mix(in srgb, var(--brand-fill) 80%, transparent);
+}
+
+.mx-elevator__dial-arrow {
+  font-size: 0.75rem;
+  color: color-mix(in srgb, var(--color-ivory) 30%, transparent);
+}
+
+.mx-elevator__dial-arrow[data-up] {
+  color: var(--brand-fill);
+}
+
+/* La cage : photo de la salle derrière deux portes de laiton. */
+.mx-elevator__shaft {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  margin-top: 0.75rem;
+  overflow: hidden;
+  isolation: isolate;
+  border: 0.5rem solid color-mix(in srgb, var(--mx-ochre, var(--color-rose)) 70%, black);
+  border-radius: 0.5rem;
+  background-color: var(--color-petrol-panel-3);
+}
+
+.mx-elevator__photo {
+  position: absolute;
+  inset: 0;
+}
+
+.mx-elevator__door {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 50%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 6px,
+      color-mix(in srgb, var(--color-ivory) 6%, transparent) 6px 7px
+    ),
+    linear-gradient(
+      100deg,
+      color-mix(in srgb, var(--mx-ochre, var(--color-rose)) 82%, black) 0%,
+      var(--mx-ochre, var(--color-rose)) 45%,
+      color-mix(in srgb, var(--mx-ochre, var(--color-rose)) 70%, black) 100%
+    );
+}
+
+.mx-elevator__door--left {
+  left: 0;
+  box-shadow: inset -2px 0 0 color-mix(in srgb, var(--color-petrol-panel-4) 60%, transparent);
+}
+
+.mx-elevator__door--right {
+  right: 0;
+  box-shadow: inset 2px 0 0 color-mix(in srgb, var(--color-petrol-panel-4) 60%, transparent);
+}
+
+.mx-elevator__caption {
+  max-width: 36rem;
+  margin-top: 1rem;
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
+  text-align: center;
+  color: var(--color-ivory);
+}
+
+.mx-elevator__hint {
+  position: absolute;
+  bottom: 2.25rem;
+  left: 50%;
+  z-index: 3;
+  padding: 0.375rem 0.875rem;
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, var(--color-petrol-panel-4) 70%, transparent);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  translate: -50% 0;
+}
+
+/* Rendu statique : portes ouvertes, cage à hauteur fixe. Doublé en @media
+   pour le HTML serveur, avant hydratation. */
+.mx-elevator.is-static {
+  height: auto;
+  min-height: 0;
+  padding-block: clamp(5rem, 10vw, 7rem);
+}
+
+.mx-elevator.is-static .mx-elevator__shaft {
+  flex: none;
+  aspect-ratio: 16 / 9;
+}
+
+.mx-elevator.is-static .mx-elevator__door {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mx-elevator {
+    height: auto;
+    min-height: 0;
+    padding-block: clamp(5rem, 10vw, 7rem);
+  }
+  .mx-elevator .mx-elevator__shaft {
+    flex: none;
+    aspect-ratio: 16 / 9;
+  }
+  .mx-elevator .mx-elevator__door {
+    display: none;
+  }
+  .mx-elevator .mx-elevator__caption {
+    opacity: 1 !important;
+  }
+}
+
+/* --- La lotería (MexicanaLoteria), sur le crème -------------------------- */
+.mx-loteria {
+  padding: clamp(5rem, 10vw, 8.5rem) clamp(1rem, 4vw, 3rem);
+  background-color: var(--surface-light);
+  color: var(--color-petrol);
+}
+
+.mx-loteria__inner {
+  max-width: 82rem;
+  margin-inline: auto;
+}
+
+.mx-loteria .mx-eyebrow {
+  color: var(--color-rose-deep);
+}
+
+.mx-loteria__lead {
+  max-width: 38rem;
+  margin-top: 1.5rem;
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
+  color: color-mix(in srgb, var(--color-petrol) 80%, transparent);
+}
+
+.mx-loteria__deck {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 3.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  perspective: 1400px;
+}
+
+.mx-card {
+  aspect-ratio: 5 / 7.4;
+}
+
+.mx-card__inner {
+  position: relative;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.mx-card__face,
+.mx-card__back {
+  position: absolute;
+  inset: 0;
+  border-radius: 0.75rem;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 24px 44px -28px color-mix(in srgb, var(--color-petrol-panel-4) 70%, transparent);
+}
+
+/* Dos : carreaux aux calaveras, liseré rouge. */
+.mx-card__back {
+  border: 0.5rem solid var(--brand-fill);
+  background: url("/filiales/photos/filiale-07/motif-tile.jpg") center / 7rem auto repeat;
+  transform: rotateY(180deg);
+}
+
+/* Face : papier crème, cadre noir, vignette colorée, bandeau du titre. */
+.mx-card__face {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 2px solid var(--color-petrol-panel-4);
+  background-color: var(--color-ivory);
+  color: var(--color-petrol-panel-4);
+}
+
+.mx-card__num {
+  font-family: var(--font-dm-sans);
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.mx-card__art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 2px solid var(--color-petrol-panel-4);
+  background-color: var(--mx-card, var(--brand-fill));
+}
+
+/* Rayons de soleil derrière l'initiale. */
+.mx-card__art::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    color-mix(in srgb, var(--color-ivory) 18%, transparent) 0deg 10deg,
+    transparent 10deg 20deg
+  );
+}
+
+.mx-card__medal {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 62%;
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  background-color: var(--color-ivory);
+  box-shadow: 0 0 0 3px var(--color-petrol-panel-4);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1;
+  color: var(--color-petrol-panel-4);
+}
+
+.mx-card__title {
+  padding: 0.5rem 0.25rem;
+  border-top: 2px solid var(--color-petrol-panel-4);
+  font-family: var(--brand-title-font, var(--font-dm-sans));
+  font-size: clamp(1.0625rem, 0.9rem + 0.6vw, 1.375rem);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.mx-card__face--0 {
+  --mx-card: var(--brand-fill);
+}
+
+.mx-card__face--1 {
+  --mx-card: var(--mx-green, var(--brand-fill));
+}
+
+.mx-card__face--2 {
+  --mx-card: var(--mx-ochre, var(--brand-fill));
+}
+
+.mx-card__face--3 {
+  --mx-card: color-mix(in srgb, var(--color-petrol-panel-4) 80%, var(--brand-fill));
+}
+
+.mx-specials {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin-top: 3rem;
+  padding: 1.25rem 1.5rem;
+  border: 2px dashed color-mix(in srgb, var(--color-petrol) 40%, transparent);
+  border-radius: 0.75rem;
+}
+
+.mx-specials__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-rose-deep);
+}
+
+.mx-specials__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mx-specials__list li {
+  padding: 0.375rem 0.875rem;
+  border-radius: 9999px;
+  background-color: var(--brand-fill);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--brand-on-accent);
+}
+
+@media (min-width: 640px) {
+  .mx-loteria__deck {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .mx-loteria__deck {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mx-card__inner {
+    transform: none !important;
+  }
+}
+
+/* --- La casa (MexicanaCasa) : niches peintes ---------------------------- */
+.mx-casa {
+  padding: clamp(5rem, 10vw, 8.5rem) clamp(1rem, 4vw, 3rem);
+  background-color: var(--color-petrol-panel-4);
+  color: var(--color-ivory);
+}
+
+.mx-casa__inner {
+  max-width: 82rem;
+  margin-inline: auto;
+}
+
+.mx-casa__lead {
+  max-width: 36rem;
+  margin-top: 1.5rem;
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
+  color: color-mix(in srgb, var(--color-ivory) 82%, transparent);
+}
+
+.mx-casa__grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 3.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Niche : arc en haut, cadre peint, légère inclinaison. */
+.mx-niche {
+  --mx-frame: var(--brand-fill);
+  padding: 0.625rem;
+  border-radius: 10rem 10rem 0.75rem 0.75rem;
+  background-color: var(--mx-frame);
+  transform: rotate(-1deg);
+}
+
+.mx-niche--1 {
+  --mx-frame: var(--mx-ochre, var(--brand-fill));
+  transform: rotate(1.2deg);
+}
+
+.mx-niche--2 {
+  --mx-frame: var(--mx-green, var(--brand-fill));
+  transform: rotate(-0.6deg);
+}
+
+.mx-niche--3 {
+  --mx-frame: var(--color-ivory);
+  transform: rotate(0.8deg);
+}
+
+.mx-niche__button {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3.4;
+  overflow: hidden;
+  border-radius: 9.5rem 9.5rem 0.375rem 0.375rem;
+  background-color: color-mix(in srgb, var(--color-petrol-panel-4) 80%, black);
+  cursor: zoom-in;
+}
+
+.mx-niche__button:focus-visible {
+  outline: 2px solid var(--color-ivory);
+  outline-offset: 6px;
+}
+
+.mx-niche__photo {
+  position: absolute;
+  inset: 0;
+  transition: transform var(--duration-luxe) var(--ease-luxury);
+}
+
+.mx-niche__button:hover .mx-niche__photo {
+  transform: scale(1.04);
+}
+
+@media (min-width: 640px) {
+  .mx-casa__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .mx-casa__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mx-niche__photo {
+    clip-path: none !important;
+    transition: none;
+  }
+}
+
+/* --- Les fiestas (MexicanaFiestas), sur le vert ------------------------- */
+.mx-fiestas {
+  padding: clamp(5rem, 10vw, 8.5rem) clamp(1rem, 4vw, 3rem);
+  background-color: var(--mx-green, var(--color-petrol));
+  color: var(--color-ivory);
+}
+
+.mx-fiestas__inner {
+  max-width: 82rem;
+  margin-inline: auto;
+}
+
+.mx-fiestas .mx-eyebrow {
+  color: var(--color-ivory);
+}
+
+.mx-fiestas__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.mx-fiestas__list {
+  margin: 3rem 0 0;
+  padding: 0;
+  border-top: 1px solid color-mix(in srgb, var(--color-ivory) 40%, transparent);
+  list-style: none;
+}
+
+.mx-fiesta {
+  display: grid;
+  grid-template-areas:
+    "flag body"
+    "action action";
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 1.25rem 1.5rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-ivory) 30%, transparent);
+}
+
+/* Date dans un drapeau de papel picado rouge (dents de scie en bas). */
+.mx-fiesta__flag {
+  display: grid;
+  grid-area: flag;
+  justify-items: center;
+  width: 5.25rem;
+  padding: 0.75rem 0 1.25rem;
+  background-color: var(--brand-fill);
+  color: var(--brand-on-accent);
+  clip-path: polygon(
+    0 0, 100% 0, 100% 88%,
+    91.6% 100%, 83.3% 88%, 75% 100%, 66.6% 88%, 58.3% 100%, 50% 88%,
+    41.6% 100%, 33.3% 88%, 25% 100%, 16.6% 88%, 8.3% 100%, 0 88%
+  );
+}
+
+.mx-fiesta__day {
+  font-family: var(--font-dm-sans);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.mx-fiesta__month {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.mx-fiesta__body {
+  grid-area: body;
+}
+
+.mx-fiesta__title {
+  font-family: var(--brand-title-font, var(--font-dm-sans));
+  font-size: clamp(1.5rem, 1rem + 1.6vw, 2.375rem);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.mx-fiesta__time {
+  margin-top: 0.375rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.mx-fiesta__time::first-letter {
+  text-transform: uppercase;
+}
+
+.mx-fiesta__excerpt {
+  max-width: 36rem;
+  margin-top: 0.5rem;
+  line-height: 1.6;
+}
+
+.mx-fiesta__action {
+  grid-area: action;
+}
+
+@media (min-width: 1024px) {
+  .mx-fiesta {
+    grid-template-areas: "flag body action";
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 2.5rem;
+  }
+}
+
+/* --- La mascotte (MexicanaMascot) ---------------------------------------- */
+.mx-mascot-wrap {
+  position: relative;
+}
+
+.mx-mascot {
+  position: absolute;
+  top: -7.5rem;
+  right: clamp(1rem, 6vw, 6rem);
+  z-index: 2;
+  width: clamp(7rem, 14vw, 11rem);
+  height: clamp(8.5rem, 17vw, 13.5rem);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mx-mascot__figure {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 100%;
+}
+
+/* --- Habillage des blocs partagés sur la fiche (marqueur posé par la
+   composition) : titres de section en italique. ------------------------- */
+html body:has([data-filiale-mexicana]) {
+  & main h2.title-section {
+    font-style: italic;
+  }
+}

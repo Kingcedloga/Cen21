@@ -979,6 +979,7 @@
         "/filiales/photos/filiale-07/gallery/dsc09813.jpg",
         "/filiales/photos/filiale-07/gallery/dsc09820.jpg"
       ],
+      "teaserVideo": { "src": "/filiales/videos/Teasers/teaser-gourmet.mp4", "poster": "/filiales/photos/filiale-07/gallery/dsc09820.jpg" },
       "featured": false
     },
     {
