@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { routing } from "@/i18n/routing";
 import { getAllSubsidiarySlugs, getSubsidiaryBySlug } from "@/lib/content";
+import { filialeShareImage } from "@/lib/filiale-seo";
 import { getSiteOrigin } from "@/lib/site-url";
 
 const STATIC_PATHS = [
@@ -45,14 +46,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     for (const slug of getAllSubsidiarySlugs(locale)) {
       const subsidiary = getSubsidiaryBySlug(locale, slug);
-      if (subsidiary?.externalUrl) continue;
+      if (!subsidiary || subsidiary.externalUrl) continue;
 
       const localized = localePath(locale, `/filiales/${slug}`);
+      const image = filialeShareImage(subsidiary);
       entries.push({
         url: `${origin}${localized}`,
         lastModified: new Date(),
         changeFrequency: "weekly",
         priority: 0.7,
+        // Versions linguistiques de la fiche et sa photo (Google Images).
+        alternates: {
+          languages: Object.fromEntries(
+            routing.locales.map((l) => [l, `${origin}${localePath(l, `/filiales/${slug}`)}`]),
+          ),
+        },
+        images: [image.startsWith("http") ? image : `${origin}${image}`],
       });
     }
   }

@@ -1,50 +1,41 @@
 "use client";
 
+import Image from "next/image";
+
 import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 type LoaderGraphicProps = {
   className?: string;
-  /** Taille du visuel (px). */
+  /** Largeur du logo (px). */
   size?: number;
 };
 
-const FILTER_ID = "cen21-loader-goo";
+/** Dimensions du fichier `public/brand/cen21-wordmark.png` (fond transparent). */
+const WORDMARK = { width: 318, height: 125 };
 
-export function LoaderGraphic({ className = "", size = 88 }: LoaderGraphicProps) {
-  // Sûr pour l'hydratation (faux côté serveur et pendant l'hydratation) : le
-  // hook de Framer lit la préférence tout de suite côté client, d'où l'erreur
-  // React #418 en reduced motion. La CSS @media fixe le visuel avant.
+/**
+ * Loader du site : le logo CEN21 (mot-symbole et « Hospitality & Lifestyle »)
+ * qui respire, un reflet balayant les lettres (globals.css, `.loader-logo`).
+ * Le fond reste celui du voile (pétrole, ou la couleur de la maison sur une
+ * fiche). Reduced motion : logo fixe.
+ */
+export function LoaderGraphic({ className = "", size = 220 }: LoaderGraphicProps) {
+  // Sûr pour l'hydratation (faux côté serveur et pendant l'hydratation) ; la
+  // CSS @media fixe le visuel avant.
   const reduced = useReducedMotionSafe();
 
   return (
-    <div
-      className={`relative inline-flex items-center justify-center ${className}`}
-      style={{ width: size, height: size }}
-      aria-hidden
-    >
-      <svg className="absolute h-0 w-0" aria-hidden>
-        <defs>
-          <filter id={FILTER_ID}>
-            <feGaussianBlur in="SourceGraphic" stdDeviation="9" result="blur" />
-            <feColorMatrix
-              in="blur"
-              type="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10"
-              result="goo"
-            />
-            <feBlend in="SourceGraphic" in2="goo" />
-          </filter>
-        </defs>
-      </svg>
-
-      <div
-        className={`loader-blobs relative h-full w-full ${reduced ? "loader-blobs--static" : ""}`}
-        style={{ filter: `url(#${FILTER_ID})` }}
-      >
-        <span className="loader-blob loader-blob--rose" />
-        <span className="loader-blob loader-blob--quartz" />
-        <span className="loader-blob loader-blob--deep" />
-      </div>
+    <div className={`loader-logo ${reduced ? "loader-logo--static" : ""} ${className}`} style={{ width: size }} aria-hidden>
+      <Image
+        src="/brand/cen21-wordmark.png"
+        alt=""
+        width={WORDMARK.width}
+        height={WORDMARK.height}
+        sizes={`${size}px`}
+        loading="eager"
+        className="loader-logo__img"
+      />
+      <span className="loader-logo__sheen" />
     </div>
   );
 }

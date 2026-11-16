@@ -32,11 +32,14 @@ export function createPageMetadata({
   description,
   path = "",
   locale = "en",
+  image,
 }: {
   title: string;
   description?: string;
   path?: string;
   locale?: Locale;
+  /** Image de partage propre à la page (sinon celle du groupe, /og-image.png). */
+  image?: { url: string; alt: string };
 }): Metadata {
   const site = getSiteConfig(locale);
   const fullTitle =
@@ -45,6 +48,9 @@ export function createPageMetadata({
   const pagePath = toLocalizedPath(locale, path);
   const ogLocale = locale === "fr" ? "fr_FR" : "en_US";
   const ogImageAlt = `${site.name} — CEN21 Hospitality & Lifestyle`;
+  const shareImages = image
+    ? [{ url: image.url, alt: image.alt }]
+    : [{ url: OG_IMAGE.path, width: OG_IMAGE.width, height: OG_IMAGE.height, alt: ogImageAlt }];
 
   return {
     title: fullTitle,
@@ -67,28 +73,13 @@ export function createPageMetadata({
       siteName: site.name,
       locale: ogLocale,
       type: "website",
-      images: [
-        {
-          url: OG_IMAGE.path,
-          width: OG_IMAGE.width,
-          height: OG_IMAGE.height,
-          alt: ogImageAlt,
-          type: "image/png",
-        },
-      ],
+      images: image ? shareImages : [{ ...shareImages[0], type: "image/png" }],
     },
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
       description: desc,
-      images: [
-        {
-          url: OG_IMAGE.path,
-          width: OG_IMAGE.width,
-          height: OG_IMAGE.height,
-          alt: ogImageAlt,
-        },
-      ],
+      images: shareImages,
     },
   };
 }

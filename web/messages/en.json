@@ -634,6 +634,7 @@
     "reservationText": "Dinner with friends, family or a company meal on the 9th floor: tell us the date and the number of guests."
   },
   "filiale": {
+    "seoTitle": "{name} · {sector} in {cities}",
     "statusOpen": "Open · closes at {time}",
     "statusOpensToday": "Closed · opens at {time}",
     "statusOpensTomorrow": "Closed · opens tomorrow at {time}",

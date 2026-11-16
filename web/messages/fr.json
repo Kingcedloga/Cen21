@@ -634,6 +634,7 @@
     "reservationText": "Dîner entre amis, en famille ou repas d'entreprise au 9ᵉ étage : indiquez la date et le nombre de personnes."
   },
   "filiale": {
+    "seoTitle": "{name} · {sector} à {cities}",
     "statusOpen": "Ouvert · ferme à {time}",
     "statusOpensToday": "Fermé · ouvre à {time}",
     "statusOpensTomorrow": "Fermé · ouvre demain à {time}",

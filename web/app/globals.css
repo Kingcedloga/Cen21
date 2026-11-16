@@ -1028,118 +1028,77 @@ body:has(> [data-capsule-nav]) [data-surface="light"] [data-surface="dark"] .btn
   }
 }
 
-@keyframes site-loader-blob-1 {
+/* Loader : le logo CEN21 (public/brand/cen21-wordmark.png). Il « respire »
+   doucement et un reflet balaie les lettres tant que la page charge ;
+   reduced motion : logo fixe. */
+@keyframes loader-logo-breathe {
   0%,
   100% {
-    transform: translate(0, 0) scale(1);
-  }
-  25% {
-    transform: translate(14px, -10px) scale(1.06);
+    opacity: 0.72;
   }
   50% {
-    transform: translate(-8px, 12px) scale(0.94);
-  }
-  75% {
-    transform: translate(-12px, -6px) scale(1.02);
+    opacity: 1;
   }
 }
 
-@keyframes site-loader-blob-2 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
+@keyframes loader-logo-sheen {
+  from {
+    background-position: 140% 0;
   }
-  25% {
-    transform: translate(-14px, 8px) scale(0.96);
-  }
-  50% {
-    transform: translate(10px, -12px) scale(1.08);
-  }
-  75% {
-    transform: translate(8px, 10px) scale(0.98);
+  to {
+    background-position: -40% 0;
   }
 }
 
-@keyframes site-loader-blob-3 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(6px, 14px) scale(1.04);
-  }
-  66% {
-    transform: translate(-10px, -10px) scale(0.92);
-  }
+.loader-logo {
+  position: relative;
+  aspect-ratio: 318 / 125;
 }
 
-.loader-blobs {
-  --loader-blob-size: 1.75rem;
+.loader-logo__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  animation: loader-logo-breathe 1.8s ease-in-out infinite;
 }
 
-.loader-blob {
+/* Reflet limité aux lettres : masque = le logo lui-même. */
+.loader-logo__sheen {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: var(--loader-blob-size);
-  height: var(--loader-blob-size);
-  margin: calc(var(--loader-blob-size) / -2);
-  border-radius: 9999px;
-  opacity: 0.92;
-  will-change: transform;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 38%, rgb(255 255 255 / 0.6) 50%, transparent 62%) 140% 0 / 260% 100%
+    no-repeat;
+  -webkit-mask: url("/brand/cen21-wordmark.png") center / 100% 100% no-repeat;
+  mask: url("/brand/cen21-wordmark.png") center / 100% 100% no-repeat;
+  animation: loader-logo-sheen 1.6s var(--ease-out-soft) infinite;
+  pointer-events: none;
 }
 
-.loader-blob--rose {
-  background: rgb(var(--color-rose-rgb));
-  animation: site-loader-blob-1 2.8s var(--ease-out-soft) infinite;
-}
-
-.loader-blob--quartz {
-  background: var(--color-neutral);
-  animation: site-loader-blob-2 2.8s var(--ease-out-soft) infinite;
-  animation-delay: -0.9s;
-}
-
-.loader-blob--deep {
-  background: var(--color-rose-deep);
-  animation: site-loader-blob-3 2.8s var(--ease-out-soft) infinite;
-  animation-delay: -1.8s;
-}
-
-.loader-blobs--static .loader-blob {
+.loader-logo--static .loader-logo__img,
+.loader-logo--static .loader-logo__sheen {
   animation: none;
-  opacity: 0.85;
 }
 
-.loader-blobs--static .loader-blob--rose {
-  transform: translate(-6px, 0);
+.loader-logo--static .loader-logo__img {
+  opacity: 1;
 }
 
-.loader-blobs--static .loader-blob--quartz {
-  transform: translate(6px, -4px);
-}
-
-.loader-blobs--static .loader-blob--deep {
-  transform: translate(0, 6px);
+.loader-logo--static .loader-logo__sheen {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .animate-scroll-cue,
-  .loader-blob {
+  .loader-logo__img,
+  .loader-logo__sheen {
     animation: none !important;
   }
-  /* Même pose fixe que .loader-blobs--static, dès le HTML serveur. */
-  .loader-blob {
-    opacity: 0.85;
+  /* Même pose fixe que .loader-logo--static, dès le HTML serveur. */
+  .loader-logo__img {
+    opacity: 1;
   }
-  .loader-blob--rose {
-    transform: translate(-6px, 0);
-  }
-  .loader-blob--quartz {
-    transform: translate(6px, -4px);
-  }
-  .loader-blob--deep {
-    transform: translate(0, 6px);
+  .loader-logo__sheen {
+    display: none;
   }
 }
 
