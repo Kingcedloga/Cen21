@@ -30,23 +30,44 @@
       "titleAccent": "exceptional living"
     }
   ],
-  "heroImage": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&q=85",
+  "heroImage": "/home/hero/01-salon.jpg",
   "heroSlides": [
     {
-      "src": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&q=85",
-      "alt": "Elegant fine-dining restaurant interior"
+      "src": "/home/hero/01-salon.jpg",
+      "alt": "Lounge with velvet armchairs and golden chandeliers"
     },
     {
-      "src": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1920&q=85",
-      "alt": "Cocktail bar with intimate lighting"
+      "src": "/home/hero/02-cocktails.jpg",
+      "alt": "Three cocktails served at the bar"
     },
     {
-      "src": "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=1920&q=85",
-      "alt": "Premium lounge with soft ambient light"
+      "src": "/home/hero/03-rooftop.jpg",
+      "alt": "Rooftop terrace overlooking Kinshasa"
     },
     {
-      "src": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1920&q=85",
-      "alt": "Nightlife scene with dramatic lighting"
+      "src": "/home/hero/04-table.jpg",
+      "alt": "Sliced beef and a glass of red wine",
+      "position": "50% 62%"
+    },
+    {
+      "src": "/home/hero/05-mexicana.jpg",
+      "alt": "Festive room under colourful papel picado"
+    },
+    {
+      "src": "/home/hero/06-toast.jpg",
+      "alt": "A toast around the table, seen from above"
+    },
+    {
+      "src": "/home/hero/07-reception.jpg",
+      "alt": "Reception with green walls and golden light"
+    },
+    {
+      "src": "/home/hero/08-cuisine.jpg",
+      "alt": "Plating a dish in the kitchen"
+    },
+    {
+      "src": "/home/hero/09-terrasse.jpg",
+      "alt": "Glass-walled terrace at the end of the day"
     }
   ]
 }

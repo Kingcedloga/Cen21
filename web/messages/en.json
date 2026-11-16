@@ -98,11 +98,19 @@
     "eventsTitlePastSweep": "gatherings",
     "eventsStatusUpcoming": "Upcoming",
     "eventsStatusPast": "Past edition",
-    "reelLabel": "Watch the film",
     "eventsPrev": "Previous event",
     "eventsNext": "Next event",
     "eventsPosition": "Event {current} of {total}",
-    "eventsSwipeHint": "Swipe to browse"
+    "eventsSwipeHint": "Swipe to browse",
+    "reelEyebrow": "Our houses on video",
+    "reelTitle": "Our houses, in motion",
+    "reelTitleSweep": "in motion",
+    "reelCaption": "One teaser per house: the room, the plate, the night. Videos start muted; the sound is your call.",
+    "reelRole": "carousel",
+    "reelSlide": "teaser",
+    "reelSlideLabel": "{name}, {index} of {total}",
+    "reelShow": "Watch the {name} teaser",
+    "reelDiscover": "Discover {name}"
   },
   "hero": {
     "tagline": "The art of exceptional living",

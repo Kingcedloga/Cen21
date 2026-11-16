@@ -22,8 +22,8 @@ const RING = 76;
  * — l'ancien badge qui tournait en boucle, devenu le bouton lecture / pause :
  * son texte circulaire tourne avec le défilement. À côté : le titre en
  * capitales rondes et sa suite manuscrite, la légende, le son, et une ligne
- * de lecture rouge sous l'arche. Reduced motion : disque immobile, pas de
- * lecture automatique (lib/use-teaser-video.ts).
+ * de lecture rouge sous l'arche. Reduced motion : disque immobile (lecture
+ * muette automatique dans tous les cas : lib/use-teaser-video.ts).
  */
 export function MokaVideo({ name, video, poster }: { name: string; video: HeroVideo; poster?: string }) {
   const t = useTranslations("moka");

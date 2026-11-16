@@ -20,8 +20,8 @@ const SEGMENTS = 3;
  * (logo en pastille, @pseudo Instagram). Appuyer sur la story la met en
  * pause, comme sur un téléphone ; bouton du son en bas. À côté : le titre en
  * capitales du club, l'indicateur « Rec » allumé pendant la lecture, la
- * légende et le lien vers le compte. Reduced motion : pas de lecture
- * automatique (lib/use-teaser-video.ts).
+ * légende et le lien vers le compte. Lecture muette automatique à l'écran
+ * (lib/use-teaser-video.ts).
  */
 export function ClubAftermovie({
   name,

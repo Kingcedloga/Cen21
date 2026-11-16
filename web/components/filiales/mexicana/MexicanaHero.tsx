@@ -10,7 +10,8 @@ import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import { ExternalLink, Pause, Play } from "@/lib/icons";
 import type { HeroVideo } from "@/lib/types";
-import { REDUCED_MOTION_QUERY, useReducedMotionSafe } from "@/lib/use-media-query";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
+import { teaserAutoplayAllowed } from "@/lib/use-teaser-video";
 
 import { MexicanaPapel } from "./MexicanaPapel";
 
@@ -19,19 +20,13 @@ import "@/styles/mexicana.css";
 /** Reduced motion : valeurs fixes explicites (rien de l'état d'avant hydratation). */
 const STILL_FRAME = { rotate: 3, y: 0 };
 
-/** Lecture automatique : ni reduced motion, ni économiseur de données. */
-function autoplayAllowed() {
-  const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
-  return !window.matchMedia(REDUCED_MOTION_QUERY).matches && !connection?.saveData;
-}
-
 /**
  * La une de Gourmet Mexicana : deux guirlandes de papel picado sous la barre
  * de navigation, le nom comme sur le logo (« GOURMET » en capitales,
  * « Mexicana » à la main, en rouge), et le teaser de la maison dans un cadre
  * de carreaux (le motif aux calaveras). Au défilement, le cadre se redresse
  * et remonte. Vidéo muette, en boucle seulement à l'écran, bouton lecture /
- * pause ; reduced motion ou économiseur de données : l'affiche.
+ * pause ; économiseur de données seul : l'affiche.
  */
 export function MexicanaHero({
   name,
@@ -122,7 +117,6 @@ export function MexicanaHero({
 
 function TeaserVideo({ video, poster, posterAlt }: { video?: HeroVideo; poster: string; posterAlt: string }) {
   const tCommon = useTranslations("common");
-  const reduced = useReducedMotionSafe();
   const ref = useRef<HTMLVideoElement>(null);
   // null : lecture automatique ; true / false : choix du visiteur.
   const [paused, setPaused] = useState<boolean | null>(null);
@@ -131,7 +125,7 @@ function TeaserVideo({ video, poster, posterAlt }: { video?: HeroVideo; poster: 
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
-    const wanted = paused === null ? autoplayAllowed() : !paused;
+    const wanted = paused === null ? teaserAutoplayAllowed() : !paused;
     if (!wanted) {
       element.pause();
       return;
@@ -143,8 +137,7 @@ function TeaserVideo({ video, poster, posterAlt }: { video?: HeroVideo; poster: 
     });
     observer.observe(element);
     return () => observer.disconnect();
-    // `reduced` : relancer la décision si la préférence change.
-  }, [paused, reduced]);
+  }, [paused]);
 
   return (
     <>

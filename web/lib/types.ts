@@ -444,7 +444,8 @@ export type SiteConfig = {
   social: SocialLinks;
   /** @deprecated préférer heroSlides */
   heroImage: string;
-  heroSlides?: { src: string; alt: string }[];
+  /** Diaporama du hero d'accueil ; `position` : cadrage (object-position), ex. « 50% 62% ». */
+  heroSlides?: { src: string; alt: string; position?: string }[];
   /** @deprecated préférer experienceVideos */
   experienceYoutubeId?: string;
   /** Vidéos de la section Expérience (slider horizontal). */

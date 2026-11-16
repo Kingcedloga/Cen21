@@ -10,7 +10,8 @@ import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import { Pause, Phone, Play } from "@/lib/icons";
 import type { HeroVideo } from "@/lib/types";
-import { REDUCED_MOTION_QUERY, useReducedMotionSafe } from "@/lib/use-media-query";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
+import { teaserAutoplayAllowed } from "@/lib/use-teaser-video";
 
 import "@/styles/olive.css";
 
@@ -18,19 +19,13 @@ import "@/styles/olive.css";
 const STILL_OVAL = { rotate: -6, y: 0 };
 const STILL_RING = { rotate: 8 };
 
-/** Lecture automatique : ni reduced motion, ni économiseur de données. */
-function autoplayAllowed() {
-  const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
-  return !window.matchMedia(REDUCED_MOTION_QUERY).matches && !connection?.saveData;
-}
-
 /**
  * La une de L'Olive Verte : le nom en capitales fines et espacées (l'Art
  * déco du logo) et le teaser de la maison dans un ovale — la forme d'une
  * olive — doublé d'un filet. Au défilement, l'ovale se redresse et remonte,
  * le filet tourne en sens inverse. Vidéo muette, en boucle seulement à
- * l'écran, bouton lecture / pause (WCAG 2.2.2) ; reduced motion ou
- * économiseur de données : l'affiche, la vidéo se lance au bouton.
+ * l'écran, bouton lecture / pause (WCAG 2.2.2) ; économiseur de données
+ * seul : l'affiche, la vidéo se lance au bouton.
  */
 export function OliveHero({
   name,
@@ -118,7 +113,6 @@ export function OliveHero({
 
 function OliveVideo({ video, poster, posterAlt }: { video?: HeroVideo; poster: string; posterAlt: string }) {
   const tCommon = useTranslations("common");
-  const reduced = useReducedMotionSafe();
   const ref = useRef<HTMLVideoElement>(null);
   // null : lecture automatique ; true / false : choix du visiteur.
   const [paused, setPaused] = useState<boolean | null>(null);
@@ -127,7 +121,7 @@ function OliveVideo({ video, poster, posterAlt }: { video?: HeroVideo; poster: s
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
-    const wanted = paused === null ? autoplayAllowed() : !paused;
+    const wanted = paused === null ? teaserAutoplayAllowed() : !paused;
     if (!wanted) {
       element.pause();
       return;
@@ -139,8 +133,7 @@ function OliveVideo({ video, poster, posterAlt }: { video?: HeroVideo; poster: s
     });
     observer.observe(element);
     return () => observer.disconnect();
-    // `reduced` : relancer la décision si la préférence change.
-  }, [paused, reduced]);
+  }, [paused]);
 
   return (
     <>

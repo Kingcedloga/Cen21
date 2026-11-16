@@ -8,23 +8,18 @@ import { reveal } from "@/components/motion/Reveal";
 import { DURATION_S, EASE } from "@/lib/motion";
 import { Pause, Play, Volume2, VolumeX } from "@/lib/icons";
 import type { HeroVideo } from "@/lib/types";
-import { REDUCED_MOTION_QUERY, useReducedMotionSafe } from "@/lib/use-media-query";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
+import { teaserAutoplayAllowed } from "@/lib/use-teaser-video";
 
 import "@/styles/muzik.css";
-
-/** Lecture automatique : ni reduced motion, ni économiseur de données. */
-function autoplayAllowed() {
-  const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
-  return !window.matchMedia(REDUCED_MOTION_QUERY).matches && !connection?.saveData;
-}
 
 /**
  * L'ambiance du patio en vidéo : le teaser de la maison, vertical, présenté
  * comme un clip (autocollant « Teaser », ligne de lecture rouge). La vidéo
  * ne se charge qu'à l'approche de la section, se lit muette en boucle tant
  * qu'elle est à l'écran ; boutons lecture / pause (WCAG 2.2.2) et son.
- * Reduced motion ou économiseur de données : pas de lecture automatique,
- * première image affichée, le bouton lance la vidéo.
+ * Économiseur de données seul : pas de lecture automatique, première image
+ * affichée, le bouton lance la vidéo. Le son reste au choix du visiteur.
  */
 export function MuzikTeaser({ video }: { video: HeroVideo }) {
   const t = useTranslations("muzik");
@@ -42,7 +37,7 @@ export function MuzikTeaser({ video }: { video: HeroVideo }) {
   useEffect(() => {
     const element = videoRef.current;
     if (!element || !near) return;
-    const wanted = paused === null ? autoplayAllowed() : !paused;
+    const wanted = paused === null ? teaserAutoplayAllowed() : !paused;
     if (!wanted) {
       element.pause();
       return;
@@ -56,7 +51,7 @@ export function MuzikTeaser({ video }: { video: HeroVideo }) {
     );
     observer.observe(element);
     return () => observer.disconnect();
-  }, [near, paused, reduced]);
+  }, [near, paused]);
 
   // Ligne de lecture : mise à jour directe du style (pas de rendu à chaque image).
   const onTime = () => {

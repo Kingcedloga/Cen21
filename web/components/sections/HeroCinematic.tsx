@@ -25,6 +25,8 @@ import "@/styles/hero-curtain.css";
 export type HeroSlide = {
   src: string;
   alt: string;
+  /** Cadrage de la photo (object-position), ex. « 50% 62% » pour un portrait. */
+  position?: string;
 };
 
 type HeroCinematicProps = {
@@ -123,6 +125,7 @@ export function HeroCinematic({ slides, siteName, pills = [], className = "" }: 
                   placeholder="blur"
                   blurDataURL={BLUR_PETROL}
                   className="object-cover object-center"
+                  style={slide.position ? { objectPosition: slide.position } : undefined}
                   sizes="100vw"
                 />
               </div>

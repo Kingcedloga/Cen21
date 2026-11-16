@@ -5,8 +5,8 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { SubsidiariesArc, type ArcItem } from "@/components/filiales/SubsidiariesArc";
 import { HeroCinematic } from "@/components/sections/HeroCinematic";
-import { HomeExperienceSection } from "@/components/sections/HomeExperienceSection";
 import { HomeHousesSection, type HouseItem } from "@/components/sections/home/HomeHousesSection";
+import { HomeTeaserReel, type ReelItem } from "@/components/sections/home/HomeTeaserReel";
 import { HomeEventsDeck, type DeckEvent } from "@/components/sections/home/HomeEventsDeck";
 import { HomeManifesto } from "@/components/sections/home/HomeManifesto";
 import { HomeUniverseBurst } from "@/components/sections/home/HomeUniverseBurst";
@@ -19,7 +19,6 @@ import { SectionBlend } from "@/components/layout/SectionBlend";
 import {
   getAboutContent,
   getEvents,
-  getExperienceVideoId,
   getPastEvents,
   getSectorLabel,
   getSiteConfig,
@@ -162,8 +161,20 @@ export default async function HomePage({ params }: Props) {
       ? site.heroSlides
       : [{ src: site.heroImage, alt: site.name }];
 
-  // Photo d'ambiance pour la section Expérience (fond du bouton play)
-  const experienceImage = heroSlides[2]?.src ?? heroSlides[0]?.src ?? site.heroImage;
+  // Section vidéo : le teaser de chaque maison qui en a un.
+  const reelItems: ReelItem[] = subsidiaries.flatMap((s) =>
+    s.teaserVideo
+      ? [
+          {
+            slug: s.slug,
+            name: s.name,
+            sector: getSectorLabel(l, s.sector),
+            video: s.teaserVideo,
+            poster: s.teaserVideo.poster ?? s.coverImage,
+          },
+        ]
+      : [],
+  );
 
   return (
     <>
@@ -341,7 +352,13 @@ export default async function HomePage({ params }: Props) {
       {/* Section à photo : l'image se fond dans la couleur de la section. */}
       <SectionBlend from="var(--color-petrol)" to="var(--experience-surface)" />
 
-      <HomeExperienceSection backgroundImage={experienceImage} videoId={getExperienceVideoId(l)} />
+      <HomeTeaserReel
+        eyebrow={t("reelEyebrow")}
+        title={t("reelTitle")}
+        titleSweep={t("reelTitleSweep")}
+        caption={t("reelCaption")}
+        items={reelItems}
+      />
     </>
   );
 }

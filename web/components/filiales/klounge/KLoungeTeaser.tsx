@@ -27,7 +27,7 @@ const clock = (seconds: number) => {
  * contraire au défilement ; elle arrive en noir et blanc et s'allume en
  * couleur en atteignant le milieu de l'écran (comme le triptyque de la
  * maison). Compteur de temps façon caméra, boutons lecture / pause et son.
- * Reduced motion : couleur d'emblée, mots fixes, pas de lecture automatique.
+ * Reduced motion : couleur d'emblée, mots fixes (la lecture reste automatique).
  */
 export function KLoungeTeaser({ name, video, poster }: { name: string; video: HeroVideo; poster?: string }) {
   const t = useTranslations("klounge");

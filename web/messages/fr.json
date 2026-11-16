@@ -98,11 +98,19 @@
     "eventsTitlePastSweep": "rendez-vous",
     "eventsStatusUpcoming": "À venir",
     "eventsStatusPast": "Édition passée",
-    "reelLabel": "Voir le film",
     "eventsPrev": "Événement précédent",
     "eventsNext": "Événement suivant",
     "eventsPosition": "Événement {current} sur {total}",
-    "eventsSwipeHint": "Glissez pour parcourir"
+    "eventsSwipeHint": "Glissez pour parcourir",
+    "reelEyebrow": "Nos maisons en vidéo",
+    "reelTitle": "Nos maisons, en mouvement",
+    "reelTitleSweep": "en mouvement",
+    "reelCaption": "Un teaser par maison : la salle, l'assiette, la nuit. Les vidéos se lancent en muet ; le son, c'est vous qui choisissez.",
+    "reelRole": "carrousel",
+    "reelSlide": "teaser",
+    "reelSlideLabel": "{name}, {index} sur {total}",
+    "reelShow": "Voir le teaser de {name}",
+    "reelDiscover": "Découvrir {name}"
   },
   "hero": {
     "tagline": "L'art de l'exception",

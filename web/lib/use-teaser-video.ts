@@ -3,12 +3,17 @@
 import { useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-import { REDUCED_MOTION_QUERY, useReducedMotionSafe } from "@/lib/use-media-query";
+import { useReducedMotionSafe } from "@/lib/use-media-query";
 
-/** Lecture automatique : ni reduced motion, ni économiseur de données. */
-function autoplayAllowed() {
+/**
+ * Lecture automatique des teasers : toujours muette, dès que la vidéo est à
+ * l'écran — y compris en reduced motion (la pause reste à portée, WCAG 2.2.2).
+ * Seul l'économiseur de données du visiteur la bloque. Le son, lui, n'est
+ * jamais activé que par le visiteur.
+ */
+export function teaserAutoplayAllowed() {
   const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
-  return !window.matchMedia(REDUCED_MOTION_QUERY).matches && !connection?.saveData;
+  return !connection?.saveData;
 }
 
 /**
@@ -17,7 +22,7 @@ function autoplayAllowed() {
  * - la vidéo n'est demandée qu'à l'approche du cadre (`frameRef`, 400 px) ;
  * - lecture muette en boucle tant qu'elle est à l'écran (35 % visible) ;
  * - choix du visiteur (lecture / pause, son) prioritaire sur l'automatique ;
- * - reduced motion ou économiseur de données : pas de lecture automatique ;
+ * - économiseur de données : pas de lecture automatique (teaserAutoplayAllowed) ;
  * - progression publiée sans rendu (`progressRef`, scaleX, ou `onProgress`).
  */
 export function useTeaserVideo({ onProgress }: { onProgress?: (ratio: number) => void } = {}) {
@@ -34,7 +39,7 @@ export function useTeaserVideo({ onProgress }: { onProgress?: (ratio: number) =>
   useEffect(() => {
     const element = videoRef.current;
     if (!element || !near) return;
-    const wanted = paused === null ? autoplayAllowed() : !paused;
+    const wanted = paused === null ? teaserAutoplayAllowed() : !paused;
     if (!wanted) {
       element.pause();
       return;
@@ -48,8 +53,7 @@ export function useTeaserVideo({ onProgress }: { onProgress?: (ratio: number) =>
     );
     observer.observe(element);
     return () => observer.disconnect();
-    // `reduced` : relancer la décision si la préférence change.
-  }, [near, paused, reduced]);
+  }, [near, paused]);
 
   const onTimeUpdate = () => {
     const element = videoRef.current;

@@ -361,8 +361,7 @@ h4 {
 
    Pas de flou d'arrière-plan : entre deux fonds unis il n'apporte rien et
    dessine des liserés au bord de la zone floutée. Une section à photo fond
-   sa propre image dans sa couleur (masque sur l'image) : voir
-   .home-experience__media. */
+   sa propre image dans sa couleur (masque sur l'image). */
 .section-blend {
   --blend-space: clamp(6rem, 14vw, 10rem);
   --blend-reach: clamp(2.5rem, 5vw, 5rem);

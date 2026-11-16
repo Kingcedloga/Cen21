@@ -30,23 +30,44 @@
       "titleAccent": "l'exception"
     }
   ],
-  "heroImage": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&q=85",
+  "heroImage": "/home/hero/01-salon.jpg",
   "heroSlides": [
     {
-      "src": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&q=85",
-      "alt": "Salle de restaurant gastronomique élégante"
+      "src": "/home/hero/01-salon.jpg",
+      "alt": "Salon lounge aux fauteuils de velours et lustres dorés"
     },
     {
-      "src": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1920&q=85",
-      "alt": "Bar à cocktails, ambiance feutrée"
+      "src": "/home/hero/02-cocktails.jpg",
+      "alt": "Trois cocktails servis au comptoir"
     },
     {
-      "src": "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=1920&q=85",
-      "alt": "Lounge premium, lumière douce"
+      "src": "/home/hero/03-rooftop.jpg",
+      "alt": "Terrasse rooftop avec vue sur Kinshasa"
     },
     {
-      "src": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1920&q=85",
-      "alt": "Scène nightlife, lumières et énergie"
+      "src": "/home/hero/04-table.jpg",
+      "alt": "Pièce de bœuf tranchée et verre de vin rouge",
+      "position": "50% 62%"
+    },
+    {
+      "src": "/home/hero/05-mexicana.jpg",
+      "alt": "Salle festive aux papel picado colorés"
+    },
+    {
+      "src": "/home/hero/06-toast.jpg",
+      "alt": "Un toast autour de la table, vu du dessus"
+    },
+    {
+      "src": "/home/hero/07-reception.jpg",
+      "alt": "Accueil aux parois vertes et lumière dorée"
+    },
+    {
+      "src": "/home/hero/08-cuisine.jpg",
+      "alt": "Dressage d'une assiette en cuisine"
+    },
+    {
+      "src": "/home/hero/09-terrasse.jpg",
+      "alt": "Terrasse vitrée en fin de journée"
     }
   ]
 }
