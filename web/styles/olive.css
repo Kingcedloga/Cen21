@@ -91,7 +91,7 @@
   color: color-mix(in srgb, var(--color-ivory) 72%, transparent);
 }
 
-.olive-crumbs li + li::before {
+.olive-crumbs li+li::before {
   content: "";
   display: inline-block;
   width: 0.3rem;
@@ -227,6 +227,7 @@
     padding-top: 8.5rem;
     padding-bottom: calc(var(--capsule-offset) + 4.5rem);
   }
+
   /* Ovale agrandi, borné par la hauteur d'écran (il reste entier, sans
      déborder sous la capsule). */
   .olive-hero__visual {
@@ -273,7 +274,7 @@
   width: clamp(8rem, 22vw, 15rem);
 }
 
-.olive-manifesto__branch > svg {
+.olive-manifesto__branch>svg {
   width: 100%;
   height: auto;
 }
@@ -338,6 +339,9 @@
 
 .olive-menu__grid {
   display: grid;
+  /* Colonne bornée à l'écran : sans `minmax(0, …)`, le cadre et les onglets
+     l'élargissaient au-delà (photo coupée à droite sur téléphone). */
+  grid-template-columns: minmax(0, 1fr);
   gap: 2.5rem;
   margin-top: 3.5rem;
 }
@@ -346,21 +350,21 @@
 .olive-menu__frame {
   --cut: 1.75rem;
   position: relative;
+  /* Largeur fluide, plafonnée à celle qu'impose la hauteur max en 4/5. */
+  width: min(100%, calc(34rem * 4 / 5));
   aspect-ratio: 4 / 5;
   max-height: 34rem;
   overflow: hidden;
   isolation: isolate;
   background-color: color-mix(in srgb, var(--brand-fill) 80%, black);
-  clip-path: polygon(
-    var(--cut) 0,
-    calc(100% - var(--cut)) 0,
-    100% var(--cut),
-    100% calc(100% - var(--cut)),
-    calc(100% - var(--cut)) 100%,
-    var(--cut) 100%,
-    0 calc(100% - var(--cut)),
-    0 var(--cut)
-  );
+  clip-path: polygon(var(--cut) 0,
+      calc(100% - var(--cut)) 0,
+      100% var(--cut),
+      100% calc(100% - var(--cut)),
+      calc(100% - var(--cut)) 100%,
+      var(--cut) 100%,
+      0 calc(100% - var(--cut)),
+      0 var(--cut));
 }
 
 .olive-menu__frame::after {
@@ -578,7 +582,7 @@
   pointer-events: none;
 }
 
-.olive-album__caption > * {
+.olive-album__caption>* {
   pointer-events: auto;
 }
 
@@ -640,6 +644,7 @@
     min-height: 0;
     padding: clamp(5rem, 10vw, 7rem) clamp(1rem, 4vw, 3rem);
   }
+
   .olive-album .olive-album__viewport,
   .olive-album .olive-album__head,
   .olive-album .olive-album__grid,
@@ -649,9 +654,11 @@
     transform: none !important;
     opacity: 1 !important;
   }
+
   .olive-album .olive-album__head {
     padding: 0;
   }
+
   .olive-album .olive-album__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-template-rows: none;
@@ -659,9 +666,11 @@
     max-width: 82rem;
     margin: 2.5rem auto 0;
   }
+
   .olive-album .olive-album__cell {
     aspect-ratio: 4 / 5;
   }
+
   .olive-album .olive-album__caption {
     max-width: 82rem;
     margin: 1.5rem auto 0;
