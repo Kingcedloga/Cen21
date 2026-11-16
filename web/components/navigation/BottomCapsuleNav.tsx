@@ -99,7 +99,9 @@ export function BottomCapsuleNav(props: CapsuleMenuProps) {
       <div
         data-capsule-nav=""
         data-capsule-tone={ivory ? "ivory" : "petrol"}
-        className="pointer-events-none fixed inset-x-0 z-[55] flex justify-center px-4"
+        // Marges latérales : safe areas iOS (iPhone de côté) ; sous 380 px, 8 px
+        // au lieu de 16 pour que la capsule et ses commandes tiennent dans l'écran.
+        className="pointer-events-none fixed inset-x-0 z-[55] flex justify-center pr-[max(1rem,env(safe-area-inset-right))] pl-[max(1rem,env(safe-area-inset-left))] max-[379.98px]:pr-[max(0.5rem,env(safe-area-inset-right))] max-[379.98px]:pl-[max(0.5rem,env(safe-area-inset-left))]"
         style={{ bottom: "calc(var(--capsule-offset) + env(safe-area-inset-bottom, 0px))" }}
       >
         <AnimatePresence>
@@ -125,7 +127,7 @@ export function BottomCapsuleNav(props: CapsuleMenuProps) {
           </AnimatePresence>
 
           <div
-            className={`relative mx-auto flex min-h-14 w-[calc(100%-16px)] items-center gap-2 rounded-full py-2 pl-5 pr-2 backdrop-blur-[40px] transition-[background-color,color,box-shadow] duration-[350ms] ease-luxury max-md:min-h-16 ${tone}`}
+            className={`capsule-bar relative mx-auto flex min-h-14 w-[calc(100%-16px)] items-center gap-2 rounded-full py-2 pl-5 pr-2 backdrop-blur-[40px] transition-[background-color,color,box-shadow] duration-[350ms] ease-luxury max-md:min-h-16 ${tone}`}
           >
             <Link
               href="/"
@@ -152,7 +154,7 @@ export function BottomCapsuleNav(props: CapsuleMenuProps) {
 
             <span
               aria-hidden="true"
-              className="ml-auto border-r border-current/20 pr-3 text-sm font-medium tabular-nums"
+              className="capsule-progress ml-auto border-r border-current/20 pr-3 text-sm font-medium tabular-nums"
             >
               <motion.span>{percent}</motion.span>
               {locale === "fr" ? " %" : "%"}
@@ -165,10 +167,10 @@ export function BottomCapsuleNav(props: CapsuleMenuProps) {
               aria-controls={menuId}
               aria-label={open ? tCommon("closeMenu") : tCommon("openMenu")}
               onClick={() => (open ? close(false) : setOpenOn(pathname))}
-              className="flex min-h-11 cursor-pointer items-center gap-2.5 rounded-full px-3 text-sm font-medium transition-opacity duration-fine hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
+              className="capsule-menu-button flex min-h-11 cursor-pointer items-center gap-2.5 rounded-full px-3 text-sm font-medium transition-opacity duration-fine hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
             >
               <span aria-hidden="true" className="capsule-burger" />
-              <span aria-hidden="true" className="min-w-[3.25rem] text-left">
+              <span aria-hidden="true" className="capsule-menu-label min-w-[3.25rem] text-left">
                 {open ? t("close") : t("menu")}
               </span>
             </button>

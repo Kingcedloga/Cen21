@@ -679,6 +679,13 @@
 }
 
 /* --- Avant de venir : ticket et règles (ClubTicket) --------------------- */
+/* Le ticket attend son entrée incliné (−5°) : ses coins dépasseraient de
+   l'écran et élargiraient la page sur mobile. `clip` (et non `hidden`) :
+   pas de conteneur défilant, l'animation reste identique. */
+.club-entry {
+  overflow-x: clip;
+}
+
 .club-entry__head {
   margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
 }

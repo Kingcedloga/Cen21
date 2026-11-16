@@ -15,7 +15,9 @@ export function GroupTopBar() {
   const t = useTranslations("nav");
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50 px-4 pt-3 md:px-6 md:pt-4">
+    // Safe areas iOS (viewport-fit=cover) : jamais sous la barre de statut ni
+    // l'encoche ; sans encoche, env() vaut 0 et les marges restent celles d'avant.
+    <header className="absolute inset-x-0 top-0 z-50 pt-[max(0.75rem,env(safe-area-inset-top))] pr-[max(1rem,env(safe-area-inset-right))] pl-[max(1rem,env(safe-area-inset-left))] md:pt-[max(1rem,env(safe-area-inset-top))] md:pr-[max(1.5rem,env(safe-area-inset-right))] md:pl-[max(1.5rem,env(safe-area-inset-left))]">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 md:px-4">
         <Logo size="xl" variant="header" />
         <div className="flex items-center gap-2 sm:gap-3">

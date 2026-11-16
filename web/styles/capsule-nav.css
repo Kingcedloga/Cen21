@@ -82,3 +82,33 @@ body:has(> [data-capsule-nav]) > footer {
     transition: none;
   }
 }
+
+/* --- Petits écrans (< 380 px) : la capsule tient dans l'écran ------------
+   Avec une commande de page (« Réserver » sur les fiches), le contenu
+   dépassait à droite. Mêmes éléments, espacements resserrés ; sous 340 px,
+   le pourcentage de lecture laisse sa place à la commande de page. */
+@media (max-width: 379.98px) {
+  .capsule-bar {
+    gap: 0.25rem;
+    padding-left: 0.875rem;
+  }
+  .capsule-progress {
+    padding-right: 0.5rem;
+  }
+  .capsule-menu-button {
+    gap: 0.5rem;
+    padding-inline: 0.5rem;
+  }
+  .capsule-menu-label {
+    min-width: 2.75rem;
+  }
+}
+
+@media (max-width: 339.98px) {
+  .capsule-wrap:has(.capsule-slot:not(:empty)) .capsule-progress {
+    display: none;
+  }
+  .capsule-wrap:has(.capsule-slot:not(:empty)) .capsule-slot {
+    margin-left: auto;
+  }
+}
