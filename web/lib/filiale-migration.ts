@@ -5,6 +5,7 @@
  * leur en-tête et leur footer à charte jusqu'à leur refonte.
  */
 export const MIGRATED_FILIALES: ReadonlySet<string> = new Set<string>([
+  "filiale-01", // L'Olive Verte (R11)
   "filiale-02", // Wabi Sabi — pilote (R6)
   "filiale-03", // K Lounge (R7)
   "filiale-04", // Millionaire Club (R8)

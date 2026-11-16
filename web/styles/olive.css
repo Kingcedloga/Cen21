@@ -1,0 +1,838 @@
+/* =========================================================================
+   L'Olive Verte — restaurant, lounge et bar sportif en plein air
+   (components/filiales/olive).
+
+   Identité tirée du logo (capitales Art déco fines, à fort contraste) :
+   titres en capitales fines et espacées (DM Sans 200), l'ovale (la forme de
+   l'olive : cadre du teaser), le rameau d'olivier dessiné au défilement, les
+   cadres à pans coupés de la carte, le tableau d'affichage du bar sportif.
+
+   Charte claire : crème #ECE7D1 (fond de la maison, --color-petrol-panel-4)
+   et olive #767F34 (--brand-fill ; texte crème posé dessus :
+   --brand-on-accent). Texte courant : l'olive assombri par lib/filiale-brand.ts
+   (--color-ivory), accent lisible : --color-rose. Polarité : les sections
+   crème portent data-surface="dark" (fond de la maison), les sections olive
+   data-surface="light" (surface inversée) — les boutons du groupe suivent.
+   ========================================================================= */
+
+.olive-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.875rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-rose);
+}
+
+/* Losange Art déco devant le surtitre. */
+.olive-eyebrow::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border: 1px solid currentColor;
+  transform: rotate(45deg);
+}
+
+/* Titres de section : capitales fines, espacées. */
+.olive-title {
+  margin-top: 1rem;
+  font-family: var(--brand-title-font, var(--font-dm-sans));
+  font-size: clamp(2.25rem, 1.1rem + 3.8vw, 4.75rem);
+  font-weight: 200;
+  line-height: 1.02;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+/* --- La une (OliveHero) -------------------------------------------------- */
+.olive-hero {
+  --olive-gutter: clamp(1rem, 4vw, 3rem);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--color-petrol-panel-4);
+  color: var(--color-ivory);
+}
+
+/* Lumière d'olive derrière l'ovale. */
+.olive-hero::before {
+  content: "";
+  position: absolute;
+  top: -6rem;
+  right: -8rem;
+  z-index: -1;
+  width: 46rem;
+  height: 46rem;
+  border-radius: 9999px;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--brand-fill) 16%, transparent), transparent);
+  pointer-events: none;
+}
+
+.olive-hero__inner {
+  display: grid;
+  gap: 3.5rem;
+  max-width: calc(82rem + 2 * var(--olive-gutter));
+  margin-inline: auto;
+  padding: 7.5rem var(--olive-gutter) 4.5rem;
+}
+
+.olive-crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.8125rem;
+  color: color-mix(in srgb, var(--color-ivory) 72%, transparent);
+}
+
+.olive-crumbs li + li::before {
+  content: "";
+  display: inline-block;
+  width: 0.3rem;
+  height: 0.3rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  background-color: var(--brand-fill);
+  transform: rotate(45deg);
+}
+
+.olive-crumbs a {
+  transition: color var(--duration-fine) var(--ease-luxury);
+}
+
+.olive-crumbs a:hover {
+  color: var(--color-rose);
+}
+
+.olive-crumbs a:focus-visible {
+  outline: 1px solid var(--color-rose);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.olive-crumbs [aria-current] {
+  color: var(--color-ivory);
+}
+
+.olive-hero .olive-eyebrow {
+  margin-top: 2.25rem;
+}
+
+.olive-hero__title {
+  margin-top: 1.25rem;
+  font-family: var(--brand-title-font, var(--font-dm-sans));
+  font-size: clamp(3.25rem, 1rem + 7.6vw, 8rem);
+  font-weight: 200;
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: var(--color-ivory);
+}
+
+.olive-hero__lead {
+  max-width: 32rem;
+  margin-top: 1.75rem;
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
+  color: color-mix(in srgb, var(--color-ivory) 84%, transparent);
+}
+
+.olive-hero__status {
+  margin-top: 1rem;
+}
+
+.olive-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+/* L'ovale (l'olive) et son filet décalé. */
+.olive-hero__visual {
+  position: relative;
+  justify-self: center;
+  width: min(92%, 30rem);
+  aspect-ratio: 7 / 10;
+}
+
+.olive-hero__ring {
+  position: absolute;
+  inset: -0.875rem;
+  border: 1px solid color-mix(in srgb, var(--brand-fill) 70%, transparent);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.olive-hero__oval {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 50%;
+  background-color: var(--color-petrol-panel-3);
+  box-shadow: 0 40px 70px -40px color-mix(in srgb, var(--color-ivory) 60%, transparent);
+}
+
+.olive-hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--duration-grand) var(--ease-luxury);
+}
+
+.olive-hero__video.is-playing {
+  opacity: 1;
+}
+
+.olive-hero__toggle {
+  position: absolute;
+  bottom: 9%;
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid color-mix(in srgb, var(--brand-on-accent) 50%, transparent);
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, var(--brand-fill) 70%, transparent);
+  color: var(--brand-on-accent);
+  translate: -50% 0;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.olive-hero__toggle:focus-visible {
+  outline: 2px solid var(--brand-on-accent);
+  outline-offset: 3px;
+}
+
+@media (min-width: 1024px) {
+  .olive-hero__inner {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: center;
+    gap: 4rem;
+    min-height: 100svh;
+    padding-top: 8.5rem;
+    padding-bottom: calc(var(--capsule-offset) + 4.5rem);
+  }
+  /* Ovale agrandi, borné par la hauteur d'écran (il reste entier, sans
+     déborder sous la capsule). */
+  .olive-hero__visual {
+    justify-self: end;
+    width: min(100%, 36rem, calc((100svh - 13rem) * 0.7));
+  }
+}
+
+/* --- Le manifeste et le rameau (OliveManifesto, OliveBranch) ------------- */
+/* `clip` : les feuilles qui tombent restent dans la section (sans en faire
+   un conteneur défilant). */
+.olive-manifesto {
+  overflow: clip;
+  padding: clamp(5rem, 11vw, 9rem) clamp(1rem, 4vw, 3rem);
+  background-color: var(--color-petrol-panel-4);
+  color: var(--color-ivory);
+}
+
+.olive-manifesto__inner {
+  display: grid;
+  align-items: center;
+  gap: 3rem;
+  max-width: 82rem;
+  margin-inline: auto;
+}
+
+.olive-manifesto__statement {
+  max-width: 44rem;
+  margin-top: 2rem;
+  font-size: clamp(1.375rem, 0.9rem + 1.5vw, 2.25rem);
+  font-weight: 300;
+  line-height: 1.45;
+  text-wrap: pretty;
+  color: var(--color-ivory);
+}
+
+.olive-branch {
+  display: block;
+  overflow: visible;
+}
+
+.olive-manifesto__branch {
+  justify-self: center;
+  width: clamp(8rem, 22vw, 15rem);
+}
+
+.olive-manifesto__branch > svg {
+  width: 100%;
+  height: auto;
+}
+
+.olive-branch__stem {
+  fill: none;
+  stroke: var(--brand-fill);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.olive-branch__piece {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.olive-branch__leaf {
+  fill: var(--brand-fill);
+}
+
+.olive-branch__vein {
+  fill: none;
+  stroke: color-mix(in srgb, var(--brand-on-accent) 55%, transparent);
+  stroke-width: 1;
+}
+
+.olive-branch__olive {
+  fill: var(--color-ivory);
+}
+
+@media (min-width: 1024px) {
+  .olive-manifesto__inner {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 5rem;
+  }
+}
+
+/* --- La carte (OliveMenu), sur l'olive ---------------------------------- */
+.olive-menu {
+  padding: clamp(5rem, 10vw, 8.5rem) clamp(1rem, 4vw, 3rem);
+  background-color: var(--brand-fill);
+  color: var(--brand-on-accent);
+}
+
+.olive-menu__inner {
+  max-width: 82rem;
+  margin-inline: auto;
+}
+
+.olive-menu .olive-eyebrow,
+.olive-match .olive-eyebrow {
+  color: var(--brand-on-accent);
+}
+
+.olive-menu__lead {
+  max-width: 38rem;
+  margin-top: 1.5rem;
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
+  color: var(--brand-on-accent);
+}
+
+.olive-menu__grid {
+  display: grid;
+  gap: 2.5rem;
+  margin-top: 3.5rem;
+}
+
+/* Cadre Art déco : angles coupés, filet intérieur. */
+.olive-menu__frame {
+  --cut: 1.75rem;
+  position: relative;
+  aspect-ratio: 4 / 5;
+  max-height: 34rem;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: color-mix(in srgb, var(--brand-fill) 80%, black);
+  clip-path: polygon(
+    var(--cut) 0,
+    calc(100% - var(--cut)) 0,
+    100% var(--cut),
+    100% calc(100% - var(--cut)),
+    calc(100% - var(--cut)) 100%,
+    var(--cut) 100%,
+    0 calc(100% - var(--cut)),
+    0 var(--cut)
+  );
+}
+
+.olive-menu__frame::after {
+  content: "";
+  position: absolute;
+  inset: 0.75rem;
+  z-index: 2;
+  border: 1px solid color-mix(in srgb, var(--brand-on-accent) 60%, transparent);
+  pointer-events: none;
+}
+
+.olive-menu__frame-label {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  z-index: 3;
+  padding: 0.5rem 0.875rem;
+  background-color: color-mix(in srgb, var(--brand-fill) 82%, transparent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--brand-on-accent);
+}
+
+.olive-menu__tabs {
+  display: flex;
+  gap: 0.25rem 1.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--brand-on-accent) 34%, transparent);
+  scrollbar-width: none;
+}
+
+.olive-menu__tab {
+  position: relative;
+  flex: none;
+  padding: 0.875rem 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--brand-on-accent) 82%, transparent);
+  transition: color var(--duration-fine) var(--ease-luxury);
+}
+
+.olive-menu__tab[aria-selected="true"],
+.olive-menu__tab:hover {
+  color: var(--brand-on-accent);
+}
+
+.olive-menu__tab:focus-visible {
+  outline: 1px solid var(--brand-on-accent);
+  outline-offset: 2px;
+}
+
+.olive-menu__tab-rule {
+  position: absolute;
+  right: 0;
+  bottom: -0.3rem;
+  left: 0;
+  height: 2px;
+  background-color: var(--brand-on-accent);
+}
+
+.olive-menu__panel:focus-visible {
+  outline: 1px solid var(--brand-on-accent);
+  outline-offset: 6px;
+}
+
+.olive-menu__dishes {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.olive-dish {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--brand-on-accent) 22%, transparent);
+}
+
+.olive-dish__line {
+  display: grid;
+  grid-template-columns: auto minmax(1.5rem, 1fr) auto;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.olive-dish__name {
+  font-family: var(--brand-title-font, var(--font-dm-sans));
+  font-size: clamp(1.125rem, 0.9rem + 0.8vw, 1.5rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.olive-dish__leader {
+  border-bottom: 1px dotted color-mix(in srgb, var(--brand-on-accent) 60%, transparent);
+  transform: translateY(-0.3em);
+}
+
+.olive-dish__price {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.olive-dish__description {
+  max-width: 34rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 1024px) {
+  .olive-menu__grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: start;
+    gap: 5rem;
+  }
+}
+
+/* --- L'album (OliveAlbum) : grille 3 × 3 qui s'agrandit ----------------- */
+.olive-album {
+  --olive-cell: 22;
+  --olive-gap: 1.2;
+  position: relative;
+  height: 100svh;
+  min-height: 34rem;
+  overflow: hidden;
+  background-color: var(--color-petrol-panel-4);
+  color: var(--color-ivory);
+}
+
+.olive-album__head {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  max-width: 46rem;
+  padding: 5rem clamp(1rem, 4vw, 3rem) 1rem;
+  pointer-events: none;
+}
+
+.olive-album__head .olive-title {
+  font-size: clamp(1.875rem, 1rem + 2.4vw, 3.25rem);
+}
+
+.olive-album__hint {
+  margin-top: 0.875rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-ivory) 72%, transparent);
+}
+
+.olive-album__viewport {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Grille centrée sur la cellule du milieu (point fixe de l'agrandissement). */
+.olive-album__grid {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, calc(var(--olive-cell) * 1vw));
+  grid-template-rows: repeat(3, calc(var(--olive-cell) * 1svh));
+  gap: calc(var(--olive-gap) * 1vw);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  translate: -50% -50%;
+}
+
+.olive-album__cell {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-petrol-panel-3);
+}
+
+.olive-album__button {
+  position: absolute;
+  inset: 0;
+  cursor: zoom-in;
+}
+
+.olive-album__button:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: -4px;
+}
+
+/* Légende posée sur la photo du milieu, une fois l'écran rempli. */
+.olive-album__caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 6rem clamp(1rem, 4vw, 3rem) calc(var(--capsule-offset) + 5rem);
+  background: linear-gradient(to top, color-mix(in srgb, var(--brand-fill) 82%, black) 0%, transparent 100%);
+  color: var(--brand-on-accent);
+  pointer-events: none;
+}
+
+.olive-album__caption > * {
+  pointer-events: auto;
+}
+
+/* Le bouton reçoit le focus : la légende s'affiche, même avant la fin. */
+.olive-album__caption:focus-within {
+  opacity: 1 !important;
+}
+
+.olive-album__caption-text {
+  max-width: 30rem;
+  font-family: var(--brand-title-font, var(--font-dm-sans));
+  font-size: clamp(1.375rem, 1rem + 1.4vw, 2.25rem);
+  font-weight: 300;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+}
+
+/* Rendu statique (reduced motion, écran bas) : grille simple, légende dessous.
+   Doublé en @media pour le HTML serveur, avant hydratation. */
+.olive-album.is-static {
+  height: auto;
+  min-height: 0;
+  padding: clamp(5rem, 10vw, 7rem) clamp(1rem, 4vw, 3rem);
+}
+
+.olive-album.is-static .olive-album__viewport,
+.olive-album.is-static .olive-album__head,
+.olive-album.is-static .olive-album__grid,
+.olive-album.is-static .olive-album__caption {
+  position: static;
+  translate: none;
+}
+
+.olive-album.is-static .olive-album__head {
+  padding: 0;
+}
+
+.olive-album.is-static .olive-album__grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: none;
+  gap: 0.75rem;
+  max-width: 82rem;
+  margin: 2.5rem auto 0;
+}
+
+.olive-album.is-static .olive-album__cell {
+  aspect-ratio: 4 / 5;
+}
+
+.olive-album.is-static .olive-album__caption {
+  max-width: 82rem;
+  margin: 1.5rem auto 0;
+  padding: 1.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .olive-album {
+    height: auto;
+    min-height: 0;
+    padding: clamp(5rem, 10vw, 7rem) clamp(1rem, 4vw, 3rem);
+  }
+  .olive-album .olive-album__viewport,
+  .olive-album .olive-album__head,
+  .olive-album .olive-album__grid,
+  .olive-album .olive-album__caption {
+    position: static;
+    translate: none;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .olive-album .olive-album__head {
+    padding: 0;
+  }
+  .olive-album .olive-album__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: none;
+    gap: 0.75rem;
+    max-width: 82rem;
+    margin: 2.5rem auto 0;
+  }
+  .olive-album .olive-album__cell {
+    aspect-ratio: 4 / 5;
+  }
+  .olive-album .olive-album__caption {
+    max-width: 82rem;
+    margin: 1.5rem auto 0;
+    padding: 1.5rem;
+  }
+}
+
+/* --- Jour de match (OliveMatch) : tableau d'affichage, olive profond ---- */
+.olive-match {
+  padding: clamp(5rem, 10vw, 8.5rem) clamp(1rem, 4vw, 3rem);
+  background-color: color-mix(in srgb, var(--brand-fill) 58%, black);
+  color: var(--brand-on-accent);
+}
+
+.olive-match__inner {
+  max-width: 82rem;
+  margin-inline: auto;
+}
+
+.olive-board {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.olive-board__cell {
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  min-width: min(100%, 15rem);
+  padding: 1.5rem 2rem 1.75rem;
+  border: 1px solid color-mix(in srgb, var(--brand-on-accent) 30%, transparent);
+  background-color: color-mix(in srgb, var(--brand-fill) 40%, black);
+  box-shadow: inset 0 0 0 6px color-mix(in srgb, var(--brand-fill) 30%, black);
+}
+
+.olive-board__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.olive-board__digits {
+  font-family: var(--brand-title-font, var(--font-dm-sans));
+  font-size: clamp(3.5rem, 2rem + 6vw, 7.5rem);
+  font-weight: 200;
+  line-height: 0.9;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+.olive-board__colon {
+  align-self: center;
+  font-family: var(--brand-title-font, var(--font-dm-sans));
+  font-size: clamp(3rem, 2rem + 4vw, 5.5rem);
+  font-weight: 200;
+}
+
+.olive-plates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.olive-plate {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--brand-on-accent) 26%, transparent);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.olive-plate__num {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.8;
+}
+
+.olive-fixture {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid color-mix(in srgb, var(--brand-on-accent) 40%, transparent);
+}
+
+.olive-fixture__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.olive-fixture__body {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.olive-fixture__date {
+  display: grid;
+  gap: 0.25rem;
+  font-family: var(--brand-title-font, var(--font-dm-sans));
+  font-size: clamp(1.5rem, 1rem + 1.6vw, 2.5rem);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.olive-fixture__time {
+  font-size: 0.6em;
+  letter-spacing: 0.2em;
+}
+
+.olive-fixture__title {
+  font-family: var(--brand-title-font, var(--font-dm-sans));
+  font-size: clamp(1.375rem, 1rem + 1.2vw, 2rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.olive-fixture__excerpt {
+  max-width: 36rem;
+  margin-top: 0.5rem;
+  line-height: 1.6;
+}
+
+.olive-fixture__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Téléphone : panneaux empilés, sans le deux-points entre eux. */
+@media (max-width: 639.98px) {
+  .olive-board__colon {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .olive-plates {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .olive-fixture__body {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr) auto;
+    align-items: center;
+    gap: 3rem;
+  }
+}
+
+/* --- Habillage des blocs partagés sur la fiche (marqueur posé par la
+   composition) : titres de section en capitales fines. ------------------ */
+html body:has([data-filiale-olive]) {
+  & main h2.title-section {
+    font-weight: 200;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+}

@@ -60,6 +60,7 @@
         "/filiales/photos/filiale-01/olive%20j191.jpg",
         "/filiales/photos/filiale-01/olive%20j195.jpg"
       ],
+      "teaserVideo": { "src": "/filiales/videos/Teasers/teaser-olive.mp4", "poster": "/filiales/photos/filiale-01/DSC08521.jpg" },
       "specialtiesSection": {
         "eyebrow": "Nos Spécialités",
         "title": "Nos Spécialités",
@@ -92,6 +93,7 @@
           {
             "id": "starters",
             "label": "Entrées",
+            "image": { "src": "/filiales/photos/filiale-01/DSC08569.jpg", "alt": "L'Olive Verte — table partagée vue d'en haut, cocktails et entrées" },
             "dishes": [
               {
                 "name": "Burrata & tomates anciennes",
@@ -112,6 +114,7 @@
           {
             "id": "mains",
             "label": "Plats",
+            "image": { "src": "/filiales/photos/filiale-01/olive%20j1135.jpg", "alt": "L'Olive Verte — burger maison et frites" },
             "dishes": [
               {
                 "name": "Bol Tomato Paniyaram",
@@ -132,6 +135,7 @@
           {
             "id": "grills",
             "label": "Grillades",
+            "image": { "src": "/filiales/photos/filiale-01/olive%20j1199.jpg", "alt": "L'Olive Verte — travers grillés, sauce et purée" },
             "dishes": [
               {
                 "name": "Entrecôte au feu de bois",
@@ -172,6 +176,7 @@
           {
             "id": "drinks",
             "label": "Boissons",
+            "image": { "src": "/filiales/photos/filiale-01/DSC08583.jpg", "alt": "L'Olive Verte — cocktails levés autour d'une table" },
             "dishes": [
               {
                 "name": "Mojito signature",

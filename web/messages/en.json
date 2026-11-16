@@ -387,26 +387,6 @@
     "kLoungeGallery": {
       "description": "Signature dishes, creative cocktails, and nightlife atmosphere — a visual immersion at the heart of the K Lounge experience."
     },
-    "oliveVerteGallery": {
-      "description": "Mediterranean flavours, convivial terraces and lovingly crafted dishes — a visual journey through the L'Olive Verte experience."
-    },
-    "oliveVerteMenu": {
-      "orderNow": "Order Now",
-      "previousDish": "Previous dish",
-      "nextDish": "Next dish"
-    },
-    "oliveVerteEvents": {
-      "title": "Upcoming events",
-      "badgeLabel": "Don't miss out",
-      "ctaLabel": "Learn more"
-    },
-    "oliveVerteReservation": {
-      "title": "Craving a table tonight?",
-      "description": "Reserve your spot at L'Olive Verte and enjoy Mediterranean flavours, cocktails, and a lively terrace atmosphere.",
-      "namePlaceholder": "Your name",
-      "placeholder": "Your email",
-      "cta": "Book Now"
-    },
     "gourmetMexicanaHero": {
       "titleLine1": "Contemporary Mexican",
       "titleLine2": "Fine Dining in Kinshasa",
@@ -497,12 +477,6 @@
       "badgeLabel": "Pinkberry",
       "author": "BY PINKBERRY",
       "ctaLabel": "Read more"
-    },
-    "oliveVerteHero": {
-      "eyebrow": "Flavours & Authenticity",
-      "title": "Food Made With Love!",
-      "ctaPrimary": "Book Now",
-      "ctaSecondary": "Our Story"
     },
     "wabiPhilosophy": {
       "sectionLabel": "Brand philosophy"
@@ -731,6 +705,28 @@
     "datesAll": "All the house's events",
     "reservationTitle": "Book a table",
     "reservationText": "Dinner, a birthday or a karaoke night with friends: tell us the date and the number of guests."
+  },
+  "olive": {
+    "heroEyebrow": "Restaurant & lounge bar",
+    "heroMenu": "See the menu",
+    "heroImageAlt": "L'Olive Verte — a toast on the terrace",
+    "manifestoLabel": "The house",
+    "menuEyebrow": "The menu",
+    "menuNoPhoto": "House desserts",
+    "albumEyebrow": "In pictures",
+    "albumHint": "Scroll to step into the picture",
+    "albumCaption": "Cocktails, big screens and open air, on Boulevard du 30 Juin.",
+    "matchEyebrow": "The sports bar",
+    "matchTitle": "Match day",
+    "matchOpen": "Opens",
+    "matchClose": "Closes",
+    "matchNext": "Next up",
+    "matchNone": "Upcoming matches will be announced on our social media.",
+    "matchBook": "Book my table",
+    "matchAll": "All the house's events",
+    "board": ["Big screens", "Football", "Pool", "Cocktails", "Karaoke", "Lounge"],
+    "reservationTitle": "Book a table",
+    "reservationText": "Lunch, a match night or by the pool: tell us the date, the number of guests and what you have in mind."
   },
   "filiale": {
     "statusOpen": "Open · closes at {time}",

@@ -248,6 +248,8 @@ export type SubsidiaryMenuDish = {
 export type SubsidiaryMenuCategory = {
   id: string;
   label: string;
+  /** Photo de la catégorie (carte de L'Olive Verte). */
+  image?: SubsidiaryAboutSlide;
   dishes: SubsidiaryMenuDish[];
 };
 

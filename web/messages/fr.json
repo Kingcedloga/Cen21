@@ -388,26 +388,6 @@
     "kLoungeGallery": {
       "description": "Plats signature, cocktails créatifs et ambiance nocturne — une immersion visuelle au cœur de l'expérience K Lounge."
     },
-    "oliveVerteGallery": {
-      "description": "Saveurs méditerranéennes, terrasses conviviales et plats préparés avec soin — un voyage visuel au cœur de l'expérience L'Olive Verte."
-    },
-    "oliveVerteMenu": {
-      "orderNow": "Commander",
-      "previousDish": "Plat précédent",
-      "nextDish": "Plat suivant"
-    },
-    "oliveVerteEvents": {
-      "title": "Nos prochains événements",
-      "badgeLabel": "À ne pas manquer",
-      "ctaLabel": "En savoir plus"
-    },
-    "oliveVerteReservation": {
-      "title": "Envie d'une table ce soir ?",
-      "description": "Réservez votre place à L'Olive Verte et profitez de saveurs méditerranéennes, de cocktails et d'une ambiance de terrasse conviviale.",
-      "namePlaceholder": "Votre nom",
-      "placeholder": "Votre email",
-      "cta": "Réserver"
-    },
     "gourmetMexicanaHero": {
       "titleLine1": "Gastronomie Mexicaine",
       "titleLine2": "Contemporaine à Kinshasa",
@@ -498,12 +478,6 @@
       "badgeLabel": "Pinkberry",
       "author": "PAR PINKBERRY",
       "ctaLabel": "Lire la suite"
-    },
-    "oliveVerteHero": {
-      "eyebrow": "Saveurs & Authenticité",
-      "title": "Une cuisine faite avec amour !",
-      "ctaPrimary": "Réserver",
-      "ctaSecondary": "Notre histoire"
     },
     "wabiPhilosophy": {
       "sectionLabel": "Philosophie de la marque"
@@ -731,6 +705,28 @@
     "datesAll": "Tout l'agenda de la maison",
     "reservationTitle": "Réserver une table",
     "reservationText": "Un dîner, un anniversaire ou une soirée karaoké entre amis : indiquez la date et le nombre de personnes."
+  },
+  "olive": {
+    "heroEyebrow": "Restaurant & lounge bar",
+    "heroMenu": "Voir la carte",
+    "heroImageAlt": "L'Olive Verte — trinquer en terrasse",
+    "manifestoLabel": "La maison",
+    "menuEyebrow": "La carte",
+    "menuNoPhoto": "Desserts maison",
+    "albumEyebrow": "En images",
+    "albumHint": "Défilez pour entrer dans la photo",
+    "albumCaption": "Cocktails, grands écrans et plein air, sur le Boulevard du 30 Juin.",
+    "matchEyebrow": "Le bar sportif",
+    "matchTitle": "Jour de match",
+    "matchOpen": "Ouverture",
+    "matchClose": "Fermeture",
+    "matchNext": "Prochain rendez-vous",
+    "matchNone": "Les prochains matchs arrivent bientôt sur nos réseaux.",
+    "matchBook": "Réserver ma table",
+    "matchAll": "Tout l'agenda de la maison",
+    "board": ["Grands écrans", "Football", "Piscine", "Cocktails", "Karaoké", "Lounge"],
+    "reservationTitle": "Réserver une table",
+    "reservationText": "Déjeuner, soirée match ou abords de la piscine : indiquez la date, le nombre de personnes et vos envies."
   },
   "filiale": {
     "statusOpen": "Ouvert · ferme à {time}",

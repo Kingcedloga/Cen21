@@ -60,6 +60,7 @@
         "/filiales/photos/filiale-01/olive%20j191.jpg",
         "/filiales/photos/filiale-01/olive%20j195.jpg"
       ],
+      "teaserVideo": { "src": "/filiales/videos/Teasers/teaser-olive.mp4", "poster": "/filiales/photos/filiale-01/DSC08521.jpg" },
       "specialtiesSection": {
         "eyebrow": "Our Specialities",
         "title": "Our Specialities",
@@ -92,6 +93,7 @@
           {
             "id": "starters",
             "label": "Starters",
+            "image": { "src": "/filiales/photos/filiale-01/DSC08569.jpg", "alt": "L'Olive Verte — shared table from above, cocktails and starters" },
             "dishes": [
               {
                 "name": "Burrata & Heirloom Tomatoes",
@@ -112,6 +114,7 @@
           {
             "id": "mains",
             "label": "Mains",
+            "image": { "src": "/filiales/photos/filiale-01/olive%20j1135.jpg", "alt": "L'Olive Verte — house burger and fries" },
             "dishes": [
               {
                 "name": "Tomato Paniyaram Bowl",
@@ -132,6 +135,7 @@
           {
             "id": "grills",
             "label": "Grills",
+            "image": { "src": "/filiales/photos/filiale-01/olive%20j1199.jpg", "alt": "L'Olive Verte — grilled ribs, sauce and mash" },
             "dishes": [
               {
                 "name": "Wood-Fired Ribeye",
@@ -172,6 +176,7 @@
           {
             "id": "drinks",
             "label": "Drinks",
+            "image": { "src": "/filiales/photos/filiale-01/DSC08583.jpg", "alt": "L'Olive Verte — cocktails raised around a table" },
             "dishes": [
               {
                 "name": "Signature Mojito",
