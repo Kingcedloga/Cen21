@@ -27,70 +27,70 @@
   ],
   "subsidiaries": [
     {
-      "slug": "filiale-01",
+      "slug": "olive-verte",
       "name": "L'Olive Verte",
       "sector": "lounge",
       "address": "Boulevard du 30 Juin, Kinshasa",
       "status": "active"
     },
     {
-      "slug": "filiale-02",
+      "slug": "wabi-sabi",
       "name": "Wabi Sabi",
       "sector": "restaurant",
       "address": "Gombe, Kinshasa",
       "status": "active"
     },
     {
-      "slug": "filiale-03",
+      "slug": "k-lounge",
       "name": "K Lounge",
       "sector": "lounge",
       "address": "RR House, Boulevard du 30 Juin, Kinshasa",
       "status": "active"
     },
     {
-      "slug": "filiale-04",
+      "slug": "millionaire-club",
       "name": "Millionaire Club",
       "sector": "nightclub",
       "address": "72B/95 Boulevard du 30 Juin, Gombe, Kinshasa",
       "status": "active"
     },
     {
-      "slug": "filiale-05",
+      "slug": "cafe-muzik",
       "name": "Café Muzik",
       "sector": "lounge",
       "address": "Boulevard du 30 Juin, Kinshasa",
       "status": "active"
     },
     {
-      "slug": "filiale-06",
+      "slug": "moka-more",
       "name": "Moka & More",
       "sector": "restaurant",
       "address": "Le Premier Shopping Mall, Gombe, Kinshasa",
       "status": "active"
     },
     {
-      "slug": "filiale-07",
+      "slug": "gourmet-mexicana",
       "name": "Gourmet Mexicana",
       "sector": "restaurant",
       "address": "Kinshasa",
       "status": "active"
     },
     {
-      "slug": "filiale-08",
+      "slug": "papa-johns",
       "name": "Papa John's",
       "sector": "restaurant",
       "address": "Avenue de la Gombe, Kinshasa",
       "status": "active"
     },
     {
-      "slug": "filiale-09",
+      "slug": "pinkberry",
       "name": "Pinkberry",
       "sector": "restaurant",
       "address": "Kinshasa",
       "status": "active"
     },
     {
-      "slug": "filiale-10",
+      "slug": "pain-quotidien",
       "name": "Pain Quotidien",
       "sector": "restaurant",
       "address": "Kinshasa",

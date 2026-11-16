@@ -108,15 +108,32 @@ export function getSubsidiaries(locale: Locale): Subsidiary[] {
   return SUBSIDIARIES[locale];
 }
 
-export function getFeaturedSubsidiaries(locale: Locale): Subsidiary[] {
-  return getSubsidiaries(locale).filter((s) => s.featured);
+export const SUBSIDIARY_SLUG_ALIASES: Record<string, string> = {
+  "filiale-01": "olive-verte",
+  "l-olive-verte": "olive-verte",
+  "filiale-02": "wabi-sabi",
+  "filiale-03": "k-lounge",
+  "filiale-04": "millionaire-club",
+  "filiale-05": "cafe-muzik",
+  "muzik-cafe": "cafe-muzik",
+  "filiale-06": "moka-more",
+  "filiale-07": "gourmet-mexicana",
+  "filiale-08": "papa-johns",
+  "filiale-09": "pinkberry",
+  "filiale-10": "pain-quotidien",
+  "le-pain-quotidien": "pain-quotidien",
+};
+
+export function normalizeSubsidiarySlug(slug: string): string {
+  return SUBSIDIARY_SLUG_ALIASES[slug] ?? slug;
 }
 
 export function getSubsidiaryBySlug(
   locale: Locale,
   slug: string,
 ): Subsidiary | undefined {
-  return getSubsidiaries(locale).find((s) => s.slug === slug);
+  const normalized = normalizeSubsidiarySlug(slug);
+  return getSubsidiaries(locale).find((s) => s.slug === normalized || s.slug === slug);
 }
 
 export function getAllSubsidiarySlugs(locale: Locale): string[] {
@@ -140,29 +157,8 @@ export function getPastEvents(locale: Locale): EventItem[] {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
-export function getEventsBySubsidiary(
-  locale: Locale,
-  slug: string,
-): EventItem[] {
-  return getEvents(locale, true).filter((e) => e.subsidiarySlug === slug);
-}
-
-export function getUpcomingEventsBySubsidiary(
-  locale: Locale,
-  slug: string,
-): EventItem[] {
-  return getEvents(locale, false).filter((e) => e.subsidiarySlug === slug);
-}
-
 export function getGalleryItems(locale: Locale): GalleryItem[] {
   return GALLERY[locale];
-}
-
-export function getGalleryBySubsidiary(
-  locale: Locale,
-  slug: string,
-): GalleryItem[] {
-  return getGalleryItems(locale).filter((i) => i.subsidiarySlug === slug);
 }
 
 /** FAQ d'une maison (dress code, privatisation, âge minimum) — vide si non renseignée. */
@@ -170,7 +166,10 @@ export function getSubsidiaryFaq(
   locale: Locale,
   slug: string,
 ): SubsidiaryFaqItem[] {
-  return FAQ[locale].houses[slug] ?? [];
+  const houses = FAQ[locale]?.houses;
+  if (!houses) return [];
+  const normalized = normalizeSubsidiarySlug(slug);
+  return houses[normalized] ?? houses[slug] ?? [];
 }
 
 export type SectorKey =

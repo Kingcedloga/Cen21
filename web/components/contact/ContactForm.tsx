@@ -41,7 +41,7 @@ function knownHouse(value: string | null | undefined, houses: ContactHouse[]): s
  * Réservation ou privatisation : la date et le nombre de personnes apparaissent.
  *
  * Préremplissage :
- * - par l'adresse : `/contact?besoin=privatisation&maison=filiale-02#contact-form` ;
+ * - par l'adresse : `/contact?besoin=privatisation&maison=wabi-sabi#contact-form` ;
  * - sur la page : un lien `<a href="#contact-form" data-contact-need="…"
  *   data-contact-house="…">` coche les pastilles avant le défilement.
  *

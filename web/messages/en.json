@@ -341,91 +341,16 @@
     "address": "Address",
     "hours": "Hours",
     "phone": "Phone",
-    "mapAccess": "Map & directions",
-    "mapHelper": "Open in Google Maps for directions.",
     "gallery": "Gallery",
-    "galleryDescription": "Explore the venue by theme — atmosphere, cuisine, events, and more.",
-    "galleryFilterAll": "All",
-    "galleryEmptyCategory": "No content in this category yet.",
-    "galleryCategories": {
-      "vibes": "Vibes",
-      "guests": "Guests",
-      "events": "Events",
-      "food": "Food",
-      "drinks": "Drinks",
-      "interior": "Interior",
-      "ambiance": "Lifestyle"
-    },
-    "upcomingEvents": "Upcoming events",
-    "noEvents": "No upcoming events at this venue.",
-    "allEvents": "All events",
-    "breadcrumbHome": "Home",
-    "breadcrumbSubsidiaries": "Subsidiaries",
     "mapTitle": "Map — {name}",
-    "mapDescription": "Locate the venue on the map. Directions open in Google Maps.",
     "mapOpenExternal": "Open in Maps",
-    "noEventsScheduled": "No events scheduled at this time.",
-    "eventShowcase": {
-      "bookNow": "Book now",
-      "eventInfo": "Event info",
-      "viewAllEvents": "All events",
-      "statusUpcoming": "Upcoming",
-      "statusSoldOut": "Sold out",
-      "statusVip": "VIP"
-    },
-    "contactBand": {
-      "hours": "Hours",
-      "findUs": "Find us",
-      "callUs": "Call us",
-      "closed": "Closed"
-    },
     "kLoungeReservation": {
       "eyebrow": "We saved you a seat",
       "title": "Make an online reservation",
       "cta": "Book now"
     },
-    "kLoungeGallery": {
-      "description": "Signature dishes, creative cocktails, and nightlife atmosphere — a visual immersion at the heart of the K Lounge experience."
-    },
-    "pinkberryHero": {
-      "eyebrow": "Fresh & Gourmet",
-      "title": "Taste From The Good Old Days.",
-      "cta": "Explore Now",
-      "previousVisual": "Previous visual",
-      "nextVisual": "Next visual"
-    },
-    "pinkberryEvents": {
-      "eyebrow": "Coming up",
-      "title": "Pinkberry News",
-      "badgeLabel": "Pinkberry",
-      "author": "BY PINKBERRY",
-      "ctaLabel": "Read more"
-    },
     "wabiPhilosophy": {
       "sectionLabel": "Brand philosophy"
-    },
-    "wabiPractical": {
-      "hoursTitle": "Hours of Operation",
-      "locationTitle": "Find us",
-      "bookTable": "Book a Table",
-      "getDirections": "Get Directions",
-      "closed": "Closed",
-      "socialLabel": "Follow us"
-    },
-    "wabiGallery": {
-      "description": "A continuous visual flow — signature cuisine, cocktails, interiors and hospitality, like an editorial fresco."
-    },
-    "wabiEstablishments": {
-      "eyebrow": "Our addresses",
-      "title": "Our Establishments",
-      "description": "Discover the group's other destinations — each brand offers a distinctive experience, united by the same pursuit of excellence."
-    },
-    "wabiTestimonials": {
-      "carouselLabel": "Guest testimonials",
-      "prevSlide": "Previous testimonial",
-      "nextSlide": "Next testimonial",
-      "goToSlide": "Go to testimonial {index}",
-      "ratingLabel": "{rating} out of 5"
     },
     "stackLabel": "The group's houses",
     "indexLabel": "Go straight to a house",

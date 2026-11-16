@@ -4,84 +4,120 @@
       "id": "gal-1",
       "src": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=900&q=80",
       "alt": "Bar sportif en plein air — L'Olive Verte",
-      "subsidiarySlug": "filiale-01",
-      "tags": ["sport", "exterieur"]
+      "subsidiarySlug": "olive-verte",
+      "tags": [
+        "sport",
+        "exterieur"
+      ]
     },
     {
       "id": "gal-2",
       "src": "/filiales/photos/filiale-02/cover.webp",
       "alt": "Salle de restaurant — Wabi Sabi",
-      "subsidiarySlug": "filiale-02",
-      "tags": ["restaurant", "interieur"]
+      "subsidiarySlug": "wabi-sabi",
+      "tags": [
+        "restaurant",
+        "interieur"
+      ]
     },
     {
       "id": "gal-3",
       "src": "/filiales/photos/filiale-03/cover.webp",
       "alt": "Rooftop lounge — K Lounge",
-      "subsidiarySlug": "filiale-03",
-      "tags": ["lounge", "rooftop"]
+      "subsidiarySlug": "k-lounge",
+      "tags": [
+        "lounge",
+        "rooftop"
+      ]
     },
     {
       "id": "gal-4",
       "src": "/filiales/photos/filiale-04/cover.webp",
       "alt": "Ambiance club — Millionaire Club",
-      "subsidiarySlug": "filiale-04",
-      "tags": ["nightlife", "club"]
+      "subsidiarySlug": "millionaire-club",
+      "tags": [
+        "nightlife",
+        "club"
+      ]
     },
     {
       "id": "gal-5",
       "src": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=900&q=80",
       "alt": "Scène live music — Café Muzik",
-      "subsidiarySlug": "filiale-05",
-      "tags": ["musique", "live"]
+      "subsidiarySlug": "cafe-muzik",
+      "tags": [
+        "musique",
+        "live"
+      ]
     },
     {
       "id": "gal-6",
       "src": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=900&q=80",
       "alt": "Terrasse café — Moka & More",
-      "subsidiarySlug": "filiale-06",
-      "tags": ["cafe", "terrasse"]
+      "subsidiarySlug": "moka-more",
+      "tags": [
+        "cafe",
+        "terrasse"
+      ]
     },
     {
       "id": "gal-7",
       "src": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&q=80",
       "alt": "Cuisine mexicaine — Gourmet Mexicana",
-      "subsidiarySlug": "filiale-07",
-      "tags": ["mexicain", "gastronomie"]
+      "subsidiarySlug": "gourmet-mexicana",
+      "tags": [
+        "mexicain",
+        "gastronomie"
+      ]
     },
     {
       "id": "gal-8",
       "src": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=900&q=80",
       "alt": "Pizza fraîche — Papa John's",
-      "subsidiarySlug": "filiale-08",
-      "tags": ["pizza", "restaurant"]
+      "subsidiarySlug": "papa-johns",
+      "tags": [
+        "pizza",
+        "restaurant"
+      ]
     },
     {
       "id": "gal-9",
       "src": "https://images.unsplash.com/photo-1488900128323-21503983a07e?w=900&q=80",
       "alt": "Yaourt glacé — Pinkberry",
-      "subsidiarySlug": "filiale-09",
-      "tags": ["dessert", "yaourt"]
+      "subsidiarySlug": "pinkberry",
+      "tags": [
+        "dessert",
+        "yaourt"
+      ]
     },
     {
       "id": "gal-10",
       "src": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=900&q=80",
       "alt": "Boulangerie artisanale — Le Pain Quotidien",
-      "subsidiarySlug": "filiale-10",
-      "tags": ["boulangerie", "artisanal"]
+      "subsidiarySlug": "pain-quotidien",
+      "tags": [
+        "boulangerie",
+        "artisanal"
+      ]
     },
     {
       "id": "gal-11",
       "src": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=900&q=80",
       "alt": "Micro de karaoké sous les lumières — Café Muzik",
-      "subsidiarySlug": "filiale-05",
-      "tags": ["musique", "karaoke"]
+      "subsidiarySlug": "cafe-muzik",
+      "tags": [
+        "musique",
+        "karaoke"
+      ]
     },
     {
       "id": "gal-12",
       "src": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&q=80",
       "alt": "Vue d'ensemble — Cen21 Hospitality",
-      "tags": ["holding", "premium"]
+      "tags": [
+        "holding",
+        "premium"
+      ]
     }
   ]
 }

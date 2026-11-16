@@ -341,92 +341,17 @@
     "address": "Adresse",
     "hours": "Horaires",
     "phone": "Téléphone",
-    "mapAccess": "Plan d'accès",
-    "mapHelper": "Ouvrir dans Google Maps pour l'itinéraire.",
     "gallery": "Galerie",
-    "galleryDescription": "Explorez l'univers de l'établissement par thématiques — ambiance, cuisine, événements et plus.",
-    "galleryFilterAll": "Tout",
-    "galleryEmptyCategory": "Aucun contenu dans cette catégorie pour le moment.",
-    "galleryCategories": {
-      "vibes": "Vibes",
-      "guests": "Guests",
-      "events": "Events",
-      "food": "Food",
-      "drinks": "Drinks",
-      "interior": "Interior",
-      "ambiance": "Lifestyle"
-    },
-    "upcomingEvents": "Événements à venir",
-    "noEvents": "Aucun événement à venir pour cet établissement.",
-    "allEvents": "Tous les événements",
-    "breadcrumbHome": "Accueil",
-    "breadcrumbSubsidiaries": "Filiales",
     "mapTitle": "Carte — {name}",
-    "mapDescription": "Localisez l'établissement sur la carte. L'itinéraire s'ouvre dans Google Maps.",
     "mapOpenExternal": "Ouvrir dans Maps",
-    "noEventsScheduled": "Aucun événement programmé pour le moment.",
-    "eventShowcase": {
-      "bookNow": "Réserver",
-      "eventInfo": "Voir les détails",
-      "viewAllEvents": "Tous les événements",
-      "statusUpcoming": "À venir",
-      "statusSoldOut": "Complet",
-      "statusVip": "VIP"
-    },
     "discover": "Découvrir",
-    "contactBand": {
-      "hours": "Horaires",
-      "findUs": "Nous trouver",
-      "callUs": "Appelez-nous",
-      "closed": "Fermé"
-    },
     "kLoungeReservation": {
       "eyebrow": "Nous vous avons gardé une place",
       "title": "Réservez en ligne",
       "cta": "Réserver"
     },
-    "kLoungeGallery": {
-      "description": "Plats signature, cocktails créatifs et ambiance nocturne — une immersion visuelle au cœur de l'expérience K Lounge."
-    },
-    "pinkberryHero": {
-      "eyebrow": "Frais & Gourmand",
-      "title": "L'excellent goût du bon vieux temps.",
-      "cta": "Découvrir",
-      "previousVisual": "Visuel précédent",
-      "nextVisual": "Visuel suivant"
-    },
-    "pinkberryEvents": {
-      "eyebrow": "À suivre",
-      "title": "Actualités Pinkberry",
-      "badgeLabel": "Pinkberry",
-      "author": "PAR PINKBERRY",
-      "ctaLabel": "Lire la suite"
-    },
     "wabiPhilosophy": {
       "sectionLabel": "Philosophie de la marque"
-    },
-    "wabiPractical": {
-      "hoursTitle": "Horaires d'ouverture",
-      "locationTitle": "Nous trouver",
-      "bookTable": "Réserver une table",
-      "getDirections": "Voir l'itinéraire",
-      "closed": "Fermé",
-      "socialLabel": "Suivez-nous"
-    },
-    "wabiGallery": {
-      "description": "Un flux visuel continu — cuisine signature, cocktails, intérieurs et art de recevoir, à la manière d'une fresque éditoriale."
-    },
-    "wabiEstablishments": {
-      "eyebrow": "Nos adresses",
-      "title": "Nos Établissements",
-      "description": "Découvrez les autres adresses du groupe Cen21 Hospitality — chaque enseigne invite à une expérience unique, portée par la même exigence d'excellence."
-    },
-    "wabiTestimonials": {
-      "carouselLabel": "Témoignages clients",
-      "prevSlide": "Témoignage précédent",
-      "nextSlide": "Témoignage suivant",
-      "goToSlide": "Aller au témoignage {index}",
-      "ratingLabel": "{rating} sur 5"
     },
     "stackLabel": "Les maisons du groupe",
     "indexLabel": "Accès direct aux maisons",

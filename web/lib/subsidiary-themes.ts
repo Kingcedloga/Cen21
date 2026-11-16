@@ -32,7 +32,7 @@ export type SubsidiaryPageTheme = {
 
 export const MILLIONAIRE_CLUB_THEME: SubsidiaryPageTheme = {
   id: "millionaire-club",
-  slug: "filiale-04",
+  slug: "millionaire-club",
   colors: {
     bg: "#000000",
     gold: "#C9A84C",
@@ -53,7 +53,7 @@ export const MILLIONAIRE_CLUB_THEME: SubsidiaryPageTheme = {
 /** K Lounge — lounge premium noir & blanc (accent = blanc via --sub-gold). */
 export const K_LOUNGE_THEME: SubsidiaryPageTheme = {
   id: "k-lounge",
-  slug: "filiale-03",
+  slug: "k-lounge",
   colors: {
     bg: "#000000",
     gold: "#FFFFFF",
@@ -75,7 +75,7 @@ export const K_LOUNGE_THEME: SubsidiaryPageTheme = {
 /** Moka & More — café-lounge rouge, noir & blanc (accent = rouge via --sub-gold). */
 export const MOKA_MORE_THEME: SubsidiaryPageTheme = {
   id: "moka-more",
-  slug: "filiale-06",
+  slug: "moka-more",
   colors: {
     bg: "#000000",
     gold: "#CC0000",
@@ -97,7 +97,7 @@ export const MOKA_MORE_THEME: SubsidiaryPageTheme = {
 /** Le Pain Quotidien — boulangerie artisanale chocolat & blanc (accent = blanc via --sub-gold). */
 export const PAIN_QUOTIDIEN_THEME: SubsidiaryPageTheme = {
   id: "pain-quotidien",
-  slug: "filiale-10",
+  slug: "pain-quotidien",
   colors: {
     bg: "#8B5E3C",
     gold: "#FFFFFF",
@@ -119,7 +119,7 @@ export const PAIN_QUOTIDIEN_THEME: SubsidiaryPageTheme = {
 /** Papa John's — pizzeria moderne vert naturel & blanc (accent = blanc via --sub-gold). */
 export const PAPA_JOHNS_THEME: SubsidiaryPageTheme = {
   id: "papa-johns",
-  slug: "filiale-08",
+  slug: "papa-johns",
   colors: {
     bg: "#006B3F",
     gold: "#FFFFFF",
@@ -142,7 +142,7 @@ export const PAPA_JOHNS_THEME: SubsidiaryPageTheme = {
 /** Gourmet Mexicana — hacienda contemporaine sobre (brun nuit, vert & rouge mexicains en accents discrets, or). */
 export const GOURMET_MEXICANA_THEME: SubsidiaryPageTheme = {
   id: "gourmet-mexicana",
-  slug: "filiale-07",
+  slug: "gourmet-mexicana",
   colors: {
     bg: "#1A1208",
     gold: "#CE1126",
@@ -175,8 +175,8 @@ export const GOURMET_MEXICANA_THEME: SubsidiaryPageTheme = {
  * reste en touche, sur la section du refrain (styles/muzik.css).
  */
 export const MUZIK_CAFE_THEME: SubsidiaryPageTheme = {
-  id: "muzik-cafe",
-  slug: "filiale-05",
+  id: "cafe-muzik",
+  slug: "cafe-muzik",
   colors: {
     bg: "#FFFFFF",
     gold: "#EF3340",
@@ -201,7 +201,7 @@ export const MUZIK_CAFE_THEME: SubsidiaryPageTheme = {
 /** L'Olive Verte — crème #ECE7D1 · olive #767F34 (bicolore, sans rouge). */
 export const OLIVE_VERTE_THEME: SubsidiaryPageTheme = {
   id: "olive-verte",
-  slug: "filiale-01",
+  slug: "olive-verte",
   colors: {
     bg: "#ECE7D1",
     gold: "#ECE7D1",
@@ -226,7 +226,7 @@ export const OLIVE_VERTE_THEME: SubsidiaryPageTheme = {
 /** Wabi Sabi — fond bleu #0b2F49 · texte or #e1c676 (zen contemporain). */
 export const WABI_SABI_THEME: SubsidiaryPageTheme = {
   id: "wabi-sabi",
-  slug: "filiale-02",
+  slug: "wabi-sabi",
   colors: {
     bg: "#0b2F49",
     gold: "#e1c676",
@@ -239,7 +239,7 @@ export const WABI_SABI_THEME: SubsidiaryPageTheme = {
     surfaceElevated: "rgba(225, 198, 118, 0.1)",
     border: "rgba(225, 198, 118, 0.24)",
     btn: "#e1c676",
-    // Beige des bandeaux Wabi Sabi (styles/wabi-sabi-beige-band.css).
+    // Beige des anciens bandeaux Wabi Sabi : surface claire de la fiche.
     light: "#f5f0e8",
   },
   hero: {
@@ -251,7 +251,7 @@ export const WABI_SABI_THEME: SubsidiaryPageTheme = {
 /** Pinkberry — yaourt glacé rose & blanc (frais, gourmand & joyeux). */
 export const PINKBERRY_THEME: SubsidiaryPageTheme = {
   id: "pinkberry",
-  slug: "filiale-09",
+  slug: "pinkberry",
   colors: {
     bg: "#F4A7C3",
     gold: "#FFFFFF",
@@ -277,11 +277,26 @@ const THEMES_BY_SLUG: Record<string, SubsidiaryPageTheme> = {
   [MILLIONAIRE_CLUB_THEME.slug]: MILLIONAIRE_CLUB_THEME,
   [MOKA_MORE_THEME.slug]: MOKA_MORE_THEME,
   [MUZIK_CAFE_THEME.slug]: MUZIK_CAFE_THEME,
+  "muzik-cafe": MUZIK_CAFE_THEME,
   [OLIVE_VERTE_THEME.slug]: OLIVE_VERTE_THEME,
+  "l-olive-verte": OLIVE_VERTE_THEME,
   [PAIN_QUOTIDIEN_THEME.slug]: PAIN_QUOTIDIEN_THEME,
+  "le-pain-quotidien": PAIN_QUOTIDIEN_THEME,
   [PAPA_JOHNS_THEME.slug]: PAPA_JOHNS_THEME,
   [PINKBERRY_THEME.slug]: PINKBERRY_THEME,
   [WABI_SABI_THEME.slug]: WABI_SABI_THEME,
+
+  // Anciens slugs pour rétrocompatibilité
+  "filiale-01": OLIVE_VERTE_THEME,
+  "filiale-02": WABI_SABI_THEME,
+  "filiale-03": K_LOUNGE_THEME,
+  "filiale-04": MILLIONAIRE_CLUB_THEME,
+  "filiale-05": MUZIK_CAFE_THEME,
+  "filiale-06": MOKA_MORE_THEME,
+  "filiale-07": GOURMET_MEXICANA_THEME,
+  "filiale-08": PAPA_JOHNS_THEME,
+  "filiale-09": PINKBERRY_THEME,
+  "filiale-10": PAIN_QUOTIDIEN_THEME,
 };
 
 export function getSubsidiaryPageTheme(slug: string): SubsidiaryPageTheme | null {

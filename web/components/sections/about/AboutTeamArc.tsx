@@ -92,7 +92,8 @@ export function AboutTeamArc({ members, labels }: { members: TeamMember[]; label
 
       <dialog
         ref={dialogRef}
-        aria-labelledby="team-dialog-name"
+        // Le titre n'existe qu'une fois la fiche ouverte.
+        aria-labelledby={open ? "team-dialog-name" : undefined}
         className="team-dialog"
         onClose={() => setOpen(null)}
         // Clic sur le voile (hors du panneau) : fermeture.

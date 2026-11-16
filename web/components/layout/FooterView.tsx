@@ -2,12 +2,6 @@
 
 import { MotionConfig, motion } from "framer-motion";
 import { ArrowUpRight, Mail, MapPin, Phone } from "@/lib/icons";
-import { usePathname } from "@/i18n/navigation";
-import {
-  footerPatternStyle,
-  footerThemeVars,
-  getSubsidiaryNavbarTheme,
-} from "@/lib/navbar-theme";
 import type { SiteConfig } from "@/lib/types";
 
 import { Logo } from "@/components/brand/Logo";
@@ -44,32 +38,18 @@ type FooterLabels = {
   nav: Record<string, string>;
 };
 
-function SocialRow({
-  href,
-  label,
-  themed,
-}: {
-  href?: string;
-  label: string;
-  themed: boolean;
-}) {
+function SocialRow({ href, label }: { href?: string; label: string }) {
   if (!href) return null;
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`subsidiary-footer__social group flex items-center justify-between gap-4 py-2 text-sm transition-colors cursor-pointer ${
-        themed
-          ? "subsidiary-footer__link"
-          : "text-ivory/90 hover:text-rose"
-      }`}
+      className="subsidiary-footer__social group flex items-center justify-between gap-4 py-2 text-sm transition-colors cursor-pointer text-ivory/90 hover:text-rose"
     >
       <RollingText text={label} />
       <ArrowUpRight
-        className={`subsidiary-footer__social-icon h-4 w-4 shrink-0 ${
-          themed ? "" : "text-rose/70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-        }`}
+        className="subsidiary-footer__social-icon h-4 w-4 shrink-0 text-rose/70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
         aria-hidden
       />
     </a>
@@ -83,10 +63,6 @@ export function FooterView({
   site: SiteConfig;
   labels: FooterLabels;
 }) {
-  const pathname = usePathname();
-  const subsidiaryTheme = getSubsidiaryNavbarTheme(pathname);
-  const isThemed = subsidiaryTheme !== null;
-
   const quickCol1 = NAV_PATHS.slice(0, 3);
   const quickCol2 = NAV_PATHS.slice(3);
 
@@ -97,27 +73,13 @@ export function FooterView({
   // supprime les déplacements et ne garde que le fondu.
   return (
     <MotionConfig reducedMotion="user">
-    {/* Pages groupe : séparateur fondu au-dessus du pied de page. */}
-    {!isThemed && <SectionBlend to="var(--color-anthracite)" />}
-    <footer
-      data-subsidiary-footer={isThemed ? "" : undefined}
-      className={
-        isThemed
-          ? "subsidiary-footer relative"
-          : "relative bg-anthracite text-ivory"
-      }
-      style={isThemed ? footerThemeVars(subsidiaryTheme) : undefined}
-    >
+    {/* Séparateur fondu au-dessus du pied de page. */}
+    <SectionBlend to="var(--color-anthracite)" />
+    <footer className="relative bg-anthracite text-ivory">
       <div
         aria-hidden
-        className={`subsidiary-footer__pattern pointer-events-none absolute inset-0 ${
-          isThemed ? "" : "opacity-[0.12]"
-        }`}
-        style={{
-          backgroundImage: isThemed
-            ? footerPatternStyle(subsidiaryTheme.accent)
-            : defaultPattern,
-        }}
+        className="subsidiary-footer__pattern pointer-events-none absolute inset-0 opacity-[0.12]"
+        style={{ backgroundImage: defaultPattern }}
       />
 
       <div className="relative mx-auto max-w-7xl px-6 pb-12 pt-6 md:px-10 md:pb-16 md:pt-8">
@@ -130,27 +92,21 @@ export function FooterView({
         >
           <div className="subsidiary-footer__crest relative flex w-full items-center">
             <motion.span
-              className={`subsidiary-footer__rule subsidiary-footer__rule--left h-px min-h-px flex-1 ${
-                isThemed ? "" : "subsidiary-footer__rule--default"
-              }`}
+              className="subsidiary-footer__rule subsidiary-footer__rule--left h-px min-h-px flex-1 subsidiary-footer__rule--default"
               aria-hidden
               style={{ transformOrigin: "right center" }}
               variants={ornamentLineVariants}
               transition={ornamentLineTransition}
             />
             <motion.div
-              className={`subsidiary-footer__logo-badge relative z-[2] mx-6 flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-full border p-2 shadow-lg md:mx-8 md:h-24 md:w-24 md:p-2.5 ${
-                isThemed ? "" : "border-rose/40 bg-anthracite shadow-black/40"
-              }`}
+              className="subsidiary-footer__logo-badge relative z-[2] mx-6 flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-full border p-2 shadow-lg md:mx-8 md:h-24 md:w-24 md:p-2.5 border-rose/40 bg-anthracite shadow-black/40"
               variants={fadeScaleVariants}
               transition={fadeScaleTransition}
             >
               <Logo variant="footer" />
             </motion.div>
             <motion.span
-              className={`subsidiary-footer__rule subsidiary-footer__rule--right h-px min-h-px flex-1 ${
-                isThemed ? "" : "subsidiary-footer__rule--default"
-              }`}
+              className="subsidiary-footer__rule subsidiary-footer__rule--right h-px min-h-px flex-1 subsidiary-footer__rule--default"
               aria-hidden
               style={{ transformOrigin: "left center" }}
               variants={ornamentLineVariants}
@@ -158,18 +114,14 @@ export function FooterView({
             />
           </div>
           <motion.p
-            className={`mt-6 font-[family-name:var(--font-dm-sans)] text-2xl font-bold tracking-wide md:mt-7 md:text-3xl ${
-              isThemed ? "subsidiary-footer__brand-title" : ""
-            }`}
+            className="mt-6 font-[family-name:var(--font-dm-sans)] text-2xl font-bold tracking-wide md:mt-7 md:text-3xl"
             variants={fadeUpVariants}
             transition={fadeUpTransition}
           >
             {site.name}
           </motion.p>
           <motion.p
-            className={`mx-auto mt-2 max-w-md text-sm italic ${
-              isThemed ? "subsidiary-footer__brand-tagline" : "text-taupe"
-            }`}
+            className="mx-auto mt-2 max-w-md text-sm italic text-taupe"
             variants={fadeUpVariants}
             transition={fadeUpTransition}
           >
@@ -178,9 +130,7 @@ export function FooterView({
         </motion.div>
 
         <motion.div
-          className={`grid grid-cols-1 gap-12 border-t pt-12 md:grid-cols-12 md:gap-10 md:pt-14 ${
-            isThemed ? "subsidiary-footer__divider" : "border-white/10"
-          }`}
+          className="grid grid-cols-1 gap-12 border-t pt-12 md:grid-cols-12 md:gap-10 md:pt-14 border-white/10"
           initial="hidden"
           whileInView="visible"
           viewport={defaultScrollViewport}
@@ -192,58 +142,40 @@ export function FooterView({
             transition={fadeUpTransition}
           >
             <p
-              className={`mb-5 text-xs tracking-[0.25em] uppercase ${
-                isThemed ? "subsidiary-footer__heading" : "text-rose"
-              }`}
+              className="mb-5 text-xs tracking-[0.25em] uppercase text-rose"
             >
               {labels.contact}
             </p>
             <ul
-              className={`space-y-4 text-sm ${
-                isThemed ? "subsidiary-footer__body" : "text-taupe"
-              }`}
+              className="space-y-4 text-sm text-taupe"
             >
               <li className="flex gap-3">
                 <MapPin
-                  className={`mt-0.5 h-4 w-4 shrink-0 ${
-                    isThemed ? "subsidiary-footer__icon" : "text-rose"
-                  }`}
+                  className="mt-0.5 h-4 w-4 shrink-0 text-rose"
                   aria-hidden
                 />
                 {site.contact.address}
               </li>
               <li className="flex items-center gap-3">
                 <Phone
-                  className={`h-4 w-4 shrink-0 ${
-                    isThemed ? "subsidiary-footer__icon" : "text-rose"
-                  }`}
+                  className="h-4 w-4 shrink-0 text-rose"
                   aria-hidden
                 />
                 <a
                   href={`tel:${site.contact.phone.replace(/\s/g, "")}`}
-                  className={`transition-colors cursor-pointer ${
-                    isThemed
-                      ? "subsidiary-footer__link"
-                      : "hover:text-rose"
-                  }`}
+                  className="transition-colors cursor-pointer hover:text-rose"
                 >
                   {site.contact.phone}
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail
-                  className={`h-4 w-4 shrink-0 ${
-                    isThemed ? "subsidiary-footer__icon" : "text-rose"
-                  }`}
+                  className="h-4 w-4 shrink-0 text-rose"
                   aria-hidden
                 />
                 <a
                   href={`mailto:${site.contact.email}`}
-                  className={`transition-colors cursor-pointer ${
-                    isThemed
-                      ? "subsidiary-footer__link"
-                      : "hover:text-rose"
-                  }`}
+                  className="transition-colors cursor-pointer hover:text-rose"
                 >
                   {site.contact.email}
                 </a>
@@ -251,14 +183,10 @@ export function FooterView({
             </ul>
 
             <div
-              className={`mt-8 max-w-xs border-t pt-6 ${
-                isThemed ? "subsidiary-footer__divider" : "border-white/10"
-              }`}
+              className="mt-8 max-w-xs border-t pt-6 border-white/10"
             >
               <p
-                className={`mb-3 text-xs tracking-[0.2em] uppercase ${
-                  isThemed ? "subsidiary-footer__heading" : "text-rose"
-                }`}
+                className="mb-3 text-xs tracking-[0.2em] uppercase text-rose"
               >
                 {labels.networks}
               </p>
@@ -266,17 +194,14 @@ export function FooterView({
                 <SocialRow
                   href={site.social.instagram}
                   label="Instagram"
-                  themed={isThemed}
                 />
                 <SocialRow
                   href={site.social.facebook}
                   label="Facebook"
-                  themed={isThemed}
                 />
                 <SocialRow
                   href={site.social.linkedin}
                   label="LinkedIn"
-                  themed={isThemed}
                 />
               </div>
             </div>
@@ -303,9 +228,7 @@ export function FooterView({
             transition={fadeUpTransition}
           >
             <p
-              className={`mb-5 text-xs tracking-[0.25em] uppercase ${
-                isThemed ? "subsidiary-footer__heading" : "text-rose"
-              }`}
+              className="mb-5 text-xs tracking-[0.25em] uppercase text-rose"
             >
               {labels.quickAccess}
             </p>
@@ -315,11 +238,7 @@ export function FooterView({
                   <li key={href}>
                     <Link
                       href={href}
-                      className={`cursor-pointer transition-colors ${
-                        isThemed
-                          ? "subsidiary-footer__link"
-                          : "text-ivory/75 hover:text-rose"
-                      }`}
+                      className="cursor-pointer transition-colors text-ivory/75 hover:text-rose"
                     >
                       <RollingText text={labels.nav[key]} />
                     </Link>
@@ -331,11 +250,7 @@ export function FooterView({
                   <li key={href}>
                     <Link
                       href={href}
-                      className={`cursor-pointer transition-colors ${
-                        isThemed
-                          ? "subsidiary-footer__link"
-                          : "text-ivory/75 hover:text-rose"
-                      }`}
+                      className="cursor-pointer transition-colors text-ivory/75 hover:text-rose"
                     >
                       <RollingText text={labels.nav[key]} />
                     </Link>
@@ -347,62 +262,42 @@ export function FooterView({
         </motion.div>
 
         <div
-          className={`mt-14 flex flex-col-reverse items-center justify-between gap-4 border-t pt-8 text-xs md:flex-row md:pt-10 ${
-            isThemed
-              ? "subsidiary-footer__divider subsidiary-footer__legal-muted"
-              : "border-white/10 text-stone"
-          }`}
+          className="mt-14 flex flex-col-reverse items-center justify-between gap-4 border-t pt-8 text-xs md:flex-row md:pt-10 border-white/10 text-stone"
         >
           <p>
             © {new Date().getFullYear()} {site.name}. {labels.allRights}
           </p>
           <nav
             aria-label={labels.legalNav}
-            className={`inline-flex flex-wrap items-center justify-center gap-2 rounded-full border px-4 py-2 backdrop-blur-sm ${
-              isThemed
-                ? "subsidiary-footer__legal-pill"
-                : "border-white/15 bg-petrol/60"
-            }`}
+            className="inline-flex flex-wrap items-center justify-center gap-2 rounded-full border px-4 py-2 backdrop-blur-sm border-white/15 bg-petrol/60"
           >
             <Link
               href="/mentions-legales"
-              className={`cursor-pointer transition-colors ${
-                isThemed
-                  ? "subsidiary-footer__link"
-                  : "hover:text-rose"
-              }`}
+              className="cursor-pointer transition-colors hover:text-rose"
             >
               <RollingText text={labels.legalNotice} />
             </Link>
             <span
-              className={isThemed ? "subsidiary-footer__legal-sep" : "text-white/20"}
+              className="text-white/20"
               aria-hidden
             >
               ·
             </span>
             <Link
               href="/confidentialite"
-              className={`cursor-pointer transition-colors ${
-                isThemed
-                  ? "subsidiary-footer__link"
-                  : "hover:text-rose"
-              }`}
+              className="cursor-pointer transition-colors hover:text-rose"
             >
               <RollingText text={labels.privacy} />
             </Link>
             <span
-              className={isThemed ? "subsidiary-footer__legal-sep" : "text-white/20"}
+              className="text-white/20"
               aria-hidden
             >
               ·
             </span>
             <Link
               href="/cookies"
-              className={`cursor-pointer transition-colors ${
-                isThemed
-                  ? "subsidiary-footer__link"
-                  : "hover:text-rose"
-              }`}
+              className="cursor-pointer transition-colors hover:text-rose"
             >
               <RollingText text={labels.cookies} />
             </Link>

@@ -1,7 +1,6 @@
 import type {
   GalleryItem,
   Sector,
-  Subsidiary,
   SubsidiaryGalleryEntry,
 } from "./types";
 
@@ -106,36 +105,3 @@ export function subsidiaryEntryToGalleryItem(
   };
 }
 
-export function buildSubsidiaryGalleryItems(
-  subsidiary: Subsidiary,
-  extraItems: GalleryItem[] = [],
-): GalleryItem[] {
-  const fromSubsidiary = subsidiary.galleryImages.map((entry, i) =>
-    subsidiaryEntryToGalleryItem(
-      entry,
-      subsidiary.slug,
-      subsidiary.name,
-      i,
-      subsidiary.sector,
-    ),
-  );
-
-  if (fromSubsidiary.length > 0) {
-    return fromSubsidiary;
-  }
-
-  return extraItems.map((item) => ({
-    ...item,
-    tags: normalizeGalleryTags(item.tags),
-  }));
-}
-
-export function categoriesPresentInItems(items: GalleryItem[]): GalleryCategory[] {
-  const set = new Set<GalleryCategory>();
-  for (const item of items) {
-    for (const tag of item.tags) {
-      if (isGalleryCategory(tag)) set.add(tag);
-    }
-  }
-  return GALLERY_CATEGORIES.filter((c) => set.has(c));
-}

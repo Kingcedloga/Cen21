@@ -1,7 +1,7 @@
 {
   "subsidiaries": [
     {
-      "slug": "filiale-01",
+      "slug": "olive-verte",
       "name": "L'Olive Verte",
       "sector": "lounge",
       "tagline": "Restaurant & lounge — bar sportif premium en plein air",
@@ -60,7 +60,10 @@
         "/filiales/photos/filiale-01/olive%20j191.jpg",
         "/filiales/photos/filiale-01/olive%20j195.jpg"
       ],
-      "teaserVideo": { "src": "/filiales/videos/Teasers/teaser-olive.mp4", "poster": "/filiales/photos/filiale-01/DSC08521.jpg" },
+      "teaserVideo": {
+        "src": "/filiales/videos/Teasers/teaser-olive.mp4",
+        "poster": "/filiales/photos/filiale-01/DSC08521.jpg"
+      },
       "specialtiesSection": {
         "eyebrow": "Nos Spécialités",
         "title": "Nos Spécialités",
@@ -93,7 +96,10 @@
           {
             "id": "starters",
             "label": "Entrées",
-            "image": { "src": "/filiales/photos/filiale-01/DSC08569.jpg", "alt": "L'Olive Verte — table partagée vue d'en haut, cocktails et entrées" },
+            "image": {
+              "src": "/filiales/photos/filiale-01/DSC08569.jpg",
+              "alt": "L'Olive Verte — table partagée vue d'en haut, cocktails et entrées"
+            },
             "dishes": [
               {
                 "name": "Burrata & tomates anciennes",
@@ -114,7 +120,10 @@
           {
             "id": "mains",
             "label": "Plats",
-            "image": { "src": "/filiales/photos/filiale-01/olive%20j1135.jpg", "alt": "L'Olive Verte — burger maison et frites" },
+            "image": {
+              "src": "/filiales/photos/filiale-01/olive%20j1135.jpg",
+              "alt": "L'Olive Verte — burger maison et frites"
+            },
             "dishes": [
               {
                 "name": "Bol Tomato Paniyaram",
@@ -135,7 +144,10 @@
           {
             "id": "grills",
             "label": "Grillades",
-            "image": { "src": "/filiales/photos/filiale-01/olive%20j1199.jpg", "alt": "L'Olive Verte — travers grillés, sauce et purée" },
+            "image": {
+              "src": "/filiales/photos/filiale-01/olive%20j1199.jpg",
+              "alt": "L'Olive Verte — travers grillés, sauce et purée"
+            },
             "dishes": [
               {
                 "name": "Entrecôte au feu de bois",
@@ -176,7 +188,10 @@
           {
             "id": "drinks",
             "label": "Boissons",
-            "image": { "src": "/filiales/photos/filiale-01/DSC08583.jpg", "alt": "L'Olive Verte — cocktails levés autour d'une table" },
+            "image": {
+              "src": "/filiales/photos/filiale-01/DSC08583.jpg",
+              "alt": "L'Olive Verte — cocktails levés autour d'une table"
+            },
             "dishes": [
               {
                 "name": "Mojito signature",
@@ -199,7 +214,7 @@
       "featured": true
     },
     {
-      "slug": "filiale-02",
+      "slug": "wabi-sabi",
       "name": "Wabi Sabi",
       "sector": "restaurant",
       "tagline": "Restaurant & lounge bar contemporain asiatique",
@@ -462,7 +477,7 @@
       "featured": true
     },
     {
-      "slug": "filiale-03",
+      "slug": "k-lounge",
       "name": "K Lounge",
       "sector": "lounge",
       "tagline": "Restaurant & lounge bar haut de gamme — rooftop",
@@ -572,7 +587,7 @@
       "featured": true
     },
     {
-      "slug": "filiale-04",
+      "slug": "millionaire-club",
       "name": "Millionaire Club",
       "sector": "nightclub",
       "tagline": "Night-club — soirées à thème & nuits électrisantes",
@@ -737,7 +752,7 @@
       "featured": true
     },
     {
-      "slug": "filiale-05",
+      "slug": "cafe-muzik",
       "name": "Café Muzik",
       "sector": "lounge",
       "tagline": "Restaurant, lounge & bar — patio & live music",
@@ -752,7 +767,9 @@
         "facebook": "https://www.facebook.com/share/19DpMEP3TP/?mibextid=wwXIfr"
       },
       "accentColor": "#EF3340",
-      "teaserVideo": { "src": "/filiales/videos/Teasers/teaser-music.mp4" },
+      "teaserVideo": {
+        "src": "/filiales/videos/Teasers/teaser-music.mp4"
+      },
       "brandLogo": "/filiales/logos/filiale-05.png",
       "coverImage": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80",
       "galleryImages": [
@@ -854,7 +871,7 @@
       "featured": false
     },
     {
-      "slug": "filiale-06",
+      "slug": "moka-more",
       "name": "Moka & More",
       "sector": "restaurant",
       "tagline": "Café, lounge & restaurant — Le Premier Shopping Mall",
@@ -952,7 +969,7 @@
       "featured": false
     },
     {
-      "slug": "filiale-07",
+      "slug": "gourmet-mexicana",
       "name": "Gourmet Mexicana",
       "sector": "restaurant",
       "tagline": "Restaurant mexicain authentique & haut de gamme",
@@ -979,11 +996,14 @@
         "/filiales/photos/filiale-07/gallery/dsc09813.jpg",
         "/filiales/photos/filiale-07/gallery/dsc09820.jpg"
       ],
-      "teaserVideo": { "src": "/filiales/videos/Teasers/teaser-gourmet.mp4", "poster": "/filiales/photos/filiale-07/gallery/dsc09820.jpg" },
+      "teaserVideo": {
+        "src": "/filiales/videos/Teasers/teaser-gourmet.mp4",
+        "poster": "/filiales/photos/filiale-07/gallery/dsc09820.jpg"
+      },
       "featured": false
     },
     {
-      "slug": "filiale-08",
+      "slug": "papa-johns",
       "name": "Papa John's",
       "sector": "restaurant",
       "tagline": "Pizzeria — premier outlet d'Afrique centrale",
@@ -1009,7 +1029,7 @@
       "featured": false
     },
     {
-      "slug": "filiale-09",
+      "slug": "pinkberry",
       "name": "Pinkberry",
       "sector": "restaurant",
       "tagline": "Yaourt glacé & saveurs fraîches",
@@ -1234,7 +1254,7 @@
       "featured": false
     },
     {
-      "slug": "filiale-10",
+      "slug": "pain-quotidien",
       "name": "Le Pain Quotidien",
       "sector": "restaurant",
       "tagline": "Boulangerie & restaurant artisanal",

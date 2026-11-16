@@ -6,7 +6,7 @@
       "title": "Soirée foot — Grands écrans & cocktails",
       "date": "2026-08-15T19:30:00",
       "location": "L'Olive Verte, Boulevard du 30 Juin — Kinshasa",
-      "subsidiarySlug": "filiale-01",
+      "subsidiarySlug": "olive-verte",
       "image": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80",
       "excerpt": "Match en direct sur grands écrans, cuisine africaine et ambiance lounge en plein air."
     },
@@ -16,7 +16,7 @@
       "title": "Soirée sushi & Robatayaki — Rooftop",
       "date": "2026-08-22T18:00:00",
       "location": "Wabi Sabi, Gombe — Kinshasa",
-      "subsidiarySlug": "filiale-02",
+      "subsidiarySlug": "wabi-sabi",
       "image": "/filiales/photos/filiale-02/cover.webp",
       "excerpt": "Menu dégustation asiatique avec vue panoramique sur la ville."
     },
@@ -26,7 +26,7 @@
       "title": "Sunset Rooftop — K Lounge",
       "date": "2026-08-05T21:00:00",
       "location": "K Lounge, RR House — Kinshasa",
-      "subsidiarySlug": "filiale-03",
+      "subsidiarySlug": "k-lounge",
       "image": "/filiales/photos/filiale-03/cover.webp",
       "excerpt": "Cocktails signature, cuisine internationale et vues panoramiques au coucher du soleil."
     },
@@ -37,7 +37,7 @@
       "displayTitle": "Urban Wednesday",
       "date": "2026-08-03T23:00:00",
       "location": "Millionaire Club, Gombe — Kinshasa",
-      "subsidiarySlug": "filiale-04",
+      "subsidiarySlug": "millionaire-club",
       "image": "/filiales/photos/filiale-04/events/01-urban-wednesday.webp",
       "excerpt": "Hip-hop, R&B et ambiance urbaine premium chaque mercredi.",
       "status": "upcoming"
@@ -49,7 +49,7 @@
       "displayTitle": "African Tribal Night",
       "date": "2026-08-12T23:00:00",
       "location": "Millionaire Club, Gombe — Kinshasa",
-      "subsidiarySlug": "filiale-04",
+      "subsidiarySlug": "millionaire-club",
       "image": "/filiales/photos/filiale-04/events/05-african-tribal-night.webp",
       "excerpt": "Soirée à thème African tribal avec DJ international et programmation premium.",
       "status": "upcoming"
@@ -61,7 +61,7 @@
       "displayTitle": "French Touch Night",
       "date": "2026-08-17T23:00:00",
       "location": "Millionaire Club, Gombe — Kinshasa",
-      "subsidiarySlug": "filiale-04",
+      "subsidiarySlug": "millionaire-club",
       "image": "/filiales/photos/filiale-04/events/02-french-touch-night.webp",
       "excerpt": "House & French Touch avec DJs invités et expérience club premium.",
       "status": "vip"
@@ -73,7 +73,7 @@
       "displayTitle": "Neon Saturday",
       "date": "2026-08-21T23:30:00",
       "location": "Millionaire Club, Gombe — Kinshasa",
-      "subsidiarySlug": "filiale-04",
+      "subsidiarySlug": "millionaire-club",
       "image": "/filiales/photos/filiale-04/events/03-neon-saturday.webp",
       "excerpt": "Soirée néon immersive — visuals, lasers et programmation électro.",
       "status": "sold-out"
@@ -85,7 +85,7 @@
       "displayTitle": "Afro Fusion Sunday",
       "date": "2026-08-28T23:00:00",
       "location": "Millionaire Club, Gombe — Kinshasa",
-      "subsidiarySlug": "filiale-04",
+      "subsidiarySlug": "millionaire-club",
       "image": "/filiales/photos/filiale-04/events/04-afro-fusion-sunday.webp",
       "excerpt": "Afrobeat, amapiano et vibes premium pour clôturer le week-end.",
       "status": "upcoming"
@@ -96,7 +96,7 @@
       "title": "Live Music & Karaoké — Café Muzik",
       "date": "2026-09-20T20:00:00",
       "location": "Café Muzik, Boulevard du 30 Juin — Kinshasa",
-      "subsidiarySlug": "filiale-05",
+      "subsidiarySlug": "cafe-muzik",
       "image": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80",
       "excerpt": "Musique live, karaoké et DJ sets sur le patio extérieur."
     },
@@ -106,7 +106,7 @@
       "title": "Soirée DJ — Café Muzik",
       "date": "2026-10-04T21:00:00",
       "location": "Café Muzik, Boulevard du 30 Juin — Kinshasa",
-      "subsidiarySlug": "filiale-05",
+      "subsidiarySlug": "cafe-muzik",
       "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80",
       "excerpt": "Une soirée animée avec DJ sets, cocktails et cuisine internationale."
     },
@@ -116,7 +116,7 @@
       "title": "Brunch terrasse — Moka & More",
       "date": "2026-08-08T09:00:00",
       "location": "Moka & More, Le Premier Shopping Mall — Kinshasa",
-      "subsidiarySlug": "filiale-06",
+      "subsidiarySlug": "moka-more",
       "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&q=80",
       "excerpt": "Petits-déjeuners, pâtisseries et café sur la terrasse extérieure."
     },
@@ -126,7 +126,7 @@
       "title": "Soirée Jazz & Café",
       "date": "2026-08-23T20:00:00",
       "location": "Moka & More, Le Premier Shopping Mall — Kinshasa",
-      "subsidiarySlug": "filiale-06",
+      "subsidiarySlug": "moka-more",
       "image": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80",
       "excerpt": "Trio jazz live, ambiance feutrée et cartes de cafés signature en soirée."
     },
@@ -136,7 +136,7 @@
       "title": "Dégustation café — Atelier barista",
       "date": "2026-09-06T17:00:00",
       "location": "Moka & More, Le Premier Shopping Mall — Kinshasa",
-      "subsidiarySlug": "filiale-06",
+      "subsidiarySlug": "moka-more",
       "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80",
       "excerpt": "Un atelier convivial pour découvrir les origines et torréfactions de nos cafés."
     },
@@ -146,7 +146,7 @@
       "title": "Afterwork Lounge — Moka & More",
       "date": "2026-09-20T18:30:00",
       "location": "Moka & More, Le Premier Shopping Mall — Kinshasa",
-      "subsidiarySlug": "filiale-06",
+      "subsidiarySlug": "moka-more",
       "image": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&q=80",
       "excerpt": "Cocktails signature et grignotages pour terminer la semaine en douceur."
     },
@@ -156,7 +156,7 @@
       "title": "Soirée Cocktails & Saveurs Mexicaines",
       "date": "2026-09-04T19:00:00",
       "location": "Gourmet Mexicana, Kinshasa",
-      "subsidiarySlug": "filiale-07",
+      "subsidiarySlug": "gourmet-mexicana",
       "image": "https://images.unsplash.com/photo-1545438102-799c3991ffb2?w=800&q=80",
       "excerpt": "Cocktails signature et bouchées mexicaines raffinées, dans une ambiance feutrée."
     },
@@ -166,7 +166,7 @@
       "title": "Brunch Dominical — Saveurs de Oaxaca",
       "date": "2026-09-13T10:30:00",
       "location": "Gourmet Mexicana, Kinshasa",
-      "subsidiarySlug": "filiale-07",
+      "subsidiarySlug": "gourmet-mexicana",
       "image": "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=800&q=80",
       "excerpt": "Un brunch dominical inspiré des tables de Oaxaca, entre douceur et caractère."
     },
@@ -176,7 +176,7 @@
       "title": "Atelier Guacamole — Recette Traditionnelle",
       "date": "2026-09-27T17:00:00",
       "location": "Gourmet Mexicana, Kinshasa",
-      "subsidiarySlug": "filiale-07",
+      "subsidiarySlug": "gourmet-mexicana",
       "image": "https://images.unsplash.com/photo-1601039641847-7857b994d704?w=800&q=80",
       "excerpt": "Un atelier convivial pour apprendre à préparer un guacamole authentique."
     },
@@ -186,7 +186,7 @@
       "title": "French Touch Night — Édition 2025",
       "date": "2025-12-15T23:00:00",
       "location": "Millionaire Club, Gombe — Kinshasa",
-      "subsidiarySlug": "filiale-04",
+      "subsidiarySlug": "millionaire-club",
       "image": "/filiales/photos/filiale-04/events/02-french-touch-night.webp",
       "excerpt": "Retour sur la soirée French Touch au Millionaire Club."
     },
@@ -196,7 +196,7 @@
       "title": "Lancement des saveurs de saison",
       "date": "2026-08-10T11:00:00",
       "location": "Pinkberry Kinshasa",
-      "subsidiarySlug": "filiale-09",
+      "subsidiarySlug": "pinkberry",
       "image": "https://images.unsplash.com/photo-1488900128323-21503983a07e?w=800&q=80",
       "excerpt": "Découvrez en avant-première nos dernières saveurs aux fruits frais, préparées en petites quantités pour une durée limitée."
     },
@@ -206,7 +206,7 @@
       "title": "Soirée dégustation — Bar à toppings",
       "date": "2026-08-24T18:00:00",
       "location": "Pinkberry Kinshasa",
-      "subsidiarySlug": "filiale-09",
+      "subsidiarySlug": "pinkberry",
       "image": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800&q=80",
       "excerpt": "Composez votre coupe idéale : vrais fruits, granola croquant et sauces généreuses à volonté."
     },
@@ -216,7 +216,7 @@
       "title": "Nocturne Pinkberry — Ouvert jusqu'à 22h",
       "date": "2026-09-05T19:00:00",
       "location": "Pinkberry Kinshasa",
-      "subsidiarySlug": "filiale-09",
+      "subsidiarySlug": "pinkberry",
       "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800&q=80",
       "excerpt": "Une envie sucrée en soirée ? Profitez de Pinkberry Kinshasa, désormais ouvert tous les jours jusqu'à 22h."
     },
@@ -227,7 +227,7 @@
       "displayTitle": "Urban Wednesday",
       "date": "2026-11-11T23:00:00",
       "location": "Millionaire Club, Gombe — Kinshasa",
-      "subsidiarySlug": "filiale-04",
+      "subsidiarySlug": "millionaire-club",
       "image": "/filiales/photos/filiale-04/events/01-urban-wednesday.webp",
       "excerpt": "Hip-hop, R&B et ambiance urbaine premium, comme chaque mercredi.",
       "status": "upcoming"
@@ -239,7 +239,7 @@
       "displayTitle": "Neon Saturday",
       "date": "2026-11-14T23:30:00",
       "location": "Millionaire Club, Gombe — Kinshasa",
-      "subsidiarySlug": "filiale-04",
+      "subsidiarySlug": "millionaire-club",
       "image": "/filiales/photos/filiale-04/events/03-neon-saturday.webp",
       "excerpt": "Soirée néon immersive — visuals, lasers et programmation électro.",
       "status": "upcoming"
@@ -250,7 +250,7 @@
       "title": "Live Music — Café Muzik",
       "date": "2026-11-20T20:00:00",
       "location": "Café Muzik, Boulevard du 30 Juin — Kinshasa",
-      "subsidiarySlug": "filiale-05",
+      "subsidiarySlug": "cafe-muzik",
       "image": "https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?w=800&q=80",
       "excerpt": "Musiciens en live sur le patio, cocktails et cuisine du monde jusque tard."
     },
@@ -260,7 +260,7 @@
       "title": "Sunset Rooftop — K Lounge",
       "date": "2026-11-21T17:30:00",
       "location": "K Lounge, RR House — Kinshasa",
-      "subsidiarySlug": "filiale-03",
+      "subsidiarySlug": "k-lounge",
       "image": "/filiales/photos/filiale-03/cover.webp",
       "excerpt": "Cocktails signature et vue panoramique sur la capitale à l'heure du coucher du soleil."
     },
@@ -271,7 +271,7 @@
       "displayTitle": "Afro Fusion Sunday",
       "date": "2026-11-22T23:00:00",
       "location": "Millionaire Club, Gombe — Kinshasa",
-      "subsidiarySlug": "filiale-04",
+      "subsidiarySlug": "millionaire-club",
       "image": "/filiales/photos/filiale-04/events/04-afro-fusion-sunday.webp",
       "excerpt": "Afrobeats, amapiano et rumba revisitée pour clore le week-end.",
       "status": "upcoming"
@@ -282,7 +282,7 @@
       "title": "Week-end foot — Grands écrans & cocktails",
       "date": "2026-11-28T16:00:00",
       "location": "L'Olive Verte, Boulevard du 30 Juin — Kinshasa",
-      "subsidiarySlug": "filiale-01",
+      "subsidiarySlug": "olive-verte",
       "image": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80",
       "excerpt": "Les matchs du week-end sur grands écrans, cuisine africaine et ambiance lounge en plein air."
     },
@@ -292,7 +292,7 @@
       "title": "Brunch terrasse — Moka & More",
       "date": "2026-11-29T10:00:00",
       "location": "Moka & More, Le Premier Shopping Mall — Kinshasa",
-      "subsidiarySlug": "filiale-06",
+      "subsidiarySlug": "moka-more",
       "image": "/filiales/photos/filiale-06/gallery/dsc09714.jpg",
       "excerpt": "Petits-déjeuners, pâtisseries et cafés signature sur la terrasse, le dimanche matin."
     },
@@ -302,7 +302,7 @@
       "title": "Soirée sushi & Robatayaki — Rooftop",
       "date": "2026-12-04T19:00:00",
       "location": "Wabi Sabi, Gombe — Kinshasa",
-      "subsidiarySlug": "filiale-02",
+      "subsidiarySlug": "wabi-sabi",
       "image": "/filiales/photos/filiale-02/gallery/04-ao8a4408.webp",
       "excerpt": "Menu dégustation asiatique et cocktails signature, avec vue sur Kinshasa."
     },
@@ -312,7 +312,7 @@
       "title": "Soirée Cocktails & Saveurs Mexicaines",
       "date": "2026-12-05T19:00:00",
       "location": "Gourmet Mexicana, Kinshasa",
-      "subsidiarySlug": "filiale-07",
+      "subsidiarySlug": "gourmet-mexicana",
       "image": "/filiales/photos/filiale-07/gallery/dsc09787.jpg",
       "excerpt": "Cocktails signature et bouchées mexicaines raffinées, au 9e étage de la Matrix Tower."
     },
@@ -323,7 +323,7 @@
       "displayTitle": "French Touch Night",
       "date": "2026-12-12T23:00:00",
       "location": "Millionaire Club, Gombe — Kinshasa",
-      "subsidiarySlug": "filiale-04",
+      "subsidiarySlug": "millionaire-club",
       "image": "/filiales/photos/filiale-04/events/02-french-touch-night.webp",
       "excerpt": "House & French Touch avec DJs invités et expérience club premium.",
       "status": "vip"
@@ -334,7 +334,7 @@
       "title": "Soirée DJ — Café Muzik",
       "date": "2026-12-18T21:00:00",
       "location": "Café Muzik, Boulevard du 30 Juin — Kinshasa",
-      "subsidiarySlug": "filiale-05",
+      "subsidiarySlug": "cafe-muzik",
       "image": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&q=80",
       "excerpt": "DJ sets, cocktails et cuisine variée pour lancer le week-end sur le patio."
     },
@@ -345,7 +345,7 @@
       "displayTitle": "African Tribal Night",
       "date": "2026-12-19T23:00:00",
       "location": "Millionaire Club, Gombe — Kinshasa",
-      "subsidiarySlug": "filiale-04",
+      "subsidiarySlug": "millionaire-club",
       "image": "/filiales/photos/filiale-04/events/05-african-tribal-night.webp",
       "excerpt": "Soirée à thème African tribal, percussions et programmation premium.",
       "status": "upcoming"
@@ -356,7 +356,7 @@
       "title": "Réveillon de Noël — Wabi Sabi",
       "date": "2026-12-24T19:30:00",
       "location": "Wabi Sabi, Gombe — Kinshasa",
-      "subsidiarySlug": "filiale-02",
+      "subsidiarySlug": "wabi-sabi",
       "image": "/filiales/photos/filiale-02/gallery/02-ao8a4372.webp",
       "excerpt": "Un menu de fête aux saveurs d'Asie pour le soir du 24, sur réservation."
     },
@@ -366,7 +366,7 @@
       "title": "Nouvel An sur le rooftop — K Lounge",
       "date": "2026-12-31T21:00:00",
       "location": "K Lounge, RR House — Kinshasa",
-      "subsidiarySlug": "filiale-03",
+      "subsidiarySlug": "k-lounge",
       "image": "/filiales/photos/filiale-03/gallery/05-dsc01050.webp",
       "excerpt": "Dîner, cocktails et compte à rebours face à la ville pour passer en 2027."
     },
@@ -377,7 +377,7 @@
       "displayTitle": "New Year Night",
       "date": "2026-12-31T23:00:00",
       "location": "Millionaire Club, Gombe — Kinshasa",
-      "subsidiarySlug": "filiale-04",
+      "subsidiarySlug": "millionaire-club",
       "image": "/filiales/photos/filiale-04/gallery/08-dsc-6684-modifier.webp",
       "excerpt": "La nuit du 31 au club : DJs, tables VIP et passage à minuit jusqu'à l'aube.",
       "status": "vip"
@@ -388,7 +388,7 @@
       "title": "Brunch dominical — Saveurs de Oaxaca",
       "date": "2027-01-10T11:00:00",
       "location": "Gourmet Mexicana, Kinshasa",
-      "subsidiarySlug": "filiale-07",
+      "subsidiarySlug": "gourmet-mexicana",
       "image": "/filiales/photos/filiale-07/gallery/dsc09792.jpg",
       "excerpt": "Un brunch dominical inspiré des tables de Oaxaca, entre douceur et caractère."
     },
@@ -398,7 +398,7 @@
       "title": "Soirée Jazz & Café",
       "date": "2027-01-15T20:00:00",
       "location": "Moka & More, Le Premier Shopping Mall — Kinshasa",
-      "subsidiarySlug": "filiale-06",
+      "subsidiarySlug": "moka-more",
       "image": "/filiales/photos/filiale-06/gallery/dsc09720.jpg",
       "excerpt": "Jazz live, ambiance feutrée et cartes de cafés signature en soirée."
     },
@@ -408,7 +408,7 @@
       "title": "Karaoké — Café Muzik",
       "date": "2027-01-22T21:00:00",
       "location": "Café Muzik, Boulevard du 30 Juin — Kinshasa",
-      "subsidiarySlug": "filiale-05",
+      "subsidiarySlug": "cafe-muzik",
       "image": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=80",
       "excerpt": "Le micro passe de table en table : karaoké, cocktails et bonne humeur sur le patio."
     }

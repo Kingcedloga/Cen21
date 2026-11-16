@@ -35,7 +35,7 @@ type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-const DEFAULT_HOUSE = "filiale-02";
+const DEFAULT_HOUSE = "wabi-sabi";
 
 function isLabEnabled() {
   return process.env.MOTION_LAB === "1";
@@ -119,7 +119,7 @@ export default async function FilialeLabPage({ params, searchParams }: Props) {
       <FilialeHero
         subsidiary={subsidiary}
         locale={l}
-        image={ctx.heroSlides[0]?.src ?? subsidiary.coverImage}
+        image={ctx.heroVideo?.poster ?? subsidiary.coverImage}
         mapsUrl={ctx.mapsUrl}
       />
 

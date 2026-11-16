@@ -78,10 +78,10 @@
       "title": "Kinshasa, Boulevard du 30 Juin",
       "description": "The capital's main avenue is home to four of the group's houses: L'Olive Verte's sports bar, K Lounge's rooftop, the nights of Millionaire Club and Café Muzik's patio.",
       "subsidiarySlugs": [
-        "filiale-01",
-        "filiale-03",
-        "filiale-04",
-        "filiale-05"
+        "olive-verte",
+        "k-lounge",
+        "millionaire-club",
+        "cafe-muzik"
       ]
     },
     {
@@ -89,9 +89,9 @@
       "title": "La Gombe, at the table",
       "description": "Asian cuisine on Wabi Sabi's rooftop, Mexican flavours on the 9th floor of Matrix Tower, coffee and pastries at Premier Mall: the group broadens its menu.",
       "subsidiarySlugs": [
-        "filiale-02",
-        "filiale-07",
-        "filiale-06"
+        "wabi-sabi",
+        "gourmet-mexicana",
+        "moka-more"
       ]
     },
     {
@@ -99,8 +99,8 @@
       "title": "Heading to Lubumbashi",
       "description": "Wabi Sabi and K Lounge open a second address in Lubumbashi, on Boulevard du 30 Juin. The group is now present in two cities.",
       "subsidiarySlugs": [
-        "filiale-02",
-        "filiale-03"
+        "wabi-sabi",
+        "k-lounge"
       ]
     },
     {
@@ -108,8 +108,8 @@
       "title": "International brands",
       "description": "Pinkberry and Le Pain Quotidien join the portfolio: two brands known worldwide, run in Kinshasa to the group's standards.",
       "subsidiarySlugs": [
-        "filiale-09",
-        "filiale-10"
+        "pinkberry",
+        "pain-quotidien"
       ]
     },
     {
@@ -118,7 +118,7 @@
       "title": "Papa John's comes to Central Africa",
       "description": "Central Africa's first Papa John's opens on Avenue de la Gombe: fresh dough, house sauces, delivery and dine-in.",
       "subsidiarySlugs": [
-        "filiale-08"
+        "papa-johns"
       ]
     },
     {
@@ -134,19 +134,19 @@
       "name": "Papa John's",
       "role": "Pizza",
       "url": "https://www.papajohnsrdc.com",
-      "subsidiarySlug": "filiale-08"
+      "subsidiarySlug": "papa-johns"
     },
     {
       "name": "Pinkberry",
       "role": "Frozen yogurt",
       "url": "https://www.pinkberry.com",
-      "subsidiarySlug": "filiale-09"
+      "subsidiarySlug": "pinkberry"
     },
     {
       "name": "Le Pain Quotidien",
       "role": "Bakery & restaurant",
       "url": "https://www.lepainquotidien.com",
-      "subsidiarySlug": "filiale-10"
+      "subsidiarySlug": "pain-quotidien"
     }
   ],
   "distinctions": []

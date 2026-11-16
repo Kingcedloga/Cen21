@@ -1,6 +1,6 @@
 {
   "houses": {
-    "filiale-01": [
+    "olive-verte": [
       {
         "id": "dress-code",
         "question": "Is there a dress code?",
@@ -17,7 +17,7 @@
         "answer": "Families are welcome during the day; minors remain under the responsibility of an adult. Alcohol is only served to guests aged 18 and over."
       }
     ],
-    "filiale-02": [
+    "wabi-sabi": [
       {
         "id": "dress-code",
         "question": "Is there a dress code?",
@@ -34,7 +34,7 @@
         "answer": "Children are welcome with an adult. Alcohol is only served to guests aged 18 and over."
       }
     ],
-    "filiale-03": [
+    "k-lounge": [
       {
         "id": "dress-code",
         "question": "Is there a dress code?",
@@ -51,7 +51,7 @@
         "answer": "Evening entry is for guests aged 18 and over; ID may be requested."
       }
     ],
-    "filiale-04": [
+    "millionaire-club": [
       {
         "id": "dress-code",
         "question": "Is there a dress code?",
@@ -68,7 +68,7 @@
         "answer": "Entry is for guests aged 18 and over. ID is required at the door."
       }
     ],
-    "filiale-05": [
+    "cafe-muzik": [
       {
         "id": "dress-code",
         "question": "Is there a dress code?",
@@ -85,7 +85,7 @@
         "answer": "Minors are welcome with an adult. On DJ nights, entry may be limited to guests aged 18 and over; alcohol is only served to adults."
       }
     ],
-    "filiale-06": [
+    "moka-more": [
       {
         "id": "dress-code",
         "question": "Is there a dress code?",
@@ -102,7 +102,7 @@
         "answer": "All ages are welcome. Alcohol is only served to guests aged 18 and over."
       }
     ],
-    "filiale-07": [
+    "gourmet-mexicana": [
       {
         "id": "dress-code",
         "question": "Is there a dress code?",

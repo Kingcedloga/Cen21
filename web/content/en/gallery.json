@@ -4,84 +4,120 @@
       "id": "gal-1",
       "src": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=900&q=80",
       "alt": "Open-air sports bar — L'Olive Verte",
-      "subsidiarySlug": "filiale-01",
-      "tags": ["sport", "outdoor"]
+      "subsidiarySlug": "olive-verte",
+      "tags": [
+        "sport",
+        "outdoor"
+      ]
     },
     {
       "id": "gal-2",
       "src": "/filiales/photos/filiale-02/cover.webp",
       "alt": "Restaurant dining room — Wabi Sabi",
-      "subsidiarySlug": "filiale-02",
-      "tags": ["restaurant", "interior"]
+      "subsidiarySlug": "wabi-sabi",
+      "tags": [
+        "restaurant",
+        "interior"
+      ]
     },
     {
       "id": "gal-3",
       "src": "/filiales/photos/filiale-03/cover.webp",
       "alt": "Rooftop lounge — K Lounge",
-      "subsidiarySlug": "filiale-03",
-      "tags": ["lounge", "rooftop"]
+      "subsidiarySlug": "k-lounge",
+      "tags": [
+        "lounge",
+        "rooftop"
+      ]
     },
     {
       "id": "gal-4",
       "src": "/filiales/photos/filiale-04/cover.webp",
       "alt": "Club atmosphere — Millionaire Club",
-      "subsidiarySlug": "filiale-04",
-      "tags": ["nightlife", "club"]
+      "subsidiarySlug": "millionaire-club",
+      "tags": [
+        "nightlife",
+        "club"
+      ]
     },
     {
       "id": "gal-5",
       "src": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=900&q=80",
       "alt": "Live music stage — Café Muzik",
-      "subsidiarySlug": "filiale-05",
-      "tags": ["music", "live"]
+      "subsidiarySlug": "cafe-muzik",
+      "tags": [
+        "music",
+        "live"
+      ]
     },
     {
       "id": "gal-6",
       "src": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=900&q=80",
       "alt": "Café terrace — Moka & More",
-      "subsidiarySlug": "filiale-06",
-      "tags": ["cafe", "terrace"]
+      "subsidiarySlug": "moka-more",
+      "tags": [
+        "cafe",
+        "terrace"
+      ]
     },
     {
       "id": "gal-7",
       "src": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&q=80",
       "alt": "Mexican cuisine — Gourmet Mexicana",
-      "subsidiarySlug": "filiale-07",
-      "tags": ["mexican", "gastronomy"]
+      "subsidiarySlug": "gourmet-mexicana",
+      "tags": [
+        "mexican",
+        "gastronomy"
+      ]
     },
     {
       "id": "gal-8",
       "src": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=900&q=80",
       "alt": "Fresh pizza — Papa John's",
-      "subsidiarySlug": "filiale-08",
-      "tags": ["pizza", "restaurant"]
+      "subsidiarySlug": "papa-johns",
+      "tags": [
+        "pizza",
+        "restaurant"
+      ]
     },
     {
       "id": "gal-9",
       "src": "https://images.unsplash.com/photo-1488900128323-21503983a07e?w=900&q=80",
       "alt": "Frozen yogurt — Pinkberry",
-      "subsidiarySlug": "filiale-09",
-      "tags": ["dessert", "yogurt"]
+      "subsidiarySlug": "pinkberry",
+      "tags": [
+        "dessert",
+        "yogurt"
+      ]
     },
     {
       "id": "gal-10",
       "src": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=900&q=80",
       "alt": "Artisan bakery — Le Pain Quotidien",
-      "subsidiarySlug": "filiale-10",
-      "tags": ["bakery", "artisan"]
+      "subsidiarySlug": "pain-quotidien",
+      "tags": [
+        "bakery",
+        "artisan"
+      ]
     },
     {
       "id": "gal-11",
       "src": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=900&q=80",
       "alt": "Karaoke microphone under the lights — Café Muzik",
-      "subsidiarySlug": "filiale-05",
-      "tags": ["music", "karaoke"]
+      "subsidiarySlug": "cafe-muzik",
+      "tags": [
+        "music",
+        "karaoke"
+      ]
     },
     {
       "id": "gal-12",
       "src": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&q=80",
       "alt": "Overview — Cen21 Hospitality",
-      "tags": ["holding", "premium"]
+      "tags": [
+        "holding",
+        "premium"
+      ]
     }
   ]
 }
