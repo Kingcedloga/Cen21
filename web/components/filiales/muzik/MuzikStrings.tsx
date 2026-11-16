@@ -34,11 +34,13 @@ const FULL_STRENGTH_PX = 28;
  * Les six cordes de la guitare du logo, tendues sur toute la largeur.
  * Défilement : la vitesse de la page tend les cordes ; quand le défilement
  * s'arrête, un ressort peu amorti les fait vibrer puis se poser (rien ne
- * bouge seul). À la souris, passer sur une corde la pince : elle vibre au
- * point touché et, son activé, joue sa note (mi4 → mi2, lib/guitar-sound.ts),
- * plus fort si le geste est rapide, à gauche ou à droite selon l'endroit.
- * Le son ne démarre qu'au clic sur « Son des cordes » (les navigateurs
- * interdisent l'audio au survol) et reste coupé par défaut.
+ * bouge seul). À la souris, passer sur une corde la pince ; au doigt,
+ * toucher une corde la pince et glisser en travers pince chaque corde
+ * franchie. La corde vibre au point touché et, son activé, joue sa note
+ * (mi4 → mi2, lib/guitar-sound.ts), plus fort si le geste est rapide, à
+ * gauche ou à droite selon l'endroit. Le son ne démarre qu'au clic (ou au
+ * toucher) sur « Son des cordes » : les navigateurs interdisent l'audio
+ * sans geste, et il reste coupé par défaut.
  * Reduced motion : cordes droites, immobiles, sans son.
  */
 export function MuzikStrings({ className = "" }: { className?: string }) {
@@ -57,29 +59,53 @@ export function MuzikStrings({ className = "" }: { className?: string }) {
   const push = useTransform(velocity, (v) => finePointer ? Math.max(-1, Math.min(1, v / 2600)) : 0);
   const swing = useSpring(push, { stiffness: 320, damping: 6, mass: 0.6 });
 
-  // Pincer : la corde franchie par le pointeur part dans le sens du geste.
+  // Pincer une corde : vibration au point touché, note si le son est activé.
+  const pluckString = (index: number, x: number, direction: number, strength: number) => {
+    const target = strings.current[index];
+    if (!target) return;
+    target.at.set(Math.max(80, Math.min(920, x)));
+    const now = performance.now();
+    if (sound && now - lastPluck.current[index] > RETRIGGER_MS) {
+      lastPluck.current[index] = now;
+      pluck(index, strength, x / 500 - 1);
+    }
+    animate(target.bend, 0, { type: "spring", velocity: direction * 520, stiffness: 520, damping: 7 });
+  };
+
+  /** Position du pointeur dans la bande (y en px, x en unités du viewBox). */
+  const pointIn = (event: PointerEvent<SVGSVGElement>) => {
+    const rect = (svgRef.current as SVGSVGElement).getBoundingClientRect();
+    return { y: event.clientY - rect.top, x: ((event.clientX - rect.left) / rect.width) * 1000 };
+  };
+
+  // Glisser (souris ou doigt) : chaque corde franchie part dans le sens du geste.
   const onPointerMove = (event: PointerEvent<SVGSVGElement>) => {
-    const svg = svgRef.current;
-    if (!svg || reduced) return;
-    const rect = svg.getBoundingClientRect();
-    const y = event.clientY - rect.top;
-    const x = ((event.clientX - rect.left) / rect.width) * 1000;
+    if (!svgRef.current || reduced) return;
+    const { x, y } = pointIn(event);
     const previous = lastY.current;
     lastY.current = y;
     if (previous === null) return;
     STRINGS.forEach((index) => {
       const line = FIRST + index * GAP;
       const crossed = (previous - line) * (y - line) <= 0 && previous !== y;
-      const target = strings.current[index];
-      if (!crossed || !target) return;
-      target.at.set(Math.max(80, Math.min(920, x)));
-      const now = performance.now();
-      if (sound && now - lastPluck.current[index] > RETRIGGER_MS) {
-        lastPluck.current[index] = now;
-        pluck(index, Math.abs(y - previous) / FULL_STRENGTH_PX, x / 500 - 1);
-      }
-      animate(target.bend, 0, { type: "spring", velocity: Math.sign(y - previous) * 520, stiffness: 520, damping: 7 });
+      if (crossed) pluckString(index, x, Math.sign(y - previous), Math.abs(y - previous) / FULL_STRENGTH_PX);
     });
+  };
+
+  // Toucher (doigt, stylet) : la corde la plus proche est pincée au contact.
+  const onPointerDown = (event: PointerEvent<SVGSVGElement>) => {
+    if (!svgRef.current || reduced || event.pointerType === "mouse") return;
+    const { x, y } = pointIn(event);
+    lastY.current = y;
+    let nearest = 0;
+    STRINGS.forEach((index) => {
+      if (Math.abs(FIRST + index * GAP - y) < Math.abs(FIRST + nearest * GAP - y)) nearest = index;
+    });
+    if (Math.abs(FIRST + nearest * GAP - y) <= GAP) pluckString(nearest, x, 1, 0.6);
+  };
+
+  const releasePointer = () => {
+    lastY.current = null;
   };
 
   const toggleSound = async () => {
@@ -91,7 +117,8 @@ export function MuzikStrings({ className = "" }: { className?: string }) {
     setSound(await enableGuitar());
   };
 
-  const playable = finePointer && !reduced;
+  // Jouable à la souris comme au doigt : le bouton du son est partout.
+  const playable = !reduced;
 
   return (
     <div className="muzik-strings-wrap">
@@ -116,9 +143,10 @@ export function MuzikStrings({ className = "" }: { className?: string }) {
         viewBox={`0 0 1000 ${BAND}`}
         preserveAspectRatio="none"
         onPointerMove={playable ? onPointerMove : undefined}
-        onPointerLeave={() => {
-          lastY.current = null;
-        }}
+        onPointerDown={playable ? onPointerDown : undefined}
+        onPointerUp={releasePointer}
+        onPointerCancel={releasePointer}
+        onPointerLeave={releasePointer}
       >
         {STRINGS.map((index) => (
           <GuitarString

@@ -244,7 +244,7 @@
       "brandLogo": "/filiales/logos/filiale-02.png",
       "coverImage": "/filiales/photos/filiale-02/hero/01-salle-principale.jpg",
       "heroSection": {
-        "image": "/filiales/photos/filiale-02/hero/01-salle-principale.jpg",
+        "image": "/filiales/photos/filiale-02/hero.png",
         "imageAlt": "Wabi Sabi — salle principale avec fauteuils velours et lumière dorée",
         "slideIntervalMs": 6000,
         "slides": [
@@ -401,6 +401,7 @@
           "category": "food"
         }
       ],
+      "teaserVideo": { "src": "/filiales/videos/Teasers/Video%20by%20wabisabi_kin.mp4", "poster": "/filiales/photos/filiale-02/hero/01-salle-principale.jpg" },
       "aboutSection": {
         "eyebrow": "About Wabi Sabi",
         "title": "L'art du moment, entre ciel et cityscape",
@@ -527,6 +528,7 @@
         "/filiales/photos/filiale-03/gallery/18-dsc09876.webp",
         "/filiales/photos/filiale-03/gallery/19-dsc09969.webp"
       ],
+      "teaserVideo": { "src": "/filiales/videos/Teasers/teaser-klounge.mp4", "poster": "/filiales/photos/filiale-03/cover.webp" },
       "introSection": {
         "title": "K Lounge. Rooftop & mixologie.",
         "paragraphs": [
@@ -649,6 +651,7 @@
           "category": "guests"
         }
       ],
+      "teaserVideo": { "src": "/filiales/videos/Teasers/teaser-millionaire.mp4", "poster": "/filiales/photos/filiale-04/cover.webp" },
       "nightTimeline": [
         {
           "hour": "18h",
@@ -900,6 +903,7 @@
         "/filiales/photos/filiale-06/gallery/dsc09730.jpg",
         "/filiales/photos/filiale-06/gallery/dsc09734.jpg"
       ],
+      "teaserVideo": { "src": "/filiales/videos/Teasers/teaser-moka.mp4", "poster": "/filiales/photos/filiale-06/gallery/dsc09704.jpg" },
       "menuMoments": [
         {
           "hour": "07h",

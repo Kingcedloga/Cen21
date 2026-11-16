@@ -12,6 +12,7 @@ import { FilialeMark } from "@/components/filiales/blocks/FilialeMark";
 import { FilialeOtherHouses } from "@/components/filiales/blocks/FilialeOtherHouses";
 import { FilialePractical } from "@/components/filiales/blocks/FilialePractical";
 import { FilialeReservation } from "@/components/filiales/blocks/FilialeReservation";
+import { FilialeTeaser } from "@/components/filiales/blocks/FilialeTeaser";
 import { FilialeTestimonials } from "@/components/filiales/blocks/FilialeTestimonials";
 import { PageSection, SECTION_SURFACE } from "@/components/layout/PageSection";
 import { SectionBlend } from "@/components/layout/SectionBlend";
@@ -32,7 +33,8 @@ const LOGO_RATIO = 1024 / 654;
  * du socle aux couleurs de la maison (marine, crème et or, titres en
  * Cormorant, surface beige des anciens bandeaux), en habillage luxe.
  *
- * Hero → philosophie épinglée → la table et le bar en diptyque épinglé →
+ * Hero → philosophie épinglée → le teaser de la maison → la table et le
+ * bar en diptyque épinglé →
  * photos et avis sur beige → rendez-vous → infos pratiques (Kinshasa,
  * Lubumbashi) et FAQ → réservation → autres maisons. « Réserver » suit la
  * lecture dans la capsule de navigation.
@@ -40,7 +42,9 @@ const LOGO_RATIO = 1024 / 654;
 export async function WabiSabiPage({ locale, subsidiary, pageTheme, mapQuery, mapsUrl }: FilialeContext) {
   const t = await getTranslations("filiale");
   const tSub = await getTranslations("subsidiaries");
-  const { slug, name, philosophySection, diningSection, barSection, spotlightSection, testimonialsSection } = subsidiary;
+  const tWabi = await getTranslations("wabi");
+  const { slug, name, philosophySection, diningSection, barSection, spotlightSection, testimonialsSection, teaserVideo } =
+    subsidiary;
   const photos = filialePhotos(subsidiary, (n) => t("photoAlt", { name, n }));
   const events = filialeDeckEvents(locale, slug);
   const faq = getSubsidiaryFaq(locale, slug);
@@ -107,6 +111,8 @@ export async function WabiSabiPage({ locale, subsidiary, pageTheme, mapQuery, ma
         subsidiary={subsidiary}
         locale={locale}
         image={subsidiary.heroSection?.image ?? subsidiary.coverImage}
+        // Les sushis sont à gauche de la photo : le cadrage étroit du mobile les garde.
+        imagePosition="28% 50%"
         mapsUrl={mapsUrl}
       />
 
@@ -119,6 +125,18 @@ export async function WabiSabiPage({ locale, subsidiary, pageTheme, mapQuery, ma
           title={philosophySection.attribution}
           statement={philosophySection.quote}
         />
+      )}
+
+      {teaserVideo && (
+        <PageSection variant="dark" ariaLabelledby="filiale-teaser-title" overflow="hidden">
+          <FilialeTeaser
+            name={name}
+            video={teaserVideo}
+            eyebrow={tWabi("teaserEyebrow")}
+            title={tWabi("teaserTitle")}
+            caption={tWabi("teaserCaption")}
+          />
+        </PageSection>
       )}
 
       {chapters.length > 0 && (

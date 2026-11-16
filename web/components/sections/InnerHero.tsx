@@ -58,6 +58,7 @@ export function InnerHero({
   description,
   image,
   imageAlt = "",
+  imagePosition,
   breadcrumb,
   actions,
   children,
@@ -74,6 +75,8 @@ export function InnerHero({
   description?: ReactNode;
   image?: string;
   imageAlt?: string;
+  /** Point d'intérêt de la photo (object-position), ex. « 28% 50% » : garde le sujet dans le cadre étroit du mobile. */
+  imagePosition?: string;
   breadcrumb?: InnerHeroBreadcrumb;
   /** Boutons ou pastilles sous le chapô. */
   actions?: ReactNode;
@@ -173,6 +176,7 @@ export function InnerHero({
               blurDataURL={BLUR_PETROL}
               sizes="100vw"
               className="object-cover object-center"
+              style={imagePosition ? { objectPosition: imagePosition } : undefined}
             />
           </motion.div>
         </motion.div>

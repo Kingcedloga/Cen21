@@ -172,6 +172,8 @@
    capsule. Frettes en filets verticaux, entre la première et la dernière. */
 .muzik-hero__strings {
   display: block;
+  /* Au doigt : glisser à la verticale fait défiler la page, toucher pince. */
+  touch-action: pan-y;
   width: 100%;
   height: 120px;
   margin-bottom: calc(var(--capsule-offset) + 6rem);

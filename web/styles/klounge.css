@@ -1,0 +1,165 @@
+/* =========================================================================
+   K Lounge — teaser « after dark » (components/filiales/klounge).
+   Noir et blanc de la charte : tokens remappés par lib/filiale-brand.ts
+   (fond = --color-petrol-panel-4, blanc = --color-ivory).
+   ========================================================================= */
+
+.kl-teaser {
+  display: grid;
+  justify-items: center;
+  gap: 2.5rem;
+  text-align: center;
+}
+
+.kl-teaser__eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-ivory) 72%, transparent);
+}
+
+.kl-teaser__title {
+  margin-top: 1rem;
+  font-size: clamp(2.25rem, 1.1rem + 3.6vw, 4.5rem);
+  font-style: italic;
+  line-height: 1.02;
+  text-wrap: balance;
+  color: var(--color-ivory);
+}
+
+/* Scène : deux mots géants en contour, la vidéo par-dessus. */
+.kl-teaser__stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  overflow: hidden;
+  padding-block: 1rem;
+}
+
+.kl-teaser__words {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  gap: 0.2em;
+  font-family: var(--brand-title-font, var(--font-dm-sans));
+  font-size: clamp(4.5rem, 2rem + 13vw, 15rem);
+  font-weight: 500;
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--color-ivory) 32%, transparent);
+  pointer-events: none;
+  user-select: none;
+}
+
+.kl-teaser__words span:last-child {
+  justify-self: end;
+}
+
+/* Cadre : filet blanc décalé, vidéo verticale. */
+.kl-teaser__frame {
+  position: relative;
+  z-index: 1;
+  width: min(68vw, 21rem);
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: var(--color-petrol-panel-3);
+  outline: 1px solid color-mix(in srgb, var(--color-ivory) 70%, transparent);
+  outline-offset: 0.75rem;
+  box-shadow: 0 50px 90px -40px black;
+}
+
+.kl-teaser__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--duration-grand) var(--ease-luxury);
+}
+
+.kl-teaser__video.is-playing {
+  opacity: 1;
+}
+
+.kl-teaser__foot {
+  display: grid;
+  justify-items: center;
+  gap: 1.5rem;
+}
+
+.kl-teaser__caption {
+  max-width: 32rem;
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
+  color: color-mix(in srgb, var(--color-ivory) 80%, transparent);
+}
+
+.kl-teaser__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Compteur façon caméra. */
+.kl-teaser__time {
+  min-width: 7.5rem;
+  margin-right: 0.5rem;
+  font-family: var(--font-dm-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.12em;
+  color: color-mix(in srgb, var(--color-ivory) 72%, transparent);
+}
+
+.kl-teaser__button {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid color-mix(in srgb, var(--color-ivory) 40%, transparent);
+  border-radius: 9999px;
+  color: var(--color-ivory);
+  transition:
+    background-color var(--duration-fine) var(--ease-luxury),
+    color var(--duration-fine) var(--ease-luxury);
+}
+
+.kl-teaser__button:hover {
+  background-color: var(--color-ivory);
+  color: var(--color-petrol-panel-4);
+}
+
+.kl-teaser__button:focus-visible {
+  outline: 2px solid var(--color-ivory);
+  outline-offset: 3px;
+}
+
+/* Téléphone : les deux mots au-dessus et au-dessous de la vidéo. */
+@media (max-width: 767.98px) {
+  .kl-teaser__stage {
+    padding-block: 4.5rem;
+  }
+  .kl-teaser__words {
+    align-content: space-between;
+    font-size: 19vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kl-teaser__frame {
+    filter: none !important;
+  }
+  .kl-teaser__video,
+  .kl-teaser__button {
+    transition: none;
+  }
+}

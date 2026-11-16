@@ -127,7 +127,7 @@ html body:has([data-filiale-luxe]) {
   }
 
   /* --- Photos : passe-partout doré ------------------------------------ */
-  & :is(.inner-hero__media, .filiale-chapters__frame, .filiale-strip__button, .deck-card__media)::after {
+  & :is(.inner-hero__media, .filiale-chapters__frame, .filiale-strip__button, .deck-card__media, .filiale-teaser__frame)::after {
     content: "";
     position: absolute;
     inset: clamp(8px, 1.2vw, 14px);

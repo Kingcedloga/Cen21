@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
+import { ClubAftermovie } from "@/components/filiales/club/ClubAftermovie";
 import { ClubFlash } from "@/components/filiales/club/ClubFlash";
 import { ClubHero } from "@/components/filiales/club/ClubHero";
 import { ClubLineup, type LineupNight } from "@/components/filiales/club/ClubLineup";
@@ -18,6 +19,9 @@ import { galleryEntrySrc } from "@/lib/gallery-categories";
 import type { Subsidiary } from "@/lib/types";
 
 import type { FilialeContext } from "./context";
+
+/** Proportions du logo (public/filiales/logos/filiale-04.png, 993 × 1024). */
+const LOGO_RATIO = 993 / 1024;
 
 /** Soirées affichées dans le line-up. */
 const LINEUP_SIZE = 6;
@@ -49,7 +53,7 @@ function wallOrder(subsidiary: Subsidiary): Subsidiary["galleryImages"] {
  * Millionaire Club (filiale-04) — une nuit au club, sans les blocs habituels
  * des fiches : les portes (le nom ajouré sur la vidéo, qui s'ouvre au
  * défilement) → le line-up des soirées à thème → la nuit heure par heure, de
- * 18h à 06h → « Vu au club », le mur de photos au flash → avant de venir
+ * 18h à 06h → le teaser → « Vu au club », le mur de photos au flash → avant de venir
  * (ticket d'entrée et règles de la maison) → la liste (réservation) → autres
  * maisons. Noir et or, titres en Cormorant ; « Réserver » dans la capsule.
  */
@@ -111,6 +115,18 @@ export async function MillionaireClubPage({ locale, subsidiary, pageTheme, heroV
       </PageSection>
 
       <ClubNight steps={subsidiary.nightTimeline ?? []} />
+
+      {subsidiary.teaserVideo && (
+        <PageSection variant="dark" ariaLabelledby="filiale-teaser-title" overflow="hidden">
+          <ClubAftermovie
+            name={name}
+            video={subsidiary.teaserVideo}
+            logo={subsidiary.brandLogo}
+            logoRatio={LOGO_RATIO}
+            instagram={subsidiary.social.instagram}
+          />
+        </PageSection>
+      )}
 
       <PageSection variant="dark" id="galerie" ariaLabelledby="filiale-gallery-title" overflow="hidden" className="scroll-mt-6">
         <ClubFlash name={name} photos={photos} house={{ slug, name, href: `/filiales/${slug}`, external: false }} />

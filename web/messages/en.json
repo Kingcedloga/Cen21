@@ -488,7 +488,13 @@
     "rule-dress-code": "Dress code",
     "rule-age": "18 and over",
     "rule-privatisation": "Private hire",
-    "listTitle": "Put my name on the list"
+    "listTitle": "Put my name on the list",
+    "aftermovieEyebrow": "Aftermovie",
+    "aftermovieTitle": "A night at the club",
+    "aftermovieCaption": "Lights, DJs, bottles under sparklers: Millionaire Club as if you were there.",
+    "aftermovieRec": "Rec",
+    "aftermovieFollow": "Follow the club on Instagram",
+    "aftermovieTap": "Tap the story to pause it"
   },
   "moka": {
     "heroEyebrow": "Dine. Delight. Discover.",
@@ -521,7 +527,23 @@
     "agendaBookShort": "Book",
     "agendaAll": "All the house's events",
     "reservationTitle": "Book a table",
-    "reservationText": "Tell us the date, the number of guests and what you have in mind. Private rooms and banquets on request."
+    "reservationText": "Tell us the date, the number of guests and what you have in mind. Private rooms and banquets on request.",
+    "videoEyebrow": "On video",
+    "videoTitle": "A day",
+    "videoScript": "at Moka & More",
+    "videoCaption": "From morning coffee to evening cocktails: the house in a few seconds.",
+    "videoBadge": "Watch the video"
+  },
+  "klounge": {
+    "teaserEyebrow": "After dark",
+    "teaserTitle": "The rooftop, as night falls",
+    "teaserCaption": "Music, cocktails and city lights: an evening at K Lounge in a few seconds.",
+    "teaserWords": "After dark"
+  },
+  "wabi": {
+    "teaserEyebrow": "Vibe · Food · Drink",
+    "teaserTitle": "The Wabi Sabi spirit, in motion",
+    "teaserCaption": "The room in golden light, the plate dressed by hand, the bartender's gesture: fifteen seconds in the house's atmosphere."
   },
   "muzik": {
     "stringsSound": "String sound",
@@ -621,6 +643,11 @@
     "galleryTitle": "Inside {name}",
     "galleryList": "Photos of {name}",
     "galleryAll": "See all {count} photos",
+    "teaserLabel": "{name} video teaser",
+    "teaserPlay": "Play the teaser",
+    "teaserPause": "Pause the teaser",
+    "teaserSoundOn": "Turn sound on",
+    "teaserSoundOff": "Turn sound off",
     "galleryPrev": "Previous photos",
     "galleryNext": "Next photos",
     "photoAlt": "{name}, photo {n}",

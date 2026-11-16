@@ -879,3 +879,171 @@ html body:has([data-filiale-moka]) {
     font-weight: 600;
   }
 }
+
+/* --- La vidéo de la maison (MokaVideo) ----------------------------------- */
+.moka-video {
+  display: grid;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.moka-video__visual {
+  position: relative;
+  justify-self: center;
+  width: min(78vw, 23rem);
+  padding: 0.875rem 0.875rem 0;
+}
+
+/* Filet rouge décalé autour de l'arche (comme la une). */
+.moka-video__visual::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--brand-fill) 60%, transparent);
+  border-radius: 999px 999px var(--radius-card-lg) var(--radius-card-lg);
+  pointer-events: none;
+}
+
+.moka-video__arch {
+  position: relative;
+  aspect-ratio: 9 / 15;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 999px 999px var(--radius-card-md) var(--radius-card-md);
+  background-color: var(--color-petrol-panel-3);
+}
+
+.moka-video__el {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--duration-grand) var(--ease-luxury);
+}
+
+.moka-video__el.is-playing {
+  opacity: 1;
+}
+
+.moka-video__progress {
+  display: block;
+  height: 3px;
+  margin-top: 0.75rem;
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, var(--color-ivory) 18%, transparent);
+  overflow: hidden;
+}
+
+.moka-video__progress span {
+  display: block;
+  height: 100%;
+  background-color: var(--brand-fill);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+/* Le disque rouge, à cheval sur le bord de l'arche. */
+.moka-video__disc {
+  position: absolute;
+  right: -1.75rem;
+  bottom: 18%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: clamp(7.5rem, 11vw, 9.5rem);
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  background-color: var(--brand-fill);
+  color: var(--brand-on-accent);
+  box-shadow: 0 24px 48px -20px color-mix(in srgb, var(--color-petrol-panel-4) 90%, transparent);
+  transition: transform var(--duration-base) var(--ease-luxury);
+}
+
+.moka-video__disc:hover {
+  transform: scale(1.05);
+}
+
+.moka-video__disc:focus-visible {
+  outline: 2px solid var(--color-ivory);
+  outline-offset: 4px;
+}
+
+.moka-video__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.moka-video__ring-text {
+  fill: currentColor;
+  font-family: var(--font-dm-sans);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.moka-video__icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  background-color: var(--brand-on-accent);
+  color: var(--brand-fill);
+}
+
+.moka-video__caption {
+  max-width: 30rem;
+  margin-top: 1.5rem;
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
+  color: color-mix(in srgb, var(--color-ivory) 80%, transparent);
+}
+
+.moka-video__sound {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-top: 2rem;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--color-ivory) 32%, transparent);
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-ivory);
+  transition: border-color var(--duration-fine) var(--ease-luxury);
+}
+
+.moka-video__sound:hover {
+  border-color: var(--color-rose);
+}
+
+.moka-video__sound:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 3px;
+}
+
+@media (max-width: 639.98px) {
+  .moka-video__disc {
+    right: -0.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .moka-video {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .moka-video__el,
+  .moka-video__disc {
+    transition: none;
+  }
+}

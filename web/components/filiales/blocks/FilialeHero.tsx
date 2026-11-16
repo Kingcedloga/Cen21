@@ -21,6 +21,7 @@ export async function FilialeHero({
   subsidiary,
   locale,
   image,
+  imagePosition,
   video,
   mapsUrl,
   className,
@@ -28,6 +29,8 @@ export async function FilialeHero({
   subsidiary: Subsidiary;
   locale: Locale;
   image: string;
+  /** Point d'intérêt de la photo (object-position). */
+  imagePosition?: string;
   /** Vidéo de la maison (hero immersif). */
   video?: HeroVideo;
   mapsUrl: string;
@@ -52,6 +55,7 @@ export async function FilialeHero({
         </>
       }
       image={image}
+      imagePosition={imagePosition}
       video={video}
       breadcrumb={{
         label: tCommon("breadcrumb"),

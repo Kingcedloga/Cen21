@@ -12,6 +12,7 @@ import { MokaHero } from "@/components/filiales/moka/MokaHero";
 import { MokaManifesto } from "@/components/filiales/moka/MokaManifesto";
 import { MokaMenu } from "@/components/filiales/moka/MokaMenu";
 import { MokaTour } from "@/components/filiales/moka/MokaTour";
+import { MokaVideo } from "@/components/filiales/moka/MokaVideo";
 import { PageSection, SECTION_SURFACE } from "@/components/layout/PageSection";
 import { SectionBlend } from "@/components/layout/SectionBlend";
 import { getEvents, getSubsidiaryFaq } from "@/lib/content";
@@ -34,7 +35,7 @@ const SURFACE_RED = "var(--brand-fill)";
  * habituels des fiches pour le cœur de la page : la une (le nom comme le
  * logo, l'arche du lounge, le badge des salles privées) → le manifeste sur
  * aplat rouge → la carte du matin au soir sur fond blanc, et les atouts →
- * la visite du lieu, d'espace en espace → l'agenda → infos pratiques et FAQ
+ * la visite du lieu, d'espace en espace → le teaser → l'agenda → infos pratiques et FAQ
  * → réservation → autres maisons. Noir, rouge et blanc ; titres en capitales
  * rondes (Nunito), mots manuscrits en rouge (Dynalight). « Réserver » suit
  * la lecture dans la capsule.
@@ -87,6 +88,12 @@ export async function MokaMorePage({ locale, subsidiary, pageTheme, mapQuery, ma
 
       <SectionBlend from={SECTION_SURFACE.light} to={SECTION_SURFACE.dark} />
       <MokaTour stops={subsidiary.venueTour ?? []} photos={photos} house={house} />
+
+      {subsidiary.teaserVideo && (
+        <PageSection variant="dark" ariaLabelledby="filiale-teaser-title" overflow="hidden">
+          <MokaVideo name={name} video={subsidiary.teaserVideo} />
+        </PageSection>
+      )}
 
       {events.length > 0 && (
         <>

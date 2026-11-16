@@ -16,7 +16,8 @@
 .club-lineup__title,
 .club-night__title,
 .club-flash__title,
-.club-entry__title {
+.club-entry__title,
+.club-aftermovie__title {
   margin-top: 0.75rem;
   font-family: var(--font-dm-sans);
   font-size: clamp(2.5rem, 8vw, 6.5rem);
@@ -937,5 +938,236 @@
   }
   .club-flash__button:hover img {
     scale: 1;
+  }
+}
+
+/* --- L'aftermovie (ClubAftermovie) : la vidéo en story ------------------ */
+.club-aftermovie {
+  display: grid;
+  align-items: center;
+  gap: 3rem;
+}
+
+.club-aftermovie__rec {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+  padding: 0.375rem 0.875rem;
+  border: 1px solid color-mix(in srgb, var(--color-ivory) 25%, transparent);
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-ivory);
+}
+
+/* Point d'enregistrement : allumé pendant la lecture (pas de clignotement). */
+.club-aftermovie__rec::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, var(--color-ivory) 40%, transparent);
+  transition: background-color var(--duration-fine) var(--ease-luxury);
+}
+
+.club-aftermovie__rec[data-on]::before {
+  background-color: var(--brand-fill);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand-fill) 30%, transparent);
+}
+
+.club-aftermovie__caption {
+  max-width: 30rem;
+  margin-top: 1.25rem;
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
+  color: color-mix(in srgb, var(--color-ivory) 78%, transparent);
+}
+
+.club-aftermovie__follow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-rose);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.club-aftermovie__follow:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 3px;
+}
+
+/* Le téléphone : story plein cadre, segments de progression en haut. */
+.club-story {
+  position: relative;
+  justify-self: center;
+  width: min(80vw, 22rem);
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  isolation: isolate;
+  border: 0.5rem solid color-mix(in srgb, var(--color-ivory) 10%, black);
+  border-radius: 2.25rem;
+  background-color: var(--color-petrol-panel-3);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-rose) 40%, transparent),
+    0 50px 90px -40px color-mix(in srgb, var(--color-rose) 30%, black);
+  transform: rotate(-3deg);
+}
+
+.club-story__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--duration-grand) var(--ease-luxury);
+}
+
+.club-story__video.is-playing {
+  opacity: 1;
+}
+
+/* Voile haut (lisibilité des segments et du compte). */
+.club-story::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 1;
+  height: 28%;
+  background: linear-gradient(color-mix(in srgb, black 65%, transparent), transparent);
+  pointer-events: none;
+}
+
+.club-story__top {
+  position: absolute;
+  inset: 0.875rem 0.875rem auto;
+  z-index: 3;
+  display: grid;
+  gap: 0.75rem;
+  pointer-events: none;
+}
+
+.club-story__bars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.25rem;
+}
+
+.club-story__bar {
+  height: 3px;
+  overflow: hidden;
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, white 35%, transparent);
+}
+
+.club-story__bar span {
+  display: block;
+  height: 100%;
+  background-color: white;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.club-story__account {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: white;
+}
+
+.club-story__avatar {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.3rem;
+  border: 2px solid var(--color-rose);
+  border-radius: 9999px;
+  background-color: black;
+}
+
+.club-story__avatar .filiale-mark {
+  color: var(--color-rose);
+}
+
+/* Toute la story est le bouton lecture / pause (comme un appui sur une story). */
+.club-story__tap {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.club-story__tap:focus-visible {
+  outline: 3px solid var(--color-rose);
+  outline-offset: -6px;
+  border-radius: 1.75rem;
+}
+
+.club-story__paused {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, black 55%, transparent);
+  color: white;
+  translate: -50% -50%;
+  pointer-events: none;
+}
+
+.club-story__sound {
+  position: absolute;
+  right: 0.875rem;
+  bottom: 0.875rem;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, black 55%, transparent);
+  color: white;
+}
+
+.club-story__sound:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 3px;
+}
+
+.club-aftermovie__hint {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-ivory) 60%, transparent);
+}
+
+@media (min-width: 1024px) {
+  .club-aftermovie {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 5rem;
+  }
+  .club-story {
+    justify-self: end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .club-story__video,
+  .club-aftermovie__rec::before {
+    transition: none;
   }
 }

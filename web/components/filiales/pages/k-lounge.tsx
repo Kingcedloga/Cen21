@@ -12,6 +12,7 @@ import { FilialeOtherHouses } from "@/components/filiales/blocks/FilialeOtherHou
 import { FilialePractical } from "@/components/filiales/blocks/FilialePractical";
 import { FilialeReservation } from "@/components/filiales/blocks/FilialeReservation";
 import { FilialeTriptych, type TriptychItem } from "@/components/filiales/blocks/FilialeTriptych";
+import { KLoungeTeaser } from "@/components/filiales/klounge/KLoungeTeaser";
 import { PageSection, SECTION_SURFACE } from "@/components/layout/PageSection";
 import { SectionBlend } from "@/components/layout/SectionBlend";
 import { AboutStory } from "@/components/sections/about/AboutStory";
@@ -28,7 +29,7 @@ const LOGO_RATIO = 560 / 1024;
  * K Lounge (filiale-03) — refonte R7 : les blocs du socle en noir et blanc,
  * titres en Cormorant.
  *
- * Hero vidéo plein écran → manifeste épinglé → le rooftop en triptyque (noir
+ * Hero vidéo plein écran → manifeste épinglé → le teaser → le rooftop en triptyque (noir
  * et blanc qui s'allume) → photos en rangées croisées sur surface claire →
  * rendez-vous → infos pratiques
  * (Kinshasa, Lubumbashi) et FAQ → réservation → autres maisons. « Réserver »
@@ -78,6 +79,12 @@ export async function KLoungePage({ locale, subsidiary, pageTheme, heroVideo, ma
           title={introSection.title}
           statement={introSection.paragraphs.join(" ")}
         />
+      )}
+
+      {subsidiary.teaserVideo && (
+        <PageSection variant="dark" ariaLabelledby="filiale-teaser-title" overflow="hidden">
+          <KLoungeTeaser name={name} video={subsidiary.teaserVideo} />
+        </PageSection>
       )}
 
       {aboutSection && rooftop.length > 0 && (

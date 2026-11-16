@@ -488,7 +488,13 @@
     "rule-dress-code": "Dress code",
     "rule-age": "18 ans et plus",
     "rule-privatisation": "Privatisation",
-    "listTitle": "Mettre mon nom sur la liste"
+    "listTitle": "Mettre mon nom sur la liste",
+    "aftermovieEyebrow": "Aftermovie",
+    "aftermovieTitle": "Une nuit au club",
+    "aftermovieCaption": "Lumières, DJ, bouteilles sous les étincelles : le Millionaire Club comme si vous y étiez.",
+    "aftermovieRec": "Rec",
+    "aftermovieFollow": "Suivre le club sur Instagram",
+    "aftermovieTap": "Touchez la story pour la mettre en pause"
   },
   "moka": {
     "heroEyebrow": "Savourez. Dégustez. Découvrez.",
@@ -521,7 +527,23 @@
     "agendaBookShort": "Réserver",
     "agendaAll": "Tout l'agenda de la maison",
     "reservationTitle": "Réserver une table",
-    "reservationText": "Indiquez la date, le nombre de personnes et vos envies. Salles privées et banquets sur demande."
+    "reservationText": "Indiquez la date, le nombre de personnes et vos envies. Salles privées et banquets sur demande.",
+    "videoEyebrow": "En vidéo",
+    "videoTitle": "Une journée",
+    "videoScript": "chez Moka & More",
+    "videoCaption": "Du café du matin au cocktail du soir : la maison en quelques secondes.",
+    "videoBadge": "Regarder la vidéo"
+  },
+  "klounge": {
+    "teaserEyebrow": "After dark",
+    "teaserTitle": "Le rooftop, à la nuit tombée",
+    "teaserCaption": "Musique, cocktails et lumières de la ville : une soirée au K Lounge en quelques secondes.",
+    "teaserWords": "After dark"
+  },
+  "wabi": {
+    "teaserEyebrow": "Vibe · Food · Drink",
+    "teaserTitle": "L'esprit Wabi Sabi, en mouvement",
+    "teaserCaption": "La salle aux lumières dorées, l'assiette dressée à la main, le geste du barman : quinze secondes dans l'atmosphère de la maison."
   },
   "muzik": {
     "stringsSound": "Son des cordes",
@@ -621,6 +643,11 @@
     "galleryTitle": "L'ambiance de {name}",
     "galleryList": "Photos de {name}",
     "galleryAll": "Voir les {count} photos",
+    "teaserLabel": "Teaser vidéo de {name}",
+    "teaserPlay": "Lire le teaser",
+    "teaserPause": "Mettre le teaser en pause",
+    "teaserSoundOn": "Activer le son",
+    "teaserSoundOff": "Couper le son",
     "galleryPrev": "Photos précédentes",
     "galleryNext": "Photos suivantes",
     "photoAlt": "{name}, photo {n}",
