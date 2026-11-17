@@ -5,7 +5,6 @@ import { EventsHero, type HeroEvent } from "@/components/events/EventsHero";
 import { EventsNewsletter } from "@/components/events/EventsNewsletter";
 import { HeroCurtain } from "@/components/layout/HeroCurtain";
 import { SECTION_SURFACE } from "@/components/layout/PageSection";
-import { SectionBlend } from "@/components/layout/SectionBlend";
 import { HomeEventsDeck, type DeckEvent } from "@/components/sections/home/HomeEventsDeck";
 import { PageOutro } from "@/components/sections/PageOutro";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -187,40 +186,29 @@ export default async function EventsPage({ params }: Props) {
         )}
       </HeroCurtain>
 
-      {deckEvents.length > 0 && (
-        <>
-          <SectionBlend from={SECTION_SURFACE.default} to={SECTION_SURFACE.dark} />
-          {agenda}
-        </>
-      )}
+      {deckEvents.length > 0 && agenda}
 
       {/* Inscription à l'agenda (dans le hero quand rien n'est programmé). */}
       {nextEvent && (
-        <>
-          <SectionBlend from={SECTION_SURFACE.dark} to={SECTION_SURFACE.default} />
-          <section data-surface="dark" aria-labelledby="newsletter-title" className="bg-petrol px-4 py-20 md:px-8 md:py-28">
-            <div className="mx-auto grid max-w-[min(100%,1400px)] gap-10 lg:grid-cols-12 lg:items-end">
-              <div className="lg:col-span-7">
-                <SectionHeading
-                  look="editorial"
-                  eyebrow={t("newsletterEyebrow")}
-                  title={t("newsletterTitle")}
-                  sweep={t("newsletterSweep")}
-                  description={t("newsletterText")}
-                  titleAs="h2"
-                  titleId="newsletter-title"
-                  align="left"
-                  className="mb-0!"
-                />
-              </div>
-              <EventsNewsletter labels={newsletterLabels} className="lg:col-span-5 lg:justify-self-end" />
+        <section data-surface="dark" aria-labelledby="newsletter-title" className="bg-petrol px-4 py-20 md:px-8 md:py-28">
+          <div className="mx-auto grid max-w-[min(100%,1400px)] gap-10 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-7">
+              <SectionHeading
+                look="editorial"
+                eyebrow={t("newsletterEyebrow")}
+                title={t("newsletterTitle")}
+                sweep={t("newsletterSweep")}
+                description={t("newsletterText")}
+                titleAs="h2"
+                titleId="newsletter-title"
+                align="left"
+                className="mb-0!"
+              />
             </div>
-          </section>
-        </>
+            <EventsNewsletter labels={newsletterLabels} className="lg:col-span-5 lg:justify-self-end" />
+          </div>
+        </section>
       )}
-
-      {/* Sans newsletter, l'agenda a déjà la couleur de la bande de clôture. */}
-      {nextEvent && <SectionBlend from={SECTION_SURFACE.default} to="var(--color-anthracite)" />}
 
       <PageOutro
         eyebrow={tOutro("eyebrow")}

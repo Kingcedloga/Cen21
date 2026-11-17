@@ -2,7 +2,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { HeroCurtain } from "@/components/layout/HeroCurtain";
 import { PageSection, SECTION_SURFACE } from "@/components/layout/PageSection";
-import { SectionBlend } from "@/components/layout/SectionBlend";
 import { AboutFigures } from "@/components/sections/about/AboutFigures";
 import { AboutPartners, type DistinctionRow, type PartnerCard } from "@/components/sections/about/AboutPartners";
 import { AboutStory } from "@/components/sections/about/AboutStory";
@@ -171,8 +170,6 @@ export default async function AboutPage({ params }: Props) {
         <AboutStory eyebrow={t("originsEyebrow")} title={t("originsTitle")} statement={about.history} />
       </HeroCurtain>
 
-      {/* Séparateurs fondus entre sections de couleurs différentes. */}
-      <SectionBlend from={SECTION_SURFACE.light} to={SECTION_SURFACE.dark} />
 
       {milestones.length > 0 && (
         <HomeUniversesScrub
@@ -185,48 +182,43 @@ export default async function AboutPage({ params }: Props) {
       )}
 
       {team.length > 0 && (
-        <>
-          <SectionBlend from={SECTION_SURFACE.dark} to={SECTION_SURFACE.light} />
-          <PageSection
-            variant="light"
-            spacing="default"
-            // Retient l'éventail, qui déborde jusqu'aux bords de l'écran.
-            overflow="hidden"
-            id="equipe"
-            ariaLabelledby="about-team-title"
-            containerClassName="mx-auto max-w-[min(100%,1400px)]"
-          >
-            <SectionHeading
-              look="editorial"
-              tone="light"
-              eyebrow={t("teamEyebrow")}
-              title={t("teamTitle")}
-              sweep={t("teamTitleSweep")}
-              description={t("teamDescription")}
-              titleAs="h2"
-              titleId="about-team-title"
-              align="left"
-              className="mb-0! max-w-2xl"
+        <PageSection
+          variant="light"
+          spacing="default"
+          // Retient l'éventail, qui déborde jusqu'aux bords de l'écran.
+          overflow="hidden"
+          id="equipe"
+          ariaLabelledby="about-team-title"
+          containerClassName="mx-auto max-w-[min(100%,1400px)]"
+        >
+          <SectionHeading
+            look="editorial"
+            tone="light"
+            eyebrow={t("teamEyebrow")}
+            title={t("teamTitle")}
+            sweep={t("teamTitleSweep")}
+            description={t("teamDescription")}
+            titleAs="h2"
+            titleId="about-team-title"
+            align="left"
+            className="mb-0! max-w-2xl"
+          />
+          <div className="relative z-10 mt-12 w-full md:mt-16">
+            <AboutTeamArc
+              members={team}
+              labels={{
+                region: t("teamRegion"),
+                roledescription: tHome("arcRoledescription"),
+                prev: t("teamPrev"),
+                next: t("teamNext"),
+                drag: tHome("arcDrag"),
+                discover: t("teamDiscover"),
+                close: t("teamClose"),
+              }}
             />
-            <div className="relative z-10 mt-12 w-full md:mt-16">
-              <AboutTeamArc
-                members={team}
-                labels={{
-                  region: t("teamRegion"),
-                  roledescription: tHome("arcRoledescription"),
-                  prev: t("teamPrev"),
-                  next: t("teamNext"),
-                  drag: tHome("arcDrag"),
-                  discover: t("teamDiscover"),
-                  close: t("teamClose"),
-                }}
-              />
-            </div>
-          </PageSection>
-          <SectionBlend from={SECTION_SURFACE.light} to={SECTION_SURFACE.default} />
-        </>
+          </div>
+        </PageSection>
       )}
-      {team.length === 0 && <SectionBlend from={SECTION_SURFACE.dark} to={SECTION_SURFACE.default} />}
 
       <AboutFigures
         heading={{ eyebrow: t("figuresEyebrow"), title: t("figuresTitle"), sweep: t("figuresSweep") }}
@@ -248,14 +240,10 @@ export default async function AboutPage({ params }: Props) {
         }}
       />
 
-      <SectionBlend from={SECTION_SURFACE.default} to={SECTION_SURFACE.light} />
-
       <AboutValues
         heading={{ eyebrow: t("dnaEyebrow"), title: t("dnaTitle"), sweep: t("valuesTitleSweep"), intro: t("valuesIntro") }}
         values={about.values}
       />
-
-      <SectionBlend from={SECTION_SURFACE.light} to={SECTION_SURFACE.dark} />
 
       <HomeHousesSection
         titleId="about-houses-title"
@@ -267,21 +255,17 @@ export default async function AboutPage({ params }: Props) {
       />
 
       {showPartners && (
-        <>
-          <SectionBlend from={SECTION_SURFACE.dark} to={SECTION_SURFACE.light} />
-          <AboutPartners
-            heading={{
-              eyebrow: t("partnersEyebrow"),
-              title: t("partnersTitle"),
-              sweep: t("partnersSweep"),
-              intro: t("partnersIntro"),
-            }}
-            partners={partners}
-            visitLabel={t("partnersVisit")}
-            distinctions={{ title: t("distinctionsTitle"), items: distinctions }}
-          />
-          <SectionBlend from={SECTION_SURFACE.light} to="var(--color-anthracite)" />
-        </>
+        <AboutPartners
+          heading={{
+            eyebrow: t("partnersEyebrow"),
+            title: t("partnersTitle"),
+            sweep: t("partnersSweep"),
+            intro: t("partnersIntro"),
+          }}
+          partners={partners}
+          visitLabel={t("partnersVisit")}
+          distinctions={{ title: t("distinctionsTitle"), items: distinctions }}
+        />
       )}
 
       <PageOutro

@@ -5,7 +5,6 @@ import { GalleryMosaic } from "@/components/gallery/GalleryMosaic";
 import { GalleryWall, type WallHouse } from "@/components/gallery/GalleryWall";
 import { HeroCurtain } from "@/components/layout/HeroCurtain";
 import { PageSection, SECTION_SURFACE } from "@/components/layout/PageSection";
-import { SectionBlend } from "@/components/layout/SectionBlend";
 import { InnerHero } from "@/components/sections/InnerHero";
 import { PageOutro } from "@/components/sections/PageOutro";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -91,8 +90,6 @@ export default async function GalleryPage({ params }: Props) {
           <GalleryWall photos={photos} houses={houses} />
         </PageSection>
       </HeroCurtain>
-
-      <SectionBlend from={SECTION_SURFACE.default} to={SECTION_SURFACE.dark} />
 
       {/* Instagram des maisons (tuiles de /contact). */}
       <PageSection

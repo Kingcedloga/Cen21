@@ -15,8 +15,7 @@ import { FilialeReservation } from "@/components/filiales/blocks/FilialeReservat
 import { FilialeSpecialties } from "@/components/filiales/blocks/FilialeSpecialties";
 import { FilialeTestimonials } from "@/components/filiales/blocks/FilialeTestimonials";
 import { buildFilialeContext } from "@/components/filiales/pages";
-import { PageSection, SECTION_SURFACE } from "@/components/layout/PageSection";
-import { SectionBlend } from "@/components/layout/SectionBlend";
+import { PageSection } from "@/components/layout/PageSection";
 import { AboutStory } from "@/components/sections/about/AboutStory";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
@@ -132,23 +131,18 @@ export default async function FilialeLabPage({ params, searchParams }: Props) {
       />
 
       {(specialties.length > 0 || menu) && (
-        <>
-          <SectionBlend from={SECTION_SURFACE.dark} to={SECTION_SURFACE.default} />
-          <PageSection ariaLabelledby={menu ? "filiale-menu-title" : undefined}>
-            <div className="grid gap-16 md:gap-24">
-              <FilialeSpecialties items={specialties} heading={subsidiary.specialtiesSection} />
-              {menu && <FilialeMenu title={menu.title} intro={menu.intro} categories={menu.categories} />}
-            </div>
-          </PageSection>
-          <SectionBlend from={SECTION_SURFACE.default} to={SECTION_SURFACE.dark} />
-        </>
+        <PageSection ariaLabelledby={menu ? "filiale-menu-title" : undefined}>
+          <div className="grid gap-16 md:gap-24">
+            <FilialeSpecialties items={specialties} heading={subsidiary.specialtiesSection} />
+            {menu && <FilialeMenu title={menu.title} intro={menu.intro} categories={menu.categories} />}
+          </div>
+        </PageSection>
       )}
 
       <PageSection variant="dark" ariaLabelledby="filiale-gallery-title" overflow="hidden">
         <FilialeGalleryStrip name={name} photos={photos} house={{ slug, name, href: `/filiales/${slug}`, external: false }} />
       </PageSection>
 
-      <SectionBlend from={SECTION_SURFACE.dark} to={SECTION_SURFACE.default} />
       <FilialeEvents slug={slug} name={name} events={events} />
 
       {testimonials && (
@@ -157,7 +151,6 @@ export default async function FilialeLabPage({ params, searchParams }: Props) {
         </PageSection>
       )}
 
-      <SectionBlend from={SECTION_SURFACE.default} to={SECTION_SURFACE.dark} />
       <PageSection variant="dark" ariaLabelledby="filiale-practical-title">
         <FilialePractical subsidiary={subsidiary} locale={l} mapQuery={ctx.mapQuery} mapsUrl={ctx.mapsUrl} />
       </PageSection>
@@ -166,12 +159,10 @@ export default async function FilialeLabPage({ params, searchParams }: Props) {
         <FilialeFaq name={name} items={getSubsidiaryFaq(l, slug)} />
       </PageSection>
 
-      <SectionBlend from={SECTION_SURFACE.dark} to={SECTION_SURFACE.default} />
       <PageSection ariaLabelledby="filiale-reservation-title">
         <FilialeReservation slug={slug} name={name} houses={houses} />
       </PageSection>
 
-      <SectionBlend from={SECTION_SURFACE.default} to={SECTION_SURFACE.dark} />
       <PageSection variant="dark" ariaLabelledby="filiale-others-title" overflow="hidden">
         <FilialeOtherHouses slug={slug} locale={l} />
       </PageSection>

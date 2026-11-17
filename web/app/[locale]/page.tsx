@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
@@ -181,7 +182,8 @@ export default async function HomePage({ params }: Props) {
       <OrganizationJsonLd locale={l} />
 
       {/* Rideau : le hero reste collé, « Nos maisons » monte par-dessus. */}
-      <div className="hero-curtain">
+      {/* « Nos maisons » sur le pétrole de la charte (#004258), comme « Un groupe, dix univers ». */}
+      <div className="hero-curtain" style={{ "--curtain-surface": "var(--color-petrol)" } as CSSProperties}>
         <HeroCinematic
           slides={heroSlides}
           siteName={site.name}
@@ -189,12 +191,13 @@ export default async function HomePage({ params }: Props) {
           className="hero-curtain__hero"
         />
         {/* Reduced motion : pas de rideau, séparateur fondu. */}
-        <SectionBlend from="var(--color-petrol)" to="var(--color-petrol-panel-4)" />
+        <SectionBlend from="var(--color-petrol)" to="var(--color-petrol)" />
         <HomeHousesSection
           eyebrow={t("housesEyebrow")}
           title={t("housesTitle", { count })}
           titleSweep={t("housesTitleSweep")}
           items={houses}
+          plainLogos
           className="hero-curtain__cover"
         />
       </div>
@@ -211,8 +214,6 @@ export default async function HomePage({ params }: Props) {
         images={subsidiaries.map((s) => ({ src: s.coverImage }))}
       />
 
-      {/* Séparateurs fondus : du bas de la section précédente (from) au haut de la suivante (to). */}
-      <SectionBlend from="var(--color-petrol-panel-4)" to="var(--color-petrol)" />
 
       <PageSection
         id="home-group"
@@ -268,15 +269,11 @@ export default async function HomePage({ params }: Props) {
         </div>
       </PageSection>
 
-      <SectionBlend from="var(--color-petrol)" to="var(--market-top-field)" />
-
       <MarketPositioningSection
         eyebrow={t("marketEyebrow")}
         title={t("marketTitle")}
         team={about.team ?? []}
       />
-
-      <SectionBlend from="var(--market-bottom-edge)" to="var(--color-petrol-panel-4)" />
 
       <HomeManifesto
         eyebrow={t("philosophyEyebrow")}
@@ -293,9 +290,8 @@ export default async function HomePage({ params }: Props) {
         title={t("universesTitle")}
         titleSweep={t("universesTitleSweep")}
         cards={universeCards}
+        blendDarkCards
       />
-
-      <SectionBlend from="var(--color-petrol-panel-4)" to="var(--color-ivory)" />
 
       <PageSection
         variant="light"
@@ -338,8 +334,6 @@ export default async function HomePage({ params }: Props) {
         </div>
       </PageSection>
 
-      <SectionBlend from="var(--color-ivory)" to="var(--color-petrol)" />
-
       <HomeEventsDeck
         eyebrow={tEvents("eyebrow")}
         title={t(hasUpcoming ? "eventsTitleUpcoming" : "eventsTitlePast")}
@@ -350,7 +344,6 @@ export default async function HomePage({ params }: Props) {
       />
 
       {/* Section à photo : l'image se fond dans la couleur de la section. */}
-      <SectionBlend from="var(--color-petrol)" to="var(--experience-surface)" />
 
       <HomeTeaserReel
         eyebrow={t("reelEyebrow")}

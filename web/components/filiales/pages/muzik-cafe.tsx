@@ -25,10 +25,9 @@ const LOGO_RATIO = 1024 / 597;
 /** Dates affichées dans la liste « tournée ». */
 const DATES_SIZE = 4;
 
-/** Surfaces propres à la maison, pour les fondus qui les encadrent (le bleu
- * roi du refrain : la touche de bleu de la charte, styles/muzik.css). */
+/** Bleu roi du refrain (la touche de bleu de la charte, styles/muzik.css),
+ * pour le fondu hero → refrain. */
 const SURFACE_BLUE = "var(--muzik-blue)";
-const SURFACE_RED = "var(--brand-fill)";
 
 /**
  * Café Muzik (filiale-05) — restaurant, lounge bar et musique live, sans les
@@ -86,18 +85,12 @@ export async function MuzikCafePage({ locale, subsidiary, pageTheme, mapQuery, m
       <SectionBlend from={SECTION_SURFACE.dark} to={SURFACE_BLUE} />
       <MuzikKaraoke label={tMuzik("lyricsLabel")} lines={tMuzik.raw("lyrics") as string[]} note={tMuzik("lyricsNote")} />
 
-      <SectionBlend from={SURFACE_BLUE} to={SECTION_SURFACE.light} />
       <MuzikSetlist tracks={tracks} credits={muzikMenuSection?.benefits ?? []} />
 
-      <SectionBlend from={SECTION_SURFACE.light} to={SECTION_SURFACE.dark} />
       {subsidiary.teaserVideo && <MuzikTeaser video={subsidiary.teaserVideo} />}
 
       {events.length > 0 && (
-        <>
-          <SectionBlend from={SECTION_SURFACE.dark} to={SURFACE_RED} />
-          <MuzikDates events={events} locale={locale} slug={slug} />
-          <SectionBlend from={SURFACE_RED} to={SECTION_SURFACE.dark} />
-        </>
+        <MuzikDates events={events} locale={locale} slug={slug} />
       )}
 
       <PageSection variant="dark" ariaLabelledby="filiale-practical-title">
@@ -109,7 +102,6 @@ export async function MuzikCafePage({ locale, subsidiary, pageTheme, mapQuery, m
         </PageSection>
       )}
 
-      <SectionBlend from={SECTION_SURFACE.dark} to={SECTION_SURFACE.default} />
       <PageSection ariaLabelledby="filiale-reservation-title">
         <FilialeReservation
           slug={slug}
@@ -120,7 +112,6 @@ export async function MuzikCafePage({ locale, subsidiary, pageTheme, mapQuery, m
         />
       </PageSection>
 
-      <SectionBlend from={SECTION_SURFACE.default} to={SECTION_SURFACE.dark} />
       <PageSection variant="dark" ariaLabelledby="filiale-others-title" overflow="hidden">
         <FilialeOtherHouses slug={slug} locale={locale} />
       </PageSection>

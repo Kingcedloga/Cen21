@@ -27,7 +27,7 @@ const HERO_IMAGE = "/filiales/photos/filiale-06/gallery/dsc09704.jpg";
 /** Assiette détourée, au centre du badge « salles privées & banquets ». */
 const BADGE_PLATE = "/filiales/photos/filiale-06/main-photo.png";
 
-/** Aplat rouge de la maison (manifeste), pour les fondus qui l'encadrent. */
+/** Aplat rouge de la maison (manifeste), pour le fondu hero → manifeste. */
 const SURFACE_RED = "var(--brand-fill)";
 
 /**
@@ -83,10 +83,8 @@ export async function MokaMorePage({ locale, subsidiary, pageTheme, mapQuery, ma
       <SectionBlend from={SECTION_SURFACE.dark} to={SURFACE_RED} />
       <MokaManifesto label={tMoka("manifestoLabel")} text={tMoka("manifesto")} signature={name} />
 
-      <SectionBlend from={SURFACE_RED} to={SECTION_SURFACE.light} />
       <MokaMenu moments={subsidiary.menuMoments ?? []} />
 
-      <SectionBlend from={SECTION_SURFACE.light} to={SECTION_SURFACE.dark} />
       <MokaTour stops={subsidiary.venueTour ?? []} photos={photos} house={house} />
 
       {subsidiary.teaserVideo && (
@@ -96,13 +94,9 @@ export async function MokaMorePage({ locale, subsidiary, pageTheme, mapQuery, ma
       )}
 
       {events.length > 0 && (
-        <>
-          <SectionBlend from={SECTION_SURFACE.dark} to={SECTION_SURFACE.default} />
-          <PageSection ariaLabelledby="moka-agenda-title">
-            <MokaAgenda events={events} locale={locale} slug={slug} />
-          </PageSection>
-          <SectionBlend from={SECTION_SURFACE.default} to={SECTION_SURFACE.dark} />
-        </>
+        <PageSection ariaLabelledby="moka-agenda-title">
+          <MokaAgenda events={events} locale={locale} slug={slug} />
+        </PageSection>
       )}
 
       <PageSection variant="dark" ariaLabelledby="filiale-practical-title">
@@ -114,7 +108,6 @@ export async function MokaMorePage({ locale, subsidiary, pageTheme, mapQuery, ma
         </PageSection>
       )}
 
-      <SectionBlend from={SECTION_SURFACE.dark} to={SECTION_SURFACE.default} />
       <PageSection ariaLabelledby="filiale-reservation-title">
         <FilialeReservation
           slug={slug}
@@ -125,7 +118,6 @@ export async function MokaMorePage({ locale, subsidiary, pageTheme, mapQuery, ma
         />
       </PageSection>
 
-      <SectionBlend from={SECTION_SURFACE.default} to={SECTION_SURFACE.dark} />
       <PageSection variant="dark" ariaLabelledby="filiale-others-title" overflow="hidden">
         <FilialeOtherHouses slug={slug} locale={locale} />
       </PageSection>

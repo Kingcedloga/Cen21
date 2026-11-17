@@ -395,7 +395,7 @@ export function HomeUniverseBurst(props: BurstProps) {
       mobileLengthVh={TRACK_VH.burstMobile}
       surface="dark"
       ariaLabelledby="home-burst-title"
-      className="bg-petrol-panel-4"
+      className="home-burst bg-petrol"
     >
       <BurstStage {...props} />
     </StickyTrack>

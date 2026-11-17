@@ -12,8 +12,7 @@ import { OliveHero } from "@/components/filiales/olive/OliveHero";
 import { OliveManifesto } from "@/components/filiales/olive/OliveManifesto";
 import { OliveMatch } from "@/components/filiales/olive/OliveMatch";
 import { OliveMenu } from "@/components/filiales/olive/OliveMenu";
-import { PageSection, SECTION_SURFACE } from "@/components/layout/PageSection";
-import { SectionBlend } from "@/components/layout/SectionBlend";
+import { PageSection } from "@/components/layout/PageSection";
 import { getEvents, getSubsidiaryFaq } from "@/lib/content";
 import type { GalleryPhoto } from "@/lib/gallery-photos";
 
@@ -33,10 +32,6 @@ const ALBUM = [
   "olive%20j147.jpg",
   "DSC08842.jpg",
 ];
-
-/** Surfaces propres à la maison, pour les fondus qui les encadrent. */
-const SURFACE_OLIVE = "var(--brand-fill)";
-const SURFACE_DEEP = "color-mix(in srgb, var(--brand-fill) 58%, black)";
 
 /**
  * L'Olive Verte (filiale-01) — restaurant, lounge et bar sportif en plein
@@ -92,22 +87,16 @@ export async function OliveVertePage({ locale, subsidiary, pageTheme, mapQuery, 
       )}
 
       {menuCategoriesSection && (
-        <>
-          <SectionBlend from={SECTION_SURFACE.dark} to={SURFACE_OLIVE} />
-          <OliveMenu
-            title={menuCategoriesSection.title}
-            description={menuCategoriesSection.description}
-            categories={menuCategoriesSection.categories}
-          />
-          <SectionBlend from={SURFACE_OLIVE} to={SECTION_SURFACE.dark} />
-        </>
+        <OliveMenu
+          title={menuCategoriesSection.title}
+          description={menuCategoriesSection.description}
+          categories={menuCategoriesSection.categories}
+        />
       )}
 
       <OliveAlbum name={name} photos={photos} grid={grid} house={house} />
 
-      <SectionBlend from={SECTION_SURFACE.dark} to={SURFACE_DEEP} />
       <OliveMatch hours={subsidiary.practicalInfo.hours} next={next} locale={locale} slug={slug} />
-      <SectionBlend from={SURFACE_DEEP} to={SECTION_SURFACE.dark} />
 
       <PageSection variant="dark" ariaLabelledby="filiale-practical-title">
         <FilialePractical subsidiary={subsidiary} locale={locale} mapQuery={mapQuery} mapsUrl={mapsUrl} />
@@ -118,7 +107,6 @@ export async function OliveVertePage({ locale, subsidiary, pageTheme, mapQuery, 
         </PageSection>
       )}
 
-      <SectionBlend from={SECTION_SURFACE.dark} to={SECTION_SURFACE.default} />
       <PageSection ariaLabelledby="filiale-reservation-title">
         <FilialeReservation
           slug={slug}
@@ -129,7 +117,6 @@ export async function OliveVertePage({ locale, subsidiary, pageTheme, mapQuery, 
         />
       </PageSection>
 
-      <SectionBlend from={SECTION_SURFACE.default} to={SECTION_SURFACE.dark} />
       <PageSection variant="dark" ariaLabelledby="filiale-others-title" overflow="hidden">
         <FilialeOtherHouses slug={slug} locale={locale} />
       </PageSection>

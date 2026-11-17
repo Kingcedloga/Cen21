@@ -13,8 +13,7 @@ import { FilialePractical } from "@/components/filiales/blocks/FilialePractical"
 import { FilialeReservation } from "@/components/filiales/blocks/FilialeReservation";
 import { FilialeTriptych, type TriptychItem } from "@/components/filiales/blocks/FilialeTriptych";
 import { KLoungeTeaser } from "@/components/filiales/klounge/KLoungeTeaser";
-import { PageSection, SECTION_SURFACE } from "@/components/layout/PageSection";
-import { SectionBlend } from "@/components/layout/SectionBlend";
+import { PageSection } from "@/components/layout/PageSection";
 import { AboutStory } from "@/components/sections/about/AboutStory";
 import { Button } from "@/components/ui/Button";
 import { getSubsidiaryFaq } from "@/lib/content";
@@ -109,7 +108,6 @@ export async function KLoungePage({ locale, subsidiary, pageTheme, heroVideo, ma
         </PageSection>
       )}
 
-      <SectionBlend from={SECTION_SURFACE.dark} to={SECTION_SURFACE.light} />
       <PageSection variant="light" id="galerie" ariaLabelledby="filiale-gallery-title" overflow="hidden" className="scroll-mt-6">
         <FilialeGalleryDrift
           name={name}
@@ -119,15 +117,7 @@ export async function KLoungePage({ locale, subsidiary, pageTheme, heroVideo, ma
         />
       </PageSection>
 
-      {events.length > 0 ? (
-        <>
-          <SectionBlend from={SECTION_SURFACE.light} to={SECTION_SURFACE.default} />
-          <FilialeEvents slug={slug} name={name} events={events} />
-          <SectionBlend from={SECTION_SURFACE.default} to={SECTION_SURFACE.dark} />
-        </>
-      ) : (
-        <SectionBlend from={SECTION_SURFACE.light} to={SECTION_SURFACE.dark} />
-      )}
+      {events.length > 0 && <FilialeEvents slug={slug} name={name} events={events} />}
 
       <PageSection variant="dark" ariaLabelledby="filiale-practical-title">
         <FilialePractical subsidiary={subsidiary} locale={locale} mapQuery={mapQuery} mapsUrl={mapsUrl} />
@@ -138,7 +128,6 @@ export async function KLoungePage({ locale, subsidiary, pageTheme, heroVideo, ma
         </PageSection>
       )}
 
-      <SectionBlend from={SECTION_SURFACE.dark} to={SECTION_SURFACE.default} />
       <PageSection ariaLabelledby="filiale-reservation-title">
         <FilialeReservation
           slug={slug}
@@ -148,7 +137,6 @@ export async function KLoungePage({ locale, subsidiary, pageTheme, heroVideo, ma
         />
       </PageSection>
 
-      <SectionBlend from={SECTION_SURFACE.default} to={SECTION_SURFACE.dark} />
       <PageSection variant="dark" ariaLabelledby="filiale-others-title" overflow="hidden">
         <FilialeOtherHouses slug={slug} locale={locale} />
       </PageSection>

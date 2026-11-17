@@ -11,8 +11,7 @@ import { FilialeBrandStyle } from "@/components/filiales/blocks/FilialeBrandStyl
 import { FilialeCapsuleAction } from "@/components/filiales/blocks/FilialeCapsuleAction";
 import { FilialeOtherHouses } from "@/components/filiales/blocks/FilialeOtherHouses";
 import { FilialeReservation } from "@/components/filiales/blocks/FilialeReservation";
-import { PageSection, SECTION_SURFACE } from "@/components/layout/PageSection";
-import { SectionBlend } from "@/components/layout/SectionBlend";
+import { PageSection } from "@/components/layout/PageSection";
 import { getEvents, getSubsidiaryFaq } from "@/lib/content";
 import { cormorant } from "@/lib/fonts";
 import { galleryEntrySrc } from "@/lib/gallery-categories";
@@ -136,12 +135,10 @@ export async function MillionaireClubPage({ locale, subsidiary, pageTheme, heroV
         <ClubTicket subsidiary={subsidiary} locale={locale} mapsUrl={mapsUrl} rules={faq} />
       </PageSection>
 
-      <SectionBlend from={SECTION_SURFACE.dark} to={SECTION_SURFACE.default} />
       <PageSection ariaLabelledby="filiale-reservation-title">
         <FilialeReservation slug={slug} name={name} houses={contactHouses(locale)} title={tClub("listTitle")} />
       </PageSection>
 
-      <SectionBlend from={SECTION_SURFACE.default} to={SECTION_SURFACE.dark} />
       <PageSection variant="dark" ariaLabelledby="filiale-others-title" overflow="hidden">
         <FilialeOtherHouses slug={slug} locale={locale} />
       </PageSection>

@@ -3,6 +3,11 @@
 
 /* Découpe : les photos projetées ne débordent pas de la scène (sinon la
    piste les compterait comme contenu trop haut et se désépinglerait). */
+/* Fond de la section (pétrole #004258), repris par le voile du message. */
+.home-burst {
+  --burst-surface: var(--color-petrol);
+}
+
 .burst-canvas {
   position: absolute;
   inset: 0;
@@ -50,8 +55,8 @@
   text-align: center;
   background-image: radial-gradient(
     circle farthest-corner at 50% 50%,
-    var(--color-petrol-panel-4) 46%,
-    color-mix(in srgb, var(--color-petrol-panel-4) 0%, transparent) 70%
+    var(--burst-surface) 46%,
+    color-mix(in srgb, var(--burst-surface) 0%, transparent) 70%
   );
 }
 
@@ -82,10 +87,10 @@
     pointer-events: none;
     background-image: linear-gradient(
       to bottom,
-      color-mix(in srgb, var(--color-petrol-panel-4) 0%, transparent),
-      var(--color-petrol-panel-4) 3rem,
-      var(--color-petrol-panel-4) calc(100% - 3rem),
-      color-mix(in srgb, var(--color-petrol-panel-4) 0%, transparent)
+      color-mix(in srgb, var(--burst-surface) 0%, transparent),
+      var(--burst-surface) 3rem,
+      var(--burst-surface) calc(100% - 3rem),
+      color-mix(in srgb, var(--burst-surface) 0%, transparent)
     );
   }
 

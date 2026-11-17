@@ -6,7 +6,6 @@ import type { SiteConfig } from "@/lib/types";
 
 import { Logo } from "@/components/brand/Logo";
 import { RollingText } from "@/components/motion/RollingText";
-import { SectionBlend } from "@/components/layout/SectionBlend";
 import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import {
@@ -73,8 +72,6 @@ export function FooterView({
   // supprime les déplacements et ne garde que le fondu.
   return (
     <MotionConfig reducedMotion="user">
-    {/* Séparateur fondu au-dessus du pied de page. */}
-    <SectionBlend to="var(--color-anthracite)" />
     <footer className="relative bg-anthracite text-ivory">
       <div
         aria-hidden

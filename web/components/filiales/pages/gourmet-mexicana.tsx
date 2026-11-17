@@ -13,8 +13,7 @@ import { MexicanaFiestas } from "@/components/filiales/mexicana/MexicanaFiestas"
 import { MexicanaHero } from "@/components/filiales/mexicana/MexicanaHero";
 import { MexicanaLoteria } from "@/components/filiales/mexicana/MexicanaLoteria";
 import { MexicanaMascot } from "@/components/filiales/mexicana/MexicanaMascot";
-import { PageSection, SECTION_SURFACE } from "@/components/layout/PageSection";
-import { SectionBlend } from "@/components/layout/SectionBlend";
+import { PageSection } from "@/components/layout/PageSection";
 import { getEvents, getSubsidiaryFaq } from "@/lib/content";
 import { cormorant, dynalight } from "@/lib/fonts";
 
@@ -28,9 +27,6 @@ const ELEVATOR_PHOTO = "/filiales/photos/filiale-07/gallery/dsc09778.jpg";
 const MASCOT = "/filiales/photos/filiale-07/mascottemexiacain.png";
 /** Fiestas affichées. */
 const FIESTAS_SIZE = 4;
-
-/** Surface verte de la charte (fiestas), pour les fondus qui l'encadrent. */
-const SURFACE_GREEN = "var(--mx-green)";
 
 /**
  * Gourmet Mexicana (filiale-07) — cuisine mexicaine au 9ᵉ étage de la Matrix
@@ -91,18 +87,12 @@ export async function GourmetMexicanaPage({ locale, subsidiary, pageTheme, mapQu
 
       <MexicanaElevator image={ELEVATOR_PHOTO} imageAlt={tMx("elevatorAlt")} />
 
-      <SectionBlend from={SECTION_SURFACE.dark} to={SECTION_SURFACE.light} />
       <MexicanaLoteria />
-      <SectionBlend from={SECTION_SURFACE.light} to={SECTION_SURFACE.dark} />
 
       <MexicanaCasa name={name} photos={photos} house={house} />
 
       {events.length > 0 && (
-        <>
-          <SectionBlend from={SECTION_SURFACE.dark} to={SURFACE_GREEN} />
-          <MexicanaFiestas events={events} locale={locale} slug={slug} />
-          <SectionBlend from={SURFACE_GREEN} to={SECTION_SURFACE.dark} />
-        </>
+        <MexicanaFiestas events={events} locale={locale} slug={slug} />
       )}
 
       <PageSection variant="dark" ariaLabelledby="filiale-practical-title">
@@ -114,7 +104,6 @@ export async function GourmetMexicanaPage({ locale, subsidiary, pageTheme, mapQu
         </PageSection>
       )}
 
-      <SectionBlend from={SECTION_SURFACE.dark} to={SECTION_SURFACE.default} />
       <MexicanaMascot src={MASCOT}>
         <PageSection ariaLabelledby="filiale-reservation-title">
           <FilialeReservation
@@ -127,7 +116,6 @@ export async function GourmetMexicanaPage({ locale, subsidiary, pageTheme, mapQu
         </PageSection>
       </MexicanaMascot>
 
-      <SectionBlend from={SECTION_SURFACE.default} to={SECTION_SURFACE.dark} />
       <PageSection variant="dark" ariaLabelledby="filiale-others-title" overflow="hidden">
         <FilialeOtherHouses slug={slug} locale={locale} />
       </PageSection>

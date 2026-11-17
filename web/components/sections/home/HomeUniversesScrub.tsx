@@ -155,6 +155,8 @@ export function HomeUniversesScrub({
   /** Plusieurs pistes sur le site : accueil (« Nos univers ») et À propos (frise). */
   titleId?: string;
   cards: UniverseCard[];
+  /** Accueil : les cartes sombres prennent la couleur de la section (sans pavé pétrole). */
+  blendDarkCards?: boolean;
 }) {
   // Piste calibrée pour quatre cartes ; on l'allonge pour chaque carte en plus.
   const extra = Math.max(0, props.cards.length - 4);
@@ -165,7 +167,7 @@ export function HomeUniversesScrub({
         mobileLengthVh={TRACK_VH.universesMobile + extra * TRACK_VH.universesMobileExtraCard}
         surface="dark"
         ariaLabelledby={titleId}
-        className="bg-petrol-panel-4"
+        className={`bg-petrol-panel-4 ${props.blendDarkCards ? "universes-track--blend" : ""}`}
       >
         <UniversesStage {...props} titleId={titleId} />
       </StickyTrack>

@@ -31,6 +31,7 @@ export function HomeHousesSection({
   items,
   titleId = "home-houses-title",
   className = "",
+  plainLogos = false,
 }: {
   eyebrow: string;
   title: string;
@@ -38,6 +39,8 @@ export function HomeHousesSection({
   items: HouseItem[];
   titleId?: string;
   className?: string;
+  /** Accueil : logos posés directement sur le fond, sans tuile encadrée. */
+  plainLogos?: boolean;
 }) {
   const gridRef = useRef<HTMLUListElement>(null);
   const waved = useInView(gridRef, { once: true, amount: 0.4 });
@@ -68,7 +71,7 @@ export function HomeHousesSection({
                 className="house-card tap-press cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rose"
               >
                 <span className="house-card__inner">
-                  <span className="house-card__face border border-ivory/10 bg-petrol-panel-3/70">
+                  <span className={`house-card__face ${plainLogos ? "" : "border border-ivory/10 bg-petrol-panel-3/70"}`}>
                     <Image
                       src={item.logo}
                       alt=""

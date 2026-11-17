@@ -7,7 +7,6 @@ import { FaqAccordion, type FaqItem } from "@/components/contact/FaqAccordion";
 import { SocialTiles } from "@/components/contact/SocialTiles";
 import { HeroCurtain } from "@/components/layout/HeroCurtain";
 import { PageSection, SECTION_SURFACE } from "@/components/layout/PageSection";
-import { SectionBlend } from "@/components/layout/SectionBlend";
 import { InnerHero } from "@/components/sections/InnerHero";
 import { PageOutro } from "@/components/sections/PageOutro";
 import { AnimateIn } from "@/components/ui/AnimateIn";
@@ -259,8 +258,6 @@ export default async function ContactPage({ params }: Props) {
         </PageSection>
       </HeroCurtain>
 
-      {/* Séparateurs fondus entre sections de couleurs différentes (comme sur l'accueil). */}
-      <SectionBlend from={SECTION_SURFACE.light} to={SECTION_SURFACE.alt} />
 
       {/* Nos adresses : le siège et les maisons, carte qui se place sur l'adresse choisie. */}
       <PageSection
@@ -292,8 +289,6 @@ export default async function ContactPage({ params }: Props) {
           }}
         />
       </PageSection>
-
-      <SectionBlend from={SECTION_SURFACE.alt} to={SECTION_SURFACE.light} />
 
       {/* FAQ (Orbix : colonne gauche collante, accordéon à droite). Chapitre
           sable : casse l'enchaînement de fonds pétrole de la page. */}
@@ -336,8 +331,6 @@ export default async function ContactPage({ params }: Props) {
           </div>
         </div>
       </PageSection>
-
-      <SectionBlend from={SECTION_SURFACE.light} to={SECTION_SURFACE.dark} />
 
       {/* Réseaux des maisons (Orbix : tuiles « plateformes »). */}
       <PageSection variant="dark" spacing="default" id="reseaux" ariaLabelledby="tiles-title">
