@@ -68,6 +68,20 @@
   }
 }
 
+/* Pages intérieures : le fond recouvre le hero d'un bord net (ni dégradé, ni
+   flou). Seul l'accueil garde le bord en fondu. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-curtain--hard > .hero-curtain__cover {
+    padding-top: 0;
+    background-color: var(--curtain-surface, var(--color-petrol-panel-4));
+    background-image: none;
+  }
+
+  .hero-curtain--hard > .hero-curtain__cover::before {
+    content: none;
+  }
+}
+
 @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
   .hero-curtain {
     --curtain-fade: 14rem;

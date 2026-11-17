@@ -83,7 +83,7 @@ export function HomeHousesSection({
                   {/* Accueil (plainLogos) : verso sur le fond de la section, sans la couleur de la maison. */}
                   <span
                     className="house-card__face house-card__face--back"
-                    style={{ backgroundColor: plainLogos ? "var(--color-petrol)" : item.brandColor }}
+                    style={{ backgroundColor: plainLogos ? "var(--house-plain-bg, var(--color-petrol))" : item.brandColor }}
                   >
                     <Image
                       src={item.logo}

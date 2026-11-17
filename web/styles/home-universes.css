@@ -99,6 +99,12 @@
   background-color: var(--color-petrol-panel-4);
 }
 
+/* À propos (frise) : cartes paires sur le fond profond rgb(9, 26, 31), texte
+   ivoire (celui des cartes sombres). */
+.universes-track--deep .universe-card--dark {
+  background-color: rgb(9 26 31);
+}
+
 .universe-card__text {
   display: flex;
   flex-direction: column;

@@ -157,8 +157,8 @@ export function HomeUniversesScrub({
   cards: UniverseCard[];
   /** Accueil : les cartes sombres prennent la couleur de la section (sans pavé pétrole). */
   blendDarkCards?: boolean;
-  /** À propos : les cartes paires prennent le beige (231, 209, 191) au lieu du pétrole. */
-  sandCards?: boolean;
+  /** À propos : les cartes paires prennent le fond rgb(9, 26, 31) au lieu du pétrole. */
+  deepCards?: boolean;
 }) {
   // Piste calibrée pour quatre cartes ; on l'allonge pour chaque carte en plus.
   const extra = Math.max(0, props.cards.length - 4);
@@ -169,7 +169,7 @@ export function HomeUniversesScrub({
         mobileLengthVh={TRACK_VH.universesMobile + extra * TRACK_VH.universesMobileExtraCard}
         surface="dark"
         ariaLabelledby={titleId}
-        className={`bg-petrol-panel-4 ${props.blendDarkCards ? "universes-track--blend" : ""} ${props.sandCards ? "universes-track--sand" : ""}`}
+        className={`bg-petrol-panel-4 ${props.blendDarkCards ? "universes-track--blend" : ""} ${props.deepCards ? "universes-track--deep" : ""}`}
       >
         <UniversesStage {...props} titleId={titleId} />
       </StickyTrack>

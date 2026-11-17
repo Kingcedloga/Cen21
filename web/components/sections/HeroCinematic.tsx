@@ -226,11 +226,12 @@ export function HeroCinematic({ slides, siteName, pills = [], className = "" }: 
           >
             <Button
               href="/filiales"
-              className="shadow-[0_12px_28px_-8px_rgba(212,160,135,0.35)] hover:shadow-[0_18px_36px_-6px_rgba(212,160,135,0.5)]"
+              // Le texte du bloc porte une ombre (lisibilité sur photo) : pas sur les boutons.
+              className="[text-shadow:none] shadow-[0_12px_28px_-8px_rgba(212,160,135,0.35)] hover:shadow-[0_18px_36px_-6px_rgba(212,160,135,0.5)]"
             >
               {t("ctaSubsidiaries")}
             </Button>
-            <Button href="/contact" variant="secondary">
+            <Button href="/contact" variant="secondary" className="[text-shadow:none]">
               {t("ctaContact")}
             </Button>
           </motion.div>

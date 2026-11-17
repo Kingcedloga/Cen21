@@ -180,7 +180,7 @@ export default async function AboutPage({ params }: Props) {
           title={t("parcoursTitle", { count: milestones.length })}
           titleSweep={t("parcoursSweep")}
           cards={milestones}
-          sandCards
+          deepCards
         />
       )}
 
@@ -254,7 +254,9 @@ export default async function AboutPage({ params }: Props) {
         title={t("housesTitle")}
         titleSweep={t("housesSweep")}
         items={houses}
-        className="bg-petrol-panel-4"
+        plainLogos
+        // Verso au même fond que la section (sans la couleur de la maison), comme sur l'accueil.
+        className="bg-petrol-panel-4 [--house-plain-bg:var(--color-petrol-panel-4)]"
       />
 
       {showPartners && (

@@ -183,7 +183,8 @@ export default async function ContactPage({ params }: Props) {
             eyebrow={t("eyebrow")}
             title={t("title")}
             description={t("description")}
-            image="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=2400&q=85"
+            image="/home/DSC03673.jpg"
+            imagePosition="50% 38%"
             breadcrumb={{ label: tCommon("breadcrumb"), home: tNav("home"), current: tNav("contact") }}
             actions={
               <>

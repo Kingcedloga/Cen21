@@ -86,7 +86,9 @@ export default async function SubsidiariesPage({ params }: Props) {
             title={t("title")}
             titleSweep={t("titleSweep")}
             description={t("description")}
-            image="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=2400&q=85"
+            image="/home/_BRU4014.jpg"
+            // Photo verticale dans un bandeau large : on garde le plat et les baguettes.
+            imagePosition="50% 58%"
             breadcrumb={{ label: tCommon("breadcrumb"), home: tNav("home"), current: tNav("subsidiaries") }}
           />
         }

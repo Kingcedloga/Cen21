@@ -13,8 +13,7 @@ import { MuzikHero } from "@/components/filiales/muzik/MuzikHero";
 import { MuzikKaraoke } from "@/components/filiales/muzik/MuzikKaraoke";
 import { MuzikSetlist, type SetlistTrack } from "@/components/filiales/muzik/MuzikSetlist";
 import { MuzikTeaser } from "@/components/filiales/muzik/MuzikTeaser";
-import { PageSection, SECTION_SURFACE } from "@/components/layout/PageSection";
-import { SectionBlend } from "@/components/layout/SectionBlend";
+import { PageSection } from "@/components/layout/PageSection";
 import { getEvents, getSubsidiaryFaq } from "@/lib/content";
 import { inter } from "@/lib/fonts";
 
@@ -24,10 +23,6 @@ import type { FilialeContext } from "./context";
 const LOGO_RATIO = 1024 / 597;
 /** Dates affichées dans la liste « tournée ». */
 const DATES_SIZE = 4;
-
-/** Bleu roi du refrain (la touche de bleu de la charte, styles/muzik.css),
- * pour le fondu hero → refrain. */
-const SURFACE_BLUE = "var(--muzik-blue)";
 
 /**
  * Café Muzik (filiale-05) — restaurant, lounge bar et musique live, sans les
@@ -81,8 +76,6 @@ export async function MuzikCafePage({ locale, subsidiary, pageTheme, mapQuery, m
         logo={subsidiary.brandLogo}
         logoRatio={LOGO_RATIO}
       />
-
-      <SectionBlend from={SECTION_SURFACE.dark} to={SURFACE_BLUE} />
       <MuzikKaraoke label={tMuzik("lyricsLabel")} lines={tMuzik.raw("lyrics") as string[]} note={tMuzik("lyricsNote")} />
 
       <MuzikSetlist tracks={tracks} credits={muzikMenuSection?.benefits ?? []} />

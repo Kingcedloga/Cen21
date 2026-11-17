@@ -13,8 +13,7 @@ import { MokaManifesto } from "@/components/filiales/moka/MokaManifesto";
 import { MokaMenu } from "@/components/filiales/moka/MokaMenu";
 import { MokaTour } from "@/components/filiales/moka/MokaTour";
 import { MokaVideo } from "@/components/filiales/moka/MokaVideo";
-import { PageSection, SECTION_SURFACE } from "@/components/layout/PageSection";
-import { SectionBlend } from "@/components/layout/SectionBlend";
+import { PageSection } from "@/components/layout/PageSection";
 import { getEvents, getSubsidiaryFaq } from "@/lib/content";
 import { dynalight, nunito } from "@/lib/fonts";
 
@@ -30,9 +29,6 @@ const AGENDA_SIZE = 4;
 const HERO_IMAGE = "/filiales/photos/filiale-06/gallery/dsc09704.jpg";
 /** Assiette détourée, au centre du badge « salles privées & banquets ». */
 const BADGE_PLATE = "/filiales/photos/filiale-06/main-photo.png";
-
-/** Aplat rouge de la maison (manifeste), pour le fondu hero → manifeste. */
-const SURFACE_RED = "var(--brand-fill)";
 
 /**
  * Moka & More (filiale-06) — restaurant et lounge bar, sans les blocs
@@ -84,8 +80,6 @@ export async function MokaMorePage({ locale, subsidiary, pageTheme, mapQuery, ma
         mapsUrl={mapsUrl}
         logo={{ src: LOGO_SRC, ...LOGO, colored: true, width: "clamp(19rem, 36vw, 30rem)" }}
       />
-
-      <SectionBlend from={SECTION_SURFACE.dark} to={SURFACE_RED} />
       <MokaManifesto label={tMoka("manifestoLabel")} text={tMoka("manifesto")} signature={name} />
 
       <MokaMenu moments={subsidiary.menuMoments ?? []} />

@@ -1,7 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { LegalArticle, LegalH2, LegalP, LegalUl } from "@/components/legal/LegalArticle";
-import { SectionBlend } from "@/components/layout/SectionBlend";
 import { InnerHero } from "@/components/sections/InnerHero";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Link } from "@/i18n/navigation";
@@ -32,7 +31,6 @@ export default async function MentionsLegalesPage({ params }: Props) {
   return (
     <>
       <InnerHero eyebrow={t("eyebrow")} title={t("title")} description={t("description")} />
-      <SectionBlend from="var(--color-petrol-panel-4)" to="var(--color-petrol)" />
       <LegalArticle>
         <AnimateIn delay={0 * 0.08}>
           <section className="space-y-4">

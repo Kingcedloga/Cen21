@@ -1,7 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
 
-import { SectionBlend } from "@/components/layout/SectionBlend";
-
 import "@/styles/hero-curtain.css";
 
 /**
@@ -12,24 +10,22 @@ import "@/styles/hero-curtain.css";
  *   `className="hero-curtain__hero"`), qui mesure son `--hero-fit-top`.
  * - `surface` : couleur de fond de la section qui recouvre (`children`) ;
  *   le bord en fondu part du transparent vers cette couleur.
- * - `heroSurface` : couleur du bas du hero, pour le séparateur fondu affiché
- *   en reduced motion (sans rideau).
+ *
+ * Pages intérieures : bord net, sans fondu ni flou (seul l'accueil garde le
+ * bord en fondu).
  */
 export function HeroCurtain({
   hero,
   surface,
-  heroSurface = "var(--color-petrol-panel-4)",
   children,
 }: {
   hero: ReactNode;
   surface: string;
-  heroSurface?: string;
   children: ReactNode;
 }) {
   return (
-    <div className="hero-curtain" style={{ "--curtain-surface": surface } as CSSProperties}>
+    <div className="hero-curtain hero-curtain--hard" style={{ "--curtain-surface": surface } as CSSProperties}>
       {hero}
-      <SectionBlend from={heroSurface} to={surface} />
       <div className="hero-curtain__cover">{children}</div>
     </div>
   );
