@@ -1173,7 +1173,24 @@ body:has(> [data-capsule-nav]) [data-surface="light"] [data-surface="dark"] .btn
   border-radius: 4px;
 }
 
-/* === Accueil — section « Le groupe » : motif pétrole tone-on-tone ===== */
+/* === Motif CEN21 (charte, dernière page) ================================
+   Le monogramme répété bord à bord (public/brand/cen21-motif.png, recadré
+   sur son contour : les monogrammes se touchent comme sur la charte), tracé
+   cuivré, très discret sur le Dark Teal. Taille et opacité partagées. */
+:root {
+  --cen21-motif: url("/brand/cen21-motif.png");
+  --cen21-motif-size: 180px auto;
+  --cen21-motif-opacity: 0.09;
+}
+
+/* === Hero de l'accueil : photos sans voile, texte lisible par son ombre == */
+.hero-copy {
+  text-shadow:
+    0 1px 2px rgb(0 0 0 / 0.45),
+    0 4px 24px rgb(0 0 0 / 0.35);
+}
+
+/* === Accueil — section « Le groupe » : motif CEN21 ====================== */
 #home-group {
   background-color: var(--color-petrol);
 }
@@ -1183,10 +1200,11 @@ body:has(> [data-capsule-nav]) [data-surface="light"] [data-surface="dark"] .btn
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-image: url("/home/group-pattern.svg");
-  background-size: 256px auto;
-  background-position: left top;
+  background-image: var(--cen21-motif);
+  background-size: var(--cen21-motif-size);
+  background-position: center top;
   background-repeat: repeat;
+  opacity: var(--cen21-motif-opacity);
   pointer-events: none;
 }
 

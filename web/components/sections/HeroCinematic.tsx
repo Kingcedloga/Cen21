@@ -134,25 +134,7 @@ export function HeroCinematic({ slides, siteName, pills = [], className = "" }: 
         })}
       </motion.div>
 
-      {/* ── Overlays Cinématiques Multi-Couches ── */}
-      {/* 1. Gradient sombre vertical (lisibilité et ancrage bas) */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-petrol via-petrol/60 to-petrol/25"
-      />
-
-      {/* 2. Gradient latéral gauche (contraste accru pour le texte) */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-petrol/85 via-petrol/35 to-transparent"
-      />
-
-      {/* 3. Lueur rosée ambiante en coin inférieur gauche */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -bottom-24 -left-24 z-[1] h-96 w-96 rounded-full bg-rose/10 blur-3xl"
-      />
-
+      {/* Photos sans voile sombre ; la lisibilité tient à l'ombre portée du texte (.hero-copy). */}
       {/* 4. Texture subtile de film noise */}
       <div aria-hidden className="noise-overlay z-[2]" />
 
@@ -182,7 +164,7 @@ export function HeroCinematic({ slides, siteName, pills = [], className = "" }: 
       {/* pb-32 sur mobile : les boutons dégagent la capsule de navigation basse. */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 md:px-12 pb-32 sm:pb-24 md:pb-28 pt-36 md:pt-48">
         <motion.div
-          className="flex flex-col gap-6 md:gap-8 max-w-4xl"
+          className="hero-copy flex flex-col gap-6 md:gap-8 max-w-4xl"
           style={reducedMotion ? undefined : { y: contentY, opacity: contentOpacity }}
           initial={reducedMotion ? false : "hidden"}
           animate={reducedMotion ? undefined : "visible"}

@@ -8,6 +8,25 @@
   --burst-surface: var(--color-petrol);
 }
 
+/* Motif CEN21 sur la scène épinglée : il reste en place pendant que les
+   photos jaillissent ; le voile du message le masque derrière le texte. */
+.home-burst > .sticky-track__stage {
+  isolation: isolate;
+}
+
+.home-burst > .sticky-track__stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: var(--cen21-motif);
+  background-size: var(--cen21-motif-size);
+  background-position: center top;
+  background-repeat: repeat;
+  opacity: var(--cen21-motif-opacity);
+  pointer-events: none;
+}
+
 .burst-canvas {
   position: absolute;
   inset: 0;

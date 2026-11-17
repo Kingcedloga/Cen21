@@ -65,8 +65,6 @@ export function FooterView({
   const quickCol1 = NAV_PATHS.slice(0, 3);
   const quickCol2 = NAV_PATHS.slice(3);
 
-  const defaultPattern = `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L35 25 L55 30 L35 35 L30 55 L25 35 L5 30 L25 25 Z' fill='none' stroke='%23D4AD65' stroke-width='0.35' opacity='0.5'/%3E%3C/svg%3E")`;
-
   // Mêmes props au serveur et au client (un test de reduced motion dans le
   // rendu provoquait l'erreur React #418). En reduced motion, MotionConfig
   // supprime les déplacements et ne garde que le fondu.
@@ -75,8 +73,14 @@ export function FooterView({
     <footer className="relative bg-anthracite text-ivory">
       <div
         aria-hidden
-        className="subsidiary-footer__pattern pointer-events-none absolute inset-0 opacity-[0.12]"
-        style={{ backgroundImage: defaultPattern }}
+        // Motif CEN21 (charte) : monogramme répété, très discret (globals.css).
+        className="subsidiary-footer__pattern pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: "var(--cen21-motif)",
+          backgroundSize: "var(--cen21-motif-size)",
+          backgroundPosition: "center top",
+          opacity: "var(--cen21-motif-opacity)",
+        }}
       />
 
       <div className="relative mx-auto max-w-7xl px-6 pb-12 pt-6 md:px-10 md:pb-16 md:pt-8">
