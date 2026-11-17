@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { useId, useRef } from "react";
 
 import { FilialeOpenStatus } from "@/components/filiales/blocks/FilialeOpenStatus";
+import { FilialeHeroLogo, type HeroLogo } from "@/components/filiales/blocks/FilialeHeroLogo";
 import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import { ExternalLink } from "@/lib/icons";
@@ -31,6 +32,7 @@ const RING_RADIUS = 78;
  */
 export function MokaHero({
   name,
+  logo,
   tagline,
   hours,
   locale,
@@ -40,6 +42,8 @@ export function MokaHero({
   mapsUrl,
 }: {
   name: string;
+  /** Logo de la maison à la place du nom écrit (titre de la une). */
+  logo?: HeroLogo;
   tagline: string;
   hours?: string;
   locale: string;
@@ -86,19 +90,26 @@ export function MokaHero({
           </nav>
 
           <p className="moka-eyebrow">{t("heroEyebrow")}</p>
-          <h1 id="moka-hero-title" className="moka-hero__title">
-            <span className="moka-hero__word">{before}</span>
-            {after && (
-              <>
-                {" "}
-                <span className="moka-hero__amp">&amp;</span>{" "}
-                <span className="moka-hero__word moka-hero__word--last">{after}</span>
-              </>
-            )}
-          </h1>
-          <p aria-hidden="true" className="moka-hero__script moka-script">
-            {t("heroScript")}
-          </p>
+          {logo ? (
+            <FilialeHeroLogo id="moka-hero-title" name={name} logo={logo} className="moka-hero__logo" />
+          ) : (
+            <h1 id="moka-hero-title" className="moka-hero__title">
+              <span className="moka-hero__word">{before}</span>
+              {after && (
+                <>
+                  {" "}
+                  <span className="moka-hero__amp">&amp;</span>{" "}
+                  <span className="moka-hero__word moka-hero__word--last">{after}</span>
+                </>
+              )}
+            </h1>
+          )}
+          {/* Le logo porte déjà « Lounge Bar » : la signature n'accompagne que le nom écrit. */}
+          {!logo && (
+            <p aria-hidden="true" className="moka-hero__script moka-script">
+              {t("heroScript")}
+            </p>
+          )}
 
           <p className="moka-hero__lead">{tagline}</p>
           {hours && (

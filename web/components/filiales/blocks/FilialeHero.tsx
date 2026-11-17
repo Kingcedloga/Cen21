@@ -7,6 +7,7 @@ import { ExternalLink, Phone } from "@/lib/icons";
 import type { Locale } from "@/i18n/routing";
 import type { HeroVideo, Subsidiary } from "@/lib/types";
 
+import { HeroLogoMark, type HeroLogo } from "./FilialeHeroLogo";
 import { FilialeOpenStatus } from "./FilialeOpenStatus";
 
 /**
@@ -24,6 +25,7 @@ export async function FilialeHero({
   imagePosition,
   video,
   mapsUrl,
+  logo,
   className,
 }: {
   subsidiary: Subsidiary;
@@ -34,6 +36,8 @@ export async function FilialeHero({
   /** Vidéo de la maison (hero immersif). */
   video?: HeroVideo;
   mapsUrl: string;
+  /** Logo de la maison à la place du nom écrit. */
+  logo?: HeroLogo;
   className?: string;
 }) {
   const t = await getTranslations("filiale");
@@ -48,6 +52,7 @@ export async function FilialeHero({
       titleId="filiale-hero-title"
       eyebrow={getSectorLabel(locale, subsidiary.sector)}
       title={subsidiary.name}
+      titleLogo={logo && <HeroLogoMark logo={logo} />}
       description={
         <>
           {subsidiary.tagline}

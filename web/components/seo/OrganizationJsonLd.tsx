@@ -15,7 +15,9 @@ export async function OrganizationJsonLd({ locale }: { locale: Locale }) {
     telephone: site.contact.phone,
     address: {
       "@type": "PostalAddress",
-      addressLocality: site.contact.address,
+      streetAddress: site.contact.address,
+      addressLocality: "Kinshasa",
+      addressCountry: "CD",
     },
   };
 

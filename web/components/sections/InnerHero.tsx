@@ -66,6 +66,7 @@ export function InnerHero({
   media,
   video,
   titleId = "inner-hero-title",
+  titleLogo,
   className = "",
 }: {
   eyebrow?: string;
@@ -89,6 +90,8 @@ export function InnerHero({
   /** Vidéo plein écran (hero immersif), `image` en affiche. */
   video?: HeroVideo;
   titleId?: string;
+  /** Logo affiché à la place du titre écrit (le titre reste lu par les lecteurs d'écran). */
+  titleLogo?: ReactNode;
   className?: string;
 }) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -143,14 +146,21 @@ export function InnerHero({
 
         {eyebrow && <p className="inner-hero__pill">{eyebrow}</p>}
 
-        <SpectrumText
-          as="h1"
-          mode="load"
-          id={titleId}
-          text={title}
-          sweep={titleSweep}
-          className="inner-hero__title title-display text-balance"
-        />
+        {titleLogo ? (
+          <h1 id={titleId} className="inner-hero__title inner-hero__title--logo">
+            <span className="sr-only">{title}</span>
+            {titleLogo}
+          </h1>
+        ) : (
+          <SpectrumText
+            as="h1"
+            mode="load"
+            id={titleId}
+            text={title}
+            sweep={titleSweep}
+            className="inner-hero__title title-display text-balance"
+          />
+        )}
 
         {description && <p className="inner-hero__lead">{description}</p>}
         {actions && <div className="inner-hero__actions">{actions}</div>}

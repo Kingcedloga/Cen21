@@ -710,6 +710,32 @@ p > .filiale-status {
   mask: var(--mark-src) center / contain no-repeat;
 }
 
+/* Logo de la maison en titre de la une (FilialeHeroLogo, InnerHero
+   titleLogo) : grand, teinté ivoire, jamais plus large que la colonne ;
+   ombre douce pour rester lisible sur la photo ou la vidéo. */
+.filiale-hero-logo,
+.inner-hero__title.inner-hero__title--logo {
+  max-width: 100%;
+  margin-top: 1.25rem;
+  line-height: 0;
+  color: var(--color-ivory);
+}
+
+.filiale-hero-logo__mark {
+  display: block;
+  width: var(--mark-width);
+  max-width: 100%;
+  aspect-ratio: var(--mark-ratio);
+  background-color: currentColor;
+  -webkit-mask: var(--mark-src) var(--mark-pos) / var(--mark-size) no-repeat;
+  mask: var(--mark-src) var(--mark-pos) / var(--mark-size) no-repeat;
+}
+
+/* Sur photo ou vidéo sombre : ombre douce pour détacher le logo clair. */
+[data-surface="dark"] .filiale-hero-logo__mark {
+  filter: drop-shadow(0 2px 18px rgb(0 0 0 / 0.45));
+}
+
 /* --- Chapitres en diptyque épinglé (FilialeChapters) -------------------- */
 /* Mobile et tablette : la photo est épinglée en haut de l'écran (bloc et non
    grille : un élément de grille ne colle que dans sa propre case), les

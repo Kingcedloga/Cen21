@@ -1190,6 +1190,20 @@ body:has(> [data-capsule-nav]) [data-surface="light"] [data-surface="dark"] .btn
     0 4px 24px rgb(0 0 0 / 0.35);
 }
 
+/* Ombre noire derrière la zone des textes, fondue vers le reste de la photo.
+   Mobile : le texte occupe toute la largeur du bas, l'ombre monte du bas. */
+.hero-text-shade {
+  background: linear-gradient(to top, rgb(0 0 0 / 0.78) 0%, rgb(0 0 0 / 0.55) 35%, rgb(0 0 0 / 0.18) 62%, transparent 80%);
+}
+
+@media (min-width: 768px) {
+  .hero-text-shade {
+    background:
+      radial-gradient(ellipse 62% 68% at 22% 78%, rgb(0 0 0 / 0.72) 0%, rgb(0 0 0 / 0.5) 38%, rgb(0 0 0 / 0.18) 66%, transparent 85%),
+      linear-gradient(to top, rgb(0 0 0 / 0.35) 0%, transparent 35%);
+  }
+}
+
 /* === Accueil — section « Le groupe » : motif CEN21 ====================== */
 #home-group {
   background-color: var(--color-petrol);

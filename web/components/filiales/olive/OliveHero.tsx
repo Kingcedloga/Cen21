@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 
 import { FilialeOpenStatus } from "@/components/filiales/blocks/FilialeOpenStatus";
+import { FilialeHeroLogo, type HeroLogo } from "@/components/filiales/blocks/FilialeHeroLogo";
 import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import { Pause, Phone, Play } from "@/lib/icons";
@@ -29,6 +30,7 @@ const STILL_RING = { rotate: 8 };
  */
 export function OliveHero({
   name,
+  logo,
   tagline,
   hours,
   phone,
@@ -38,6 +40,8 @@ export function OliveHero({
   posterAlt,
 }: {
   name: string;
+  /** Logo de la maison à la place du nom écrit (titre de la une). */
+  logo?: HeroLogo;
   tagline: string;
   hours?: string;
   phone?: string;
@@ -74,9 +78,13 @@ export function OliveHero({
           </nav>
 
           <p className="olive-eyebrow">{t("heroEyebrow")}</p>
-          <h1 id="olive-hero-title" className="olive-hero__title">
-            {name}
-          </h1>
+          {logo ? (
+            <FilialeHeroLogo id="olive-hero-title" name={name} logo={logo} className="olive-hero__logo" />
+          ) : (
+            <h1 id="olive-hero-title" className="olive-hero__title">
+              {name}
+            </h1>
+          )}
           <p className="olive-hero__lead">{tagline}</p>
           {hours && (
             <div className="olive-hero__status">

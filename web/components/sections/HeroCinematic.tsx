@@ -134,7 +134,9 @@ export function HeroCinematic({ slides, siteName, pills = [], className = "" }: 
         })}
       </motion.div>
 
-      {/* Photos sans voile sombre ; la lisibilité tient à l'ombre portée du texte (.hero-copy). */}
+      {/* Ombre noire limitée à la zone des textes (bas gauche) : le reste de la
+          photo reste lumineux, le titre et les boutons restent lisibles. */}
+      <div aria-hidden className="hero-text-shade pointer-events-none absolute inset-0 z-[1]" />
       {/* 4. Texture subtile de film noise */}
       <div aria-hidden className="noise-overlay z-[2]" />
 

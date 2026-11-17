@@ -27,6 +27,9 @@ import "@/styles/filiale-luxe.css";
 /** Proportions du logo (public/filiales/logos/filiale-02.png, 1024 × 654). */
 const LOGO_RATIO = 1024 / 654;
 
+/** Logo de la une : dimensions du fichier et zone visible (marges rognées). */
+const HERO_LOGO = { size: [1024, 654], box: [171, 139, 876, 534] } as const;
+
 /**
  * Wabi Sabi (filiale-02) — pilote de la refonte des fiches (R6) : les blocs
  * du socle aux couleurs de la maison (marine, crème et or, titres en
@@ -113,6 +116,7 @@ export async function WabiSabiPage({ locale, subsidiary, pageTheme, mapQuery, ma
         // Les sushis sont à gauche de la photo : le cadrage étroit du mobile les garde.
         imagePosition="28% 50%"
         mapsUrl={mapsUrl}
+        logo={subsidiary.brandLogo ? { src: subsidiary.brandLogo, ...HERO_LOGO, width: "clamp(16rem, 30vw, 26rem)" } : undefined}
       />
 
       {philosophySection && (

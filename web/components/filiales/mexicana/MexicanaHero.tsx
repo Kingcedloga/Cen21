@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 
 import { FilialeOpenStatus } from "@/components/filiales/blocks/FilialeOpenStatus";
+import { FilialeHeroLogo, type HeroLogo } from "@/components/filiales/blocks/FilialeHeroLogo";
 import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
 import { ExternalLink, Pause, Play } from "@/lib/icons";
@@ -30,6 +31,7 @@ const STILL_FRAME = { rotate: 3, y: 0 };
  */
 export function MexicanaHero({
   name,
+  logo,
   tagline,
   hours,
   locale,
@@ -39,6 +41,8 @@ export function MexicanaHero({
   posterAlt,
 }: {
   name: string;
+  /** Logo de la maison à la place du nom écrit (titre de la une). */
+  logo?: HeroLogo;
   tagline: string;
   hours?: string;
   locale: string;
@@ -79,10 +83,14 @@ export function MexicanaHero({
           </nav>
 
           <p className="mx-eyebrow">{t("heroEyebrow")}</p>
-          <h1 id="mexicana-hero-title" className="mx-hero__title">
-            <span className="mx-hero__word">{first}</span>{" "}
-            {rest.length > 0 && <span className="mx-hero__script mx-script">{rest.join(" ")}</span>}
-          </h1>
+          {logo ? (
+            <FilialeHeroLogo id="mexicana-hero-title" name={name} logo={logo} className="mx-hero__logo" />
+          ) : (
+            <h1 id="mexicana-hero-title" className="mx-hero__title">
+              <span className="mx-hero__word">{first}</span>{" "}
+              {rest.length > 0 && <span className="mx-hero__script mx-script">{rest.join(" ")}</span>}
+            </h1>
+          )}
           <p className="mx-hero__lead">{tagline}</p>
           {hours && (
             <div className="mx-hero__status">

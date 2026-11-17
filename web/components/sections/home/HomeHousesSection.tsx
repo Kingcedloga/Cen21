@@ -39,7 +39,7 @@ export function HomeHousesSection({
   items: HouseItem[];
   titleId?: string;
   className?: string;
-  /** Accueil : logos posés directement sur le fond, sans tuile encadrée. */
+  /** Accueil : logos posés directement sur le fond, sans tuile encadrée ni couleur de marque au survol. */
   plainLogos?: boolean;
 }) {
   const gridRef = useRef<HTMLUListElement>(null);
@@ -80,7 +80,11 @@ export function HomeHousesSection({
                       className="object-contain p-[18%] opacity-90"
                     />
                   </span>
-                  <span className="house-card__face house-card__face--back" style={{ backgroundColor: item.brandColor }}>
+                  {/* Accueil (plainLogos) : verso sur le fond de la section, sans la couleur de la maison. */}
+                  <span
+                    className="house-card__face house-card__face--back"
+                    style={{ backgroundColor: plainLogos ? "var(--color-petrol)" : item.brandColor }}
+                  >
                     <Image
                       src={item.logo}
                       alt=""

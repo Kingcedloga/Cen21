@@ -19,6 +19,9 @@ import type { GalleryPhoto } from "@/lib/gallery-photos";
 import type { FilialeContext } from "./context";
 
 /** Affiche du teaser (si la maison n'en donne pas) : un toast en terrasse. */
+/** Logo de la une : dimensions de public/filiales/logos/filiale-01.png et zone visible (marges rognées). */
+const LOGO = { size: [944, 1021], box: [24, 43, 933, 973] } as const;
+
 const POSTER = "/filiales/photos/filiale-01/DSC08521.jpg";
 /** Les neuf photos de l'album (la 5ᵉ au milieu : on entre dedans). */
 const ALBUM = [
@@ -80,6 +83,7 @@ export async function OliveVertePage({ locale, subsidiary, pageTheme, mapQuery, 
         video={teaserVideo}
         poster={teaserVideo?.poster ?? POSTER}
         posterAlt={tOlive("heroImageAlt")}
+        logo={subsidiary.brandLogo ? { src: subsidiary.brandLogo, ...LOGO, width: "clamp(12.5rem, 21vw, 18.5rem)" } : undefined}
       />
 
       {specialtiesSection && (
