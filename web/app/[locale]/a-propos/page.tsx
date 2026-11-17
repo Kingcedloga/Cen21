@@ -162,6 +162,8 @@ export default async function AboutPage({ params }: Props) {
             description={t("description")}
             image={about.heroImage ?? FALLBACK_HERO}
             imageAlt={t("heroImageAlt")}
+            // Photo verticale dans un bandeau large : le cadre se cale sur l'enseigne Cen21.
+            imagePosition="50% 14%"
             breadcrumb={{ label: tCommon("breadcrumb"), home: tNav("home"), current: tNav("about") }}
           />
         }
@@ -178,6 +180,7 @@ export default async function AboutPage({ params }: Props) {
           title={t("parcoursTitle", { count: milestones.length })}
           titleSweep={t("parcoursSweep")}
           cards={milestones}
+          sandCards
         />
       )}
 

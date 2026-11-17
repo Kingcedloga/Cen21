@@ -21,8 +21,9 @@ import { dynalight, nunito } from "@/lib/fonts";
 import type { FilialeContext } from "./context";
 
 /** Rendez-vous affichés dans l'agenda de la maison. */
-/** Logo de la une : dimensions de public/filiales/logos/filiale-06.png et zone visible (marges rognées). */
-const LOGO = { size: [1024, 378], box: [126, 77, 847, 329] } as const;
+/** Logo de la une : dimensions de public/filiales/logos/LOGO MOKA MORE.png et zone visible (marges rognées). */
+const LOGO_SRC = "/filiales/logos/LOGO MOKA MORE.png";
+const LOGO = { size: [3937, 3937], box: [190, 1368, 3747, 2568] } as const;
 
 const AGENDA_SIZE = 4;
 /** Le lounge du soir (mur végétal) : la photo de la une. */
@@ -81,7 +82,7 @@ export async function MokaMorePage({ locale, subsidiary, pageTheme, mapQuery, ma
         imageAlt={tMoka("heroImageAlt")}
         plate={BADGE_PLATE}
         mapsUrl={mapsUrl}
-        logo={subsidiary.brandLogo ? { src: subsidiary.brandLogo, ...LOGO, width: "clamp(19rem, 36vw, 30rem)" } : undefined}
+        logo={{ src: LOGO_SRC, ...LOGO, colored: true, width: "clamp(19rem, 36vw, 30rem)" }}
       />
 
       <SectionBlend from={SECTION_SURFACE.dark} to={SURFACE_RED} />

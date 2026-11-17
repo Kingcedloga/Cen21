@@ -24,6 +24,15 @@ import type { FilialeContext } from "./context";
 /** Proportions du logo (public/filiales/logos/filiale-03.png, 560 × 1024). */
 const LOGO_RATIO = 560 / 1024;
 
+/** Logo de la une : public/filiales/logos/Logo K Lounge.B.png (blanc), zone visible. */
+const HERO_LOGO = {
+  src: "/filiales/logos/Logo K Lounge.B.png",
+  size: [4724, 1404],
+  box: [161, 175, 4537, 1110],
+  colored: true,
+  width: "clamp(15rem, 30vw, 26rem)",
+} as const;
+
 /**
  * K Lounge (filiale-03) — refonte R7 : les blocs du socle en noir et blanc,
  * titres en Cormorant.
@@ -66,6 +75,7 @@ export async function KLoungePage({ locale, subsidiary, pageTheme, heroVideo, ma
         locale={locale}
         image={heroVideo?.poster ?? subsidiary.coverImage}
         video={heroVideo}
+        logo={HERO_LOGO}
         mapsUrl={mapsUrl}
       />
 

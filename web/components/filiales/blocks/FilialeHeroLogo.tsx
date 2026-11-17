@@ -15,6 +15,8 @@ export type HeroLogo = {
   box: readonly [number, number, number, number];
   /** Largeur affichée de la zone visible, ex. « clamp(14rem, 30vw, 26rem) ». */
   width: string;
+  /** Couleurs d'origine du fichier au lieu de la teinte ivoire (logo en couleurs). */
+  colored?: boolean;
 };
 
 const pct = (value: number) => `${(value * 100).toFixed(3)}%`;
@@ -34,10 +36,10 @@ export function HeroLogoMark({ logo }: { logo: HeroLogo }) {
   return (
     <span
       aria-hidden="true"
-      className="filiale-hero-logo__mark"
+      className={`filiale-hero-logo__mark ${logo.colored ? "filiale-hero-logo__mark--colored" : ""}`}
       style={
         {
-          "--mark-src": `url("${logo.src}")`,
+          "--mark-src": `url("${encodeURI(logo.src)}")`,
           "--mark-ratio": String(boxW / boxH),
           "--mark-width": logo.width,
           "--mark-size": `${pct(fileW / boxW)} ${pct(fileH / boxH)}`,

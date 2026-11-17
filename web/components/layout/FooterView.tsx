@@ -71,18 +71,6 @@ export function FooterView({
   return (
     <MotionConfig reducedMotion="user">
     <footer className="relative bg-anthracite text-ivory">
-      <div
-        aria-hidden
-        // Motif CEN21 (charte) : monogramme répété, très discret (globals.css).
-        className="subsidiary-footer__pattern pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage: "var(--cen21-motif)",
-          backgroundSize: "var(--cen21-motif-size)",
-          backgroundPosition: "center top",
-          opacity: "var(--cen21-motif-opacity)",
-        }}
-      />
-
       <div className="relative mx-auto max-w-7xl px-6 pb-12 pt-6 md:px-10 md:pb-16 md:pt-8">
         <motion.div
           className="subsidiary-footer__brand mb-12 text-center md:mb-14"

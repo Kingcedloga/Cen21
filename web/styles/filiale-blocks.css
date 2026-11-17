@@ -731,6 +731,17 @@ p > .filiale-status {
   mask: var(--mark-src) var(--mark-pos) / var(--mark-size) no-repeat;
 }
 
+/* Logo en couleurs d'origine : image rognée, sans teinte. */
+.filiale-hero-logo__mark--colored {
+  background-color: transparent;
+  background-image: var(--mark-src);
+  background-size: var(--mark-size);
+  background-position: var(--mark-pos);
+  background-repeat: no-repeat;
+  -webkit-mask: none;
+  mask: none;
+}
+
 /* Sur photo ou vidéo sombre : ombre douce pour détacher le logo clair. */
 [data-surface="dark"] .filiale-hero-logo__mark {
   filter: drop-shadow(0 2px 18px rgb(0 0 0 / 0.45));

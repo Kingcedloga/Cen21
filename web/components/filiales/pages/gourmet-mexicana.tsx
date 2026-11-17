@@ -20,8 +20,9 @@ import { cormorant, dynalight } from "@/lib/fonts";
 import type { FilialeContext } from "./context";
 
 /** Affiche du teaser (si la maison n'en donne pas) : la niche au crâne de néon. */
-/** Logo de la une : dimensions de public/filiales/logos/filiale-07.png et zone visible (marges rognées). */
-const LOGO = { size: [862, 856], box: [37, 43, 792, 826] } as const;
+/** Logo de la une : dimensions de public/filiales/logos/LOGO MEXICANA.png et zone visible (marges rognées). */
+const LOGO_SRC = "/filiales/logos/LOGO MEXICANA.png";
+const LOGO = { size: [4500, 4500], box: [1295, 1453, 3206, 3437] } as const;
 
 const POSTER = "/filiales/photos/filiale-07/gallery/dsc09820.jpg";
 /** La salle vitrée du 9ᵉ étage, derrière les portes de l'ascenseur. */
@@ -86,7 +87,7 @@ export async function GourmetMexicanaPage({ locale, subsidiary, pageTheme, mapQu
         video={teaserVideo}
         poster={teaserVideo?.poster ?? POSTER}
         posterAlt={tMx("heroPosterAlt")}
-        logo={subsidiary.brandLogo ? { src: subsidiary.brandLogo, ...LOGO, width: "clamp(12.5rem, 22vw, 18.5rem)" } : undefined}
+        logo={{ src: LOGO_SRC, ...LOGO, colored: true, width: "clamp(12.5rem, 22vw, 18.5rem)" }}
       />
 
       <MexicanaElevator image={ELEVATOR_PHOTO} imageAlt={tMx("elevatorAlt")} />

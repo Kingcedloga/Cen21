@@ -116,7 +116,7 @@ export async function WabiSabiPage({ locale, subsidiary, pageTheme, mapQuery, ma
         // Les sushis sont à gauche de la photo : le cadrage étroit du mobile les garde.
         imagePosition="28% 50%"
         mapsUrl={mapsUrl}
-        logo={subsidiary.brandLogo ? { src: subsidiary.brandLogo, ...HERO_LOGO, width: "clamp(16rem, 30vw, 26rem)" } : undefined}
+        logo={subsidiary.brandLogo ? { src: subsidiary.brandLogo, ...HERO_LOGO, width: "clamp(11rem, 20vw, 17rem)" } : undefined}
       />
 
       {philosophySection && (

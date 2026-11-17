@@ -166,14 +166,14 @@ export default async function HomePage({ params }: Props) {
   const reelItems: ReelItem[] = subsidiaries.flatMap((s) =>
     s.teaserVideo
       ? [
-          {
-            slug: s.slug,
-            name: s.name,
-            sector: getSectorLabel(l, s.sector),
-            video: s.teaserVideo,
-            poster: s.teaserVideo.poster ?? s.coverImage,
-          },
-        ]
+        {
+          slug: s.slug,
+          name: s.name,
+          sector: getSectorLabel(l, s.sector),
+          video: s.teaserVideo,
+          poster: s.teaserVideo.poster ?? s.coverImage,
+        },
+      ]
       : [],
   );
 
@@ -246,10 +246,11 @@ export default async function HomePage({ params }: Props) {
             <AnimateIn variant="fadeScale" delay={0.15}>
               <div className="relative aspect-[4/5] w-full rounded-3xl overflow-hidden border border-rose/25 shadow-[0_24px_50px_-12px_rgba(0,0,0,0.6)] group">
                 <Image
-                  src={about.originsImage || heroSlides[0]?.src || site.heroImage}
+                  src="/home/cen21hospitality.png"
                   alt={site.name}
                   fill
-                  className="object-cover transition-transform duration-grand ease-out group-hover:scale-105"
+                  // Photo verticale : l'enseigne Cen21 (haut de l'image) reste dans le cadre 4:5.
+                  className="object-cover object-[50%_15%] transition-transform duration-grand ease-out group-hover:scale-105"
                   sizes="(max-width: 1024px) 100vw, 40vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-petrol/90 via-petrol/20 to-transparent" />
