@@ -9,6 +9,7 @@ import { FilialeOpenStatus } from "@/components/filiales/blocks/FilialeOpenStatu
 import { FilialeHeroLogo, type HeroLogo } from "@/components/filiales/blocks/FilialeHeroLogo";
 import { Button } from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
+import { playInGesture } from "@/lib/media-sound";
 import { Pause, Phone, Play } from "@/lib/icons";
 import type { HeroVideo } from "@/lib/types";
 import { useReducedMotionSafe } from "@/lib/use-media-query";
@@ -167,7 +168,10 @@ function OliveVideo({ video, poster, posterAlt }: { video?: HeroVideo; poster: s
             type="button"
             className="olive-hero__toggle tap-press"
             aria-label={playing ? tCommon("videoPause") : tCommon("videoPlay")}
-            onClick={() => setPaused(playing)}
+            onClick={() => {
+              setPaused(playing);
+              if (!playing) playInGesture(ref.current);
+            }}
           >
             {playing ? <Pause size={16} weight="fill" aria-hidden="true" /> : <Play size={16} weight="fill" aria-hidden="true" />}
           </button>

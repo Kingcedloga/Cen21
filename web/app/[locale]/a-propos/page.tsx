@@ -155,15 +155,15 @@ export default async function AboutPage({ params }: Props) {
         surface={SECTION_SURFACE.light}
         hero={
           <InnerHero
-            className="hero-curtain__hero"
+            className="hero-curtain__hero inner-hero--subject-high"
             eyebrow={t("eyebrow")}
             title={t("title")}
             titleSweep={t("titleSweep")}
             description={t("description")}
             image={about.heroImage ?? FALLBACK_HERO}
             imageAlt={t("heroImageAlt")}
-            // Photo verticale dans un bandeau large : le cadre se cale sur l'enseigne Cen21.
-            imagePosition="50% 14%"
+            // Photo de groupe des chefs : le bandeau étroit se cale sur les visages.
+            imagePosition="50% 66%"
             breadcrumb={{ label: tCommon("breadcrumb"), home: tNav("home"), current: tNav("about") }}
           />
         }

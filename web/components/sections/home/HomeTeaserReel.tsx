@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { SpectrumText } from "@/components/motion/SpectrumText";
 import { Link } from "@/i18n/navigation";
-import { unmuteInGesture } from "@/lib/media-sound";
+import { playInGesture, unmuteInGesture } from "@/lib/media-sound";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Pause, Play, Volume2, VolumeX } from "@/lib/icons";
 import { EASE } from "@/lib/motion";
 import type { HeroVideo } from "@/lib/types";
@@ -123,7 +123,10 @@ export function HomeTeaserReel({ eyebrow, title, titleSweep, caption, items }: P
 
   if (!current) return null;
 
-  const togglePlay = () => setChoice(playing ? "pause" : "play");
+  const togglePlay = () => {
+    setChoice(playing ? "pause" : "play");
+    if (!playing) playInGesture(videoRef.current);
+  };
 
   const toggleSound = () => {
     const element = videoRef.current;

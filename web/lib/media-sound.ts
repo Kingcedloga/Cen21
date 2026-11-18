@@ -86,3 +86,11 @@ export function unmuteInGesture(element: HTMLVideoElement, onRefused: () => void
     onRefused();
   });
 }
+
+/**
+ * Lecture demandée par le bouton : lancée dans le geste même (mode économie
+ * d'énergie d'iOS, économiseur de données : un `play()` différé est refusé).
+ */
+export function playInGesture(element: HTMLVideoElement | null | undefined) {
+  element?.play().catch(() => {});
+}

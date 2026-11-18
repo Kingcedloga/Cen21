@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { reveal } from "@/components/motion/Reveal";
 import { DURATION_S, EASE } from "@/lib/motion";
 import { Pause, Play, Volume2, VolumeX } from "@/lib/icons";
-import { unmuteInGesture } from "@/lib/media-sound";
+import { playInGesture, unmuteInGesture } from "@/lib/media-sound";
 import type { HeroVideo } from "@/lib/types";
 import { useReducedMotionSafe } from "@/lib/use-media-query";
 import { teaserAutoplayAllowed } from "@/lib/use-teaser-video";
@@ -89,7 +89,10 @@ export function MuzikTeaser({ video }: { video: HeroVideo }) {
               type="button"
               className="muzik-round tap-press"
               aria-label={playing ? t("teaserPause") : t("teaserPlay")}
-              onClick={() => setPaused(playing)}
+              onClick={() => {
+              setPaused(playing);
+              if (!playing) playInGesture(videoRef.current);
+            }}
             >
               {playing ? <Pause size={18} aria-hidden="true" /> : <Play size={18} aria-hidden="true" />}
             </button>

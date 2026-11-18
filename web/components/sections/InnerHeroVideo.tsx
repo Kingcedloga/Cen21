@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 
+import { playInGesture } from "@/lib/media-sound";
 import { Pause, Play } from "@/lib/icons";
 import { BLUR_PETROL } from "@/lib/image-blur";
 import type { HeroVideo } from "@/lib/types";
@@ -102,7 +103,10 @@ export function InnerHeroVideo({
 
       <button
         type="button"
-        onClick={() => setPaused(playing)}
+        onClick={() => {
+              setPaused(playing);
+              if (!playing) playInGesture(videoRef.current);
+            }}
         aria-label={playing ? t("videoPause") : t("videoPlay")}
         className="inner-hero__video-toggle tap-press"
       >

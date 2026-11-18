@@ -328,3 +328,15 @@
       );
   }
 }
+
+/* Mobile, sujet à mi-hauteur de la photo (photo de groupe, « À propos ») : le
+   bandeau, haut et étroit, est à moitié recouvert par la section suivante
+   (HeroCurtain), et l'image le remplit déjà en hauteur (object-position sans
+   effet). La photo est agrandie et remontée : les visages tombent dans la
+   partie visible ; le bas, sous le rideau, reste au fond du bandeau. */
+@media (max-width: 767px) {
+  .inner-hero--subject-high .inner-hero__image img {
+    top: -48% !important;
+    height: 140% !important;
+  }
+}

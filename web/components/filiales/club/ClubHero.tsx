@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import { FilialeOpenStatus } from "@/components/filiales/blocks/FilialeOpenStatus";
 import { StickyTrack, useStickyTrack } from "@/components/motion/StickyTrack";
 import { Button } from "@/components/ui/Button";
+import { playInGesture } from "@/lib/media-sound";
 import { keyframes } from "@/lib/motion";
 import { Pause, Play } from "@/lib/icons";
 import type { HeroVideo } from "@/lib/types";
@@ -159,7 +160,10 @@ function ClubVideo({ poster, video }: { poster: string; video?: HeroVideo }) {
           type="button"
           className="club-hero__toggle tap-press"
           aria-label={playing ? t("videoPause") : t("videoPlay")}
-          onClick={() => setPaused(playing)}
+          onClick={() => {
+              setPaused(playing);
+              if (!playing) playInGesture(ref.current);
+            }}
         >
           {playing ? <Pause size={16} aria-hidden="true" /> : <Play size={16} aria-hidden="true" />}
         </button>

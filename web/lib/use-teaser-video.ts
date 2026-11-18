@@ -3,7 +3,7 @@
 import { useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-import { unmuteInGesture } from "@/lib/media-sound";
+import { playInGesture, unmuteInGesture } from "@/lib/media-sound";
 import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 /**
@@ -24,9 +24,14 @@ export function teaserAutoplayAllowed() {
  * - lecture muette en boucle tant qu'elle est à l'écran (35 % visible) ;
  * - choix du visiteur (lecture / pause, son) prioritaire sur l'automatique ;
  * - économiseur de données : pas de lecture automatique (teaserAutoplayAllowed) ;
- * - progression publiée sans rendu (`progressRef`, scaleX, ou `onProgress`).
+ * - progression publiée sans rendu (`progressRef`, scaleX, ou `onProgress`) ;
+ * - `enabled` (vrai par défaut) : faux, la vidéo reste arrêtée, même au clic
+ *   (ex. ascenseur de Gourmet Mexicana : lecture au seul 9ᵉ étage).
  */
-export function useTeaserVideo({ onProgress }: { onProgress?: (ratio: number) => void } = {}) {
+export function useTeaserVideo({
+  onProgress,
+  enabled = true,
+}: { onProgress?: (ratio: number) => void; enabled?: boolean } = {}) {
   const reduced = useReducedMotionSafe();
   const frameRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -40,7 +45,7 @@ export function useTeaserVideo({ onProgress }: { onProgress?: (ratio: number) =>
   useEffect(() => {
     const element = videoRef.current;
     if (!element || !near) return;
-    const wanted = paused === null ? teaserAutoplayAllowed() : !paused;
+    const wanted = enabled && (paused === null ? teaserAutoplayAllowed() : !paused);
     if (!wanted) {
       element.pause();
       return;
@@ -54,7 +59,7 @@ export function useTeaserVideo({ onProgress }: { onProgress?: (ratio: number) =>
     );
     observer.observe(element);
     return () => observer.disconnect();
-  }, [near, paused]);
+  }, [near, paused, enabled]);
 
   const onTimeUpdate = () => {
     const element = videoRef.current;
@@ -64,7 +69,10 @@ export function useTeaserVideo({ onProgress }: { onProgress?: (ratio: number) =>
     onProgress?.(ratio);
   };
 
-  const togglePlay = () => setPaused(playing);
+  const togglePlay = () => {
+    setPaused(playing);
+    if (!playing && enabled) playInGesture(videoRef.current);
+  };
 
   const toggleSound = () => {
     const element = videoRef.current;
@@ -75,8 +83,13 @@ export function useTeaserVideo({ onProgress }: { onProgress?: (ratio: number) =>
       return;
     }
     // Son activé et lecture relancée dans le geste même (sinon refusés sur mobile).
-    if (element.paused) setPaused(false);
     setMuted(false);
+    if (!enabled) {
+      // Lecture interdite pour l'instant : le son sera là au démarrage.
+      element.muted = false;
+      return;
+    }
+    if (element.paused) setPaused(false);
     unmuteInGesture(element, () => setMuted(true));
   };
 

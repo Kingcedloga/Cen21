@@ -401,13 +401,26 @@
   color: var(--brand-fill);
 }
 
-/* La cage : photo de la salle derrière deux portes de laiton. */
-.mx-elevator__shaft {
-  position: relative;
+/* Le puits : tout l'espace entre le cadran et la légende. Conteneur de
+   taille : la cabine s'y inscrit au format de la vidéo. */
+.mx-elevator__well {
+  display: grid;
   flex: 1;
+  place-items: center;
   width: 100%;
   min-height: 0;
   margin-top: 0.75rem;
+  container-type: size;
+}
+
+/* La cage : verticale (5:8), un peu plus large que la vidéo (9:16), derrière
+   deux portes de laiton ; aussi haute que le puits le permet, jamais plus
+   large que lui. */
+.mx-elevator__shaft {
+  position: relative;
+  box-sizing: content-box;
+  width: min(calc(100cqw - 1rem), calc((100cqh - 1rem) * 5 / 8));
+  aspect-ratio: 5 / 8;
   overflow: hidden;
   isolation: isolate;
   border: 0.5rem solid color-mix(in srgb, var(--mx-ochre, var(--color-rose)) 70%, black);
@@ -421,18 +434,21 @@
 }
 
 /* Teaser vertical dans la cabine : cadré sur le visage, sous les portes. */
+/* La vidéo remplit la cabine : rognure légère en haut et en bas (≈ 10 % au
+   total), cadrage descendu pour garder le logo du bas. */
 .mx-elevator__video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 38%;
+  object-position: 50% 78%;
 }
 
-/* Lecture / pause et son, au-dessus des portes (utilisables à tout moment). */
+/* Lecture / pause et son, au-dessus des portes (utilisables à tout moment),
+   en haut : le bas de la vidéo porte le logo de la maison. */
 .mx-elevator__controls {
   position: absolute;
+  top: 0.75rem;
   right: 0.75rem;
-  bottom: 0.75rem;
   z-index: 4;
   display: flex;
   gap: 0.5rem;
@@ -505,9 +521,13 @@
   padding-block: clamp(5rem, 10vw, 7rem);
 }
 
-.mx-elevator.is-static .mx-elevator__shaft {
+.mx-elevator.is-static .mx-elevator__well {
   flex: none;
-  aspect-ratio: 16 / 9;
+  container-type: normal;
+}
+
+.mx-elevator.is-static .mx-elevator__shaft {
+  width: min(100%, 24rem);
 }
 
 .mx-elevator.is-static .mx-elevator__door {
@@ -520,9 +540,12 @@
     min-height: 0;
     padding-block: clamp(5rem, 10vw, 7rem);
   }
-  .mx-elevator .mx-elevator__shaft {
+  .mx-elevator .mx-elevator__well {
     flex: none;
-    aspect-ratio: 16 / 9;
+    container-type: normal;
+  }
+  .mx-elevator .mx-elevator__shaft {
+    width: min(100%, 24rem);
   }
   .mx-elevator .mx-elevator__door {
     display: none;

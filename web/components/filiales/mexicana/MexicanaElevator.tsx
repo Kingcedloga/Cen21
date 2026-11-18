@@ -2,7 +2,7 @@
 
 import { motion, useMotionValueEvent, useTransform } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { StickyTrack, useStickyTrack } from "@/components/motion/StickyTrack";
 import { Pause, Play, Volume2, VolumeX } from "@/lib/icons";
@@ -44,9 +44,16 @@ function ElevatorStage({ video, label }: { video: HeroVideo; label: string }) {
   const tFiliale = useTranslations("filiale");
   const tCommon = useTranslations("common");
   const { progress, isStatic } = useStickyTrack();
-  const { near, playing, muted, frameRef, videoProps, togglePlay, toggleSound } = useTeaserVideo();
   const [floor, setFloor] = useState(0);
+  // Le teaser ne joue qu'au 9ᵉ étage (rendu statique : toujours au 9ᵉ).
+  const atTop = isStatic || floor === FLOOR;
+  const { near, playing, muted, frameRef, videoRef, videoProps, togglePlay, toggleSound } = useTeaserVideo({ enabled: atTop });
 
+  // En quittant le 9ᵉ étage, la vidéo revient au début : elle recommence à la prochaine arrivée.
+  useEffect(() => {
+    const element = videoRef.current;
+    if (!atTop && element && element.currentTime > 0) element.currentTime = 0;
+  }, [atTop, videoRef]);
   // 0,05 → 0,5 : la montée ; 0,52 → 0,78 : les portes ; puis la légende.
   useMotionValueEvent(progress, "change", (value) => {
     const next = Math.round(keyframes(value, [0.05, 0.5], [0, FLOOR]));
@@ -79,6 +86,8 @@ function ElevatorStage({ video, label }: { video: HeroVideo; label: string }) {
           </span>
         </div>
 
+        {/* La cabine prend le format de la vidéo (9:16) et toute la hauteur disponible. */}
+        <div className="mx-elevator__well">
         <div ref={frameRef} className="mx-elevator__shaft">
           <motion.div className="mx-elevator__photo" style={isStatic ? STILL_PHOTO : { scale: photoScale }}>
             <video {...videoProps} className="mx-elevator__video" aria-label={label} poster={video.poster}>
@@ -107,6 +116,7 @@ function ElevatorStage({ video, label }: { video: HeroVideo; label: string }) {
               {muted ? <VolumeX size={16} aria-hidden="true" /> : <Volume2 size={16} aria-hidden="true" />}
             </button>
           </div>
+        </div>
         </div>
 
         <motion.p className="mx-elevator__caption" style={isStatic ? STILL_FADE : { opacity: caption }}>
