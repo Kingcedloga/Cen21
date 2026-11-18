@@ -655,6 +655,18 @@
   );
 }
 
+/* Photo du plat : liseré aux couleurs de la carte, sans les rayons. */
+.mx-card__art--photo {
+  border-width: 0.3rem;
+  border-color: var(--mx-card, var(--brand-fill));
+  outline: 2px solid var(--color-petrol-panel-4);
+  outline-offset: -2px;
+}
+
+.mx-card__art--photo::before {
+  content: none;
+}
+
 .mx-card__medal {
   position: relative;
   display: grid;
@@ -733,9 +745,10 @@
   color: var(--brand-on-accent);
 }
 
-@media (min-width: 640px) {
+/* 8 cartes : 2 colonnes au téléphone, 4 dès la tablette (rangées pleines). */
+@media (min-width: 768px) {
   .mx-loteria__deck {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useRef } from "react";
 
@@ -13,12 +14,24 @@ const STILL = { rotateY: 0 };
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
+/** Photos des cartes, dans l'ordre des titres (messages mexicana.loteriaCards). */
+const MENU_PHOTOS = [
+  "/filiales/photos/filiale-07/menu/PHOTO-2094.jpg",
+  "/filiales/photos/filiale-07/menu/PHOTO-2103.jpg",
+  "/filiales/photos/filiale-07/menu/PHOTO-2150.jpg",
+  "/filiales/photos/filiale-07/menu/PHOTO-2178.jpg",
+  "/filiales/photos/filiale-07/menu/PHOTO-2181.jpg",
+  "/filiales/photos/filiale-07/menu/PHOTO-2183.jpg",
+  "/filiales/photos/filiale-07/menu/PHOTO-2484.jpg",
+  "/filiales/photos/filiale-07/menu/PHOTO-2512.jpg",
+];
+
 /**
  * La carte de la maison en cartes de lotería (le jeu mexicain) : chaque carte
  * arrive de dos — le motif aux calaveras — et se retourne en traversant
  * l'écran (rotation liée au défilement), chacune à son tour. Face : le
- * numéro, la vignette aux couleurs de la maison (l'initiale à la main) et
- * le titre dans son bandeau. Puis les spécialités du moment. Reduced motion : faces visibles.
+ * numéro, la photo du plat dans une vignette aux couleurs de la maison (à
+ * défaut de photo, l'initiale à la main) et le titre dans son bandeau. Puis les spécialités du moment. Reduced motion : faces visibles.
  */
 export function MexicanaLoteria() {
   const t = useTranslations("mexicana");
@@ -38,7 +51,7 @@ export function MexicanaLoteria() {
 
         <ol className="mx-loteria__deck">
           {cards.map((card, index) => (
-            <LoteriaCard key={card} title={card} index={index} />
+            <LoteriaCard key={card} title={card} index={index} photo={MENU_PHOTOS[index]} />
           ))}
         </ol>
 
@@ -57,7 +70,7 @@ export function MexicanaLoteria() {
   );
 }
 
-function LoteriaCard({ title, index }: { title: string; index: number }) {
+function LoteriaCard({ title, index, photo }: { title: string; index: number; photo?: string }) {
   const reduced = useReducedMotionSafe();
   const ref = useRef<HTMLLIElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "center 0.55"] });
@@ -70,9 +83,15 @@ function LoteriaCard({ title, index }: { title: string; index: number }) {
       <motion.div className="mx-card__inner" style={reduced ? STILL : { rotateY }}>
         <div className={`mx-card__face mx-card__face--${index % 4}`}>
           <span className="mx-card__num">{pad(index + 1)}</span>
-          <span aria-hidden="true" className="mx-card__art">
-            <span className="mx-card__medal mx-script">{title.charAt(0)}</span>
-          </span>
+          {photo ? (
+            <span className="mx-card__art mx-card__art--photo">
+              <Image src={photo} alt={title} fill sizes="(min-width: 768px) 16rem, 45vw" className="object-cover" />
+            </span>
+          ) : (
+            <span aria-hidden="true" className="mx-card__art">
+              <span className="mx-card__medal mx-script">{title.charAt(0)}</span>
+            </span>
+          )}
           <span className="mx-card__title">{title}</span>
         </div>
         <div aria-hidden="true" className="mx-card__back" />
