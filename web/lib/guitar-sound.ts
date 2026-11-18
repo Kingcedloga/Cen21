@@ -10,8 +10,11 @@
  *
  * Le contexte audio ne peut démarrer qu'après un geste de l'utilisateur
  * (clic, touche) : `enableGuitar()` est appelé par le bouton « Son des
- * cordes », jamais au survol.
+ * cordes », jamais au survol. Sur iPhone, la session audio « lecture » fait
+ * jouer les cordes même en mode silencieux (lib/media-sound.ts).
  */
+
+import { preferPlaybackAudio, releasePlaybackAudio } from "./media-sound";
 
 export const GUITAR_NOTES = [329.63, 246.94, 196.0, 146.83, 110.0, 82.41] as const;
 
@@ -55,6 +58,8 @@ export async function enableGuitar(): Promise<boolean> {
   if (typeof window === "undefined") return false;
   const AudioCtor = window.AudioContext ?? (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
   if (!AudioCtor) return false;
+  // Avant la création du contexte : iOS fixe sa catégorie audio à ce moment.
+  preferPlaybackAudio({ keepAliveForWebAudio: true });
   if (!context) {
     context = new AudioCtor();
     master = context.createGain();
@@ -66,13 +71,22 @@ export async function enableGuitar(): Promise<boolean> {
     master.connect(tone).connect(context.destination);
     buffers = GUITAR_NOTES.map((frequency) => pluckBuffer(context as AudioContext, frequency));
   }
-  if (context.state === "suspended") await context.resume();
+  // iOS : un son muet joué dans le geste déverrouille la sortie audio.
+  const unlock = context.createBufferSource();
+  unlock.buffer = context.createBuffer(1, 1, context.sampleRate);
+  unlock.connect(context.destination);
+  unlock.start(0);
+  if (context.state !== "running") {
+    // Reprise lancée dans le geste ; on n'attend pas indéfiniment (iOS peut tarder).
+    await Promise.race([context.resume().catch(() => {}), new Promise((resolve) => setTimeout(resolve, 600))]);
+  }
   return context.state === "running";
 }
 
 /** Suspend le contexte (son coupé) sans perdre les notes préparées. */
 export function disableGuitar() {
   void context?.suspend();
+  releasePlaybackAudio();
 }
 
 /**
@@ -81,7 +95,12 @@ export function disableGuitar() {
  * que le son n'est pas activé.
  */
 export function pluck(index: number, strength: number, pan: number) {
-  if (!context || !master || context.state !== "running") return;
+  if (!context || !master) return;
+  // Contexte interrompu (écran verrouillé, appel) : reprise au prochain geste.
+  if (context.state !== "running") {
+    void context.resume().catch(() => {});
+    return;
+  }
   const buffer = buffers[index];
   if (!buffer) return;
   const source = context.createBufferSource();

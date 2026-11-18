@@ -76,3 +76,32 @@
   -webkit-user-drag: none;
   pointer-events: none;
 }
+
+/* Cartes identiques sur toutes les pages : les fiches remappent les couleurs
+   du groupe aux leurs (FilialeBrandStyle — l'ivoire devient vert olive chez
+   L'Olive Verte…). La carte repose les valeurs de la charte Cen21. */
+.arc-card {
+  --color-ivory: #e7d1bf;
+  --color-rose: #d4a087;
+  --color-petrol-panel-4: #091a1f;
+}
+
+/* Voile de tête, le même sur toutes les cartes : noir léger sous le logo et
+   le texte, qui s'efface vers le milieu de la photo. */
+.arc-card__shade {
+  background: linear-gradient(
+    to bottom,
+    rgb(0 0 0 / 0.78) 0%,
+    rgb(0 0 0 / 0.64) 38%,
+    rgb(0 0 0 / 0.26) 58%,
+    transparent 76%
+  );
+}
+
+.arc-card__head {
+  text-shadow: 0 1px 12px rgb(0 0 0 / 0.45);
+}
+
+.arc-card[data-status="active"] {
+  cursor: pointer;
+}

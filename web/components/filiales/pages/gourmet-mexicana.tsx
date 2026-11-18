@@ -25,8 +25,8 @@ const LOGO_SRC = "/filiales/logos/LOGO MEXICANA.png";
 const LOGO = { size: [4500, 4500], box: [1295, 1453, 3206, 3437] } as const;
 
 const POSTER = "/filiales/photos/filiale-07/gallery/dsc09820.jpg";
-/** La salle vitrée du 9ᵉ étage, derrière les portes de l'ascenseur. */
-const ELEVATOR_PHOTO = "/filiales/photos/filiale-07/gallery/dsc09778.jpg";
+/** Teaser du 9ᵉ étage (Matrix Tower), allégé : 720 × 1280, 18 Mo (source 4K, 171 Mo). */
+const TOWER_VIDEO = { src: "/filiales/videos/Teasers/teaser-gourmet-tower.mp4", poster: "/filiales/photos/filiale-07/tower-poster.jpg" };
 /** La mascotte (le mariachi), au-dessus de la réservation. */
 const MASCOT = "/filiales/photos/filiale-07/mascottemexiacain.png";
 /** Fiestas affichées. */
@@ -90,7 +90,7 @@ export async function GourmetMexicanaPage({ locale, subsidiary, pageTheme, mapQu
         logo={{ src: LOGO_SRC, ...LOGO, colored: true, width: "clamp(12.5rem, 22vw, 18.5rem)" }}
       />
 
-      <MexicanaElevator image={ELEVATOR_PHOTO} imageAlt={tMx("elevatorAlt")} />
+      <MexicanaElevator video={TOWER_VIDEO} label={tMx("elevatorAlt")} />
 
       <MexicanaLoteria />
 

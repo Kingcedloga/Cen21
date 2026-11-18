@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { SpectrumText } from "@/components/motion/SpectrumText";
 import { Link } from "@/i18n/navigation";
+import { unmuteInGesture } from "@/lib/media-sound";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Pause, Play, Volume2, VolumeX } from "@/lib/icons";
 import { EASE } from "@/lib/motion";
 import type { HeroVideo } from "@/lib/types";
@@ -129,9 +130,13 @@ export function HomeTeaserReel({ eyebrow, title, titleSweep, caption, items }: P
     const nextMuted = !muted;
     setMuted(nextMuted);
     if (!element) return;
-    element.muted = nextMuted;
-    // Activer le son relance la vidéo si elle était arrêtée.
-    if (!nextMuted && element.paused) setChoice("play");
+    if (nextMuted) {
+      element.muted = true;
+      return;
+    }
+    // Son activé et lecture relancée dans le geste même (sinon refusés sur mobile).
+    if (element.paused) setChoice("play");
+    unmuteInGesture(element, () => setMuted(true));
   };
 
   const onTimeUpdate = () => {

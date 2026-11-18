@@ -5,6 +5,8 @@ import { getSiteOrigin } from "@/lib/site-url";
 export async function OrganizationJsonLd({ locale }: { locale: Locale }) {
   const site = getSiteConfig(locale);
   const origin = await getSiteOrigin();
+  // Profils officiels du groupe (Instagram, LinkedIn…) : rattachés à l'organisation.
+  const sameAs = [site.social.instagram, site.social.facebook, site.social.linkedin].filter(Boolean);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -19,6 +21,7 @@ export async function OrganizationJsonLd({ locale }: { locale: Locale }) {
       addressLocality: "Kinshasa",
       addressCountry: "CD",
     },
+    sameAs: sameAs.length > 0 ? sameAs : undefined,
   };
 
   return (

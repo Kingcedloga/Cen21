@@ -3,6 +3,7 @@
 import { useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
+import { unmuteInGesture } from "@/lib/media-sound";
 import { useReducedMotionSafe } from "@/lib/use-media-query";
 
 /**
@@ -68,10 +69,15 @@ export function useTeaserVideo({ onProgress }: { onProgress?: (ratio: number) =>
   const toggleSound = () => {
     const element = videoRef.current;
     if (!element) return;
-    element.muted = !muted;
-    setMuted(!muted);
-    // Activer le son relance la vidéo si elle était arrêtée.
-    if (muted && element.paused) setPaused(false);
+    if (!muted) {
+      element.muted = true;
+      setMuted(true);
+      return;
+    }
+    // Son activé et lecture relancée dans le geste même (sinon refusés sur mobile).
+    if (element.paused) setPaused(false);
+    setMuted(false);
+    unmuteInGesture(element, () => setMuted(true));
   };
 
   /** Attributs à poser sur la balise <video>. */

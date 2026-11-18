@@ -4,7 +4,6 @@ import { SubsidiariesArc, type ArcItem } from "@/components/filiales/Subsidiarie
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { Locale } from "@/i18n/routing";
 import { getSectorLabel, getSubsidiaries } from "@/lib/content";
-import { brandSurface } from "@/lib/subsidiary-brand";
 
 /** Les autres maisons du groupe en éventail (slider de l'accueil), à la place de la rangée de logos. */
 export async function FilialeOtherHouses({ slug, locale }: { slug: string; locale: Locale }) {
@@ -19,7 +18,6 @@ export async function FilialeOtherHouses({ slug, locale }: { slug: string; local
     tagline: s.tagline,
     cover: s.coverImage,
     logo: s.brandLogo,
-    brandColor: brandSurface(s.slug, s.accentColor),
     ariaLabel: tCommon("discover", { name: s.name }),
     positionLabel: tHome("arcPosition", { index: index + 1, total: others.length, name: s.name }),
   }));

@@ -1,12 +1,14 @@
 "use client";
 
 import { motion, useMotionValueEvent, useTransform } from "framer-motion";
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 import { StickyTrack, useStickyTrack } from "@/components/motion/StickyTrack";
+import { Pause, Play, Volume2, VolumeX } from "@/lib/icons";
 import { keyframes } from "@/lib/motion";
+import type { HeroVideo } from "@/lib/types";
+import { useTeaserVideo } from "@/lib/use-teaser-video";
 
 import "@/styles/mexicana.css";
 
@@ -21,21 +23,28 @@ const STILL_FADE = { opacity: 1 };
 /**
  * « Au 9ᵉ étage » : un ascenseur de la Matrix Tower, épinglé. Au défilement,
  * l'indicateur monte d'étage en étage jusqu'au 9ᵉ, puis les portes de laiton
- * s'écartent sur la salle vitrée du restaurant, et la légende apparaît.
+ * s'écartent sur le teaser de la maison, et la légende apparaît.
  * Épinglé aussi sur mobile. Reduced motion : portes ouvertes, section non
  * épinglée.
+ *
+ * Teaser (useTeaserVideo) : demandé à l'approche de la section, lu muet en
+ * boucle tant qu'il est à l'écran ; boutons lecture / pause (WCAG 2.2.2) et
+ * son, au-dessus des portes.
  */
-export function MexicanaElevator({ image, imageAlt }: { image: string; imageAlt: string }) {
+export function MexicanaElevator({ video, label }: { video: HeroVideo; label: string }) {
   return (
     <StickyTrack lengthVh={260} mobileLengthVh={220} surface="dark" ariaLabelledby="mexicana-elevator-title" className="mx-elevator-track">
-      <ElevatorStage image={image} imageAlt={imageAlt} />
+      <ElevatorStage video={video} label={label} />
     </StickyTrack>
   );
 }
 
-function ElevatorStage({ image, imageAlt }: { image: string; imageAlt: string }) {
+function ElevatorStage({ video, label }: { video: HeroVideo; label: string }) {
   const t = useTranslations("mexicana");
+  const tFiliale = useTranslations("filiale");
+  const tCommon = useTranslations("common");
   const { progress, isStatic } = useStickyTrack();
+  const { near, playing, muted, frameRef, videoProps, togglePlay, toggleSound } = useTeaserVideo();
   const [floor, setFloor] = useState(0);
 
   // 0,05 → 0,5 : la montée ; 0,52 → 0,78 : les portes ; puis la légende.
@@ -70,12 +79,34 @@ function ElevatorStage({ image, imageAlt }: { image: string; imageAlt: string })
           </span>
         </div>
 
-        <div className="mx-elevator__shaft">
+        <div ref={frameRef} className="mx-elevator__shaft">
           <motion.div className="mx-elevator__photo" style={isStatic ? STILL_PHOTO : { scale: photoScale }}>
-            <Image src={image} alt={imageAlt} fill sizes="(min-width: 1024px) 70vw, 92vw" className="object-cover" />
+            <video {...videoProps} className="mx-elevator__video" aria-label={label} poster={video.poster}>
+              {near && video.webm && <source src={video.webm} type="video/webm" />}
+              {near && <source src={video.src} type="video/mp4" />}
+            </video>
           </motion.div>
           <motion.div aria-hidden="true" className="mx-elevator__door mx-elevator__door--left" style={isStatic ? STILL_LEFT : { x: left }} />
           <motion.div aria-hidden="true" className="mx-elevator__door mx-elevator__door--right" style={isStatic ? STILL_RIGHT : { x: right }} />
+          <div className="mx-elevator__controls">
+            <button
+              type="button"
+              className="mx-hero__toggle mx-elevator__toggle tap-press"
+              aria-label={playing ? tCommon("videoPause") : tCommon("videoPlay")}
+              onClick={togglePlay}
+            >
+              {playing ? <Pause size={16} weight="fill" aria-hidden="true" /> : <Play size={16} weight="fill" aria-hidden="true" />}
+            </button>
+            <button
+              type="button"
+              className="mx-hero__toggle mx-elevator__toggle tap-press"
+              aria-label={muted ? tFiliale("teaserSoundOn") : tFiliale("teaserSoundOff")}
+              aria-pressed={!muted}
+              onClick={toggleSound}
+            >
+              {muted ? <VolumeX size={16} aria-hidden="true" /> : <Volume2 size={16} aria-hidden="true" />}
+            </button>
+          </div>
         </div>
 
         <motion.p className="mx-elevator__caption" style={isStatic ? STILL_FADE : { opacity: caption }}>

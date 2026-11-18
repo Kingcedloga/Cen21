@@ -95,7 +95,6 @@ export default async function HomePage({ params }: Props) {
     tagline: s.tagline,
     cover: s.coverImage,
     logo: s.brandLogo,
-    brandColor: brandSurface(s.slug, s.accentColor),
     ariaLabel: tCommon("discover", { name: s.name }),
     positionLabel: t("arcPosition", { index: index + 1, total: count, name: s.name }),
   }));
