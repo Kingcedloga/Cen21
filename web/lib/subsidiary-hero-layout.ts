@@ -7,10 +7,7 @@ import type { HeroVideo } from "./types";
  */
 
 /** Visuel hero dédié (prioritaire sur `coverImage` pour la slide hero). */
-const HERO_IMAGE_BY_SLUG: Partial<Record<string, string>> = {
-  "wabi-sabi": "/filiales/photos/filiale-02/hero/01-salle-principale.jpg",
-  "filiale-02": "/filiales/photos/filiale-02/hero/01-salle-principale.jpg",
-};
+const HERO_IMAGE_BY_SLUG: Partial<Record<string, string>> = {};
 
 /**
  * Vidéos hero par slug — remplacer `src` (et optionnellement `webm`) par la vidéo officielle.

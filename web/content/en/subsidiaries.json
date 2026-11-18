@@ -242,10 +242,10 @@
       },
       "accentColor": "#e1c676",
       "brandLogo": "/filiales/logos/filiale-02.png",
-      "coverImage": "/filiales/photos/filiale-02/hero/01-salle-principale.jpg",
+      "coverImage": "/filiales/photos/filiale-02/hero/profil-wabi-web.jpg",
       "heroSection": {
-        "image": "/filiales/photos/filiale-02/hero.png",
-        "imageAlt": "Wabi Sabi — main dining room with velvet seating and golden light",
+        "image": "/filiales/photos/filiale-02/hero/04-reception-web.jpg",
+        "imageAlt": "Wabi Sabi — the illuminated sign at reception, against a wall of green slats",
         "slideIntervalMs": 6000,
         "slides": [
           {
@@ -297,11 +297,11 @@
         },
         "images": {
           "back": {
-            "src": "/filiales/photos/filiale-02/gallery/03-ao8a4405.webp",
+            "src": "/filiales/photos/filiale-02/gallery/web/bru4166.jpg",
             "alt": "Wabi Sabi — the dining room, tables set by the bay windows over Kinshasa"
           },
           "front": {
-            "src": "/filiales/photos/filiale-02/gallery/05-ao8a4494.webp",
+            "src": "/filiales/photos/filiale-02/gallery/web/dsc05582.jpg",
             "alt": "Wabi Sabi — a set table and velvet armchairs"
           }
         }
@@ -322,11 +322,11 @@
           "label": "About our bar",
           "href": "#galerie"
         },
-        "image": "/filiales/photos/filiale-02/gallery/08-ao8a4545.webp",
-        "imageAlt": "Wabi Sabi — contemporary bar, signature cocktails and lounge atmosphere",
+        "image": "/filiales/photos/filiale-02/bar-primary.jpg",
+        "imageAlt": "Wabi Sabi — the long counter, red banquette and teal armchairs beneath the lit glass wall",
         "inset": {
-          "src": "/filiales/photos/filiale-02/gallery/12-ao8a4565.webp",
-          "alt": "Wabi Sabi — smoked cocktail served under a cloche"
+          "src": "/filiales/photos/filiale-02/bar-secondary.jpg",
+          "alt": "Wabi Sabi — tobiko maki served on a wooden box"
         }
       },
       "spotlightSection": {
@@ -336,68 +336,100 @@
           "label": "Book a table",
           "href": "tel:+243900000702"
         },
-        "image": "/filiales/photos/filiale-02/gallery/05-ao8a4494.webp",
+        "image": "/filiales/photos/filiale-02/gallery/web/dsc05582.jpg",
         "imageAlt": "Wabi Sabi — rooftop lounge atmosphere and view over Kinshasa"
       },
       "galleryImages": [
         {
-          "src": "/filiales/photos/filiale-02/gallery/01-ao8a4357.webp",
+          "src": "/filiales/photos/filiale-02/gallery/web/dsc05477.jpg",
           "category": "interior"
         },
         {
-          "src": "/filiales/photos/filiale-02/gallery/02-ao8a4372.webp",
+          "src": "/filiales/photos/filiale-02/gallery/web/bru4152.jpg",
           "category": "food"
-        },
-        {
-          "src": "/filiales/photos/filiale-02/gallery/03-ao8a4405.webp",
-          "category": "food"
-        },
-        {
-          "src": "/filiales/photos/filiale-02/gallery/04-ao8a4408.webp",
-          "category": "drinks"
-        },
-        {
-          "src": "/filiales/photos/filiale-02/gallery/05-ao8a4494.webp",
-          "category": "ambiance"
         },
         {
           "src": "/filiales/photos/filiale-02/gallery/06-ao8a4510.webp",
-          "category": "food"
-        },
-        {
-          "src": "/filiales/photos/filiale-02/gallery/07-ao8a4522.webp",
           "category": "drinks"
         },
         {
-          "src": "/filiales/photos/filiale-02/gallery/08-ao8a4545.webp",
-          "category": "drinks"
-        },
-        {
-          "src": "/filiales/photos/filiale-02/gallery/09-ao8a4546.webp",
-          "category": "interior"
-        },
-        {
-          "src": "/filiales/photos/filiale-02/gallery/10-ao8a4549.webp",
-          "category": "guests"
-        },
-        {
-          "src": "/filiales/photos/filiale-02/gallery/11-ao8a4550.webp",
+          "src": "/filiales/photos/filiale-02/gallery/web/wabii-180.jpg",
           "category": "vibes"
         },
         {
-          "src": "/filiales/photos/filiale-02/gallery/12-ao8a4565.webp",
-          "category": "ambiance"
-        },
-        {
-          "src": "/filiales/photos/filiale-02/gallery/13-ao8a4567.webp",
+          "src": "/filiales/photos/filiale-02/gallery/web/bru3749.jpg",
           "category": "interior"
         },
         {
+          "src": "/filiales/photos/filiale-02/gallery/web/bru3963.jpg",
+          "category": "food"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/11-ao8a4550.webp",
+          "category": "drinks"
+        },
+        {
           "src": "/filiales/photos/filiale-02/gallery/14-ao8a4577.webp",
+          "category": "interior"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/web/dsc05569.jpg",
+          "category": "food"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/web/wabii-86.jpg",
+          "category": "guests"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/web/dsc05582.jpg",
+          "category": "interior"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/web/bru4166.jpg",
+          "category": "food"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/13-ao8a4567.webp",
           "category": "ambiance"
         },
         {
-          "src": "/filiales/photos/filiale-02/gallery/15-ao8a4584.webp",
+          "src": "/filiales/photos/filiale-02/gallery/web/wabi-sabi-92.jpg",
+          "category": "guests"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/web/bru3993.jpg",
+          "category": "food"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/web/bru3728.jpg",
+          "category": "drinks"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/web/wabii-190.jpg",
+          "category": "vibes"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/web/bru4168.jpg",
+          "category": "food"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/web/dsc05585.jpg",
+          "category": "food"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/web/bru4188.jpg",
+          "category": "ambiance"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/web/bru4014.jpg",
+          "category": "food"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/web/dsc05485.jpg",
+          "category": "food"
+        },
+        {
+          "src": "/filiales/photos/filiale-02/gallery/web/bru4172.jpg",
           "category": "food"
         }
       ],
@@ -408,31 +440,31 @@
         "description": "Perched atop Gombe's rooftops, Wabi Sabi celebrates the balance between Japanese tradition and contemporary creativity. Exceptional sushi, flame-kissed Robatayaki, subtly fragrant Thai curry and signature cocktails — every plate and every glass tells a story of precision, light and refined hospitality.",
         "ctaLabel": "Book a table",
         "ctaHref": "tel:+243900000702",
-        "image": "/filiales/photos/filiale-02/gallery/02-ao8a4372.webp",
+        "image": "/filiales/photos/filiale-02/gallery/web/bru4152.jpg",
         "imageAlt": "Wabi Sabi — contemporary Japanese cuisine",
         "mosaicImages": [
           {
-            "src": "/filiales/photos/filiale-02/gallery/01-ao8a4357.webp",
+            "src": "/filiales/photos/filiale-02/gallery/web/dsc05477.jpg",
             "alt": "Wabi Sabi — contemporary interior with soft lighting"
           },
           {
-            "src": "/filiales/photos/filiale-02/gallery/02-ao8a4372.webp",
+            "src": "/filiales/photos/filiale-02/gallery/web/bru4152.jpg",
             "alt": "Wabi Sabi — signature Japanese cuisine plate"
           },
           {
-            "src": "/filiales/photos/filiale-02/gallery/05-ao8a4494.webp",
+            "src": "/filiales/photos/filiale-02/gallery/web/dsc05582.jpg",
             "alt": "Wabi Sabi — lounge atmosphere and Kinshasa views"
           },
           {
-            "src": "/filiales/photos/filiale-02/gallery/08-ao8a4545.webp",
+            "src": "/filiales/photos/filiale-02/gallery/06-ao8a4510.webp",
             "alt": "Wabi Sabi — bar and signature cocktails"
           },
           {
-            "src": "/filiales/photos/filiale-02/gallery/03-ao8a4405.webp",
+            "src": "/filiales/photos/filiale-02/gallery/web/bru4166.jpg",
             "alt": "Wabi Sabi — Robatayaki and Asian flavours"
           },
           {
-            "src": "/filiales/photos/filiale-02/gallery/10-ao8a4549.webp",
+            "src": "/filiales/photos/filiale-02/gallery/web/wabii-86.jpg",
             "alt": "Wabi Sabi — guest experience and hospitality"
           }
         ]
@@ -506,7 +538,7 @@
       },
       "accentColor": "#000000",
       "brandLogo": "/filiales/logos/filiale-03.png",
-      "coverImage": "/filiales/photos/filiale-03/cover.webp",
+      "coverImage": "/filiales/photos/filiale-03/profil-klounge-web.jpg",
       "galleryImages": [
         "/filiales/photos/filiale-03/gallery/01-dsc00004.webp",
         "/filiales/photos/filiale-03/gallery/02-dsc00018.webp",
