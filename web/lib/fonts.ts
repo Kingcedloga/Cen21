@@ -1,14 +1,29 @@
 import { Cormorant_Garamond, Dynalight, Inter, Nunito, Oswald } from "next/font/google";
+import localFont from "next/font/local";
 
 /**
  * Inter (variable) — sans-serif pour le corps et l’UI.
- * Les titres principaux utilisent DM Sans (locale, @font-face dans globals.css).
+ * Les titres principaux utilisent DM Sans (locale, ci-dessous).
  */
 export const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
-  axes: ["opsz"],
+});
+
+/**
+ * DM Sans (variable, opsz + wght 100-1000) — titres. Sous-ensemble latin
+ * (lib/fonts-files/DMSans-latin.woff2, 69 Ko au lieu de 88 Ko + 22 Ko pour
+ * la graisse 700, désormais couverte par l'axe wght). next/font la précharge
+ * et génère un repli métriquement ajusté : pas de saut de mise en page au swap.
+ */
+export const dmSans = localFont({
+  src: "./fonts-files/DMSans-latin.woff2",
+  weight: "100 1000",
+  style: "normal",
+  variable: "--font-dm-sans-file",
+  display: "swap",
+  adjustFontFallback: "Arial",
 });
 
 /** Pinkberry page headings — rounded, friendly sans-serif.

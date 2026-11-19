@@ -12,7 +12,7 @@ import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { SiteNavigation } from "@/components/navigation/SiteNavigation";
 import { routing } from "@/i18n/routing";
 import { getSiteConfig, getSubsidiaries } from "@/lib/content";
-import { cormorant, inter } from "@/lib/fonts";
+import { cormorant, dmSans, inter } from "@/lib/fonts";
 import type { Locale } from "@/i18n/routing";
 import { createDefaultMetadata, siteViewport } from "@/lib/seo";
 
@@ -55,7 +55,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${inter.variable} ${cormorant.variable} h-full`}
+      className={`${inter.variable} ${dmSans.variable} ${cormorant.variable} h-full`}
       // Next 16 : coupe le `scroll-behavior: smooth` global pendant les
       // changements de route (remontée instantanée en haut de page).
       data-scroll-behavior="smooth"

@@ -1,28 +1,7 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "DM Sans";
-  /* WOFF2 (88 Ko au lieu de 239 Ko en TTF, mêmes glyphes) ; TTF en secours. */
-  src:
-    url("/fonts/DMSans-VariableFont_opsz_wght.woff2") format("woff2"),
-    url("/fonts/DMSans-VariableFont_opsz_wght.ttf") format("truetype");
-  font-weight: 100 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "DM Sans";
-  src:
-    url("/fonts/DMSans-Bold.woff2") format("woff2"),
-    url("/fonts/DMSans-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
-  --font-dm-sans: "DM Sans", var(--font-inter), system-ui, sans-serif;
+  --font-dm-sans: var(--font-dm-sans-file), var(--font-inter), system-ui, sans-serif;
 
   /* === Palette Cen21 — charte officielle (Cen21_Logo-Final, 11/08/2023) ==
      Dark Teal #004258 « Culturally Curious », Quartz #E7D1BF « Hospitality »,
