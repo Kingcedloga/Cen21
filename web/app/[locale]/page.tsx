@@ -243,12 +243,12 @@ export default async function HomePage({ params }: Props) {
 
           <div className="lg:col-span-5 relative">
             <AnimateIn variant="fadeScale" delay={0.15}>
-              <div className="relative aspect-[1054/1366] w-full rounded-3xl overflow-hidden border border-rose/25 shadow-[0_24px_50px_-12px_rgba(0,0,0,0.6)] group">
+              <div className="relative aspect-[768/1376] w-full rounded-3xl overflow-hidden border border-rose/25 shadow-[0_24px_50px_-12px_rgba(0,0,0,0.6)] group">
                 <Image
                   src="/home/cen21hospitality.png"
                   alt={site.name}
                   fill
-                  // Cadre aux proportions de la photo (1054 × 1366) : affichée en entier, sans recadrage.
+                  // Cadre aux proportions de la photo (768 × 1376) : affichée en entier, sans recadrage.
                   className="object-cover transition-transform duration-grand ease-out group-hover:scale-105"
                   sizes="(max-width: 1024px) 100vw, 40vw"
                 />
