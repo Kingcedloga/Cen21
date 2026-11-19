@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from "next";
 import type { Locale } from "@/i18n/routing";
 
 import { getSiteConfig } from "./content";
-import { getSiteOrigin } from "./site-url";
+import { getCanonicalOrigin, getSiteOrigin } from "./site-url";
 
 /** Fond global du site — aligné sur `--background` / `--color-petrol` (globals.css). */
 export const SITE_THEME_COLOR = "#004258";
@@ -16,14 +16,27 @@ export const OG_IMAGE = {
 } as const;
 
 function toLocalizedPath(locale: Locale, path: string): string {
+  // « / » désigne l'accueil : « /fr », jamais « /fr/ » (redirection).
+  if (path === "/") path = "";
   if (locale === "en") return path || "/";
   return path ? `/fr${path}` : "/fr";
 }
 
+/**
+ * URL absolue sur le domaine officiel (www). Donnée telle quelle, sans
+ * résolution par Next.js, qui ajoute une barre finale à « /fr » (« /fr/ »
+ * redirige : un lien canonique ou og:url doit être l'adresse finale).
+ */
+function absoluteUrl(path: string): string {
+  const origin = getCanonicalOrigin();
+  return path === "/" ? origin : `${origin}${path}`;
+}
+
 function languageAlternates(path: string) {
+  if (path === "/") path = "";
   return {
-    en: path || "/",
-    fr: path ? `/fr${path}` : "/fr",
+    en: absoluteUrl(path || "/"),
+    fr: absoluteUrl(path ? `/fr${path}` : "/fr"),
   };
 }
 
@@ -63,13 +76,13 @@ export function createPageMetadata({
       apple: { url: "/apple-icon-180.png", sizes: "180x180", type: "image/png" },
     },
     alternates: {
-      canonical: pagePath,
+      canonical: absoluteUrl(pagePath),
       languages: languageAlternates(path),
     },
     openGraph: {
       title: fullTitle,
       description: desc,
-      url: pagePath,
+      url: absoluteUrl(pagePath),
       siteName: site.name,
       locale: ogLocale,
       type: "website",

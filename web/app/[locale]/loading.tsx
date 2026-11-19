@@ -1,9 +1,15 @@
-import { getTranslations } from "next-intl/server";
+"use client";
+
+import { useTranslations } from "next-intl";
 
 import { LoaderGraphic } from "@/components/brand/LoaderGraphic";
 
-export default async function Loading() {
-  const t = await getTranslations("common");
+// Composant client : `getTranslations()` côté serveur lit les en-têtes de la
+// requête (headers()) quand la locale n'est pas posée par setRequestLocale, ce
+// qui rendait toutes les pages dynamiques (jamais mises en cache par le CDN).
+// Les messages viennent du NextIntlClientProvider du layout.
+export default function Loading() {
+  const t = useTranslations("common");
 
   return (
     <div

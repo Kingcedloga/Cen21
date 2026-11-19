@@ -184,7 +184,11 @@ export function HeroCinematic({ slides, siteName, pills = [], className = "" }: 
         <motion.div
           className="hero-copy flex flex-col gap-6 md:gap-8 max-w-4xl"
           style={reducedMotion ? undefined : { y: contentY, opacity: contentOpacity }}
-          initial={reducedMotion ? false : "hidden"}
+          // `initial={false}` : le HTML serveur affiche déjà le texte. Avec
+          // `initial="hidden"`, tout le bloc restait à opacity 0 jusqu'à
+          // l'hydratation (LCP ≈ 5,5 s en 4G lente) ; l'entrée se jouait de
+          // toute façon sous le voile du loader.
+          initial={false}
           animate={reducedMotion ? undefined : "visible"}
           variants={reducedMotion ? undefined : heroStaggerVariants}
         >

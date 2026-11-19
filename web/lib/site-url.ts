@@ -1,5 +1,12 @@
-/** Domaine officiel du site : origine des URL absolues (Open Graph, canonique, sitemap…). */
-export const PRODUCTION_ORIGIN = "https://cen21hospitality.com";
+/**
+ * Domaine officiel du site : origine des URL absolues (Open Graph, canonique,
+ * sitemap…). Avec « www » : c'est l'adresse servie par Vercel, et la seule
+ * couverte par le certificat HTTPS. Les robots d'aperçu (WhatsApp, Facebook,
+ * LinkedIn, X) téléchargent l'image og:image à cette adresse : quel que soit
+ * le lien partagé (avec ou sans www, http ou https), ils arrivent sur une
+ * page qui désigne cette origine.
+ */
+export const PRODUCTION_ORIGIN = "https://www.cen21hospitality.com";
 
 function normalizeOrigin(value: string): string {
   const trimmed = value.trim().replace(/\/+$/, "");
@@ -10,7 +17,7 @@ function normalizeOrigin(value: string): string {
 /**
  * Origine absolue du site, résolue au build : `NEXT_PUBLIC_SITE_URL` si elle
  * est définie (préproduction, autre domaine), sinon le domaine officiel
- * cen21hospitality.com.
+ * www.cen21hospitality.com.
  *
  * Jamais l'adresse d'un déploiement (`*.vercel.app`, prévisualisations
  * Netlify) ni `localhost` : les balises Open Graph, les URL canoniques, le
