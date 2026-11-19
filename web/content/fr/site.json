@@ -36,37 +36,92 @@
       "alt": "Salon lounge aux fauteuils de velours et lustres dorés"
     },
     {
-      "src": "/home/hero/02-cocktails.jpg",
-      "alt": "Trois cocktails servis au comptoir"
+      "src": "/home/hero/web/cocktails-trio.jpg",
+      "alt": "Trois cocktails colorés servis au bar",
+      "position": "50% 28%"
     },
     {
-      "src": "/home/hero/03-rooftop.jpg",
-      "alt": "Terrasse rooftop avec vue sur Kinshasa"
-    },
-    {
-      "src": "/home/hero/04-table.jpg",
-      "alt": "Pièce de bœuf tranchée et verre de vin rouge",
-      "position": "50% 62%"
+      "src": "/home/hero/web/chefs.jpg",
+      "alt": "Les chefs de Cen21 Hospitality réunis autour de leurs créations"
     },
     {
       "src": "/home/hero/05-mexicana.jpg",
       "alt": "Salle festive aux papel picado colorés"
     },
     {
+      "src": "/home/hero/web/champagne-couronne.jpg",
+      "alt": "Bouteilles de champagne présentées dans une couronne lumineuse",
+      "position": "50% 22%"
+    },
+    {
       "src": "/home/hero/06-toast.jpg",
       "alt": "Un toast autour de la table, vu du dessus"
     },
     {
+      "src": "/home/hero/web/tacos.jpg",
+      "alt": "Tacos garnis servis sur une assiette longue",
+      "position": "50% 45%"
+    },
+    {
       "src": "/home/hero/07-reception.jpg",
-      "alt": "Accueil aux parois vertes et lumière dorée"
+      "alt": "Accueil de Wabi Sabi, enseigne lumineuse sur mur vert",
+      "mobilePosition": "62% 50%"
+    },
+    {
+      "src": "/home/hero/web/barman.jpg",
+      "alt": "Un barman présente une bouteille de tequila",
+      "position": "50% 22%",
+      "mobilePosition": "72% 50%"
+    },
+    {
+      "src": "/home/hero/09-terrasse.jpg",
+      "alt": "Terrasse vitrée en fin de journée"
+    },
+    {
+      "src": "/home/hero/web/makis.jpg",
+      "alt": "Makis au tobiko présentés sur une boîte en bois"
+    },
+    {
+      "src": "/home/hero/web/soiree-wabi.jpg",
+      "alt": "Soirée au bar de Wabi Sabi, bras levés sous les lumières",
+      "position": "50% 26%"
+    },
+    {
+      "src": "/home/hero/02-cocktails.jpg",
+      "alt": "Trois cocktails servis au comptoir"
+    },
+    {
+      "src": "/home/hero/web/brochettes.jpg",
+      "alt": "Brochettes grillées et sauce verte sur fond noir"
+    },
+    {
+      "src": "/home/hero/web/bar-wabi.jpg",
+      "alt": "Le long comptoir de Wabi Sabi sous le mur de verre éclairé",
+      "position": "50% 55%"
+    },
+    {
+      "src": "/home/hero/web/martini.jpg",
+      "alt": "Un martini levé, décoré d'une fleur",
+      "position": "50% 45%"
     },
     {
       "src": "/home/hero/08-cuisine.jpg",
       "alt": "Dressage d'une assiette en cuisine"
     },
     {
-      "src": "/home/hero/09-terrasse.jpg",
-      "alt": "Terrasse vitrée en fin de journée"
+      "src": "/home/hero/web/champagne-presentoir.jpg",
+      "alt": "Bouteille de champagne servie dans un présentoir lumineux",
+      "position": "50% 34%"
+    },
+    {
+      "src": "/home/hero/web/cocktail-orange.jpg",
+      "alt": "Cocktail à l'orange au milieu des plats",
+      "position": "50% 40%"
+    },
+    {
+      "src": "/home/hero/web/tequila.jpg",
+      "alt": "Bouteille de tequila en céramique sur le comptoir",
+      "position": "50% 32%"
     }
   ]
 }

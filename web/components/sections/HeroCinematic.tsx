@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "@/lib/icons";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 
 import { useTranslations } from "next-intl";
 
@@ -27,6 +27,8 @@ export type HeroSlide = {
   alt: string;
   /** Cadrage de la photo (object-position), ex. « 50% 62% » pour un portrait. */
   position?: string;
+  /** Cadrage sur mobile (moins de 768 px), `position` par défaut. */
+  mobilePosition?: string;
 };
 
 type HeroCinematicProps = {
@@ -61,6 +63,13 @@ export function HeroCinematic({ slides, siteName, pills = [], className = "" }: 
 
   const len = list.length;
   const safeIndex = len ? index % len : 0;
+
+  // Photos montées : la photo affichée et ses deux voisines, puis celles déjà
+  // vues (pas de rechargement). Toutes les photos sont empilées « à l'écran » :
+  // le chargement différé du navigateur les demanderait toutes d'un coup.
+  const around = len ? [safeIndex, (safeIndex + 1) % len, (safeIndex - 1 + len) % len] : [];
+  const [mounted, setMounted] = useState<ReadonlySet<number>>(() => new Set(around));
+  if (around.some((i) => !mounted.has(i))) setMounted(new Set([...mounted, ...around]));
   /** « Cen21 Hospitality » → « Hospitality » : mot d'accent en cursive, au dégradé Refined Rosé. */
   const titleAccent = siteName.split(" ").slice(1).join(" ");
 
@@ -116,6 +125,7 @@ export function HeroCinematic({ slides, siteName, pills = [], className = "" }: 
               aria-hidden={!isActive}
             >
               <div className={`relative h-full w-full ${isActive && !reducedMotion ? "animate-ken-burns" : ""}`}>
+                {mounted.has(i) && (
                 <Image
                   src={slide.src}
                   alt={slide.alt}
@@ -124,10 +134,16 @@ export function HeroCinematic({ slides, siteName, pills = [], className = "" }: 
                   fetchPriority={i === 0 ? "high" : "auto"}
                   placeholder="blur"
                   blurDataURL={BLUR_PETROL}
-                  className="object-cover object-center"
-                  style={slide.position ? { objectPosition: slide.position } : undefined}
+                  className="hero-slide-img object-cover"
+                  style={
+                    {
+                      "--slide-pos": slide.position ?? "50% 50%",
+                      "--slide-pos-m": slide.mobilePosition ?? slide.position ?? "50% 50%",
+                    } as CSSProperties
+                  }
                   sizes="100vw"
                 />
+                )}
               </div>
             </div>
           );

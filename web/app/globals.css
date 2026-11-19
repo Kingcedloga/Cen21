@@ -1192,6 +1192,18 @@ body:has(> [data-capsule-nav]) [data-surface="light"] [data-surface="dark"] .btn
 
 /* Ombre noire derrière la zone des textes, fondue vers le reste de la photo.
    Mobile : le texte occupe toute la largeur du bas, l'ombre monte du bas. */
+/* Cadrage des photos du hero d'accueil : un réglage ordinateur et un réglage
+   mobile (écran vertical) par photo (site.json de chaque langue → heroSlides). */
+.hero-slide-img {
+  object-position: var(--slide-pos-m, 50% 50%);
+}
+
+@media (min-width: 768px) {
+  .hero-slide-img {
+    object-position: var(--slide-pos, 50% 50%);
+  }
+}
+
 .hero-text-shade {
   background: linear-gradient(to top, rgb(0 0 0 / 0.78) 0%, rgb(0 0 0 / 0.55) 35%, rgb(0 0 0 / 0.18) 62%, transparent 80%);
 }

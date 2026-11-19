@@ -36,37 +36,92 @@
       "alt": "Lounge with velvet armchairs and golden chandeliers"
     },
     {
-      "src": "/home/hero/02-cocktails.jpg",
-      "alt": "Three cocktails served at the bar"
+      "src": "/home/hero/web/cocktails-trio.jpg",
+      "alt": "Three colourful cocktails served at the bar",
+      "position": "50% 28%"
     },
     {
-      "src": "/home/hero/03-rooftop.jpg",
-      "alt": "Rooftop terrace overlooking Kinshasa"
-    },
-    {
-      "src": "/home/hero/04-table.jpg",
-      "alt": "Sliced beef and a glass of red wine",
-      "position": "50% 62%"
+      "src": "/home/hero/web/chefs.jpg",
+      "alt": "The Cen21 Hospitality chefs gathered around their creations"
     },
     {
       "src": "/home/hero/05-mexicana.jpg",
-      "alt": "Festive room under colourful papel picado"
+      "alt": "Festive dining room under colourful papel picado"
+    },
+    {
+      "src": "/home/hero/web/champagne-couronne.jpg",
+      "alt": "Champagne bottles presented in an illuminated crown",
+      "position": "50% 22%"
     },
     {
       "src": "/home/hero/06-toast.jpg",
       "alt": "A toast around the table, seen from above"
     },
     {
+      "src": "/home/hero/web/tacos.jpg",
+      "alt": "Loaded tacos served on a long plate",
+      "position": "50% 45%"
+    },
+    {
       "src": "/home/hero/07-reception.jpg",
-      "alt": "Reception with green walls and golden light"
+      "alt": "Wabi Sabi reception, illuminated sign on a green wall",
+      "mobilePosition": "62% 50%"
+    },
+    {
+      "src": "/home/hero/web/barman.jpg",
+      "alt": "A bartender presents a bottle of tequila",
+      "position": "50% 22%",
+      "mobilePosition": "72% 50%"
+    },
+    {
+      "src": "/home/hero/09-terrasse.jpg",
+      "alt": "Glass-walled terrace at the end of the day"
+    },
+    {
+      "src": "/home/hero/web/makis.jpg",
+      "alt": "Tobiko maki served on a wooden box"
+    },
+    {
+      "src": "/home/hero/web/soiree-wabi.jpg",
+      "alt": "A night at the Wabi Sabi bar, arms raised under the lights",
+      "position": "50% 26%"
+    },
+    {
+      "src": "/home/hero/02-cocktails.jpg",
+      "alt": "Three cocktails served at the counter"
+    },
+    {
+      "src": "/home/hero/web/brochettes.jpg",
+      "alt": "Grilled skewers and green sauce on a black background"
+    },
+    {
+      "src": "/home/hero/web/bar-wabi.jpg",
+      "alt": "Wabi Sabi's long counter beneath the lit glass wall",
+      "position": "50% 55%"
+    },
+    {
+      "src": "/home/hero/web/martini.jpg",
+      "alt": "A raised martini, garnished with a flower",
+      "position": "50% 45%"
     },
     {
       "src": "/home/hero/08-cuisine.jpg",
       "alt": "Plating a dish in the kitchen"
     },
     {
-      "src": "/home/hero/09-terrasse.jpg",
-      "alt": "Glass-walled terrace at the end of the day"
+      "src": "/home/hero/web/champagne-presentoir.jpg",
+      "alt": "Champagne bottle served in an illuminated display",
+      "position": "50% 34%"
+    },
+    {
+      "src": "/home/hero/web/cocktail-orange.jpg",
+      "alt": "Orange cocktail among the dishes",
+      "position": "50% 40%"
+    },
+    {
+      "src": "/home/hero/web/tequila.jpg",
+      "alt": "Ceramic tequila bottle on the counter",
+      "position": "50% 32%"
     }
   ]
 }
