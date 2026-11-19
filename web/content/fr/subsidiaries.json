@@ -625,7 +625,6 @@
       "galleryImages": [
         "/filiales/photos/filiale-04/gallery/01-dsc-0420-modifier.webp",
         "/filiales/photos/filiale-04/gallery/02-dsc-1862-modifier.webp",
-        "/filiales/photos/filiale-04/gallery/03-dsc-3466-modifier.webp",
         "/filiales/photos/filiale-04/gallery/04-dsc-3757-modifier.webp",
         "/filiales/photos/filiale-04/gallery/05-dsc-4746-modifier.webp",
         "/filiales/photos/filiale-04/gallery/06-dsc-5179-modifier.webp",
@@ -939,8 +938,8 @@
           "title": "Le bar",
           "text": "Bar complet, cocktails et lounge jusqu'à 23h, en salle comme en terrasse.",
           "image": {
-            "src": "/filiales/photos/filiale-06/terrasse-moka.png",
-            "alt": "Moka & More — lounge du soir sous les suspensions dorées"
+            "src": "/filiales/photos/filiale-06/gallery/dsc09726.jpg",
+            "alt": "Moka & More — le bar le soir, lumières tamisées"
           }
         }
       ],
@@ -971,13 +970,6 @@
           "image": {
             "src": "/filiales/photos/filiale-06/gallery/dsc09717.jpg",
             "alt": "Moka & More — la salle et son grand écran"
-          }
-        },
-        {
-          "label": "La terrasse",
-          "image": {
-            "src": "/filiales/photos/filiale-06/terrasse-moka1.png",
-            "alt": "Moka & More — la terrasse fleurie en plein air"
           }
         }
       ],

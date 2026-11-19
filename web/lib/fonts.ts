@@ -1,4 +1,4 @@
-import { Cormorant_Garamond, Dynalight, Inter, Nunito } from "next/font/google";
+import { Cormorant_Garamond, Dynalight, Inter, Nunito, Oswald } from "next/font/google";
 
 /**
  * Inter (variable) — sans-serif pour le corps et l’UI.
@@ -17,6 +17,16 @@ export const inter = Inter({
 export const nunito = Nunito({
   subsets: ["latin"],
   variable: "--font-nunito",
+  display: "swap",
+  preload: false,
+});
+
+/** Moka & More — titres : grotesque grasse et étroite, la famille du
+ *  « moka & more » du logo. Pas de préchargement : seule cette page l'utilise. */
+export const oswald = Oswald({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-oswald",
   display: "swap",
   preload: false,
 });

@@ -15,7 +15,7 @@ import { MokaTour } from "@/components/filiales/moka/MokaTour";
 import { MokaVideo } from "@/components/filiales/moka/MokaVideo";
 import { PageSection } from "@/components/layout/PageSection";
 import { getEvents, getSubsidiaryFaq } from "@/lib/content";
-import { dynalight, nunito } from "@/lib/fonts";
+import { dynalight, oswald } from "@/lib/fonts";
 
 import type { FilialeContext } from "./context";
 
@@ -57,9 +57,10 @@ export async function MokaMorePage({ locale, subsidiary, pageTheme, mapQuery, ma
         <FilialeBrandStyle
           theme={pageTheme}
           options={{
-            titleFont: nunito.style.fontFamily,
-            titleWeight: 800,
-            titleTracking: { display: "-0.04em", section: "-0.03em" },
+            // Titres : Oswald, grotesque étroite comme le « moka & more » du logo.
+            titleFont: oswald.style.fontFamily,
+            titleWeight: 700,
+            titleTracking: { display: "-0.01em", section: "0em" },
           }}
         />
       )}
