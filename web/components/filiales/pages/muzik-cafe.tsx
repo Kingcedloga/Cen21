@@ -19,6 +19,9 @@ import { inter } from "@/lib/fonts";
 
 import type { FilialeContext } from "./context";
 
+/** Fond du hero (scène de nuit) : un plat de la maison sur fond noir. */
+const HERO_PHOTO = "/filiales/photos/filiale-05/hero-nuit.jpg";
+
 /** Proportions du logo (public/filiales/logos/filiale-05.png, 1024 × 597). */
 const LOGO_RATIO = 1024 / 597;
 /** Dates affichées dans la liste « tournée ». */
@@ -75,6 +78,7 @@ export async function MuzikCafePage({ locale, subsidiary, pageTheme, mapQuery, m
         locale={locale}
         logo={subsidiary.brandLogo}
         logoRatio={LOGO_RATIO}
+        photo={HERO_PHOTO}
       />
       <MuzikKaraoke label={tMuzik("lyricsLabel")} lines={tMuzik.raw("lyrics") as string[]} note={tMuzik("lyricsNote")} />
 

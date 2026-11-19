@@ -15,8 +15,8 @@ import { resolvePageMetadata } from "@/lib/seo";
 import { getSubsidiaryHref, isSubsidiaryExternalLink } from "@/lib/subsidiary-links";
 import type { EventItem } from "@/lib/types";
 
-const FALLBACK_HERO_IMAGE =
-  "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=2400&q=85";
+/** Visuel de repli du hero, dans public/ (aucune photo hors du site). */
+const FALLBACK_HERO_IMAGE = "/home/hero/06-toast.jpg";
 
 /** Cartes de la pile « Les prochains rendez-vous » (la suite est dans l'agenda). */
 const DECK_SIZE = 5;

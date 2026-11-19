@@ -223,8 +223,8 @@ export type Subsidiary = {
 export type SubsidiarySpecialtyRow = {
   title: string;
   description: string;
-  image: string;
-  imageAlt: string;
+  image?: string;
+  imageAlt?: string;
 };
 
 /** Section « Nos Spécialités » — rangées alternées photo/texte (L'Olive Verte). */
@@ -240,8 +240,8 @@ export type SubsidiaryMenuDish = {
   name: string;
   description: string;
   price: string;
-  image: string;
-  imageAlt: string;
+  image?: string;
+  imageAlt?: string;
 };
 
 /** Catégorie de plats — colonne gauche (L'Olive Verte). */

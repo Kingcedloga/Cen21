@@ -71,21 +71,15 @@
         "rows": [
           {
             "title": "Une cuisine fraîche et généreuse, à toute heure",
-            "description": "Nos chefs élaborent chaque plat avec les meilleurs produits de saison pour allier saveurs et convivialité. Déjeuner rapide, repas d'affaires ou soirée festive : la qualité est toujours au rendez-vous.",
-            "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80",
-            "imageAlt": "Plat signature — L'Olive Verte"
+            "description": "Nos chefs élaborent chaque plat avec les meilleurs produits de saison pour allier saveurs et convivialité. Déjeuner rapide, repas d'affaires ou soirée festive : la qualité est toujours au rendez-vous."
           },
           {
             "title": "Les plats les plus savoureux, rien que pour vous",
-            "description": "Des grillades au feu de bois aux entrées soigneusement travaillées, chaque création de notre carte reflète notre passion pour l'accueil et la gastronomie. Accompagnez votre repas d'un cocktail signature pour une expérience complète.",
-            "image": "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=1200&q=80",
-            "imageAlt": "Assiette premium — L'Olive Verte"
+            "description": "Des grillades au feu de bois aux entrées soigneusement travaillées, chaque création de notre carte reflète notre passion pour l'accueil et la gastronomie. Accompagnez votre repas d'un cocktail signature pour une expérience complète."
           },
           {
             "title": "Un accueil chaleureux, à chaque visite",
-            "description": "De votre arrivée jusqu'au dernier dessert, notre équipe s'engage à rendre chaque passage inoubliable. Un service attentionné, une atmosphère conviviale et une chaleur humaine — toujours au rendez-vous.",
-            "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
-            "imageAlt": "Salle du restaurant — L'Olive Verte"
+            "description": "De votre arrivée jusqu'au dernier dessert, notre équipe s'engage à rendre chaque passage inoubliable. Un service attentionné, une atmosphère conviviale et une chaleur humaine — toujours au rendez-vous."
           }
         ]
       },
@@ -104,16 +98,12 @@
               {
                 "name": "Burrata & tomates anciennes",
                 "description": "Burrata crémeuse, tomates mûries au soleil, huile de basilic et pain de campagne toasté.",
-                "price": "14 $",
-                "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200&q=80",
-                "imageAlt": "Entrée burrata et tomates"
+                "price": "14 $"
               },
               {
                 "name": "Salade du potager",
                 "description": "Légumes de saison, herbes fraîches et une vinaigrette légère aux agrumes.",
-                "price": "11 $",
-                "image": "https://images.unsplash.com/photo-1530469912745-a215c6b256ea?w=1200&q=80",
-                "imageAlt": "Salade du potager"
+                "price": "11 $"
               }
             ]
           },
@@ -128,16 +118,12 @@
               {
                 "name": "Bol Tomato Paniyaram",
                 "description": "Base tomate mijotée, paniyaram moelleux, fruits frais et noix de coco toastée.",
-                "price": "20 $",
-                "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80",
-                "imageAlt": "Bol Tomato Paniyaram"
+                "price": "20 $"
               },
               {
                 "name": "Poulet rôti aux herbes",
                 "description": "Poulet fermier, légumes de saison et jus léger au jus de cuisson.",
-                "price": "18 $",
-                "image": "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=1200&q=80",
-                "imageAlt": "Assiette de poulet rôti aux herbes"
+                "price": "18 $"
               }
             ]
           },
@@ -152,16 +138,12 @@
               {
                 "name": "Entrecôte au feu de bois",
                 "description": "Entrecôte grillée au charbon, beurre à l'ail et pommes de terre croustillantes.",
-                "price": "26 $",
-                "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80",
-                "imageAlt": "Entrecôte grillée au feu de bois"
+                "price": "26 $"
               },
               {
                 "name": "Plateau de grillades mixtes",
                 "description": "Brochettes de bœuf, poulet et merguez, légumes de saison grillés.",
-                "price": "24 $",
-                "image": "https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=1200&q=80",
-                "imageAlt": "Plateau de grillades mixtes"
+                "price": "24 $"
               }
             ]
           },
@@ -172,16 +154,12 @@
               {
                 "name": "Fondant au chocolat",
                 "description": "Fondant au chocolat tiède, glace vanille et coulis de fruits rouges.",
-                "price": "9 $",
-                "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80",
-                "imageAlt": "Fondant au chocolat"
+                "price": "9 $"
               },
               {
                 "name": "Tarte aux fruits de saison",
                 "description": "Pâte sablée, crème pâtissière et fruits frais de saison.",
-                "price": "8 $",
-                "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
-                "imageAlt": "Tarte aux fruits de saison"
+                "price": "8 $"
               }
             ]
           },
@@ -196,16 +174,12 @@
               {
                 "name": "Mojito signature",
                 "description": "Rhum blanc, menthe fraîche, citron vert et un trait de soda.",
-                "price": "10 $",
-                "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200&q=80",
-                "imageAlt": "Cocktail mojito signature"
+                "price": "10 $"
               },
               {
                 "name": "Sangria tropicale",
                 "description": "Vin rouge, fruits tropicaux et une pointe d'agrumes.",
-                "price": "9 $",
-                "image": "https://images.unsplash.com/photo-1530469912745-a215c6b256ea?w=1200&q=80",
-                "imageAlt": "Pichet de sangria tropicale"
+                "price": "9 $"
               }
             ]
           }
@@ -433,7 +407,10 @@
           "category": "food"
         }
       ],
-      "teaserVideo": { "src": "/filiales/videos/Teasers/Video%20by%20wabisabi_kin.mp4", "poster": "/filiales/photos/filiale-02/hero/01-salle-principale.jpg" },
+      "teaserVideo": {
+        "src": "/filiales/videos/Teasers/Video%20by%20wabisabi_kin.mp4",
+        "poster": "/filiales/photos/filiale-02/hero/01-salle-principale.jpg"
+      },
       "aboutSection": {
         "eyebrow": "About Wabi Sabi",
         "title": "L'art du moment, entre ciel et cityscape",
@@ -560,7 +537,10 @@
         "/filiales/photos/filiale-03/gallery/18-dsc09876.webp",
         "/filiales/photos/filiale-03/gallery/19-dsc09969.webp"
       ],
-      "teaserVideo": { "src": "/filiales/videos/Teasers/teaser-klounge.mp4", "poster": "/filiales/photos/filiale-03/cover.webp" },
+      "teaserVideo": {
+        "src": "/filiales/videos/Teasers/teaser-klounge.mp4",
+        "poster": "/filiales/photos/filiale-03/cover.webp"
+      },
       "introSection": {
         "title": "K Lounge. Rooftop & mixologie.",
         "paragraphs": [
@@ -637,7 +617,7 @@
       },
       "accentColor": "#C9A84C",
       "brandLogo": "/filiales/logos/filiale-04.png",
-      "coverImage": "/filiales/photos/filiale-04/cover.webp",
+      "coverImage": "/filiales/photos/filiale-04/gallery/06-dsc-5179-modifier.webp",
       "heroVideo": {
         "src": "/filiales/videos/filiale-03/hero-ambient.mp4",
         "poster": "/filiales/photos/filiale-04/cover.webp"
@@ -683,7 +663,10 @@
           "category": "guests"
         }
       ],
-      "teaserVideo": { "src": "/filiales/videos/Teasers/teaser-millionaire.mp4", "poster": "/filiales/photos/filiale-04/cover.webp" },
+      "teaserVideo": {
+        "src": "/filiales/videos/Teasers/teaser-millionaire.mp4",
+        "poster": "/filiales/photos/filiale-04/cover.webp"
+      },
       "nightTimeline": [
         {
           "hour": "18h",
@@ -806,15 +789,8 @@
         "src": "/filiales/videos/Teasers/teaser-music.mp4"
       },
       "brandLogo": "/filiales/logos/filiale-05.png",
-      "coverImage": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80",
-      "galleryImages": [
-        "https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?w=1200&q=80",
-        "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1200&q=80",
-        "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1200&q=80",
-        "https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1200&q=80",
-        "https://images.unsplash.com/photo-1485872299829-c673f5194813?w=1200&q=80",
-        "https://images.unsplash.com/photo-1525268323446-0505b6fe7778?w=1200&q=80"
-      ],
+      "coverImage": "/filiales/photos/filiale-05/cover.jpg",
+      "galleryImages": [],
       "muzikMenuSection": {
         "menuTitle": "Parcourez Notre Menu",
         "benefits": [
@@ -836,29 +812,29 @@
             "name": "Pizza Margherita",
             "subtitle": "Délicieux et épicé",
             "price": "14,00 $",
-            "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80",
-            "imageAlt": "Pizza Margherita"
+            "image": "/filiales/photos/filiale-05/menu/web/DSC08239.jpg",
+            "imageAlt": "Café Muzik — Pizza Margherita"
           },
           {
             "name": "Plateau de wraps grillés",
             "subtitle": "Délicieux et épicé",
             "price": "12,00 $",
-            "image": "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=600&q=80",
-            "imageAlt": "Plateau de wraps grillés avec sauce"
+            "image": "/filiales/photos/filiale-05/menu/web/IMG_0959.jpg",
+            "imageAlt": "Café Muzik — Plateau de wraps grillés"
           },
           {
             "name": "Brochettes Shawarma",
             "subtitle": "Délicieux et épicé",
             "price": "16,00 $",
-            "image": "https://images.unsplash.com/photo-1530469912745-a215c6b256ea?w=600&q=80",
-            "imageAlt": "Broche de shawarma grillée"
+            "image": "/filiales/photos/filiale-05/menu/web/DSC07974.jpg",
+            "imageAlt": "Café Muzik — Brochettes Shawarma"
           },
           {
             "name": "Bol protéiné grillé",
             "subtitle": "Délicieux et épicé",
             "price": "10,00 $",
-            "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80",
-            "imageAlt": "Bol de céréales avec protéine grillée"
+            "image": "/filiales/photos/filiale-05/menu/web/DSC08331.jpg",
+            "imageAlt": "Café Muzik — Bol protéiné grillé"
           }
         ]
       },
@@ -868,38 +844,38 @@
           {
             "name": "Pizza Margherita",
             "price": "14,00 $",
-            "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&q=80",
-            "imageAlt": "Pizza Margherita"
+            "image": "/filiales/photos/filiale-05/menu/web/DSC08239.jpg",
+            "imageAlt": "Café Muzik — Pizza Margherita"
           },
           {
             "name": "Plateau de wraps grillés",
             "price": "12,00 $",
-            "image": "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=800&q=80",
-            "imageAlt": "Plateau de wraps grillés avec sauce"
+            "image": "/filiales/photos/filiale-05/menu/web/IMG_0959.jpg",
+            "imageAlt": "Café Muzik — Plateau de wraps grillés"
           },
           {
             "name": "Brochettes Shawarma",
             "price": "16,00 $",
-            "image": "https://images.unsplash.com/photo-1530469912745-a215c6b256ea?w=800&q=80",
-            "imageAlt": "Broche de shawarma grillée"
+            "image": "/filiales/photos/filiale-05/menu/web/DSC07974.jpg",
+            "imageAlt": "Café Muzik — Brochettes Shawarma"
           },
           {
             "name": "Bol protéiné grillé",
             "price": "10,00 $",
-            "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80",
-            "imageAlt": "Bol de céréales avec protéine grillée"
+            "image": "/filiales/photos/filiale-05/menu/web/DSC08331.jpg",
+            "imageAlt": "Café Muzik — Bol protéiné grillé"
           },
           {
             "name": "Plat signature du chef",
             "price": "18,00 $",
-            "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
-            "imageAlt": "Plat signature du chef avec vin"
+            "image": "/filiales/photos/filiale-05/menu/web/DSC08347.jpg",
+            "imageAlt": "Café Muzik — Plat signature du chef"
           },
           {
             "name": "Dessert aux fruits rouges",
             "price": "20,00 $",
-            "image": "https://images.unsplash.com/photo-1488900128323-21503983a07e?w=800&q=80",
-            "imageAlt": "Dessert glacé aux fruits rouges"
+            "image": "/filiales/photos/filiale-05/menu/web/IMG_0960.jpg",
+            "imageAlt": "Café Muzik — Dessert aux fruits rouges"
           }
         ]
       },
@@ -921,7 +897,7 @@
       },
       "accentColor": "#CC0000",
       "brandLogo": "/filiales/logos/filiale-06.png",
-      "coverImage": "/filiales/photos/filiale-06/gallery/dsc09734.jpg",
+      "coverImage": "/filiales/photos/filiale-06/gallery/dsc09704.jpg",
       "galleryImages": [
         "/filiales/photos/filiale-06/gallery/dsc09704.jpg",
         "/filiales/photos/filiale-06/gallery/dsc09712.jpg",
@@ -935,7 +911,10 @@
         "/filiales/photos/filiale-06/gallery/dsc09730.jpg",
         "/filiales/photos/filiale-06/gallery/dsc09734.jpg"
       ],
-      "teaserVideo": { "src": "/filiales/videos/Teasers/teaser-moka.mp4", "poster": "/filiales/photos/filiale-06/gallery/dsc09704.jpg" },
+      "teaserVideo": {
+        "src": "/filiales/videos/Teasers/teaser-moka.mp4",
+        "poster": "/filiales/photos/filiale-06/gallery/dsc09704.jpg"
+      },
       "menuMoments": [
         {
           "hour": "07h",
@@ -1063,11 +1042,12 @@
       "accentColor": "#006B3F",
       "externalUrl": "https://www.papajohnsrdc.com/",
       "brandLogo": "/filiales/logos/filiale-08.png",
-      "coverImage": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=1200&q=80",
-      "galleryImages": [
-        "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80",
-        "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&q=80"
-      ],
+      "coverImage": "/filiales/photos/filliale-10/IMG_1078.jpg",
+      "teaserVideo": {
+        "src": "/filiales/videos/Teasers/teaser-Papajohns.mp4",
+        "poster": "/filiales/photos/filliale-10/teaser-poster.jpg"
+      },
+      "galleryImages": [],
       "featured": false
     },
     {
@@ -1090,10 +1070,7 @@
       "externalUrl": "https://www.pinkberry.com/",
       "brandLogo": "/filiales/logos/filiale-09.png",
       "coverImage": "/filiales/photos/filiale-09/PBRY_Original_Logo_MilkPour.png",
-      "galleryImages": [
-        "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800&q=80",
-        "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800&q=80"
-      ],
+      "galleryImages": [],
       "storySection": {
         "eyebrow": "Notre histoire",
         "title": "Frais et gourmand, à chaque cuillère",
@@ -1214,40 +1191,6 @@
           }
         ]
       },
-      "newsSection": {
-        "eyebrow": "À suivre",
-        "title": "Actualités Pinkberry",
-        "ctaLabel": "Lire la suite",
-        "cards": [
-          {
-            "image": "https://images.unsplash.com/photo-1488900128323-21503983a07e?w=700&q=80",
-            "imageAlt": "Nouvelles saveurs de saison — Pinkberry",
-            "badgeLabel": "Pinkberry",
-            "date": "LE 15 JANV. 2026",
-            "author": "PAR PINKBERRY",
-            "title": "De nouvelles saveurs de saison sont arrivées",
-            "description": "Découvrez nos dernières saveurs aux fruits frais, préparées en petites quantités et disponibles pour une durée limitée."
-          },
-          {
-            "image": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=700&q=80",
-            "imageAlt": "Bar à toppings gourmands — Pinkberry",
-            "badgeLabel": "Pinkberry",
-            "date": "LE 3 FÉVR. 2026",
-            "author": "PAR PINKBERRY",
-            "title": "Découvrez notre bar à toppings gourmands",
-            "description": "Vrais fruits, granola croquant et sauces généreuses — composez votre coupe idéale avec notre sélection élargie de toppings."
-          },
-          {
-            "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=700&q=80",
-            "imageAlt": "Boutique Pinkberry — Kinshasa",
-            "badgeLabel": "Pinkberry",
-            "date": "LE 20 FÉVR. 2026",
-            "author": "PAR PINKBERRY",
-            "title": "Désormais ouvert tous les jours jusqu'à 22h",
-            "description": "Une envie sucrée en soirée ? Pinkberry Kinshasa est désormais ouvert tous les jours jusqu'à 22h."
-          }
-        ]
-      },
       "menuSection": {
         "eyebrow": "Notre menu",
         "title": "Nos délices à déguster",
@@ -1315,11 +1258,11 @@
       "externalUrl": "https://www.lepainquotidien.com",
       "brandLogo": "/filiales/logos/filiale-10.png",
       "coverImage": "/filiales/photos/filliale-8/cover.jpg",
-      "teaserVideo": { "src": "/filiales/videos/Teasers/teaser-lePainQuotidiens.mp4", "poster": "/filiales/photos/filliale-8/teaser-poster.jpg" },
-      "galleryImages": [
-        "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=800&q=80",
-        "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&q=80"
-      ],
+      "teaserVideo": {
+        "src": "/filiales/videos/Teasers/teaser-lePainQuotidiens.mp4",
+        "poster": "/filiales/photos/filliale-8/teaser-poster.jpg"
+      },
+      "galleryImages": [],
       "featured": false
     }
   ]

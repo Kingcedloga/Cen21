@@ -90,16 +90,8 @@ export function HomeHousesSection({
                       alt=""
                       fill
                       sizes="(max-width: 640px) 45vw, 20vw"
-                      className="object-contain px-[18%] pt-[12%] pb-[26%]"
+                      className="object-contain p-[18%]"
                     />
-                    {/* Accueil : le nom seul, sans pastille de fond. */}
-                    <span
-                      className={`absolute inset-x-2 bottom-2 truncate px-3 py-1 text-center text-[11px] font-medium text-ivory ${
-                        plainLogos ? "" : "rounded-full bg-petrol-panel-4/75 backdrop-blur-sm"
-                      }`}
-                    >
-                      {item.name}
-                    </span>
                   </span>
                 </span>
               </Link>

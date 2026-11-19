@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useRef } from "react";
 
@@ -23,7 +24,10 @@ const STILL_MARK = { y: 0, rotate: -6 };
  * guitare du logo en grand sous un projecteur rouge, et les six cordes
  * tendues sur toute la largeur (elles vibrent avec le défilement et se
  * pincent à la souris). Au défilement, la guitare remonte et se redresse.
- * Reduced motion : immobile.
+ * Avec `photo` : scène de nuit — fond noir (l'encre de la maison), la photo
+ * de la maison en grand qui se fond dans le noir, le projecteur rouge en
+ * halo de scène, texte et cordes en blanc (sans la guitare du logo) ; la
+ * photo s'approche à peine au défilement. Reduced motion : immobile.
  */
 export function MuzikHero({
   name,
@@ -33,6 +37,7 @@ export function MuzikHero({
   locale,
   logo,
   logoRatio,
+  photo,
 }: {
   name: string;
   tagline: string;
@@ -41,6 +46,8 @@ export function MuzikHero({
   locale: string;
   logo?: string;
   logoRatio: number;
+  /** Photo de fond (scène de nuit). Sans photo : la scène blanche de la charte. */
+  photo?: string;
 }) {
   const t = useTranslations("muzik");
   const tFiliale = useTranslations("filiale");
@@ -51,9 +58,22 @@ export function MuzikHero({
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const markY = useTransform(scrollYProgress, [0, 1], [0, -90]);
   const markRotate = useTransform(scrollYProgress, [0, 1], [-6, 4]);
+  const photoScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
 
   return (
-    <section ref={ref} aria-labelledby="muzik-hero-title" data-surface="dark" className="muzik-hero">
+    <section
+      ref={ref}
+      aria-labelledby="muzik-hero-title"
+      // Scène de nuit : fond noir, d'où « light » (la capsule de navigation
+      // passe en blanc ; « dark » désigne le fond blanc de la charte).
+      data-surface={photo ? "light" : "dark"}
+      className={`muzik-hero ${photo ? "muzik-hero--night" : ""}`}
+    >
+      {photo && (
+        <motion.div aria-hidden="true" className="muzik-hero__photo" style={reduced ? undefined : { scale: photoScale }}>
+          <Image src={photo} alt="" fill priority sizes="(min-width: 1024px) 60vw, 100vw" className="object-cover" />
+        </motion.div>
+      )}
       <div className="muzik-hero__inner">
         <div className="muzik-hero__text">
           <nav aria-label={tCommon("breadcrumb")} className="muzik-crumbs">
@@ -95,7 +115,8 @@ export function MuzikHero({
           </div>
         </div>
 
-        {logo && (
+        {/* Scène de nuit : la photo porte l'ambiance, pas de guitare par-dessus. */}
+        {logo && !photo && (
           <motion.div className="muzik-hero__mark" style={reduced ? STILL_MARK : { y: markY, rotate: markRotate }}>
             <FilialeMark src={logo} ratio={logoRatio} width="100%" />
           </motion.div>

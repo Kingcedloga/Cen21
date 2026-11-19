@@ -257,6 +257,95 @@
   }
 }
 
+/* --- Scène de nuit (MuzikHero avec photo) -------------------------------
+   Fond noir : l'encre de la maison (--muzik-ink, le texte de la charte),
+   texte et cordes en blanc (--muzik-on-blue). La photo occupe la droite et
+   se fond dans le noir vers le texte ; au téléphone, elle passe sous le
+   texte, voilée en haut. Le projecteur rouge devient un halo de scène. */
+.muzik-hero--night {
+  --color-ivory: var(--muzik-on-blue);
+  --color-petrol-panel-4: var(--muzik-ink);
+  background-color: var(--muzik-ink);
+}
+
+.muzik-hero__photo {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.35) 30%, #000 62%, #000 82%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.35) 30%, #000 62%, #000 82%, transparent 100%);
+}
+
+.muzik-hero__photo img {
+  object-position: 62% 70%;
+}
+
+.muzik-hero--night::before {
+  top: -14rem;
+  right: -12rem;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--brand-fill) 38%, transparent), transparent);
+}
+
+/* Boutons : la scène est annoncée « light » pour la capsule de navigation,
+   ce qui donnerait aux boutons leurs versions pour fond clair. On rétablit
+   les versions pour fond sombre : aplat rouge de la maison, filet blanc. */
+body:has(> [data-capsule-nav]) .muzik-hero--night[data-surface] .btn-primary {
+  background-color: var(--brand-fill);
+  background-image: var(--brand-button, none);
+  color: var(--brand-on-accent);
+  box-shadow: 0 12px 28px -14px rgb(var(--brand-fill-rgb) / 0.55);
+}
+
+body:has(> [data-capsule-nav]) .muzik-hero--night[data-surface] .btn-secondary {
+  border-color: color-mix(in srgb, var(--color-ivory) 45%, transparent);
+  background: transparent;
+  color: var(--color-ivory);
+}
+
+body:has(> [data-capsule-nav]) .muzik-hero--night[data-surface] .btn-secondary:hover {
+  border-color: var(--color-ivory);
+  background: color-mix(in srgb, var(--color-ivory) 12%, transparent);
+  color: var(--color-ivory);
+}
+
+body:has(> [data-capsule-nav]) .muzik-hero--night[data-surface] :is(.btn-primary, .btn-secondary):focus-visible {
+  outline-color: var(--color-ivory);
+}
+
+/* Barre haute (logo, langue, contact), posée sur la scène : en blanc. */
+body:has(.muzik-hero--night) [data-top-bar] {
+  --color-ivory: var(--muzik-on-blue);
+  --color-neutral: var(--muzik-on-blue);
+  --color-petrol-panel-4: var(--muzik-ink);
+}
+
+/* Lisibilité : voile d'encre sous le texte (gauche, et haut au téléphone). */
+.muzik-hero--night::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--muzik-ink) 70%, transparent) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+@media (min-width: 1024px) {
+  .muzik-hero__photo {
+    left: auto;
+    width: 62%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.5) 22%, #000 48%), linear-gradient(to bottom, #000 80%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.5) 22%, #000 48%), linear-gradient(to bottom, #000 80%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+  .muzik-hero__photo img {
+    object-position: 60% 60%;
+  }
+  .muzik-hero--night::after {
+    background: linear-gradient(to right, color-mix(in srgb, var(--muzik-ink) 80%, transparent) 0%, transparent 50%);
+  }
+}
+
 /* --- Le refrain (MuzikKaraoke) ------------------------------------------ */
 /* La touche de bleu de la charte (fond blanc partout ailleurs) : le refrain
    reste sur le bleu roi, texte blanc. `--color-ivory` y est redéfini en
@@ -890,6 +979,8 @@ html body:has([data-filiale-muzik]) {
   /* Charte : rouge et blanc, avec une touche de bleu roi (le refrain). */
   --muzik-blue: #0033a0;
   --muzik-on-blue: #ffffff;
+  /* Encre de la maison (texte de la charte), fond de la scène de nuit. */
+  --muzik-ink: var(--color-ivory);
 
   & main h2.title-section {
     text-transform: uppercase;

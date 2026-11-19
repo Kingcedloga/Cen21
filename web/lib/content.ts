@@ -38,9 +38,11 @@ const SUBSIDIARIES: Record<Locale, Subsidiary[]> = {
   en: subsidiariesEn.subsidiaries as Subsidiary[],
   fr: subsidiariesFr.subsidiaries as Subsidiary[],
 };
-const EVENTS: Record<Locale, EventItem[]> = {
-  en: eventsEn.events as EventItem[],
-  fr: eventsFr.events as EventItem[],
+/** Agenda du dépôt ; une date sans photo prend celle de sa maison (eventsFromJson). */
+type JsonEvent = Omit<EventItem, "image"> & { image?: string };
+const EVENTS: Record<Locale, JsonEvent[]> = {
+  en: eventsEn.events as JsonEvent[],
+  fr: eventsFr.events as JsonEvent[],
 };
 const GALLERY: Record<Locale, GalleryItem[]> = {
   en: galleryEn.items as GalleryItem[],
@@ -154,9 +156,21 @@ const EVENTS_REVALIDATE = 600;
  */
 const lastGoodEvents: Partial<Record<Locale, EventItem[]>> = {};
 
+/**
+ * Agenda de content/{locale}/events.json, chaque date avec une photo : la
+ * sienne si elle est renseignée, sinon la photo de profil de sa maison
+ * (toutes les photos sont dans public/, aucune hors du site).
+ */
+function eventsFromJson(locale: Locale): EventItem[] {
+  return EVENTS[locale].map((event) => ({
+    ...event,
+    image: event.image || getSubsidiaryBySlug(locale, event.subsidiarySlug)?.coverImage || "/home/hero/01-salon.jpg",
+  }));
+}
+
 async function loadEvents(locale: Locale): Promise<EventItem[]> {
   const url = process.env.EVENTS_SHEET_CSV_URL?.trim();
-  if (!url) return EVENTS[locale];
+  if (!url) return eventsFromJson(locale);
   try {
     const response = await fetch(url, { next: { revalidate: EVENTS_REVALIDATE, tags: [EVENTS_TAG] } });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -173,7 +187,7 @@ async function loadEvents(locale: Locale): Promise<EventItem[]> {
       `[agenda] feuille Google Sheets illisible : ${error instanceof Error ? error.message : error} — ` +
         (fallback ? "dernier agenda lu conservé" : `repli sur content/${locale}/events.json`),
     );
-    return fallback ?? EVENTS[locale];
+    return fallback ?? eventsFromJson(locale);
   }
 }
 

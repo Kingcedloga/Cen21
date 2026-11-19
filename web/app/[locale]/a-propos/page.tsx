@@ -21,12 +21,10 @@ import { resolveSubsidiaryHeroImage } from "@/lib/subsidiary-hero-layout";
 import { placeCities, subsidiaryPlaces } from "@/lib/subsidiary-places";
 import type { Subsidiary } from "@/lib/types";
 
-const FALLBACK_HERO =
-  "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=2400&q=85";
-const FALLBACK_ORIGINS_IMAGE =
-  "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=2400&q=85";
-const FALLBACK_VISION_IMAGE =
-  "https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=1200&q=85";
+/** Visuels de repli, tous dans public/ (aucune photo hors du site). */
+const FALLBACK_HERO = "/home/groupCen21-web.jpg";
+const FALLBACK_ORIGINS_IMAGE = "/home/hero/01-salon.jpg";
+const FALLBACK_VISION_IMAGE = "/home/hero/09-terrasse.jpg";
 
 /** Univers comptés dans les chiffres, avec leur message (pluriel ICU). */
 const SECTOR_FIGURES = [
