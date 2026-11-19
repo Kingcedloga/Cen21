@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
-import Image from "next/image";
+import { getImageProps } from "next/image";
 import { Button } from "@/components/ui/Button";
 import { SubsidiariesArc, type ArcItem } from "@/components/filiales/SubsidiariesArc";
 import { HeroCinematic } from "@/components/sections/HeroCinematic";
@@ -176,6 +176,17 @@ export default async function HomePage({ params }: Props) {
       : [],
   );
 
+  // Photo du groupe : une version par écran (art direction, getImageProps).
+  const {
+    props: { srcSet: groupPhotoMobile },
+  } = getImageProps({ src: "/home/cen21hospitalityMobile.png", alt: "", fill: true, sizes: "100vw" });
+  const { props: groupPhoto } = getImageProps({
+    src: "/home/cen21hospitality.png",
+    alt: "",
+    fill: true,
+    sizes: "(max-width: 1024px) 100vw, 40vw",
+  });
+
   return (
     <>
       <OrganizationJsonLd locale={l} />
@@ -244,14 +255,16 @@ export default async function HomePage({ params }: Props) {
           <div className="lg:col-span-5 relative">
             <AnimateIn variant="fadeScale" delay={0.15}>
               <div className="relative aspect-[768/1376] w-full rounded-3xl overflow-hidden border border-rose/25 shadow-[0_24px_50px_-12px_rgba(0,0,0,0.6)] group">
-                <Image
-                  src="/home/cen21hospitality.png"
-                  alt={site.name}
-                  fill
-                  // Cadre aux proportions de la photo (768 × 1376) : affichée en entier, sans recadrage.
-                  className="object-cover transition-transform duration-grand ease-out group-hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                />
+                {/* Une photo par écran (mêmes proportions, 768 × 1376 et 358 × 641) :
+                    la version mobile sous 768 px, affichée en entier, sans recadrage. */}
+                <picture>
+                  <source media="(max-width: 767px)" srcSet={groupPhotoMobile} sizes="100vw" />
+                  <img
+                    {...groupPhoto}
+                    alt={site.name}
+                    className="object-cover transition-transform duration-grand ease-out group-hover:scale-105"
+                  />
+                </picture>
                 <div className="absolute inset-0 bg-gradient-to-t from-petrol/90 via-petrol/20 to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/10 bg-petrol/60 p-5 backdrop-blur-md">
                   <p className="text-xs font-semibold uppercase tracking-widest text-rose">
