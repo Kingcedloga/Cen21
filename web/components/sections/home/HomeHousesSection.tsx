@@ -76,7 +76,7 @@ export function HomeHousesSection({
                       src={item.logo}
                       alt=""
                       fill
-                      sizes="(max-width: 640px) 45vw, 20vw"
+                      sizes="(max-width: 640px) 30vw, 13vw"
                       className="object-contain p-[18%] opacity-90"
                     />
                   </span>
@@ -89,7 +89,7 @@ export function HomeHousesSection({
                       src={item.logo}
                       alt=""
                       fill
-                      sizes="(max-width: 640px) 45vw, 20vw"
+                      sizes="(max-width: 640px) 30vw, 13vw"
                       className="object-contain p-[18%]"
                     />
                   </span>
