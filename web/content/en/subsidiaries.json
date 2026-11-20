@@ -529,7 +529,7 @@
       },
       "accentColor": "#000000",
       "brandLogo": "/filiales/logos/filiale-03.png",
-      "coverImage": "/filiales/photos/filiale-03/profil-klounge-web.jpg",
+      "coverImage": "/filiales/photos/filiale-03/klounge-bar.jpg",
       "galleryImages": [
         "/filiales/photos/filiale-03/gallery/01-dsc00004.webp",
         "/filiales/photos/filiale-03/gallery/02-dsc00018.webp",
@@ -631,7 +631,7 @@
       },
       "accentColor": "#C9A84C",
       "brandLogo": "/filiales/logos/filiale-04.png",
-      "coverImage": "/filiales/photos/filiale-04/gallery/06-dsc-5179-modifier.webp",
+      "coverImage": "/filiales/photos/filiale-04/gallery/22-soiree.jpg",
       "heroVideo": {
         "src": "/filiales/videos/filiale-03/hero-ambient.mp4",
         "poster": "/filiales/photos/filiale-04/cover.webp"
