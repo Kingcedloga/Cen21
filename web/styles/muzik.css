@@ -141,6 +141,17 @@
   color: var(--color-ivory);
 }
 
+/* Le logo de la maison en titre (FilialeHeroLogo) : ivoire, ombre douce
+   pour se détacher de la photo de nuit. */
+.muzik-hero__title-logo {
+  margin-top: 1.25rem;
+  color: var(--color-ivory);
+}
+
+.muzik-hero__title-logo .filiale-hero-logo__mark {
+  filter: drop-shadow(0 2px 18px rgb(0 0 0 / 0.55));
+}
+
 .muzik-hero__lead {
   max-width: 32rem;
   margin-top: 1.75rem;

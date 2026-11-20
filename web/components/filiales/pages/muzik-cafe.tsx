@@ -24,6 +24,13 @@ const HERO_PHOTO = "/filiales/photos/filiale-05/hero-nuit.jpg";
 
 /** Proportions du logo (public/filiales/logos/filiale-05.png, 1024 × 597). */
 const LOGO_RATIO = 1024 / 597;
+/** Le logo en titre du hero, rogné à sa zone visible (fichier 1024 × 597). */
+const TITLE_LOGO = {
+  src: "/filiales/logos/filiale-05.png",
+  size: [1024, 597],
+  box: [145, 107, 880, 533],
+  width: "clamp(16rem, 8rem + 24vw, 30rem)",
+} as const;
 /** Dates affichées dans la liste « tournée ». */
 const DATES_SIZE = 4;
 
@@ -79,6 +86,7 @@ export async function MuzikCafePage({ locale, subsidiary, pageTheme, mapQuery, m
         logo={subsidiary.brandLogo}
         logoRatio={LOGO_RATIO}
         photo={HERO_PHOTO}
+        titleLogo={TITLE_LOGO}
       />
       <MuzikKaraoke label={tMuzik("lyricsLabel")} lines={tMuzik.raw("lyrics") as string[]} note={tMuzik("lyricsNote")} />
 

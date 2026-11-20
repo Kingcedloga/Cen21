@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useRef } from "react";
 
+import { FilialeHeroLogo, type HeroLogo } from "@/components/filiales/blocks/FilialeHeroLogo";
 import { FilialeMark } from "@/components/filiales/blocks/FilialeMark";
 import { FilialeOpenStatus } from "@/components/filiales/blocks/FilialeOpenStatus";
 import { Button } from "@/components/ui/Button";
@@ -20,7 +21,8 @@ import "@/styles/muzik.css";
 const STILL_MARK = { y: 0, rotate: -6 };
 
 /**
- * La scène de Café Muzik : le nom en capitales d'affiche de concert, la
+ * La scène de Café Muzik : le nom en capitales d'affiche de concert (ou le
+ * logo de la maison en titre, `titleLogo`), la
  * guitare du logo en grand sous un projecteur rouge, et les six cordes
  * tendues sur toute la largeur (elles vibrent avec le défilement et se
  * pincent à la souris). Au défilement, la guitare remonte et se redresse.
@@ -38,6 +40,7 @@ export function MuzikHero({
   logo,
   logoRatio,
   photo,
+  titleLogo,
 }: {
   name: string;
   tagline: string;
@@ -48,6 +51,8 @@ export function MuzikHero({
   logoRatio: number;
   /** Photo de fond (scène de nuit). Sans photo : la scène blanche de la charte. */
   photo?: string;
+  /** Logo de la maison en titre (le nom reste lu par les lecteurs d'écran). */
+  titleLogo?: HeroLogo;
 }) {
   const t = useTranslations("muzik");
   const tFiliale = useTranslations("filiale");
@@ -89,9 +94,13 @@ export function MuzikHero({
           </nav>
 
           <p className="muzik-eyebrow">{t("heroEyebrow")}</p>
-          <h1 id="muzik-hero-title" className="muzik-hero__title">
-            {name}
-          </h1>
+          {titleLogo ? (
+            <FilialeHeroLogo id="muzik-hero-title" name={name} logo={titleLogo} className="muzik-hero__title-logo" />
+          ) : (
+            <h1 id="muzik-hero-title" className="muzik-hero__title">
+              {name}
+            </h1>
+          )}
           <p className="muzik-hero__lead">{tagline}</p>
           {hours && (
             <div className="muzik-hero__status">
