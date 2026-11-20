@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { useRef } from "react";
+import { useRef, type ReactNode } from "react";
 
 import { Pause, Play, Volume2, VolumeX } from "@/lib/icons";
 import type { HeroVideo } from "@/lib/types";
@@ -19,6 +19,9 @@ const STILL = { y: 0 };
  * verticale à droite, le surtitre, le titre et la légende à gauche, avec les
  * boutons lecture / pause et son et une ligne de lecture. Le cadre glisse
  * légèrement à contre-sens au défilement. Lecture : lib/use-teaser-video.ts.
+ * Options (ex. la livraison de Wabi Sabi) : `titleId` (deux blocs sur une
+ * page), `details` (pastilles sous la légende), `actions` (boutons),
+ * `reverse` (vidéo à gauche sur grand écran).
  */
 export function FilialeTeaser({
   name,
@@ -27,6 +30,10 @@ export function FilialeTeaser({
   eyebrow,
   title,
   caption,
+  titleId = "filiale-teaser-title",
+  details,
+  actions,
+  reverse = false,
 }: {
   name: string;
   video: HeroVideo;
@@ -34,6 +41,10 @@ export function FilialeTeaser({
   eyebrow: string;
   title: string;
   caption: string;
+  titleId?: string;
+  details?: ReactNode;
+  actions?: ReactNode;
+  reverse?: boolean;
 }) {
   const t = useTranslations("filiale");
   const { reduced, near, playing, muted, frameRef, progressRef, videoProps, togglePlay, toggleSound } = useTeaserVideo();
@@ -43,13 +54,15 @@ export function FilialeTeaser({
   const posterSrc = poster ?? video.poster;
 
   return (
-    <div ref={sectionRef} className="filiale-teaser">
+    <div ref={sectionRef} className={`filiale-teaser ${reverse ? "filiale-teaser--reverse" : ""}`}>
       <header className="filiale-teaser__head">
         <p className="filiale-teaser__eyebrow">{eyebrow}</p>
-        <h2 id="filiale-teaser-title" className="title-section filiale-teaser__title">
+        <h2 id={titleId} className="title-section filiale-teaser__title">
           {title}
         </h2>
         <p className="filiale-teaser__caption">{caption}</p>
+        {details && <div className="filiale-teaser__details">{details}</div>}
+        {actions && <div className="filiale-teaser__actions">{actions}</div>}
         <div className="filiale-teaser__controls">
           <button type="button" className="filiale-round tap-press" aria-label={playing ? t("teaserPause") : t("teaserPlay")} onClick={togglePlay}>
             {playing ? <Pause size={18} aria-hidden="true" /> : <Play size={18} aria-hidden="true" />}

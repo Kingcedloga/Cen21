@@ -118,7 +118,7 @@
     {
       "id": "aujourd-hui",
       "year": "2026",
-      "title": "Dix maisons, deux villes",
+      "title": "Dix maisons, trois villes",
       "description": "Restaurants, lounges, rooftops et night-club : dix adresses à Kinshasa et Lubumbashi, une même exigence d'accueil.",
       "subsidiarySlugs": []
     }
@@ -133,7 +133,7 @@
     {
       "name": "Pinkberry",
       "role": "Yaourt glacé",
-      "url": "https://www.pinkberry.com",
+      "url": "https://pinkberrydrc.app/",
       "subsidiarySlug": "pinkberry"
     },
     {

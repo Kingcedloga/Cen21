@@ -17,6 +17,7 @@ import { FilialeTestimonials } from "@/components/filiales/blocks/FilialeTestimo
 import { PageSection } from "@/components/layout/PageSection";
 import { AboutStory } from "@/components/sections/about/AboutStory";
 import { Button } from "@/components/ui/Button";
+import { Phone } from "@/lib/icons";
 import { getSubsidiaryFaq } from "@/lib/content";
 import { cormorant } from "@/lib/fonts";
 
@@ -145,6 +146,36 @@ export async function WabiSabiPage({ locale, subsidiary, pageTheme, mapQuery, ma
       {chapters.length > 0 && (
         <PageSection variant="dark" className="lg:py-12!">
           <FilialeChapters chapters={chapters} highlightsLabel={t("specialtiesLabel")} />
+        </PageSection>
+      )}
+
+      {/* Livraison : la vidéo de la maison, les conditions et l'appel pour commander. */}
+      {subsidiary.deliverySection && (
+        <PageSection variant="dark" id="livraison" ariaLabelledby="wabi-delivery-title" overflow="hidden" className="scroll-mt-6">
+          <FilialeTeaser
+            name={name}
+            video={subsidiary.deliverySection.video}
+            eyebrow={subsidiary.deliverySection.eyebrow}
+            title={subsidiary.deliverySection.title}
+            caption={subsidiary.deliverySection.text}
+            titleId="wabi-delivery-title"
+            reverse
+            details={subsidiary.deliverySection.details.map((detail) => (
+              <span key={detail} className="filiale-teaser__chip">
+                {detail}
+              </span>
+            ))}
+            actions={
+              <Button
+                href={`tel:${subsidiary.deliverySection.phone.replace(/\s/g, "")}`}
+                native
+                ariaLabel={tWabi("deliveryCallAria", { phone: subsidiary.deliverySection.phone })}
+              >
+                <Phone size={16} aria-hidden="true" />
+                {tWabi("deliveryCall")} · {subsidiary.deliverySection.phone}
+              </Button>
+            }
+          />
         </PageSection>
       )}
 

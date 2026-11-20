@@ -551,7 +551,9 @@
   "wabi": {
     "teaserEyebrow": "Vibe · Food · Drink",
     "teaserTitle": "L'esprit Wabi Sabi, en mouvement",
-    "teaserCaption": "La salle aux lumières dorées, l'assiette dressée à la main, le geste du barman : quinze secondes dans l'atmosphère de la maison."
+    "teaserCaption": "La salle aux lumières dorées, l'assiette dressée à la main, le geste du barman : quinze secondes dans l'atmosphère de la maison.",
+    "deliveryCall": "Commander",
+    "deliveryCallAria": "Commander par téléphone au {phone}"
   },
   "muzik": {
     "stringsSound": "Son des cordes",

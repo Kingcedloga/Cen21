@@ -411,6 +411,20 @@
         "src": "/filiales/videos/Teasers/Video%20by%20wabisabi_kin.mp4",
         "poster": "/filiales/photos/filiale-02/hero/01-salle-principale.jpg"
       },
+      "deliverySection": {
+        "eyebrow": "Delivery",
+        "title": "The Wabi Sabi experience, at home",
+        "text": "Sushi, signature dishes and house desserts delivered to your door, plated as in the dining room.",
+        "details": [
+          "Free delivery",
+          "12pm – 4pm"
+        ],
+        "phone": "+243 971 559 933",
+        "video": {
+          "src": "/filiales/videos/Teasers/wabi-livraison.mp4",
+          "poster": "/filiales/photos/filiale-02/livraison-poster.jpg"
+        }
+      },
       "aboutSection": {
         "eyebrow": "About Wabi Sabi",
         "title": "The art of the moment, between sky and cityscape",
@@ -1027,7 +1041,7 @@
         "phone": "+243 81 00 00 008"
       },
       "social": {
-        "instagram": "https://www.instagram.com/papajohns.kin",
+        "instagram": "https://www.instagram.com/papajohnsrdc/",
         "facebook": "https://www.facebook.com/papajohns.kin",
         "linkedin": "https://www.linkedin.com/company/papa-johns-kin"
       },
@@ -1054,12 +1068,12 @@
         "phone": "+243 81 00 00 009"
       },
       "social": {
-        "instagram": "https://www.instagram.com/pinkberry.kin",
+        "instagram": "https://www.instagram.com/pinkberrydrc/",
         "facebook": "https://www.facebook.com/pinkberry.kin",
         "linkedin": "https://www.linkedin.com/company/pinkberry-kin"
       },
       "accentColor": "#F4A7C3",
-      "externalUrl": "https://www.pinkberry.com/",
+      "externalUrl": "https://pinkberrydrc.app/",
       "brandLogo": "/filiales/logos/filiale-09.png",
       "coverImage": "/filiales/photos/filiale-09/PBRY_Original_Logo_MilkPour.png",
       "galleryImages": [],
@@ -1242,7 +1256,7 @@
         "phone": "+243 81 00 00 010"
       },
       "social": {
-        "instagram": "https://www.instagram.com/painquotidien.kin",
+        "instagram": "https://www.instagram.com/lepainquotidienrdc/",
         "facebook": "https://www.facebook.com/painquotidien.kin",
         "linkedin": "https://www.linkedin.com/company/pain-quotidien-kin"
       },

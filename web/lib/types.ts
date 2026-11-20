@@ -151,6 +151,18 @@ export type SubsidiaryIntroSection = {
   secondaryImage: SubsidiaryAboutSlide;
 };
 
+/** Livraison d'une maison : vidéo verticale, conditions et numéro de commande. */
+export type SubsidiaryDeliverySection = {
+  eyebrow: string;
+  title: string;
+  text: string;
+  /** Conditions en pastilles, ex. « Livraison gratuite », « 12h – 16h ». */
+  details: string[];
+  /** Numéro de commande, au format international. */
+  phone: string;
+  video: HeroVideo;
+};
+
 export type Subsidiary = {
   slug: string;
   name: string;
@@ -175,6 +187,8 @@ export type Subsidiary = {
   heroVideo?: HeroVideo;
   /** Vidéo teaser de la maison (Café Muzik : section « L'ambiance du patio »). */
   teaserVideo?: HeroVideo;
+  /** Service de livraison présenté en vidéo (Wabi Sabi). */
+  deliverySection?: SubsidiaryDeliverySection;
   /** Hero éditorial dédié (Wabi Sabi). */
   heroSection?: SubsidiaryHeroSection;
   /** Philosophie de la marque (Wabi Sabi). */

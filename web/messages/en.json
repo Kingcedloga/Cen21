@@ -551,7 +551,9 @@
   "wabi": {
     "teaserEyebrow": "Vibe · Food · Drink",
     "teaserTitle": "The Wabi Sabi spirit, in motion",
-    "teaserCaption": "The room in golden light, the plate dressed by hand, the bartender's gesture: fifteen seconds in the house's atmosphere."
+    "teaserCaption": "The room in golden light, the plate dressed by hand, the bartender's gesture: fifteen seconds in the house's atmosphere.",
+    "deliveryCall": "Order now",
+    "deliveryCallAria": "Order by phone on {phone}"
   },
   "muzik": {
     "stringsSound": "String sound",
