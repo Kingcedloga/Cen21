@@ -5,7 +5,7 @@
       "name": "L'Olive Verte",
       "sector": "lounge",
       "tagline": "Restaurant & lounge — premium open-air sports bar",
-      "description": "Premium open-air sports bar on Boulevard du 30 Juin. African cuisine, cocktails, swimming pool, large football screens, karaoke, and lounge in a lively, festive atmosphere.",
+      "description": "A premium open-air sports bar on Boulevard du 30 Juin. African cuisine, cocktails, a swimming pool, big screens for football, karaoke and a lounge, in a lively, festive atmosphere.",
       "practicalInfo": {
         "address": "40 Boulevard du 30 Juin, TMB Bank, Kinshasa",
         "hours": "Daily 11am–2am",
@@ -70,12 +70,12 @@
         "description": "From hearty African classics to fresh contemporary dishes, every plate at L'Olive Verte is crafted with quality ingredients and bold flavours — for a memorable dining experience at any hour.",
         "rows": [
           {
-            "title": "Fresh, generous cuisine for every occasion",
+            "title": "Fresh, generous cooking, at any hour",
             "description": "Our chefs work with the finest seasonal produce to create dishes that balance flavour and conviviality. Whether it's a quick lunch, a business meal or a festive evening, quality is always at the table."
           },
           {
-            "title": "The most attractive dishes, made just for you",
-            "description": "From wood-fired grills to carefully crafted starters, every creation on our menu reflects our passion for hospitality. Pair your plate with one of our signature cocktails for a truly complete experience."
+            "title": "The tastiest dishes, just for you",
+            "description": "From wood-fired grills to carefully crafted starters, every creation on our menu reflects our passion for hospitality and fine food. Pair your plate with one of our signature cocktails for a truly complete experience."
           },
           {
             "title": "A warm welcome, every single time",
@@ -102,7 +102,7 @@
               },
               {
                 "name": "Market Garden Salad",
-                "description": "Seasonal greens, shaved vegetables, herbs and a light citrus vinaigrette.",
+                "description": "Seasonal vegetables, fresh herbs and a light citrus vinaigrette.",
                 "price": "$11"
               }
             ]
@@ -158,7 +158,7 @@
               },
               {
                 "name": "Seasonal Fruit Tart",
-                "description": "Buttery pastry, pastry cream and fresh seasonal fruit.",
+                "description": "Shortcrust pastry, crème pâtissière and fresh seasonal fruit.",
                 "price": "$8"
               }
             ]
@@ -249,10 +249,10 @@
         "attribution": "Wabi Sabi · Gombe, Kinshasa"
       },
       "diningSection": {
-        "title": "Experience contemporary Asia atop Kinshasa",
+        "title": "Savour contemporary Asia above Kinshasa",
         "paragraphs": [
           "Perched above Gombe, Wabi Sabi invites you on a culinary journey where Japanese precision meets contemporary creativity. Exceptional sushi, charcoal-fired Robatayaki, and subtly spiced Thai curry form a menu designed to awaken every sense.",
-          "The lounge bar extends the experience with signature cocktails, curated wines, and a panoramic view over Kinshasa that turns every evening into a suspended moment.",
+          "The lounge bar extends the experience with signature cocktails, curated wines, and a panoramic view over Kinshasa that turns every evening into a moment out of time.",
           "Whether for a business lunch, a romantic dinner, or an evening with friends, our team welcomes you in a refined setting where hospitality becomes a true celebration."
         ],
         "highlights": [
@@ -284,7 +284,7 @@
         "title": "Our Bar",
         "paragraphs": [
           "The Wabi Sabi lounge bar is where mixology meets Japanese elegance. Our bartenders craft signature cocktails with Asian-inspired flavours, reimagined classics, and a curated selection of sake, whisky, and fine wines.",
-          "Set in a contemporary space overlooking Kinshasa, the bar invites you to extend the experience after dinner — a moment of ease where every glass becomes an invitation to travel."
+          "Set in a contemporary space overlooking Kinshasa, the bar invites you to extend the experience after dinner — a moment to unwind, where every glass is an invitation to travel."
         ],
         "highlights": [
           "Signature cocktails",
@@ -293,7 +293,7 @@
           "Curated wines"
         ],
         "cta": {
-          "label": "About our bar",
+          "label": "Discover the lounge",
           "href": "#galerie"
         },
         "image": "/filiales/photos/filiale-02/bar-primary.jpg",
@@ -468,7 +468,7 @@
           },
           {
             "id": "ws-3",
-            "quote": "Discreet, attentive service and a refined atmosphere that never feels cold. My favourite address for an exceptional evening in Gombe.",
+            "quote": "Discreet, attentive service and a refined atmosphere that never feels cold. My favourite spot for an exceptional evening in Gombe.",
             "author": "Sarah N.",
             "role": "Kinshasa resident",
             "rating": 5,
@@ -491,7 +491,7 @@
       "name": "K Lounge",
       "sector": "lounge",
       "tagline": "Premium restaurant & lounge bar — rooftop",
-      "description": "Premium address at RR House, Boulevard du 30 Juin. Rooftop, international cuisine, creative cocktails, festive atmosphere, and panoramic views over the capital.",
+      "description": "A premium venue at RR House, Boulevard du 30 Juin. A rooftop, international cuisine, creative cocktails, a festive atmosphere and panoramic views over the capital.",
       "practicalInfo": {
         "address": "124 Boulevard du 30 Juin, Immeuble RR House, 4ème Niveau",
         "hours": "Wed–Sun 6pm–3am",
@@ -562,7 +562,7 @@
       },
       "aboutSection": {
         "eyebrow": "The rooftop",
-        "title": "K Lounge Experience Redefined",
+        "title": "The K Lounge experience, reinvented",
         "description": "Atop RR House, K Lounge brings together international cuisine, creative mixology, and a refined nightlife atmosphere. A rooftop where elegance meets energy — for evenings as memorable as the view over Kinshasa.",
         "ctaLabel": "Discover K Lounge",
         "ctaHref": "/contact",
@@ -604,8 +604,8 @@
       "slug": "millionaire-club",
       "name": "Millionaire Club",
       "sector": "nightclub",
-      "tagline": "Nightclub — themed nights & electric evenings",
-      "description": "Kinshasa nightlife landmark at 72B/95 Boulevard du 30 Juin, Gombe. African tribal and French Touch themed nights, premium DJ programming, open daily from 6pm to 6am.",
+      "tagline": "Nightclub — themed parties & electrifying nights",
+      "description": "Kinshasa's nightlife landmark at 72B/95 Boulevard du 30 Juin, Gombe. African tribal and French Touch themed nights and premium DJ line-ups, open from 6pm to 6am.",
       "practicalInfo": {
         "address": "72B Boulevard du 30 Juin, Gombe, Kinshasa, En face de la CNSS",
         "hours": "Daily 6pm–6am",
@@ -686,7 +686,7 @@
           }
         },
         {
-          "hour": "12am",
+          "hour": "Midnight",
           "title": "The VIP area",
           "text": "Reserved tables, bottles served under sparklers.",
           "image": {
@@ -715,7 +715,7 @@
       ],
       "aboutSection": {
         "eyebrow": "Premium nightlife",
-        "subtitle": "Themed nights & electric evenings",
+        "subtitle": "Themed parties & electrifying nights",
         "title": "The art of Kinshasa after dark",
         "description": "In the heart of Gombe, Millionaire Club embodies nightlife excellence: international DJ sets, African Tribal and French Touch themed nights, VIP spaces, and an atmosphere where luxury meets energy. From 6pm to 6am, every evening becomes an unforgettable experience.",
         "ctaLabel": "Book your night",
@@ -751,7 +751,7 @@
         "highlights": [
           {
             "icon": "music",
-            "title": "DJ programming",
+            "title": "DJ line-ups",
             "description": "Premium sets & signature themed nights"
           },
           {
@@ -773,7 +773,7 @@
       "name": "Café Muzik",
       "sector": "lounge",
       "tagline": "Restaurant, lounge & bar — patio & live music",
-      "description": "Lively address on Boulevard du 30 Juin. Outdoor patio, varied cuisine (pizza, Indian, Moroccan), live music, karaoke, and DJ sets for animated evenings.",
+      "description": "A friendly venue on Boulevard du 30 Juin. An outdoor patio, varied cuisine (pizza, Indian, Moroccan), live music, karaoke and DJ sets for lively evenings.",
       "practicalInfo": {
         "address": "72B Boulevard du 30 Juin, En face de la CNSS, Kinshasa",
         "hours": "Daily 12pm–2am",
@@ -795,7 +795,7 @@
         "benefits": [
           {
             "title": "Live Music",
-            "description": "Live sets and DJ nights for an animated evening."
+            "description": "Live sets and DJ nights for a lively atmosphere."
           },
           {
             "title": "Varied Cuisine",
@@ -865,10 +865,10 @@
             "imageAlt": "Café Muzik — Grilled Protein Bowl"
           },
           {
-            "name": "Chef's Plated Dish",
+            "name": "Chef's Signature Dish",
             "price": "$18.00",
             "image": "/filiales/photos/filiale-05/menu/web/DSC08347.jpg",
-            "imageAlt": "Café Muzik — Chef's Plated Dish"
+            "imageAlt": "Café Muzik — Chef's Signature Dish"
           },
           {
             "name": "Berry Dessert",
@@ -885,7 +885,7 @@
       "name": "Moka & More",
       "sector": "restaurant",
       "tagline": "Café, lounge & restaurant — Le Premier Shopping Mall",
-      "description": "Café and restaurant at Le Premier Shopping Mall, Gombe. Pastries, breakfasts, burgers, full bar, and outdoor terrace for gourmet moments at any time of day.",
+      "description": "A café and restaurant at Le Premier Shopping Mall, Gombe. Pastries, breakfasts, burgers, a full bar and an outdoor terrace, for gourmet moments at any time of day.",
       "practicalInfo": {
         "address": "6133 Avenue Lukusa, Gombe, Kinshasa — Premier Mall",
         "hours": "Daily 7am–11pm"
@@ -918,15 +918,15 @@
         {
           "hour": "7am",
           "title": "The café",
-          "text": "Specialty coffee, freshly baked pastries and hearty breakfasts to open the day.",
+          "text": "Specialty coffee, freshly baked pastries and hearty breakfasts to start the day.",
           "image": {
             "src": "/filiales/photos/filiale-06/gallery/dsc09727.jpg",
             "alt": "Moka & More — bright café corner, round tables and light armchairs"
           }
         },
         {
-          "hour": "12pm",
-          "title": "The kitchen",
+          "hour": "Noon",
+          "title": "The food",
           "text": "Burgers, wraps and generous plates, made with fresh, seasonal ingredients.",
           "image": {
             "src": "/filiales/photos/filiale-06/about-mokomore1.png",
@@ -980,7 +980,7 @@
       "name": "Gourmet Mexicana",
       "sector": "restaurant",
       "tagline": "Authentic premium Mexican restaurant",
-      "description": "Authentic, refined Mexican cuisine in Kinshasa. Spicy and mild dishes, fresh and colourful atmosphere, ideal for a convivial dinner with friends or family.",
+      "description": "Authentic, refined Mexican cuisine in Kinshasa. Spicy and mild dishes in a fresh, colourful atmosphere, ideal for a convivial dinner with friends or family.",
       "practicalInfo": {
         "address": "9ème étage, Matrix Tower, Boulevard du 30 Juin, Gombe, Kinshasa",
         "hours": "Tue–Sun 12pm–11pm"
@@ -1047,7 +1047,7 @@
       "name": "Pinkberry",
       "sector": "restaurant",
       "tagline": "Frozen yogurt & fresh flavours",
-      "description": "Reference brand for frozen yogurt in Kinshasa. Fresh flavours, gourmet toppings, and a refreshing experience for a sweet break at any time.",
+      "description": "Kinshasa's go-to brand for frozen yogurt. Fresh flavours, gourmet toppings and a refreshing experience for a sweet break at any time.",
       "practicalInfo": {
         "address": "Kinshasa",
         "hours": "Daily 10am–10pm",
@@ -1080,7 +1080,7 @@
       },
       "productGallerySection": {
         "eyebrow": "Photo Gallery",
-        "title": "Let's See Our Gallery",
+        "title": "Explore Our Gallery",
         "description": "A closer look at our frozen yogurt, toppings, and signature creations.",
         "categories": [
           {
@@ -1118,7 +1118,7 @@
           },
           {
             "src": "/filiales/photos/filiale-09/PB_PinkTeas_StrawberryPoppingSoda-WStrawberry.png",
-            "alt": "Strawberry popping soda tea — Pinkberry",
+            "alt": "Strawberry popping soda — Pinkberry",
             "categoryIds": [
               "smoothies",
               "specials"
@@ -1219,14 +1219,14 @@
         "title": "Get In Touch",
         "hoursTitle": "Opening hours",
         "contactInfoTitle": "Contact info",
-        "socialTitle": "Social contact",
+        "socialTitle": "Social media",
         "formTitle": "Drop us a line",
         "namePlaceholder": "Your Name *",
         "emailPlaceholder": "Your Email *",
         "phonePlaceholder": "Your Phone",
         "subjectPlaceholder": "Subject",
         "messagePlaceholder": "Your Message …",
-        "submitLabel": "Submit Now"
+        "submitLabel": "Send"
       },
       "featured": false
     },

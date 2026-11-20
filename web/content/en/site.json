@@ -1,6 +1,6 @@
 {
   "name": "Cen21 Hospitality",
-  "tagline": "The art of exceptional living",
+  "tagline": "The art of the exceptional",
   "description": "A premium holding company dedicated to hospitality, entertainment, and high-end lifestyle experiences.",
   "contact": {
     "email": "feedback@cen21hospitality.com",
@@ -20,13 +20,13 @@
     },
     {
       "youtubeId": "https://youtu.be/cCRgd85KfxY",
-      "title": "Ten addresses,",
+      "title": "Ten venues,",
       "titleAccent": "one standard of excellence"
     },
     {
       "youtubeId": "https://youtu.be/cCRgd85KfxY",
       "title": "The art of",
-      "titleAccent": "exceptional living"
+      "titleAccent": "the exceptional"
     }
   ],
   "heroImage": "/home/hero/01-salon.jpg",

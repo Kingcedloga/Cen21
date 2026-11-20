@@ -7,7 +7,7 @@
       "date": "2026-08-15T19:30:00",
       "location": "L'Olive Verte, Boulevard du 30 Juin — Kinshasa",
       "subsidiarySlug": "olive-verte",
-      "excerpt": "Live match on big screens, African cuisine, and open-air lounge atmosphere."
+      "excerpt": "Live match on big screens, African cuisine and an open-air lounge atmosphere."
     },
     {
       "id": "evt-2",
@@ -50,7 +50,7 @@
       "location": "Millionaire Club, Gombe — Kinshasa",
       "subsidiarySlug": "millionaire-club",
       "image": "/filiales/photos/filiale-04/events/05-african-tribal-night.webp",
-      "excerpt": "African tribal themed night with international DJ and premium programming.",
+      "excerpt": "An African tribal themed night with an international DJ and a premium line-up.",
       "status": "upcoming"
     },
     {
@@ -74,7 +74,7 @@
       "location": "Millionaire Club, Gombe — Kinshasa",
       "subsidiarySlug": "millionaire-club",
       "image": "/filiales/photos/filiale-04/events/03-neon-saturday.webp",
-      "excerpt": "Immersive neon night — visuals, lasers, and electro programming.",
+      "excerpt": "An immersive neon night — visuals, lasers and an electro line-up.",
       "status": "sold-out"
     },
     {
@@ -105,7 +105,7 @@
       "date": "2026-10-04T21:00:00",
       "location": "Café Muzik, Boulevard du 30 Juin — Kinshasa",
       "subsidiarySlug": "cafe-muzik",
-      "excerpt": "An animated evening of DJ sets, cocktails, and international cuisine."
+      "excerpt": "A lively evening of DJ sets, cocktails and international cuisine."
     },
     {
       "id": "evt-6",
@@ -123,7 +123,7 @@
       "date": "2026-08-23T20:00:00",
       "location": "Moka & More, Le Premier Shopping Mall — Kinshasa",
       "subsidiarySlug": "moka-more",
-      "excerpt": "Live jazz trio, cozy ambiance, and our signature coffee menu all evening."
+      "excerpt": "A live jazz trio, an intimate atmosphere and our signature coffee menu all evening."
     },
     {
       "id": "evt-10",
@@ -168,7 +168,7 @@
       "date": "2026-09-27T17:00:00",
       "location": "Gourmet Mexicana, Kinshasa",
       "subsidiarySlug": "gourmet-mexicana",
-      "excerpt": "A friendly workshop to learn how to prepare an authentic guacamole."
+      "excerpt": "A friendly workshop to learn how to make authentic guacamole."
     },
     {
       "id": "evt-7",
@@ -196,7 +196,7 @@
       "date": "2026-08-24T18:00:00",
       "location": "Pinkberry Kinshasa",
       "subsidiarySlug": "pinkberry",
-      "excerpt": "Build your perfect cup: real fruit, crunchy granola, and generous sauces, all you like."
+      "excerpt": "Build your perfect cup: real fruit, crunchy granola and generous sauces, as much as you like."
     },
     {
       "id": "evt-17",
@@ -216,7 +216,7 @@
       "location": "Millionaire Club, Gombe — Kinshasa",
       "subsidiarySlug": "millionaire-club",
       "image": "/filiales/photos/filiale-04/events/01-urban-wednesday.webp",
-      "excerpt": "Hip-hop, R&B and premium urban vibes, as every Wednesday.",
+      "excerpt": "Hip-hop, R&B and premium urban vibes, like every Wednesday.",
       "status": "upcoming"
     },
     {
@@ -259,7 +259,7 @@
       "location": "Millionaire Club, Gombe — Kinshasa",
       "subsidiarySlug": "millionaire-club",
       "image": "/filiales/photos/filiale-04/events/04-afro-fusion-sunday.webp",
-      "excerpt": "Afrobeats, amapiano and rumba remixed to close the weekend.",
+      "excerpt": "Afrobeats, amapiano and a fresh take on rumba to close the weekend.",
       "status": "upcoming"
     },
     {
@@ -279,7 +279,7 @@
       "location": "Moka & More, Le Premier Shopping Mall — Kinshasa",
       "subsidiarySlug": "moka-more",
       "image": "/filiales/photos/filiale-06/gallery/dsc09714.jpg",
-      "excerpt": "Breakfasts, pastries and signature coffees on the terrace, on Sunday morning."
+      "excerpt": "Breakfasts, pastries and signature coffees on the terrace, every Sunday morning."
     },
     {
       "id": "evt-2612-wabi-sushi",
@@ -363,7 +363,7 @@
       "location": "Millionaire Club, Gombe — Kinshasa",
       "subsidiarySlug": "millionaire-club",
       "image": "/filiales/photos/filiale-04/gallery/08-dsc-6684-modifier.webp",
-      "excerpt": "New Year's Eve at the club: DJs, VIP tables and the midnight countdown until dawn.",
+      "excerpt": "New Year's Eve at the club: DJs, VIP tables, the midnight countdown and dancing until dawn.",
       "status": "vip"
     },
     {
@@ -384,7 +384,7 @@
       "location": "Moka & More, Le Premier Shopping Mall — Kinshasa",
       "subsidiarySlug": "moka-more",
       "image": "/filiales/photos/filiale-06/gallery/dsc09720.jpg",
-      "excerpt": "Live jazz, a hushed atmosphere and signature coffees in the evening."
+      "excerpt": "Live jazz, an intimate atmosphere and signature coffees all evening."
     },
     {
       "id": "evt-2701-muzik-karaoke",

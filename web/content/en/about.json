@@ -1,6 +1,6 @@
 {
   "heroImage": "/home/groupCen21-web.jpg",
-  "history": "Founded on a bold vision of contemporary hospitality, Cen21 Hospitality brings together iconic addresses where gastronomy, mixology, and scenography meet. Each venue cultivates its own identity while sharing a common standard: delivering memorable moments.",
+  "history": "Founded on a bold vision of contemporary hospitality, Cen21 Hospitality brings together iconic venues where gastronomy, mixology and scenography meet. Each venue cultivates its own identity while sharing a common standard: creating memorable moments.",
   "vision": "To become the African benchmark for premium lifestyle experiences, creating worlds where detail, service, and emotion redefine industry standards.",
   "values": [
     {
@@ -13,7 +13,7 @@
     },
     {
       "title": "Authenticity",
-      "description": "Places with soul, rooted in their territory and community."
+      "description": "Places with soul, rooted in their surroundings and their community."
     },
     {
       "title": "Discretion",
@@ -21,7 +21,7 @@
     },
     {
       "title": "Hospitality",
-      "description": "A warm, attentive welcome where every guest feels expected."
+      "description": "A warm, attentive welcome, where every guest feels they were expected."
     },
     {
       "title": "Togetherness",
@@ -34,7 +34,7 @@
       "name": "Kenny Rawtani",
       "role": "Chairman",
       "photo": "/home/profil-chairman.png",
-      "quote": "Building tomorrow's African luxury means honoring the richness of our land.",
+      "quote": "Building tomorrow's African luxury means honouring the richness of our land.",
       "bio": "Cen21 embodies the excellence of Congolese hospitality — every venue is a promise of an unforgettable experience. Our ambition is to make Kinshasa a leading lifestyle destination on the African continent, staying true to our values of excellence and authenticity."
     },
     {
@@ -42,7 +42,7 @@
       "role": "Vice Chairman",
       "photo": "/home/vice-chairman-profil.png",
       "quote": "Excellence is not a goal — it's a habit cultivated every single day.",
-      "bio": "Our strategic development rests on a long-term vision: building a portfolio of complementary addresses, each with a strong identity, and creating synergies that lastingly reinforce the strength and coherence of the Cen21 group."
+      "bio": "Our strategic development rests on a long-term vision: building a portfolio of complementary venues, each with a strong identity, and creating synergies that strengthen the reach and coherence of the Cen21 group for years to come."
     },
     {
       "name": "Subrajeet Phookan",
@@ -63,7 +63,7 @@
       "role": "Chief Operating Officer, Qsr",
       "photo": "/home/coo-profil2.png",
       "quote": "Anticipating every need before it's expressed — that is our signature.",
-      "bio": "Creating an exceptional guest experience means anticipating every need before it's expressed. Our team ensures that every visit — whether a dinner, an after-work, or an evening — leaves a lasting impression in the memory of our guests."
+      "bio": "Creating an exceptional guest experience means anticipating every need before it's expressed. Our team makes sure that every visit — a dinner, after-work drinks or a big night out — leaves a lasting impression on our guests."
     }
   ],
   "milestones": [
@@ -80,7 +80,7 @@
     },
     {
       "id": "gombe-tables",
-      "title": "La Gombe, at the table",
+      "title": "Gombe, the dining scene",
       "description": "Asian cuisine on Wabi Sabi's rooftop, Mexican flavours on the 9th floor of Matrix Tower, coffee and pastries at Premier Mall: the group broadens its menu.",
       "subsidiarySlugs": [
         "wabi-sabi",
@@ -91,7 +91,7 @@
     {
       "id": "lubumbashi",
       "title": "Heading to Lubumbashi",
-      "description": "Wabi Sabi and K Lounge open a second address in Lubumbashi, on Boulevard du 30 Juin. The group is now present in two cities.",
+      "description": "Wabi Sabi and K Lounge open a second location in Lubumbashi, on Boulevard du 30 Juin. The group is now present in two cities.",
       "subsidiarySlugs": [
         "wabi-sabi",
         "k-lounge"
@@ -100,7 +100,7 @@
     {
       "id": "enseignes-internationales",
       "title": "International brands",
-      "description": "Pinkberry and Le Pain Quotidien join the portfolio: two brands known worldwide, run in Kinshasa to the group's standards.",
+      "description": "Pinkberry and Le Pain Quotidien join the portfolio: two world-renowned brands, run in Kinshasa to the group's standards.",
       "subsidiarySlugs": [
         "pinkberry",
         "pain-quotidien"
@@ -119,7 +119,7 @@
       "id": "aujourd-hui",
       "year": "2026",
       "title": "Ten houses, two cities",
-      "description": "Restaurants, lounges, rooftops and a nightclub: ten addresses in Kinshasa and Lubumbashi, one shared standard of hospitality.",
+      "description": "Restaurants, lounges, rooftops and a nightclub: ten venues in Kinshasa and Lubumbashi, one shared standard of hospitality.",
       "subsidiarySlugs": []
     }
   ],
