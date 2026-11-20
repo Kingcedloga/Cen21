@@ -296,8 +296,8 @@
           "label": "Discover the lounge",
           "href": "#galerie"
         },
-        "image": "/filiales/photos/filiale-02/bar-primary.jpg",
-        "imageAlt": "Wabi Sabi — the long counter, red banquette and teal armchairs beneath the lit glass wall",
+        "image": "/filiales/photos/filiale-02/bar-primary-comptoir.jpg",
+        "imageAlt": "Wabi Sabi — the bar counter, yellow and red stools beneath golden pendant lights",
         "inset": {
           "src": "/filiales/photos/filiale-02/bar-secondary.jpg",
           "alt": "Wabi Sabi — tobiko maki served on a wooden box"
@@ -552,7 +552,7 @@
         "/filiales/photos/filiale-03/gallery/19-dsc09969.webp"
       ],
       "teaserVideo": {
-        "src": "/filiales/videos/Teasers/teaser-klounge.mp4",
+        "src": "/filiales/videos/Teasers/teaser-klounge-web.mp4",
         "poster": "/filiales/photos/filiale-03/cover.webp"
       },
       "introSection": {
@@ -637,22 +637,41 @@
         "poster": "/filiales/photos/filiale-04/cover.webp"
       },
       "galleryImages": [
-        "/filiales/photos/filiale-04/gallery/01-dsc-0420-modifier.webp",
-        "/filiales/photos/filiale-04/gallery/02-dsc-1862-modifier.webp",
-        "/filiales/photos/filiale-04/gallery/04-dsc-3757-modifier.webp",
-        "/filiales/photos/filiale-04/gallery/05-dsc-4746-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/11-dsc-7329-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/22-soiree.jpg",
+        "/filiales/photos/filiale-04/gallery/12-dsc-8392-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/19-soiree.jpg",
         "/filiales/photos/filiale-04/gallery/06-dsc-5179-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/16-soiree.jpg",
+        "/filiales/photos/filiale-04/gallery/15-dsc-9599-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/13-dsc-8436-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/04-dsc-3757-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/20-soiree.jpg",
+        "/filiales/photos/filiale-04/gallery/14-dsc-9554-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/17-soiree.jpg",
+        "/filiales/photos/filiale-04/gallery/01-dsc-0420-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/21-soiree.jpg",
         "/filiales/photos/filiale-04/gallery/07-dsc-5786-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/02-dsc-1862-modifier.webp",
         "/filiales/photos/filiale-04/gallery/08-dsc-6684-modifier.webp",
+        "/filiales/photos/filiale-04/gallery/18-soiree.jpg",
+        "/filiales/photos/filiale-04/gallery/05-dsc-4746-modifier.webp",
         "/filiales/photos/filiale-04/gallery/09-dsc-6797-modifier.webp",
         "/filiales/photos/filiale-04/gallery/10-dsc-6860-modifier.webp",
-        "/filiales/photos/filiale-04/gallery/11-dsc-7329-modifier.webp",
-        "/filiales/photos/filiale-04/gallery/12-dsc-8392-modifier.webp",
-        "/filiales/photos/filiale-04/gallery/13-dsc-8436-modifier.webp",
-        "/filiales/photos/filiale-04/gallery/14-dsc-9554-modifier.webp",
-        "/filiales/photos/filiale-04/gallery/15-dsc-9599-modifier.webp",
+        {
+          "src": "/filiales/photos/filiale-04/gallery/guests/09-guest.jpg",
+          "category": "guests"
+        },
         {
           "src": "/filiales/photos/filiale-04/gallery/guests/01-dsc-2340.webp",
+          "category": "guests"
+        },
+        {
+          "src": "/filiales/photos/filiale-04/gallery/guests/13-guest.jpg",
+          "category": "guests"
+        },
+        {
+          "src": "/filiales/photos/filiale-04/gallery/guests/11-guest.jpg",
           "category": "guests"
         },
         {
@@ -660,11 +679,15 @@
           "category": "guests"
         },
         {
-          "src": "/filiales/photos/filiale-04/gallery/guests/03-dsc-8392.webp",
+          "src": "/filiales/photos/filiale-04/gallery/guests/07-guest.jpg",
           "category": "guests"
         },
         {
-          "src": "/filiales/photos/filiale-04/gallery/guests/04-dsc-6860.webp",
+          "src": "/filiales/photos/filiale-04/gallery/guests/08-guest.jpg",
+          "category": "guests"
+        },
+        {
+          "src": "/filiales/photos/filiale-04/gallery/guests/14-guest.jpg",
           "category": "guests"
         },
         {
@@ -672,12 +695,24 @@
           "category": "guests"
         },
         {
-          "src": "/filiales/photos/filiale-04/gallery/guests/06-dsc-4746.webp",
+          "src": "/filiales/photos/filiale-04/gallery/guests/10-guest.jpg",
+          "category": "guests"
+        },
+        {
+          "src": "/filiales/photos/filiale-04/gallery/guests/12-guest.jpg",
+          "category": "guests"
+        },
+        {
+          "src": "/filiales/photos/filiale-04/gallery/guests/15-guest.jpg",
+          "category": "guests"
+        },
+        {
+          "src": "/filiales/photos/filiale-04/gallery/guests/16-guest.jpg",
           "category": "guests"
         }
       ],
       "teaserVideo": {
-        "src": "/filiales/videos/Teasers/teaser-millionaire.mp4",
+        "src": "/filiales/videos/Teasers/millionaire-teaser.mp4",
         "poster": "/filiales/photos/filiale-04/cover.webp"
       },
       "nightTimeline": [
@@ -799,7 +834,7 @@
       },
       "accentColor": "#EF3340",
       "teaserVideo": {
-        "src": "/filiales/videos/Teasers/teaser-music.mp4"
+        "src": "/filiales/videos/Teasers/muzik-patio.mp4"
       },
       "brandLogo": "/filiales/logos/filiale-05.png",
       "coverImage": "/filiales/photos/filiale-05/cover.jpg",
@@ -1038,7 +1073,19 @@
       "practicalInfo": {
         "address": "Avenue de la Gombe, Kinshasa",
         "hours": "Daily 11am–11pm",
-        "phone": "+243 81 00 00 008"
+        "phone": "+243 81 00 00 008",
+        "locations": [
+          {
+            "city": "Kinshasa",
+            "address": "Avenue de la Gombe, Kinshasa",
+            "phone": "+243 81 00 00 008"
+          },
+          {
+            "city": "Pointe-Noire",
+            "address": "Pointe-Noire",
+            "phone": ""
+          }
+        ]
       },
       "social": {
         "instagram": "https://www.instagram.com/papajohnsrdc/",
@@ -1065,7 +1112,19 @@
       "practicalInfo": {
         "address": "Kinshasa",
         "hours": "Daily 10am–10pm",
-        "phone": "+243 81 00 00 009"
+        "phone": "+243 81 00 00 009",
+        "locations": [
+          {
+            "city": "Kinshasa",
+            "address": "Kinshasa",
+            "phone": "+243 81 00 00 009"
+          },
+          {
+            "city": "Pointe-Noire",
+            "address": "Pointe-Noire",
+            "phone": ""
+          }
+        ]
       },
       "social": {
         "instagram": "https://www.instagram.com/pinkberrydrc/",

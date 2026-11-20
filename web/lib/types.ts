@@ -495,6 +495,8 @@ export type AboutMilestone = {
   description: string;
   /** Maisons concernées (liens vers /filiales/[slug]). */
   subsidiarySlugs?: string[];
+  /** Photo du jalon ; sinon une photo de ses maisons, choisie automatiquement. */
+  image?: string;
 };
 
 /** Marque partenaire (franchises internationales opérées par le groupe). */

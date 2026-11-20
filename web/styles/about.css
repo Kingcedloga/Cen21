@@ -702,3 +702,408 @@
     transition: none;
   }
 }
+
+/* --- Implantations : la carte des deux Congo (AboutCities) --------------- */
+.about-cities {
+  padding: clamp(5rem, 10vw, 8rem) 1rem;
+  background-color: var(--color-petrol-panel-4);
+  color: var(--color-ivory);
+}
+
+/* Téléphone : titre, carte, liste. Bureau : titre et liste à gauche, carte à droite. */
+.about-cities__inner {
+  display: grid;
+  grid-template-areas: "head" "map" "list";
+  gap: clamp(2rem, 4vw, 3rem);
+  max-width: min(100%, 1400px);
+  margin-inline: auto;
+}
+
+.about-cities__head {
+  grid-area: head;
+}
+
+.about-cities__hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-rose);
+}
+
+.about-cities__hint::before {
+  content: "";
+  width: 1.5rem;
+  height: 1px;
+  background-color: currentColor;
+}
+
+.about-cities__list {
+  grid-area: list;
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-city {
+  border: 1px solid color-mix(in srgb, var(--color-ivory) 12%, transparent);
+  border-radius: var(--radius-card-lg);
+  transition:
+    border-color var(--duration-fine) var(--ease-luxury),
+    background-color var(--duration-fine) var(--ease-luxury);
+}
+
+.about-city[data-active] {
+  border-color: color-mix(in srgb, var(--color-rose) 50%, transparent);
+  background-color: color-mix(in srgb, var(--color-rose) 6%, transparent);
+}
+
+.about-city[data-selected] {
+  border-color: var(--color-rose);
+  background-color: color-mix(in srgb, var(--color-rose) 11%, transparent);
+}
+
+/* En-tête de la carte de ville : un bouton (zoom sur la carte). */
+.about-city__toggle {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "name figure" "country figure";
+  align-items: center;
+  gap: 0.15rem 1rem;
+  width: 100%;
+  padding: 1.25rem 1.5rem 0.5rem;
+  border-radius: var(--radius-card-lg) var(--radius-card-lg) 0 0;
+  text-align: left;
+  cursor: pointer;
+}
+
+.about-city__toggle:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: -2px;
+}
+
+.about-city__name {
+  grid-area: name;
+  font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2.125rem);
+  line-height: 1.1;
+  color: var(--color-ivory);
+}
+
+.about-city__country {
+  grid-area: country;
+  font-size: 0.875rem;
+  color: color-mix(in srgb, var(--color-ivory) 66%, transparent);
+}
+
+.about-city__figure {
+  grid-area: figure;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.about-city__count {
+  font-size: clamp(2.25rem, 1.6rem + 2vw, 3.25rem);
+  line-height: 1;
+  color: var(--color-rose);
+}
+
+.about-city__unit {
+  font-size: 0.875rem;
+  color: color-mix(in srgb, var(--color-ivory) 70%, transparent);
+}
+
+.about-city__houses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0.5rem 1.5rem 1.25rem;
+  list-style: none;
+}
+
+.about-city__house {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, var(--color-ivory) 8%, transparent);
+  font-size: 0.8125rem;
+  color: color-mix(in srgb, var(--color-ivory) 88%, transparent);
+  transition:
+    border-color var(--duration-fine) var(--ease-luxury),
+    background-color var(--duration-fine) var(--ease-luxury),
+    color var(--duration-fine) var(--ease-luxury);
+}
+
+.about-city__house:hover {
+  border-color: var(--color-rose);
+  background-color: color-mix(in srgb, var(--color-rose) 14%, transparent);
+  color: var(--color-ivory);
+}
+
+.about-city__house:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 2px;
+}
+
+/* La carte : perspective pour l'inclinaison au pointeur. */
+.about-cities__map-wrap {
+  grid-area: map;
+  width: 100%;
+  max-width: 40rem;
+  margin-inline: auto;
+  perspective: 1200px;
+}
+
+.about-cities__map {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-card-lg);
+  background-color: var(--color-petrol-panel-3);
+  box-shadow: 0 40px 80px -48px black;
+  transform-style: preserve-3d;
+}
+
+.about-cities__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.about-map__neighbours {
+  fill: color-mix(in srgb, var(--color-petrol) 35%, var(--color-petrol-panel-3));
+  stroke: color-mix(in srgb, var(--color-ivory) 10%, transparent);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.about-map__fill--drc {
+  fill: var(--color-ivory);
+}
+
+.about-map__fill--congo {
+  fill: var(--color-rose-mid);
+}
+
+/* Frontières des deux Congo : se dessinent à l'arrivée. */
+.about-map__border {
+  fill: none;
+  stroke: var(--color-rose);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.about-map__country-label {
+  font-family: var(--font-dm-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-anchor: middle;
+  text-transform: uppercase;
+  fill: color-mix(in srgb, var(--color-petrol-panel-4) 45%, transparent);
+  pointer-events: none;
+}
+
+/* Arcs de Kinshasa vers les autres villes. */
+.about-map__arc {
+  fill: none;
+  stroke: var(--color-rose-deep);
+  stroke-width: 2;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  opacity: 0.85;
+  transition: stroke var(--duration-fine) var(--ease-luxury);
+}
+
+.about-map__arc[data-active] {
+  stroke: var(--color-rose);
+}
+
+/* Repères : boutons posés sur la carte, centrés sur leur ville. */
+.about-cities__pins {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.about-pin {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.about-pin__button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  border-radius: 9999px;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: opacity var(--duration-fine) var(--ease-luxury);
+}
+
+.about-pin__button[data-dim] {
+  opacity: 0.5;
+}
+
+.about-pin__button:focus-visible {
+  outline: none;
+}
+
+.about-pin__button:focus-visible .about-pin__pill {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 2px;
+}
+
+.about-pin__dot {
+  position: absolute;
+  inset: 0;
+  border: 2.5px solid var(--color-ivory);
+  border-radius: 9999px;
+  background-color: var(--color-rose-deep);
+  box-shadow: 0 0 0 7px color-mix(in srgb, var(--color-rose-deep) 30%, transparent);
+  transition:
+    box-shadow var(--duration-fine) var(--ease-luxury),
+    background-color var(--duration-fine) var(--ease-luxury);
+}
+
+.about-pin__button[data-active] .about-pin__dot,
+.about-pin__button[aria-pressed="true"] .about-pin__dot {
+  background-color: var(--color-rose);
+  box-shadow: 0 0 0 9px color-mix(in srgb, var(--color-rose) 35%, transparent);
+}
+
+/* Onde de sélection (une fois). */
+.about-pin__pulse {
+  position: absolute;
+  inset: -2.5px;
+  border: 2px solid var(--color-rose);
+  border-radius: 9999px;
+  pointer-events: none;
+}
+
+.about-pin__pill {
+  position: absolute;
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--color-ivory) 18%, transparent);
+  border-radius: 0.75rem;
+  background-color: color-mix(in srgb, var(--color-petrol-panel-4) 92%, transparent);
+  white-space: nowrap;
+  text-align: left;
+  transition: border-color var(--duration-fine) var(--ease-luxury);
+}
+
+.about-pin__button[data-active] .about-pin__pill,
+.about-pin__button[aria-pressed="true"] .about-pin__pill {
+  border-color: var(--color-rose);
+}
+
+/* Pastille à côté du point (le bouton a la taille du point). */
+.about-pin[data-side="right"] .about-pin__pill {
+  left: calc(100% + 0.75rem);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.about-pin[data-side="left"] .about-pin__pill {
+  right: calc(100% + 0.75rem);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.about-pin[data-side="below"] .about-pin__pill {
+  left: 50%;
+  top: calc(100% + 0.75rem);
+  transform: translateX(-50%);
+}
+
+.about-pin__city {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-ivory);
+}
+
+.about-pin__count {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-rose);
+}
+
+/* « Vue d'ensemble » : retour à la carte entière. */
+.about-cities__overview {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--color-ivory) 25%, transparent);
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, var(--color-petrol-panel-4) 88%, transparent);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-ivory);
+  cursor: pointer;
+}
+
+.about-cities__overview:hover {
+  border-color: var(--color-rose);
+}
+
+.about-cities__overview:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 2px;
+}
+
+@media (min-width: 1024px) {
+  .about-cities__inner {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    grid-template-areas: "head map" "list map";
+    grid-template-rows: auto 1fr;
+    align-items: start;
+    column-gap: clamp(2.5rem, 5vw, 4rem);
+  }
+  .about-cities__map-wrap {
+    position: sticky;
+    top: 2rem;
+  }
+}
+
+@media (max-width: 479.98px) {
+  .about-pin__pill {
+    padding: 0.35rem 0.6rem;
+  }
+  .about-pin__city {
+    font-size: 0.8125rem;
+  }
+  .about-pin__count {
+    font-size: 0.6875rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-city,
+  .about-city__house,
+  .about-pin__button,
+  .about-pin__dot,
+  .about-pin__pill,
+  .about-map__arc {
+    transition: none;
+  }
+}

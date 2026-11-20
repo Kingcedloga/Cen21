@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { HeroCurtain } from "@/components/layout/HeroCurtain";
 import { PageSection, SECTION_SURFACE } from "@/components/layout/PageSection";
+import { AboutCities, type CityCard } from "@/components/sections/about/AboutCities";
 import { AboutFigures } from "@/components/sections/about/AboutFigures";
 import { AboutPartners, type DistinctionRow, type PartnerCard } from "@/components/sections/about/AboutPartners";
 import { AboutStory } from "@/components/sections/about/AboutStory";
@@ -18,7 +19,7 @@ import { galleryEntrySrc } from "@/lib/gallery-categories";
 import { resolvePageMetadata } from "@/lib/seo";
 import { brandSurface, contrastRatio } from "@/lib/subsidiary-brand";
 import { resolveSubsidiaryHeroImage } from "@/lib/subsidiary-hero-layout";
-import { placeCities, subsidiaryPlaces } from "@/lib/subsidiary-places";
+import { cityPresence, subsidiaryPlaces } from "@/lib/subsidiary-places";
 import type { Subsidiary } from "@/lib/types";
 
 /** Visuels de repli, tous dans public/ (aucune photo hors du site). */
@@ -67,11 +68,29 @@ export default async function AboutPage({ params }: Props) {
   const tHome = await getTranslations("home");
   const tOutro = await getTranslations("outro");
   const tCta = await getTranslations("cta");
+  const tContact = await getTranslations("contact");
 
   const count = subsidiaries.length;
   const places = subsidiaryPlaces(subsidiaries);
-  const cities = placeCities(places);
   const list = new Intl.ListFormat(l, { style: "long", type: "conjunction" });
+  // Implantations : toutes les villes du groupe, adresse précise ou non (carte).
+  const presence = cityPresence(subsidiaries);
+  const cities = presence.map((item) => item.city);
+  const cityCards: CityCard[] = presence.map((item) => ({
+    city: item.city,
+    country: t(item.country === "CG" ? "countryCG" : "countryCD"),
+    count: item.houses.length,
+    countLabel: t("citiesCount", { count: item.houses.length }),
+    unit: t("citiesUnit", { count: item.houses.length }),
+    // Fiche de la maison, ou site officiel pour les enseignes partenaires.
+    houses: item.houses.map((s) => ({
+      name: s.name,
+      href: s.externalUrl ?? `/filiales/${s.slug}`,
+      external: Boolean(s.externalUrl),
+    })),
+  }));
+  const otherCities = cities.filter((city) => city !== "Kinshasa");
+  const countryCount = new Set(presence.map((item) => item.country ?? "CD")).size;
   const countIn = (sector: Subsidiary["sector"]) => subsidiaries.filter((s) => s.sector === sector).length;
   const bySlug = new Map(subsidiaries.map((s) => [s.slug, s]));
   const housesOf = (slugs: string[] = []) =>
@@ -96,7 +115,7 @@ export default async function AboutPage({ params }: Props) {
       eyebrow: milestone.year ? t("milestoneWithYear", { label, year: milestone.year }) : label,
       title: milestone.title,
       text: milestone.description,
-      image: pickImage(candidates, used, FALLBACK_ORIGINS_IMAGE),
+      image: milestone.image ?? pickImage(candidates, used, FALLBACK_ORIGINS_IMAGE),
       venues: houses.length ? { label: t("milestoneHouses"), names: houses.map((s) => s.name) } : undefined,
     };
   });
@@ -238,6 +257,24 @@ export default async function AboutPage({ params }: Props) {
           count: places.length,
           text: t("figuresAddressesText", { cities: list.format(cities) }),
           cta: { href: "/contact#adresses", label: t("figuresMapCta") },
+        }}
+      />
+
+      <AboutCities
+        heading={{
+          eyebrow: t("citiesEyebrow"),
+          title: t("citiesTitle", { cities: cities.length, countries: countryCount }),
+          sweep: t("citiesSweep", { countries: countryCount }),
+          intro: otherCities.length ? t("citiesIntro", { others: list.format(otherCities) }) : "",
+        }}
+        cities={cityCards}
+        labels={{
+          hint: t("citiesHint"),
+          overview: t("citiesOverview"),
+          show: Object.fromEntries(cityCards.map((c) => [c.city, t("citiesShow", { city: c.city, count: c.countLabel })])),
+          newTab: tContact("newTab"),
+          mapLabel: t("citiesMapLabel", { list: list.format(cityCards.map((c) => `${c.city} (${c.countLabel})`)) }),
+          countries: { drc: t("mapCountryCD"), congo: t("mapCountryCG") },
         }}
       />
 

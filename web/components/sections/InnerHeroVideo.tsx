@@ -55,12 +55,24 @@ export function InnerHeroVideo({
       return;
     }
     element.muted = true;
+    let inView = false;
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) element.play().catch(() => {});
+      inView = entry.isIntersecting;
+      if (inView && !document.hidden) element.play().catch(() => {});
       else element.pause();
     });
     observer.observe(element);
-    return () => observer.disconnect();
+    // Onglet en arrière-plan : pause (batterie, données) ; au retour, reprise
+    // si le hero est toujours à l'écran.
+    const onVisibility = () => {
+      if (document.hidden) element.pause();
+      else if (inView) element.play().catch(() => {});
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
     // `reduced` : relancer la décision si la préférence change.
   }, [paused, reduced]);
 

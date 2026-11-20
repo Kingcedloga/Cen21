@@ -26,26 +26,19 @@ const LOGO_RATIO = 993 / 1024;
 const LINEUP_SIZE = 6;
 
 /**
- * Photos posées en premier sur le mur (rangs dans la galerie de la maison) :
- * artistes, bouteilles et invités en alternance. Les autres suivent.
- */
-const FEATURED = [10, 0, 3, 5, 6, 12, 1, 4, 13, 2, 7];
-
-/**
- * Galerie de la maison sans doublons (des portraits « invités » reprennent
- * des photos de la galerie, même prise de vue DSC), photos phares en tête.
+ * Galerie de la maison sans doublons (une même prise de vue DSC ne passe
+ * qu'une fois), dans l'ordre du contenu : l'ordre du mur se règle dans
+ * content/{fr,en}/subsidiaries.json (galleryImages).
  */
 function wallOrder(subsidiary: Subsidiary): Subsidiary["galleryImages"] {
   const seen = new Set<string>();
-  const unique = subsidiary.galleryImages.filter((entry) => {
+  return subsidiary.galleryImages.filter((entry) => {
     const shot = galleryEntrySrc(entry).match(/dsc-(\d+)/i)?.[1];
     if (!shot) return true;
     if (seen.has(shot)) return false;
     seen.add(shot);
     return true;
   });
-  const featured = FEATURED.filter((i) => i < unique.length).map((i) => unique[i]);
-  return [...featured, ...unique.filter((entry) => !featured.includes(entry))];
 }
 
 /**

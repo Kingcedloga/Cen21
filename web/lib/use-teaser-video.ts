@@ -50,15 +50,27 @@ export function useTeaserVideo({
       element.pause();
       return;
     }
+    let inView = false;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) element.play().catch(() => {});
+        inView = entry.isIntersecting;
+        if (inView && !document.hidden) element.play().catch(() => {});
         else element.pause();
       },
       { threshold: 0.35 },
     );
     observer.observe(element);
-    return () => observer.disconnect();
+    // Onglet en arrière-plan : pause (batterie, données) ; au retour, reprise
+    // si la vidéo est toujours à l'écran.
+    const onVisibility = () => {
+      if (document.hidden) element.pause();
+      else if (inView) element.play().catch(() => {});
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
   }, [near, paused, enabled]);
 
   const onTimeUpdate = () => {

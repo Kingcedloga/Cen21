@@ -15,11 +15,11 @@ const HERO_IMAGE_BY_SLUG: Partial<Record<string, string>> = {};
  */
 export const SUBSIDIARY_HERO_VIDEOS: Partial<Record<string, HeroVideo>> = {
   "k-lounge": {
-    src: "/filiales/videos/filiale-03/klounge-hero.mp4",
+    src: "/filiales/videos/filiale-03/klounge-hero-web.mp4",
     poster: "/filiales/photos/filiale-03/cover.webp",
   },
   "filiale-03": {
-    src: "/filiales/videos/filiale-03/klounge-hero.mp4",
+    src: "/filiales/videos/filiale-03/klounge-hero-web.mp4",
     poster: "/filiales/photos/filiale-03/cover.webp",
   },
 };
