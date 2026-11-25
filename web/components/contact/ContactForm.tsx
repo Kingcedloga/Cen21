@@ -1,11 +1,10 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
-import { useForm, useWatch } from "react-hook-form";
+import { useForm, useWatch, type Resolver } from "react-hook-form";
 
 import { Button } from "@/components/ui/Button";
 import { Toast, ToastViewport } from "@/components/ui/Toast";
@@ -13,13 +12,28 @@ import {
   CONTACT_GROUP,
   CONTACT_NEEDS,
   DATED_NEEDS,
-  getContactFormSchema,
   isContactNeed,
   type ContactFormValues,
   type ContactNeed,
-} from "@/lib/contact-schema";
+} from "@/lib/contact-needs";
 
 import "@/styles/contact-extras.css";
+
+/**
+ * Validation côté navigateur, écrite à la main : zod (63 Ko gzip) n'est plus
+ * embarqué dans la page. L'API (/api/contact) revalide tout avec zod.
+ */
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+function createResolver(messages: { name: string; email: string; message: string }): Resolver<ContactFormValues> {
+  return async (values) => {
+    const errors: Record<string, { type: string; message: string }> = {};
+    if ((values.name ?? "").length < 2) errors.name = { type: "min", message: messages.name };
+    if (!EMAIL_PATTERN.test(values.email ?? "")) errors.email = { type: "pattern", message: messages.email };
+    if ((values.message ?? "").length < 10) errors.message = { type: "min", message: messages.message };
+    return Object.keys(errors).length ? { values: {}, errors } : { values, errors: {} };
+  };
+}
 
 export type ContactHouse = {
   slug: string;
@@ -66,9 +80,9 @@ export function ContactForm({
   const paramNeed = isContactNeed(besoin) ? besoin : "";
   const paramHouse = fixedHouse ?? knownHouse(params.get("maison"), houses);
 
-  const schema = useMemo(
+  const resolver = useMemo(
     () =>
-      getContactFormSchema({
+      createResolver({
         name: t("errors.name"),
         email: t("errors.email"),
         message: t("errors.message"),
@@ -87,7 +101,7 @@ export function ContactForm({
     control,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormValues>({
-    resolver: zodResolver(schema),
+    resolver,
     defaultValues: { need: paramNeed, house: paramHouse, website: "" },
   });
 

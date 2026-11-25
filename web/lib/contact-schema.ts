@@ -1,26 +1,13 @@
 import { z } from "zod";
 
-/** Besoins proposés en pastilles sur /contact (valeurs aussi lues dans `?besoin=`). */
-export const CONTACT_NEEDS = [
-  "reservation",
-  "privatisation",
-  "entreprise",
-  "partenariat",
-  "presse",
-  "autre",
-] as const;
-
-export type ContactNeed = (typeof CONTACT_NEEDS)[number];
-
-/** Besoins qui appellent une date et un nombre de personnes. */
-export const DATED_NEEDS: readonly ContactNeed[] = ["reservation", "privatisation"];
-
-/** Valeur de la pastille « Le groupe » (`?maison=groupe`). */
-export const CONTACT_GROUP = "groupe";
-
-export function isContactNeed(value: string | null | undefined): value is ContactNeed {
-  return Boolean(value) && (CONTACT_NEEDS as readonly string[]).includes(value as string);
-}
+export {
+  CONTACT_GROUP,
+  CONTACT_NEEDS,
+  DATED_NEEDS,
+  isContactNeed,
+  type ContactFormValues,
+  type ContactNeed,
+} from "./contact-needs";
 
 export function getContactSchema(messages: {
   name: string;
@@ -45,15 +32,6 @@ export function getContactSchema(messages: {
 
 export type ContactFormData = z.infer<ReturnType<typeof getContactSchema>>;
 
-/**
- * Formulaire de /contact : pas de champ « sujet », il est composé à l'envoi
- * à partir du besoin et de la maison choisis.
- */
-export function getContactFormSchema(messages: { name: string; email: string; message: string }) {
-  return getContactSchema({ ...messages, subject: "" }).omit({ subject: true });
-}
-
-export type ContactFormValues = z.infer<ReturnType<typeof getContactFormSchema>>;
 
 /** Server-side validation (API route) — English messages by default. */
 export const contactSchema = getContactSchema({

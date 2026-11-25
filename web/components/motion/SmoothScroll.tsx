@@ -1,7 +1,7 @@
 "use client";
 
 import { cancelFrame, frame, type FrameData } from "framer-motion";
-import Lenis from "lenis";
+import type Lenis from "lenis";
 import { usePathname } from "next/navigation";
 import { useEffect, useSyncExternalStore } from "react";
 
@@ -151,6 +151,8 @@ export function SmoothScroll() {
     const enableQuery = window.matchMedia(ENABLE_QUERY);
     const reducedQuery = window.matchMedia(REDUCED_MOTION_QUERY);
     let instance: Lenis | null = null;
+    let loading = false;
+    let disposed = false;
     let lockObserver: MutationObserver | null = null;
     let contentObserver: ResizeObserver | null = null;
 
@@ -168,8 +170,14 @@ export function SmoothScroll() {
       else instance.start();
     };
 
-    const start = () => {
-      instance = new Lenis({
+    // Lenis n'est téléchargé que si le défilement lissé s'active (souris, ≥ 768 px,
+    // pas de reduced motion) : mobile et tablette tactiles ne paient pas son JS.
+    const start = async () => {
+      loading = true;
+      const { default: LenisClass } = await import("lenis");
+      loading = false;
+      if (disposed || instance || !shouldRun()) return;
+      instance = new LenisClass({
         lerp: isMac() ? LENIS_OPTIONS.lerp.mac : LENIS_OPTIONS.lerp.other,
         smoothWheel: true,
         syncTouch: false,
@@ -201,10 +209,14 @@ export function SmoothScroll() {
       setCurrent(null);
     };
 
+    const shouldRun = () => enableQuery.matches && !reducedQuery.matches;
+
     const update = () => {
-      const shouldRun = enableQuery.matches && !reducedQuery.matches;
-      if (shouldRun && !instance) start();
-      else if (!shouldRun) stop();
+      if (shouldRun()) {
+        if (!instance && !loading) void start();
+      } else {
+        stop();
+      }
     };
 
     update();
@@ -213,6 +225,7 @@ export function SmoothScroll() {
     const cancelHash = scrollToInitialHash(() => instance);
 
     return () => {
+      disposed = true;
       cancelHash();
       enableQuery.removeEventListener("change", update);
       reducedQuery.removeEventListener("change", update);
