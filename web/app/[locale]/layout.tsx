@@ -19,6 +19,11 @@ import { createDefaultMetadata, siteViewport } from "@/lib/seo";
 
 export const viewport = siteViewport;
 
+// Locale inconnue (ex. /image-manquante.png, /wp-login.php : les chemins avec un
+// point passent hors du proxy) : 404 directe. Sans cela, le layout tentait de
+// lire le contenu d'une langue inexistante et répondait 500.
+export const dynamicParams = false;
+
 import "../globals.css";
 
 export async function generateMetadata({
