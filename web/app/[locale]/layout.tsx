@@ -4,6 +4,7 @@ import { getMessages, getTranslations, setRequestLocale } from "next-intl/server
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 
+import { CookieConsent } from "@/components/layout/CookieConsent";
 import { Footer } from "@/components/layout/Footer";
 import { PhosphorProvider } from "@/components/layout/PhosphorProvider";
 import { RouteTransition } from "@/components/layout/RouteTransition";
@@ -81,6 +82,7 @@ export default async function LocaleLayout({
             <RouteTransition>{children}</RouteTransition>
           </main>
           <Footer />
+          <CookieConsent />
           </PhosphorProvider>
         </NextIntlClientProvider>
       </body>

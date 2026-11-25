@@ -1,5 +1,13 @@
 {
   "common": {
+    "consent": {
+      "title": "Audience measurement",
+      "body": "We use Google Analytics to understand how the site is used and to improve it. It sets cookies only if you accept.",
+      "policy": "Learn more",
+      "accept": "Accept",
+      "refuse": "Decline",
+      "manage": "Manage cookies"
+    },
     "skipToContent": "Skip to content",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
@@ -422,7 +430,7 @@
       "controllerBody": "The processing described below is carried out by {name}. To exercise your rights:",
       "collectedBody": "When you send a message (name, email address, subject, content), we use this information solely to answer your request and for legitimate follow-up.",
       "analytics": "Browsing and audience measurement",
-      "analyticsBody": "Depending on the site's final configuration, cookies or trackers may be used (see the cookie policy). To be adapted to your analytics solution, or its absence.",
+      "analyticsBody": "With your consent, we use Google Analytics (Google Ireland Limited) to measure site traffic: pages viewed, visit duration, approximate geographic origin. Without your consent, no measurement cookie is set and no data is sent to Google (see the cookie policy).",
       "cookieLink": "cookie policy",
       "rightsBody": "Under the conditions set out in applicable regulations, you may request access to, rectification or erasure of your data, restrict its processing, request its portability, or object to certain processing. You may lodge a complaint with the CNIL (cnil.fr).",
       "retentionBody": "Contact messages are kept for as long as needed to handle the exchange, then archived or deleted in line with your legal and operational obligations."
@@ -439,10 +447,10 @@
       "description": "What you need to know about any trackers that may be set during your visit.",
       "whatBody": "A cookie is a small file stored on your device when you visit a website. Depending on how the site is actually set up, it may serve a technical purpose (security, preferences) or audience measurement.",
       "used": "Cookies that may be used",
-      "usedBody": "The current showcase site mainly uses cookies required for its technical operation. To be updated if you add third-party social networks, a Google Maps map, advertising, Matomo / GA4, etc.",
+      "usedBody": "The site uses the cookies required for its technical operation and, with your consent, an audience measurement cookie.",
       "necessaryBody": "Proper operation of the site (e.g. load balancing, language preferences).",
-      "analyticsBody": "Only after configuration and, unless exempt, consent (to be documented precisely).",
-      "choicesBody": "You can configure your browser to refuse all or some cookies. For a compliant consent banner (Tarteaucitron, Axeptio, etc.), plan a dedicated integration.",
+      "analyticsBody": "Google Analytics 4 (_ga and _ga_* cookies, 13 months maximum), set only if you click \"Accept\" in the banner.",
+      "choicesBody": "You can change your choice at any time with the \"Manage cookies\" link at the bottom of the page, or configure your browser to refuse all or some cookies.",
       "contact": "Contact",
       "contactBody": "Questions about this policy:",
       "contactUs": "contact us"

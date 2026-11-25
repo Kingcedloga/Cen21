@@ -1,5 +1,13 @@
 {
   "common": {
+    "consent": {
+      "title": "Mesure d'audience",
+      "body": "Nous utilisons Google Analytics pour comprendre comment le site est utilisé et l'améliorer. Il dépose des cookies uniquement si vous acceptez.",
+      "policy": "En savoir plus",
+      "accept": "Accepter",
+      "refuse": "Refuser",
+      "manage": "Gérer mes cookies"
+    },
     "skipToContent": "Aller au contenu",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
@@ -420,7 +428,7 @@
       "collected": "Données collectées via le formulaire de contact",
       "collectedBody": "Lorsque vous envoyez un message (nom, adresse électronique, objet, contenu), nous utilisons ces informations uniquement pour répondre à votre demande et assurer le suivi relationnel légitime.",
       "analytics": "Navigation et mesure d'audience",
-      "analyticsBody": "Selon la configuration finale du site, des cookies ou traceurs peuvent être utilisés (voir politique cookies). À adapter avec votre solution d'analytics ou son absence.",
+      "analyticsBody": "Avec votre accord, nous utilisons Google Analytics (Google Ireland Limited) pour mesurer la fréquentation du site : pages vues, durée de visite, origine géographique approximative. Sans votre accord, aucun cookie de mesure n'est déposé et aucune donnée n'est transmise à Google (voir politique cookies).",
       "cookieLink": "politique cookies",
       "rights": "Vos droits (RGPD)",
       "rightsBody": "Dans les conditions prévues par la réglementation applicable, vous pouvez demander l'accès, la rectification ou l'effacement de vos données, ainsi que la limitation du traitement, la portabilité ou vous opposer à certains traitements. Vous pouvez introduire une réclamation auprès de la CNIL (cnil.fr).",
@@ -436,13 +444,13 @@
       "what": "Qu'est-ce qu'un cookie ?",
       "whatBody": "Un cookie est un petit fichier enregistré sur votre terminal lors de la visite d'un site. Il peut avoir une finalité technique (sécurité, préférences) ou de mesure d'audience selon la mise en œuvre réelle du site.",
       "used": "Cookies susceptibles d'être utilisés",
-      "usedBody": "Le site vitrine actuel utilise principalement les cookies nécessaires au fonctionnement technique. À mettre à jour si vous ajoutez réseaux sociaux tiers, carte Google Maps, publicité, matomo / GA4, etc.",
+      "usedBody": "Le site utilise les cookies nécessaires à son fonctionnement technique et, avec votre consentement, un cookie de mesure d'audience.",
       "necessary": "Nécessaires",
       "necessaryBody": "Bon fonctionnement du site (ex. équilibrage charge, préférences linguistiques).",
       "analytics": "Mesure d'audience",
-      "analyticsBody": "Uniquement après configuration et, sauf exemption, consentement (à documenter précisément).",
+      "analyticsBody": "Google Analytics 4 (cookies _ga et _ga_*, 13 mois maximum), déposé uniquement si vous cliquez sur « Accepter » dans la bannière.",
       "choices": "Vos choix",
-      "choicesBody": "Vous pouvez configurer votre navigateur pour refuser tout ou partie des cookies. Pour une bannière de consentement conforme (Tarteaucitron, Axeptio, etc.), prévoyez une intégration dédiée.",
+      "choicesBody": "Vous pouvez modifier votre choix à tout moment avec le lien « Gérer mes cookies » en bas de page, ou configurer votre navigateur pour refuser tout ou partie des cookies.",
       "contact": "Contact",
       "contactBody": "Questions sur cette politique :",
       "contactUs": "nous contacter"

@@ -1,6 +1,7 @@
 "use client";
 
 import { MotionConfig, motion } from "framer-motion";
+import { openCookieSettings } from "@/components/layout/CookieConsent";
 import { ArrowUpRight, Mail, MapPin, Phone } from "@/lib/icons";
 import type { SiteConfig } from "@/lib/types";
 
@@ -32,6 +33,7 @@ type FooterLabels = {
   legalNotice: string;
   privacy: string;
   cookies: string;
+  manageCookies: string;
   allRights: string;
   legalNav: string;
   nav: Record<string, string>;
@@ -290,6 +292,19 @@ export function FooterView({
             >
               <RollingText text={labels.cookies} />
             </Link>
+            <span
+              className="text-white/20"
+              aria-hidden
+            >
+              ·
+            </span>
+            <button
+              type="button"
+              onClick={openCookieSettings}
+              className="cursor-pointer transition-colors hover:text-rose"
+            >
+              <RollingText text={labels.manageCookies} />
+            </button>
           </nav>
         </div>
       </div>

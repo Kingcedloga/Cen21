@@ -29,6 +29,7 @@ export async function Footer() {
         legalNotice: t("legalNotice"),
         privacy: t("privacy"),
         cookies: t("cookies"),
+        manageCookies: tCommon("consent.manage"),
         allRights: tCommon("allRights"),
         legalNav: tCommon("legalNav"),
         nav: navLabels,
