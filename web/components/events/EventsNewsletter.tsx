@@ -63,7 +63,7 @@ export function EventsNewsletter({ labels, className = "" }: { labels: Newslette
           required
           autoComplete="email"
           placeholder={labels.emailPlaceholder}
-          className="min-w-0 flex-1 bg-transparent px-4 py-2.5 text-sm text-ivory placeholder:text-ivory/50 focus:outline-none sm:text-base"
+          className="min-w-0 flex-1 bg-transparent px-4 py-2.5 text-base text-ivory placeholder:text-ivory/50 focus:outline-none"
         />
         <button
           type="submit"

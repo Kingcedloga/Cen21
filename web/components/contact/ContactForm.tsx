@@ -306,7 +306,7 @@ export function ContactForm({
 }
 
 const INPUT =
-  "w-full rounded-2xl border border-ivory/12 bg-petrol-panel-3/80 px-4 py-3 text-[15px] text-ivory outline-none transition-[border-color,box-shadow] duration-fine placeholder:text-stone/90 focus:border-rose/55 focus:ring-2 focus:ring-rose/20 aria-[invalid=true]:border-red-400/50 aria-[invalid=true]:focus:ring-red-400/20";
+  "w-full rounded-2xl border border-ivory/12 bg-petrol-panel-3/80 px-4 py-3 text-base text-ivory outline-none sm:text-[15px] transition-[border-color,box-shadow] duration-fine placeholder:text-stone/90 focus:border-rose/55 focus:ring-2 focus:ring-rose/20 aria-[invalid=true]:border-red-400/50 aria-[invalid=true]:focus:ring-red-400/20";
 
 function SubmitSpinner() {
   return (

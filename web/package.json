@@ -8,6 +8,14 @@
     "start": "next start",
     "lint": "eslint"
   },
+  "browserslist": [
+    "chrome >= 111",
+    "edge >= 111",
+    "firefox >= 128",
+    "safari >= 16.4",
+    "ios_saf >= 16.4",
+    "samsung >= 22"
+  ],
   "dependencies": {
     "@next/third-parties": "^16.4.6",
     "@phosphor-icons/react": "^2.1.10",

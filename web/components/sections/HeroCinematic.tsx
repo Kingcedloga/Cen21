@@ -92,7 +92,7 @@ export function HeroCinematic({ slides, siteName, pills = [], className = "" }: 
 
   if (len === 0) {
     return (
-      <section className="relative flex min-h-screen items-end bg-petrol px-6 pb-24 pt-36 md:pt-40">
+      <section className="relative flex min-h-svh items-end bg-petrol px-6 pb-24 pt-36 md:pt-40">
         <h1 className="sr-only">{siteName}</h1>
         <div className="flex flex-wrap gap-4">
           <Button href="/filiales">{t("ctaSubsidiaries")}</Button>
